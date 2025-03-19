@@ -24,7 +24,8 @@
       </div>
     </div>
     
-    <!-- 咨询区域 -->
+    <div>
+        <!-- 咨询区域 -->
     <div class="consultation-section">
       <h3>工业智能化升级，凯奥思数据与您同行</h3>
       <el-button type="primary" class="consult-btn" @click="handleConsult">
@@ -92,6 +93,7 @@
         </div>
       </div>
     </footer>
+    </div>
 
   </div>
 </template>
@@ -135,9 +137,11 @@ const handleConsult = () => {
   width: 100%;
   height: 100vh;
   background-color: #f7f9fc;
-  padding: 40px 0;
+  // padding: 40px 0;
+  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .section-title {
@@ -145,7 +149,7 @@ const handleConsult = () => {
   font-weight: bold;
   text-align: center;
   color: #333;
-  margin-bottom: 40px;
+  margin: 20px 0;
 }
 
 .content-container {
@@ -247,7 +251,7 @@ const handleConsult = () => {
 .footer {
   background-color: @primary-color;
   color: #fff;
-  padding: 40px 0;
+  padding: 40px 0 100px 0;
   
   &-content {
     max-width: 1200px;
