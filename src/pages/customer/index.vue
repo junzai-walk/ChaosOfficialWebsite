@@ -1,26 +1,205 @@
 <template>
-  <div class="about-page">
-    <h1>客户管理</h1>
-    <p>这里是客户管理的内容...</p>
-    <!-- 在此添加更多页面内容 -->
+  <div class="home-page" @wheel="handleWheel">
+    <!-- 第一部分：案例中心 -->
+    <div class="section" :class="{ active: currentSection === 0, 'section-hidden': currentSection !== 0 }"
+      ref="caseSection">
+      <div class="case-customer-section">
+        <div class="background-image"></div>
+        <div class="content-wrapper">
+          <div class="content">
+            <div class="main-title">凯奥思数据案例中心</div>
+            <div class="sub-title">用算法穿透噪声，用数据定义可靠</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 第二部分：标杆案例 -->
+    <div class="section" :class="{ active: currentSection === 1, 'section-hidden': currentSection !== 1 }"
+      ref="solutionSection">
+      <BenchmarkCase @selectActiveCard="selectActiveCard" />
+    </div>
+    <!-- 第三部分：伙伴展示 -->
+    <div class="section" :class="{ active: currentSection === 2, 'section-hidden': currentSection !== 2 }"
+      ref="solutionSection">
+      <PartnerDisplay />
+    </div>
+    <!-- 第四部分：案例展示 -->
+    <div v-if="currentSection === 3" class="section"
+      :class="{ active: currentSection === 3, 'section-hidden': currentSection !== 3 }" ref="solutionSection">
+      <CaseDetail :caseId="caseId" />
+    </div>
+
   </div>
 </template>
 
 <script setup lang="ts">
-// 使用Composition API编写组件逻辑
-// 在此添加页面数据和方法
-</script>
+import { ref, provide, onMounted, onBeforeUnmount } from 'vue'
+import BenchmarkCase from '@/components/customer/BenchmarkCase.vue';
+import PartnerDisplay from '@/components/customer/PartnerDisplay.vue';
+import CaseDetail from '@/components/customer/CaseDetail.vue';
 
-<style scoped>
-.about-page {
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+const currentSection = ref(0)
+// 提供 currentSection 给子组件使用
+provide('currentSection', currentSection)
+
+
+const scrolling = ref(false);
+const scrollDelay = 1000; // 滚动延迟，防止连续滚动
+const caseId = ref()
+
+// 处理鼠标滚轮事件
+const handleWheel = (e: WheelEvent) => {
+  if (scrolling.value) return;
+
+  scrolling.value = true;
+
+  // 向下滚动，最大值改为2
+  if (e.deltaY > 0 && currentSection.value < 2) {
+    currentSection.value++;
+  }
+  // 向上滚动
+  else if (e.deltaY < 0 && currentSection.value > 0) {
+    currentSection.value--;
+  }
+
+  // 设置滚动延迟
+  setTimeout(() => {
+    scrolling.value = false;
+  }, scrollDelay);
+};
+
+// 处理键盘事件
+const handleKeyDown = (e: KeyboardEvent) => {
+  if (scrolling.value) return;
+
+  scrolling.value = true;
+
+  // 向下箭头或Page Down，最大值改为2
+  if ((e.key === 'ArrowDown' || e.key === 'PageDown') && currentSection.value < 2) {
+    currentSection.value++;
+  }
+  // 向上箭头或Page Up
+  else if ((e.key === 'ArrowUp' || e.key === 'PageUp') && currentSection.value > 0) {
+    currentSection.value--;
+  }
+
+  setTimeout(() => {
+    scrolling.value = false;
+  }, scrollDelay);
+};
+
+const selectActiveCard = (val: Number | String | string) => {
+  caseId.value = val
+  currentSection.value = 3
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown);
+
+  // 禁用浏览器默认滚动行为
+  document.body.style.overflow = 'hidden';
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeyDown);
+
+  // 恢复浏览器默认滚动行为
+  document.body.style.overflow = '';
+});
+</script>
+
+<style scoped lang="less">
+.customer-page {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.section {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.section.active {
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 10;
+}
+
+.section-hidden {
+  transform: translateY(100%);
+  opacity: 0;
+  z-index: 5;
+}
+
+/* 案例中心部分样式 */
+.case-customer-section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('@/assets/02/Rectangle_8.png') no-repeat center center;
+  background-size: 100% 100%;
+  z-index: 1;
+  opacity: 90%;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .content {
+    max-width: 610px;
+    color: #000000;
+
+    .main-title {
+      font-size: 36px;
+      font-weight: 700;
+    }
+
+    .sub-title {
+      margin-top: 15px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .customer-title {
+    font-size: 36px;
+  }
+
+  .customer-desc {
+    font-size: 14px;
+  }
+}
+
+/* 当滚动到第二部分时，第一部分向上移动 */
+.section:first-child.section-hidden {
+  transform: translateY(-100%);
 }
 </style>

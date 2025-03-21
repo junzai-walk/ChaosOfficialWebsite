@@ -1,0 +1,383 @@
+<template>
+  <div class="benchmark-cases">
+    <!-- 上方背景图 -->
+    <div class="background-header"></div>
+
+    <div class="cases-container">
+      <div class="cases-content">
+        <!-- 标题 -->
+         <div class="main-title">
+          标杆案例
+         </div>
+        <!-- 图片展示区 -->
+        <div class="case-showcase">
+          <div class="case-cards" :style="{ transform: `translateX(-${currentPage * 50}%)` }">
+            <!-- 第一页的8个图片 -->
+            <div class="case-page">
+              <div class="case-card" v-for="it in caseList" :key="it.id" @click="handleSelectCard(it.id)">
+                <div class="case-image"  :style="{ backgroundImage: `url(${it.imgUrl})`  }"></div>
+                <div class="case-info">
+                  <h3>{{it.mainTitle}}</h3>
+                  <span>{{it.subTitle}}</span>
+                  <p>{{it.industry}}</p>
+                </div>
+              </div>
+            </div>
+            <!-- 第二页的8图片 -->
+            <div class="case-page">
+              <div class="case-card" v-for="(it,index) in caseList" :key="index">
+                <div class="case-image" :style="{ backgroundImage: `url(${it.imgUrl})`  }"></div>
+                <div class="case-info">
+                  <h3>{{it.mainTitle}}</h3>
+                  <span>{{it.subTitle}}</span>
+                  <p>{{it.industry}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 导航按钮 -->
+        <div class="navigation-buttons">
+          <button @click="prevPage" :disabled="currentPage === 0" class="nav-button">
+            <el-icon>
+              <ArrowLeft />
+            </el-icon>
+          </button>
+          <button @click="nextPage" :disabled="currentPage === 1" class="nav-button">
+            <el-icon>
+              <ArrowRight />
+            </el-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- 添加底部填充区域 -->
+    <div class="background-footer"></div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref,defineEmits } from 'vue';
+import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue';
+import Img1 from '@/assets/02/Rectangle_8.png'
+const emit = defineEmits(['selectActiveCard']);
+const currentPage = ref(0);
+const caseList = [
+  {
+    id:'baogang',
+    mainTitle:'中国宝武钢铁集团有限公司',
+    subTitle:'预测性运维管理平台',
+    industry:'钢铁',
+    imgUrl:Img1
+  },
+  
+  {
+    id:'hailuo',
+    mainTitle:'安徽海螺水泥股份有限公司',
+    subTitle:'预测性运维管理平台',
+    industry:'水泥',
+    imgUrl:Img1
+  },
+  {
+    id:'fengtian',
+    mainTitle:'广汽丰田汽车有限公司',
+    subTitle:'预测性运维管理平台',
+    industry:'汽车',
+    imgUrl:Img1
+  },
+  {
+    id:'jiaomei',
+    mainTitle:'山西焦煤集团有限责任公司',
+    subTitle:'预测性运维管理平台',
+    industry:'煤炭',
+    imgUrl:Img1
+  },
+  {
+    id:5,
+    mainTitle:'中国宝武钢铁集团有限公司',
+    subTitle:'预测性运维管理平台',
+    industry:'钢铁',
+    imgUrl:Img1
+  },
+  {
+    id:6,
+    mainTitle:'安徽海螺水泥股份有限公司',
+    subTitle:'预测性运维管理平台',
+    industry:'水泥',
+    imgUrl:Img1
+  },
+  {
+    id:7,
+    mainTitle:'山西焦煤集团有限责任公司',
+    subTitle:'预测性运维管理平台',
+    industry:'煤炭',
+    imgUrl:Img1
+  },
+  {
+    id:8,
+    mainTitle:'广汽丰田汽车有限公司',
+    subTitle:'预测性运维管理平台',
+    industry:'汽车',
+    imgUrl:Img1
+  },
+ 
+]
+
+const handleSelectCard = (id:Number|String|string)=>{
+  emit('selectActiveCard',id)
+}
+// 上一页
+const prevPage = () => {
+  if (currentPage.value > 0) {
+    currentPage.value--;
+  }
+};
+
+// 下一页
+const nextPage = () => {
+  if (currentPage.value < 1) {
+    currentPage.value++;
+  }
+};
+</script>
+
+<style scoped lang="less">
+// 根字体大小设置，用于rem计算
+html {
+  font-size: 16px;
+  
+  @media (min-width: 1920px) {
+    font-size: calc(16px * (1920 / 1920));
+  }
+  
+  @media (max-width: 1440px) {
+    font-size: calc(16px * (1440 / 1920));
+  }
+  
+  @media (max-width: 1280px) {
+    font-size: calc(16px * (1280 / 1920));
+  }
+}
+
+.benchmark-cases {
+  position: relative;
+  width: 100%;
+  background-color: #f5f7fa;
+  padding: 0 ; /* 移除padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 改为flex-start而非center */
+  min-height: 100vh; /* 确保最小高度填满视口 */
+}
+/* 上方背景图 */
+.background-header {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 20rem; // 320px
+  background: url('@/assets/customer/bg.png') no-repeat center center;
+  background-size: 100% 100%;
+  margin-bottom: 1.25rem; // 20px
+  margin-top: 4rem;
+}
+.cases-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
+  max-width: 75rem; // 1200px
+  .main-title{
+    width: 100%;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: start;
+    margin-bottom: 5rem;
+  }
+}
+
+.side-nav-container {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.cases-content {
+  flex: 1;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+
+
+/* 图片展示区域 */
+.case-showcase {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 2rem; // 32px
+}
+
+.case-cards {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 200%;
+}
+
+.case-page {
+  display: flex;
+  width: 50%;
+  padding: 0 0.525rem;
+  justify-content: space-between;
+  gap: 1rem; // 20px
+  flex-wrap: wrap;
+}
+
+.case-card {
+  width: calc(25% - 1.25rem); // 15px
+  height: 12.5rem; // 260px
+  background-color: #fff;
+  border-radius: 0.5rem; // 8px
+  overflow: hidden;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.case-image {
+  flex: 1;
+  background: no-repeat center center;
+  background-size:cover;
+}
+
+.case-info {
+  box-sizing: border-box;
+  padding: 0.8rem;
+  padding-bottom: 0.4rem;
+  height: 43.5%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+.case-info .tag{
+  width: 2.5rem;
+  height: 1.5rem;
+  margin: 0 auto;
+  text-align: center;
+  color: #3171FA;
+  background-color: #E2E9FD;
+}
+.case-info h3 {
+  font-size: 0.875rem; // 14px
+  margin: 0 0 0.3125rem; // 5px
+  color: #333;
+}
+
+.case-info span {
+  font-size: 0.75rem; // 14px
+  margin: 0;
+  color: #666;
+}
+.case-info p{
+  width: 3rem;
+  height: 1rem;
+  font-size: 12px;
+  border-radius: 0.25rem;
+  line-height: 1rem;
+  color: #3171FA;
+  background-color: #E2E9FD;
+}
+
+/* 导航按钮 */
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem; // 20px
+  margin: 1.25rem 0 1.875rem; // 20px 0 30px
+}
+
+.nav-button {
+  width: 2.5rem; // 40px
+  height: 2.5rem; // 40px
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #f3f9ff;
+  border-color: #1890ff;
+  color: #1890ff;
+}
+
+.nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1400px) {
+  .case-page {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  .case-card {
+    width: calc(25% - 0.9375rem); // 15px
+  }
+}
+
+@media (max-width: 992px) {
+  .benchmark-cases {
+    padding: 0;
+  }
+
+  .cases-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .side-nav-container {
+    width: 100%;
+    max-width: 18.75rem; // 300px
+    margin-bottom: 1.25rem; // 20px
+  }
+  
+  .case-page {
+    flex-wrap: wrap;
+  }
+  
+  .case-card {
+    width: calc(50% - 0.625rem); // 10px
+  }
+}
+
+@media (max-width: 768px) {
+  .case-card {
+    width: 100%;
+  }
+}
+
+/* 底部背景补充 */
+.background-footer {
+  background-color: #f5f7fa;
+  height: 5rem; 
+  width: 100%;
+}
+</style>
