@@ -76,7 +76,7 @@ onMounted(() => {
 .app-header {
   display: flex;
   justify-content: space-between;
-  height: 70px;
+  height:70px;
   background-color: #000;
   color: #fff;
   position: fixed;

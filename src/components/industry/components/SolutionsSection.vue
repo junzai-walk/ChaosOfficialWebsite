@@ -1,107 +1,77 @@
 <template>
-  <div class="steel-solutions">
+  <div class="solutions-section">
     <div class="solutions-container">
       <!-- 左侧导航栏 - 使用自定义组件 -->
       <div class="side-nav-container">
-        <CustomNavSteps :width="120" :height="192" :steps="solutionSteps" v-model:activeStep="activeStep" />
+        <CustomNavSteps :width="120" :height="192" :steps="navSteps" v-model:activeStep="activeStep" />
       </div>
 
-      <!-- 右侧内容区 -->
-      <div class="solution-content">
+      <div class="solution-content-container">
         <!-- 顶部描述文本 -->
-        <div class="solution-description">
-          以超恩工业互联网平台为基座，融合数据驱法及AI实现全流程智能化化。通过智能硬件及智能应用赋能煤气管网、冷轧生产等核心场景，实现设备预测性维护、能效优化、工艺智能控制，助力钢铁企业降本增效、绿色转型。
+        <div class="solution-description">{{ description }}</div>
+        <!-- 右侧内容区 -->
+        <div class="solution-content">
+
+          <!-- 内容部分 -->
+          <div class="solution-sections" v-if="!showImage">
+            <!-- 专项场景 -->
+            <div class="solution-section scene-section" v-if="specialScenes && specialScenes.length > 0">
+              <div class="section-title">{{ specialScenes[0] }}</div>
+              <div class="scene-content">
+                <div v-for="(scene, index) in specialScenes.slice(1)" :key="index" class="scene-tag-item">
+                  {{ scene }}
+                </div>
+              </div>
+            </div>
+
+            <!-- 智能应用 -->
+            <div class="solution-section" v-if="applications && applications.length > 0">
+              <div class="section-title">{{ applications[0] }}</div>
+              <div class="application-bar">
+                <div v-for="(app, index) in applications.slice(1)" :key="index" class="app-item">
+                  {{ app }}
+                </div>
+              </div>
+            </div>
+
+            <!-- 智能平台 -->
+            <div class="solution-section platform-section" v-if="platformData && platformData.mainPlatforms.length > 0">
+              <div class="section-title section-title-big">智能平台</div>
+              <div class="section-content platform-content">
+                <div class="platform-row">
+                  <div v-for="(platform, index) in platformData.mainPlatforms" :key="index" class="platform-box">
+                    <div class="platform-box-title">{{ platform.title }}</div>
+                    <div class="platform-box-content">
+                      {{ platform.content }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="platform-row database-row" v-if="platformData.databases && platformData.databases.length > 0">
+                  <div v-for="(db, index) in platformData.databases" :key="index" class="platform-box database-box">
+                    <div class="platform-box-content">
+                      {{ db }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 数据采集 -->
+            <div class="solution-section" v-if="dataCollectionMethods && dataCollectionMethods.length > 0">
+              <div class="section-title section-title-big">数据采集</div>
+              <div class="section-content tags">
+                <div v-for="(method, index) in dataCollectionMethods" :key="index" class="tag-item">
+                  {{ method }}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- 内容部分 -->
-        <div class="solution-sections">
-          <!-- 专项场景 -->
-          <div class="solution-section scene-section">
-            <div class="section-title">专项场景</div>
-            <div class="scene-content">
-              <div class="scene-tag-item">三废一体化设备管理</div>
-              <div class="scene-tag-item">两废一体工艺优化</div>
-              <div class="scene-tag-item">分解炉温度控制</div>
-              <div class="scene-tag-item">垃圾发电</div>
-            </div>
-          </div>
-
-          <!-- 智能应用 -->
-          <div class="solution-section">
-            <div class="section-title">智能应用</div>
-            <div class="application-bar">
-              <div class="app-item">设备预测性维护（PHM）</div>
-              <div class="app-item">先进过程控制（APC）</div>
-              <div class="app-item">能源管理（EMS）</div>
-              <div class="app-item">......</div>
-            </div>
-          </div>
-
-          <!-- 智能平台 -->
-          <div class="solution-section platform-section">
-            <div class="section-title section-title-big">智能平台</div>
-            <div class="section-content platform-content">
-              <div class="platform-row">
-                <div class="platform-box">
-                  <div class="platform-box-title">统一建模平台</div>
-                  <div class="platform-box-content">
-                    数据建模 | 机理建模 | 价值建模
-                  </div>
-                </div>
-                <div class="platform-box">
-                  <div class="platform-box-title">模型管理服务</div>
-                  <div class="platform-box-content">
-                    模型部署 | 模型验证
-                  </div>
-                </div>
-                <div class="platform-box">
-                  <div class="platform-box-title">统一建模平台</div>
-                  <div class="platform-box-content">
-                    数据对接 | 模型实时运算
-                  </div>
-                </div>
-                <div class="platform-box">
-                  <div class="platform-box-title">其它技术组件</div>
-                  <div class="platform-box-content">
-                    组态工具 | 资源工具 | ······
-                  </div>
-                </div>
-              </div>
-
-              <div class="platform-row database-row">
-                <div class="platform-box database-box">
-                  <div class="platform-box-content">
-                    关系数据库
-                  </div>
-                </div>
-                <div class="platform-box database-box">
-                  <div class="platform-box-content">
-                    时序数据库
-                  </div>
-                </div>
-                <div class="platform-box database-box">
-                  <div class="platform-box-content">
-                    文件存储
-                  </div>
-                </div>
-                <div class="platform-box database-box">
-                  <div class="platform-box-content">
-                    ······
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 数据采集 -->
-          <div class="solution-section">
-            <div class="section-title section-title-big">数据采集</div>
-            <div class="section-content tags">
-              <div class="tag-item">有线传感器</div>
-              <div class="tag-item">边缘智能采集器</div>
-              <div class="tag-item">无线智能网关</div>
-            </div>
-          </div>
+        <!-- 显示图片 -->
+        <div class="solution-image-container" v-if="showImage">
+          <img :src="imageSrc" alt="解决方案图片" class="solution-image" />
         </div>
       </div>
     </div>
@@ -110,38 +80,58 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-// 替换导航组件
-import CustomNavSteps from './CustomNavSteps.vue';
+import CustomNavSteps from '../CustomNavSteps.vue';
 
-const activeStep = ref(2); // 默认显示解决方案
+// 定义组件属性
+const props = withDefaults(defineProps<{
+  navSteps: string[];
+  description?: string;
+  specialScenes?: string[];
+  applications?: string[];
+  showImage?: boolean;
+  imageSrc?: string;
+  platformData?: {
+    mainPlatforms: Array<{ title: string; content: string }>;
+    databases: string[];
+  };
+  dataCollectionMethods?: string[];
+  defaultActiveStep?: number;
+}>(), {
+  defaultActiveStep: 2,
+  showImage: false,
+  description: '',
+  specialScenes: () => [],
+  applications: () => [],
+  platformData: () => ({
+    mainPlatforms: [],
+    databases: []
+  }),
+  dataCollectionMethods: () => []
+});
 
-const solutionSteps = [
-  '行业挑战',
-  '解决方案',
-  '方案优势',
-  '典型案例'
-];
+// 当前活动步骤
+const activeStep = ref(props.defaultActiveStep);
 </script>
 
 <style scoped lang="less">
 /* 添加根字体设置用于rem计算 */
 html {
   font-size: 16px;
-  
+
   @media (min-width: 1920px) {
     font-size: calc(16px * (1920 / 1920));
   }
-  
+
   @media (max-width: 1440px) {
     font-size: calc(16px * (1440 / 1920));
   }
-  
+
   @media (max-width: 1280px) {
     font-size: calc(16px * (1280 / 1920));
   }
 }
 
-.steel-solutions {
+.solutions-section {
   width: 100%;
   min-height: 100vh;
   background-color: #f5f7fa;
@@ -166,11 +156,32 @@ html {
 }
 
 .solution-content {
-  flex: 1;
+  // flex: 1;
   display: inline-flex;
   flex-direction: column;
   justify-content: flex-start; // 修改为顶部对齐
   align-items: flex-start; // 确保左对齐
+}
+
+/* 图片容器样式 */
+.solution-image-container {
+  // flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.solution-image {
+  width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.solution-content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .solution-description {
@@ -178,7 +189,7 @@ html {
   line-height: 1.8;
   color: #333;
   text-align: justify;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 }
 
 .solution-sections {
@@ -305,7 +316,7 @@ html {
 
 /* 响应式设计 */
 @media (max-width: 992px) {
-  .steel-solutions {
+  .solutions-section {
     padding: 20px;
   }
 

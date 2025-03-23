@@ -1,37 +1,30 @@
 <template>
-  <div class="steel-cases">
+  <div class="cases-section">
     <!-- 上方背景图 -->
     <div class="background-header"></div>
 
     <div class="cases-container">
-      <!-- 左侧导航栏 - 使用自定义组件替换原组件 -->
+      <!-- 左侧导航栏 - 使用自定义组件 -->
       <div class="side-nav-container">
-        <CustomNavSteps :width="120" :height="192" :steps="caseSteps" v-model:activeStep="activeStep" />
+        <CustomNavSteps :width="120" :height="192" :steps="navSteps" v-model:activeStep="activeStep" />
       </div>
 
       <!-- 右侧内容区 -->
       <div class="cases-content">
-
         <!-- 图片展示区 -->
         <div class="case-showcase">
-          <div class="case-cards" :style="{ transform: `translateX(-${currentPage * 50}%)` }">
-            <!-- 第一页的4个图片 -->
+          <div class="case-cards">
+            <!-- 只显示当前页的案例卡片 -->
             <div class="case-page">
-              <div class="case-card" v-for="i in 4" :key="i">
-                <div class="case-image"></div>
+              <div 
+                v-for="(card, index) in currentPageCases" 
+                :key="index" 
+                class="case-card"
+              >
+                <div class="case-image" :style="{ backgroundImage: `url(${card.image})` }"></div>
                 <div class="case-info">
-                  <h3>安徽海螺水泥股份有限公司</h3>
-                  <p>预测性运维管理平台</p>
-                </div>
-              </div>
-            </div>
-            <!-- 第二页的4个图片 -->
-            <div class="case-page">
-              <div class="case-card" v-for="i in 4" :key="i + 4">
-                <div class="case-image"></div>
-                <div class="case-info">
-                  <h3>安徽海螺水泥股份有限公司</h3>
-                  <p>预测性运维管理平台</p>
+                  <h3>{{ card.title }}</h3>
+                  <p>{{ card.description }}</p>
                 </div>
               </div>
             </div>
@@ -66,34 +59,54 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue';
-// 使用自定义导航组件替换原组件
-import CustomNavSteps from './CustomNavSteps.vue';
+import CustomNavSteps from '../CustomNavSteps.vue';
 
-const activeStep = ref(4); // 默认显示典型案例（第四项）
+// 定义接口
+interface CaseCard {
+  image: string;
+  title: string;
+  description: string;
+}
 
-const caseSteps = [
-  '行业挑战',
-  '解决方案',
-  '方案优势',
-  '典型案例'
-];
+// 定义组件属性
+const props = defineProps<{
+  cases: CaseCard[];
+  navSteps: string[];
+  cardsPerPage?: number;
+  defaultActiveStep?: number;
+}>();
 
+// 当前活动步骤
+const activeStep = ref(props.defaultActiveStep || 4); // 默认显示典型案例（第四项）
 const currentPage = ref(0);
 const contactInfo = ref('');
+
+// 每页显示的卡片数
+const cardsPerPage = computed(() => props.cardsPerPage || 4);
+
+// 计算总页数
+const totalPages = computed(() => Math.ceil(props.cases.length / cardsPerPage.value));
+
+// 计算当前页显示的案例
+const currentPageCases = computed(() => {
+  const start = currentPage.value * cardsPerPage.value;
+  const end = start + cardsPerPage.value;
+  return props.cases.slice(start, end);
+});
+
+// 下一页
+const nextPage = () => {
+  if (currentPage.value < totalPages.value - 1) {
+    currentPage.value++;
+  }
+};
 
 // 上一页
 const prevPage = () => {
   if (currentPage.value > 0) {
     currentPage.value--;
-  }
-};
-
-// 下一页
-const nextPage = () => {
-  if (currentPage.value < 1) {
-    currentPage.value++;
   }
 };
 </script>
@@ -116,14 +129,13 @@ html {
   }
 }
 
-.steel-cases {
+.cases-section {
   width: 100%;
   background-color: #f5f7fa;
-  //padding: 0 2.5rem 0 2.5rem; /* 移除底部padding */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* 改为flex-start而非center */
-  min-height: calc(100vh - 70px); /* 确保最小高度填满视口 */
+  justify-content: space-between;
+  min-height: calc(100vh - 70px);
   position: relative;
 }
 
@@ -132,7 +144,7 @@ html {
   display: flex;
   gap: 1.875rem;
   max-width: 75rem; // 1200px
-  margin: 0 auto 2.5rem; /* 增加底部margin控制与申请区域间距 */
+  margin: 0 auto 2.5rem;
 }
 
 .side-nav-container {
@@ -176,45 +188,48 @@ html {
 
 .case-page {
   display: flex;
-  width: 50%;
-  justify-content: space-between;
-  gap: 1.25rem; // 20px
   flex-wrap: nowrap;
+  gap: 1.25rem; // 20px
+  width: 50%;
 }
 
 .case-card {
-  width: calc(25% - 0.9375rem); // 15px
-  height: 16.25rem; // 260px
-  background-color: #fff;
+  width: calc(25% - 0.9375rem); // 计算每个卡片宽度，考虑间距
   border-radius: 0.5rem; // 8px
   overflow: hidden;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #eaeaea;
+}
+
+.case-card:hover {
+  transform: translateY(-0.3125rem); // 5px
+  box-shadow: 0 0.5rem 1rem rgba(24, 144, 255, 0.1);
 }
 
 .case-image {
-  flex: 1;
-  background: url('@/assets/02/Rectangle_8.png') no-repeat center center;
+  width: 100%;
+  height: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
 .case-info {
   padding: 0.9375rem; // 15px
-  text-align: center;
-  background-color: #fff;
 }
 
 .case-info h3 {
   font-size: 1rem; // 16px
-  margin: 0 0 0.3125rem; // 5px
+  margin: 0 0 0.625rem; // 10px
   color: #333;
 }
 
 .case-info p {
   font-size: 0.875rem; // 14px
-  margin: 0;
   color: #666;
+  margin: 0;
 }
 
 /* 导航按钮 */
@@ -279,18 +294,13 @@ html {
 }
 
 @media (max-width: 1400px) {
-  .case-page {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-  }
-
   .case-card {
-    width: calc(25% - 0.9375rem); // 15px
+    width: calc(25% - 0.9375rem);
   }
 }
 
 @media (max-width: 992px) {
-  .steel-cases {
+  .cases-section {
     padding: 0;
   }
 
@@ -305,10 +315,6 @@ html {
     margin-bottom: 1.25rem; // 20px
   }
   
-  .case-page {
-    flex-wrap: wrap;
-  }
-  
   .case-card {
     width: calc(50% - 0.625rem); // 10px
   }
@@ -319,4 +325,5 @@ html {
     width: 100%;
   }
 }
-</style>
+
+</style> 

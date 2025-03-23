@@ -1,57 +1,27 @@
 <template>
-  <div class="steel-challenges">
+  <div class="challenges-section">
     <div class="challenges-container">
       <!-- 左侧导航 - 使用自定义组件 -->
       <div class="side-nav-container">
-        <CustomNavSteps :width="120" :height="192" :steps="challengeSteps" v-model:activeStep="activeStep" />
+        <CustomNavSteps 
+          :width="120" 
+          :height="192" 
+          :steps="navSteps" 
+          v-model:activeStep="activeStep" 
+        />
       </div>
 
       <!-- 右侧内容 -->
       <div class="challenges-content">
         <div class="challenge-cards">
-          <!-- 第一行 -->
-          <div class="challenge-row">
-            <div class="challenge-card">
+          <!-- 挑战卡片以每行两个的形式显示 -->
+          <div class="challenge-row" v-for="(rowCards, rowIndex) in chunkedCards" :key="rowIndex">
+            <div class="challenge-card" v-for="(card, cardIndex) in rowCards" :key="cardIndex">
               <div class="card-icon">
-                <img src="@/assets/industry/icon-energy.png" alt="高能耗" />
+                <img :src="card.icon" :alt="card.title" />
               </div>
-              <div class="card-title">碳中和与深度减排压力升级</div>
-              <div class="card-desc">
-                焦料热成焦耗占比超60%，煤焦气，电智能优化降碳减排，面对"双碳"目标与环保法规。
-              </div>
-            </div>
-
-            <div class="challenge-card">
-              <div class="card-icon">
-                <img src="@/assets/industry/icon-equipment.png" alt="设备停机" />
-              </div>
-              <div class="card-title">设备智能化运维协同瓶颈</div>
-              <div class="card-desc">
-                设备备高价值升与多系统集成需求求高，传统运维模式难以满足高精度预测性维护与跨产线协同。
-              </div>
-            </div>
-          </div>
-
-          <!-- 第二行 -->
-          <div class="challenge-row">
-            <div class="challenge-card">
-              <div class="card-icon">
-                <img src="@/assets/industry/icon-process.png" alt="工艺优化" />
-              </div>
-              <div class="card-title">工艺柔性化与质量一致性挑战</div>
-              <div class="card-desc">
-                生料配比过弃，设备控制误差大，人工经验已不满足产线提升，质量一致性要求。
-              </div>
-            </div>
-
-            <div class="challenge-card">
-              <div class="card-icon">
-                <img src="@/assets/industry/icon-supply.png" alt="生产协同" />
-              </div>
-              <div class="card-title">环保与成本双重挑战</div>
-              <div class="card-desc">
-                粉尘、氮氧化物治理水平提升，需平衡环保合规与降本增效，智能化技术驱动绿色转型。
-              </div>
+              <div class="card-title">{{ card.title }}</div>
+              <div class="card-desc">{{ card.description }}</div>
             </div>
           </div>
         </div>
@@ -61,18 +31,34 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-// 替换导航组件
-import CustomNavSteps from './CustomNavSteps.vue';
+import { ref, computed } from 'vue';
+import CustomNavSteps from '../CustomNavSteps.vue';
 
-const activeStep = ref(1); // 默认显示行业挑战
+// 定义接口
+interface ChallengeCard {
+  icon: string;
+  title: string;
+  description: string;
+}
 
-const challengeSteps = [
-  '行业挑战',
-  '解决方案',
-  '方案优势',
-  '典型案例'
-];
+// 定义组件属性
+const props = defineProps<{
+  cards: ChallengeCard[];
+  navSteps: string[];
+  defaultActiveStep?: number;
+}>();
+
+// 当前活动步骤
+const activeStep = ref(props.defaultActiveStep || 1);
+
+// 将卡片数组分成两两一组
+const chunkedCards = computed(() => {
+  const result = [];
+  for (let i = 0; i < props.cards.length; i += 2) {
+    result.push(props.cards.slice(i, i + 2));
+  }
+  return result;
+});
 </script>
 
 <style scoped lang="less">
@@ -93,7 +79,7 @@ html {
   }
 }
 
-.steel-challenges {
+.challenges-section {
   width: 100%;
   min-height: 100vh;
   background-color: #f5f7fa;
@@ -143,8 +129,8 @@ html {
   flex: 1;
   background-color: #fff;
   border-radius: 10px;
-  height: 200px;
   padding: 25px;
+  height: 200px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
@@ -183,7 +169,7 @@ html {
 }
 
 @media (max-width: 992px) {
-  .steel-challenges {
+  .challenges-section {
     padding: 20px;
   }
 
@@ -198,4 +184,4 @@ html {
     margin-bottom: 20px;
   }
 }
-</style>
+</style> 

@@ -1,58 +1,23 @@
 <template>
-  <div class="steel-advantages">
+  <div class="advantages-section">
     <div class="advantages-container">
-      <!-- 左侧导航栏 - 使用自定义组件 -->
+      <!-- 左侧导航栏 -->
       <div class="side-nav-container">
-        <CustomNavSteps :width="120" :height="192" :steps="advantageSteps" v-model:activeStep="activeStep" />
+        <CustomNavSteps :width="120" :height="192" :steps="navSteps" v-model:activeStep="activeStep" />
       </div>
 
       <!-- 右侧内容区 -->
       <div class="advantage-content">
         <!-- 卡片部分 -->
         <div class="advantage-cards">
-          <!-- 第一行 -->
-          <div class="card-row">
-            <div class="advantage-card">
+          <!-- 按行分组展示卡片 -->
+          <div class="card-row" v-for="(rowCards, rowIndex) in chunkedCards" :key="rowIndex">
+            <div class="advantage-card" v-for="(card, cardIndex) in rowCards" :key="cardIndex">
               <div class="card-icon">
-                <img src="@/assets/industry/低碳环保.png" alt="低碳环保" />
+                <img :src="card.icon" :alt="card.title" />
               </div>
-              <div class="card-title">低碳环保</div>
-              <div class="card-desc">
-                提升能源利用效率，减少污染的排放。
-              </div>
-            </div>
-
-            <div class="advantage-card">
-              <div class="card-icon">
-                <img src="@/assets/industry/智能运维.png" alt="智能运维" />
-              </div>
-              <div class="card-title">智能运维</div>
-              <div class="card-desc">
-                及时发现设备异常情况，提前做好维护工作，避免设备故障致停机和生产成本增加。
-              </div>
-            </div>
-          </div>
-
-          <!-- 第二行 -->
-          <div class="card-row">
-            <div class="advantage-card">
-              <div class="card-icon">
-                <img src="@/assets/industry/品质提升.png" alt="品质提升" />
-              </div>
-              <div class="card-title">品质提升</div>
-              <div class="card-desc">
-                稳定控制数据波动，实现稳定加热和冷却，通过过程控制，保证成品的质量。
-              </div>
-            </div>
-
-            <div class="advantage-card">
-              <div class="card-icon">
-                <img src="@/assets/industry/稳定生产.png" alt="稳定生产" />
-              </div>
-              <div class="card-title">稳定生产</div>
-              <div class="card-desc">
-                减少温差波动，充分燃烧；及时响应各个量之间的相关联性。
-              </div>
+              <div class="card-title">{{ card.title }}</div>
+              <div class="card-desc">{{ card.description }}</div>
             </div>
           </div>
         </div>
@@ -62,18 +27,37 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-// 替换导航组件
-import CustomNavSteps from './CustomNavSteps.vue';
+import { ref, computed } from 'vue';
+import CustomNavSteps from '../CustomNavSteps.vue';
 
-const activeStep = ref(3); // 默认显示方案优势（第三项）
+// 定义接口
+interface AdvantageCard {
+  icon: string;
+  title: string;
+  description: string;
+}
 
-const advantageSteps = [
-  '行业挑战',
-  '解决方案',
-  '方案优势',
-  '典型案例'
-];
+// 定义组件属性
+const props = defineProps<{
+  cards: AdvantageCard[];
+  navSteps: string[];
+  defaultActiveStep?: number;
+}>();
+
+// 当前活动步骤
+const activeStep = ref(props.defaultActiveStep || 3); // 默认显示方案优势（第三项）
+
+// 修改计算属性
+const chunkedCards = computed(() => {
+  const result = [];
+  const isSmallCard = props.cards.length > 4; // 超过4个卡片时使用小宽度
+  const cardsPerRow = isSmallCard ? 3 : 2; // 小卡片时每行3个，大卡片时每行2个
+  
+  for (let i = 0; i < props.cards.length; i += cardsPerRow) {
+    result.push(props.cards.slice(i, i + cardsPerRow));
+  }
+  return result;
+});
 </script>
 
 <style scoped lang="less">
@@ -94,7 +78,7 @@ html {
   }
 }
 
-.steel-advantages {
+.advantages-section {
   width: 100%;
   min-height: 100vh;
   background-color: #f5f7fa;
@@ -135,11 +119,11 @@ html {
 .card-row {
   display: flex;
   gap: 20px;
-  justify-content: center;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .advantage-card {
-  width: 545px;
   height: 255px;
   background-color: #fff;
   border-radius: 10px;
@@ -150,6 +134,15 @@ html {
   align-items: center;
   text-align: center;
   box-sizing: border-box;
+  
+  // 根据父元素的类名来确定宽度
+  .advantage-cards:has(> .card-row:nth-child(3)) & {
+    width: calc(33.33% - 14px); // 小宽度卡片
+  }
+  
+  .advantage-cards:not(:has(> .card-row:nth-child(3))) & {
+    width: calc(50% - 10px); // 大宽度卡片
+  }
 }
 
 .card-icon {
@@ -160,6 +153,7 @@ html {
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
+  background-color: #e8f7f0;
 
   img {
     width: 30px;
@@ -193,7 +187,7 @@ html {
 }
 
 @media (max-width: 992px) {
-  .steel-advantages {
+  .advantages-section {
     padding: 20px;
   }
 
