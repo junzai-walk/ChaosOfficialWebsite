@@ -24,7 +24,7 @@
           <el-menu-item index="/customer">客户案例</el-menu-item>
           <el-menu-item index="/partners">合作伙伴</el-menu-item>
           <el-menu-item index="/about">关于我们</el-menu-item>
-          
+          <el-menu-item index="/news">新闻资讯</el-menu-item>
         </el-menu>
       </nav>
       
