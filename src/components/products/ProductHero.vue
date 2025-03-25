@@ -1,0 +1,73 @@
+<template>
+  <div class="product-hero" :style="{ backgroundImage: `url(${backgroundImage})` }">
+    <div class="content">
+      <h1 class="title">{{ title }}</h1>
+      <button class="experience-btn">预约体验</button>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+defineProps({
+  backgroundImage: {
+    type: String,
+    required: true
+  },
+  title: {
+    type: String,
+    required: true
+  }
+});
+</script>
+
+<style scoped>
+.product-hero {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  background-color: #f0f8ff; /* 浅蓝色背景，如果背景图加载失败 */
+  position: relative;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.experience-btn {
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.experience-btn:hover {
+  background-color: #0066cc;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+    max-width: 100%;
+  }
+}
+</style> 
