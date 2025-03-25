@@ -32,23 +32,40 @@ defineProps({
   position: relative;
 }
 
-.content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+.product-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5); /* 淡白色蒙版 */
+  z-index: 1;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
   position: relative;
   z-index: 2;
 }
 
 .title {
+  position: absolute;
+  top: 309px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 84px;
   font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 2rem;
   color: #333;
 }
 
 .experience-btn {
+  position: absolute;
+  top: 494px;
+  left: 860px;
+  height: 56px;
   background-color: #1890ff;
   color: white;
   border: none;
@@ -67,7 +84,15 @@ defineProps({
 @media (max-width: 768px) {
   .title {
     font-size: 2rem;
-    max-width: 100%;
+    position: relative;
+    top: 30%;
+    left: 10%;
+  }
+  
+  .experience-btn {
+    position: relative;
+    top: 40%;
+    left: 10%;
   }
 }
 </style> 
