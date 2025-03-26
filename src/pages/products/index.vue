@@ -391,7 +391,7 @@ import apsFeature5 from '@/assets/products/aps-feature-5.png'
 import apsFeature6 from '@/assets/products/aps-feature-6.png'
 
 // 当前显示的部分
-const currentSection = ref(27)
+const currentSection = ref(0)
 // 是否正在滚动中（防止连续触发）
 const scrolling = ref(false)
 const scrollDelay = 1000 // 滚动延迟
