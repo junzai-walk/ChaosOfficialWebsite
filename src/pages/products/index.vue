@@ -134,6 +134,143 @@
         :cases="productCasesApc"
       />
     </div>
+
+    <!-- 第十六部分：能源管理与优化系统(EMS) -->
+    <div class="section" :class="{ active: currentSection === 15, 'section-hidden': currentSection !== 15 }">
+      <ProductHero 
+        :background-image="emsBackgroundImage" 
+        title="能源管理与优化系统(EMS)" 
+      />
+    </div>
+    
+    <!-- 第十七部分：产品概述 -->
+    <div class="section" :class="{ active: currentSection === 16, 'section-hidden': currentSection !== 16 }">
+      <ProductDescription 
+        :nav-steps="productSteps" 
+        :default-active-step="1"
+        :description="productDescriptionEms"
+        :video-src="officialVideoSrc"
+      />
+    </div>
+
+    <!-- 第十八部分：核心功能 -->
+    <div class="section" :class="{ active: currentSection === 17, 'section-hidden': currentSection !== 17 }">
+      <ProductFeatures
+        :nav-steps="productSteps"
+        :default-active-step="2"
+        :features="productFeaturesEms"
+      />
+    </div>
+
+    <!-- 第十八部分：特色优势 -->
+    <div class="section" :class="{ active: currentSection === 18, 'section-hidden': currentSection !== 18 }">
+      <ProductEmsFeatures
+        :nav-steps="productSteps"
+        :default-active-step="3"
+        main-title="引入核心算法配置模块"
+        sub-title="建立能源需求预测与规划"
+        :features="productEmsPredictions"
+      />
+    </div>
+
+    <!-- 第十九部分：特色优势 -->
+    <div class="section" :class="{ active: currentSection === 19, 'section-hidden': currentSection !== 19 }">
+      <ProductEmsStrategy
+        :nav-steps="productSteps"
+        :default-active-step="3"
+        title="用能诊断及节能减排策略优化"
+        :strategies="emsStrategies"
+      />
+    </div>
+
+    <!-- 第二十部分：应用成效 -->
+    <div class="section" :class="{ active: currentSection === 20, 'section-hidden': currentSection !== 20 }">
+      <ProductEmsResults
+        :nav-steps="productSteps"
+        :default-active-step="4"
+        title="应用成效"
+        :results="emsResults"
+      />
+    </div>
+    
+       <!-- 第二十一部分：库存优化(1OP) -->
+       <div class="section" :class="{ active: currentSection === 21, 'section-hidden': currentSection !== 21 }">
+        <ProductHero
+          title="库存优化(1OP)"
+          :background-image="inventoryBackgroundImage"
+        />
+        </div>
+
+       <!-- 第二十二部分：产品描述 -->
+       <div class="section" :class="{ active: currentSection === 22, 'section-hidden': currentSection !== 22 }">
+        <ProductDescription
+          :nav-steps="productSteps"
+          :default-active-step="1"
+          :description="productDescriptionIop"
+          :video-src="officialVideoSrc"
+        />
+       </div>
+
+       <!-- 第二十三部分：核心功能 -->
+       <div class="section" :class="{ active: currentSection === 23, 'section-hidden': currentSection !== 23 }">
+        <ProductIopFeatures
+          :nav-steps="productSteps"
+          :default-active-step="2"
+        />
+       </div>
+
+       <!-- 第二十四部分：特色优势 -->
+       <div class="section" :class="{ active: currentSection === 24, 'section-hidden': currentSection !== 24 }">
+        <ProductIopAdvantages
+          :nav-steps="productSteps"
+          :default-active-step="3"
+        />
+       </div>
+
+       <!-- 第二十五部分：应用成效 -->
+       <div class="section" :class="{ active: currentSection === 25, 'section-hidden': currentSection !== 25 }">
+        <ProductIopResults
+          :nav-steps="productSteps"
+          :default-active-step="4"
+          title="应用成效"
+          :results="iopResults"
+        />
+       </div>
+
+       <!-- 第二十六部分：生产计划排程(APS) -->
+       <div class="section" :class="{ active: currentSection === 26, 'section-hidden': currentSection !== 26 }">
+        <ProductHero
+          title="生产计划排程(APS)"
+          :background-image="apsBackgroundImage"
+        />
+       </div>
+
+       <!-- 第二十七部分：产品概述 -->
+       <div class="section" :class="{ active: currentSection === 27, 'section-hidden': currentSection !== 27 }">
+        <ProductDescription
+          :nav-steps="productSteps"
+          :default-active-step="1"
+          :description="productDescriptionAps"
+          :video-src="officialVideoSrc"
+        />
+       </div>
+
+       <!-- 第二十八部分：核心功能 -->
+       <div class="section" :class="{ active: currentSection === 28, 'section-hidden': currentSection !== 28 }">
+        <ProductApsFeatures
+          :nav-steps="productStepsAnother"
+          :default-active-step="2"
+        />
+       </div>
+
+       <!-- 第二十九部分：特色优势 -->
+       <div class="section" :class="{ active: currentSection === 29, 'section-hidden': currentSection !== 29 }">
+        <ProductAdvantages
+          :nav-steps="productStepsAnother"
+          :default-active-step="3"
+          :advantages="productAdvantagesAps"
+        />
+       </div>
   </div>
 </template>
 
@@ -144,6 +281,13 @@ import ProductDescription from '@/components/products/ProductDescription.vue'
 import ProductFeatures from '@/components/products/ProductFeatures.vue'
 import ProductAdvantages from '@/components/products/ProductAdvantages.vue'
 import ProductCases from '@/components/products/ProductCases.vue'
+import ProductEmsFeatures from '@/components/products/ProductEmsFeatures.vue'
+import ProductEmsStrategy from '@/components/products/ProductEmsStrategy.vue'
+import ProductEmsResults from '@/components/products/ProductEmsResults.vue'
+import ProductIopFeatures from '@/components/products/ProductIopFeatures.vue'
+import ProductIopAdvantages from '@/components/products/ProductIopAdvantages.vue'
+import ProductIopResults from '@/components/products/ProductIopResults.vue'
+import ProductApsFeatures from '@/components/products/ProductApsFeatures.vue'
 // 直接导入图片和视频
 import phmBackgroundImage from '@/assets/products/software-bg-1.png'
 import officialVideoSrc from '@/assets/video/official_video.mp4'
@@ -207,19 +351,65 @@ import case2Apc from '@/assets/products/apc-case-2.png'
 import case3Apc from '@/assets/products/apc-case-3.png'
 import case4Apc from '@/assets/products/apc-case-4.png'
 
+// 导入EMS背景图片
+import emsBackgroundImage from '@/assets/products/ems-bg.jpg'
+
+// 导入EMS图标
+import emsIcon1 from '@/assets/products/ems-1.png'
+import emsIcon2 from '@/assets/products/ems-2.png'
+import emsIcon3 from '@/assets/products/ems-3.png'
+import emsIcon4 from '@/assets/products/ems-4.png'
+import emsIcon5 from '@/assets/products/ems-5.png'
+
+// 导入EMS应用成效图标
+import emsApplication1 from '@/assets/products/ems-application-1.png'
+import emsApplication2 from '@/assets/products/ems-application-2.png'
+import emsApplication3 from '@/assets/products/ems-application-3.png'
+
+// 导入库存优化(1OP)背景图片
+import inventoryBackgroundImage from '@/assets/products/iop-bg.jpg'
+
+// 导入IOP应用成效图标
+import iopApplication1 from '@/assets/products/iop-application-1.png'
+import iopApplication2 from '@/assets/products/iop-application-2.png'
+import iopApplication3 from '@/assets/products/iop-application-3.png'
+import iopApplication4 from '@/assets/products/iop-application-4.png'
+import iopApplication5 from '@/assets/products/iop-application-5.png'
+import iopApplication6 from '@/assets/products/iop-application-6.png'
+
+
+
+// 导入APS背景图片
+import apsBackgroundImage from '@/assets/products/aps-bg.jpg'
+
+// 导入APS优势图标
+import apsFeature1 from '@/assets/products/aps-feature-1.png'
+import apsFeature2 from '@/assets/products/aps-feature-2.png'
+import apsFeature3 from '@/assets/products/aps-feature-3.png'
+import apsFeature4 from '@/assets/products/aps-feature-4.png'
+import apsFeature5 from '@/assets/products/aps-feature-5.png'
+import apsFeature6 from '@/assets/products/aps-feature-6.png'
+
 // 当前显示的部分
-const currentSection = ref(0)
+const currentSection = ref(27)
 // 是否正在滚动中（防止连续触发）
 const scrolling = ref(false)
 const scrollDelay = 1000 // 滚动延迟
 
 // 产品步骤
 const productSteps = ['产品概述', '核心功能', '特色优势', '应用案例']
+//产品步骤 - 简略
+const productStepsAnother = ['产品概述', '核心功能', '特色优势']
 
+//产品步骤
+// const productStepsAnother = ['产品概述', '核心功能', '特色优势', '应用成效']
 // 产品描述
 const productDescription = '设备预测性维护与健康管理系统，应用工业设备运维中的感知、数字和智能，采用先进的数据技术，以预测维护+数据感知+机理建模为技术心，实现从设备监测预警到设备故障预测和健康评估的完善流程，快速准确推进生产线设备智能化运维能力，提高设备故障预测和检修效率。'
 const productDescriptionEam = '对设备全生命周期进行管控，记录设备完备的基础信息档率，对日常管理、运行监测、设备点巡检、润滑保养、预防检修、故障维修、备品备件、知识库等进行管理，帮助企业精确掌握设备运行情况。提高设备可用性，降低运行维护成本，提升企业竞争力。'
 const productDescriptionApc = '系统包含数据中心、组件管理、控制编排、系统管理等模块。系统集成了高效率控制算法以及完备的软件安全体系架构，提供强大的建模、优化、控制基础能力，实现数据流、生产流与控制流的协同，提高生产效率，降低生产成本，实现自主可控的智能制造.'
+const productDescriptionEms = '能源管理与优化系统采用自动化、信息化技术和集中管理模式，对用能设备的生产、输配和消耗环节实行集中扁平化的动态监控和数据化管理，通过数据监测、趋势分析与诊断优化，帮助企业针对各种能源需求及用能情况、能源质量、产品能源单耗、各工序能耗、重大能耗设备的能源利用情况等进行能耗监测统计、能源成本分析、用能预测，为企业优化能源管理，提高能源利用效率、挖据节能潜力、节能评估提供基础数据和支持。'
+const productDescriptionIop = '以人工智能驱动的需求预测技术和针对不同成品、原料、备件品类的补货策略为基础，提供补货点、补货量及特殊情景下的备货方案，帮助仓库和工厂做出更明智的采购和补货决策，解决企业面临的预测和库存计划问题。通过为企业定制智能补货方案，真正实现需求驱动的供应链管理与生产智能化提升供应链柔性，降本增效。'
+const productDescriptionAps = '生产计划排程软件使用先进算法平衡需求和产能，生成生产计划，协调物料、人员和设备有效利用，缩短交货时间以满足客户需求，并快速响应生产意外变化。APS系统涵盖数月甚至数年的长期战略规划、数周的中期战术规划以及短期的详细排程。'
 
 // 产品功能数据
 const productFeatures = [
@@ -480,6 +670,198 @@ const productAdvantagesApc = [
   iconPosition: 'left' | 'right';
 }>;
 
+// APS产品特色优势数据
+const productAdvantagesAps = [
+  {
+    title: '降低成本',
+    description: '在制造业中常见设备的未来集，APS项目使需求合理，避免生产系统中心动态数计的水平生产效率生产用，加强生产编制能力分配，资源更高效，更低成本与货物出产能力。',
+    icon: apsFeature1,
+    position: { top: 163, left: 390 },
+    iconPosition: 'left' as const
+  },
+  {
+    title: '增强决策能力',
+    description: '以更高为主和重，APS执入为年生产过程，供给产销预测，所有预算与设与方仲优化规划生产掌控，控合整体化力与展的规划，增强决策能力。',
+    icon: apsFeature2,
+    position: { top: 163, left: 1033 },
+    iconPosition: 'right' as const
+  },
+  {
+    title: '保证准时交货',
+    description: '通过高速的准备能力，实施提供安排，APS可完取确同的生产周期，确保产品按客户需要抹保供货，提出客单组织的资源，项目成本。',
+    icon: apsFeature3,
+    position: { top: 341, left: 340 },
+    iconPosition: 'left' as const
+  },
+  {
+    title: '提高产品质量',
+    description: '提高产品质量和水平，APS确保生产过程保到统行，常规均能促进规则的优质，将一规定应符合规范分级保证生产的满足需，计划方满足，提升能力。',
+    icon: apsFeature4,
+    position: { top: 341, left: 1083 },
+    iconPosition: 'right' as const
+  },
+  {
+    title: '提高灵活性和响应能力',
+    description: '通过生产作能录优，APS项模型为结，利用企业应通供与需求分的约束分析策，实现信规则，提出关高度生产计划，保持业务变和动态调整。',
+    icon: apsFeature5,
+    position: { top: 519, left: 390 },
+    iconPosition: 'left' as const
+  },
+  {
+    title: '支持可持续性发展',
+    description: '制造业现可持续是跟然材料战略合，APS化化资源利用，减少浪废，现地的最终找，可用能量的生产调整的策划，最外作过程降低。',
+    icon: apsFeature6,
+    position: { top: 519, left: 1033 },
+    iconPosition: 'right' as const
+  }
+] as Array<{
+  title: string;
+  description: string;
+  icon: string;
+  position: { top: number; left: number };
+  iconPosition: 'left' | 'right';
+}>;
+
+// EMS产品功能数据
+const productFeaturesEms = [
+  {
+    title: '能耗监测',
+    description: '通过部署北向方案采集各能源数据传输，并且系统能够实时参数管理生成可视化精准分析计算，提供看，运力，温度等，并且在信息展示上进行直观，为能源数据提供支撑，了解到明确数据变化。',
+    icon: emsIcon1
+  },
+  {
+    title: '能力平衡与能耗分析',
+    description: '对生物能能源场的进工程设计场，碳能负荷，用能平衡和标准化指导系统的应用，如实现机筒能把模型和能耗模型的搭建，数据收集和用能分析。',
+    icon: emsIcon2
+  },
+  {
+    title: '能源成本分析',
+    description: '运用算法北向技术计分析各电站水电站成本分析，归类各电能消耗主要影响因素，功能分析结果。',
+    icon: emsIcon3
+  },
+  {
+    title: '能源需求预测与规划',
+    description: '应用花果采为加强管理理论化和流程化管理，建立有规模生产历史数据分析计，结合能源预测模型和能源规划技术，达到用能高效规范，降低能源预算预测合理性，过程用量的数据预。',
+    icon: emsIcon4
+  },
+  {
+    title: '用能诊断与优化',
+    description: '分析和预测能源需求，结合设备运转状态，运行设置，成本分析等因素，并解决能源使用瓶颈，输出综合能源诊断报告及产品建议，设备资源调度建议和能源品质建议。',
+    icon: emsIcon5
+  }
+]
+
+// EMS产品特色优势数据
+const productAdvantagesEms = [
+  {
+    title: '能耗监测',
+    description: '通过部署北向方案采集各能源数据传输，并且系统能够实时参数管理生成可视化精准分析计算，提供看，运力，温度等，并且在信息展示上进行直观，为能源数据提供支撑，了解到明确数据变化。',
+    icon: emsIcon1
+  },
+  {
+    title: '能力平衡与能耗分析',
+    description: '对生物能能源场的进工程设计场，碳能负荷，用能平衡和标准化指导系统的应用，如实现机筒能把模型和能耗模型的搭建，数据收集和用能分析。',
+    icon: emsIcon2
+  },
+  {
+    title: '能源成本分析',
+    description: '运用算法北向技术计分析各电站水电站成本分析，归类各电能消耗主要影响因素，功能分析结果。',
+    icon: emsIcon3
+  },
+  {
+    title: '能源需求预测与规划',
+    description: '应用花果采为加强管理理论化和流程化管理，建立有规模生产历史数据分析计，结合能源预测模型和能源规划技术，达到用能高效规范，降低能源预算预测合理性，过程用量的数据预。',
+    icon: emsIcon4
+  },
+  {
+    title: '用能诊断与优化',
+    description: '分析和预测能源需求，结合设备运转状态，运行设置，成本分析等因素，并解决能源使用瓶颈，输出综合能源诊断报告及产品建议，设备资源调度建议和能源品质建议。',
+    icon: emsIcon5
+  }
+]
+
+// EMS预测功能数据
+const productEmsPredictions = [
+  {
+    title: '自回归模型',
+    description: '基于前一个时间段模型，使用过去能中的能源消耗与特性能源需求进行处理，更好的捕捉能源的短期周期性变化，成因在能源需求预测中的能源消耗特征。'
+  },
+  {
+    title: '时间序列算法',
+    description: '对未来的能源消耗与过去的能源消耗规律关联，考虑周期分析和机理模型应用场景的趋势，创造未来的能源预测，帮助企业能源生产计划。'
+  },
+  {
+    title: '负荷预测算法',
+    description: '针对负荷预测和能源管理场景，检验负荷用电预测用于评估未来电用电特定时间段的用电负荷量动力能源趋势值，预能力增长功。'
+  }
+]
+
+// EMS策略数据
+const emsStrategies = [
+  {
+    description: '助力改善园区的照明系统，并结合自动感应、时控开关、远程控制等手段，帮助园区减少不必要的照明能耗。'
+  },
+  {
+    description: '合理调整用能设备的运行策略，如优化启停时间、降低设备运行负载等，减少不必要的能源消耗'
+  }
+]
+
+// 添加EMS成效数据
+const emsResults = [
+  {
+    icon: emsApplication1,
+    title: '降低成本',
+    description: '降低企业实际能源集耗消耗，防止企业能源超标，提高同工作产能，提高企业经济效益',
+    number: '0.83%-1%'
+  },
+  {
+    icon: emsApplication2,
+    title: '提升劳动生产率',
+    description: '代替人工工业资源分析采集，做优化调，终止待工作，设备预测生产管理提升',
+    number: '8%'
+  },
+  {
+    icon: emsApplication3,
+    title: '提升合格率',
+    description: '系统自动优化控制应用，用能分析提高生产线能效提升',
+    number: '10%-34%'
+  }
+]
+
+// 库存优化(IOP)应用成效
+const iopResults = [
+  {
+    icon: iopApplication1,
+    title: '降低库存成本',
+    description: '降低库存成本，利用深度算法和预测分析，帮助客户降低库存水平，合理补货，为用户创造经济效益。'
+  },
+  {
+    icon: iopApplication2,
+    title: '降低库存积压',
+    description: '提升库存周转率，通过定制化预测流程与柔性化库存算法，确保合适库存水平与天数。'
+  },
+  {
+    icon: iopApplication3,
+    title: '降低缺货返单险',
+    description: '通过定时库存检验和补充，结合企业实时库存状态，保证供应和用户需求均衡满足能力。'
+  },
+  {
+    icon: iopApplication4,
+    title: '提高客户满意度',
+    description: '保证产品的持续可用性，提高客户满意度，通过订单快速和保证交货，从而提高客户忠诚度和回购率。'
+  },
+  {
+    icon: iopApplication5,
+    title: '提高资金利用率',
+    description: '提升资金合理利用率和分配合理性的优化效果，企业可以科学精准地进行并增加金额部署和结构优化，优化生产资金，保证财务运转。'
+  },
+  {
+    icon: iopApplication6,
+    title: '增强企业竞争力',
+    description: '加强供应链贯通能力，利用科学工具和智能算法增强竞争力，从而增强企业竞争力。'
+  }
+]
+
 // 处理鼠标滚轮事件
 const handleWheel = (e: WheelEvent) => {
   if (scrolling.value) return
@@ -487,7 +869,7 @@ const handleWheel = (e: WheelEvent) => {
   scrolling.value = true
 
   // 向下滚动
-  if (e.deltaY > 0 && currentSection.value < 20) { // 更新为最大部分索引
+  if (e.deltaY > 0 && currentSection.value < 30) { // 更新为最大部分索引
     currentSection.value++
   }
   // 向上滚动
@@ -508,7 +890,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
   scrolling.value = true
 
   // 向下箭头或Page Down
-  if ((e.key === 'ArrowDown' || e.key === 'PageDown') && currentSection.value < 20) { // 更新为最大部分索引
+  if ((e.key === 'ArrowDown' || e.key === 'PageDown') && currentSection.value < 30) { // 更新为最大部分索引
     currentSection.value++
   }
   // 向上箭头或Page Up

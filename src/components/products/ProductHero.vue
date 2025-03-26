@@ -39,7 +39,7 @@ defineProps({
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.5); /* 淡白色蒙版 */
+  background-color: rgba(255, 255, 255, 0.233); /* 淡白色蒙版 */
   z-index: 1;
 }
 
@@ -65,6 +65,7 @@ defineProps({
   position: absolute;
   top: 494px;
   left: 860px;
+  width: 200px;
   height: 56px;
   background-color: #1890ff;
   color: white;
