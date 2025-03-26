@@ -17,7 +17,7 @@
                 2024-09-06 09:30:26
               </div>
             </div>
-            <div class="content-main-action">
+            <div class="content-main-action" @click="handleNews(99)">
               <div class="text">查看详情</div>
               <div class="icon">→</div>
             </div>
@@ -177,6 +177,7 @@ const handleNews = (id:any)=>{
           }
 
           .content-main-action {
+            cursor: pointer;
             width: 4rem;
             padding: 0.5rem;
             background-color: #278AFA;
