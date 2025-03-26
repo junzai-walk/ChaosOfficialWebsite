@@ -1,16 +1,6 @@
 <template>
   <div class="corporate-culture">
     <div class="main-title">凯奥思数据 工业智能服务商</div>
-    <!-- <div class="statistic-row">
-      <div class="statistic-card" v-for="(card, index) in statisticCard" :key="index">
-        <el-statistic :value="card.value" value-style="color:#2961FA;font-size:2rem;">
-          <template #suffix>
-            <span style="color:#2961FA;font-size:0.75rem;font-weight: 700;">{{ card.suffix || '+' }} </span>
-          </template>
-</el-statistic>
-<div class="statistic-name">{{ card.name }}</div>
-</div>
-</div> -->
 
     <!-- 数据统计展示 -->
     <div class="stats-container">
@@ -42,7 +32,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import energy from '@/assets/industry/icon-energy.png'
+import icon1 from '@/assets/about/game-icons_world.png'
+import icon2 from '@/assets/about/ion_rocket-outline.png'
+import icon3 from '@/assets/about/cil_book.png'
 const statisticCard = [
   { value: 15, name: '工业智能服务经验', suffix: '年+' },
   { value: 1000, name: '核心算法' },
@@ -50,9 +42,9 @@ const statisticCard = [
   { value: 200, name: '合作客户' },
 ]
 const cultureCard = [
-  { imgUrl: energy, title: '愿景', desc: '让工业更智能' },
-  { imgUrl: energy, title: '使命', desc: '客户需求驱动，用数据技术为客户创造最大价值，不断提升中国工业智能化水平。' },
-  { imgUrl: energy, title: '价值观', desc: '客户价值、结果导向、自我批判、工匠精神、团队合作、诚实守信。' },
+  { imgUrl: icon1, title: '愿景', desc: '让工业更智能' },
+  { imgUrl: icon2, title: '使命', desc: '客户需求驱动，用数据技术为客户创造最大价值，不断提升中国工业智能化水平。' },
+  { imgUrl: icon3, title: '价值观', desc: '客户价值、结果导向、自我批判、工匠精神、团队合作、诚实守信。' },
 ]
 
 </script>
@@ -68,7 +60,7 @@ const cultureCard = [
   flex-direction: column;
   align-items: flex-start;
   padding: 3rem 18rem 0 18rem;
-  background-image: url('/src/assets/customer/bg.png');
+  background-image: url('/src/assets/about/bg.png');
   /* 替换为实际背景图片 */
   background-size: cover;
   background-position: center;

@@ -138,7 +138,6 @@ onBeforeUnmount(() => {
   z-index: 5;
 }
 
-/* 案例中心部分样式 */
 .parnter-customer-section {
   position: relative;
   width: 100%;

@@ -64,7 +64,7 @@ import {
   User,
 } from '@element-plus/icons-vue'
 import { ref, onMounted ,computed} from 'vue'
-import Img1 from '@/assets/02/Rectangle_8.png'
+import Img1 from '@/assets/about/Block-location.png'
 
 const iconStyle = computed(() => {
   const marginMap:any = {

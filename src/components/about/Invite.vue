@@ -25,22 +25,24 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
 const cards = ref([
-  { background: '/src/assets/customer/bg.png', mainTitle: '坚实的保障', subTitle: '我们为每位伙伴提供贴心保障，涵盖五险一金，出差补贴，加班福利，下午茶等，全方位护航你的职场征程。' },
-  { background: '/src/assets/customer/bg.png', mainTitle: '多彩的活动', subTitle: '为点亮员工业余时光，我们活力满满的运动打卡活动火热进行中！无论你是健身达人还是运动小白，都可以自由加入，收获健康体魄，释放工作压力。' },
-  { background: '/src/assets/customer/bg.png', mainTitle: '丰富的福利', subTitle: '在每一个值得纪念的时刻，公司都为你准备了关怀，包括节日礼品、生日礼品、结婚、生育等福利，让你在人生的重要节点收获喜悦。' },
+  { background: '/src/assets/about/Block-12.png', mainTitle: '坚实的保障', subTitle: '我们为每位伙伴提供贴心保障，涵盖五险一金，出差补贴，加班福利，下午茶等，全方位护航你的职场征程。' },
+  { background: '/src/assets/about/Block-12-1.png', mainTitle: '多彩的活动', subTitle: '为点亮员工业余时光，我们活力满满的运动打卡活动火热进行中！无论你是健身达人还是运动小白，都可以自由加入，收获健康体魄，释放工作压力。' },
+  { background: '/src/assets/about/Block-12-2.png', mainTitle: '丰富的福利', subTitle: '在每一个值得纪念的时刻，公司都为你准备了关怀，包括节日礼品、生日礼品、结婚、生育等福利，让你在人生的重要节点收获喜悦。' },
 ]);
 const currentIndex = ref(0)
 const images = [
-  '/src/assets/customer/bg.png',
-  '/src/assets/customer/bg.png',
-  '/src/assets/customer/bg.png',
-  '/src/assets/customer/bg.png',
-  '/src/assets/customer/bg.png',
-  '/src/assets/customer/bg.png',
-  '/src/assets/customer/bg.png',
-  '/src/assets/customer/bg.png',
-  '/src/assets/customer/bg.png',
-  '/src/assets/customer/bg.png',
+  '/src/assets/about/Block-12.png',
+  '/src/assets/about/Block-12-1.png',
+  '/src/assets/about/Block-12-2.png',
+  '/src/assets/about/Block-12.png',
+  '/src/assets/about/Block-12-1.png',
+  '/src/assets/about/Block-12-2.png',
+  '/src/assets/about/Block-12.png',
+  '/src/assets/about/Block-12-1.png',
+  '/src/assets/about/Block-12-2.png',
+  '/src/assets/about/Block-12.png',
+  '/src/assets/about/Block-12-1.png',
+  '/src/assets/about/Block-12-2.png',
 ]
 const startAutoPlay = () => {
   setInterval(() => {
@@ -149,7 +151,7 @@ startAutoPlay()
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('/src/assets/customer/bg.png');
+    background-image: url('/src/assets/about/Group 34.png');
     background-size: 100% 100%;
     background-position: center;
     padding-bottom: 3rem;
