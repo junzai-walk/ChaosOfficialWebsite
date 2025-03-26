@@ -109,7 +109,8 @@ html {
     width: 100%;
     height: 320px;
     display: flex;
-    background-color: #2760ED;
+    background: url('@/assets/customer/Group455.png') no-repeat center center;
+    background-size: 100% 100%;
     align-items: flex-end;
     justify-content: center;
     padding-bottom: 120px;

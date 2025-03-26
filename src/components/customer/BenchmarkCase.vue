@@ -60,7 +60,14 @@
 <script setup lang="ts">
 import { ref,defineEmits } from 'vue';
 import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue';
-import Img1 from '@/assets/02/Rectangle_8.png'
+import Img1 from '@/assets/customer/Rectangle 4136.png'
+import Img2 from '@/assets/customer/Rectangle 4136-2.png'
+import Img3 from '@/assets/customer/Rectangle 4136-4.png'
+import Img4 from '@/assets/customer/Rectangle 4136-6.png'
+import Img5 from '@/assets/customer/Rectangle 4136-1.png'
+import Img6 from '@/assets/customer/Rectangle 4136-3.png'
+import Img7 from '@/assets/customer/Rectangle 4136-5.png'
+import Img8 from '@/assets/customer/Rectangle 4136-10.png'
 const emit = defineEmits(['selectActiveCard']);
 const currentPage = ref(0);
 const caseList = [
@@ -77,51 +84,51 @@ const caseList = [
     mainTitle:'安徽海螺水泥股份有限公司',
     subTitle:'预测性运维管理平台',
     industry:'水泥',
-    imgUrl:Img1
+    imgUrl:Img2
+  },
+  {
+    id:'jingye',
+    mainTitle:'敬业集团',
+    subTitle:'预测性运维管理平台',
+    industry:'汽车',
+    imgUrl:Img3
+  },
+  {
+    id:'shagang',
+    mainTitle:'沙钢集团',
+    subTitle:'预测性运维管理平台',
+    industry:'煤炭',
+    imgUrl:Img4
   },
   {
     id:'fengtian',
     mainTitle:'广汽丰田汽车有限公司',
     subTitle:'预测性运维管理平台',
     industry:'汽车',
-    imgUrl:Img1
+    imgUrl:Img5
   },
   {
     id:'jiaomei',
     mainTitle:'山西焦煤集团有限责任公司',
     subTitle:'预测性运维管理平台',
     industry:'煤炭',
-    imgUrl:Img1
-  },
-  {
-    id:5,
-    mainTitle:'中国宝武钢铁集团有限公司',
-    subTitle:'预测性运维管理平台',
-    industry:'钢铁',
-    imgUrl:Img1
+    imgUrl:Img6
   },
   {
     id:6,
-    mainTitle:'安徽海螺水泥股份有限公司',
-    subTitle:'预测性运维管理平台',
-    industry:'水泥',
-    imgUrl:Img1
-  },
-  {
-    id:7,
-    mainTitle:'山西焦煤集团有限责任公司',
-    subTitle:'预测性运维管理平台',
-    industry:'煤炭',
-    imgUrl:Img1
-  },
-  {
-    id:8,
-    mainTitle:'广汽丰田汽车有限公司',
+    mainTitle:'特变电工',
     subTitle:'预测性运维管理平台',
     industry:'汽车',
-    imgUrl:Img1
+    imgUrl:Img7
   },
- 
+  {
+    id:5,
+    mainTitle:'马钢集团',
+    subTitle:'预测性运维管理平台',
+    industry:'煤炭',
+    imgUrl:Img8
+  },
+
 ]
 
 const handleSelectCard = (id:Number|String|string)=>{
@@ -178,7 +185,7 @@ html {
   z-index: 1;
   width: 100vw;
   height: 20rem; // 320px
-  background: url('@/assets/customer/bg.png') no-repeat center center;
+  background: url('@/assets/customer/Group453.png') no-repeat center center;
   background-size: 100% 100%;
   margin-bottom: 1.25rem; // 20px
   margin-top: 4rem;

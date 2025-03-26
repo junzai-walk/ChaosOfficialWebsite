@@ -1,68 +1,123 @@
 <template>
-  <div class="partner">
-    <div class="main-title">以数据算法携手全球200+工业领跑者驱动每一次精准决策</div>
-    <div class="partner-image"></div>
+  <div class="case-showcase">
+    <div class="showcase-content">
+      <h2 class="title">以数据算法携手全球200+工业领跑者驱动每一次精准决策</h2>
+
+    </div>
+    <!-- 合作伙伴logo墙 -->
+    <div class="partner-wall">
+      <div v-for="(logoRow, rowIndex) in partnerLogosAll" :key="`row-${rowIndex}`" class="partner-row">
+        <div v-for="(logo, index) in logoRow" :key="`logo-${rowIndex}-${index}`" class="logo-container">
+          <logo-reflect :src="logo" :alt="`partner-${rowIndex}-${index}`" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue'
+import LogoReflect from '../LogoReflect.vue'  // 自定义立体效果组件
 
+// 合作伙伴logo数据 - 修正图片路径
+const partnerLogos1 = ref([
+  new URL('@/assets/logos/Group 422.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 423.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 424.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 425.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 426.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 427.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 428.png', import.meta.url).href,
+])
 
+const partnerLogos2 = ref([
+  new URL('@/assets/logos/Group 429.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 430.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 431.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 432.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 433.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 434.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 435.png', import.meta.url).href,
+])
+
+const partnerLogos3 = ref([
+  new URL('@/assets/logos/Group 437.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 438.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 439.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 440.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 441.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 442.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 443.png', import.meta.url).href,
+])
+
+const partnerLogos4 = ref([
+  new URL('@/assets/logos/Group 444.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 445.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 446.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 447.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 448.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 449.png', import.meta.url).href,
+  new URL('@/assets/logos/Group 450.png', import.meta.url).href, // 修正为Group 450.png
+])
+
+// 汇总所有logo行
+const partnerLogosAll = computed(() => [
+  partnerLogos1.value,
+  partnerLogos2.value,
+  partnerLogos3.value,
+  partnerLogos4.value
+])
 </script>
 
-<style scoped lang="less">
-// 根字体大小设置，用于rem计算
-html {
-  font-size: 16px;
-  
-  @media (min-width: 1920px) {
-    font-size: calc(16px * (1920 / 1920));
-  }
-  
-  @media (max-width: 1440px) {
-    font-size: calc(16px * (1440 / 1920));
-  }
-  
-  @media (max-width: 1280px) {
-    font-size: calc(16px * (1280 / 1920));
-  }
-}
-
-.partner {
+<style lang="less" scoped>
+.case-showcase {
   width: 100%;
-  background-color: #f5f7fa;
+  height: 100vh;
+  background-color: #f7f9fc;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* 改为flex-start而非center */
-  min-height: 100vh; /* 确保最小高度填满视口 */
-  .main-title{
-    box-sizing: border-box;
-    width: 100%;
-    height: 320px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.showcase-content {
+  width: 90%;
+  max-width: 1400px;
+  .title {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin-bottom: 15px;
+}
+}
+
+
+
+.partner-wall {
+  width: 100%;
+  background-color: #ffffff;
+  perspective: 1000px;
+  box-shadow: inset 0 10px 20px -10px rgba(0, 0, 0, 0.05),
+              inset 0 -10px 20px -10px rgba(0, 0, 0, 0.05);
+              
+  .partner-row {
     display: flex;
-    align-items: flex-end;
     justify-content: center;
-    padding-bottom: 120px;
-    font-size: 24px;
-    font-weight: 700;
-  }
-  .partner-image{
-    width: 100%;
-    height: calc(100vh - 320px);
-    overflow: hidden;
-    position: relative;
- 
-  }
-  .partner-image::before{
-    content: "";
-    background: url('@/assets/customer/bg.png') no-repeat center center;
-    background-size: 100% 100%;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+    align-items: center;
+    gap: 25px; // 减小间距
+    margin-bottom: 30px; // 减小行间距
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    .logo-container {
+      perspective: 800px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 </style>
