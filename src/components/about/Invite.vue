@@ -88,7 +88,7 @@ startAutoPlay()
     padding: 3rem 18rem 0 18rem;
 
     .info-card {
-      width: 24.625rem;
+      width: 30%;
       height: 13.125rem;
       border-radius: 15px;
       background-size: cover;

@@ -36,7 +36,6 @@
           {{ card.desc }}
         </div>
       </div>
-
     </div>
   </div>
 </template>
