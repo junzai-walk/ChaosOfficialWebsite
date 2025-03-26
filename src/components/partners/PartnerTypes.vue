@@ -17,7 +17,7 @@
           <div class="partner-rows" :style="{ transform: `translateX(-${currentPage * 50}%)` }">
             <div class="partner-detail-card">
               <div class="card-icon">
-                <img src="@/assets/industry/icon-energy.png" alt="高能耗" />
+                <img src="@/assets/partners/fluent-emoji_man-in-tuxedo-light.png" alt="销售合作伙伴" />
               </div>
               <div class="card-title">销售合作伙伴</div>
               <div class="card-desc">
@@ -28,7 +28,7 @@
           <div class="partner-rows" :style="{ transform: `translateX(-${currentPage * 50}%)` }">
             <div class="partner-detail-card">
               <div class="card-icon">
-                <img src="@/assets/industry/icon-energy.png" alt="高能耗" />
+                <img src="@/assets/partners/fluent-emoji_man-pouting-light.png" alt="解决方案伙伴" />
               </div>
               <div class="card-title">解决方案伙伴</div>
               <div class="card-desc">
@@ -39,7 +39,7 @@
           <div class="partner-rows" :style="{ transform: `translateX(-${currentPage * 50}%)` }">
             <div class="partner-detail-card">
               <div class="card-icon">
-                <img src="@/assets/industry/icon-energy.png" alt="高能耗" />
+                <img src="@/assets/partners/fluent-emoji-flat_man-golfing-light.png" alt="战略合作伙伴" />
               </div>
               <div class="card-title">战略合作伙伴</div>
               <div class="card-desc">
@@ -106,7 +106,7 @@ html {
   z-index: 1;
   width: 100vw;
   height: 40vh;
-  background: url('@/assets/customer/bg.png') no-repeat center center;
+  background: url('@/assets/partners/Group 45.png') no-repeat center center;
   background-size: 100% 100%;
   margin-bottom: 1.25rem; // 20px
   margin-top: 4rem;
@@ -217,7 +217,7 @@ html {
     .card-desc{
       display: flex;
       text-align: left;
-      font-size: 1rem;
+      font-size: 0.75rem;
       color: #666;
       line-height: 1.3;
     }

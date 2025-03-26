@@ -23,14 +23,20 @@
 
 <script setup lang="ts">
 import { ref,defineEmits } from 'vue';
+
+import Img1 from '@/assets/partners/Block-12.png'
+import Img2 from '@/assets/partners/Block-12-2.png'
+import Img3 from '@/assets/partners/Block-12-3.png'
+import Img4 from '@/assets/partners/Block-12-1.png'
+
 const emit = defineEmits(['selectActiveCard']);
 const currentPage = ref(0);
 
 const cards = ref([
-  { background: '/src/assets/solution-bg.jpg', mainTitle: '长期技术支持' ,subTitle:'提供工业智能化领域成熟的技术、产品与解决方案，覆盖项目全流程需求。专业团队全程协助解决实际问题，帮助合作伙伴快速掌握技术要点，保障项目顺利落地。'},
-  { background: '/src/assets/solution-bg.jpg', mainTitle: '专项培训体系',subTitle:'系统的在线培训+现场培训，包括且不限于营销培训、产品培训、售前培训、实施服务培训、项目管理培训等，帮助伙伴提高能力素质。'},
-  { background: '/src/assets/solution-bg.jpg', mainTitle: '市场营销推广',subTitle:'共享产品介绍、行业趋势报告、成功案例等实用宣传物料，协同开展线上线下活动推广，有效提高品牌影响离及合作成功率。'},
-  { background: '/src/assets/solution-bg.jpg', mainTitle: '合作保障政策',subTitle:'实行区域专属合作机制，维护市场良性发展。提供灵活的分成模式与销售激励方案，并为新合作伙伴配备专项启动支持，助力市场开拓'},
+  { background: Img1, mainTitle: '长期技术支持' ,subTitle:'提供工业智能化领域成熟的技术、产品与解决方案，覆盖项目全流程需求。专业团队全程协助解决实际问题，帮助合作伙伴快速掌握技术要点，保障项目顺利落地。'},
+  { background: Img2, mainTitle: '专项培训体系',subTitle:'系统的在线培训+现场培训，包括且不限于营销培训、产品培训、售前培训、实施服务培训、项目管理培训等，帮助伙伴提高能力素质。'},
+  { background: Img3, mainTitle: '市场营销推广',subTitle:'共享产品介绍、行业趋势报告、成功案例等实用宣传物料，协同开展线上线下活动推广，有效提高品牌影响离及合作成功率。'},
+  { background: Img4, mainTitle: '合作保障政策',subTitle:'实行区域专属合作机制，维护市场良性发展。提供灵活的分成模式与销售激励方案，并为新合作伙伴配备专项启动支持，助力市场开拓'},
 ]);
 
 const activeIndex = ref(0); // 默认第一个卡片是 active
