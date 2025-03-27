@@ -41,27 +41,27 @@
       <div class="company-history">
         <h3 class="history-title">公司历程</h3>
         
-        <div class="timeline-container" ref="timelineContainer">
-          <div class="timeline-line" :class="{ 'animate-line': animationStarted }"></div>
+        <div class="timeline-box" ref="timelineContainer">
           <div class="timeline">
+            <!-- 添加连接图标的横线 -->
+            <div class="timeline-connector"></div>
+            
             <div 
               class="timeline-item" 
               v-for="(year, index) in timeline" 
               :key="index"
-              :class="{ 'show': animationStep > index }"
-              :style="{ 'animation-delay': `${0.2 + index * 0.5}s` }"
+              :class="{ 'show': index <= currentStep }"
+              :style="{ animationDelay: `${index * (animationDuration / timeline.length)}s` }"
             >
-              <div class="year-marker">
-                <div class="dot" :class="{ 'pulse': animationStep > index }"></div>
-                <div class="year" :class="{ 'show': animationStep > index }">{{ year.year }}</div>
+              <div class="marker-container">
+                <img src="@/assets/home/mdi_location.png" class="location-icon" alt="位置标记" />
               </div>
+              <div class="year">{{ year.year }}</div>
               <div class="events">
                 <div 
                   class="event" 
                   v-for="(event, eIndex) in year.events" 
                   :key="eIndex"
-                  :class="{ 'show': animationStep > index }"
-                  :style="{ 'animation-delay': `${0.4 + index * 0.5 + eIndex * 0.15}s` }"
                 >
                   {{ event }}
                 </div>
@@ -118,27 +118,24 @@ const animateNumber = (key: string, finalValue: number, duration: number) => {
 };
 
 // 动画控制
-const animationStarted = ref(false);
-const animationStep = ref(-1);
+const animationDuration = 6000; // 6秒完成所有动画
+const currentStep = ref(-1);
 const timelineContainer = ref<HTMLElement | null>(null);
 
 // 启动时间轴动画
 const startTimelineAnimation = () => {
-  animationStarted.value = true;
-  
-  // 控制时间节点依次显示
-  let step = 0;
   const totalSteps = timeline.value.length;
-  const intervalTime = 5000 / totalSteps; // 5秒内完成所有步骤
+  const stepInterval = animationDuration / totalSteps;
   
-  const interval = setInterval(() => {
-    animationStep.value = step;
-    step++;
-    
-    if (step > totalSteps) {
-      clearInterval(interval);
-    }
-  }, intervalTime);
+  // 重置
+  currentStep.value = -1;
+  
+  // 逐个显示时间轴项目
+  for (let i = 0; i < totalSteps; i++) {
+    setTimeout(() => {
+      currentStep.value = i;
+    }, i * stepInterval);
+  }
 };
 
 onMounted(() => {
@@ -169,7 +166,7 @@ onMounted(() => {
   // 监测时间轴可见性
   const timelineObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting && !animationStarted.value) {
+      if (entry.isIntersecting) {
         // 开始动画
         startTimelineAnimation();
         timelineObserver.disconnect();
@@ -186,344 +183,289 @@ onMounted(() => {
 const timeline = ref([
   {
     year: '2017年',
-    events: ['凯奥思数据成立']
+    events: ['凯奥思数据成立；']
   },
   {
     year: '2018年',
     events: [
-      '与宝武集团战略合作',
-      '创始人团队专场入选江苏省双创计划',
+      '与宝武集团战略合作；',
+      '创始人杨世飞博士入选江苏省双创博士培养计划；'
     ]
   },
   {
     year: '2019年',
     events: [
-      '完成千万级天使轮融资',
-      '获评江苏省高新技术产品',
-      '江苏省科技成果转化项目',
-      '国家高新技术企业'
+      '完成千万级天使轮融资；',
+      '获评江苏省大数据优秀产品、江苏省民营科技企业、国家高新技术企业；'
     ]
   },
   {
     year: '2020年',
     events: [
-      '江苏省最具成长力瞪羚企业认证',
-      '南京市高新技术企业认证'
+      '江苏省最具成长潜力瞪羚企业认证；',
+      '南京市高新技术企业认证；'
     ]
   },
   {
     year: '2021年',
     events: [
-      '完成数千万元Pre-A轮融资',
-      '创始人获评"猎豹工匠"称号',
-      '取得20项软著与发明专利',
-      '与清华大学战略合作'
+      '完成数千万元Pre-A轮融资；',
+      '创始人杨世飞博士获江苏省双创人才；',
+      '与海螺水泥战略合作；'
     ]
   },
   {
     year: '2022年',
     events: [
-      '联合创始人入选博士人才A类',
-      '国家级人才',
-      '与山西煤碳集团合作'
+      '联合创始人徐徐博士入选国家级人才；',
+      '与山西煤炭战略合作；'
     ]
   },
   {
     year: '2023年',
     events: [
-      '完成亿元A+轮融资',
-      '江苏省专精特新中小企业认证',
-      '国家级专精特新企业',
-      '工业互联网平台认证',
-      '联合创始人入选博士人才A类国家级人才'
+      '完成亿元A+轮融资；',
+      '江苏省专精特新中小企业认证、国家级特色专业型工业互联网平台认证；',
+      '联合创始人孙徐博士入选国家级人才；'
     ]
   },
   {
     year: '2024年',
     events: [
-      '入选江苏省互联网成长型企业TOP100榜单',
-      '获南京市重点引进的领军型科创企业',
-      '南京市重大科技成果转化中心认证'
+      '入选江苏省互联网成长型企业TOP10榜单；',
+      '获评南京市瞪羚企业；',
+      '南京市首家民营科技企业数据资产入报表；',
+      '南京市工程技术研究中心认定；'
     ]
   }
 ]);
 </script>
 
-<style scoped>
+<style scoped lang="less">
+@blue-color: #1890ff;
+@dark-text: #333;
+@medium-text: #444;
+@light-text: #666;
+
 .company-profile {
   width: 100%;
   height: 100vh;
-  background-color: #f7f9fc;
-  background-image: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
+  background-image: url('@/assets/home/bg_sub.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   overflow-y: auto;
-  padding: 50px 0;
+  padding: 3.125rem 0;
 }
 
 .profile-content {
-  max-width: 1400px;
+  max-width: 87.5rem;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1.25rem;
 }
 
 .main-title {
-  font-size: 36px;
+  font-size: 2.25rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 40px;
-  color: #333;
+  margin-bottom: 2.5rem;
+  color: @dark-text;
+  text-align: left;
 }
 
 /* 数据统计样式 */
 .stats-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  gap: 8.125rem;
   flex-wrap: wrap;
-  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
 }
 
 .stat-item {
-  text-align: center;
-  padding: 0 15px;
+  text-align: left;
 }
 
 .stat-number {
-  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   line-height: 1;
   position: relative;
   /* 添加字体平滑效果 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.stat-number.blue {
-  color: #1890ff;
+  
+  &.blue {
+    color: @blue-color;
+  }
 }
 
 .plus {
-  font-size: 20px;
+  font-size: 1.25rem;
   position: relative;
-  top: -10px;
 }
 
 .stat-desc {
-  font-size: 16px;
-  color: #666;
+  font-size: 1rem;
+  color: @light-text;
 }
 
 /* 公司简介文字样式 */
 .company-intro {
-  margin-bottom: 50px;
+  margin-bottom: 3.125rem;
   line-height: 1.8;
+  
+  p {
+    margin-bottom: 0.9375rem;
+    text-align: justify;
+    color: @medium-text;
+    font-size: 1rem;
+  }
 }
 
-.company-intro p {
-  margin-bottom: 15px;
-  text-align: justify;
-  color: #444;
-  font-size: 16px;
-}
-
-/* 发展历程样式 */
+/* 发展历程样式 - 更新 */
 .history-title {
-  font-size: 28px;
+  font-size: 1.75rem;
   font-weight: bold;
-  text-align: center;
-  margin-bottom: 30px;
-  color: #333;
+  margin-bottom: 1.875rem;
+  color: @dark-text;
+  text-align: left;
 }
 
-.timeline-container {
+.timeline-box {
+  width: 85.9375rem;
+  height: 17.6875rem;
+  background-color: #fff;
+  border-radius: 0.625rem;
+  box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.05);
+  padding: 1.875rem;
+  margin: 0 auto;
   position: relative;
-  padding: 20px 0;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%); /* 使容器居中并占据整个视口宽度 */
-  overflow: visible; /* 修改为visible，确保内容不被裁剪 */
-}
-
-.timeline-line {
-  position: absolute;
-  top: 30px;
-  left: 5vw; /* 左边留出5%的视口宽度 */
-  right: 5vw; /* 右边留出5%的视口宽度 */
-  height: 2px;
-  background-color: #e0e0e0;
-  z-index: 1;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 3s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.timeline-line.animate-line {
-  transform: scaleX(1);
+  overflow: hidden;
 }
 
 .timeline {
   display: flex;
-  justify-content: space-between; /* 恢复为均匀分布 */
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
   position: relative;
-  padding: 0 5vw; /* 左右各留出5%的视口宽度 */
-  overflow: visible; /* 确保内容不被裁剪 */
 }
 
-/* 移除滚动相关样式 */
-.timeline::-webkit-scrollbar {
-  display: none;
+/* 添加连接图标的横线 */
+.timeline-connector {
+  position: absolute;
+  height: 0.0625rem;
+  background-color: #eee;
+  width: calc(100% - 10rem);
+  top: 1.5625rem;
+  left: 4.0625rem;
+  z-index: 1;
 }
 
 .timeline-item {
-  width: 10%; /* 基础宽度设置为10%，允许自适应 */
-  min-width: auto; /* 移除最小宽度限制 */
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 0 5px;
-  flex: 1 1 0; /* 平均分配空间 */
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.timeline-item.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.year-marker {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  
+  &.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    animation: fadeInUp 0.8s ease forwards;
+    
+    .marker-container {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    .year {
+      animation: fadeInUp 0.6s ease 0.2s forwards;
+    }
+    
+    .events {
+      animation: fadeInUp 0.6s ease 0.4s forwards;
+    }
+  }
+  
+  .marker-container,
+  .year,
+  .events {
+    opacity: 0;
+    transform: translateY(0.9375rem);
+  }
 }
 
-.dot {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #1890ff;
-  margin-bottom: 15px;
-  transform: scale(0);
-  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 0 0 0 rgba(24, 144, 255, 0.7);
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.dot.pulse {
-  transform: scale(1);
-  animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+.marker-container {
+  height: 3.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(24, 144, 255, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(24, 144, 255, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(24, 144, 255, 0);
-  }
+.location-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: @blue-color;
+  background-color: #fff;
 }
 
 .year {
+  font-size: 1rem;
   font-weight: bold;
-  color: #1890ff;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.year.show {
-  opacity: 1;
-  transform: translateY(0);
+  color: @blue-color;
+  margin: 0.625rem 0;
 }
 
 .events {
-  text-align: left;
-  transform: rotate(-15deg); /* 稍微倾斜，节省水平空间 */
-  transform-origin: top left;
-  padding-top: 15px;
+  text-align: center;
+  font-size: 0.875rem;
+  color: @light-text;
+  line-height: 1.5;
 }
 
 .event {
-  margin-bottom: 6px;
-  font-size: 12px; /* 减小字体大小 */
-  line-height: 1.3;
-  color: #555;
-  opacity: 0;
-  transform: translateX(-20px);
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  white-space: normal; /* 允许文本换行 */
-  overflow-wrap: break-word; /* 允许长单词断行 */
-  hyphens: auto; /* 自动添加连字符 */
-  max-width: 120px; /* 最大宽度限制 */
+  margin-bottom: 0.375rem;
+  max-width: 9.375rem;
+  text-align: left;
+  font-size: 0.75rem;
 }
 
-.event.show {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* 添加一些闪光效果 */
-.timeline-item:nth-child(even) .dot::before {
-  content: '';
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #1890ff, transparent);
-  z-index: -1;
-  opacity: 0;
-  animation: glow 3s ease-in-out infinite;
-}
-
-@keyframes glow {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(1.2);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
+/* 删除不再需要的动画和旧的时间轴样式 */
+.timeline-line,
+.dot,
+.pulse,
+.glow {
+  display: none;
 }
 
 /* 响应式调整 */
-@media (max-width: 1200px) {
-  .events {
-    transform: rotate(-25deg); /* 更大的倾斜角度以节省空间 */
-    transform-origin: top left;
-    font-size: 11px;
+@media (max-width: 87.5rem) {
+  .timeline-box {
+    width: 100%;
   }
   
   .event {
-    font-size: 11px;
-    max-width: 100px;
-  }
-}
-
-@media (max-width: 768px) {
-  .timeline-container {
-    padding: 20px 0 60px; /* 增加底部padding，为倾斜的文本留出空间 */
-  }
-  
-  .timeline {
-    padding: 0 2vw; /* 减少左右padding */
-  }
-  
-  .events {
-    transform: rotate(-35deg) translateY(10px); /* 更大的倾斜和下移 */
-  }
-  
-  .event {
-    font-size: 10px;
-    max-width: 80px;
+    font-size: 0.6875rem;
+    max-width: 8.125rem;
   }
 }
 </style> 

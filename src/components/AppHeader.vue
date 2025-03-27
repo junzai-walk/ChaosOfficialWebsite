@@ -58,7 +58,7 @@
           ref="searchInputRef"
         />
       </div>
-      <img src="@/assets/top/search.png" alt="搜索" class="icon-img search-icon"/>
+      <img src="@/assets/header/search.png" alt="搜索" class="icon-img search-icon"/>
     </div>
   </header>
 </template>
@@ -70,10 +70,10 @@ import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import chaosWhite from '@/assets/logos/chaos_white.png'
 import chaosBlue from '@/assets/logos/chaos_blue.png'
-import telephoneWhite from '@/assets/top/telephone.png'
-import telephoneBlack from '@/assets/top/black_telephone.png'
-import earthWhite from '@/assets/top/earth.png'
-import earthBlack from '@/assets/top/black_earth.png'
+import telephoneWhite from '@/assets/header/telephone.png'
+import telephoneBlack from '@/assets/header/black_telephone.png'
+import earthWhite from '@/assets/header/earth.png'
+import earthBlack from '@/assets/header/black_earth.png'
 
 const route = useRoute()
 const router = useRouter()
@@ -307,6 +307,8 @@ onMounted(() => {
   
   &.active {
     width: 25rem; /* 从15rem增加到25rem (400px) */
+    border-top-left-radius: 3rem; /* 10px */
+    border-bottom-left-radius: 3rem; /* 10px */
   }
 }
 

@@ -136,22 +136,22 @@ const partnerLogosAll = computed(() => [
     
     &.baowu {
       object-fit: cover;
-      background: url('@/assets/05/Group_417.png') no-repeat center center;
+      background: url('@/assets/home/Group_417.png') no-repeat center center;
       background-size: 100% 100%;
     }
     
     &.shanxi {
-      background: url('@/assets/05/Group_418.png') no-repeat center center;
+      background: url('@/assets/home/Group_418.png') no-repeat center center;
       background-size: 100% 100%;
     }
     
     &.conch {
-      background: url('@/assets/05/Group_419.png') no-repeat center center;
+      background: url('@/assets/home/Group_419.png') no-repeat center center;
       background-size: 100% 100%;
     }
     
     &.hebei {
-      background: url('@/assets/05/Group_420.png') no-repeat center center;
+      background: url('@/assets/home/Group_420.png') no-repeat center center;
       background-size: 100% 100%;
     }
   }
