@@ -1,276 +1,302 @@
 <template>
   <div class="products-page" @wheel="handleWheel">
+    <!-- 产品软件 -->
     <!-- 第一部分：设备预测性维护与健康管理系统 -->
     <div class="section" :class="{ active: currentSection === 0, 'section-hidden': currentSection !== 0 }">
-      <ProductHero 
-        :background-image="phmBackgroundImage" 
-        title="设备预测性维护与健康管理系统（PHM）" 
-      />
+      <ProductHero :background-image="phmBackgroundImage" title="设备预测性维护与健康管理系统（PHM）" />
     </div>
-    
+
     <!-- 第二部分：产品描述 -->
     <div class="section" :class="{ active: currentSection === 1, 'section-hidden': currentSection !== 1 }">
-      <ProductDescription 
-        :nav-steps="productSteps" 
-        :default-active-step="1"
-        :description="productDescription"
-        :video-src="officialVideoSrc"
-      />
+      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescription"
+        :video-src="officialVideoSrc" />
     </div>
-  
+
     <!-- 第三部分：产品功能 -->
     <div class="section" :class="{ active: currentSection === 2, 'section-hidden': currentSection !== 2 }">
-      <ProductFeatures
-        :nav-steps="productSteps"
-        :default-active-step="2"
-        :features="productFeatures"
-      />
+      <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :features="productFeatures" />
     </div>
 
     <!-- 第四部分：特色优势 -->
     <div class="section" :class="{ active: currentSection === 3, 'section-hidden': currentSection !== 3 }">
-      <ProductAdvantages
-        :nav-steps="productSteps"
-        :default-active-step="3"
-        :advantages="productAdvantages"
-      />
+      <ProductAdvantages :nav-steps="productSteps" :default-active-step="3" :advantages="productAdvantages" />
     </div>
 
     <!-- 第五部分：典型案例 -->
     <div class="section" :class="{ active: currentSection === 4, 'section-hidden': currentSection !== 4 }">
-      <ProductCases
-        :nav-steps="productSteps"
-        :default-active-step="4"
-        :cases="productCases"
-      />
+      <ProductCases :nav-steps="productSteps" :default-active-step="4" :cases="productCases" />
     </div>
 
     <!-- 第六部分：设备全生命周期管理系统(EAM) -->
     <div class="section" :class="{ active: currentSection === 5, 'section-hidden': currentSection !== 5 }">
-      <ProductHero 
-        :background-image="eamBackgroundImage" 
-        title="设备全生命周期管理系统(EAM)" 
-      />
+      <ProductHero :background-image="eamBackgroundImage" title="设备全生命周期管理系统(EAM)" />
     </div>
 
     <!-- 第七部分：产品概述 -->
     <div class="section" :class="{ active: currentSection === 6, 'section-hidden': currentSection !== 6 }">
-      <ProductDescription 
-        :nav-steps="productSteps" 
-        :default-active-step="1"
-        :description="productDescriptionEam"
-        :video-src="officialVideoSrc"
-      />
+      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionEam"
+        :video-src="officialVideoSrc" />
     </div>
-    
+
     <!-- 第八部分：核心功能 -->
     <div class="section" :class="{ active: currentSection === 7, 'section-hidden': currentSection !== 7 }">
-      <ProductFeatures
-        :nav-steps="productSteps"
-        :default-active-step="2"
-        :features="productFeaturesEam"
-      />
+      <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :features="productFeaturesEam" />
     </div>
 
     <!-- 第九部分：特色优势 -->
     <div class="section" :class="{ active: currentSection === 8, 'section-hidden': currentSection !== 8 }">
-      <ProductAdvantages
-        :nav-steps="productSteps"
-        :default-active-step="3"
-        :advantages="productAdvantagesEam"
-      />
+      <ProductAdvantages :nav-steps="productSteps" :default-active-step="3" :advantages="productAdvantagesEam" />
     </div>
 
     <!-- 第十部分：典型案例 -->
     <div class="section" :class="{ active: currentSection === 9, 'section-hidden': currentSection !== 9 }">
-      <ProductCases
-        :nav-steps="productSteps"
-        :default-active-step="4"
-        :cases="productCasesEam"
-      />
+      <ProductCases :nav-steps="productSteps" :default-active-step="4" :cases="productCasesEam" />
     </div>
 
     <!-- 第十一部分：先进过程控制系统(APC) -->
     <div class="section" :class="{ active: currentSection === 10, 'section-hidden': currentSection !== 10 }">
-      <ProductHero 
-        :background-image="apcBackgroundImage" 
-        title="先进过程控制系统(APC)" 
-      />
+      <ProductHero :background-image="apcBackgroundImage" title="先进过程控制系统(APC)" />
     </div>
 
     <!-- 第十二部分：产品概述 -->
     <div class="section" :class="{ active: currentSection === 11, 'section-hidden': currentSection !== 11 }">
-      <ProductDescription 
-        :nav-steps="productSteps" 
-        :default-active-step="1"
-        :description="productDescriptionApc"
-        :video-src="officialVideoSrc"
-      />
+      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionApc"
+        :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第十三部分：核心功能 -->
     <div class="section" :class="{ active: currentSection === 12, 'section-hidden': currentSection !== 12 }">
-      <ProductFeatures
-        :nav-steps="productSteps"
-        :default-active-step="2"
-        :features="productFeaturesApc"
-      />
+      <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :features="productFeaturesApc" />
     </div>
 
     <!-- 第十四部分：特色优势 -->
     <div class="section" :class="{ active: currentSection === 13, 'section-hidden': currentSection !== 13 }">
-      <ProductAdvantages
-        :nav-steps="productSteps"
-        :default-active-step="3"
-        :advantages="productAdvantagesApc"
-      />
+      <ProductAdvantages :nav-steps="productSteps" :default-active-step="3" :advantages="productAdvantagesApc" />
     </div>
 
     <!-- 第十五部分：典型案例 -->
     <div class="section" :class="{ active: currentSection === 14, 'section-hidden': currentSection !== 14 }">
-      <ProductCases
-        :nav-steps="productSteps"
-        :default-active-step="4"
-        :cases="productCasesApc"
-      />
+      <ProductCases :nav-steps="productSteps" :default-active-step="4" :cases="productCasesApc" />
     </div>
 
     <!-- 第十六部分：能源管理与优化系统(EMS) -->
     <div class="section" :class="{ active: currentSection === 15, 'section-hidden': currentSection !== 15 }">
-      <ProductHero 
-        :background-image="emsBackgroundImage" 
-        title="能源管理与优化系统(EMS)" 
-      />
+      <ProductHero :background-image="emsBackgroundImage" title="能源管理与优化系统(EMS)" />
     </div>
-    
+
     <!-- 第十七部分：产品概述 -->
     <div class="section" :class="{ active: currentSection === 16, 'section-hidden': currentSection !== 16 }">
-      <ProductDescription 
-        :nav-steps="productSteps" 
-        :default-active-step="1"
-        :description="productDescriptionEms"
-        :video-src="officialVideoSrc"
-      />
+      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionEms"
+        :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第十八部分：核心功能 -->
     <div class="section" :class="{ active: currentSection === 17, 'section-hidden': currentSection !== 17 }">
-      <ProductFeatures
-        :nav-steps="productSteps"
-        :default-active-step="2"
-        :features="productFeaturesEms"
-      />
+      <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :features="productFeaturesEms" />
     </div>
 
     <!-- 第十八部分：特色优势 -->
     <div class="section" :class="{ active: currentSection === 18, 'section-hidden': currentSection !== 18 }">
-      <ProductEmsFeatures
-        :nav-steps="productSteps"
-        :default-active-step="3"
-        main-title="引入核心算法配置模块"
-        sub-title="建立能源需求预测与规划"
-        :features="productEmsPredictions"
-      />
+      <ProductEmsFeatures :nav-steps="productSteps" :default-active-step="3" main-title="引入核心算法配置模块"
+        sub-title="建立能源需求预测与规划" :features="productEmsPredictions" />
     </div>
 
     <!-- 第十九部分：特色优势 -->
     <div class="section" :class="{ active: currentSection === 19, 'section-hidden': currentSection !== 19 }">
-      <ProductEmsStrategy
-        :nav-steps="productSteps"
-        :default-active-step="3"
-        title="用能诊断及节能减排策略优化"
-        :strategies="emsStrategies"
-      />
+      <ProductEmsStrategy :nav-steps="productSteps" :default-active-step="3" title="用能诊断及节能减排策略优化"
+        :strategies="emsStrategies" />
     </div>
 
     <!-- 第二十部分：应用成效 -->
     <div class="section" :class="{ active: currentSection === 20, 'section-hidden': currentSection !== 20 }">
-      <ProductEmsResults
-        :nav-steps="productSteps"
-        :default-active-step="4"
-        title="应用成效"
-        :results="emsResults"
-      />
+      <ProductEmsResults :nav-steps="productSteps" :default-active-step="4" title="应用成效" :results="emsResults" />
+    </div>
+
+    <!-- 第二十一部分：库存优化(IOP) -->
+    <div class="section" :class="{ active: currentSection === 21, 'section-hidden': currentSection !== 21 }">
+      <ProductHero title="库存优化(IOP)" :background-image="inventoryBackgroundImage" />
+    </div>
+
+    <!-- 第二十二部分：产品描述 -->
+    <div class="section" :class="{ active: currentSection === 22, 'section-hidden': currentSection !== 22 }">
+      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionIop"
+        :video-src="officialVideoSrc" />
+    </div>
+
+    <!-- 第二十三部分：核心功能 -->
+    <div class="section" :class="{ active: currentSection === 23, 'section-hidden': currentSection !== 23 }">
+      <ProductIopFeatures :nav-steps="productSteps" :default-active-step="2" />
+    </div>
+
+    <!-- 第二十四部分：特色优势 -->
+    <div class="section" :class="{ active: currentSection === 24, 'section-hidden': currentSection !== 24 }">
+      <ProductIopAdvantages :nav-steps="productSteps" :default-active-step="3" />
+    </div>
+
+    <!-- 第二十五部分：应用成效 -->
+    <div class="section" :class="{ active: currentSection === 25, 'section-hidden': currentSection !== 25 }">
+      <ProductIopResults :nav-steps="productSteps" :default-active-step="4" title="应用成效" :results="iopResults" />
+    </div>
+
+    <!-- 第二十六部分：生产计划排程(APS) -->
+    <div class="section" :class="{ active: currentSection === 26, 'section-hidden': currentSection !== 26 }">
+      <ProductHero title="生产计划排程(APS)" :background-image="apsBackgroundImage" />
+    </div>
+
+    <!-- 第二十七部分：产品概述 -->
+    <div class="section" :class="{ active: currentSection === 27, 'section-hidden': currentSection !== 27 }">
+      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionAps"
+        :video-src="officialVideoSrc" />
+    </div>
+
+    <!-- 第二十八部分：核心功能 -->
+    <div class="section" :class="{ active: currentSection === 28, 'section-hidden': currentSection !== 28 }">
+      <ProductApsFeatures :nav-steps="productStepsAnother" :default-active-step="2" />
+    </div>
+
+    <!-- 第二十九部分：特色优势 -->
+    <div class="section" :class="{ active: currentSection === 29, 'section-hidden': currentSection !== 29 }">
+      <ProductAdvantages :nav-steps="productStepsAnother" :default-active-step="3" :advantages="productAdvantagesAps" />
+    </div>
+
+    <!-- 产品硬件 -->
+    <!-- 第三十部分：有线传感器 -->
+    <div class="section" :class="{ active: currentSection === 30, 'section-hidden': currentSection !== 30 }">
+      <ProductHardwareSensor 
+        :title="wireSensorTitle" 
+        :content="wireSensorContent"
+        :background-image="hardwareBackground1" 
+        :main-image="hardwareScrew" 
+        :secondary-image="hardwareImage2" 
+        />
+    </div>
+
+    <!-- 第三十一部分：有线传感器 -->
+    <div class="section" :class="{ active: currentSection === 31, 'section-hidden': currentSection !== 31 }">
+      <ProductHardwareSensorLight 
+          :nav-steps="productStepsLight" 
+          :default-active-step="1"
+          :title="wireSensorTitle"
+          :content="wireSensorContentLight"
+          :main-image="hardwareScrew" 
+          :secondary-image="hardwareImage2"
+         />
+    </div>
+
+    <!-- 第三十二部分：有线传感器 - 规格参数表格 -->
+    <div class="section" :class="{ active: currentSection === 32, 'section-hidden': currentSection !== 32 }">
+      <ProductHardwareSensorModel 
+          :nav-steps="productStepsLight" 
+          :default-active-step="2"
+          :title="wireSensorTitle"
+          :main-image="hardwareTable" 
+          :secondary-image="hardwareImage2"
+        />
+    </div>
+
+
+    <!-- 第三十三部分：有线传感器 - 无线智能传感器 -->
+    <div class="section" :class="{ active: currentSection === 33, 'section-hidden': currentSection !== 33 }">
+      <ProductHardwareSensor 
+        :title="wirelessSensorTitle" 
+        :content="[]"
+        :background-image="hardwareBackground1" 
+        :main-image="hardwareWireless" 
+        :secondary-image="hardwareImage2" 
+        />
+    </div>
+
+    <!-- 第三十四部分：有线传感器 - 产品亮点 -->
+    <div class="section" :class="{ active: currentSection === 34, 'section-hidden': currentSection !== 34 }">
+      <ProductHardwareSensorLight 
+          :nav-steps="productStepsLight" 
+          :default-active-step="1"
+          :title="wirelessSensorTitle"
+          :content="wirelessSensorContentLight"
+          :main-image="hardwareWireless" 
+          :secondary-image="hardwareImage2"
+         />
+    </div>  
+
+    <!-- 第三十五部分：有线传感器 - 规格参数表格 -->
+    <div class="section" :class="{ active: currentSection === 35, 'section-hidden': currentSection !== 35 }">
+      <ProductHardwareSensorModel 
+          :nav-steps="productStepsLight" 
+          :default-active-step="2"
+          :title="wireSensorModelTitle"
+          :main-image="hardwareTable2" 
+          :secondary-image="hardwareImage2"
+        />
+    </div>
+
+    <!-- 第三十六部分：边缘智能采集器-->
+    <div class="section" :class="{ active: currentSection === 36, 'section-hidden': currentSection !== 36 }">
+      <ProductHardwareSensor 
+        :title="edgeSmartCollectorTitle" 
+        :content="wirelessSensorContent"
+        :background-image="hardwareBackground1" 
+        :main-image="hardwareEdge" 
+        :secondary-image="hardwareImage2" 
+        />
     </div>
     
-       <!-- 第二十一部分：库存优化(1OP) -->
-       <div class="section" :class="{ active: currentSection === 21, 'section-hidden': currentSection !== 21 }">
-        <ProductHero
-          title="库存优化(1OP)"
-          :background-image="inventoryBackgroundImage"
-        />
-        </div>
-
-       <!-- 第二十二部分：产品描述 -->
-       <div class="section" :class="{ active: currentSection === 22, 'section-hidden': currentSection !== 22 }">
-        <ProductDescription
-          :nav-steps="productSteps"
+    <!-- 第三十七部分：边缘智能采集器 - 产品亮点 -->
+    <div class="section" :class="{ active: currentSection === 37, 'section-hidden': currentSection !== 37 }">
+      <ProductHardwareSensorLight 
+          :nav-steps="productStepsLight" 
           :default-active-step="1"
-          :description="productDescriptionIop"
-          :video-src="officialVideoSrc"
-        />
-       </div>
-
-       <!-- 第二十三部分：核心功能 -->
-       <div class="section" :class="{ active: currentSection === 23, 'section-hidden': currentSection !== 23 }">
-        <ProductIopFeatures
-          :nav-steps="productSteps"
+          :title="edgeSmartCollectorTitle"
+          :content="edgeSmartCollectorContentLight"
+          :main-image="hardwareEdge2" 
+          :secondary-image="hardwareImage2"
+         />
+    </div>
+    
+    <!-- 第三十八部分：边缘智能采集器 - 规格参数 -->
+    <div class="section" :class="{ active: currentSection === 38, 'section-hidden': currentSection !== 38 }">
+      <ProductHardwareSensorModel 
+          :nav-steps="productStepsLight" 
           :default-active-step="2"
+          :title="edgeSmartCollectorTitle"
+          :main-image="hardwareTable3" 
+          :secondary-image="hardwareImage2"
         />
-       </div>
-
-       <!-- 第二十四部分：特色优势 -->
-       <div class="section" :class="{ active: currentSection === 24, 'section-hidden': currentSection !== 24 }">
-        <ProductIopAdvantages
-          :nav-steps="productSteps"
-          :default-active-step="3"
-        />
-       </div>
-
-       <!-- 第二十五部分：应用成效 -->
-       <div class="section" :class="{ active: currentSection === 25, 'section-hidden': currentSection !== 25 }">
-        <ProductIopResults
-          :nav-steps="productSteps"
-          :default-active-step="4"
-          title="应用成效"
-          :results="iopResults"
-        />
-       </div>
-
-       <!-- 第二十六部分：生产计划排程(APS) -->
-       <div class="section" :class="{ active: currentSection === 26, 'section-hidden': currentSection !== 26 }">
-        <ProductHero
-          title="生产计划排程(APS)"
-          :background-image="apsBackgroundImage"
-        />
-       </div>
-
-       <!-- 第二十七部分：产品概述 -->
-       <div class="section" :class="{ active: currentSection === 27, 'section-hidden': currentSection !== 27 }">
-        <ProductDescription
-          :nav-steps="productSteps"
-          :default-active-step="1"
-          :description="productDescriptionAps"
-          :video-src="officialVideoSrc"
-        />
-       </div>
-
-       <!-- 第二十八部分：核心功能 -->
-       <div class="section" :class="{ active: currentSection === 28, 'section-hidden': currentSection !== 28 }">
-        <ProductApsFeatures
-          :nav-steps="productStepsAnother"
-          :default-active-step="2"
-        />
-       </div>
-
-       <!-- 第二十九部分：特色优势 -->
-       <div class="section" :class="{ active: currentSection === 29, 'section-hidden': currentSection !== 29 }">
-        <ProductAdvantages
-          :nav-steps="productStepsAnother"
-          :default-active-step="3"
-          :advantages="productAdvantagesAps"
-        />
-       </div>
+    </div>  
+    
+    <!-- 第三十九部分：无线智能网关 -->
+    <div class="section" :class="{ active: currentSection === 39, 'section-hidden': currentSection !== 39 }">
+      <ProductHardwareSensor 
+        :title="wirelessSmartGatewayTitle" 
+        :content="wirelessSmartGatewayContent"
+        :background-image="hardwareBackground1" 
+        :main-image="hardwareGateway"
+        :secondary-image="hardwareImage2"
+      />
+    </div>  
+         
+    <!-- 第四十部分：无线智能网关 - 产品亮点-->
+    <div class="section" :class="{ active: currentSection === 40, 'section-hidden': currentSection !== 40 }">
+      <ProductHardwareSensorLight 
+        :nav-steps="productStepsLight" 
+        :default-active-step="1"
+        :title="wirelessSmartGatewayTitle"
+        :content="wirelessSmartGatewayContentLight"
+        :main-image="hardwareGateway"
+        :secondary-image="hardwareImage2"
+      />
+    </div>  
+    
+    <!-- 第四十一部分：无线智能网关 - 规格参数-->
+    <div class="section" :class="{ active: currentSection === 41, 'section-hidden': currentSection !== 41 }">
+      <ProductHardwareSensorModel 
+        :nav-steps="productStepsLight" 
+        :default-active-step="2"
+        :title="wirelessSmartGatewayTitle"
+        :main-image="hardwareTable4"
+        :secondary-image="hardwareImage2"
+      />
+    </div>  
+    
   </div>
 </template>
 
@@ -288,6 +314,10 @@ import ProductIopFeatures from '@/components/products/ProductIopFeatures.vue'
 import ProductIopAdvantages from '@/components/products/ProductIopAdvantages.vue'
 import ProductIopResults from '@/components/products/ProductIopResults.vue'
 import ProductApsFeatures from '@/components/products/ProductApsFeatures.vue'
+import ProductHardwareSensor from '@/components/products/ProductHardwareSensor.vue'
+import ProductHardwareSensorLight from '@/components/products/ProductHardwareSensorLight.vue'
+import ProductHardwareSensorModel from '@/components/products/ProductHardwareSensorModel.vue'
+
 // 直接导入图片和视频
 import phmBackgroundImage from '@/assets/products/software-bg-1.png'
 import officialVideoSrc from '@/assets/video/official_video.mp4'
@@ -366,7 +396,7 @@ import emsApplication1 from '@/assets/products/ems-application-1.png'
 import emsApplication2 from '@/assets/products/ems-application-2.png'
 import emsApplication3 from '@/assets/products/ems-application-3.png'
 
-// 导入库存优化(1OP)背景图片
+// 导入库存优化(IOP)背景图片
 import inventoryBackgroundImage from '@/assets/products/iop-bg.jpg'
 
 // 导入IOP应用成效图标
@@ -390,6 +420,19 @@ import apsFeature4 from '@/assets/products/aps-feature-4.png'
 import apsFeature5 from '@/assets/products/aps-feature-5.png'
 import apsFeature6 from '@/assets/products/aps-feature-6.png'
 
+//======================硬件======================
+// 导入有线传感器相关资源
+import hardwareBackground1 from '@/assets/products/hardware-1.png'
+import hardwareScrew from '@/assets/products/hardware-screw.png'
+import hardwareImage2 from '@/assets/products/hardware-2.png'
+import hardwareTable from '@/assets/products/hardware-table-1.png'
+import hardwareTable2 from '@/assets/products/hardware-table-2.png'
+import hardwareWireless from '@/assets/products/hardware-wireless-1.png'
+import hardwareEdge from '@/assets/products/hardware-edge-1.png'
+import hardwareEdge2 from '@/assets/products/hardware-edge-2.png'
+import hardwareTable3 from '@/assets/products/hardware-table-3.png'
+import hardwareGateway from '@/assets/products/hardware-gateway-1.png'
+import hardwareTable4 from '@/assets/products/hardware-table-4.png'
 // 当前显示的部分
 const currentSection = ref(0)
 // 是否正在滚动中（防止连续触发）
@@ -400,7 +443,8 @@ const scrollDelay = 1000 // 滚动延迟
 const productSteps = ['产品概述', '核心功能', '特色优势', '应用案例']
 //产品步骤 - 简略
 const productStepsAnother = ['产品概述', '核心功能', '特色优势']
-
+//产品步骤 - 有线传感器
+const productStepsLight = ['产品亮点', '规格参数']
 //产品步骤
 // const productStepsAnother = ['产品概述', '核心功能', '特色优势', '应用成效']
 // 产品描述
@@ -751,34 +795,6 @@ const productFeaturesEms = [
   }
 ]
 
-// EMS产品特色优势数据
-const productAdvantagesEms = [
-  {
-    title: '能耗监测',
-    description: '通过部署北向方案采集各能源数据传输，并且系统能够实时参数管理生成可视化精准分析计算，提供看，运力，温度等，并且在信息展示上进行直观，为能源数据提供支撑，了解到明确数据变化。',
-    icon: emsIcon1
-  },
-  {
-    title: '能力平衡与能耗分析',
-    description: '对生物能能源场的进工程设计场，碳能负荷，用能平衡和标准化指导系统的应用，如实现机筒能把模型和能耗模型的搭建，数据收集和用能分析。',
-    icon: emsIcon2
-  },
-  {
-    title: '能源成本分析',
-    description: '运用算法北向技术计分析各电站水电站成本分析，归类各电能消耗主要影响因素，功能分析结果。',
-    icon: emsIcon3
-  },
-  {
-    title: '能源需求预测与规划',
-    description: '应用花果采为加强管理理论化和流程化管理，建立有规模生产历史数据分析计，结合能源预测模型和能源规划技术，达到用能高效规范，降低能源预算预测合理性，过程用量的数据预。',
-    icon: emsIcon4
-  },
-  {
-    title: '用能诊断与优化',
-    description: '分析和预测能源需求，结合设备运转状态，运行设置，成本分析等因素，并解决能源使用瓶颈，输出综合能源诊断报告及产品建议，设备资源调度建议和能源品质建议。',
-    icon: emsIcon5
-  }
-]
 
 // EMS预测功能数据
 const productEmsPredictions = [
@@ -862,6 +878,151 @@ const iopResults = [
   }
 ]
 
+// 有线传感器标题
+const wireSensorTitle = '有线传感器'
+//无线智能传感器
+const wirelessSensorTitle = '无线智能传感器'
+// 有线传感器规格参数表格标题
+const wireSensorModelTitle = '有无线振温传感器DN102'
+// 边缘智能采集器
+const edgeSmartCollectorTitle = '边缘智能采集器'
+// 无线智能网关
+const wirelessSmartGatewayTitle = '无线智能网关'
+// 有线传感器内容
+const wireSensorContent = [
+  { title: '加速度传感器（通频）', model: 'CHAOS AC102' },
+  { title: '加速度传感器（低频）', model: 'CHAOS AC133' },
+  { title: '振通一体传感器（通频）', model: 'CHAOS TA202' },
+  { title: '振通一体传感器（低频）', model: 'CHAOS TA233' },
+  { title: '防爆振通一体传感器（通频）', model: 'CHAOS TA935' },
+  { title: '应力波传感器', model: 'CHAOS SW301' }
+]
+
+// 无线智能传感器内容
+const wirelessSensorContent = [
+  { title: '边缘智能' },
+  { title: '精准测量' },
+  { title: '通讯便捷' },
+  { title: '自主可控' },
+  { title: '国产替代' },
+]
+
+// 无线智能网关内容
+const wirelessSmartGatewayContent = [
+  { 
+    title: '支持地温传感器数量', 
+    value: '32', 
+    unit: '个',
+    highlight: true 
+  },
+  { 
+    title: '特征数据存储天数', 
+    value: '30', 
+    unit: '天',
+    highlight: true 
+  },
+  { 
+    title: '防护等级', 
+    value: 'IP66', 
+    unit: '',
+    highlight: true 
+  }
+]
+const wireSensorContentLight = [
+  {
+    title: "型号齐全 应用广泛",
+    description: "产品规格型号丰富的传感器产品线，包括温湿度一体传感器，适应各类应用场景和环境需求。"
+  },
+  {
+    title: "低噪设计 精度卓越",
+    description: "通过优化传感器核心电路设计，确保测量结果的稳定性和准确性，为精密分析和控制提供支持。"
+  },
+  {
+    title: "宽频覆盖 全面响应",
+    description: "具有宽频率测量范围的设计，满足各种测试和监控应用的需求。"
+  },
+  {
+    title: "高灵敏度 精准监测",
+    description: "灵敏度高度优化，能够检测到极小的环境变化，为精密监测提供保障。"
+  }
+]
+
+// 无线智能传感器内容
+const wirelessSensorContentLight = [
+  {
+    title: "Zigbee技术 部署灵活",
+    description: "采用Zigbee无线传输技术，提高部署灵活性，无线通信功能强。"
+  },
+  {
+    title: "NFC配置 便捷无忧",
+    description: "NFC用于传感器参数配置，非接触式参数设置，配置更高效。"
+  },
+  {
+    title: "长寿耐用 维护成本低",
+    description: "根据SDK适当并采用超三年以上续航，减少维护成本。"
+  },
+  {
+    title: "IP68防护 环境耐受",
+    description: "IP68防护等级，适合各种恶劣的工业环境。"
+  },
+  {
+    title: "防爆认证 安全保障",
+    description: "具备防爆认证，适用于需要爆炸风险防护，提供更安全。"
+  },
+  {
+    title: "边缘计算 智能预警",
+    description: "具备边缘计算能力，将部分计算和数据处理放置到传感器端进行。"
+  }
+]
+
+// 边缘智能采集器产品亮点
+const edgeSmartCollectorContentLight = [
+  {
+    title: "型号齐全 性能定制",
+    description: "提供不同性能和配置的型号，适应不同规模和要求的设备。"
+  },
+  {
+    title: "对标国际 功能卓越",
+    description: "与国外高端产品同步的技术路线：ARM + FPGA的SoC架构设计，实现边缘计算。"
+  },
+  {
+    title: "WEB配置 高效灵活",
+    description: "通过配置灵活，支持传感器类型众多。"
+  },
+  {
+    title: "ARM双核 性能强劲",
+    description: "搭载ARM双核处理器和不同容量的内存与存储，支持复杂的数据处理。"
+  },
+  {
+    title: "通道灵活 采集精准",
+    description: "支持高速和低速采集通道的组合，适应不同的数据采集需求。"
+  },
+  {
+    title: "通信多样 集成便捷",
+    description: "支持以太网/WIFI/蓝牙等通信方式，易于系统集成和数据传输。"
+  }
+]
+
+// 无线智能网关产品亮点
+const wirelessSmartGatewayContentLight = [
+  {
+    title: "通讯多样 数据可靠",
+    description: "支持5G、4G、WiFi、以太网、光纤等多种通信方式，保障数据传输的完整性与可靠性。"
+  },
+  {
+    title: "网页配置 流程简便",
+    description: "支持Web网页配置，无需安装软件，简化配置过程。"
+  },
+  {
+    title: "功能丰富 方便易用",
+    description: "集成数据采集、数据转发与分析工具，提高集成部署管理和使用效率。"
+  },
+  {
+    title: "深入分析 精准诊断",
+    description: "多种数据分析与物联网接口，为设备状态监测和故障诊断提供深入的数据分析。"
+  }
+]
+
 // 处理鼠标滚轮事件
 const handleWheel = (e: WheelEvent) => {
   if (scrolling.value) return
@@ -869,7 +1030,7 @@ const handleWheel = (e: WheelEvent) => {
   scrolling.value = true
 
   // 向下滚动
-  if (e.deltaY > 0 && currentSection.value < 30) { // 更新为最大部分索引
+  if (e.deltaY > 0 && currentSection.value < 41) { // 修改为31或更大的索引值
     currentSection.value++
   }
   // 向上滚动
@@ -890,7 +1051,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
   scrolling.value = true
 
   // 向下箭头或Page Down
-  if ((e.key === 'ArrowDown' || e.key === 'PageDown') && currentSection.value < 30) { // 更新为最大部分索引
+  if ((e.key === 'ArrowDown' || e.key === 'PageDown') && currentSection.value < 31) { // 这里也需要修改
     currentSection.value++
   }
   // 向上箭头或Page Up
