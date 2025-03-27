@@ -47,9 +47,9 @@
       <div class="body-right">
         <div class="title">热点推荐</div>
         <div class="hotpot-list">
-          <div class="hotpot-row" v-for="item in 9">
-            <div class="hotpot-title">激发数据资产潜力，“数据资产驱动未来 创新实践交流论坛”圆满举办</div>
-            <div class="hotpot-time">2024-12-31 08:30:59</div>
+          <div class="hotpot-row" v-for="item in hotpotList" @click="handleNews(item.id)">
+            <div class="hotpot-title">{{ item.mainTitle }}</div>
+            <div class="hotpot-time">{{item.date}}</div>
           </div>
         </div>
       </div>
@@ -62,15 +62,22 @@ import {ref,computed,defineEmits} from 'vue'
 const emit = defineEmits(['handleNews'])
 const newsList = ref([
   // { id: 'news1', imgUrl: '/src/assets/news/01 封面图.jpeg', mainTitle: '全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能', subTitle: '凯奥思PHM系统深度融合DeepSeek，全面实现国产化', date: '2025.2.25' },
-  { id: 'news2', imgUrl: '/src/assets/news/02 封面图.jpg', mainTitle: 'AA级！ 凯奥思数据获智能制造系统解决方案供应商分类分级评定', subTitle: '南京凯奥思数据技术有限公司获评集成实施类认定（AA级）以及运行维护类认定（A级）', date: '2025.01.08' },
-  { id: 'news3', imgUrl: '/src/assets/news/03 封面图.jpg', mainTitle: '喜报！凯奥思数据荣登南京企业技术中心培育库', subTitle: '南京凯奥思数据技术有限公司正式入选南京市工业和信息化局公布的《南京企业技术中心培育库（2024年度）》名单', date: '2025.1.2' },
-  { id: 'news4', imgUrl: '/src/assets/news/04 封面图.jpg', mainTitle: '实力见证！凯奥思数据“设备预测性维护与健康管理系统2.0”又获两项重量级认证', subTitle: '“设备预测性维护与健康管理系统2.0”获全国首批应用软件国产化等级认证及2024苏商数实融合先锋企业案例认证', date: '2024.12.23' },
-  { id: 'news5', imgUrl: '/src/assets/news/05 封面图.jpeg', mainTitle: '凯奥思数据荣膺“首批数据要素价值创新示范基地” ，加速释放数据资产价值', subTitle: '南京凯奥思数据技术有限公司荣获“首批数据要素价值创新示范基地”称号', date: '2024.12.5' },
-  { id: 'news6', imgUrl: '/src/assets/news/06 封面图.jpeg', mainTitle: '凯奥思数据精彩亮相2024中国（西安）国际采矿展 助力煤矿智能化发展', subTitle: '凯奥思数据携煤矿智能化产品及解决方案亮相2024中国（西安）国际采矿展', date: '2024.10.30' },
-  { id: 'news7', imgUrl: '/src/assets/news/07 封面图.jpeg', mainTitle: '激发数据资产潜力，“数据资产驱动未来 创新实践交流论坛”圆满举办', subTitle: '凯奥思数据承办“数据资产驱动未来 创新实践交流论坛”,促进释放数据要素价值和市场潜力。', date: '2024.9.2' },
-  { id: 'news8', imgUrl: '/src/assets/news/08 封面图.jpeg', mainTitle: '授信1000万！南京市民营科技企业首笔数据资产融资突破', subTitle: '凯奥思数据通过数据资产成功获得1000万元的融资授信', date: '2024.8.14' },
-  { id: 'news9', imgUrl: '/src/assets/news/09 封面图.jpg', mainTitle: '夯实数据要素：凯奥思数据引领南京市民营科技企业数据资产入表先河', subTitle: '凯奥思数据成为首家南京市民营科技企业数据资产入表的企业', date: '2024.7.1' },
+  { id: 'news2', imgUrl: '/src/assets/news/cover1.jpg', mainTitle: 'AA级！ 凯奥思数据获智能制造系统解决方案供应商分类分级评定', subTitle: '南京凯奥思数据技术有限公司获评集成实施类认定（AA级）以及运行维护类认定（A级）', date: '2025.01.08' },
+  { id: 'news3', imgUrl: '/src/assets/news/cover1.jpg', mainTitle: '喜报！凯奥思数据荣登南京企业技术中心培育库', subTitle: '南京凯奥思数据技术有限公司正式入选南京市工业和信息化局公布的《南京企业技术中心培育库（2024年度）》名单', date: '2025.1.2' },
+  { id: 'news4', imgUrl: '/src/assets/news/image1.png', mainTitle: '实力见证！凯奥思数据“设备预  测性维护与健康管理系统2.0”又获两项重量级认证', subTitle: '“设备预测性维护与健康管理系统2.0”获全国首批应用软件国产化等级认证及2024苏商数实融合先锋企业案例认证', date: '2024.12.23' },
+  { id: 'news5', imgUrl: '/src/assets/news/image11.png', mainTitle: '凯奥思数据荣膺“首批数据要素价值创新示范基地” ，加速释放数据资产价值', subTitle: '南京凯奥思数据技术有限公司荣获“首批数据要素价值创新示范基地”称号', date: '2024.12.5' },
+  { id: 'news6', imgUrl: '/src/assets/news/image14.png', mainTitle: '凯奥思数据精彩亮相2024中国（西安）国际采矿展 助力煤矿智能化发展', subTitle: '凯奥思数据携煤矿智能化产品及解决方案亮相2024中国（西安）国际采矿展', date: '2024.10.30' },
+  { id: 'news7', imgUrl: '/src/assets/news/cover2.jpeg', mainTitle: '激发数据资产潜力，“数据资产驱动未来 创新实践交流论坛”圆满举办', subTitle: '凯奥思数据承办“数据资产驱动未来 创新实践交流论坛”,促进释放数据要素价值和市场潜力。', date: '2024.9.2' },
+  { id: 'news8', imgUrl: '/src/assets/news/image22.png', mainTitle: '授信1000万！南京市民营科技企业首笔数据资产融资突破', subTitle: '凯奥思数据通过数据资产成功获得1000万元的融资授信', date: '2024.8.14' },
+  { id: 'news9', imgUrl: '/src/assets/news/image1.png', mainTitle: '夯实数据要素：凯奥思数据引领南京市民营科技企业数据资产入表先河', subTitle: '凯奥思数据成为首家南京市民营科技企业数据资产入表的企业', date: '2024.7.1' },
 ])
+const hotpotList =[
+  { id: 'news1', mainTitle: '全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能', date: '2025.2.25' },
+  { id: 'news4', mainTitle: '实力见证！凯奥思数据“设备预测性维护与健康管理系统2.0”又获两项重量级认证', date: '2024.12.23' },
+  { id: 'news8', mainTitle: '授信1000万！南京市民营科技企业首笔数据资产融资突破', date: '2024.8.14' },
+  { id: 'news9', mainTitle: '夯实数据要素：凯奥思数据引领南京市民营科技企业数据资产入表先河', date: '2024.7.1' },
+
+]
 // 显示控制
 const showCount = ref(5)
 const pageSize = ref(5)
@@ -195,7 +202,7 @@ const handleNews = (id:any)=>{
         .main-news-right {
           flex: 1;
           height: 100%;
-          background-image: url('/src/assets/news/Block-12.png');
+          background-image: url('/src/assets/news/image4.png');
           background-size: cover;
           background-position: center;
           background-blend-mode: overlay;
