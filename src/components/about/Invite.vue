@@ -3,7 +3,7 @@
     <div class="main-title">诚邀英才</div>
     <div class="info">
       <div class="info-card" v-for="(card, index) in cards" :key="index"
-        :style="{ backgroundImage: `url(${card.background})` }">
+        :style="{ backgroundImage: `linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)),url(${card.background})` }">
         <p>{{ card.mainTitle }}</p>
         <span>{{ card.subTitle }}</span>
       </div>
@@ -31,18 +31,11 @@ const cards = ref([
 ]);
 const currentIndex = ref(0)
 const images = [
-  '/src/assets/about/Block-12.png',
-  '/src/assets/about/Block-12-1.png',
-  '/src/assets/about/Block-12-2.png',
-  '/src/assets/about/Block-12.png',
-  '/src/assets/about/Block-12-1.png',
-  '/src/assets/about/Block-12-2.png',
-  '/src/assets/about/Block-12.png',
-  '/src/assets/about/Block-12-1.png',
-  '/src/assets/about/Block-12-2.png',
-  '/src/assets/about/Block-12.png',
-  '/src/assets/about/Block-12-1.png',
-  '/src/assets/about/Block-12-2.png',
+  '/src/assets/about/banner-12.png',
+  '/src/assets/about/banner-12-1.png',
+  '/src/assets/about/banner-12-2.png',
+  '/src/assets/about/banner-12-3.png',
+  '/src/assets/about/banner-12-4.png'
 ]
 const startAutoPlay = () => {
   setInterval(() => {
@@ -138,8 +131,9 @@ startAutoPlay()
     }
 
     .slide-img {
+      border-radius: 15px;
       width: 100%;
-      height: auto;
+      height: 20rem;
       // padding: 10px;
     }
   }
@@ -151,7 +145,7 @@ startAutoPlay()
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('/src/assets/about/Group 34.png');
+    background-image: url('/src/assets/about/Group 42.png');
     background-size: 100% 100%;
     background-position: center;
     padding-bottom: 3rem;
