@@ -1,13 +1,11 @@
 <template>
   <div class="home-page" @wheel="handleWheel">
     <!-- 第一部分：关于主体 -->
-    <div class="section" :class="{ active: currentSection === 0, 'section-hidden': currentSection !== 0 }"
-      ref="caseSection">
-      <div class="about-customer-section">
-        <div class="background-image">
-          <div class="main-title">凯奥思数据 让工业更智能</div>
-        </div>
-      </div>
+    <div 
+      class="section" 
+      :class="{ active: currentSection === 0, 'section-hidden': currentSection !== 0 }"
+      ref="bannerSection">
+      <AboutHome />
     </div>
     
     <!-- 第二部分：企业文化 -->
@@ -47,6 +45,7 @@
 
 <script setup lang="ts">
 import { ref, provide, onMounted, onBeforeUnmount } from 'vue'
+import AboutHome from '@/components/about/AboutHome.vue'
 import CorporateCulture from '@/components/about/CorporateCulture.vue'
 import Honor from '@/components/about/Honor.vue'
 import Invite from '@/components/about/Invite.vue'
@@ -151,24 +150,5 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
 }
-
-.background-image {
-
-  width: 100vw;
-  height: 100vh;
-  background: url('@/assets/about/Group 41.png') no-repeat center center;
-  background-size: 100% 100%;
-  z-index: 1;
-  font-size: 36px;
-  font-weight: 700;
-  color: #fff;
-  .main-title{
-    position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -300%);
-  }
-}
-
 
 </style>
