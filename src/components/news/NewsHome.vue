@@ -8,16 +8,16 @@
           <div class="main-news-left">
             <div class="news-left-content">
               <div class="content-main-title">
-                激发数据资产潜力，“数据资产驱动未来 创新实践交流论坛”圆满举办
+                全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能
               </div>
               <div class="content-sub-title">
-                “数据资产驱动未来 创新实践交流论坛”在南京云密城双创服务中心隆重举办。
+                凯奥思PHM系统深度融合DeepSeek，全面实现国产化
               </div>
               <div class="time">
-                2024-09-06 09:30:26
+                2025.2.25
               </div>
             </div>
-            <div class="content-main-action" @click="handleNews(99)">
+            <div class="content-main-action" @click="handleNews('news1')">
               <div class="text">查看详情</div>
               <div class="icon">→</div>
             </div>
@@ -61,12 +61,15 @@
 import {ref,computed,defineEmits} from 'vue'
 const emit = defineEmits(['handleNews'])
 const newsList = ref([
-  { id: 1, imgUrl: '/src/assets/customer/bg.png', mainTitle: '“砥砺十年路，扬帆再起航”江苏华信自驾游活动圆满举行', subTitle: '最是一年春好处，不负韶光，不负青春', date: '2022-12-28' },
-  { id: 2, imgUrl: '/src/assets/customer/bg.png', mainTitle: '2022江苏华信新春团拜会顺利召开', subTitle: '江苏华信科技有限公司2023年新春团拜会议今日顺利召开，公司总经理室、各业务公司负责人、及公司全体员工共同参加', date: '2022-12-20' },
-  { id: 3, imgUrl: '/src/assets/customer/bg.png', mainTitle: '通信公司再获嘉奖-驻地网通信配套优质工程', subTitle: '“扬州未来之光”、"扬州悦隽花园”驻地网通信配套工程荣获2021年度优质工程奖项。', date: '2022-11-10' },
-  { id: 4, imgUrl: '/src/assets/customer/bg.png', mainTitle: '沿海双碳产业园智能化项目顺利竣工', subTitle: '沿海双碳产业发展项目是射阳县整合碳汇资源，实施碳汇、开发监测、交易和其他应用的重要平台。', date: '2022-10-06' },
-  { id: 5, imgUrl: '/src/assets/customer/bg.png', mainTitle: '市第九届政协科协、民盟界别委员一行赴我司考察交流', subTitle: '本次政协界别小组活动主题为“助力扬州中小信息技术企业的发展”。', date: '2022-07-13' },
-  { id: 6, imgUrl: '/src/assets/customer/bg.png', mainTitle: '遇见最美初夏，集成公司小满出游', subTitle: '单丝不成线，独木不成林！同样的一块铁，可以锯融消损，也可以百炼成钢。', date: '2022-07-13' },
+  // { id: 'news1', imgUrl: '/src/assets/news/01 封面图.jpeg', mainTitle: '全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能', subTitle: '凯奥思PHM系统深度融合DeepSeek，全面实现国产化', date: '2025.2.25' },
+  { id: 'news2', imgUrl: '/src/assets/news/02 封面图.jpg', mainTitle: 'AA级！ 凯奥思数据获智能制造系统解决方案供应商分类分级评定', subTitle: '南京凯奥思数据技术有限公司获评集成实施类认定（AA级）以及运行维护类认定（A级）', date: '2025.01.08' },
+  { id: 'news3', imgUrl: '/src/assets/news/03 封面图.jpg', mainTitle: '喜报！凯奥思数据荣登南京企业技术中心培育库', subTitle: '南京凯奥思数据技术有限公司正式入选南京市工业和信息化局公布的《南京企业技术中心培育库（2024年度）》名单', date: '2025.1.2' },
+  { id: 'news4', imgUrl: '/src/assets/news/04 封面图.jpg', mainTitle: '实力见证！凯奥思数据“设备预测性维护与健康管理系统2.0”又获两项重量级认证', subTitle: '“设备预测性维护与健康管理系统2.0”获全国首批应用软件国产化等级认证及2024苏商数实融合先锋企业案例认证', date: '2024.12.23' },
+  { id: 'news5', imgUrl: '/src/assets/news/05 封面图.jpeg', mainTitle: '凯奥思数据荣膺“首批数据要素价值创新示范基地” ，加速释放数据资产价值', subTitle: '南京凯奥思数据技术有限公司荣获“首批数据要素价值创新示范基地”称号', date: '2024.12.5' },
+  { id: 'news6', imgUrl: '/src/assets/news/06 封面图.jpeg', mainTitle: '凯奥思数据精彩亮相2024中国（西安）国际采矿展 助力煤矿智能化发展', subTitle: '凯奥思数据携煤矿智能化产品及解决方案亮相2024中国（西安）国际采矿展', date: '2024.10.30' },
+  { id: 'news7', imgUrl: '/src/assets/news/07 封面图.jpeg', mainTitle: '激发数据资产潜力，“数据资产驱动未来 创新实践交流论坛”圆满举办', subTitle: '凯奥思数据承办“数据资产驱动未来 创新实践交流论坛”,促进释放数据要素价值和市场潜力。', date: '2024.9.2' },
+  { id: 'news8', imgUrl: '/src/assets/news/08 封面图.jpeg', mainTitle: '授信1000万！南京市民营科技企业首笔数据资产融资突破', subTitle: '凯奥思数据通过数据资产成功获得1000万元的融资授信', date: '2024.8.14' },
+  { id: 'news9', imgUrl: '/src/assets/news/09 封面图.jpg', mainTitle: '夯实数据要素：凯奥思数据引领南京市民营科技企业数据资产入表先河', subTitle: '凯奥思数据成为首家南京市民营科技企业数据资产入表的企业', date: '2024.7.1' },
 ])
 // 显示控制
 const showCount = ref(5)
@@ -105,7 +108,7 @@ const handleNews = (id:any)=>{
     padding: 0 15rem;
     width: 100%;
     min-height: 10rem;
-    background: url('@/assets/customer/bg.png') no-repeat center center;
+    background: url('@/assets/news/Block-12.png') no-repeat center center;
     background-size: 100% 100%;
     font-size: 1.75rem;
     font-weight: 700;
@@ -192,7 +195,7 @@ const handleNews = (id:any)=>{
         .main-news-right {
           flex: 1;
           height: 100%;
-          background-image: url('/src/assets/customer/bg.png');
+          background-image: url('/src/assets/news/Block-12.png');
           background-size: cover;
           background-position: center;
           background-blend-mode: overlay;
