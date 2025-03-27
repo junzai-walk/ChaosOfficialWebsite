@@ -55,7 +55,7 @@ const logos = [
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  height: 100vh;
+  height: 100vh;       
   background-color: #f7f9fc;
   padding-top: 4.25rem;
 
@@ -103,7 +103,7 @@ const logos = [
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
     padding: 20px;
-    animation: crawl 20s linear;
+    animation: crawl 30s linear;
   }
 
   .image-item {
@@ -125,7 +125,7 @@ const logos = [
       opacity: 1;
     }
 
-    50% {
+    25% {
       opacity: 1;
     }
 
