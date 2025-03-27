@@ -38,7 +38,7 @@
       <div class="footer-content">
         <div class="footer-left">
           <div class="footer-logo">
-            <img src="@/assets/logo.png" alt="凯奥思数据">
+            <img src="@/assets/logos/chaos_white.png" alt="凯奥思数据">
             <span>让工业更智能</span>
           </div>
           <div class="contact-info">

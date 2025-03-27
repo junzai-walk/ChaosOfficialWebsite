@@ -8,8 +8,8 @@
       <div class="overlay"></div>
     </div>
     <div class="content">
-      <h1 class="title">智能工业数据服务</h1>
-      <p class="subtitle">专注工业智能，助力企业数字化转型</p>
+      <h1 class="title">基于核心数据算法 提供工业智能服务</h1>
+      <p class="subtitle">凯奥思数据 让工业更智能</p>
       <el-button type="primary" size="large" class="cta-button">了解更多</el-button>
     </div>
   </div>
@@ -71,7 +71,6 @@ onMounted(() => {
 }
 
 .content {
-  position: relative;
   z-index: 3;
   text-align: center;
   color: #fff;
@@ -80,16 +79,25 @@ onMounted(() => {
 }
 
 .title {
+  width: 976px;
   font-size: 48px;
   font-weight: bold;
   margin-bottom: 20px;
   letter-spacing: 2px;
+  position: absolute;
+  top: 333px; 
+  left: 472px;
 }
 
 .subtitle {
   font-size: 24px;
   margin-bottom: 30px;
   opacity: 0.9;
+  width: 353px;
+  height: 42px;
+  top: 457px;
+  left: 783px;
+  position: absolute;
 }
 
 .cta-button {
@@ -97,6 +105,14 @@ onMounted(() => {
   font-size: 18px;
   border-radius: 4px;
   transition: all 0.3s ease;
+  width: 200px;
+  height: 56px;
+  top: 580px;
+  left: 860px;
+  border-radius: 34px;
+  position: absolute;
+  background-color: transparent;
+  border: 1px solid #fff;
 }
 
 .cta-button:hover {

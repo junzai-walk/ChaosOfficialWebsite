@@ -1,21 +1,20 @@
 <template>
   <div class="floating-menu">
     <div class="menu-item top" @click="handleScrollToTop">
-      <el-icon><Top /></el-icon>
-      <span class="label">TOP</span>
+      <img src="@/assets/fixed/Group_5.png" alt="Top" class="menu-icon">
     </div>
     <div class="menu-item service" @mouseenter="showServiceTooltip = true" @mouseleave="showServiceTooltip = false">
-      <el-icon><Service /></el-icon>
+      <img src="@/assets/fixed/Group_6.png" alt="Service" class="menu-icon">
       <div class="tooltip" v-show="showServiceTooltip">在线客服</div>
     </div>
     <div class="menu-item phone" @mouseenter="showPhoneTooltip = true" @mouseleave="showPhoneTooltip = false">
-      <el-icon><Phone /></el-icon>
+      <img src="@/assets/fixed/Group_7.png" alt="Phone" class="menu-icon">
       <div class="tooltip" v-show="showPhoneTooltip">400-8375-7867</div>
     </div>
     <div class="menu-item qrcode" @mouseenter="showQRTooltip = true" @mouseleave="showQRTooltip = false">
-      <el-icon><PictureFilled /></el-icon>
+      <img src="@/assets/fixed/Group_8.png" alt="QR Code" class="menu-icon">
       <div class="qr-tooltip" v-show="showQRTooltip">
-        <img src="@/assets/qrcode.png" alt="QR Code">
+        <img src="@/assets/fixed/wechat_code.jpg" alt="QR Code">
         <span>扫码关注我们</span>
       </div>
     </div>
@@ -24,7 +23,6 @@
 
 <script setup lang="ts">
 import { ref, inject } from 'vue'
-import { Top, Service, Phone, PictureFilled } from '@element-plus/icons-vue'
 
 const showServiceTooltip = ref(false)
 const showPhoneTooltip = ref(false)
@@ -47,18 +45,18 @@ const handleScrollToTop = () => {
 <style scoped>
 .floating-menu {
   position: fixed;
-  right: 20px;
-  bottom: 100px;
+  right: 1.25rem;
+  bottom: 6.25rem;
   z-index: 99;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0.125rem;
 }
 
 .menu-item {
-  width: 50px;
-  height: 50px;
-  margin-top: 10px;
+  width: 3.125rem;
+  height: 3.125rem;
+  margin-top: 0.625rem;
   background-color: #fff;
   color: #666;
   display: flex;
@@ -66,9 +64,9 @@ const handleScrollToTop = () => {
   justify-content: center;
   cursor: pointer;
   position: relative;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.1);
 }
 
 .menu-item:hover {
@@ -89,26 +87,27 @@ const handleScrollToTop = () => {
 }
 
 .menu-item .label {
-  font-size: 12px;
-  margin-top: 2px;
+  font-size: 0.75rem;
+  margin-top: 0.125rem;
 }
 
-.menu-item :deep(.el-icon) {
-  font-size: 20px;
+.menu-item .menu-icon {
+  width: 3rem;
+  height: 3rem;
 }
 
 /* 工具提示样式 */
 .tooltip {
   position: absolute;
-  right: 60px;
+  right: 3.75rem;
   top: 50%;
   transform: translateY(-50%);
   background-color: #fff;
-  padding: 8px 15px;
-  border-radius: 4px;
+  padding: 0.5rem 0.9375rem;
+  border-radius: 0.25rem;
   white-space: nowrap;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  font-size: 14px;
+  box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.1);
+  font-size: 0.875rem;
   color: #333;
   display: flex;
   align-items: center;
@@ -118,10 +117,10 @@ const handleScrollToTop = () => {
 .tooltip::after {
   content: '';
   position: absolute;
-  right: -6px;
+  right: -0.375rem;
   top: 50%;
   transform: translateY(-50%);
-  border-width: 6px;
+  border-width: 0.375rem;
   border-style: solid;
   border-color: transparent transparent transparent #fff;
 }
@@ -129,12 +128,12 @@ const handleScrollToTop = () => {
 /* 二维码工具提示样式 */
 .qr-tooltip {
   position: absolute;
-  right: 60px;
-  bottom: -25px;
+  right: 3.75rem;
+  bottom: -1.5625rem;
   background-color: #fff;
-  padding: 10px;
-  border-radius: 4px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  padding: 0.625rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -142,23 +141,23 @@ const handleScrollToTop = () => {
 }
 
 .qr-tooltip img {
-  width: 120px;
-  height: 120px;
-  margin-bottom: 8px;
+  width: 7.5rem;
+  height: 7.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .qr-tooltip span {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #666;
 }
 
 .qr-tooltip::after {
   content: '';
   position: absolute;
-  right: -6px;
+  right: -0.375rem;
   top: 50%;
   transform: translateY(-50%);
-  border-width: 6px;
+  border-width: 0.375rem;
   border-style: solid;
   border-color: transparent transparent transparent #fff;
 }
@@ -166,7 +165,7 @@ const handleScrollToTop = () => {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateX(-10px);
+    transform: translateX(-0.625rem);
   }
   to {
     opacity: 1;
