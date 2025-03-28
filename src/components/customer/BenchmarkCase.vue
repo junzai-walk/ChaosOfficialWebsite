@@ -14,7 +14,7 @@
           <div class="case-cards" :style="{ transform: `translateX(-${currentPage * 50}%)` }">
             <!-- 第一页的8个图片 -->
             <div class="case-page">
-              <div class="case-card" v-for="it in caseList" :key="it.id" @click="handleSelectCard(it.id)">
+              <div class="case-card" v-for="it in caseList1" :key="it.id" @click="handleSelectCard(it.id)">
                 <div class="case-image"  :style="{ backgroundImage: `url(${it.imgUrl})`  }"></div>
                 <div class="case-info">
                   <h3>{{it.mainTitle}}</h3>
@@ -23,9 +23,9 @@
                 </div>
               </div>
             </div>
-            <!-- 第二页的8图片 -->
+            <!-- 第二页的4图片 -->
             <div class="case-page">
-              <div class="case-card" v-for="(it,index) in caseList" :key="index">
+              <div class="case-card" v-for="(it,index) in caseList2" :key="it.id" @click="handleSelectCard(it.id)"> 
                 <div class="case-image" :style="{ backgroundImage: `url(${it.imgUrl})`  }"></div>
                 <div class="case-info">
                   <h3>{{it.mainTitle}}</h3>
@@ -70,64 +70,95 @@ import Img7 from '@/assets/customer/Rectangle 4136-5.png'
 import Img8 from '@/assets/customer/Rectangle 4136-10.png'
 const emit = defineEmits(['selectActiveCard']);
 const currentPage = ref(0);
-const caseList = [
+const caseList1 = [
   {
-    id:'baogang',
+    id:'baogangphm',
     mainTitle:'中国宝武钢铁集团有限公司',
-    subTitle:'预测性运维管理平台',
+    subTitle:'设备预测性维护与健康管理系统',
     industry:'钢铁',
     imgUrl:Img1
   },
-  
   {
-    id:'hailuo',
+    id:'jingyephm',
+    mainTitle:'敬业钢铁有限公司',
+    subTitle:'设备预测性维护与健康管理系统',
+    industry:'钢铁',
+    imgUrl:Img3
+  },
+  {
+    id:'hailuophm',
     mainTitle:'安徽海螺水泥股份有限公司',
-    subTitle:'预测性运维管理平台',
+    subTitle:'设备预测性维护与健康管理系统',
     industry:'水泥',
     imgUrl:Img2
   },
   {
-    id:'jingye',
-    mainTitle:'敬业集团',
-    subTitle:'预测性运维管理平台',
-    industry:'汽车',
-    imgUrl:Img3
-  },
-  {
-    id:'shagang',
-    mainTitle:'沙钢集团',
-    subTitle:'预测性运维管理平台',
-    industry:'煤炭',
-    imgUrl:Img4
-  },
-  {
-    id:'fengtian',
-    mainTitle:'广汽丰田汽车有限公司',
-    subTitle:'预测性运维管理平台',
-    industry:'汽车',
-    imgUrl:Img5
-  },
-  {
-    id:'jiaomei',
+    id:'jiaomeiphm',
     mainTitle:'山西焦煤集团有限责任公司',
-    subTitle:'预测性运维管理平台',
+    subTitle:'设备全生命周期管理系统',
     industry:'煤炭',
     imgUrl:Img6
   },
   {
-    id:6,
-    mainTitle:'特变电工',
-    subTitle:'预测性运维管理平台',
-    industry:'汽车',
-    imgUrl:Img7
+    id:'basifuphm',
+    mainTitle:'巴斯夫（中国）有限公司',
+    subTitle:'设备预测性维护与健康管理系统',
+    industry:'化工',
+    imgUrl:Img4
   },
   {
-    id:5,
-    mainTitle:'马钢集团',
-    subTitle:'预测性运维管理平台',
-    industry:'煤炭',
-    imgUrl:Img8
+    id:'fengtianphm',
+    mainTitle:'广汽丰田汽车有限公司',
+    subTitle:'设备预测性维护与健康管理系统',
+    industry:'汽车',
+    imgUrl:Img5
   },
+  {
+    id:'jiaomeieam',
+    mainTitle:'山西焦煤集团有限责任公司',
+    subTitle:'设备全生命周期管理系统',
+    industry:'煤炭',
+    imgUrl:Img6
+  },
+  {
+    id:'tianchieam',
+    mainTitle:'新疆天池能源有限责任公司',
+    subTitle:'设备全生命周期管理系统',
+    industry:'煤矿',
+    imgUrl:Img7
+  },
+
+]
+const caseList2 = [
+  {
+    id:'chaohuapc',
+    mainTitle:'巢湖海螺水泥有限责任公司',
+    subTitle:'先进过程控制系统',
+    industry:'水泥',
+    imgUrl:Img1
+  },
+  {
+    id:'panjingapc',
+    mainTitle:'安徽盘景水泥有限公司',
+    subTitle:'设备预测性维护与健康管理系统',
+    industry:'钢铁',
+    imgUrl:Img2
+  },
+  {
+    id:'jingyeapc',
+    mainTitle:'敬业钢铁有限公司',
+    subTitle:'先进过程控制系统',
+    industry:'钢铁',
+    imgUrl:Img3
+  },
+  {
+    id:'baogangapc',
+    mainTitle:'宝山钢铁股份有限公司',
+    subTitle:'先进过程控制系统',
+    industry:'钢铁',
+    imgUrl:Img6
+  },
+
 
 ]
 
