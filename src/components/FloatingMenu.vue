@@ -22,23 +22,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject } from 'vue'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useSectionStore } from '@/stores/sectionStore'
 
+const router = useRouter()
 const showServiceTooltip = ref(false)
 const showPhoneTooltip = ref(false)
 const showQRTooltip = ref(false)
 
-// 获取父组件的 currentSection
-const currentSection = inject('currentSection', ref(0))
+// 使用Pinia store代替inject
+const sectionStore = useSectionStore()
 
 const handleScrollToTop = () => {
-  // 如果在首页，直接设置 currentSection 为 0
-  if (window.location.pathname === '/') {
-    currentSection.value = 0
-  } else {
-    // 如果不在首页，使用路由导航到首页
-    window.location.href = '/'
-  }
+  console.log('handleScrollToTop')
+  //获取当前url的path
+  const path = router.currentRoute.value.path
+
+  router.push(path).then(() => {
+    sectionStore.resetSection()
+  })
 }
 </script>
 
@@ -57,7 +60,6 @@ const handleScrollToTop = () => {
   width: 3.125rem;
   height: 3.125rem;
   margin-top: 0.625rem;
-  background-color: #fff;
   color: #666;
   display: flex;
   align-items: center;

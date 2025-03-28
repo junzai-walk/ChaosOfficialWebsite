@@ -3,7 +3,7 @@
     <!-- 第一部分：主体Banner -->
     <div 
       class="section" 
-      :class="{ active: currentSection === 0, 'section-hidden': currentSection !== 0 }"
+      :class="{ active: sectionStore.currentSection === 0, 'section-hidden': sectionStore.currentSection !== 0 }"
       ref="bannerSection">
       <home-banner />
     </div>
@@ -11,7 +11,7 @@
     <!-- 第二部分：解决方案 -->
     <div 
       class="section" 
-      :class="{ active: currentSection === 1, 'section-hidden': currentSection !== 1 }"
+      :class="{ active: sectionStore.currentSection === 1, 'section-hidden': sectionStore.currentSection !== 1 }"
       ref="solutionSection">
       <solution-section />
     </div>
@@ -19,7 +19,7 @@
     <!-- 第三部分：产品体系 -->
     <div 
       class="section" 
-      :class="{ active: currentSection === 2, 'section-hidden': currentSection !== 2 }"
+      :class="{ active: sectionStore.currentSection === 2, 'section-hidden': sectionStore.currentSection !== 2 }"
       ref="productSystemSection">
       <product-system />
     </div>
@@ -27,7 +27,7 @@
     <!-- 第四部分：公司简介 -->
     <div 
       class="section" 
-      :class="{ active: currentSection === 3, 'section-hidden': currentSection !== 3 }"
+      :class="{ active: sectionStore.currentSection === 3, 'section-hidden': sectionStore.currentSection !== 3 }"
       ref="companyProfileSection">
       <company-profile />
     </div>
@@ -35,7 +35,7 @@
     <!-- 第五部分：标杆案例 -->
     <div 
       class="section" 
-      :class="{ active: currentSection === 4, 'section-hidden': currentSection !== 4 }"
+      :class="{ active: sectionStore.currentSection === 4, 'section-hidden': sectionStore.currentSection !== 4 }"
       ref="caseShowcaseSection">
       <case-showcase />
     </div>
@@ -43,7 +43,7 @@
     <!-- 第六部分：新闻资讯 -->
     <div 
       class="section" 
-      :class="{ active: currentSection === 5, 'section-hidden': currentSection !== 5 }"
+      :class="{ active: sectionStore.currentSection === 5, 'section-hidden': sectionStore.currentSection !== 5 }"
       ref="newsSectionRef">
       <news-section />
     </div>
@@ -51,7 +51,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, provide, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, onErrorCaptured } from 'vue'
+import { useSectionStore } from '@/stores/sectionStore'
 import HomeBanner from '@/components/HomeBanner.vue'
 import SolutionSection from '@/components/SolutionSection.vue'
 import ProductSystem from '@/components/ProductSystem.vue'
@@ -59,9 +60,8 @@ import CompanyProfile from '@/components/CompanyProfile.vue'
 import CaseShowcase from '@/components/CaseShowcase.vue'
 import NewsSection from '@/components/NewsSection.vue'
 
-const currentSection = ref(0)
-// 提供 currentSection 给子组件使用
-provide('currentSection', currentSection)
+// 使用Pinia store代替provide/inject
+const sectionStore = useSectionStore()
 
 const scrolling = ref(false);
 const scrollDelay = 1000; // 滚动延迟，防止连续滚动
@@ -72,13 +72,13 @@ const handleWheel = (e: WheelEvent) => {
   
   scrolling.value = true;
   
-  // 向下滚动，最大值改为5
-  if (e.deltaY > 0 && currentSection.value < 5) {
-    currentSection.value++;
+  // 向下滚动，最大值为5
+  if (e.deltaY > 0 && sectionStore.currentSection < 5) {
+    sectionStore.nextSection(5);
   } 
   // 向上滚动
-  else if (e.deltaY < 0 && currentSection.value > 0) {
-    currentSection.value--;
+  else if (e.deltaY < 0 && sectionStore.currentSection > 0) {
+    sectionStore.prevSection();
   }
   
   // 设置滚动延迟
@@ -93,13 +93,13 @@ const handleKeyDown = (e: KeyboardEvent) => {
   
   scrolling.value = true;
   
-  // 向下箭头或Page Down，最大值改为5
-  if ((e.key === 'ArrowDown' || e.key === 'PageDown') && currentSection.value < 5) {
-    currentSection.value++;
+  // 向下箭头或Page Down，最大值为5
+  if ((e.key === 'ArrowDown' || e.key === 'PageDown') && sectionStore.currentSection < 5) {
+    sectionStore.nextSection(5);
   } 
   // 向上箭头或Page Up
-  else if ((e.key === 'ArrowUp' || e.key === 'PageUp') && currentSection.value > 0) {
-    currentSection.value--;
+  else if ((e.key === 'ArrowUp' || e.key === 'PageUp') && sectionStore.currentSection > 0) {
+    sectionStore.prevSection();
   }
   
   setTimeout(() => {
@@ -108,6 +108,7 @@ const handleKeyDown = (e: KeyboardEvent) => {
 };
 
 onMounted(() => {
+  console.log('首页组件已挂载')
   window.addEventListener('keydown', handleKeyDown);
   
   // 禁用浏览器默认滚动行为
@@ -120,6 +121,11 @@ onBeforeUnmount(() => {
   // 恢复浏览器默认滚动行为
   document.body.style.overflow = '';
 });
+
+onErrorCaptured((err) => {
+  console.error('首页组件捕获到错误:', err)
+  return false // 防止错误继续传播
+})
 </script>
 
 <style scoped>

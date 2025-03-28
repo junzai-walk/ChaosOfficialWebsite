@@ -31,8 +31,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, provide } from 'vue'
 import LogoReflect from './LogoReflect.vue'  // 自定义立体效果组件
+
+// 添加动画状态控制
+const isAnimating = ref(true)
+// 提供动画状态给子组件
+provide('isAnimating', isAnimating)
 
 // 合作伙伴logo数据 - 修正图片路径
 const partnerLogos1 = ref([
@@ -82,6 +87,14 @@ const partnerLogosAll = computed(() => [
   partnerLogos3.value,
   partnerLogos4.value
 ])
+
+// 初始化动画
+onMounted(() => {
+  // 动画持续5秒后结束
+  setTimeout(() => {
+    isAnimating.value = false
+  }, 5000)
+})
 </script>
 
 <style lang="less" scoped>
@@ -91,8 +104,9 @@ const partnerLogosAll = computed(() => [
   background-color: #f7f9fc;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: flex-start;
+  padding-top: 40px;
+  align-items: center
 }
 
 .showcase-content {
@@ -112,7 +126,7 @@ const partnerLogosAll = computed(() => [
   font-size: 16px;
   color: #666;
   text-align: center;
-  margin-bottom: 40px;
+  margin: 30px 0;
 }
 
 .case-grid {
@@ -120,7 +134,7 @@ const partnerLogosAll = computed(() => [
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   margin-bottom: 40px;
-  
+
   .case-item {
     width: 326px;
     height: 200px;
@@ -129,27 +143,27 @@ const partnerLogosAll = computed(() => [
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
-    
+
     &:hover {
       transform: translateY(-5px);
     }
-    
+
     &.baowu {
       object-fit: cover;
       background: url('@/assets/home/Group_417.png') no-repeat center center;
       background-size: 100% 100%;
     }
-    
+
     &.shanxi {
       background: url('@/assets/home/Group_418.png') no-repeat center center;
       background-size: 100% 100%;
     }
-    
+
     &.conch {
       background: url('@/assets/home/Group_419.png') no-repeat center center;
       background-size: 100% 100%;
     }
-    
+
     &.hebei {
       background: url('@/assets/home/Group_420.png') no-repeat center center;
       background-size: 100% 100%;
@@ -159,29 +173,58 @@ const partnerLogosAll = computed(() => [
 
 .partner-wall {
   width: 100%;
-  margin-top: 60px;
-  padding: 40px 20px;
-  background-color: #ffffff;
-  perspective: 1000px;
-  box-shadow: inset 0 10px 20px -10px rgba(0, 0, 0, 0.05),
-              inset 0 -10px 20px -10px rgba(0, 0, 0, 0.05);
-              
+  height: 100vh;
+  padding: 30px 0 40px 20px;
+  perspective: 2000px;
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 450px;
+  // overflow: hidden;
+
   .partner-row {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px; // 减小间距
-    margin-bottom: 30px; // 减小行间距
-    
+    gap: 25px;
+    margin-bottom: 30px;
+
     &:last-child {
       margin-bottom: 0;
     }
-    
+
     .logo-container {
       perspective: 800px;
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: all 0.5s ease-out;
+    }
+  }
+}
+
+/* 添加动画类 */
+.partner-wall {
+  .partner-row {
+    transition: transform 5s ease-out, opacity 5s ease-out;
+
+    &:nth-child(1) {
+      transform: v-bind("isAnimating ? 'translateZ(800px) scale(2.0)' : 'translateZ(0) scale(1)'");
+      opacity: v-bind("isAnimating ? '0.2' : '1'");
+    }
+
+    &:nth-child(2) {
+      transform: v-bind("isAnimating ? 'translateZ(600px) scale(1.8)' : 'translateZ(0) scale(1)'");
+      opacity: v-bind("isAnimating ? '0.4' : '1'");
+    }
+
+    &:nth-child(3) {
+      transform: v-bind("isAnimating ? 'translateZ(400px) scale(1.6)' : 'translateZ(0) scale(1)'");
+      opacity: v-bind("isAnimating ? '0.6' : '1'");
+    }
+
+    &:nth-child(4) {
+      transform: v-bind("isAnimating ? 'translateZ(200px) scale(1.4)' : 'translateZ(0) scale(1)'");
+      opacity: v-bind("isAnimating ? '0.8' : '1'");
     }
   }
 }

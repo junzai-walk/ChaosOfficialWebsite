@@ -6,4 +6,10 @@ const router = createRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  // 重置页面滚动
+  document.body.style.overflow = ''
+  next()
+})
+
 export default router

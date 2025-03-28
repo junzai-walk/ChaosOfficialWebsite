@@ -10,17 +10,25 @@
     <div class="content">
       <h1 class="title">基于核心数据算法 提供工业智能服务</h1>
       <p class="subtitle">凯奥思数据 让工业更智能</p>
-      <el-button type="primary" size="large" class="cta-button">了解更多</el-button>
+      <el-button type="primary" size="large" class="cta-button" @click="handleConsult">了解更多</el-button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 // 直接导入视频文件
 import videoSource from '@/assets/video/official_video.mp4'
 
 const videoElement = ref<HTMLVideoElement | null>(null)
+const router = useRouter()
+
+const handleConsult = () => {
+  // 处理咨询按钮点击
+  console.log('咨询按钮被点击')
+  router.push('/about')
+}
 
 onMounted(() => {
   if (videoElement.value) {

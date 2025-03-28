@@ -16,7 +16,7 @@
       <div class="solution-info">
         <h3 class="industry-title">{{ industries[activeIndustry].name }}</h3>
         <p class="industry-desc">{{ industries[activeIndustry].description }}</p>
-        <el-button class="learn-more-btn" type="primary">
+        <el-button class="learn-more-btn" type="primary" @click="navigateToIndustry(activeIndustry)">
           了解更多
         </el-button>
 
@@ -39,41 +39,110 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const activeIndustry = ref(0);
+
+// 导航到行业详情页面
+const navigateToIndustry = (industryIndex: number) => {
+  // 根据行业索引映射到industry页面的对应section
+  const sectionMap: { [key: number]: number } = {
+    0: 0,  // 钢铁行业 - section 0
+    1: 5,  // 水泥行业 - section 5
+    2: 10, // 煤炭行业 - section 10
+    3: 15, // 化工行业 - section 15
+    4: 20, // 汽车行业 - section 20
+    5: 25  // 新能源行业 - section 25
+  };
+  
+  // 导航到industry页面并传递section参数
+  router.push({
+    path: '/industry',
+    query: { section: sectionMap[industryIndex] }
+  });
+};
 
 // 示例数据
 const industries = ref([
   {
     name: '钢铁行业',
-    description: '钢铁行业作为传统制造业的代表，正面临着大的转型升级压力。为了提升生产效率、降低生产成本、提高产品质量并迈进日益增长的市场需求......',
-    image: '/src/assets/home/Rectangle_8.png',
+    description: '结合机理模型、数据模型、数字孪生技术、多变量预测控制技术，解决钢铁企业生产工艺、设备控制等一系列工业生产痛点，实现工艺流、生产信息流、设备流"三流合一"，稳定提升成品质量，降低生产线设备故障风险、人力成本和能源消耗',
+    image: '/src/assets/industry/steel.png',
     cases: [
-      '梅钢设备运维管理系统',
-      '钢铁厂能源管理系统',
-      '钢铁生产质量控制系统',
-      '智能冶炼控制平台',
-      '钢铁企业ERP系统',
-      '钢铁产品追溯系统'
+      '设备预测性维护与健康管理系统',
+      '设备全生命周期管理系统',
+      '先进过程控制系统',
+      '能源管理与优化系统',
+      '煤气官网平衡优化系统',
+      '板坯库调度系统'
     ]
   },
   { 
     name: '水泥行业', 
-    description: '水泥行业相关描述...', 
-    image: '/src/assets/home/Rectangle_8.png',
+    description: '基于超思工业互联网平台，为水泥行业提供专业的智能化解决方案。覆盖智能运维、智能控制、能效优化等领域，实现设备健康状态实时监控预警、工艺控制优化，降低运维成本、显著提升能效与产能稳定性', 
+    image: '/src/assets/industry/cement-bg.png',
     cases: [
-      '水泥生产线监控系统',
-      '水泥厂能耗管理平台',
-      '水泥质量检测系统',
-      '环保排放监测系统',
-      '水泥生产调度系统',
-      '原料库存管理系统'
+      '设备预测性维护与健康管理系统',
+      '设备全生命周期管理系统',
+      '先进过程控制系统',
+      '能源管理与优化系统',
+      '库存优化系统',
+      '生产计划排程系统'
     ]
   },
-  { name: '煤炭行业', description: '煤炭行业相关描述...', image: '/src/assets/home/Rectangle_8.png' },
-  { name: '化工行业', description: '化工行业相关描述...', image: '/src/assets/home/Rectangle_8.png' },
-  { name: '汽车行业', description: '汽车行业相关描述...', image: '/src/assets/home/Rectangle_8.png' },
-  { name: '新能源行业', description: '新能源行业相关描述...', image: '/src/assets/home/Rectangle_8.png' }
+  { 
+    name: '煤炭行业', 
+    description: '聚焦核心设备智能化运维，采用物联网、人工智能、大数据等技术，通过特征提取+机理建模的方式实现设备状态感知、智能预警、故障诊断、健康评估，并以统一算法库与知识库赋能矿井设备全生命周期管理，帮助煤矿企业实现数字化转型升级', 
+    image:'/src/assets/industry/coal-bg.jpg',
+    cases: [
+      '设备预测性维护与健康管理系统',
+      '设备全生命周期管理系统',
+      '先进过程控制系统',
+      '能源管理与优化系统',
+      '库存优化系统',
+      '智能配料系统'
+    ]
+  },
+  { 
+    name: '化工行业', 
+    description: '利用物联网、大数据、人工智能等技术手段，对化工产线上设备运行数据进行采集、分析和预测，从而预测设备故障风险，以智能运维驱动设备全生命周期管理，保障化工生产安全、高效、可持续', 
+    image:'/src/assets/industry/chemical-bg.jpg',
+    cases: [
+      '设备预测性维护与健康管理系统',
+      '设备全生命周期管理系统',
+      '先进过程控制系统',
+      '能源管理与优化系统',
+      '库存优化系统',
+      '生产计划排程系统'
+    ]
+  },
+  { 
+    name: '汽车行业', 
+    description: '为汽车行业提供设备预测性维护、全生命周期管理及供应链优化等解决方案，覆盖冲压、焊接等核心工艺，通过振动分析、动态排产算法及换电站健康监测技术，降低非计划停机，提升物流效率，助力车企实现设备可靠、生产高效与绿色转型', 
+    image: '/src/assets/industry/car-bg.png',
+    cases: [
+      '设备预测性维护与健康管理系统',
+      '设备全生命周期管理系统',
+      '先进过程控制系统',
+      '能源管理与优化系统',
+      '智能装箱优化系统',
+      '生产计划排程系统'
+    ]
+  },
+  { 
+    name: '新能源行业', 
+    description: '以智能运维驱动设备可靠性提升，打破信息壁垒，建立规范和有效的集中管理机制，助力新能源行业高效、安全、可持续发展', 
+    image: '/src/assets/industry/wind-bg.png',
+    cases: [
+      '设备预测性维护与健康管理系统',
+      '设备全生命周期管理系统',
+      '先进过程控制系统',
+      '能源管理与优化系统',
+      '库存优化系统',
+      '生产计划排程系统'
+    ]
+  }
 ]);
 
 // 移除独立的caseItems，使用计算属性来获取当前行业的案例
@@ -127,7 +196,7 @@ const currentCases = computed(() => {
       font-weight: bolder;
 
       &.active {
-        border-bottom: 0.125rem solid #1890ff;
+        // border-bottom: 0.125rem solid #1890ff;
         color: #1890ff;
         font-weight: bold;
       }

@@ -32,15 +32,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref, provide, onMounted, onBeforeUnmount } from 'vue'
+import { ref, provide, onMounted, onBeforeUnmount, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import PartnerTypes from '@/components/partners/PartnerTypes.vue';
 import ComprehensiveSupport from '@/components/partners/ComprehensiveSupport.vue';
 import Consult from '@/components/partners/consult.vue';
 
-const currentSection = ref(0)
+const route = useRoute();
+const currentSection = ref(0);
 // 提供 currentSection 给子组件使用
-provide('currentSection', currentSection)
+provide('currentSection', currentSection);
 
+// 监听路由参数变化
+watch(() => route.query.section, (newSection) => {
+  if (newSection) {
+    currentSection.value = parseInt(newSection as string);
+  }
+}, { immediate: true });
 
 const scrolling = ref(false);
 const scrollDelay = 1000; // 滚动延迟，防止连续滚动
