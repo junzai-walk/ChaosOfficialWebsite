@@ -125,10 +125,19 @@ const logoStyle = computed(() => {
 });
 
 // 投影样式
+// const shadowStyle = computed(() => ({
+//   background: isWeighted.value ? 
+//     `radial-gradient(circle at center, rgba(0,0,0,0.25), rgba(0,0,0,0.15))` : 
+//     `linear-gradient(135deg, transparent, rgba(0,0,0,0.2))`,
+//   transform: isAnimating.value ? 
+//     `translateZ(${-50 - props.rowIndex * 10}px) translateY(10px) scale(0.9)` : 
+//     `translateZ(-20px) scale(0.98)`
+// }));
+
 const shadowStyle = computed(() => ({
   background: isWeighted.value ? 
-    `radial-gradient(circle at center, rgba(0,0,0,0.25), rgba(0,0,0,0.15))` : 
-    `linear-gradient(135deg, transparent, rgba(0,0,0,0.2))`,
+    `transparent` : 
+    `transparent`,
   transform: isAnimating.value ? 
     `translateZ(${-50 - props.rowIndex * 10}px) translateY(10px) scale(0.9)` : 
     `translateZ(-20px) scale(0.98)`
@@ -228,7 +237,7 @@ onMounted(() => {
     transform-origin: center center;
     position: relative;
     z-index: 2;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+    // filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
   }
   
   .depth-effect {
@@ -239,10 +248,10 @@ onMounted(() => {
     left: 0;
     z-index: 1;
     transform: translateZ(-20px) scale(0.98);
-    filter: blur(4px) brightness(0.8);
-    background: linear-gradient(135deg, transparent, rgba(0,0,0,0.2));
+    //filter: blur(4px) brightness(0.8);
+    //background: linear-gradient(135deg, transparent, rgba(0,0,0,0.2));
     border-radius: 4px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+   // box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     opacity: 0.8;
     transform-origin: bottom center;
     transition: all 0.3s ease;

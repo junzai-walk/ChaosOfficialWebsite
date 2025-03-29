@@ -41,43 +41,43 @@ provide('isAnimating', isAnimating)
 
 // 合作伙伴logo数据 - 修正图片路径
 const partnerLogos1 = ref([
-  new URL('@/assets/logos/Group 422.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 423.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 424.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 425.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 426.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 427.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 428.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 422-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 423-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 424-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 425-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 426-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 427-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 428-Photoroom.png', import.meta.url).href,
 ])
 
 const partnerLogos2 = ref([
-  new URL('@/assets/logos/Group 429.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 430.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 431.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 432.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 433.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 434.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 435.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 429-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 430-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 431-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 432-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 433-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 434-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 435-Photoroom.png', import.meta.url).href,
 ])
 
 const partnerLogos3 = ref([
-  new URL('@/assets/logos/Group 437.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 438.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 439.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 440.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 441.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 442.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 443.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 437-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 438-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 439-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 440-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 441-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 442-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 443-Photoroom.png', import.meta.url).href,
 ])
 
 const partnerLogos4 = ref([
-  new URL('@/assets/logos/Group 444.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 445.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 446.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 447.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 448.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 449.png', import.meta.url).href,
-  new URL('@/assets/logos/Group 450.png', import.meta.url).href, // 修正为Group 450.png
+  new URL('@/assets/logo-wall/Group 444-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 445-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 446-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 447-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 448-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 449-Photoroom.png', import.meta.url).href,
+  new URL('@/assets/logo-wall/Group 450-Photoroom.png', import.meta.url).href, // 修正为Group 450.png
 ])
 
 // 汇总所有logo行

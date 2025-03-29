@@ -2,306 +2,286 @@
   <div class="products-page" @wheel="handleWheel">
     <!-- 产品软件 -->
     <!-- 第一部分：设备预测性维护与健康管理系统 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 0, 'section-hidden': sectionStore.currentSection !== 0 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 0, 'section-hidden': sectionStore.currentSection !== 0 }">
       <ProductHero :background-image="phmBackgroundImage" title="设备预测性维护与健康管理系统（PHM）" />
     </div>
 
     <!-- 第二部分：产品描述 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 1, 'section-hidden': sectionStore.currentSection !== 1 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 1, 'section-hidden': sectionStore.currentSection !== 1 }">
       <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescription"
         :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第三部分：产品功能 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 2, 'section-hidden': sectionStore.currentSection !== 2 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 2, 'section-hidden': sectionStore.currentSection !== 2 }">
       <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :features="productFeatures" />
     </div>
 
     <!-- 第四部分：特色优势 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 3, 'section-hidden': sectionStore.currentSection !== 3 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 3, 'section-hidden': sectionStore.currentSection !== 3 }">
       <ProductAdvantages :nav-steps="productSteps" :default-active-step="3" :advantages="productAdvantages" />
     </div>
 
     <!-- 第五部分：典型案例 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 4, 'section-hidden': sectionStore.currentSection !== 4 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 4, 'section-hidden': sectionStore.currentSection !== 4 }">
       <ProductCases :nav-steps="productSteps" :default-active-step="4" :cases="productCases" />
     </div>
 
     <!-- 第六部分：设备全生命周期管理系统(EAM) -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 5, 'section-hidden': sectionStore.currentSection !== 5 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 5, 'section-hidden': sectionStore.currentSection !== 5 }">
       <ProductHero :background-image="eamBackgroundImage" title="设备全生命周期管理系统(EAM)" />
     </div>
 
     <!-- 第七部分：产品概述 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 6, 'section-hidden': sectionStore.currentSection !== 6 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 6, 'section-hidden': sectionStore.currentSection !== 6 }">
       <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionEam"
         :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第八部分：核心功能 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 7, 'section-hidden': sectionStore.currentSection !== 7 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 7, 'section-hidden': sectionStore.currentSection !== 7 }">
       <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :features="productFeaturesEam" />
     </div>
 
     <!-- 第九部分：特色优势 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 8, 'section-hidden': sectionStore.currentSection !== 8 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 8, 'section-hidden': sectionStore.currentSection !== 8 }">
       <ProductAdvantages :nav-steps="productSteps" :default-active-step="3" :advantages="productAdvantagesEam" />
     </div>
 
     <!-- 第十部分：典型案例 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 9, 'section-hidden': sectionStore.currentSection !== 9 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 9, 'section-hidden': sectionStore.currentSection !== 9 }">
       <ProductCases :nav-steps="productSteps" :default-active-step="4" :cases="productCasesEam" />
     </div>
 
     <!-- 第十一部分：先进过程控制系统(APC) -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 10, 'section-hidden': sectionStore.currentSection !== 10 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 10, 'section-hidden': sectionStore.currentSection !== 10 }">
       <ProductHero :background-image="apcBackgroundImage" title="先进过程控制系统(APC)" />
     </div>
 
     <!-- 第十二部分：产品概述 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 11, 'section-hidden': sectionStore.currentSection !== 11 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 11, 'section-hidden': sectionStore.currentSection !== 11 }">
       <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionApc"
         :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第十三部分：核心功能 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 12, 'section-hidden': sectionStore.currentSection !== 12 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 12, 'section-hidden': sectionStore.currentSection !== 12 }">
       <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :features="productFeaturesApc" />
     </div>
 
     <!-- 第十四部分：特色优势 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 13, 'section-hidden': sectionStore.currentSection !== 13 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 13, 'section-hidden': sectionStore.currentSection !== 13 }">
       <ProductAdvantages :nav-steps="productSteps" :default-active-step="3" :advantages="productAdvantagesApc" />
     </div>
 
     <!-- 第十五部分：典型案例 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 14, 'section-hidden': sectionStore.currentSection !== 14 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 14, 'section-hidden': sectionStore.currentSection !== 14 }">
       <ProductCases :nav-steps="productSteps" :default-active-step="4" :cases="productCasesApc" />
     </div>
 
     <!-- 第十六部分：能源管理与优化系统(EMS) -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 15, 'section-hidden': sectionStore.currentSection !== 15 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 15, 'section-hidden': sectionStore.currentSection !== 15 }">
       <ProductHero :background-image="emsBackgroundImage" title="能源管理与优化系统(EMS)" />
     </div>
 
     <!-- 第十七部分：产品概述 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 16, 'section-hidden': sectionStore.currentSection !== 16 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 16, 'section-hidden': sectionStore.currentSection !== 16 }">
       <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionEms"
         :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第十八部分：核心功能 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 17, 'section-hidden': sectionStore.currentSection !== 17 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 17, 'section-hidden': sectionStore.currentSection !== 17 }">
       <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :features="productFeaturesEms" />
     </div>
 
     <!-- 第十八部分：特色优势 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 18, 'section-hidden': sectionStore.currentSection !== 18 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 18, 'section-hidden': sectionStore.currentSection !== 18 }">
       <ProductEmsFeatures :nav-steps="productSteps" :default-active-step="3" main-title="引入核心算法配置模块"
         sub-title="建立能源需求预测与规划" :features="productEmsPredictions" />
     </div>
 
     <!-- 第十九部分：特色优势 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 19, 'section-hidden': sectionStore.currentSection !== 19 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 19, 'section-hidden': sectionStore.currentSection !== 19 }">
       <ProductEmsStrategy :nav-steps="productSteps" :default-active-step="3" title="用能诊断及节能减排策略优化"
         :strategies="emsStrategies" />
     </div>
 
     <!-- 第二十部分：应用成效 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 20, 'section-hidden': sectionStore.currentSection !== 20 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 20, 'section-hidden': sectionStore.currentSection !== 20 }">
       <ProductEmsResults :nav-steps="productSteps" :default-active-step="4" title="应用成效" :results="emsResults" />
     </div>
 
     <!-- 第二十一部分：库存优化(IOP) -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 21, 'section-hidden': sectionStore.currentSection !== 21 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 21, 'section-hidden': sectionStore.currentSection !== 21 }">
       <ProductHero title="库存优化(IOP)" :background-image="inventoryBackgroundImage" />
     </div>
 
     <!-- 第二十二部分：产品描述 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 22, 'section-hidden': sectionStore.currentSection !== 22 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 22, 'section-hidden': sectionStore.currentSection !== 22 }">
       <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionIop"
         :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第二十三部分：核心功能 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 23, 'section-hidden': sectionStore.currentSection !== 23 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 23, 'section-hidden': sectionStore.currentSection !== 23 }">
       <ProductIopFeatures :nav-steps="productSteps" :default-active-step="2" />
     </div>
 
     <!-- 第二十四部分：特色优势 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 24, 'section-hidden': sectionStore.currentSection !== 24 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 24, 'section-hidden': sectionStore.currentSection !== 24 }">
       <ProductIopAdvantages :nav-steps="productSteps" :default-active-step="3" />
     </div>
 
     <!-- 第二十五部分：应用成效 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 25, 'section-hidden': sectionStore.currentSection !== 25 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 25, 'section-hidden': sectionStore.currentSection !== 25 }">
       <ProductIopResults :nav-steps="productSteps" :default-active-step="4" title="应用成效" :results="iopResults" />
     </div>
 
     <!-- 第二十六部分：生产计划排程(APS) -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 26, 'section-hidden': sectionStore.currentSection !== 26 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 26, 'section-hidden': sectionStore.currentSection !== 26 }">
       <ProductHero title="生产计划排程(APS)" :background-image="apsBackgroundImage" />
     </div>
 
     <!-- 第二十七部分：产品概述 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 27, 'section-hidden': sectionStore.currentSection !== 27 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 27, 'section-hidden': sectionStore.currentSection !== 27 }">
       <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionAps"
         :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第二十八部分：核心功能 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 28, 'section-hidden': sectionStore.currentSection !== 28 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 28, 'section-hidden': sectionStore.currentSection !== 28 }">
       <ProductApsFeatures :nav-steps="productStepsAnother" :default-active-step="2" />
     </div>
 
     <!-- 第二十九部分：特色优势 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 29, 'section-hidden': sectionStore.currentSection !== 29 }">
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 29, 'section-hidden': sectionStore.currentSection !== 29 }">
       <ProductAdvantages :nav-steps="productStepsAnother" :default-active-step="3" :advantages="productAdvantagesAps" />
     </div>
 
     <!-- 产品硬件 -->
     <!-- 第三十部分：有线传感器 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 30, 'section-hidden': sectionStore.currentSection !== 30 }">
-      <ProductHardwareSensor 
-        :title="wireSensorTitle" 
-        :content="wireSensorContent"
-        :background-image="hardwareBackground1" 
-        :main-image="hardwareScrew" 
-        :secondary-image="hardwareImage2" 
-        />
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 30, 'section-hidden': sectionStore.currentSection !== 30 }">
+      <ProductHardwareSensor :title="wireSensorTitle" :content="wireSensorContent"
+        :background-image="hardwareBackground1" :main-image="hardwareScrew" :secondary-image="hardwareImage2" />
     </div>
 
     <!-- 第三十一部分：有线传感器 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 31, 'section-hidden': sectionStore.currentSection !== 31 }">
-      <ProductHardwareSensorLight 
-          :nav-steps="productStepsLight" 
-          :default-active-step="1"
-          :title="wireSensorTitle"
-          :content="wireSensorContentLight"
-          :main-image="hardwareScrew" 
-          :secondary-image="hardwareImage2"
-         />
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 31, 'section-hidden': sectionStore.currentSection !== 31 }">
+      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1" :title="wireSensorTitle"
+        :content="wireSensorContentLight" :main-image="hardwareScrew" :secondary-image="hardwareImage2" />
     </div>
 
     <!-- 第三十二部分：有线传感器 - 规格参数表格 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 32, 'section-hidden': sectionStore.currentSection !== 32 }">
-      <ProductHardwareSensorModel 
-          :nav-steps="productStepsLight" 
-          :default-active-step="2"
-          :title="wireSensorTitle"
-          :main-image="hardwareTable" 
-          :secondary-image="hardwareImage2"
-        />
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 32, 'section-hidden': sectionStore.currentSection !== 32 }">
+      <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2" :title="wireSensorTitle"
+        :main-image="hardwareTable" :secondary-image="hardwareImage2" />
     </div>
 
 
     <!-- 第三十三部分：有线传感器 - 无线智能传感器 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 33, 'section-hidden': sectionStore.currentSection !== 33 }">
-      <ProductHardwareSensor 
-        :title="wirelessSensorTitle" 
-        :content="[]"
-        :background-image="hardwareBackground1" 
-        :main-image="hardwareWireless" 
-        :secondary-image="hardwareImage2" 
-        />
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 33, 'section-hidden': sectionStore.currentSection !== 33 }">
+      <ProductHardwareSensor :title="wirelessSensorTitle" :content="[]" :background-image="hardwareBackground1"
+        :main-image="hardwareWireless" :secondary-image="hardwareImage2" />
     </div>
 
     <!-- 第三十四部分：有线传感器 - 产品亮点 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 34, 'section-hidden': sectionStore.currentSection !== 34 }">
-      <ProductHardwareSensorLight 
-          :nav-steps="productStepsLight" 
-          :default-active-step="1"
-          :title="wirelessSensorTitle"
-          :content="wirelessSensorContentLight"
-          :main-image="hardwareWireless" 
-          :secondary-image="hardwareImage2"
-         />
-    </div>  
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 34, 'section-hidden': sectionStore.currentSection !== 34 }">
+      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1" :title="wirelessSensorTitle"
+        :content="wirelessSensorContentLight" :main-image="hardwareWireless" :secondary-image="hardwareImage2" />
+    </div>
 
     <!-- 第三十五部分：有线传感器 - 规格参数表格 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 35, 'section-hidden': sectionStore.currentSection !== 35 }">
-      <ProductHardwareSensorModel 
-          :nav-steps="productStepsLight" 
-          :default-active-step="2"
-          :title="wireSensorModelTitle"
-          :main-image="hardwareTable2" 
-          :secondary-image="hardwareImage2"
-        />
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 35, 'section-hidden': sectionStore.currentSection !== 35 }">
+      <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2" :title="wireSensorModelTitle"
+        :main-image="hardwareTable2" :secondary-image="hardwareImage2" />
     </div>
 
     <!-- 第三十六部分：边缘智能采集器-->
-    <div class="section" :class="{ active: sectionStore.currentSection === 36, 'section-hidden': sectionStore.currentSection !== 36 }">
-      <ProductHardwareSensor 
-        :title="edgeSmartCollectorTitle" 
-        :content="wirelessSensorContent"
-        :background-image="hardwareBackground1" 
-        :main-image="hardwareEdge" 
-        :secondary-image="hardwareImage2" 
-        />
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 36, 'section-hidden': sectionStore.currentSection !== 36 }">
+      <ProductHardwareSensor :title="edgeSmartCollectorTitle" :content="wirelessSensorContent"
+        :background-image="hardwareBackground1" :main-image="hardwareEdge" :secondary-image="hardwareImage2" />
     </div>
-    
+
     <!-- 第三十七部分：边缘智能采集器 - 产品亮点 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 37, 'section-hidden': sectionStore.currentSection !== 37 }">
-      <ProductHardwareSensorLight 
-          :nav-steps="productStepsLight" 
-          :default-active-step="1"
-          :title="edgeSmartCollectorTitle"
-          :content="edgeSmartCollectorContentLight"
-          :main-image="hardwareEdge2" 
-          :secondary-image="hardwareImage2"
-         />
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 37, 'section-hidden': sectionStore.currentSection !== 37 }">
+      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1"
+        :title="edgeSmartCollectorTitle" :content="edgeSmartCollectorContentLight" :main-image="hardwareEdge2"
+        :secondary-image="hardwareImage2" />
     </div>
-    
+
     <!-- 第三十八部分：边缘智能采集器 - 规格参数 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 38, 'section-hidden': sectionStore.currentSection !== 38 }">
-      <ProductHardwareSensorModel 
-          :nav-steps="productStepsLight" 
-          :default-active-step="2"
-          :title="edgeSmartCollectorTitle"
-          :main-image="hardwareTable3" 
-          :secondary-image="hardwareImage2"
-        />
-    </div>  
-    
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 38, 'section-hidden': sectionStore.currentSection !== 38 }">
+      <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2"
+        :title="edgeSmartCollectorTitle" :main-image="hardwareTable3" :secondary-image="hardwareImage2" />
+    </div>
+
     <!-- 第三十九部分：无线智能网关 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 39, 'section-hidden': sectionStore.currentSection !== 39 }">
-      <ProductHardwareSensor 
-        :title="wirelessSmartGatewayTitle" 
-        :content="wirelessSmartGatewayContent"
-        :background-image="hardwareBackground1" 
-        :main-image="hardwareGateway"
-        :secondary-image="hardwareImage2"
-      />
-    </div>  
-         
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 39, 'section-hidden': sectionStore.currentSection !== 39 }">
+      <ProductHardwareSensor :title="wirelessSmartGatewayTitle" :content="wirelessSmartGatewayContent"
+        :background-image="hardwareBackground1" :main-image="hardwareGateway" :secondary-image="hardwareImage2" />
+    </div>
+
     <!-- 第四十部分：无线智能网关 - 产品亮点-->
-    <div class="section" :class="{ active: sectionStore.currentSection === 40, 'section-hidden': sectionStore.currentSection !== 40 }">
-      <ProductHardwareSensorLight 
-        :nav-steps="productStepsLight" 
-        :default-active-step="1"
-        :title="wirelessSmartGatewayTitle"
-        :content="wirelessSmartGatewayContentLight"
-        :main-image="hardwareGateway"
-        :secondary-image="hardwareImage2"
-      />
-    </div>  
-    
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 40, 'section-hidden': sectionStore.currentSection !== 40 }">
+      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1"
+        :title="wirelessSmartGatewayTitle" :content="wirelessSmartGatewayContentLight" :main-image="hardwareGateway"
+        :secondary-image="hardwareImage2" />
+    </div>
+
     <!-- 第四十一部分：无线智能网关 - 规格参数-->
-    <div class="section" :class="{ active: sectionStore.currentSection === 41, 'section-hidden': sectionStore.currentSection !== 41 }">
-      <ProductHardwareSensorModel 
-        :nav-steps="productStepsLight" 
-        :default-active-step="2"
-        :title="wirelessSmartGatewayTitle"
-        :main-image="hardwareTable4"
-        :secondary-image="hardwareImage2"
-      />
-    </div>  
-    
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 41, 'section-hidden': sectionStore.currentSection !== 41 }">
+      <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2"
+        :title="wirelessSmartGatewayTitle" :main-image="hardwareTable4" :secondary-image="hardwareImage2" />
+    </div>
+
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useSectionStore } from '@/stores/sectionStore'
 import ProductHero from '@/components/products/ProductHero.vue'
@@ -912,23 +892,23 @@ const wirelessSensorContent = [
 
 // 无线智能网关内容
 const wirelessSmartGatewayContent = [
-  { 
-    title: '支持地温传感器数量', 
-    value: '32', 
+  {
+    title: '支持地温传感器数量',
+    value: '32',
     unit: '个',
-    highlight: true 
+    highlight: true
   },
-  { 
-    title: '特征数据存储天数', 
-    value: '30', 
+  {
+    title: '特征数据存储天数',
+    value: '30',
     unit: '天',
-    highlight: true 
+    highlight: true
   },
-  { 
-    title: '防护等级', 
-    value: 'IP66', 
+  {
+    title: '防护等级',
+    value: 'IP66',
     unit: '',
-    highlight: true 
+    highlight: true
   }
 ]
 const wireSensorContentLight = [
@@ -1029,18 +1009,18 @@ const wirelessSmartGatewayContentLight = [
 // 处理鼠标滚轮事件
 const handleWheel = (e: WheelEvent) => {
   if (scrolling.value) return;
-  
+
   scrolling.value = true;
-  
+
   // 向下滚动，最大值为41
   if (e.deltaY > 0 && sectionStore.currentSection < 41) {
     sectionStore.nextSection(41);
-  } 
+  }
   // 向上滚动
   else if (e.deltaY < 0 && sectionStore.currentSection > 0) {
     sectionStore.prevSection();
   }
-  
+
   // 设置滚动延迟
   setTimeout(() => {
     scrolling.value = false;
@@ -1050,18 +1030,18 @@ const handleWheel = (e: WheelEvent) => {
 // 处理键盘事件
 const handleKeyDown = (e: KeyboardEvent) => {
   if (scrolling.value) return;
-  
+
   scrolling.value = true;
-  
+
   // 向下箭头或Page Down，最大值为41
   if ((e.key === 'ArrowDown' || e.key === 'PageDown') && sectionStore.currentSection < 41) {
     sectionStore.nextSection(41);
-  } 
+  }
   // 向上箭头或Page Up
   else if ((e.key === 'ArrowUp' || e.key === 'PageUp') && sectionStore.currentSection > 0) {
     sectionStore.prevSection();
   }
-  
+
   setTimeout(() => {
     scrolling.value = false;
   }, scrollDelay);
@@ -1069,16 +1049,36 @@ const handleKeyDown = (e: KeyboardEvent) => {
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeyDown);
-  
+
   // 禁用浏览器默认滚动行为
   document.body.style.overflow = 'hidden';
+
+  // 检查URL参数中是否有section，有则跳转到对应section
+  if (route.query.section) {
+    const sectionNumber = parseInt(route.query.section as string)
+    if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 41) {
+      sectionStore.setCurrentSection(sectionNumber)
+    }
+  }
+});
+
+// 添加路由监听器，以支持浏览器前进后退按钮和URL参数变化
+watch(() => route.query.section, (newSection) => {
+  if (newSection) {
+    const sectionNumber = parseInt(newSection as string)
+    if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 41) {
+      sectionStore.setCurrentSection(sectionNumber)
+    }
+  }
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeyDown);
-  
+
   // 恢复浏览器默认滚动行为
   document.body.style.overflow = '';
+  // 重置section状态, 否则在返回时会停留在当前section
+  sectionStore.setCurrentSection(0)
 });
 </script>
 

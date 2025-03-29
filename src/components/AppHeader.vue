@@ -14,8 +14,53 @@
           :text-color="isHomePage ? '#fff' : '#333'" :active-text-color="isHomePage ? '#fff' : '#1890ff'"
           @select="handleSelect" :ellipsis="false">
           <el-menu-item index="/">{{ $t('nav.home') }}</el-menu-item>
-          <el-menu-item index="/industry">{{ $t('nav.industry') }}</el-menu-item>
-          <el-menu-item index="/products">{{ $t('nav.products') }}</el-menu-item>
+          
+          <!-- 行业方案菜单改为子菜单 -->
+          <el-sub-menu index="/industry" popper-class="industry-submenu">
+            <template #title>{{ $t('nav.industry') }}</template>
+            <el-menu-item v-for="(industry, index) in industries" :key="industry.section" 
+              :index="`/industry?section=${industry.section}`" class="industry-menu-item">
+              <img :src="industry.icon" alt="" class="industry-icon" />
+              <span>{{ industry.name }}</span>
+            </el-menu-item>
+          </el-sub-menu>
+          
+          <!-- 将产品中心改为下拉子菜单 -->
+          <el-sub-menu index="/products" popper-class="products-submenu">
+            <template #title>{{ $t('nav.products') }}</template>
+            <!-- 智慧软件分组 -->
+            <el-menu-item-group title="智慧软件">
+              <el-menu-item index="/products?section=0" class="product-menu-item">
+                设备预测性维护与健康管理
+              </el-menu-item>
+              <el-menu-item index="/products?section=5" class="product-menu-item">
+                设备全生命周期管理
+              </el-menu-item>
+              <el-menu-item index="/products?section=10" class="product-menu-item">
+                先进过程控制
+              </el-menu-item>
+              <el-menu-item index="/products?section=15" class="product-menu-item">
+                能源管理与优化
+              </el-menu-item>
+            </el-menu-item-group>
+            
+            <!-- 智能硬件分组 -->
+            <el-menu-item-group title="智能硬件">
+              <el-menu-item index="/products?section=30" class="product-menu-item">
+                有线传感器
+              </el-menu-item>
+              <el-menu-item index="/products?section=33" class="product-menu-item">
+                无线智能传感器
+              </el-menu-item>
+              <el-menu-item index="/products?section=36" class="product-menu-item">
+                边缘智能采集器
+              </el-menu-item>
+              <el-menu-item index="/products?section=39" class="product-menu-item">
+                无线智能网关
+              </el-menu-item>
+            </el-menu-item-group>
+          </el-sub-menu>
+          
           <el-menu-item index="/customer">{{ $t('nav.customer') }}</el-menu-item>
           <el-menu-item index="/partners">{{ $t('nav.partners') }}</el-menu-item>
           <el-menu-item index="/about">{{ $t('nav.about') }}</el-menu-item>
@@ -68,6 +113,7 @@ import { ArrowDown } from '@element-plus/icons-vue'
 import { ref, watch, onMounted, computed, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { useSectionStore } from '@/stores/sectionStore'
 import chaosWhite from '@/assets/logos/chaos_white.png'
 import chaosBlue from '@/assets/logos/chaos_blue.png'
 import telephoneWhite from '@/assets/header/telephone.png'
@@ -75,9 +121,28 @@ import telephoneBlack from '@/assets/header/black_telephone.png'
 import earthWhite from '@/assets/header/earth.png'
 import earthBlack from '@/assets/header/black_earth.png'
 
+// 行业图标导入
+import steelIcon from '@/assets/header/hover-steel.png'
+import cementIcon from '@/assets/header/hover-cement.png'
+import coalIcon from '@/assets/header/hover-coal.png'
+import chemicalIcon from '@/assets/header/hover-chemical.png'
+import carIcon from '@/assets/header/hover-car.png'
+import newEnergyIcon from '@/assets/header/hover-new-energy.png'
+
 const route = useRoute()
 const router = useRouter()
 const { t, locale } = useI18n()  // 使用i18n
+const sectionStore = useSectionStore()
+
+// 行业数据定义
+const industries = [
+  { name: '钢铁', section: 0, icon: steelIcon },
+  { name: '水泥', section: 5, icon: cementIcon },
+  { name: '煤炭', section: 10, icon: coalIcon },
+  { name: '化工', section: 15, icon: chemicalIcon },
+  { name: '汽车', section: 20, icon: carIcon },
+  { name: '新能源', section: 25, icon: newEnergyIcon }
+]
 
 const activeMenu = ref('/')
 
@@ -93,9 +158,11 @@ const handleLanguageChange = (command: string) => {
   localStorage.setItem('language', command)
 }
 
-// 计算属性：判断是否在首页
+// 计算属性：判断是否在首页，需满足两个条件：
+// 1.route.path为首页
+// 2.store中的currentSection为0
 const isHomePage = computed(() => {
-  return route.path === '/' || route.path === '/home'
+  return (route.path === '/' || route.path === '/home') && sectionStore.currentSection === 0
 })
 
 // 计算属性：根据页面动态选择 logo
@@ -105,7 +172,13 @@ const logoSrc = computed(() => {
 
 // 监听路由变化
 watch(() => route.path, (path) => {
+  // 只设置主路径，不包括查询参数
   activeMenu.value = path
+  
+  // 如果有子菜单选中，处理子菜单高亮
+  if (path === '/industry' && route.query.section) {
+    activeMenu.value = `/industry?section=${route.query.section}`
+  }
 }, { immediate: true })
 
 // 处理菜单选择
@@ -140,6 +213,11 @@ onMounted(() => {
   const savedLanguage = localStorage.getItem('language')
   if (savedLanguage) {
     locale.value = savedLanguage
+  }
+  
+  // 处理子菜单高亮
+  if (route.path === '/industry' && route.query.section) {
+    activeMenu.value = `/industry?section=${route.query.section}`
   }
 })
 </script>
@@ -239,9 +317,67 @@ onMounted(() => {
   }
 }
 
+/* 行业子菜单样式 */
+:deep(.el-sub-menu) {
+  height: 4.375rem; /* 70px */
+  
+  .el-sub-menu__title {
+    height: 4.375rem; /* 70px */
+    line-height: 4.375rem; /* 70px */
+    font-size: 1rem; /* 16px */
+    padding: 0 0.9375rem; /* 15px */
+    border-bottom: none !important;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1) !important;
+    }
+  }
+}
+
+/* 行业子菜单项样式 */
+.industry-menu-item {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 1.25rem; /* 20px */
+  
+  .industry-icon {
+    width: 1.875rem; /* 30px */
+    height: 0.875rem; /* 30px */
+    object-fit: contain;
+    margin-right: 0.625rem; /* 10px */
+  }
+}
+
+/* 调整弹出菜单样式 */
+:deep(.industry-submenu) {
+  min-width: 10rem; /* 160px */
+  
+  .el-menu-item {
+    height: 3.125rem; /* 50px */
+    line-height: 3.125rem; /* 50px */
+    
+    &:hover {
+      background-color: #f5f7fa !important;
+    }
+  }
+}
+
 .home-header {
   :deep(.el-menu-item.is-active::after) {
     background-color: #fff;
+  }
+  
+  :deep(.el-sub-menu.is-active .el-sub-menu__title::after) {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1.5rem; /* 24px */
+    height: 0.125rem; /* 2px */
+    background-color: #fff;
+    transition: all 0.3s ease;
   }
 }
 
@@ -255,6 +391,22 @@ onMounted(() => {
     &.is-active::after {
       background-color: #1890ff;
     }
+  }
+  
+  :deep(.el-sub-menu.is-active .el-sub-menu__title::after) {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1.5rem; /* 24px */
+    height: 0.125rem; /* 2px */
+    background-color: #1890ff;
+    transition: all 0.3s ease;
+  }
+  
+  :deep(.el-sub-menu__title:hover) {
+    background-color: rgba(0, 0, 0, 0.05) !important;
   }
 }
 

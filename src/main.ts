@@ -8,7 +8,7 @@ import router from './router'
 import i18n from './i18n'
 import './style.css'
 import "@/assets/css/reset.css"
-
+import "@/styles/global.less"
 const app = createApp(App)
 const pinia = createPinia()
 

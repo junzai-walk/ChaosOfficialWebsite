@@ -236,7 +236,7 @@ import coalBackgroundImage from '@/assets/industry/coal-bg.jpg'
 import coalExclamation from '@/assets/industry/coal-challenge-1.png'
 import coalDevice from '@/assets/industry/coal-challenge-2.png'
 import coalWeak from '@/assets/industry/coal-challenge-3.png'
-import coalSolutionImage from '@/assets/industry/coal-solution.png'
+import coalSolutionImage from '@/assets/industry/coal-solution-Photoroom.png'
 import chemicalExclamation from '@/assets/industry/chemical-challenge-1.png'
 import chemicalEquipment from '@/assets/industry/chemical-challenge-2.png'
 import chemicalProcess from '@/assets/industry/chemical-challenge-3.png'
@@ -817,7 +817,7 @@ onBeforeUnmount(() => {
   // 确保在离开页面时恢复浏览器默认滚动行为
   document.body.style.overflow = ''
   
-  // 重置section状态
+  // 重置section状态, 否则在返回时会停留在当前section
   sectionStore.setCurrentSection(0)
 })
 </script>
