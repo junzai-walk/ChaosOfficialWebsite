@@ -61,7 +61,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue';
-import CustomNavSteps from '../CustomNavSteps.vue';
+import CustomNavSteps from './CustomNavSteps.vue';
 
 // 定义接口
 interface CaseCard {
@@ -166,7 +166,7 @@ html {
 .background-header {
   width: 100vw;
   height: 12.5rem; // 200px
-  background: url('@/assets/industry/bg.png') no-repeat center center;
+  background: url('@/assets/industry/case-banner.png') no-repeat center center;
   background-size: cover;
   border-radius: 0.5rem; // 8px
   margin-bottom: 1.25rem; // 20px

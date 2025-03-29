@@ -49,7 +49,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import CustomNavSteps from '@/components/industry/CustomNavSteps.vue';
+import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
 import backgroundImage from '@/assets/products/iop-feature.png';
 import icon1 from '@/assets/products/iop-feature-1.png';
 import icon2 from '@/assets/products/iop-feature-2.png';

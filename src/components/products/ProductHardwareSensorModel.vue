@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import { PropType, ref } from 'vue';
-import CustomNavSteps from '@/components/industry/CustomNavSteps.vue';
+import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
 import ProductRightImages from '@/components/products/ProductRightImages.vue';
 
 interface FeatureContent {

@@ -39,7 +39,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import CustomNavSteps from '@/components/industry/CustomNavSteps.vue';
+import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
 import laptopImage from '@/assets/products/ems-feature-2.png'; // 修改为实际使用的图片
 
 interface Strategy {

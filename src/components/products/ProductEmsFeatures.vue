@@ -42,7 +42,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import CustomNavSteps from '@/components/industry/CustomNavSteps.vue';
+import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
 import emsFeatureImage from '@/assets/products/ems-feature.png';
 
 interface Feature {

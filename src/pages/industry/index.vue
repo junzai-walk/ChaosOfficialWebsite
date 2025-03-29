@@ -10,25 +10,32 @@
     <!-- 第二部分：钢铁行业挑战 -->
     <div class="section" :class="{ active: sectionStore.currentSection === 1, 'section-hidden': sectionStore.currentSection !== 1 }"
       ref="challengesSection">
-      <SteelChallenges />
+      <ChallengesSection :cards="steelChallenges" :nav-steps="industrySteps" :default-active-step="1" />
+      <!-- <SteelChallenges /> -->
     </div>
 
     <!-- 第三部分：钢铁行业解决方案 -->
     <div class="section" :class="{ active: sectionStore.currentSection === 2, 'section-hidden': sectionStore.currentSection !== 2 }"
       ref="solutionsSection">
-      <SteelSolutions />
+      <!-- <SteelSolutions /> -->
+      <SolutionsSection :nav-steps="industrySteps" :description="cementSolutionsData.description"
+        :special-scenes="steelSolutionsData.specialScenes" :applications="steelSolutionsData.applications"
+        :platform-data="steelSolutionsData.platformData"
+        :data-collection-methods="steelSolutionsData.dataCollectionMethods" :default-active-step="2" />
     </div>
 
-    <!-- 第四部分：方案优势 -->
+    <!-- 第四部分：钢铁行业方案优势 -->
     <div class="section" :class="{ active: sectionStore.currentSection === 3, 'section-hidden': sectionStore.currentSection !== 3 }"
       ref="advantageSection">
-      <SteelAdvantages />
+      <!-- <SteelAdvantages /> -->
+      <AdvantagesSection :cards="steelAdvantages" :nav-steps="industrySteps" :default-active-step="3" />
     </div>
 
     <!-- 第五部分：典型案例 -->
     <div class="section" :class="{ active: sectionStore.currentSection === 4, 'section-hidden': sectionStore.currentSection !== 4 }"
       ref="caseSection">
-      <SteelCases />
+      <!-- <SteelCases /> -->
+      <CasesSection :cases="steelCases" :nav-steps="industrySteps" :default-active-step="4" />
     </div>
 
     <!-- 第六部分：水泥行业 -->
@@ -215,17 +222,22 @@ import ChallengesSection from '@/components/industry/components/ChallengesSectio
 import SolutionsSection from '@/components/industry/components/SolutionsSection.vue'
 import AdvantagesSection from '@/components/industry/components/AdvantagesSection.vue'
 import CasesSection from '@/components/industry/components/CasesSection.vue'
+
+import iconEnergy from "@/assets/industry/icon-energy.png"
+import iconEquipment from "@/assets/industry/icon-equipment.png"
+import iconProcess from "@/assets/industry/icon-process.png"
+import iconSupply from "@/assets/industry/icon-supply.png"
+
+import steelAdvantage1 from '@/assets/industry/steel-advantage-1.png'
+import steelAdvantage2 from '@/assets/industry/steel-advantage-2.png'
+import steelAdvantage3 from '@/assets/industry/steel-advantage-3.png'
+import steelAdvantage4 from '@/assets/industry/steel-advantage-4.png'
+
 import steelBackgroundImage from '@/assets/industry/steel.png'
 import cementBackgroundImage from '@/assets/industry/cement-bg.png'
 import chemicalBackgroundImage from '@/assets/industry/chemical-bg.jpg'
 import carBackgroundImage from '@/assets/industry/car-bg.png'
 import newEnergyBackgroundImage from '@/assets/industry/wind-bg.png'
-
-// 引入图标资源
-import iconEnergy from '@/assets/industry/cement-challenge-1.png'
-import iconEquipment from '@/assets/industry/cement-challenge-2.png'
-import iconProcess from '@/assets/industry/cement-challenge-3.png'
-import iconSupply from '@/assets/industry/cement-challenge-3.png'
 
 // 引入方案优势图标
 import iconFullStack from '@/assets/industry/full-stack-technology-capabilities.png'
@@ -252,6 +264,11 @@ import carChallenge1 from '@/assets/industry/car-challenge-1.png'
 import carChallenge2 from '@/assets/industry/car-challenge-2.png'
 import carChallenge3 from '@/assets/industry/car-challenge-3.png'
 import carChallenge4 from '@/assets/industry/car-challenge-4.png'
+
+// 导入钢铁行业案例图片
+import steelCase1 from '@/assets/industry/steel-case-1.png'
+import steelCase2 from '@/assets/industry/steel-case-2.png'
+import steelCase3 from '@/assets/industry/steel-case-3.png'
 
 const route = useRoute()
 const scrolling = ref(false)
@@ -302,6 +319,29 @@ const handleKeyDown = (e: KeyboardEvent) => {
   }, scrollDelay)
 }
 
+// 钢铁行业挑战数据
+const steelChallenges = [
+  {
+    icon: iconEnergy,
+    title: '碳中和与深度减排压力升级',
+    description: '焦料热成焦耗占比超60%，煤焦气，电智能优化降碳减排，面对"双碳"目标与环保法规。'
+  },
+  {
+    icon: iconEquipment,
+    title: '设备智能化运维协同瓶颈',
+    description: '设备备高价值升与多系统集成需求求高，传统运维模式难以满足高精度预测性维护与跨产线协同。'
+  },
+  {
+    icon: iconProcess,
+    title: '工艺柔性化与质量一致性挑战',
+    description: '生料配比过弃，设备控制误差大，人工经验已不满足产线提升，质量一致性要求。'
+  },
+  {
+    icon: iconSupply,
+    title: '环保与成本双重挑战',
+    description: '粉尘、氮氧化物治理水平提升，需平衡环保合规与降本增效，智能化技术驱动绿色转型。'
+  }
+];
 // 定义水泥行业挑战数据
 const cementChallenges = [
   {
@@ -358,10 +398,27 @@ const industrySteps = [
   '典型案例'
 ];
 
+// 钢铁行业解决方案数据
+const steelSolutionsData = {
+  description: '基于超恩工业互联网平台，为钢铁行业提供智能化解决方案。融合数据智能及AI实现全流程智能化。通过智能硬件、智能软件、数字化等手段提供管理、工艺智能优化、精细运维、降本增效和绿色转型。',
+  specialScenes: ['专项场景', '能耗能效管理', '冷轧生产线稳定分析', '大包回转', '皮带机', '空压机', '电气室'],
+  applications: ['智能应用', '设备预测性维护（PHM）', '先进过程控制（APC）', '能源管理（EMS）', '库存优化（IOP）'],
+  platformData: {
+    mainPlatforms: [
+      { title: '统一建模平台', content: '数据建模 | 机理建模 | 价值建模' },
+      { title: '模型管理服务', content: '模型部署 | 模型验证' },
+      { title: '统一建模平台', content: '数据对接 | 模型实时运算' },
+      { title: '其它技术组件', content: '组态工具 | 资源工具 | ······' }
+    ],
+    databases: ['关系数据库', '时序数据库', '文件存储', '······']
+  },
+  dataCollectionMethods: ['有线传感器', '边缘智能采集器', '无线智能网关']
+};
+
 // 水泥行业解决方案数据
 const cementSolutionsData = {
   description: '基于超恩工业互联网平台，为水泥行业提供智能化解决方案。融合数据智能及AI实现全流程智能化化。通过智能硬件、智能软件、数字化等手段提供管理、工艺智能优化、精细运维本、绿色转型。',
-  specialScenes: ['三废一体化设备管理', '两废一体工艺优化', '分解炉温度控制', '垃圾发电'],
+  specialScenes: ['专项场景', '两废一体工艺优化', '分解炉温度控制', '垃圾发电'],
   applications: ['智能应用', '设备预测性维护（PHM）', '先进过程控制（APC）', '能源管理（EMS）', '......'],
   platformData: {
     mainPlatforms: [
@@ -381,6 +438,30 @@ const coalSolutionsData = {
   showImage: true,
   imageSrc: coalSolutionImage
 };
+
+// 钢铁行业方案优势数据
+const steelAdvantages = [
+  {
+    icon: steelAdvantage1,
+    title: '全栈技术能力',
+    description: '覆盖数据采集到智能算法实现，实现"端-边-云"一体化控制。'
+  },
+  {
+    icon: steelAdvantage2,
+    title: '垂直场景深度适配',
+    description: '基于领域工艺知识与技术积累，提供针对性解决方案，深化应用场景价值。'
+  },
+  {
+    icon: steelAdvantage3,
+    title: '自主可控技术底座',
+    description: '1000+核心算法专利，3D+模型专利，工信部"工业互联网标杆示范项目"认证。'
+  },
+  {
+    icon: steelAdvantage4,
+    title: '头部企业验证',
+    description: '宝武集团、包钢集团等行业龙头企业验证，助力数字化转型生产与方案。'
+  }
+];
 
 // 水泥行业方案优势数据
 const cementAdvantages = [
@@ -403,6 +484,25 @@ const cementAdvantages = [
     icon: iconHeadEnterprise,
     title: '头部企业验证',
     description: '平台部署，覆盖钢铁水泥材料行业等领域，得到头部企业多年数据与方案。'
+  }
+];
+
+// 钢铁行业案例数据
+const steelCases = [
+  {
+    image: steelCase1,
+    title: '中国宝武钢铁集团有限公司',
+    description: '跨流程监督管理平台'
+  },
+  {
+    image: steelCase2,
+    title: '敬业集团',
+    description: '知识生产管理平台'
+  },
+  {
+    image: steelCase3,
+    title: '宝山钢铁',
+    description: 'APC'
   }
 ];
 

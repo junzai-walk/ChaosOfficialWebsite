@@ -51,6 +51,9 @@ const updateActiveStep = (stepIndex: number) => {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  position: absolute;
+  top: 336px;
+  left: 187px;
   
   .steps-container {
     display: flex;

@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import CustomNavSteps from '@/components/industry/CustomNavSteps.vue';
+import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
 
 const props = defineProps<{
   description: string;

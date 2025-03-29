@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import CustomNavSteps from '@/components/industry/CustomNavSteps.vue';
+import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
 import pictureLeft from '@/assets/products/aps-core-2.png';
 import pictureRight from '@/assets/products/aps-core-3.png';
 import pictureBottom from '@/assets/products/aps-core-1.png';

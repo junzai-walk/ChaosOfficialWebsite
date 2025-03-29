@@ -80,7 +80,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import CustomNavSteps from '../CustomNavSteps.vue';
+import CustomNavSteps from './CustomNavSteps.vue';
 
 // 定义组件属性
 const props = withDefaults(defineProps<{
@@ -141,7 +141,7 @@ html {
 }
 
 .solutions-container {
-  max-width: 75rem; // 1200px
+  max-width: 83rem; // 1200px
   width: 100%;
   display: flex;
   gap: 1.875rem; // 30px

@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import CustomNavSteps from '@/components/industry/CustomNavSteps.vue';
+import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
 import centerImage from '@/assets/products/iop-core.png';
 
 // 导入图标

@@ -44,7 +44,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import CustomNavSteps from '@/components/industry/CustomNavSteps.vue';
+import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
 
 interface Position {
   top: number;

@@ -183,7 +183,17 @@ watch(() => route.path, (path) => {
 
 // 处理菜单选择
 const handleSelect = (index: string) => {
-  router.push(index)
+  // 判断是否点击了主菜单项
+  if (index === '/industry') {
+    // 点击行业方案，直接跳转到钢铁行业（section=0）
+    router.push('/industry?section=0')
+  } else if (index === '/products') {
+    // 点击产品中心，直接跳转到第一个产品（section=0）
+    router.push('/products?section=0')
+  } else {
+    // 其他正常跳转
+    router.push(index)
+  }
 }
 
 // 监听搜索框显示状态，当显示时自动聚焦
@@ -545,5 +555,10 @@ onMounted(() => {
       color: #1890ff;
     }
   }
+}
+
+/* 隐藏导航菜单中的下拉箭头 */
+:deep(.el-sub-menu__icon-arrow) {
+  display: none !important;
 }
 </style>

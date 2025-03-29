@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import CustomNavSteps from '../CustomNavSteps.vue';
+import CustomNavSteps from './CustomNavSteps.vue';
 
 // 定义接口
 interface AdvantageCard {
@@ -125,15 +125,19 @@ html {
 
 .advantage-card {
   height: 255px;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 25px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(145deg, #ffffff, #f9f9f9);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   box-sizing: border-box;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  position: relative;
+  overflow: hidden;
   
   // 根据父元素的类名来确定宽度
   .advantage-cards:has(> .card-row:nth-child(3)) & {
@@ -143,35 +147,85 @@ html {
   .advantage-cards:not(:has(> .card-row:nth-child(3))) & {
     width: calc(50% - 10px); // 大宽度卡片
   }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    opacity: 0.6;
+    border-radius: 16px 16px 0 0;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
+    border-radius: 50%;
+  }
+  
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 1);
+    
+    .card-icon {
+      transform: translateY(-5px);
+      box-shadow: 12px 12px 20px rgba(174, 174, 192, 0.2), -12px -12px 20px hsla(0, 0%, 100%, 0.8);
+    }
+  }
 }
 
 .card-icon {
   width: 60px;
   height: 60px;
+  background: linear-gradient(145deg, #e9f8f1, #dfeee6);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 15px;
-  background-color: #e8f7f0;
+  margin-bottom: 18px;
+  box-shadow: 8px 8px 16px rgba(174, 174, 192, 0.18), -8px -8px 16px hsla(0, 0%, 100%, 0.8);
+  transition: all .4s cubic-bezier(.4, 0, .2, 1);
+  position: relative;
+  z-index: 1;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(120, 200, 160, 0.05) 0%, rgba(120, 200, 160, 0) 70%);
+    z-index: -1;
+  }
 
   img {
     width: 30px;
     height: 30px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   }
 }
 
 .card-title {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 600;
   color: #333;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .card-desc {
   color: #666;
   font-size: 14px;
   line-height: 1.6;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 @media (max-width: 1200px) {

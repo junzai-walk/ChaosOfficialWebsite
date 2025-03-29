@@ -14,7 +14,7 @@
           <div class="card-row">
             <div class="advantage-card">
               <div class="card-icon">
-                <img src="@/assets/industry/低碳环保.png" alt="低碳环保" />
+                <img src="@/assets/industry/steel-advantage-1.png" alt="低碳环保" />
               </div>
               <div class="card-title">低碳环保</div>
               <div class="card-desc">
@@ -24,7 +24,7 @@
 
             <div class="advantage-card">
               <div class="card-icon">
-                <img src="@/assets/industry/智能运维.png" alt="智能运维" />
+                <img src="@/assets/industry/steel-advantage-2.png" alt="智能运维" />
               </div>
               <div class="card-title">智能运维</div>
               <div class="card-desc">
@@ -37,7 +37,7 @@
           <div class="card-row">
             <div class="advantage-card">
               <div class="card-icon">
-                <img src="@/assets/industry/品质提升.png" alt="品质提升" />
+                <img src="@/assets/industry/steel-advantage-3.png" alt="品质提升" />
               </div>
               <div class="card-title">品质提升</div>
               <div class="card-desc">
@@ -47,7 +47,7 @@
 
             <div class="advantage-card">
               <div class="card-icon">
-                <img src="@/assets/industry/稳定生产.png" alt="稳定生产" />
+                <img src="@/assets/industry/steel-advantage-4.png" alt="稳定生产" />
               </div>
               <div class="card-title">稳定生产</div>
               <div class="card-desc">
