@@ -96,12 +96,9 @@ const imageContainerStyle = computed(() => ({
 }
 
 .side-nav-container {
-  /* height: 70%; */
   display: inline-flex;
   justify-content: flex-start;
   align-items: flex-start;
-  /* position: sticky; */
-  /* top: 20%; */
 }
 
 .title-container {

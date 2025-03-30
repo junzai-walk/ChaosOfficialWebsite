@@ -200,9 +200,9 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1890ff;
+  color: #466cb7;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: bolder;
 
   &.section-title-big {
     align-items: center;

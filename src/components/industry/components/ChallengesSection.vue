@@ -172,8 +172,8 @@ html {
 }
 
 .card-icon {
-  width: 64px;
-  height: 64px;
+  width: 50px;
+  height: 50px;
   background: linear-gradient(145deg, rgba(244, 40, 43, 0.123), rgba(244, 40, 43, 0.034));
   display: flex;
   justify-content: center;

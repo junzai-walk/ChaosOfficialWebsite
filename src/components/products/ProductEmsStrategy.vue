@@ -76,15 +76,6 @@ const customSteps = computed(() => {
   box-sizing: border-box;
 }
 
-.side-nav-container {
-  width: 120px;
-  position: absolute;
-  left: 60px;
-  /* top: 50%;   */
-  /* transform: transla teY(-50%); */
-  z-index: 10;
-}
-
 .laptop-container {
   position: absolute;
   left: 360px;
@@ -188,12 +179,6 @@ const customSteps = computed(() => {
     align-items: center;
     padding-top: 120px;
     height: auto;
-  }
-  
-  .side-nav-container {
-    position: fixed;
-    left: 120px;
-    top: 50%;
   }
   
   .laptop-container {

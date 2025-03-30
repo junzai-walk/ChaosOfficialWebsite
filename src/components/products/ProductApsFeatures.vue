@@ -52,18 +52,6 @@ const activeStep = ref(props.defaultActiveStep || 2);
   padding-top: 100px;
   overflow: hidden;
   
-  .side-nav-container {
-    position: absolute;
-    top: 336px;
-    left: 187px;
-    z-index: 10;
-
-    .custom-nav-steps {
-      top: 0;
-      left: 0;
-    }
-  }
-  
   .picture-left-container {
     position: absolute;
     width: 541.870361328125px;

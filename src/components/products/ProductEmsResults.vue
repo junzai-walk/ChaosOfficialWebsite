@@ -28,13 +28,15 @@
 
     <!-- 预约体验按钮 -->
     <div class="experience-button-container">
-      <button class="experience-button">预约体验</button>
+      <button class="experience-button" @click="handleConsult">预约体验</button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter()
 import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
 
 interface Result {
@@ -62,6 +64,13 @@ const customSteps = computed(() => {
   }
   return steps;
 });
+
+const handleConsult = () => {
+  router.push({
+    path: '/partners',
+    query: { section: '3' }  // 跳转到合作伙伴页面的咨询部分
+  })
+}
 </script>
 
 <style scoped lang="less">
@@ -75,18 +84,6 @@ const customSteps = computed(() => {
   position: relative;
   padding: 100px 0;
   box-sizing: border-box;
-}
-
-.side-nav-container {
-  position: absolute;
-  left: 100px;
-  top: 250px;
-
-  .custom-nav-steps {
-    height: 100%;
-    top: 0;
-    left: 0;
-  }
 }
 
 .title-container {
@@ -108,7 +105,8 @@ const customSteps = computed(() => {
   gap: 30px;
   width: 100%;
   max-width: 1400px;
-  margin-top: 60px;
+  margin-top: 120px;
+  margin-left: 120px;
 }
 
 .result-card {
@@ -129,8 +127,8 @@ const customSteps = computed(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   margin-bottom: 15px;
 }

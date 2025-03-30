@@ -13,11 +13,11 @@
       <div class="cases-content">
         <!-- 图片展示区 -->
         <div class="case-showcase">
-          <div class="case-cards">
-            <!-- 只显示当前页的案例卡片 -->
-            <div class="case-page">
+          <div class="case-cards" :style="{ width: `${totalPages * 100}%`, transform: `translateX(-${currentPage * (100/totalPages)}%)` }">
+            <!-- 动态生成每页内容 -->
+            <div v-for="page in totalPages" :key="page" class="case-page" :style="{ width: `${100/totalPages}%` }">
               <div 
-                v-for="(card, index) in currentPageCases" 
+                v-for="(card, index) in getPageCases(page-1)" 
                 :key="index" 
                 class="case-card"
               >
@@ -38,21 +38,28 @@
               <ArrowLeft />
             </el-icon>
           </button>
-          <button @click="nextPage" :disabled="currentPage === 1" class="nav-button">
+          <button @click="nextPage" :disabled="currentPage >= totalPages - 1" class="nav-button">
             <el-icon>
               <ArrowRight />
             </el-icon>
           </button>
+        </div>
+        
+        <!-- 页码指示器 -->
+        <div class="pagination-indicator">
+          <span v-for="page in totalPages" :key="page" 
+                :class="['page-dot', { active: currentPage === page - 1 }]"
+                @click="goToPage(page - 1)"></span>
         </div>
       </div>
     </div>
 
     <!-- 申请试用区域 -->
     <div class="apply-trial">
-      <h3>立即申请免费试用</h3>
+      <h3>立即定制方案</h3>
       <div class="apply-form">
-        <el-input v-model="contactInfo" placeholder="请输入联系方式"></el-input>
-        <el-button type="primary">免费试用</el-button>
+        <el-input v-model="contactInfo" placeholder="请输入手机号"></el-input>
+        <el-button type="primary" @click="submitConsultation">咨询定制</el-button>
       </div>
     </div>
   </div>
@@ -62,6 +69,7 @@
 import { ref, computed } from 'vue';
 import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue';
 import CustomNavSteps from './CustomNavSteps.vue';
+import { ElMessage } from 'element-plus';
 
 // 定义接口
 interface CaseCard {
@@ -89,12 +97,19 @@ const cardsPerPage = computed(() => props.cardsPerPage || 4);
 // 计算总页数
 const totalPages = computed(() => Math.ceil(props.cases.length / cardsPerPage.value));
 
-// 计算当前页显示的案例
-const currentPageCases = computed(() => {
-  const start = currentPage.value * cardsPerPage.value;
-  const end = start + cardsPerPage.value;
+// 获取指定页的案例数据
+const getPageCases = (pageIndex: number) => {
+  const start = pageIndex * cardsPerPage.value;
+  const end = Math.min(start + cardsPerPage.value, props.cases.length);
   return props.cases.slice(start, end);
-});
+};
+
+// 跳转到指定页
+const goToPage = (pageIndex: number) => {
+  if (pageIndex >= 0 && pageIndex < totalPages.value) {
+    currentPage.value = pageIndex;
+  }
+};
 
 // 下一页
 const nextPage = () => {
@@ -108,6 +123,25 @@ const prevPage = () => {
   if (currentPage.value > 0) {
     currentPage.value--;
   }
+};
+
+// 提交咨询申请
+const submitConsultation = () => {
+  if (!contactInfo.value) {
+    ElMessage.warning('请输入手机号码');
+    return;
+  }
+  
+  // 手机号格式校验
+  const phoneRegex = /^1[3-9]\d{9}$/;
+  if (!phoneRegex.test(contactInfo.value)) {
+    ElMessage.warning('请输入正确的手机号码格式');
+    return;
+  }
+  
+  // 提交逻辑
+  ElMessage.success('申请成功，工作人员将会尽快联系您');
+  contactInfo.value = ''; // 清空输入框
 };
 </script>
 
@@ -183,18 +217,18 @@ html {
 .case-cards {
   display: flex;
   transition: transform 0.5s ease;
-  width: 200%;
 }
 
 .case-page {
   display: flex;
   flex-wrap: nowrap;
   gap: 1.25rem; // 20px
-  width: 50%;
+  position: relative;
 }
 
 .case-card {
   width: calc(25% - 0.9375rem); // 计算每个卡片宽度，考虑间距
+  height: 360px;
   border-radius: 0.5rem; // 8px
   overflow: hidden;
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
@@ -210,14 +244,15 @@ html {
 
 .case-image {
   width: 100%;
-  height: 150px;
+  height: 250px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .case-info {
-  padding: 0.9375rem; // 15px
+  padding: 2rem 1rem; // 15px
+  text-align: left;
 }
 
 .case-info h3 {
@@ -236,15 +271,14 @@ html {
 .navigation-buttons {
   display: flex;
   justify-content: center;
-  gap: 1.25rem; // 20px
-  margin: 1.25rem 0 1.875rem; // 20px 0 30px
+  gap: 3rem; // 20px
+  margin: 1.25rem 0; // 20px 0
 }
 
 .nav-button {
   width: 2.5rem; // 40px
   height: 2.5rem; // 40px
-  background-color: #fff;
-  border: 1px solid #e0e0e0;
+  border: none;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -254,14 +288,36 @@ html {
 }
 
 .nav-button:hover {
-  background-color: #f3f9ff;
-  border-color: #1890ff;
-  color: #1890ff;
+  background-color: #1890ff;
+  border-color: none !important;
+  color: #fff;
 }
 
 .nav-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* 页码指示器 */
+.pagination-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.page-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.page-dot.active {
+  background-color: #1890ff;
+  transform: scale(1.2);
 }
 
 /* 申请试用区域 */
@@ -276,8 +332,8 @@ html {
   align-items: center;
   padding: 1.25rem; // 20px
   box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.05);
-  background: url('@/assets/04/bg.png') no-repeat center center;
-  background-size: cover;
+  background: url('@/assets/industry/apply-bg.png') no-repeat center center;
+  background-size: 100% 100%;
 }
 
 .apply-trial h3 {
@@ -325,5 +381,4 @@ html {
     width: 100%;
   }
 }
-
 </style> 

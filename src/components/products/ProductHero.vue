@@ -2,12 +2,15 @@
   <div class="product-hero" :style="{ backgroundImage: `url(${backgroundImage})` }">
     <div class="content">
       <h1 class="title">{{ title }}</h1>
-      <button class="experience-btn">预约体验</button>
+      <button class="experience-btn" @click="handleConsult">预约体验</button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+const router = useRouter()
+
 defineProps({
   backgroundImage: {
     type: String,
@@ -18,6 +21,14 @@ defineProps({
     required: true
   }
 });
+
+const handleConsult = () => {
+  console.log("点击跳转表单")
+  router.push({
+    path: '/partners',
+    query: { section: '3' }  // 跳转到合作伙伴页面的咨询部分
+  })
+}
 </script>
 
 <style scoped>

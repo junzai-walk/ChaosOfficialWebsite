@@ -303,7 +303,7 @@ import ProductHardwareSensorModel from '@/components/products/ProductHardwareSen
 // 直接导入图片和视频
 import phmBackgroundImage from '@/assets/products/software-bg-1.png'
 import officialVideoSrc from '@/assets/video/official_video.mp4'
-import eamBackgroundImage from '@/assets/products/eam-bg.jpg'
+import eamBackgroundImage from '@/assets/products/bg_EAM.png'
 
 // 导入图标
 import remoteMonitoringIcon from '@/assets/products/phm-1.png'
@@ -340,7 +340,7 @@ import case1Eam from '@/assets/products/eam-case-1.png'
 import case2Eam from '@/assets/products/eam-case-2.png'
 
 // 导入APC背景图片
-import apcBackgroundImage from '@/assets/products/apc-bg.jpg'
+import apcBackgroundImage from '@/assets/products/bg_APC.png'
 
 // 导入APC图标
 import apcIcon1 from '@/assets/products/apc-1.png'
@@ -364,7 +364,7 @@ import case3Apc from '@/assets/products/apc-case-3.png'
 import case4Apc from '@/assets/products/apc-case-4.png'
 
 // 导入EMS背景图片
-import emsBackgroundImage from '@/assets/products/ems-bg.jpg'
+import emsBackgroundImage from '@/assets/products/bg_EMS.png'
 
 // 导入EMS图标
 import emsIcon1 from '@/assets/products/ems-1.png'
@@ -392,7 +392,7 @@ import iopApplication6 from '@/assets/products/iop-application-6.png'
 
 
 // 导入APS背景图片
-import apsBackgroundImage from '@/assets/products/aps-bg.jpg'
+import apsBackgroundImage from '@/assets/products/bg_APS.png'
 
 // 导入APS优势图标
 import apsFeature1 from '@/assets/products/aps-feature-1.png'

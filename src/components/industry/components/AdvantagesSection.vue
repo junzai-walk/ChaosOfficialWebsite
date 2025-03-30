@@ -183,8 +183,8 @@ html {
 }
 
 .card-icon {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   background: linear-gradient(145deg, #e9f8f1, #dfeee6);
   border-radius: 50%;
   display: flex;

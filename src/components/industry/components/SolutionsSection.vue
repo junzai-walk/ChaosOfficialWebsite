@@ -170,10 +170,12 @@ html {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .solution-image {
-  width: 100%;
+  width: 80%;
   max-height: 100%;
   object-fit: contain;
 }
@@ -336,7 +338,7 @@ html {
 /* 专项场景特殊样式 */
 .scene-section {
   display: flex;
-  background-color: #eaf4ff !important;
+  background-color: #dfeafd !important;
 }
 
 .scene-content {

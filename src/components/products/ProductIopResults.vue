@@ -22,7 +22,7 @@
     </div>
 
     <!-- 预约体验按钮 -->
-    <div class="experience-button">
+    <div class="experience-button" @click="handleConsult">
       预约体验
     </div>
   </div>
@@ -30,8 +30,10 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
 import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
 
+const router = useRouter()
 
 interface Result {
   icon: string;
@@ -57,6 +59,14 @@ const customSteps = computed(() => {
   }
   return steps;
 });
+
+const handleConsult = () => {
+  console.log("点击跳转表单")
+  router.push({
+    path: '/partners',
+    query: { section: '3' }  // 跳转到合作伙伴页面的咨询部分
+  })
+}
 </script>
 
 <style scoped lang="less">
@@ -67,18 +77,6 @@ const customSteps = computed(() => {
   background-color: white;
   padding-top: 150px; 
   box-sizing: border-box;
-
-  .side-nav-container {
-    position: absolute;
-    top: 336px;
-    left: 167px;
-    z-index: 10;
-
-    .custom-nav-steps {
-      top: 0;
-      left: 0;
-    }
-  }
 
   .title-container {
     text-align: center;
@@ -100,6 +98,7 @@ const customSteps = computed(() => {
     justify-content: center;
     margin: 0 auto;
     max-width: 1288px;
+    padding-left: 50px;
   }
 
   .result-card {

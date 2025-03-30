@@ -1,126 +1,160 @@
 <template>
   <div class="industry-page" @wheel="handleWheel">
     <!-- 第一部分：钢铁行业 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 0, 'section-hidden': sectionStore.currentSection !== 0 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 0, 'section-hidden': sectionStore.currentSection !== 0 }"
       ref="steelSection">
       <IndustryHero :background-image="steelBackgroundImage" title="钢铁行业"
         description="结合机理模型、数据模型、数字孪生技术、多变量预测控制技术，解决钢铁企业生产工艺、设备控制等一系列工业生产痛点，实现工艺流、生产信息流、设备流'三流合一'，稳定提升成品质量，降低生产线设备故障风险、人力成本和能源消耗。" />
     </div>
 
     <!-- 第二部分：钢铁行业挑战 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 1, 'section-hidden': sectionStore.currentSection !== 1 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 1, 'section-hidden': sectionStore.currentSection !== 1 }"
       ref="challengesSection">
       <ChallengesSection :cards="steelChallenges" :nav-steps="industrySteps" :default-active-step="1" />
       <!-- <SteelChallenges /> -->
     </div>
 
     <!-- 第三部分：钢铁行业解决方案 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 2, 'section-hidden': sectionStore.currentSection !== 2 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 2, 'section-hidden': sectionStore.currentSection !== 2 }"
       ref="solutionsSection">
       <!-- <SteelSolutions /> -->
-      <SolutionsSection :nav-steps="industrySteps" :description="cementSolutionsData.description"
-        :special-scenes="steelSolutionsData.specialScenes" :applications="steelSolutionsData.applications"
-        :platform-data="steelSolutionsData.platformData"
-        :data-collection-methods="steelSolutionsData.dataCollectionMethods" :default-active-step="2" />
+      <!-- <SolutionsSection 
+         :nav-steps="industrySteps" 
+         :default-active-step="2" 
+         :description="cementSolutionsData.description"
+         :special-scenes="steelSolutionsData.specialScenes" 
+         :applications="steelSolutionsData.applications"
+         :platform-data="steelSolutionsData.platformData"
+         :data-collection-methods="steelSolutionsData.dataCollectionMethods" 
+      /> -->
+
+      <SolutionsSection :nav-steps="industrySteps" :default-active-step="2"
+        :description="steelSolutionsData.description" :show-image="steelSolutionsData.showImage"
+        :image-src="steelSolutionsData.imageSrc" />
     </div>
 
     <!-- 第四部分：钢铁行业方案优势 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 3, 'section-hidden': sectionStore.currentSection !== 3 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 3, 'section-hidden': sectionStore.currentSection !== 3 }"
       ref="advantageSection">
       <!-- <SteelAdvantages /> -->
       <AdvantagesSection :cards="steelAdvantages" :nav-steps="industrySteps" :default-active-step="3" />
     </div>
 
     <!-- 第五部分：典型案例 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 4, 'section-hidden': sectionStore.currentSection !== 4 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 4, 'section-hidden': sectionStore.currentSection !== 4 }"
       ref="caseSection">
       <!-- <SteelCases /> -->
       <CasesSection :cases="steelCases" :nav-steps="industrySteps" :default-active-step="4" />
     </div>
 
     <!-- 第六部分：水泥行业 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 5, 'section-hidden': sectionStore.currentSection !== 5 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 5, 'section-hidden': sectionStore.currentSection !== 5 }"
       ref="caseSection">
       <IndustryHero :background-image="cementBackgroundImage" title="水泥行业" description="智控水泥生产，赋能绿色高效" />
     </div>
 
     <!-- 第七部分：水泥行业挑战 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 6, 'section-hidden': sectionStore.currentSection !== 6 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 6, 'section-hidden': sectionStore.currentSection !== 6 }"
       ref="challengesSection">
       <ChallengesSection :cards="cementChallenges" :nav-steps="industrySteps" :default-active-step="1" />
     </div>
 
     <!-- 第八部分：水泥行业解决方案 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 7, 'section-hidden': sectionStore.currentSection !== 7 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 7, 'section-hidden': sectionStore.currentSection !== 7 }"
       ref="solutionsSection">
       <!-- 封装的新组件应用于水泥行业 -->
-      <SolutionsSection :nav-steps="industrySteps" :description="cementSolutionsData.description"
+      <!-- <SolutionsSection :nav-steps="industrySteps" :description="cementSolutionsData.description"
         :special-scenes="cementSolutionsData.specialScenes" :applications="cementSolutionsData.applications"
         :platform-data="cementSolutionsData.platformData"
-        :data-collection-methods="cementSolutionsData.dataCollectionMethods" :default-active-step="2" />
+        :data-collection-methods="cementSolutionsData.dataCollectionMethods" :default-active-step="2" /> -->
+        <SolutionsSection 
+           :nav-steps="industrySteps" 
+           :default-active-step="2"
+           :description="cementSolutionsData.description" 
+           :show-image="cementSolutionsData.showImage"
+           :image-src="cementSolutionsData.imageSrc" 
+        />
     </div>
 
     <!-- 第九部分：水泥行业方案优势 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 8, 'section-hidden': sectionStore.currentSection !== 8 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 8, 'section-hidden': sectionStore.currentSection !== 8 }"
       ref="advantageSection">
       <!-- 封装的新组件应用于水泥行业 -->
       <AdvantagesSection :cards="cementAdvantages" :nav-steps="industrySteps" :default-active-step="3" />
     </div>
 
     <!-- 第十部分：水泥行业典型案例 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 9, 'section-hidden': sectionStore.currentSection !== 9 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 9, 'section-hidden': sectionStore.currentSection !== 9 }"
       ref="caseSection">
       <!-- 封装的新组件应用于水泥行业 -->
       <CasesSection :cases="cementCases" :nav-steps="industrySteps" :default-active-step="4" />
     </div>
 
     <!-- 第十一部分：煤炭行业 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 10, 'section-hidden': sectionStore.currentSection !== 10 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 10, 'section-hidden': sectionStore.currentSection !== 10 }"
       ref="caseSection">
       <IndustryHero :background-image="coalBackgroundImage" title="煤炭行业"
         description="以数据智能驱动煤矿生产全流程优化，实现煤机设备全寿期、全业务链的集中管控，提升煤矿企业数字化管控能力" />
     </div>
 
     <!-- 第十二部分：煤炭行业挑战 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 11, 'section-hidden': sectionStore.currentSection !== 11 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 11, 'section-hidden': sectionStore.currentSection !== 11 }"
       ref="caseSection">
       <ChallengesSection :cards="coalChallenges" :nav-steps="industrySteps" :default-active-step="1" />
     </div>
 
     <!-- 第十三部分：煤炭行业解决方案 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 12, 'section-hidden': sectionStore.currentSection !== 12 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 12, 'section-hidden': sectionStore.currentSection !== 12 }"
       ref="solutionsSection">
       <SolutionsSection :nav-steps="industrySteps" :description="coalSolutionsData.description" :default-active-step="2"
         :show-image="coalSolutionsData.showImage" :image-src="coalSolutionsData.imageSrc" />
     </div>
 
     <!-- 第十四部分：煤炭行业方案优势 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 13, 'section-hidden': sectionStore.currentSection !== 13 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 13, 'section-hidden': sectionStore.currentSection !== 13 }"
       ref="advantageSection">
       <AdvantagesSection :cards="coalAdvantages" :nav-steps="industrySteps" :default-active-step="3" />
     </div>
 
     <!-- 第十五部分：煤炭行业典型案例 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 14, 'section-hidden': sectionStore.currentSection !== 14 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 14, 'section-hidden': sectionStore.currentSection !== 14 }"
       ref="coalCaseSection">
       <CasesSection :cases="coalCases" :nav-steps="industrySteps" :default-active-step="4" />
     </div>
 
     <!-- 第十六部分：化工行业 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 15, 'section-hidden': sectionStore.currentSection !== 15 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 15, 'section-hidden': sectionStore.currentSection !== 15 }"
       ref="chemicalSection">
       <IndustryHero :background-image="chemicalBackgroundImage" title="化工行业"
         description="以智能运维驱动设备全生命周期管理，保障化工生产安全、高效、可持续" />
     </div>
 
     <!-- 第十七部分：化工行业挑战 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 16, 'section-hidden': sectionStore.currentSection !== 16 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 16, 'section-hidden': sectionStore.currentSection !== 16 }"
       ref="chemicalChallengeSection">
       <ChallengesSection :cards="chemicalChallenges" :nav-steps="industrySteps" :default-active-step="1" />
     </div>
 
     <!-- 第十八部分：化工行业解决方案 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 17, 'section-hidden': sectionStore.currentSection !== 17 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 17, 'section-hidden': sectionStore.currentSection !== 17 }"
       ref="chemicalSolutionSection">
       <SolutionsSection :nav-steps="industrySteps" :description="chemicalSolutionsData.description"
         :default-active-step="2" :show-image="chemicalSolutionsData.showImage"
@@ -128,84 +162,103 @@
     </div>
 
     <!-- 第十九部分：化工行业方案优势 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 18, 'section-hidden': sectionStore.currentSection !== 18 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 18, 'section-hidden': sectionStore.currentSection !== 18 }"
       ref="chemicalAdvantageSection">
       <AdvantagesSection :cards="chemicalAdvantages" :nav-steps="industrySteps" :default-active-step="3" />
     </div>
 
     <!-- 第二十部分：化工行业典型案例 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 19, 'section-hidden': sectionStore.currentSection !== 19 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 19, 'section-hidden': sectionStore.currentSection !== 19 }"
       ref="chemicalCaseSection">
       <CasesSection :cases="chemicalCases" :nav-steps="industrySteps" :default-active-step="4" />
     </div>
 
     <!-- 第二十一部分： 汽车行业 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 20, 'section-hidden': sectionStore.currentSection !== 20 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 20, 'section-hidden': sectionStore.currentSection !== 20 }"
       ref="carSection">
       <IndustryHero :background-image="carBackgroundImage" title="汽车行业"
         description="以数据智能驱动汽车生产全流程优化，实现汽车设备全寿期、全业务链的集中管控，提升汽车企业数字化管控能力" />
     </div>
-    
+
     <!-- 第二十二部分： 汽车行业挑战 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 21, 'section-hidden': sectionStore.currentSection !== 21 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 21, 'section-hidden': sectionStore.currentSection !== 21 }"
       ref="carChallengeSection">
       <ChallengesSection :cards="carChallenges" :nav-steps="industrySteps" :default-active-step="1" />
     </div>
 
     <!-- 第二十三部分： 汽车行业解决方案 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 22, 'section-hidden': sectionStore.currentSection !== 22 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 22, 'section-hidden': sectionStore.currentSection !== 22 }"
       ref="carSolutionSection">
-      <SolutionsSection :nav-steps="industrySteps" :description="carSolutionsData.description"
+      <!-- <SolutionsSection :nav-steps="industrySteps" :description="carSolutionsData.description"
         :special-scenes="carSolutionsData.specialScenes" :applications="carSolutionsData.applications"
-        :platform-data="carSolutionsData.platformData"
-        :data-collection-methods="carSolutionsData.dataCollectionMethods" :default-active-step="2" />
+        :platform-data="carSolutionsData.platformData" :data-collection-methods="carSolutionsData.dataCollectionMethods"
+        :default-active-step="2" /> -->
+        <SolutionsSection 
+           :nav-steps="industrySteps" 
+           :default-active-step="2"
+           :description="carSolutionsData.description" 
+           :show-image="carSolutionsData.showImage"
+           :image-src="carSolutionsData.imageSrc" 
+        />
     </div>
-    
+
     <!-- 第二十四部分： 汽车行业方案优势 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 23, 'section-hidden': sectionStore.currentSection !== 23 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 23, 'section-hidden': sectionStore.currentSection !== 23 }"
       ref="carAdvantageSection">
       <AdvantagesSection :cards="carAdvantages" :nav-steps="industrySteps" :default-active-step="3" />
     </div>
 
     <!-- 第二十五部分： 汽车行业典型案例 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 24, 'section-hidden': sectionStore.currentSection !== 24 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 24, 'section-hidden': sectionStore.currentSection !== 24 }"
       ref="carCaseSection">
       <CasesSection :cases="carCases" :nav-steps="industrySteps" :default-active-step="4" />
     </div>
 
     <!-- 第二十六部分： 新能源行业 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 25, 'section-hidden': sectionStore.currentSection !== 25 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 25, 'section-hidden': sectionStore.currentSection !== 25 }"
       ref="newEnergySection">
       <IndustryHero :background-image="newEnergyBackgroundImage" title="新能源行业"
         description="以数据智能驱动新能源生产全流程优化，实现新能源设备全寿期、全业务链的集中管控，提升新能源企业数字化管控能力" />
     </div>
-    
+
     <!-- 第二十七部分： 新能源行业挑战 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 26, 'section-hidden': sectionStore.currentSection !== 26 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 26, 'section-hidden': sectionStore.currentSection !== 26 }"
       ref="newEnergyChallengeSection">
       <ChallengesSection :cards="newEnergyChallenges" :nav-steps="industrySteps" :default-active-step="1" />
     </div>
-    
+
     <!-- 第二十八部分： 新能源行业解决方案 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 27, 'section-hidden': sectionStore.currentSection !== 27 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 27, 'section-hidden': sectionStore.currentSection !== 27 }"
       ref="newEnergySolutionSection">
       <SolutionsSection :nav-steps="industrySteps" :description="newEnergySolutionsData.description"
         :default-active-step="2" :show-image="newEnergySolutionsData.showImage"
         :image-src="newEnergySolutionsData.imageSrc" />
     </div>
-    
+
     <!-- 第二十九部分： 新能源行业方案优势 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 28, 'section-hidden': sectionStore.currentSection !== 28 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 28, 'section-hidden': sectionStore.currentSection !== 28 }"
       ref="newEnergyAdvantageSection">
       <AdvantagesSection :cards="newEnergyAdvantages" :nav-steps="industrySteps" :default-active-step="3" />
     </div>
-    
+
     <!-- 第三十部分： 新能源行业典型案例 -->
-    <div class="section" :class="{ active: sectionStore.currentSection === 29, 'section-hidden': sectionStore.currentSection !== 29 }"
+    <div class="section"
+      :class="{ active: sectionStore.currentSection === 29, 'section-hidden': sectionStore.currentSection !== 29 }"
       ref="newEnergyCaseSection">
       <CasesSection :cases="newEnergyCases" :nav-steps="industrySteps" :default-active-step="4" />
     </div>
-    
+
   </div>
 </template>
 
@@ -400,37 +453,49 @@ const industrySteps = [
 
 // 钢铁行业解决方案数据
 const steelSolutionsData = {
-  description: '基于超恩工业互联网平台，为钢铁行业提供智能化解决方案。融合数据智能及AI实现全流程智能化。通过智能硬件、智能软件、数字化等手段提供管理、工艺智能优化、精细运维、降本增效和绿色转型。',
-  specialScenes: ['专项场景', '能耗能效管理', '冷轧生产线稳定分析', '大包回转', '皮带机', '空压机', '电气室'],
-  applications: ['智能应用', '设备预测性维护（PHM）', '先进过程控制（APC）', '能源管理（EMS）', '库存优化（IOP）'],
-  platformData: {
-    mainPlatforms: [
-      { title: '统一建模平台', content: '数据建模 | 机理建模 | 价值建模' },
-      { title: '模型管理服务', content: '模型部署 | 模型验证' },
-      { title: '统一建模平台', content: '数据对接 | 模型实时运算' },
-      { title: '其它技术组件', content: '组态工具 | 资源工具 | ······' }
-    ],
-    databases: ['关系数据库', '时序数据库', '文件存储', '······']
-  },
-  dataCollectionMethods: ['有线传感器', '边缘智能采集器', '无线智能网关']
-};
+  description: '以超思工业互联网平台为基座，融合数据算法及AI实现全流程智能优化。通过智能硬件及智能应用赋能煤气管网、冷轧生产等核心场景，实现设备预测性维护、能效优化、工艺智能控制，助力钢铁企业降本增效、绿色转型。',
+  showImage: true,
+  imageSrc: 'src/assets/industry/solution-steel-Photoroom.png'
+}
+
+// const steelSolutionsData = {
+//   description: '基于超恩工业互联网平台，为钢铁行业提供智能化解决方案。融合数据智能及AI实现全流程智能化。通过智能硬件、智能软件、数字化等手段提供管理、工艺智能优化、精细运维、降本增效和绿色转型。',
+//   specialScenes: ['专项场景', '能耗能效管理', '冷轧生产线稳定分析', '大包回转', '皮带机', '空压机', '电气室'],
+//   applications: ['智能应用', '设备预测性维护（PHM）', '先进过程控制（APC）', '能源管理（EMS）', '库存优化（IOP）'],
+//   platformData: {
+//     mainPlatforms: [
+//       { title: '统一建模平台', content: '数据建模 | 机理建模 | 价值建模' },
+//       { title: '模型管理服务', content: '模型部署 | 模型验证' },
+//       { title: '统一建模平台', content: '数据对接 | 模型实时运算' },
+//       { title: '其它技术组件', content: '组态工具 | 资源工具 | ······' }
+//     ],
+//     databases: ['关系数据库', '时序数据库', '文件存储', '······']
+//   },
+//   dataCollectionMethods: ['有线传感器', '边缘智能采集器', '无线智能网关']
+// };
+
 
 // 水泥行业解决方案数据
-const cementSolutionsData = {
-  description: '基于超恩工业互联网平台，为水泥行业提供智能化解决方案。融合数据智能及AI实现全流程智能化化。通过智能硬件、智能软件、数字化等手段提供管理、工艺智能优化、精细运维本、绿色转型。',
-  specialScenes: ['专项场景', '两废一体工艺优化', '分解炉温度控制', '垃圾发电'],
-  applications: ['智能应用', '设备预测性维护（PHM）', '先进过程控制（APC）', '能源管理（EMS）', '......'],
-  platformData: {
-    mainPlatforms: [
-      { title: '统一建模平台', content: '数据建模 | 机理建模 | 价值建模' },
-      { title: '模型管理服务', content: '模型部署 | 模型验证' },
-      { title: '统一建模平台', content: '数据对接 | 模型实时运算' },
-      { title: '其它技术组件', content: '组态工具 | 资源工具 | ······' }
-    ],
-    databases: ['关系数据库', '时序数据库', '文件存储', '······']
-  },
-  dataCollectionMethods: ['有线传感器', '边缘智能采集器', '无线智能网关']
-};
+  const cementSolutionsData = {
+    description: '基于超思工业互联网平台，为水泥行业提供专业的智能化解决方案。覆盖智能运维、智能控制、能效优化等领域，实现设备健康状态实时监控预警、工艺控制优化，降低运维成本、显著提升能效与产能稳定性。',
+    showImage: true,
+    imageSrc: 'src/assets/industry/solution-cement-Photoroom.png'
+  }
+// const cementSolutionsData = {
+//   description: '基于超恩工业互联网平台，为水泥行业提供智能化解决方案。融合数据智能及AI实现全流程智能化化。通过智能硬件、智能软件、数字化等手段提供管理、工艺智能优化、精细运维本、绿色转型。',
+//   specialScenes: ['专项场景', '两废一体工艺优化', '分解炉温度控制', '垃圾发电'],
+//   applications: ['智能应用', '设备预测性维护（PHM）', '先进过程控制（APC）', '能源管理（EMS）', '......'],
+//   platformData: {
+//     mainPlatforms: [
+//       { title: '统一建模平台', content: '数据建模 | 机理建模 | 价值建模' },
+//       { title: '模型管理服务', content: '模型部署 | 模型验证' },
+//       { title: '统一建模平台', content: '数据对接 | 模型实时运算' },
+//       { title: '其它技术组件', content: '组态工具 | 资源工具 | ······' }
+//     ],
+//     databases: ['关系数据库', '时序数据库', '文件存储', '······']
+//   },
+//   dataCollectionMethods: ['有线传感器', '边缘智能采集器', '无线智能网关']
+// };
 
 // 煤炭行业解决方案数据
 const coalSolutionsData = {
@@ -503,7 +568,8 @@ const steelCases = [
     image: steelCase3,
     title: '宝山钢铁',
     description: 'APC'
-  }
+  },
+  
 ];
 
 // 水泥行业案例数据
@@ -743,21 +809,27 @@ const carChallenges = [
 
 // 汽车行业解决方案数据
 const carSolutionsData = {
-  description: '为汽车行业提供设备智能化预测性维护与全生命周期管理，全生命周期管理理论及供链优化技术方案，覆盖生产、工艺、设备等核心工艺，通过运动分析、动态生产算法及设备故障预测技术，降低并计划停机，提升物流效率，助力企业实现设备可靠、生产高效与精益转型。',
-  showImage: false, // 不使用图片而是使用文本数据
-  specialScenes: ['专项场景', '装箱优化', '换电站运维'],
-  applications: ['智能应用', '设备预测性维护（PHM）', '设备全生命周期管理（EAM）', '库存优化（IOP）'],
-  platformData: {
-    mainPlatforms: [
-      { title: '统一建模平台', content: '数据建模 | 机理建模 | 价值建模' },
-      { title: '模型管理服务', content: '模型部署 | 模型验证' },
-      { title: '统一建模平台', content: '数据对接 | 模型实时运算' },
-      { title: '其它技术组件', content: '组态工具 | 资源工具 | ······' }
-    ],
-    databases: ['关系数据库', '时序数据库', '文件存储', '······']
-  },
-  dataCollectionMethods: ['有线传感器', '边缘智能采集器', '无线智能网关']
-};
+  description: '为汽车行业提供设备预测性维护、全生命周期管理及供应链优化等解决方案，覆盖冲压、焊接等核心工艺，通过振动分析、动态排产算法及换电站健康监测技术，降低非计划停机，提升物流效率，助力车企实现设备可靠、生产高效与绿色转型。',
+  showImage: true,
+  imageSrc: 'src/assets/industry/solution-car-Photoroom.png'
+}
+
+// const carSolutionsData = {
+//   description: '为汽车行业提供设备智能化预测性维护与全生命周期管理，全生命周期管理理论及供链优化技术方案，覆盖生产、工艺、设备等核心工艺，通过运动分析、动态生产算法及设备故障预测技术，降低并计划停机，提升物流效率，助力企业实现设备可靠、生产高效与精益转型。',
+//   showImage: false, // 不使用图片而是使用文本数据
+//   specialScenes: ['专项场景', '装箱优化', '换电站运维'],
+//   applications: ['智能应用', '设备预测性维护（PHM）', '设备全生命周期管理（EAM）', '库存优化（IOP）'],
+//   platformData: {
+//     mainPlatforms: [
+//       { title: '统一建模平台', content: '数据建模 | 机理建模 | 价值建模' },
+//       { title: '模型管理服务', content: '模型部署 | 模型验证' },
+//       { title: '统一建模平台', content: '数据对接 | 模型实时运算' },
+//       { title: '其它技术组件', content: '组态工具 | 资源工具 | ······' }
+//     ],
+//     databases: ['关系数据库', '时序数据库', '文件存储', '······']
+//   },
+//   dataCollectionMethods: ['有线传感器', '边缘智能采集器', '无线智能网关']
+// };
 
 // 汽车行业方案优势数据
 const carAdvantages = [
@@ -891,7 +963,7 @@ onMounted(() => {
 
   // 禁用浏览器默认滚动行为
   document.body.style.overflow = 'hidden'
-  
+
   // 检查URL参数中是否有section，有则跳转到对应section
   if (route.query.section) {
     const sectionNumber = parseInt(route.query.section as string)
@@ -913,10 +985,10 @@ watch(() => route.query.section, (newSection) => {
 
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeyDown)
-  
+
   // 确保在离开页面时恢复浏览器默认滚动行为
   document.body.style.overflow = ''
-  
+
   // 重置section状态, 否则在返回时会停留在当前section
   sectionStore.setCurrentSection(0)
 })

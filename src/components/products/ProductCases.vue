@@ -23,7 +23,7 @@
     </div>
     
     <!-- 预约体验按钮 -->
-    <div class="appointment-btn">
+    <div class="appointment-btn" @click="handleConsult">
       预约体验
     </div>
   </div>
@@ -31,8 +31,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
 
+const router = useRouter()
 const props = defineProps<{
   navSteps: string[];
   defaultActiveStep: number;
@@ -46,6 +48,13 @@ const handleCaseClick = (index: number) => {
   // 点击处理逻辑，可以在这里添加预览功能
   console.log('点击了案例:', index);
 };
+
+const handleConsult = () => {
+  router.push({
+    path: '/partners',
+    query: { section: '3' }  // 跳转到合作伙伴页面的咨询部分
+  })
+}
 </script>
 
 <style scoped>

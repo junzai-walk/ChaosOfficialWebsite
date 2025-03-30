@@ -29,7 +29,7 @@
       </div>
 
 
-      <div class="action-button">
+      <div class="action-button" @click="handleConsult">
         产品咨询
       </div>
     </div>
@@ -42,6 +42,8 @@
 <script setup lang="ts">
 import { PropType } from 'vue';
 import ProductRightImages from '@/components/products/ProductRightImages.vue';
+import { useRouter } from 'vue-router';
+const router = useRouter()
 
 interface SensorContent {
   title: string;
@@ -73,6 +75,13 @@ defineProps({
     required: true
   }
 });
+
+const handleConsult = () => {
+  router.push({
+    path: '/partners',
+    query: { section: '3' }  // 跳转到合作伙伴页面的咨询部分
+  })
+}
 </script>
 
 <style lang="less" scoped>

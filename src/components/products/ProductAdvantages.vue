@@ -106,7 +106,7 @@ const getCardStyle = (position: Position) => {
   width: 440px;
   height: 100px;
   position: absolute;
-  background-color: #ffffff;
+  background: linear-gradient(145deg, #ffffff, #f9f9f9);
   border-radius: 8px;
   padding: 24px;
   display: flex;
@@ -114,31 +114,62 @@ const getCardStyle = (position: Position) => {
   gap: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.advantage-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    opacity: 0.6;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
+    border-radius: 50%;
+  }
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(255, 255, 255, 1);
+    
+    .advantage-icon {
+      transform: scale(1.05);
+      box-shadow: 4px 4px 8px rgba(174, 174, 192, 0.2), -4px -4px 8px hsla(0, 0%, 100%, 0.8);
+    }
+  }
 }
 
 .advantage-icon {
   width: 36px;
   height: 36px;
   flex-shrink: 0;
-  background-color: #f0f7ff; /* 添加浅蓝色背景 */
-  border-radius: 6px; /* 圆角背景 */
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 6px;
-  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 3px 3px 6px rgba(174, 174, 192, 0.18), -3px -3px 6px hsla(0, 0%, 100%, 0.8);
 }
 
 .advantage-icon img {
   width: 20px;
   height: 20px;
-  object-fit: contain;
   border-radius: 50%;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
 }
 
 .advantage-content {
@@ -152,6 +183,7 @@ const getCardStyle = (position: Position) => {
   line-height: 100%;
   margin-bottom: 12px;
   color: #333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
 .advantage-description {
@@ -160,6 +192,7 @@ const getCardStyle = (position: Position) => {
   font-size: 14px;
   line-height: 24px;
   color: #666;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 @media (max-width: 1920px) {

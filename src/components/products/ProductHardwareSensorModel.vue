@@ -69,18 +69,6 @@ const activeStep = ref(props.defaultActiveStep || 1);
   position: relative;
   background: #fff;
   
-  .side-nav-container {
-    position: absolute;
-    top: 336px;
-    left:187px;
-    z-index: 10;
-
-    .custom-nav-steps {
-      top: 0;
-      left: 0;
-    }
-  }
-  
   .content-container {
     position: absolute;
     width: 603px;

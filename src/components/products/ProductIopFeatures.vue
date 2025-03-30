@@ -2,26 +2,16 @@
   <div class="product-iop-features">
     <!-- 左侧导航栏 -->
     <div class="side-nav-container">
-      <CustomNavSteps 
-        :width="120" 
-        :height="192" 
-        :steps="navSteps" 
-        v-model:activeStep="activeStep" 
-      />
+      <CustomNavSteps :width="120" :height="192" :steps="navSteps" v-model:activeStep="activeStep" />
     </div>
-    
+
     <!-- 中心图片 -->
     <div class="center-image-container">
       <img :src="centerImage" alt="库存优化核心功能" class="center-image" />
     </div>
-    
+
     <!-- 四个功能卡片 -->
-    <div 
-      v-for="(feature, index) in features" 
-      :key="index"
-      class="feature-card"
-      :style="getCardStyle(feature.position)"
-    >
+    <div v-for="(feature, index) in features" :key="index" class="feature-card" :style="getCardStyle(feature.position)">
       <div class="feature-icon" :class="`bg-color-${index + 1}`">
         <img :src="feature.icon" alt="功能图标" />
       </div>
@@ -70,25 +60,25 @@ const features: Feature[] = [
     title: '库存健康诊断',
     description: '助力中大型企业，进行库存健康智能诊断。',
     icon: icon1,
-    position: { top: 195, left: 313 }
+    position: { top: 195, left: 313 + 20 }
   },
   {
     title: '库存需求预测',
     description: '助力中大型企业，针对库存做分析数据，构建需求预测模型。',
     icon: icon2,
-    position: { top: 195, left: 1193 }
+    position: { top: 195, left: 1193 + 20 }
   },
   {
     title: '库存智能补货',
     description: '助力中大型企业，针对性设置分析数据，构建智能补货模型。',
     icon: icon3,
-    position: { top: 451, left: 313 }
+    position: { top: 451, left: 313 + 20 }
   },
   {
     title: '库存网络优化',
     description: '面向大型企业多级供应网络，进行供应链规划与优化。',
     icon: icon4,
-    position: { top: 451, left: 1193 }
+    position: { top: 451, left: 1193 + 20 }
   }
 ];
 
@@ -109,24 +99,12 @@ const getCardStyle = (position: Position) => {
   overflow: hidden;
   padding-top: 100px;
 
-  .side-nav-container {
-    position: absolute;
-    top: 336px;
-    left: 167px;
-    z-index: 10;
-
-    .custom-nav-steps {
-      top: 0;
-      left: 0;
-    }
-  }
-
   .center-image-container {
     position: absolute;
     width: 450.52px;
     height: 433px;
     top: 200px;
-    left: 710px;
+    left: 730px;
     z-index: 1;
 
     .center-image {
@@ -216,47 +194,47 @@ const getCardStyle = (position: Position) => {
 @media (max-width: 1920px) {
   .product-iop-features {
     padding-top: calc(100px * 100vw / 1920);
-    
+
     .side-nav-container {
       top: calc(336px * 100vw / 1920);
       left: calc(187px * 100vw / 1920);
       width: calc(120px * 100vw / 1920);
       height: calc(192px * 100vw / 1920);
     }
-    
+
     .center-image-container {
       width: calc(450.52px * 100vw / 1920);
       height: calc(433px * 100vw / 1920);
       top: calc(200px * 100vw / 1920);
-      left: calc(710px * 100vw / 1920);
+      left: calc(730px * 100vw / 1920);
     }
-    
+
     .feature-card {
       width: calc(316px * 100vw / 1920);
       height: calc(170px * 100vw / 1920);
       padding: calc(24px * 100vw / 1920);
     }
-    
+
     .feature-icon {
       width: calc(40px * 100vw / 1920);
       height: calc(40px * 100vw / 1920);
       margin-bottom: calc(16px * 100vw / 1920);
     }
-    
+
     .feature-icon img {
       width: calc(20px * 100vw / 1920);
       height: calc(20px * 100vw / 1920);
     }
-    
+
     .feature-title {
       font-size: calc(20px * 100vw / 1920);
       margin-bottom: calc(12px * 100vw / 1920);
     }
-    
+
     .feature-description {
       font-size: calc(14px * 100vw / 1920);
       line-height: calc(24px * 100vw / 1920);
     }
   }
 }
-</style> 
+</style>
