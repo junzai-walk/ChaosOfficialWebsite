@@ -64,7 +64,7 @@ const customSteps = computed(() => {
 });
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .product-ems-results {
   width: 100%;
   min-height: 100vh;
@@ -81,6 +81,12 @@ const customSteps = computed(() => {
   position: absolute;
   left: 100px;
   top: 250px;
+
+  .custom-nav-steps {
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
 }
 
 .title-container {

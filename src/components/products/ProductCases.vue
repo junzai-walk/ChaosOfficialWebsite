@@ -70,7 +70,7 @@ const handleCaseClick = (index: number) => {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding-right: 187px;
+  padding-left: 100px;
 }
 
 .case-card {

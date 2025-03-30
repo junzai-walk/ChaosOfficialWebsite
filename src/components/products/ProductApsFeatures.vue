@@ -57,6 +57,11 @@ const activeStep = ref(props.defaultActiveStep || 2);
     top: 336px;
     left: 187px;
     z-index: 10;
+
+    .custom-nav-steps {
+      top: 0;
+      left: 0;
+    }
   }
   
   .picture-left-container {

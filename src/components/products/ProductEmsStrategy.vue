@@ -79,17 +79,17 @@ const customSteps = computed(() => {
 .side-nav-container {
   width: 120px;
   position: absolute;
-  left: 130px;
-  top: 50%;
-  transform: translateY(-50%);
+  left: 60px;
+  /* top: 50%;   */
+  /* transform: transla teY(-50%); */
   z-index: 10;
 }
 
 .laptop-container {
   position: absolute;
-  left: 260px;
-  top: 50%;
-  transform: translateY(-50%);
+  left: 360px;
+  top: 40%;
+  transform: translateY(-40%);
   width: 640px;
   height: 420px;
 }
@@ -101,11 +101,11 @@ const customSteps = computed(() => {
 }
 
 .content-container {
-  position: absolute;
-  left: 1200px;
-  right: 100px;
-  top: 50%;
-  transform: translateY(-50%);
+    position: absolute;
+    left: 1200px;
+    right: 100px;
+    top: 43%;
+    transform: translateY(-43%);
 }
 
 .strategy-title {

@@ -65,7 +65,7 @@ const activeStep = ref(props.defaultActiveStep || 1);
   grid-template-columns: repeat(3, 416px);
   grid-template-rows: repeat(2, 220px);
   gap: 20px;
-  padding-right: 187px;
+  padding-left: 100px;
 }
 
 .feature-card {

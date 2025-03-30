@@ -47,7 +47,7 @@ const activeStep = ref(props.defaultActiveStep || 1); // 默认显示产品概�
   min-height: 100vh;
   display: flex;
   background-color: white;
-  padding: 336px 187px 0; /* 顶部对齐 336px，左侧对齐 187px */
+  padding: 336px 187px 0 295px; /* 顶部对齐 336px，左侧对齐 187px */
   box-sizing: border-box;
   gap: 51px; /* 左侧导航与内容区域的间距 */
 }

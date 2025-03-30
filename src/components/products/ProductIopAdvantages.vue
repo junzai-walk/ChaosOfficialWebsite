@@ -126,6 +126,12 @@ const getCardStyle = (position: Position) => {
     top: 336px;
     left: 167px;
     z-index: 10;
+
+    .custom-nav-steps {
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
   }
 
   .background-image-container {
