@@ -115,7 +115,7 @@ const handleNews = (id:any)=>{
     padding: 0 15rem;
     width: 100%;
     min-height: 10rem;
-    background: url('@/assets/news/Block-12.png') no-repeat center center;
+    background: url('@/assets/news/Group 129.png') no-repeat center center;
     background-size: 100% 100%;
     font-size: 1.75rem;
     font-weight: 700;

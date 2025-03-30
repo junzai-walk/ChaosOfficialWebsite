@@ -188,9 +188,10 @@ watch(
   .detail-header {
     box-sizing: border-box;
     padding: 0 15rem;
+    // margin-top: 2rem;
     width: 100%;
     height: 10rem;
-    background: url('@/assets/about/Block-12.png') no-repeat center center;
+    background: url('@/assets/news/VCG41157308861 1.png') no-repeat center center;
     background-size: 100% 100%;
     font-size: 1.75rem;
     font-weight: 700;
