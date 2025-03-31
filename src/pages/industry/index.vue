@@ -233,14 +233,14 @@
     <div class="section"
       :class="{ active: sectionStore.currentSection === 26, 'section-hidden': sectionStore.currentSection !== 26 }"
       ref="newEnergyChallengeSection">
-      <ChallengesSection :cards="newEnergyChallenges" :nav-steps="industrySteps" :default-active-step="1" />
+      <ChallengesSection :cards="newEnergyChallenges" :nav-steps="industryThreeSteps" :default-active-step="1" />
     </div>
 
     <!-- 第二十八部分： 新能源行业解决方案 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 27, 'section-hidden': sectionStore.currentSection !== 27 }"
       ref="newEnergySolutionSection">
-      <SolutionsSection :nav-steps="industrySteps" :description="newEnergySolutionsData.description"
+      <SolutionsSection :nav-steps="industryThreeSteps" :description="newEnergySolutionsData.description"
         :default-active-step="2" :show-image="newEnergySolutionsData.showImage"
         :image-src="newEnergySolutionsData.imageSrc" />
     </div>
@@ -249,22 +249,22 @@
     <div class="section"
       :class="{ active: sectionStore.currentSection === 28, 'section-hidden': sectionStore.currentSection !== 28 }"
       ref="newEnergyAdvantageSection">
-      <AdvantagesSection :cards="newEnergyAdvantages" :nav-steps="industrySteps" :default-active-step="3" />
+      <AdvantagesSection :cards="newEnergyAdvantages" :nav-steps="industryThreeSteps" :default-active-step="3" />
     </div>
 
     <!-- 第三十部分： 新能源行业典型案例 -->
-    <div class="section"
+    <!-- <div class="section"
       :class="{ active: sectionStore.currentSection === 29, 'section-hidden': sectionStore.currentSection !== 29 }"
       ref="newEnergyCaseSection">
       <CasesSection :cases="newEnergyCases" :nav-steps="industrySteps" :default-active-step="4" />
-    </div>
+    </div> -->
 
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, provide, onMounted, onBeforeUnmount, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useSectionStore } from '@/stores/sectionStore'
 import SteelChallenges from '@/components/industry/SteelChallenges.vue'
 import SteelSolutions from '@/components/industry/SteelSolutions.vue'
@@ -323,7 +323,23 @@ import steelCase1 from '@/assets/industry/steel-case-1.png'
 import steelCase2 from '@/assets/industry/steel-case-2.png'
 import steelCase3 from '@/assets/industry/steel-case-3.png'
 
+// 导入水泥行业案例图片
+import cementCase1 from '@/assets/industry/cement-case-1.png'
+import cementCase2 from '@/assets/industry/cement-case-2.png'
+
+// 导入煤炭行业案例图片
+import coalCase1 from '@/assets/industry/coal-case-1.png'
+import coalCase2 from '@/assets/industry/coal-case-2.png'
+
+// 导入化工行业案例图片
+import chemicalCase1 from '@/assets/industry/chemical-case-1.png'
+
+// 导入汽车行业案例图片
+import carCase1 from '@/assets/industry/car-case-1.png'
+
+
 const route = useRoute()
+const router = useRouter()
 const scrolling = ref(false)
 const scrollDelay = 1000 // 滚动延迟，防止连续滚动
 const caseId = ref()
@@ -338,8 +354,8 @@ const handleWheel = (e: WheelEvent) => {
   scrolling.value = true
 
   // 向下滚动
-  if (e.deltaY > 0 && sectionStore.currentSection < 29) {
-    sectionStore.nextSection(29)
+  if (e.deltaY > 0 && sectionStore.currentSection < 28) {
+    sectionStore.nextSection(28)
   }
   // 向上滚动
   else if (e.deltaY < 0 && sectionStore.currentSection > 0) {
@@ -359,8 +375,8 @@ const handleKeyDown = (e: KeyboardEvent) => {
   scrolling.value = true
 
   // 向下箭头或Page Down
-  if ((e.key === 'ArrowDown' || e.key === 'PageDown') && sectionStore.currentSection < 29) {
-    sectionStore.nextSection(29)
+  if ((e.key === 'ArrowDown' || e.key === 'PageDown') && sectionStore.currentSection < 28) {
+    sectionStore.nextSection(28)
   }
   // 向上箭头或Page Up
   else if ((e.key === 'ArrowUp' || e.key === 'PageUp') && sectionStore.currentSection > 0) {
@@ -449,6 +465,12 @@ const industrySteps = [
   '解决方案',
   '方案优势',
   '典型案例'
+];
+
+const industryThreeSteps = [
+  '行业挑战',
+  '解决方案',
+  '方案优势',
 ];
 
 // 钢铁行业解决方案数据
@@ -568,51 +590,25 @@ const steelCases = [
     image: steelCase3,
     title: '宝山钢铁',
     description: 'APC'
-  },
-  
+  }
 ];
 
 // 水泥行业案例数据
 const cementCases = [
   {
-    image: cementBackgroundImage,
-    title: '中国宝武钢铁集团有限公司',
+    image: cementCase1,
+    title: '安徽海螺水泥股份有限公司',
     description: '预测性运维管理平台'
   },
   {
-    image: cementBackgroundImage,
-    title: '中国宝武钢铁集团有限公司',
-    description: '预测性运维管理平台'
+    image: cementCase1,
+    title: '安徽海螺水泥股份有限公司',
+    description: 'APC'
   },
   {
-    image: cementBackgroundImage,
-    title: '中国宝武钢铁集团有限公司',
-    description: '预测性运维管理平台'
-  },
-  {
-    image: cementBackgroundImage,
-    title: '中国宝武钢铁集团有限公司',
-    description: '预测性运维管理平台'
-  },
-  {
-    image: cementBackgroundImage,
-    title: '中国宝武钢铁集团有限公司',
-    description: '预测性运维管理平台'
-  },
-  {
-    image: cementBackgroundImage,
-    title: '中国宝武钢铁集团有限公司',
-    description: '预测性运维管理平台'
-  },
-  {
-    image: cementBackgroundImage,
-    title: '中国宝武钢铁集团有限公司',
-    description: '预测性运维管理平台'
-  },
-  {
-    image: cementBackgroundImage,
-    title: '中国宝武钢铁集团有限公司',
-    description: '预测性运维管理平台'
+    image: cementCase2,
+    title: '安徽盘锦水泥',
+    description: 'APC'
   }
 ];
 
@@ -653,44 +649,19 @@ const coalAdvantages = [
 // 煤炭行业典型案例数据
 const coalCases = [
   {
-    image: coalBackgroundImage,
+    image: coalCase1,
     title: '山西焦煤集团有限责任公司',
     description: '预测性运维管理平台'
   },
   {
-    image: coalBackgroundImage,
+    image: coalCase1,
     title: '山西焦煤集团有限责任公司',
-    description: '预测性运维管理平台'
+    description: 'EAM'
   },
   {
-    image: coalBackgroundImage,
-    title: '山西焦煤集团有限责任公司',
-    description: '预测性运维管理平台'
-  },
-  {
-    image: coalBackgroundImage,
-    title: '山西焦煤集团有限责任公司',
-    description: '预测性运维管理平台'
-  },
-  {
-    image: coalBackgroundImage,
-    title: '山西焦煤集团有限责任公司',
-    description: '预测性运维管理平台'
-  },
-  {
-    image: coalBackgroundImage,
-    title: '山西焦煤集团有限责任公司',
-    description: '预测性运维管理平台'
-  },
-  {
-    image: coalBackgroundImage,
-    title: '山西焦煤集团有限责任公司',
-    description: '预测性运维管理平台'
-  },
-  {
-    image: coalBackgroundImage,
-    title: '山西焦煤集团有限责任公司',
-    description: '预测性运维管理平台'
+    image: coalCase2,
+    title: '特变电工',
+    description: 'EAM'
   }
 ];
 
@@ -762,24 +733,9 @@ const chemicalAdvantages = [
 // 化工行业典型案例数据
 const chemicalCases = [
   {
-    image: chemicalBgImage, // 化工厂设备图片
-    title: '中石化南京工程有限公司',
-    description: '设备检监管理平台'
-  },
-  {
-    image: chemicalBgImage, // 使用相同图片
-    title: '中石化南京工程有限公司',
-    description: '设备检监管理平台'
-  },
-  {
-    image: chemicalBgImage, // 使用相同图片
-    title: '中石化南京工程有限公司',
-    description: '设备检监管理平台'
-  },
-  {
-    image: chemicalBgImage, // 使用相同图片
-    title: '中石化南京工程有限公司',
-    description: '设备检监管理平台'
+    image: chemicalCase1, // 化工厂设备图片
+    title: '巴斯夫(中国)',
+    description: '预测性运维管理平台'
   }
 ];
 
@@ -858,23 +814,8 @@ const carAdvantages = [
 // 汽车行业典型案例数据
 const carCases = [
   {
-    image: carBackgroundImage,
+    image: carCase1,
     title: '丰田集团',
-    description: '预测性运维管理平台'
-  },
-  {
-    image: carBackgroundImage,
-    title: '本田集团',
-    description: '预测性运维管理平台'
-  },
-  {
-    image: carBackgroundImage,
-    title: '上汽集团',
-    description: '预测性运维管理平台'
-  },
-  {
-    image: carBackgroundImage,
-    title: '奇瑞集团',
     description: '预测性运维管理平台'
   }
 ];
@@ -967,7 +908,7 @@ onMounted(() => {
   // 检查URL参数中是否有section，有则跳转到对应section
   if (route.query.section) {
     const sectionNumber = parseInt(route.query.section as string)
-    if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 29) {
+    if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 28) {
       sectionStore.setCurrentSection(sectionNumber)
     }
   }
@@ -977,10 +918,21 @@ onMounted(() => {
 watch(() => route.query.section, (newSection) => {
   if (newSection) {
     const sectionNumber = parseInt(newSection as string)
-    if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 29) {
+    if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 28) {
       sectionStore.setCurrentSection(sectionNumber)
     }
   }
+})
+
+// 监听sectionStore.currentSection变化并更新URL
+watch(() => sectionStore.currentSection, (newSection) => {
+  // 更新URL而不刷新页面
+  router.replace({ 
+    query: { 
+      ...route.query, 
+      section: newSection.toString() 
+    }
+  })
 })
 
 onBeforeUnmount(() => {

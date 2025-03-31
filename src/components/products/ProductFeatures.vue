@@ -13,7 +13,7 @@
         </div>
         <div class="feature-content">
           <h3 class="feature-title">{{ feature.title }}</h3>
-          <p class="feature-description">{{ feature.description }}</p>
+          <p class="feature-description" :title="feature.description">{{ feature.description }}</p>
         </div>
       </div>
     </div>
@@ -164,6 +164,11 @@ const activeStep = ref(props.defaultActiveStep || 1);
   color: #666;
   text-align: left;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 1920px) {

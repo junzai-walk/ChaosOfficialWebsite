@@ -103,34 +103,34 @@
     <!-- 第十七部分：产品概述 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 16, 'section-hidden': sectionStore.currentSection !== 16 }">
-      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionEms"
+      <ProductDescription :nav-steps="productStepsEffect" :default-active-step="1" :description="productDescriptionEms"
         :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第十八部分：核心功能 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 17, 'section-hidden': sectionStore.currentSection !== 17 }">
-      <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :features="productFeaturesEms" />
+      <ProductFeatures :nav-steps="productStepsEffect" :default-active-step="2" :features="productFeaturesEms" />
     </div>
 
     <!-- 第十八部分：特色优势 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 18, 'section-hidden': sectionStore.currentSection !== 18 }">
-      <ProductEmsFeatures :nav-steps="productSteps" :default-active-step="3" main-title="引入核心算法配置模块"
+      <ProductEmsFeatures :nav-steps="productStepsEffect" :default-active-step="3" main-title="引入核心算法配置模块"
         sub-title="建立能源需求预测与规划" :features="productEmsPredictions" />
     </div>
 
     <!-- 第十九部分：特色优势 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 19, 'section-hidden': sectionStore.currentSection !== 19 }">
-      <ProductEmsStrategy :nav-steps="productSteps" :default-active-step="3" title="用能诊断及节能减排策略优化"
+      <ProductEmsStrategy :nav-steps="productStepsEffect" :default-active-step="3" title="用能诊断及节能减排策略优化"
         :strategies="emsStrategies" />
     </div>
 
     <!-- 第二十部分：应用成效 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 20, 'section-hidden': sectionStore.currentSection !== 20 }">
-      <ProductEmsResults :nav-steps="productSteps" :default-active-step="4" title="应用成效" :results="emsResults" />
+      <ProductEmsResults :nav-steps="productStepsEffect" :default-active-step="4" title="应用成效" :results="emsResults" />
     </div>
 
     <!-- 第二十一部分：库存优化(IOP) -->
@@ -142,26 +142,26 @@
     <!-- 第二十二部分：产品描述 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 22, 'section-hidden': sectionStore.currentSection !== 22 }">
-      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionIop"
+      <ProductDescription :nav-steps="productStepsEffect" :default-active-step="1" :description="productDescriptionIop"
         :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第二十三部分：核心功能 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 23, 'section-hidden': sectionStore.currentSection !== 23 }">
-      <ProductIopFeatures :nav-steps="productSteps" :default-active-step="2" />
+      <ProductIopFeatures :nav-steps="productStepsEffect" :default-active-step="2" />
     </div>
 
     <!-- 第二十四部分：特色优势 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 24, 'section-hidden': sectionStore.currentSection !== 24 }">
-      <ProductIopAdvantages :nav-steps="productSteps" :default-active-step="3" />
+      <ProductIopAdvantages :nav-steps="productStepsEffect" :default-active-step="3" />
     </div>
 
     <!-- 第二十五部分：应用成效 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 25, 'section-hidden': sectionStore.currentSection !== 25 }">
-      <ProductIopResults :nav-steps="productSteps" :default-active-step="4" title="应用成效" :results="iopResults" />
+      <ProductIopResults :nav-steps="productStepsEffect" :default-active-step="4" title="应用成效" :results="iopResults" />
     </div>
 
     <!-- 第二十六部分：生产计划排程(APS) -->
@@ -173,7 +173,7 @@
     <!-- 第二十七部分：产品概述 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 27, 'section-hidden': sectionStore.currentSection !== 27 }">
-      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionAps"
+      <ProductDescription :nav-steps="productStepsAnother" :default-active-step="1" :description="productDescriptionAps"
         :video-src="officialVideoSrc" />
     </div>
 
@@ -282,7 +282,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useSectionStore } from '@/stores/sectionStore'
 import ProductHero from '@/components/products/ProductHero.vue'
 import ProductDescription from '@/components/products/ProductDescription.vue'
@@ -417,19 +417,21 @@ import hardwareGateway from '@/assets/products/hardware-gateway-1.png'
 import hardwareTable4 from '@/assets/products/hardware-table-4.png'
 
 const route = useRoute()
+const router = useRouter()
 // 使用 Pinia store 代替本地状态
 const sectionStore = useSectionStore()
 const scrolling = ref(false);
 const scrollDelay = 1000; // 滚动延迟，防止连续滚动
 
 // 产品步骤
-const productSteps = ['产品概述', '核心功能', '特色优势', '应用案例']
+const productSteps = ['产品概述', '核心功能', '特色优势', '典型案例']
+// 产品步骤 - 应用成效
+const productStepsEffect = ['产品概述', '核心功能', '特色优势', '应用成效']
 //产品步骤 - 简略
 const productStepsAnother = ['产品概述', '核心功能', '特色优势']
 //产品步骤 - 有线传感器
 const productStepsLight = ['产品亮点', '规格参数']
-//产品步骤
-// const productStepsAnother = ['产品概述', '核心功能', '特色优势', '应用成效']
+
 // 产品描述
 const productDescription = '设备预测性维护与健康管理系统，应用工业设备运维中的感知、数字和智能，采用先进的数据技术，以预测维护+数据感知+机理建模为技术心，实现从设备监测预警到设备故障预测和健康评估的完善流程，快速准确推进生产线设备智能化运维能力，提高设备故障预测和检修效率。'
 const productDescriptionEam = '对设备全生命周期进行管控，记录设备完备的基础信息档率，对日常管理、运行监测、设备点巡检、润滑保养、预防检修、故障维修、备品备件、知识库等进行管理，帮助企业精确掌握设备运行情况。提高设备可用性，降低运行维护成本，提升企业竞争力。'
@@ -1071,6 +1073,17 @@ watch(() => route.query.section, (newSection) => {
     }
   }
 });
+
+// 监听sectionStore.currentSection变化并更新URL
+watch(() => sectionStore.currentSection, (newSection) => {
+  // 更新URL而不刷新页面
+  router.replace({ 
+    query: { 
+      ...route.query, 
+      section: newSection.toString() 
+    }
+  })
+})
 
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeyDown);

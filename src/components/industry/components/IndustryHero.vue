@@ -52,6 +52,7 @@ defineProps({
   background-position: center center;
   background-size: 100% 100%;
   z-index: 1;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1));
 }
 
 .content-wrapper {
@@ -65,9 +66,15 @@ defineProps({
 }
 
 .content {
-  padding-left: 10%;
+  // padding-left: 10%;
   max-width: 610px;
   color: #ffffff;
+  position: absolute;
+  width: 951px;
+  height: 308px;
+  top: 315px;
+  left: 472px;
+  border-radius: 34px;
 }
 
 .title-container {
@@ -102,7 +109,7 @@ defineProps({
 
 .button-container {
   text-align: left;
-  margin-top: 15px;
+  margin-top: 100px;
 }
 
 .consult-button {
@@ -125,13 +132,13 @@ defineProps({
     padding-left: 5%;
     padding-right: 5%;
   }
-  
+
   .industry-title {
     font-size: 36px;
   }
-  
+
   .industry-desc {
     font-size: 14px;
   }
 }
-</style> 
+</style>

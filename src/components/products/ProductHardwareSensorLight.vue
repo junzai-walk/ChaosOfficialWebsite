@@ -11,7 +11,7 @@
 
       <div class="feature-list">
         <div v-for="(item, index) in content" :key="index" class="feature-item">
-          <div class="check-icon">✓</div>
+          <img class="check-icon" src="@/assets/products/hardware-yes.png" alt="勾选图标" />
           <div class="feature-content">
             <div class="feature-title">{{ item.title }}</div>
             <div class="feature-description">{{ item.description }}</div>
@@ -101,17 +101,11 @@ const activeStep = ref(props.defaultActiveStep || 1);
         align-items: flex-start;
 
         .check-icon {
-          width: 24px;
-          height: 24px;
-          background-color: rgba(0, 187, 152, 0.1);
-          color: #00BB98;
-          border-radius: 50%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-size: 16px;
-          margin-right: 12px;
+          width: 14px;
+          height: 12px;
           flex-shrink: 0;
+          margin-right: 12px;
+          transform: translateY(3px);
         }
 
         .feature-content {

@@ -167,7 +167,7 @@ const imageContainerStyle = computed(() => ({
   }
 }
 
-.feature-card:hover, .feature-card.active {
+.feature-card:hover{
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
   background-color: #eef5ff;

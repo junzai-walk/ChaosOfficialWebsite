@@ -12,7 +12,7 @@
       <!-- 添加值和单位显示 -->
       <div class="sensor-info-list" v-if="content.some(item => item.value)">
         <div v-for="(item, index) in content" :key="index" class="sensor-info-item">
-          <span class="checkmark">✓</span>
+          <img class="check-icon" src="@/assets/products/hardware-yes.png" alt="勾选图标" />
           <span class="info-title">{{ item.title }}</span>
           <span class="info-value" v-if="item.value">{{ item.value }}</span>
           <span class="info-unit" v-if="item.unit">{{ item.unit }}</span>
@@ -22,6 +22,7 @@
       <div class="sensor-list" v-else="content.length > 0">
         <div v-for="(item, index) in content" :key="index"
           :class="['sensor-item', { 'sensor-item-no-model': !item.model }]">
+          <img class="check-icon" src="@/assets/products/hardware-yes.png" alt="勾选图标" />
           <span class="item-title">{{ item.title }}</span>
           <div class="item-line" v-if="item.model"></div>
           <span class="item-model" v-if="item.model">{{ item.model }}</span>
@@ -138,21 +139,17 @@ const handleConsult = () => {
         align-items: center;
         position: relative;
 
-        &::before {
-          content: "•";
+        .check-icon {
+          width: 14px;
+          height: 12px;
+          flex-shrink: 0;
           margin-right: 12px;
-          color: #0072FF;
-          font-size: 24px;
+          transform: translateY(3px);
         }
 
         &.sensor-item-no-model {
           justify-content: flex-start;
           align-items: flex-start;
-
-          &::before {
-            content: "√";
-            color: #4CAF50;
-          }
         }
 
         .item-title {
@@ -193,10 +190,12 @@ const handleConsult = () => {
         align-items: center;
         position: relative;
 
-        .checkmark {
+        .check-icon {
+          width: 14px;
+          height: 12px;
+          flex-shrink: 0;
           margin-right: 12px;
-          color: #4CAF50;
-          font-size: 18px;
+          transform: translateY(3px);
         }
 
         .info-title {
@@ -269,9 +268,10 @@ const handleConsult = () => {
       }
 
       .sensor-list .sensor-item {
-        &::before {
+        .check-icon {
+          width: calc(14px * 100vw / 1920);
+          height: calc(12px * 100vw / 1920);
           margin-right: calc(12px * 100vw / 1920);
-          font-size: calc(24px * 100vw / 1920);
         }
 
         .item-title,
@@ -285,9 +285,10 @@ const handleConsult = () => {
       }
 
       .sensor-info-list .sensor-info-item {
-        .checkmark {
+        .check-icon {
+          width: calc(14px * 100vw / 1920);
+          height: calc(12px * 100vw / 1920);
           margin-right: calc(12px * 100vw / 1920);
-          font-size: calc(18px * 100vw / 1920);
         }
 
         .info-title {

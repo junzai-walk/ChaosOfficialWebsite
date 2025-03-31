@@ -9,7 +9,7 @@
       <!-- 右侧内容区 -->
       <div class="advantage-content">
         <!-- 卡片部分 -->
-        <div class="advantage-cards">
+        <div class="advantage-cards" :class="{'small-cards': isSmallCard}">
           <!-- 按行分组展示卡片 -->
           <div class="card-row" v-for="(rowCards, rowIndex) in chunkedCards" :key="rowIndex">
             <div class="advantage-card" v-for="(card, cardIndex) in rowCards" :key="cardIndex">
@@ -47,11 +47,13 @@ const props = defineProps<{
 // 当前活动步骤
 const activeStep = ref(props.defaultActiveStep || 3); // 默认显示方案优势（第三项）
 
+// 添加计算属性判断是否为小卡片
+const isSmallCard = computed(() => props.cards.length > 4);
+
 // 修改计算属性
 const chunkedCards = computed(() => {
   const result = [];
-  const isSmallCard = props.cards.length > 4; // 超过4个卡片时使用小宽度
-  const cardsPerRow = isSmallCard ? 3 : 2; // 小卡片时每行3个，大卡片时每行2个
+  const cardsPerRow = isSmallCard.value ? 3 : 2; // 小卡片时每行3个，大卡片时每行2个
   
   for (let i = 0; i < props.cards.length; i += cardsPerRow) {
     result.push(props.cards.slice(i, i + cardsPerRow));
@@ -139,13 +141,10 @@ html {
   position: relative;
   overflow: hidden;
   
-  // 根据父元素的类名来确定宽度
-  .advantage-cards:has(> .card-row:nth-child(3)) & {
-    width: calc(33.33% - 14px); // 小宽度卡片
-  }
+  width: calc(50% - 10px); // 默认大宽度卡片
   
-  .advantage-cards:not(:has(> .card-row:nth-child(3))) & {
-    width: calc(50% - 10px); // 大宽度卡片
+  .small-cards & {
+    width: calc(33.33% - 14px); // 小宽度卡片
   }
   
   &::before {

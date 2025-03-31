@@ -81,7 +81,7 @@
               </ul>
             </div>
             <div class="nav-section">
-              <h4 class="decoration-line">解决方案</h4>
+              <h4 class="decoration-line" @click="navigateToIndustry(0)">解决方案</h4>
               <ul>
                 <li @click="navigateToIndustry(0)">钢铁行业</li>
                 <li @click="navigateToIndustry(5)">水泥行业</li>
@@ -92,18 +92,19 @@
               </ul>
             </div>
             <div class="nav-section">
-              <h4 class="decoration-line">关于我们</h4>
+              <h4 class="decoration-line" @click="navigateToAbout(1)">关于我们</h4>
               <ul>
-                <li>公司概况</li>
-                <li>荣誉资质</li>
-                <li>公司动态</li>
-                <li>加入我们</li>
+                <li @click="navigateToAbout(1)">公司概况</li>
+                <li @click="navigateToAbout(2)">重要荣誉</li>
+                <li @click="navigateToAbout(3)">加入我们</li>
+                <li @click="navigateToAbout(4)">联系我们</li>
+                <li @click="navigateToAbout(5)">新闻动态</li>
               </ul>
             </div>
             <div class="nav-section">
-              <h4 class="decoration-line">客户案例</h4>
+              <h4 class="decoration-line"  @click="navigateToPartners">客户案例</h4>
               <ul>
-                <li>合作伙伴</li>
+                <li @click="navigateToPartners">合作伙伴</li>
               </ul>
             </div>
           </div>
@@ -174,6 +175,21 @@ const navigateToIndustry = (sectionIndex: number) => {
     query: { section: sectionIndex.toString() }
   })
 }
+
+const navigateToAbout = (sectionIndex: number) => {
+  router.push({
+    path: '/about',
+    query: { section: sectionIndex.toString() }
+  })
+}
+
+const navigateToPartners = () => {
+  router.push({
+    path: '/partners',
+    query: { section: '0' }
+  })
+}
+
 </script>
 
 <style lang="less" scoped>
@@ -429,6 +445,7 @@ const navigateToIndustry = (sectionIndex: number) => {
         text-decoration: underline;
         text-decoration-color: #fff;
         text-underline-offset: 0.4125rem;
+        cursor: pointer;
       }
 
       ul {

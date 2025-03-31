@@ -124,6 +124,14 @@ const customSteps = computed(() => {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   gap: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover{
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    background-color: #eef5ff;
+  }
 }
 
 .strategy-number {

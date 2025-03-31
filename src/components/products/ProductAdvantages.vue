@@ -25,13 +25,13 @@
           </div>
           <div class="advantage-content">
             <h3 class="advantage-title">{{ advantage.title }}</h3>
-            <p class="advantage-description" style="text-align: left;">{{ advantage.description }}</p>
+            <p class="advantage-description" style="text-align: left;" :title="advantage.description">{{ advantage.description }}</p>
           </div>
         </template>
         <template v-else>
           <div class="advantage-content">
             <h3 class="advantage-title">{{ advantage.title }}</h3>
-            <p class="advantage-description" style="text-align: right;">{{ advantage.description }}</p>
+            <p class="advantage-description" style="text-align: right;" :title="advantage.description">{{ advantage.description }}</p>
           </div>
           <div class="advantage-icon">
             <img :src="advantage.icon" alt="特色优势图标" />
@@ -193,6 +193,11 @@ const getCardStyle = (position: Position) => {
   line-height: 24px;
   color: #666;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 1920px) {
