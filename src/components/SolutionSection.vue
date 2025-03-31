@@ -94,7 +94,7 @@ const industries = ref([
   { 
     name: '煤炭行业', 
     description: '聚焦核心设备智能化运维，采用物联网、人工智能、大数据等技术，通过特征提取+机理建模的方式实现设备状态感知、智能预警、故障诊断、健康评估，并以统一算法库与知识库赋能矿井设备全生命周期管理，帮助煤矿企业实现数字化转型升级', 
-    image:'/src/assets/industry/coal-bg.jpg',
+    image:'/src/assets/industry/coal-bg.png',
     cases: [
       '设备预测性维护与健康管理系统',
       '设备全生命周期管理系统',

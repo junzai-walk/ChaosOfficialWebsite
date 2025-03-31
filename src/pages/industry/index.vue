@@ -294,7 +294,7 @@ import iconFullStack from '@/assets/industry/full-stack-technology-capabilities.
 import iconVertical from '@/assets/industry/vertical-scene-depth-adaptation.png'
 import iconAutonomous from '@/assets/industry/autonomous-controllable-technology-base.png'
 import iconHeadEnterprise from '@/assets/industry/head-enterprise-verification.png'
-import coalBackgroundImage from '@/assets/industry/coal-bg.jpg'
+import coalBackgroundImage from '@/assets/industry/coal-bg.png'
 import coalExclamation from '@/assets/industry/coal-challenge-1.png'
 import coalDevice from '@/assets/industry/coal-challenge-2.png'
 import coalWeak from '@/assets/industry/coal-challenge-3.png'

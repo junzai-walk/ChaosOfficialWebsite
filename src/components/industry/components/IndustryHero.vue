@@ -9,7 +9,7 @@
         </div>
         <p class="industry-desc">{{ description }}</p>
         <div class="button-container">
-          <el-button type="primary" size="large" round class="consult-button">立即咨询</el-button>
+          <el-button type="primary" size="large" round class="consult-button" @click="handleConsult">立即咨询</el-button>
         </div>
       </div>
     </div>
@@ -17,6 +17,10 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+
 defineProps({
   backgroundImage: {
     type: null,
@@ -31,6 +35,13 @@ defineProps({
     required: true
   }
 })
+
+const handleConsult = () => {
+  router.push({
+    path: '/partners',
+    query: { section: '3' }  // 跳转到合作伙伴页面的咨询部分
+  })
+}
 </script>
 
 <style scoped lang="less">
