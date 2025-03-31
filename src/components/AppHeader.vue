@@ -63,8 +63,16 @@
           
           <el-menu-item index="/customer">{{ $t('nav.customer') }}</el-menu-item>
           <el-menu-item index="/partners">{{ $t('nav.partners') }}</el-menu-item>
-          <el-menu-item index="/about">{{ $t('nav.about') }}</el-menu-item>
-          <el-menu-item index="/news">{{ $t('nav.news') }}</el-menu-item>
+          <el-sub-menu  index="/about" popper-class="industry-submenu">
+            <template #title>{{ $t('nav.about') }}</template>
+            <el-menu-item v-for="(about, index) in abouts" :key="about.section" 
+              :index="`/about?section=${about.section}`" class="industry-menu-item">
+              <img :src="about.icon" alt="" class="industry-icon" />
+              <span>{{ about.name }}</span>
+            </el-menu-item>
+
+          </el-sub-menu>
+          <!-- <el-menu-item index="/news">{{ $t('nav.news') }}</el-menu-item> -->
         </el-menu>
       </nav>
 
@@ -143,6 +151,14 @@ const industries = [
   { name: '汽车', section: 20, icon: carIcon },
   { name: '新能源', section: 25, icon: newEnergyIcon }
 ]
+// 关于我们数据定义
+const abouts = [
+  { name: '公司概况', section: 1, icon: steelIcon },
+  { name: '重要荣誉', section: 2, icon: cementIcon },
+  { name: '加入我们', section: 3, icon: coalIcon },
+  { name: '联系我们', section: 4, icon: chemicalIcon },
+  { name: '新闻动态', section: 5, icon: carIcon },
+]
 
 const activeMenu = ref('/')
 
@@ -179,6 +195,9 @@ watch(() => route.path, (path) => {
   if (path === '/industry' && route.query.section) {
     activeMenu.value = `/industry?section=${route.query.section}`
   }
+  if (path === '/about' && route.query.section) {
+    activeMenu.value = `/about?section=${route.query.section}`
+  }
 }, { immediate: true })
 
 // 处理菜单选择
@@ -190,6 +209,9 @@ const handleSelect = (index: string) => {
   } else if (index === '/products') {
     // 点击产品中心，直接跳转到第一个产品（section=0）
     router.push('/products?section=0')
+  } else if (index === '/about') {
+    // 点击产品中心，直接跳转到第一个产品（section=0）
+    router.push('/about?section=0')
   } else {
     // 其他正常跳转
     router.push(index)
@@ -228,6 +250,9 @@ onMounted(() => {
   // 处理子菜单高亮
   if (route.path === '/industry' && route.query.section) {
     activeMenu.value = `/industry?section=${route.query.section}`
+  }
+  if (route.path === '/about' && route.query.section) {
+    activeMenu.value = `/about?section=${route.query.section}`
   }
 })
 </script>
