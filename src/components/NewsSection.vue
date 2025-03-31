@@ -73,11 +73,14 @@
 
           <div class="footer-nav">
             <div class="nav-section">
-              <h4 class="decoration-line">热门推荐</h4>
+              <h4 class="decoration-line" @click="navigateToProducts(0)">热门推荐</h4>
               <ul>
-                <li>设备预测性维护与健康管理</li>
-                <li>设备全生命周期管理</li>
-                <li>先进过程控制</li>
+                <li @click="navigateToProducts(0)">设备预测性维护与健康管理</li>
+                <li @click="navigateToProducts(5)">设备全生命周期管理</li>
+                <li @click="navigateToProducts(10)">先进过程控制</li>
+                <li @click="navigateToProducts(15)">能源管理与优化</li>
+                <li @click="navigateToProducts(21)">库存优化</li>
+                <li @click="navigateToProducts(26)">生产计划排程</li>
               </ul>
             </div>
             <div class="nav-section">
@@ -190,6 +193,12 @@ const navigateToPartners = () => {
   })
 }
 
+const navigateToProducts = (sectionIndex: number) => {
+  router.push({
+    path: '/products',
+    query: { section: sectionIndex.toString() }
+  })
+}
 </script>
 
 <style lang="less" scoped>

@@ -31,17 +31,23 @@
             <!-- 智慧软件分组 -->
             <el-menu-item-group title="智慧软件">
               <el-menu-item index="/products?section=0" class="product-menu-item">
-                设备预测性维护与健康管理
+                设备预测性维护与健康管理(PHM)
               </el-menu-item>
               <el-menu-item index="/products?section=5" class="product-menu-item">
-                设备全生命周期管理
+                设备全生命周期管理(EAM)
               </el-menu-item>
               <el-menu-item index="/products?section=10" class="product-menu-item">
-                先进过程控制
+                先进过程控制(APC)
               </el-menu-item>
               <el-menu-item index="/products?section=15" class="product-menu-item">
-                能源管理与优化
+                能源管理与优化(EMS)
               </el-menu-item>
+              <el-menu-item index="/products?section=21" class="product-menu-item">
+                库存优化(IOP)
+              </el-menu-item>
+              <el-menu-item index="/products?section=26" class="product-menu-item">
+                生产计划排程(APS)
+                </el-menu-item>
             </el-menu-item-group>
             
             <!-- 智能硬件分组 -->
