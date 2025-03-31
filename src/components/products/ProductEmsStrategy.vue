@@ -3,11 +3,13 @@
     <!-- 左侧导航栏 -->
     <div class="side-nav-container">
       <CustomNavSteps 
-        :width="120" 
-        :height="192" 
-        :steps="customSteps" 
-        v-model:activeStep="activeStep" 
-      />
+          :width="120" 
+          :height="192" 
+          :steps="navSteps" 
+          :active-step="activeStep" 
+          :section-numbers="sectionNumbers" 
+          @update:active-step="updateActiveStep" 
+        />
     </div>
     
     <!-- 左侧笔记本图片展示 -->
@@ -51,6 +53,7 @@ const props = defineProps<{
   defaultActiveStep: number;
   title: string;
   strategies: Strategy[];
+  sectionNumbers: number[];
 }>();
 
 // 当前活动步骤
@@ -63,6 +66,10 @@ const customSteps = computed(() => {
   }
   return steps;
 });
+
+const updateActiveStep = (newStep: number) => {
+  activeStep.value = newStep;
+};
 </script>
 
 <style scoped>

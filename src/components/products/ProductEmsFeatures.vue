@@ -3,11 +3,13 @@
     <!-- 左侧导航栏 -->
     <div class="side-nav-container">
       <CustomNavSteps 
-        :width="120" 
-        :height="192" 
-        :steps="navSteps" 
-        v-model:activeStep="activeStep" 
-      />
+          :width="120" 
+          :height="192" 
+          :steps="navSteps" 
+          :active-step="activeStep" 
+          :section-numbers="sectionNumbers" 
+          @update:active-step="updateActiveStep" 
+        />
     </div>
     
     <!-- 标题区域 -->
@@ -56,6 +58,7 @@ const props = defineProps<{
   mainTitle: string;
   subTitle: string;
   features: Feature[];
+  sectionNumbers: number[];
 }>();
 
 // 当前活动步骤
@@ -81,6 +84,10 @@ const imageContainerStyle = computed(() => ({
   right: 'clamp(80px, 10vw, 207px)',
   left: 'auto', // 移除左侧定位，改用右侧定位
 }));
+
+const updateActiveStep = (newStep: number) => {
+  activeStep.value = newStep;
+};
 </script>
 
 <style scoped>

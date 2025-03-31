@@ -3,7 +3,14 @@
     <div class="solutions-container">
       <!-- 左侧导航栏 - 使用自定义组件 -->
       <div class="side-nav-container">
-        <CustomNavSteps :width="120" :height="192" :steps="navSteps" v-model:activeStep="activeStep" />
+        <CustomNavSteps 
+          :width="120" 
+          :height="192" 
+          :steps="navSteps" 
+          :active-step="activeStep" 
+          :section-numbers="sectionNumbers" 
+          @update:active-step="updateActiveStep" 
+        />
       </div>
 
       <div class="solution-content-container">
@@ -96,6 +103,7 @@ const props = withDefaults(defineProps<{
   };
   dataCollectionMethods?: string[];
   defaultActiveStep?: number;
+  sectionNumbers?: number[];
 }>(), {
   defaultActiveStep: 2,
   showImage: false,
@@ -111,6 +119,10 @@ const props = withDefaults(defineProps<{
 
 // 当前活动步骤
 const activeStep = ref(props.defaultActiveStep);
+
+const updateActiveStep = (newStep: number) => {
+  activeStep.value = newStep;
+};
 </script>
 
 <style scoped lang="less">

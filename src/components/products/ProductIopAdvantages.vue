@@ -2,7 +2,14 @@
   <div class="product-iop-advantages">
     <!-- 左侧导航栏 -->
     <div class="side-nav-container">
-      <CustomNavSteps :width="120" :height="192" :steps="navSteps" v-model:activeStep="activeStep" />
+      <CustomNavSteps 
+          :width="120" 
+          :height="192" 
+          :steps="navSteps" 
+          :active-step="activeStep" 
+          :section-numbers="sectionNumbers" 
+          @update:active-step="updateActiveStep" 
+        />
     </div>
 
     <!-- 背景图片 -->
@@ -62,6 +69,7 @@ interface Advantage {
 const props = defineProps<{
   navSteps: string[];
   defaultActiveStep: number;
+  sectionNumbers: number[];
 }>();
 
 // 当前活动步骤
@@ -101,6 +109,9 @@ const getCardStyle = (position: Position) => {
     top: `${position.top}px`,
     left: `${position.left}px`
   };
+};
+const updateActiveStep = (newStep: number) => {
+  activeStep.value = newStep;
 };
 </script>
 

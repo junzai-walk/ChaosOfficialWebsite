@@ -12,7 +12,8 @@
     <div class="section"
       :class="{ active: sectionStore.currentSection === 1, 'section-hidden': sectionStore.currentSection !== 1 }"
       ref="challengesSection">
-      <ChallengesSection :cards="steelChallenges" :nav-steps="industrySteps" :default-active-step="1" />
+      <ChallengesSection :cards="steelChallenges" :nav-steps="industrySteps" :default-active-step="1"
+        :section-numbers="[1, 2, 3, 4]" />
       <!-- <SteelChallenges /> -->
     </div>
 
@@ -31,7 +32,7 @@
          :data-collection-methods="steelSolutionsData.dataCollectionMethods" 
       /> -->
 
-      <SolutionsSection :nav-steps="industrySteps" :default-active-step="2"
+      <SolutionsSection :nav-steps="industrySteps" :default-active-step="2" :section-numbers="[1, 2, 3, 4]"
         :description="steelSolutionsData.description" :show-image="steelSolutionsData.showImage"
         :image-src="steelSolutionsData.imageSrc" />
     </div>
@@ -41,7 +42,7 @@
       :class="{ active: sectionStore.currentSection === 3, 'section-hidden': sectionStore.currentSection !== 3 }"
       ref="advantageSection">
       <!-- <SteelAdvantages /> -->
-      <AdvantagesSection :cards="steelAdvantages" :nav-steps="industrySteps" :default-active-step="3" />
+      <AdvantagesSection :cards="steelAdvantages" :nav-steps="industrySteps" :default-active-step="3" :section-numbers="[1, 2, 3, 4]"/>
     </div>
 
     <!-- 第五部分：典型案例 -->
@@ -49,7 +50,7 @@
       :class="{ active: sectionStore.currentSection === 4, 'section-hidden': sectionStore.currentSection !== 4 }"
       ref="caseSection">
       <!-- <SteelCases /> -->
-      <CasesSection :cases="steelCases" :nav-steps="industrySteps" :default-active-step="4" />
+      <CasesSection :cases="steelCases" :nav-steps="industrySteps" :default-active-step="4" :section-numbers="[1, 2, 3, 4]"/>
     </div>
 
     <!-- 第六部分：水泥行业 -->
@@ -63,7 +64,8 @@
     <div class="section"
       :class="{ active: sectionStore.currentSection === 6, 'section-hidden': sectionStore.currentSection !== 6 }"
       ref="challengesSection">
-      <ChallengesSection :cards="cementChallenges" :nav-steps="industrySteps" :default-active-step="1" />
+      <ChallengesSection :cards="cementChallenges" :nav-steps="industrySteps" :default-active-step="1"
+        :section-numbers="[6, 7, 8, 9]" />
     </div>
 
     <!-- 第八部分：水泥行业解决方案 -->
@@ -75,13 +77,9 @@
         :special-scenes="cementSolutionsData.specialScenes" :applications="cementSolutionsData.applications"
         :platform-data="cementSolutionsData.platformData"
         :data-collection-methods="cementSolutionsData.dataCollectionMethods" :default-active-step="2" /> -->
-        <SolutionsSection 
-           :nav-steps="industrySteps" 
-           :default-active-step="2"
-           :description="cementSolutionsData.description" 
-           :show-image="cementSolutionsData.showImage"
-           :image-src="cementSolutionsData.imageSrc" 
-        />
+      <SolutionsSection :nav-steps="industrySteps" :default-active-step="2" :section-numbers="[6, 7, 8, 9]"
+        :description="cementSolutionsData.description" :show-image="cementSolutionsData.showImage"
+        :image-src="cementSolutionsData.imageSrc" />
     </div>
 
     <!-- 第九部分：水泥行业方案优势 -->
@@ -89,7 +87,7 @@
       :class="{ active: sectionStore.currentSection === 8, 'section-hidden': sectionStore.currentSection !== 8 }"
       ref="advantageSection">
       <!-- 封装的新组件应用于水泥行业 -->
-      <AdvantagesSection :cards="cementAdvantages" :nav-steps="industrySteps" :default-active-step="3" />
+        <AdvantagesSection :cards="cementAdvantages" :nav-steps="industrySteps" :default-active-step="3" :section-numbers="[6, 7, 8, 9]"/>
     </div>
 
     <!-- 第十部分：水泥行业典型案例 -->
@@ -97,7 +95,7 @@
       :class="{ active: sectionStore.currentSection === 9, 'section-hidden': sectionStore.currentSection !== 9 }"
       ref="caseSection">
       <!-- 封装的新组件应用于水泥行业 -->
-      <CasesSection :cases="cementCases" :nav-steps="industrySteps" :default-active-step="4" />
+      <CasesSection :cases="cementCases" :nav-steps="industrySteps" :default-active-step="4" :section-numbers="[6, 7, 8, 9]"/>
     </div>
 
     <!-- 第十一部分：煤炭行业 -->
@@ -112,14 +110,15 @@
     <div class="section"
       :class="{ active: sectionStore.currentSection === 11, 'section-hidden': sectionStore.currentSection !== 11 }"
       ref="caseSection">
-      <ChallengesSection :cards="coalChallenges" :nav-steps="industrySteps" :default-active-step="1" />
+      <ChallengesSection :cards="coalChallenges" :nav-steps="industrySteps" :default-active-step="1"
+        :section-numbers="[11, 12, 13, 14]" />
     </div>
 
     <!-- 第十三部分：煤炭行业解决方案 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 12, 'section-hidden': sectionStore.currentSection !== 12 }"
       ref="solutionsSection">
-      <SolutionsSection :nav-steps="industrySteps" :description="coalSolutionsData.description" :default-active-step="2"
+      <SolutionsSection :nav-steps="industrySteps" :description="coalSolutionsData.description" :default-active-step="2" :section-numbers="[11, 12, 13, 14]"
         :show-image="coalSolutionsData.showImage" :image-src="coalSolutionsData.imageSrc" />
     </div>
 
@@ -127,14 +126,14 @@
     <div class="section"
       :class="{ active: sectionStore.currentSection === 13, 'section-hidden': sectionStore.currentSection !== 13 }"
       ref="advantageSection">
-      <AdvantagesSection :cards="coalAdvantages" :nav-steps="industrySteps" :default-active-step="3" />
+      <AdvantagesSection :cards="coalAdvantages" :nav-steps="industrySteps" :default-active-step="3" :section-numbers="[11, 12, 13, 14]"/>
     </div>
 
     <!-- 第十五部分：煤炭行业典型案例 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 14, 'section-hidden': sectionStore.currentSection !== 14 }"
       ref="coalCaseSection">
-      <CasesSection :cases="coalCases" :nav-steps="industrySteps" :default-active-step="4" />
+      <CasesSection :cases="coalCases" :nav-steps="industrySteps" :default-active-step="4" :section-numbers="[11, 12, 13, 14]"/>
     </div>
 
     <!-- 第十六部分：化工行业 -->
@@ -149,7 +148,8 @@
     <div class="section"
       :class="{ active: sectionStore.currentSection === 16, 'section-hidden': sectionStore.currentSection !== 16 }"
       ref="chemicalChallengeSection">
-      <ChallengesSection :cards="chemicalChallenges" :nav-steps="industrySteps" :default-active-step="1" />
+      <ChallengesSection :cards="chemicalChallenges" :nav-steps="industrySteps" :default-active-step="1"
+        :section-numbers="[16, 17, 18, 19]" />
     </div>
 
     <!-- 第十八部分：化工行业解决方案 -->
@@ -157,7 +157,7 @@
       :class="{ active: sectionStore.currentSection === 17, 'section-hidden': sectionStore.currentSection !== 17 }"
       ref="chemicalSolutionSection">
       <SolutionsSection :nav-steps="industrySteps" :description="chemicalSolutionsData.description"
-        :default-active-step="2" :show-image="chemicalSolutionsData.showImage"
+        :default-active-step="2" :section-numbers="[16, 17, 18, 19]" :show-image="chemicalSolutionsData.showImage"
         :image-src="chemicalSolutionsData.imageSrc" />
     </div>
 
@@ -165,14 +165,14 @@
     <div class="section"
       :class="{ active: sectionStore.currentSection === 18, 'section-hidden': sectionStore.currentSection !== 18 }"
       ref="chemicalAdvantageSection">
-      <AdvantagesSection :cards="chemicalAdvantages" :nav-steps="industrySteps" :default-active-step="3" />
+      <AdvantagesSection :cards="chemicalAdvantages" :nav-steps="industrySteps" :default-active-step="3" :section-numbers="[16, 17, 18, 19]"/>
     </div>
 
     <!-- 第二十部分：化工行业典型案例 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 19, 'section-hidden': sectionStore.currentSection !== 19 }"
       ref="chemicalCaseSection">
-      <CasesSection :cases="chemicalCases" :nav-steps="industrySteps" :default-active-step="4" />
+      <CasesSection :cases="chemicalCases" :nav-steps="industrySteps" :default-active-step="4" :section-numbers="[16, 17, 18, 19]"/>
     </div>
 
     <!-- 第二十一部分： 汽车行业 -->
@@ -187,7 +187,8 @@
     <div class="section"
       :class="{ active: sectionStore.currentSection === 21, 'section-hidden': sectionStore.currentSection !== 21 }"
       ref="carChallengeSection">
-      <ChallengesSection :cards="carChallenges" :nav-steps="industrySteps" :default-active-step="1" />
+      <ChallengesSection :cards="carChallenges" :nav-steps="industrySteps" :default-active-step="1"
+        :section-numbers="[21, 22, 23, 24]" />
     </div>
 
     <!-- 第二十三部分： 汽车行业解决方案 -->
@@ -198,27 +199,22 @@
         :special-scenes="carSolutionsData.specialScenes" :applications="carSolutionsData.applications"
         :platform-data="carSolutionsData.platformData" :data-collection-methods="carSolutionsData.dataCollectionMethods"
         :default-active-step="2" /> -->
-        <SolutionsSection 
-           :nav-steps="industrySteps" 
-           :default-active-step="2"
-           :description="carSolutionsData.description" 
-           :show-image="carSolutionsData.showImage"
-           :image-src="carSolutionsData.imageSrc" 
-        />
+      <SolutionsSection :nav-steps="industrySteps" :default-active-step="2" :section-numbers="[21, 22, 23, 24]" :description="carSolutionsData.description"
+        :show-image="carSolutionsData.showImage" :image-src="carSolutionsData.imageSrc" />
     </div>
 
     <!-- 第二十四部分： 汽车行业方案优势 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 23, 'section-hidden': sectionStore.currentSection !== 23 }"
       ref="carAdvantageSection">
-      <AdvantagesSection :cards="carAdvantages" :nav-steps="industrySteps" :default-active-step="3" />
+      <AdvantagesSection :cards="carAdvantages" :nav-steps="industrySteps" :default-active-step="3" :section-numbers="[21, 22, 23, 24]"/>
     </div>
 
     <!-- 第二十五部分： 汽车行业典型案例 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 24, 'section-hidden': sectionStore.currentSection !== 24 }"
       ref="carCaseSection">
-      <CasesSection :cases="carCases" :nav-steps="industrySteps" :default-active-step="4" />
+      <CasesSection :cases="carCases" :nav-steps="industrySteps" :default-active-step="4" :section-numbers="[21, 22, 23, 24]"/>
     </div>
 
     <!-- 第二十六部分： 新能源行业 -->
@@ -233,7 +229,8 @@
     <div class="section"
       :class="{ active: sectionStore.currentSection === 26, 'section-hidden': sectionStore.currentSection !== 26 }"
       ref="newEnergyChallengeSection">
-      <ChallengesSection :cards="newEnergyChallenges" :nav-steps="industryThreeSteps" :default-active-step="1" />
+      <ChallengesSection :cards="newEnergyChallenges" :nav-steps="industryThreeSteps" :default-active-step="1"
+        :section-numbers="[26, 27, 28]" />
     </div>
 
     <!-- 第二十八部分： 新能源行业解决方案 -->
@@ -241,7 +238,7 @@
       :class="{ active: sectionStore.currentSection === 27, 'section-hidden': sectionStore.currentSection !== 27 }"
       ref="newEnergySolutionSection">
       <SolutionsSection :nav-steps="industryThreeSteps" :description="newEnergySolutionsData.description"
-        :default-active-step="2" :show-image="newEnergySolutionsData.showImage"
+        :default-active-step="2" :section-numbers="[26, 27, 28]" :show-image="newEnergySolutionsData.showImage"
         :image-src="newEnergySolutionsData.imageSrc" />
     </div>
 
@@ -249,7 +246,7 @@
     <div class="section"
       :class="{ active: sectionStore.currentSection === 28, 'section-hidden': sectionStore.currentSection !== 28 }"
       ref="newEnergyAdvantageSection">
-      <AdvantagesSection :cards="newEnergyAdvantages" :nav-steps="industryThreeSteps" :default-active-step="3" />
+      <AdvantagesSection :cards="newEnergyAdvantages" :nav-steps="industryThreeSteps" :default-active-step="3" :section-numbers="[26, 27, 28]"/>
     </div>
 
     <!-- 第三十部分： 新能源行业典型案例 -->
@@ -498,11 +495,11 @@ const steelSolutionsData = {
 
 
 // 水泥行业解决方案数据
-  const cementSolutionsData = {
-    description: '基于超思工业互联网平台，为水泥行业提供专业的智能化解决方案。覆盖智能运维、智能控制、能效优化等领域，实现设备健康状态实时监控预警、工艺控制优化，降低运维成本、显著提升能效与产能稳定性。',
-    showImage: true,
-    imageSrc: 'src/assets/industry/solution-cement-Photoroom.png'
-  }
+const cementSolutionsData = {
+  description: '基于超思工业互联网平台，为水泥行业提供专业的智能化解决方案。覆盖智能运维、智能控制、能效优化等领域，实现设备健康状态实时监控预警、工艺控制优化，降低运维成本、显著提升能效与产能稳定性。',
+  showImage: true,
+  imageSrc: 'src/assets/industry/solution-cement-Photoroom.png'
+}
 // const cementSolutionsData = {
 //   description: '基于超恩工业互联网平台，为水泥行业提供智能化解决方案。融合数据智能及AI实现全流程智能化化。通过智能硬件、智能软件、数字化等手段提供管理、工艺智能优化、精细运维本、绿色转型。',
 //   specialScenes: ['专项场景', '两废一体工艺优化', '分解炉温度控制', '垃圾发电'],
@@ -927,10 +924,10 @@ watch(() => route.query.section, (newSection) => {
 // 监听sectionStore.currentSection变化并更新URL
 watch(() => sectionStore.currentSection, (newSection) => {
   // 更新URL而不刷新页面
-  router.replace({ 
-    query: { 
-      ...route.query, 
-      section: newSection.toString() 
+  router.replace({
+    query: {
+      ...route.query,
+      section: newSection.toString()
     }
   })
 })

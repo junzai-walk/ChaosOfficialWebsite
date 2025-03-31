@@ -2,7 +2,14 @@
   <div class="product-description">
       <!-- 左侧导航栏 - 使用自定义组件 -->
       <div class="side-nav-container">
-        <CustomNavSteps :width="120" :height="192" :steps="navSteps" v-model:activeStep="activeStep" />
+        <CustomNavSteps 
+          :width="120" 
+          :height="192" 
+          :steps="navSteps" 
+          :active-step="activeStep" 
+          :section-numbers="sectionNumbers" 
+          @update:active-step="updateActiveStep" 
+        />
       </div>
     <div class="content">
       <div class="description">
@@ -34,11 +41,15 @@ const props = defineProps<{
   videoSrc: string;
   navSteps: string[];
   defaultActiveStep: number;
+  sectionNumbers: number[];
 }>();
 
 // 当前活动步骤
 const activeStep = ref(props.defaultActiveStep || 1); // 默认显示产品概述
 
+const updateActiveStep = (newStep: number) => {
+  activeStep.value = newStep;
+};
 </script>
 
 <style scoped>

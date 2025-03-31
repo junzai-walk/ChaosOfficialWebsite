@@ -2,7 +2,14 @@
   <div class="product-hardware-sensor-light">
     <!-- 左侧导航栏 -->
     <div class="side-nav-container">
-      <CustomNavSteps :width="120" :height="192" :steps="navSteps" v-model:activeStep="activeStep" />
+      <CustomNavSteps 
+          :width="120" 
+          :height="192" 
+          :steps="navSteps" 
+          :active-step="activeStep" 
+          :section-numbers="sectionNumbers" 
+          @update:active-step="updateActiveStep" 
+        />
     </div>
 
     <!-- 中间内容区域 -->
@@ -60,11 +67,19 @@ const props = defineProps({
   secondaryImage: {
     type: String,
     default: ''
+  },
+  sectionNumbers: {
+    type: Array as PropType<number[]>,
+    required: true
   }
 });
 
 // 当前活动步骤
 const activeStep = ref(props.defaultActiveStep || 1);
+
+const updateActiveStep = (newStep: number) => {
+  activeStep.value = newStep;
+};
 </script>
 
 <style scoped lang="less">

@@ -5,7 +5,7 @@
         v-for="(step, index) in steps" 
         :key="index" 
         class="step-item"
-        :class="{ 'active': index + 1 === activeStep }"
+        :class="{ 'active': index + 1 === currentActiveStep }"
         @click="updateActiveStep(index + 1)"
       >
         <div class="step-title">{{ step }}</div>
@@ -20,6 +20,9 @@
 </template>
 
 <script setup lang="ts">
+import { useSectionStore } from '@/stores/sectionStore';
+import { ref, watch, onMounted } from 'vue';
+
 const props = defineProps({
   width: {
     type: Number,
@@ -36,14 +39,53 @@ const props = defineProps({
   activeStep: {
     type: Number,
     default: 1
+  },
+  sectionNumbers: {
+    type: Array as () => number[],
+    default: () => []
   }
 });
 
 const emit = defineEmits(['update:activeStep']);
+const sectionStore = useSectionStore();
+const currentActiveStep = ref(props.activeStep);
 
+// 点击导航步骤时的处理函数
 const updateActiveStep = (stepIndex: number) => {
+  currentActiveStep.value = stepIndex;
   emit('update:activeStep', stepIndex);
+  
+  if (props.sectionNumbers && props.sectionNumbers.length >= stepIndex) {
+    const sectionNumber = props.sectionNumbers[stepIndex - 1];
+    if (sectionNumber !== undefined) {
+      sectionStore.setCurrentSection(sectionNumber);
+    }
+  }
 };
+
+// 监听当前Section的变化，反向更新导航的激活状态
+watch(() => sectionStore.currentSection, (newSection) => {
+  if (props.sectionNumbers && props.sectionNumbers.length > 0) {
+    // 找到当前section对应的导航索引
+    const activeIndex = props.sectionNumbers.findIndex(num => num === newSection);
+    if (activeIndex !== -1) {
+      currentActiveStep.value = activeIndex + 1;
+      emit('update:activeStep', activeIndex + 1);
+    }
+  }
+});
+
+// 当组件挂载时，确保初始状态正确
+onMounted(() => {
+  // 如果当前section已经在sectionNumbers中，则初始化activeStep
+  if (props.sectionNumbers && props.sectionNumbers.length > 0) {
+    const activeIndex = props.sectionNumbers.findIndex(num => num === sectionStore.currentSection);
+    if (activeIndex !== -1) {
+      currentActiveStep.value = activeIndex + 1;
+      emit('update:activeStep', activeIndex + 1);
+    }
+  }
+});
 </script>
 
 <style scoped lang="less">

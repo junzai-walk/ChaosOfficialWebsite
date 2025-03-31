@@ -10,26 +10,26 @@
     <!-- 第二部分：产品描述 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 1, 'section-hidden': sectionStore.currentSection !== 1 }">
-      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescription"
+      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :section-numbers="[1, 2, 3, 4]" :description="productDescription"
         :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第三部分：产品功能 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 2, 'section-hidden': sectionStore.currentSection !== 2 }">
-      <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :features="productFeatures" />
+      <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :section-numbers="[1, 2, 3, 4]" :features="productFeatures" />
     </div>
 
     <!-- 第四部分：特色优势 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 3, 'section-hidden': sectionStore.currentSection !== 3 }">
-      <ProductAdvantages :nav-steps="productSteps" :default-active-step="3" :advantages="productAdvantages" />
+      <ProductAdvantages :nav-steps="productSteps" :default-active-step="3" :section-numbers="[1, 2, 3, 4]" :advantages="productAdvantages" />
     </div>
 
     <!-- 第五部分：典型案例 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 4, 'section-hidden': sectionStore.currentSection !== 4 }">
-      <ProductCases :nav-steps="productSteps" :default-active-step="4" :cases="productCases" />
+      <ProductCases :nav-steps="productSteps" :default-active-step="4" :section-numbers="[1, 2, 3, 4]" :cases="productCases" />
     </div>
 
     <!-- 第六部分：设备全生命周期管理系统(EAM) -->
@@ -41,26 +41,26 @@
     <!-- 第七部分：产品概述 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 6, 'section-hidden': sectionStore.currentSection !== 6 }">
-      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionEam"
+      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :section-numbers="[6, 7, 8, 9]" :description="productDescriptionEam"
         :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第八部分：核心功能 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 7, 'section-hidden': sectionStore.currentSection !== 7 }">
-      <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :features="productFeaturesEam" />
+      <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :section-numbers="[6, 7, 8, 9]" :features="productFeaturesEam" />
     </div>
 
     <!-- 第九部分：特色优势 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 8, 'section-hidden': sectionStore.currentSection !== 8 }">
-      <ProductAdvantages :nav-steps="productSteps" :default-active-step="3" :advantages="productAdvantagesEam" />
+      <ProductAdvantages :nav-steps="productSteps" :default-active-step="3" :section-numbers="[6, 7, 8, 9]" :advantages="productAdvantagesEam" />
     </div>
 
     <!-- 第十部分：典型案例 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 9, 'section-hidden': sectionStore.currentSection !== 9 }">
-      <ProductCases :nav-steps="productSteps" :default-active-step="4" :cases="productCasesEam" />
+      <ProductCases :nav-steps="productSteps" :default-active-step="4" :section-numbers="[6, 7, 8, 9]" :cases="productCasesEam" />
     </div>
 
     <!-- 第十一部分：先进过程控制系统(APC) -->
@@ -72,26 +72,26 @@
     <!-- 第十二部分：产品概述 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 11, 'section-hidden': sectionStore.currentSection !== 11 }">
-      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :description="productDescriptionApc"
+      <ProductDescription :nav-steps="productSteps" :default-active-step="1" :section-numbers="[11, 12, 13, 14]" :description="productDescriptionApc"
         :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第十三部分：核心功能 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 12, 'section-hidden': sectionStore.currentSection !== 12 }">
-      <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :features="productFeaturesApc" />
+      <ProductFeatures :nav-steps="productSteps" :default-active-step="2" :section-numbers="[11, 12, 13, 14]" :features="productFeaturesApc" />
     </div>
 
     <!-- 第十四部分：特色优势 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 13, 'section-hidden': sectionStore.currentSection !== 13 }">
-      <ProductAdvantages :nav-steps="productSteps" :default-active-step="3" :advantages="productAdvantagesApc" />
+      <ProductAdvantages :nav-steps="productSteps" :default-active-step="3" :section-numbers="[11, 12, 13, 14]" :advantages="productAdvantagesApc" />
     </div>
 
     <!-- 第十五部分：典型案例 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 14, 'section-hidden': sectionStore.currentSection !== 14 }">
-      <ProductCases :nav-steps="productSteps" :default-active-step="4" :cases="productCasesApc" />
+      <ProductCases :nav-steps="productSteps" :default-active-step="4" :section-numbers="[11, 12, 13, 14]" :cases="productCasesApc" />
     </div>
 
     <!-- 第十六部分：能源管理与优化系统(EMS) -->
@@ -103,34 +103,34 @@
     <!-- 第十七部分：产品概述 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 16, 'section-hidden': sectionStore.currentSection !== 16 }">
-      <ProductDescription :nav-steps="productStepsEffect" :default-active-step="1" :description="productDescriptionEms"
+      <ProductDescription :nav-steps="productStepsEffect" :default-active-step="1" :section-numbers="[16, 17, 18, 19, 20]" :description="productDescriptionEms"
         :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第十八部分：核心功能 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 17, 'section-hidden': sectionStore.currentSection !== 17 }">
-      <ProductFeatures :nav-steps="productStepsEffect" :default-active-step="2" :features="productFeaturesEms" />
+      <ProductFeatures :nav-steps="productStepsEffect" :default-active-step="2" :section-numbers="[16, 17, 18, 19, 20]" :features="productFeaturesEms" />
     </div>
 
     <!-- 第十八部分：特色优势 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 18, 'section-hidden': sectionStore.currentSection !== 18 }">
-      <ProductEmsFeatures :nav-steps="productStepsEffect" :default-active-step="3" main-title="引入核心算法配置模块"
+      <ProductEmsFeatures :nav-steps="productStepsEffect" :default-active-step="3" :section-numbers="[16, 17, 18, 19, 20]" main-title="引入核心算法配置模块"
         sub-title="建立能源需求预测与规划" :features="productEmsPredictions" />
     </div>
 
     <!-- 第十九部分：特色优势 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 19, 'section-hidden': sectionStore.currentSection !== 19 }">
-      <ProductEmsStrategy :nav-steps="productStepsEffect" :default-active-step="3" title="用能诊断及节能减排策略优化"
+      <ProductEmsStrategy :nav-steps="productStepsEffect" :default-active-step="3" :section-numbers="[16, 17, 18, 19, 20]" title="用能诊断及节能减排策略优化"
         :strategies="emsStrategies" />
     </div>
 
     <!-- 第二十部分：应用成效 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 20, 'section-hidden': sectionStore.currentSection !== 20 }">
-      <ProductEmsResults :nav-steps="productStepsEffect" :default-active-step="4" title="应用成效" :results="emsResults" />
+      <ProductEmsResults :nav-steps="productStepsEffect" :default-active-step="4" :section-numbers="[16, 17, 18, 19, 20]" title="应用成效" :results="emsResults" />
     </div>
 
     <!-- 第二十一部分：库存优化(IOP) -->
@@ -142,26 +142,26 @@
     <!-- 第二十二部分：产品描述 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 22, 'section-hidden': sectionStore.currentSection !== 22 }">
-      <ProductDescription :nav-steps="productStepsEffect" :default-active-step="1" :description="productDescriptionIop"
+      <ProductDescription :nav-steps="productStepsEffect" :default-active-step="1" :section-numbers="[22, 23, 24, 25]" :description="productDescriptionIop"
         :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第二十三部分：核心功能 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 23, 'section-hidden': sectionStore.currentSection !== 23 }">
-      <ProductIopFeatures :nav-steps="productStepsEffect" :default-active-step="2" />
+      <ProductIopFeatures :nav-steps="productStepsEffect" :default-active-step="2" :section-numbers="[22, 23, 24, 25]" />
     </div>
 
     <!-- 第二十四部分：特色优势 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 24, 'section-hidden': sectionStore.currentSection !== 24 }">
-      <ProductIopAdvantages :nav-steps="productStepsEffect" :default-active-step="3" />
+      <ProductIopAdvantages :nav-steps="productStepsEffect" :default-active-step="3" :section-numbers="[22, 23, 24, 25]" />
     </div>
 
     <!-- 第二十五部分：应用成效 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 25, 'section-hidden': sectionStore.currentSection !== 25 }">
-      <ProductIopResults :nav-steps="productStepsEffect" :default-active-step="4" title="应用成效" :results="iopResults" />
+      <ProductIopResults :nav-steps="productStepsEffect" :default-active-step="4" :section-numbers="[22, 23, 24, 25]" title="应用成效" :results="iopResults" />
     </div>
 
     <!-- 第二十六部分：生产计划排程(APS) -->
@@ -173,20 +173,20 @@
     <!-- 第二十七部分：产品概述 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 27, 'section-hidden': sectionStore.currentSection !== 27 }">
-      <ProductDescription :nav-steps="productStepsAnother" :default-active-step="1" :description="productDescriptionAps"
+      <ProductDescription :nav-steps="productStepsAnother" :default-active-step="1" :section-numbers="[27, 28, 29]" :description="productDescriptionAps"
         :video-src="officialVideoSrc" />
     </div>
 
     <!-- 第二十八部分：核心功能 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 28, 'section-hidden': sectionStore.currentSection !== 28 }">
-      <ProductApsFeatures :nav-steps="productStepsAnother" :default-active-step="2" />
+      <ProductApsFeatures :nav-steps="productStepsAnother" :default-active-step="2" :section-numbers="[27, 28, 29]" />
     </div>
 
     <!-- 第二十九部分：特色优势 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 29, 'section-hidden': sectionStore.currentSection !== 29 }">
-      <ProductAdvantages :nav-steps="productStepsAnother" :default-active-step="3" :advantages="productAdvantagesAps" />
+      <ProductAdvantages :nav-steps="productStepsAnother" :default-active-step="3" :section-numbers="[27, 28, 29]" :advantages="productAdvantagesAps" />
     </div>
 
     <!-- 产品硬件 -->
@@ -200,14 +200,14 @@
     <!-- 第三十一部分：有线传感器 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 31, 'section-hidden': sectionStore.currentSection !== 31 }">
-      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1" :title="wireSensorTitle"
+      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1" :title="wireSensorTitle" :section-numbers="[31, 32]"
         :content="wireSensorContentLight" :main-image="hardwareScrew" :secondary-image="hardwareImage2" />
     </div>
 
     <!-- 第三十二部分：有线传感器 - 规格参数表格 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 32, 'section-hidden': sectionStore.currentSection !== 32 }">
-      <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2" :title="wireSensorTitle"
+      <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2" :title="wireSensorTitle" :section-numbers="[31, 32]"
         :main-image="hardwareTable" :secondary-image="hardwareImage2" />
     </div>
 
@@ -222,14 +222,14 @@
     <!-- 第三十四部分：有线传感器 - 产品亮点 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 34, 'section-hidden': sectionStore.currentSection !== 34 }">
-      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1" :title="wirelessSensorTitle"
+      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1" :section-numbers="[34, 35]" :title="wirelessSensorTitle"
         :content="wirelessSensorContentLight" :main-image="hardwareWireless" :secondary-image="hardwareImage2" />
     </div>
 
     <!-- 第三十五部分：有线传感器 - 规格参数表格 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 35, 'section-hidden': sectionStore.currentSection !== 35 }">
-      <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2" :title="wireSensorModelTitle"
+      <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2" :section-numbers="[34, 35]" :title="wireSensorModelTitle"
         :main-image="hardwareTable2" :secondary-image="hardwareImage2" />
     </div>
 
@@ -243,7 +243,7 @@
     <!-- 第三十七部分：边缘智能采集器 - 产品亮点 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 37, 'section-hidden': sectionStore.currentSection !== 37 }">
-      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1"
+      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1" :section-numbers="[37, 38]"
         :title="edgeSmartCollectorTitle" :content="edgeSmartCollectorContentLight" :main-image="hardwareEdge2"
         :secondary-image="hardwareImage2" />
     </div>
@@ -251,7 +251,7 @@
     <!-- 第三十八部分：边缘智能采集器 - 规格参数 -->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 38, 'section-hidden': sectionStore.currentSection !== 38 }">
-      <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2"
+      <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2" :section-numbers="[37, 38]"
         :title="edgeSmartCollectorTitle" :main-image="hardwareTable3" :secondary-image="hardwareImage2" />
     </div>
 
@@ -265,7 +265,7 @@
     <!-- 第四十部分：无线智能网关 - 产品亮点-->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 40, 'section-hidden': sectionStore.currentSection !== 40 }">
-      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1"
+      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1" :section-numbers="[40, 41]"
         :title="wirelessSmartGatewayTitle" :content="wirelessSmartGatewayContentLight" :main-image="hardwareGateway"
         :secondary-image="hardwareImage2" />
     </div>
@@ -273,7 +273,7 @@
     <!-- 第四十一部分：无线智能网关 - 规格参数-->
     <div class="section"
       :class="{ active: sectionStore.currentSection === 41, 'section-hidden': sectionStore.currentSection !== 41 }">
-      <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2"
+      <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2" :section-numbers="[40, 41]"
         :title="wirelessSmartGatewayTitle" :main-image="hardwareTable4" :secondary-image="hardwareImage2" />
     </div>
 

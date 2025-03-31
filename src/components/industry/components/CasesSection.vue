@@ -6,7 +6,14 @@
     <div class="cases-container">
       <!-- 左侧导航栏 - 使用自定义组件 -->
       <div class="side-nav-container">
-        <CustomNavSteps :width="120" :height="192" :steps="navSteps" v-model:activeStep="activeStep" />
+        <CustomNavSteps 
+          :width="120" 
+          :height="192" 
+          :steps="navSteps" 
+          :active-step="activeStep" 
+          :section-numbers="sectionNumbers" 
+          @update:active-step="updateActiveStep" 
+        />
       </div>
 
       <!-- 右侧内容区 -->
@@ -84,6 +91,7 @@ const props = defineProps<{
   navSteps: string[];
   cardsPerPage?: number;
   defaultActiveStep?: number;
+  sectionNumbers: number[];
 }>();
 
 // 当前活动步骤
@@ -142,6 +150,10 @@ const submitConsultation = () => {
   // 提交逻辑
   ElMessage.success('申请成功，工作人员将会尽快联系您');
   contactInfo.value = ''; // 清空输入框
+};
+
+const updateActiveStep = (newStep: number) => {
+  activeStep.value = newStep;
 };
 </script>
 

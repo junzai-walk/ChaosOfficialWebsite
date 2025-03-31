@@ -3,11 +3,13 @@
     <!-- 左侧导航栏 -->
     <div class="side-nav-container">
       <CustomNavSteps 
-        :width="120" 
-        :height="192" 
-        :steps="navSteps" 
-        v-model:activeStep="activeStep" 
-      />
+          :width="120" 
+          :height="192" 
+          :steps="navSteps" 
+          :active-step="activeStep" 
+          :section-numbers="sectionNumbers" 
+          @update:active-step="updateActiveStep" 
+        />
     </div>
     
     <!-- 右侧案例展示区域 -->
@@ -39,6 +41,7 @@ const props = defineProps<{
   navSteps: string[];
   defaultActiveStep: number;
   cases: string[];
+  sectionNumbers: number[];
 }>();
 
 // 当前活动步骤
@@ -55,6 +58,10 @@ const handleConsult = () => {
     query: { section: '3' }  // 跳转到合作伙伴页面的咨询部分
   })
 }
+
+const updateActiveStep = (newStep: number) => {
+  activeStep.value = newStep;
+};
 </script>
 
 <style scoped>
