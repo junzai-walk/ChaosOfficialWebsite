@@ -3,7 +3,12 @@
     <!-- 第一部分：主体Banner -->
     <div 
       class="section" 
-      :class="{ active: sectionStore.currentSection === 0, 'section-hidden': sectionStore.currentSection !== 0 }"
+      :class="{ 
+        active: sectionStore.currentSection === 0,
+        inactive: sectionStore.currentSection !== 0,
+        'slide-next': sectionStore.currentSection < 0,
+        'slide-prev': sectionStore.currentSection > 0
+      }"
       ref="bannerSection">
       <home-banner />
     </div>
@@ -11,7 +16,12 @@
     <!-- 第二部分：解决方案 -->
     <div 
       class="section" 
-      :class="{ active: sectionStore.currentSection === 1, 'section-hidden': sectionStore.currentSection !== 1 }"
+      :class="{ 
+        active: sectionStore.currentSection === 1,
+        inactive: sectionStore.currentSection !== 1,
+        'slide-next': sectionStore.currentSection < 1,
+        'slide-prev': sectionStore.currentSection > 1
+      }"
       ref="solutionSection">
       <solution-section />
     </div>
@@ -19,7 +29,12 @@
     <!-- 第三部分：产品体系 -->
     <div 
       class="section" 
-      :class="{ active: sectionStore.currentSection === 2, 'section-hidden': sectionStore.currentSection !== 2 }"
+      :class="{ 
+        active: sectionStore.currentSection === 2,
+        inactive: sectionStore.currentSection !== 2,
+        'slide-next': sectionStore.currentSection < 2,
+        'slide-prev': sectionStore.currentSection > 2
+      }"
       ref="productSystemSection">
       <product-system />
     </div>
@@ -27,7 +42,12 @@
     <!-- 第四部分：公司简介 -->
     <div 
       class="section" 
-      :class="{ active: sectionStore.currentSection === 3, 'section-hidden': sectionStore.currentSection !== 3 }"
+      :class="{ 
+        active: sectionStore.currentSection === 3,
+        inactive: sectionStore.currentSection !== 3,
+        'slide-next': sectionStore.currentSection < 3,
+        'slide-prev': sectionStore.currentSection > 3
+      }"
       ref="companyProfileSection">
       <company-profile />
     </div>
@@ -35,7 +55,12 @@
     <!-- 第五部分：标杆案例 -->
     <div 
       class="section" 
-      :class="{ active: sectionStore.currentSection === 4, 'section-hidden': sectionStore.currentSection !== 4 }"
+      :class="{ 
+        active: sectionStore.currentSection === 4,
+        inactive: sectionStore.currentSection !== 4,
+        'slide-next': sectionStore.currentSection < 4,
+        'slide-prev': sectionStore.currentSection > 4
+      }"
       ref="caseShowcaseSection">
       <case-showcase />
     </div>
@@ -43,7 +68,12 @@
     <!-- 第六部分：新闻资讯 -->
     <div 
       class="section" 
-      :class="{ active: sectionStore.currentSection === 5, 'section-hidden': sectionStore.currentSection !== 5 }"
+      :class="{ 
+        active: sectionStore.currentSection === 5,
+        inactive: sectionStore.currentSection !== 5,
+        'slide-next': sectionStore.currentSection < 5,
+        'slide-prev': sectionStore.currentSection > 5
+      }"
       ref="newsSectionRef">
       <news-section />
     </div>
@@ -63,21 +93,39 @@ import NewsSection from '@/components/NewsSection.vue'
 // 使用Pinia store代替provide/inject
 const sectionStore = useSectionStore()
 
+const scrollDirection = ref<'up' | 'down'>('down');
 const scrolling = ref(false);
-const scrollDelay = 1000; // 滚动延迟，防止连续滚动
+const scrollDelay = 700; // 减少滚动延迟，让切换更加流畅
+
+// 页面跳转函数
+const goToSection = (sectionIndex: number) => {
+  if (sectionIndex >= 0 && sectionIndex <= 5 && !scrolling.value) {
+    scrollDirection.value = sectionIndex > sectionStore.currentSection ? 'down' : 'up';
+    scrolling.value = true;
+    
+    // 立即更新当前部分
+    sectionStore.currentSection = sectionIndex;
+    
+    // 设置滚动延迟，防止连续滚动
+    setTimeout(() => {
+      scrolling.value = false;
+    }, scrollDelay);
+  }
+};
 
 // 处理鼠标滚轮事件
 const handleWheel = (e: WheelEvent) => {
   if (scrolling.value) return;
   
   scrolling.value = true;
+  scrollDirection.value = e.deltaY > 0 ? 'down' : 'up';
   
   // 向下滚动，最大值为5
-  if (e.deltaY > 0 && sectionStore.currentSection < 5) {
+  if (scrollDirection.value === 'down' && sectionStore.currentSection < 5) {
     sectionStore.nextSection(5);
   } 
   // 向上滚动
-  else if (e.deltaY < 0 && sectionStore.currentSection > 0) {
+  else if (scrollDirection.value === 'up' && sectionStore.currentSection > 0) {
     sectionStore.prevSection();
   }
   
@@ -95,13 +143,19 @@ const handleKeyDown = (e: KeyboardEvent) => {
   
   // 向下箭头或Page Down，最大值为5
   if ((e.key === 'ArrowDown' || e.key === 'PageDown') && sectionStore.currentSection < 5) {
+    scrollDirection.value = 'down';
     sectionStore.nextSection(5);
   } 
   // 向上箭头或Page Up
   else if ((e.key === 'ArrowUp' || e.key === 'PageUp') && sectionStore.currentSection > 0) {
+    scrollDirection.value = 'up';
     sectionStore.prevSection();
+  } else {
+    scrolling.value = false;
+    return;
   }
   
+  // 设置滚动延迟
   setTimeout(() => {
     scrolling.value = false;
   }, scrollDelay);
@@ -134,6 +188,7 @@ onErrorCaptured((err) => {
   height: 100vh;
   position: relative;
   overflow: hidden;
+  background-color: #fff;
 }
 
 .section {
@@ -143,6 +198,7 @@ onErrorCaptured((err) => {
   top: 0;
   left: 0;
   transition: transform 0.8s ease, opacity 0.8s ease;
+  will-change: transform, opacity;
 }
 
 .section.active {
@@ -151,9 +207,16 @@ onErrorCaptured((err) => {
   z-index: 10;
 }
 
-.section-hidden {
-  transform: translateY(100%);
+.section.inactive {
   opacity: 0;
   z-index: 5;
+}
+
+.section.slide-prev {
+  transform: translateY(-10%);
+}
+
+.section.slide-next {
+  transform: translateY(10%);
 }
 </style>
