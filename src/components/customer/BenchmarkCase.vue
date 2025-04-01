@@ -228,6 +228,8 @@ html {
   transform: translate(-50%, -50%);
   z-index: 2;
   width: 100%;
+  // height: 50vh;
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1.875rem;
@@ -260,6 +262,7 @@ html {
 /* 图片展示区域 */
 .case-showcase {
   width: 100%;
+  // height: 100vh;
   overflow: hidden;
   position: relative;
   margin-bottom: 2rem; // 32px
@@ -281,8 +284,8 @@ html {
 }
 
 .case-card {
-  width: calc(25% - 1.25rem); // 15px
-  height: 12.5rem; // 260px
+  min-width: calc(25% - 1.25rem); // 15px
+  min-height: 12.5rem; // 260px
   background-color: #fff;
   border-radius: 0.5rem; // 8px
   overflow: hidden;
