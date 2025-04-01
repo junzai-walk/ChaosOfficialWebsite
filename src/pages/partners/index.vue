@@ -1,7 +1,14 @@
 <template>
   <div class="home-page" @wheel="handleWheel">
     <!-- 第一部分：案例中心 -->
-    <div class="section" :class="{ active: currentSection === 0, 'section-hidden': currentSection !== 0 }"
+    <div 
+      class="section" 
+      :class="{ 
+        active: currentSection === 0, 
+        inactive: currentSection !== 0,
+        'slide-next': currentSection < 0,
+        'slide-prev': currentSection > 0
+      }"
       ref="caseSection">
       <div class="parnter-customer-section">
         <div class="background-image"></div>
@@ -12,33 +19,57 @@
         </div>
       </div>
     </div>
+    
     <!-- 第二部分：合作伙伴 -->
-    <div class="section" :class="{ active: currentSection === 1, 'section-hidden': currentSection !== 1 }"
+    <div 
+      class="section" 
+      :class="{ 
+        active: currentSection === 1, 
+        inactive: currentSection !== 1,
+        'slide-next': currentSection < 1,
+        'slide-prev': currentSection > 1
+      }"
       ref="solutionSection">
       <PartnerTypes @recruit="recruit" />
     </div>
+    
     <!-- 第三部分：方位支持 -->
-    <div class="section" :class="{ active: currentSection === 2, 'section-hidden': currentSection !== 2 }"
+    <div 
+      class="section" 
+      :class="{ 
+        active: currentSection === 2, 
+        inactive: currentSection !== 2,
+        'slide-next': currentSection < 2,
+        'slide-prev': currentSection > 2
+      }"
       ref="solutionSection">
       <ComprehensiveSupport  />
     </div>
+    
     <!-- 第四部分：伙伴展示 -->
-    <div v-if="currentSection === 3" class="section"
-      :class="{ active: currentSection === 3, 'section-hidden': currentSection !== 3 }" ref="solutionSection">
+    <div 
+      class="section" 
+      :class="{ 
+        active: currentSection === 3, 
+        inactive: currentSection !== 3,
+        'slide-next': currentSection < 3,
+        'slide-prev': currentSection > 3
+      }" 
+      ref="solutionSection">
       <Consult />
     </div>
-
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, provide, onMounted, onBeforeUnmount, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import PartnerTypes from '@/components/partners/PartnerTypes.vue';
 import ComprehensiveSupport from '@/components/partners/ComprehensiveSupport.vue';
 import Consult from '@/components/partners/consult.vue';
 
 const route = useRoute();
+const router = useRouter();
 const currentSection = ref(0);
 // 提供 currentSection 给子组件使用
 provide('currentSection', currentSection);
@@ -49,6 +80,19 @@ watch(() => route.query.section, (newSection) => {
     currentSection.value = parseInt(newSection as string);
   }
 }, { immediate: true });
+
+// 监听 currentSection 变化，更新 URL
+watch(() => currentSection.value, (newSection) => {
+  // 只有当 section 变化且不是从 URL 参数触发的变化时才更新 URL
+  if (parseInt(route.query.section as string) !== newSection) {
+    router.replace({ 
+      query: { 
+        ...route.query, 
+        section: newSection.toString() 
+      } 
+    })
+  }
+});
 
 const scrolling = ref(false);
 const scrollDelay = 1000; // 滚动延迟，防止连续滚动
@@ -132,6 +176,7 @@ onBeforeUnmount(() => {
   top: 0;
   left: 0;
   transition: transform 0.8s ease, opacity 0.8s ease;
+  will-change: transform, opacity;
 }
 
 .section.active {
@@ -140,10 +185,17 @@ onBeforeUnmount(() => {
   z-index: 10;
 }
 
-.section-hidden {
-  transform: translateY(100%);
+.section.inactive {
   opacity: 0;
   z-index: 5;
+}
+
+.section.slide-prev {
+  transform: translateY(-10%);
+}
+
+.section.slide-next {
+  transform: translateY(10%);
 }
 
 .parnter-customer-section {
@@ -204,10 +256,5 @@ onBeforeUnmount(() => {
   .customer-desc {
     font-size: 14px;
   }
-}
-
-/* 当滚动到第二部分时，第一部分向上移动 */
-.section:first-child.section-hidden {
-  transform: translateY(-100%);
 }
 </style>
