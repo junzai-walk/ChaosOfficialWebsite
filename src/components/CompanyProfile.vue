@@ -75,7 +75,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, reactive, watch } from 'vue';
+import { ref, onMounted, reactive, watch, onBeforeUnmount } from 'vue';
+import { useSectionStore } from '@/stores/sectionStore';
+
+// 使用section store来监听当前活跃section
+const sectionStore = useSectionStore();
 
 // 定义最终数字
 const finalNumbers = {
@@ -93,9 +97,23 @@ const animatedNumbers = reactive({
   clients: 0
 });
 
-// 数字动画函数
+// 将 timeoutIds 的类型从 number[] 改为 ReturnType<typeof setTimeout>[]
+const timeoutIds = ref<ReturnType<typeof setTimeout>[]>([]);
+
+// 清除所有计时器的函数
+const clearAllTimeouts = () => {
+  timeoutIds.value.forEach(id => clearTimeout(id));
+  timeoutIds.value = [];
+};
+
+// 修改数字动画函数
 const animateNumber = (key: string, finalValue: number, duration: number) => {
+  // 重置初始值
+  animatedNumbers[key as keyof typeof animatedNumbers] = 0;
+  
   const startTime = Date.now();
+  let animationFrameId: number;
+  
   const updateNumber = () => {
     const currentTime = Date.now();
     const elapsedTime = currentTime - startTime;
@@ -107,76 +125,92 @@ const animateNumber = (key: string, finalValue: number, duration: number) => {
       const easedProgress = 1 - Math.pow(1 - progress, 4);
       animatedNumbers[key as keyof typeof animatedNumbers] = Math.floor(easedProgress * finalValue);
       
-      requestAnimationFrame(updateNumber);
+      animationFrameId = requestAnimationFrame(updateNumber);
     } else {
       // 确保最终显示的是精确的目标值
       animatedNumbers[key as keyof typeof animatedNumbers] = finalValue;
     }
   };
   
-  requestAnimationFrame(updateNumber);
+  animationFrameId = requestAnimationFrame(updateNumber);
+  
+  // 保存动画帧 ID 用于清除
+  const timeoutId = setTimeout(() => {
+    cancelAnimationFrame(animationFrameId);
+  }, duration + 100); // 略长于动画持续时间
+  timeoutIds.value.push(timeoutId);
 };
 
 // 动画控制
-const animationDuration = 6000; // 6秒完成所有动画
+const animationDuration = 6000; // 8秒完成所有动画
 const currentStep = ref(-1);
 const timelineContainer = ref<HTMLElement | null>(null);
 
-// 启动时间轴动画
+// 修改启动时间轴动画函数
 const startTimelineAnimation = () => {
   const totalSteps = timeline.value.length;
   const stepInterval = animationDuration / totalSteps;
+  
+  // 清除之前的所有计时器
+  clearAllTimeouts();
   
   // 重置
   currentStep.value = -1;
   
   // 逐个显示时间轴项目
   for (let i = 0; i < totalSteps; i++) {
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       currentStep.value = i;
     }, i * stepInterval);
+    // 保存 timeout ID
+    timeoutIds.value.push(timeoutId);
   }
 };
 
-onMounted(() => {
-  // 监测元素可见性
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // 元素可见时开始动画
-        const duration = 3000; // 3秒
-        
-        // 启动所有数字的动画
-        Object.entries(finalNumbers).forEach(([key, value]) => {
-          animateNumber(key, value, duration);
-        });
-        
-        // 取消观察
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.1 });
+// 修改启动所有动画函数
+const startAllAnimations = () => {
+  // 清除之前的所有计时器
+  clearAllTimeouts();
   
-  // 开始观察公司简介区域
-  const element = document.querySelector('.company-profile');
-  if (element) {
-    observer.observe(element);
-  }
+  // 重置状态
+  currentStep.value = -1;
+  
+  // 启动数字动画
+  const duration = 3000; // 3秒
+  Object.entries(finalNumbers).forEach(([key, value]) => {
+    animateNumber(key, value, duration);
+  });
+  
+  // 启动时间轴动画
+  startTimelineAnimation();
+};
 
-  // 监测时间轴可见性
-  const timelineObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // 开始动画
-        startTimelineAnimation();
-        timelineObserver.disconnect();
-      }
-    });
-  }, { threshold: 0.2 });
+// 监听section变化
+watch(() => sectionStore.currentSection, (newSection, oldSection) => {
+  // 如果离开了公司简介section，清除所有计时器
+  if (oldSection === 3 && newSection !== 3) {
+    clearAllTimeouts();
+  }
   
-  // 开始观察时间轴区域
-  if (timelineContainer.value) {
-    timelineObserver.observe(timelineContainer.value);
+  // 当切换到公司简介section时(索引为3)，重新开始所有动画
+  if (newSection === 3) {
+    // 短暂延迟，确保在section滑入动画完成后开始内部动画
+    const timeoutId = setTimeout(() => {
+      startAllAnimations();
+    }, 300);
+    timeoutIds.value.push(timeoutId);
+  }
+});
+
+// 组件卸载前清除所有计时器
+onBeforeUnmount(() => {
+  clearAllTimeouts();
+});
+
+onMounted(() => {
+  // 初始检查，如果当前已经在公司简介section，直接启动动画
+  if (sectionStore.currentSection === 3) {
+    startAllAnimations();
   }
 });
 
