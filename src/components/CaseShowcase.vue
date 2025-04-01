@@ -174,11 +174,11 @@ onMounted(() => {
 .partner-wall {
   width: 100%;
   height: 100vh;
-  padding: 30px 0 40px 20px;
+  padding: 30px 0 40px 0px;
   perspective: 2000px;
   transform-style: preserve-3d;
   position: absolute;
-  top: 450px;
+  top: 380px;
   // overflow: hidden;
 
   .partner-row {
@@ -198,6 +198,33 @@ onMounted(() => {
       justify-content: center;
       align-items: center;
       transition: all 0.5s ease-out;
+      width: 180px;
+      height: 90px;
+      background: linear-gradient(145deg, #ffffff, #f0f0f0);
+      border-radius: 10px;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+                  -5px -5px 15px rgba(255, 255, 255, 0.8),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      position: relative;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 40%;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+        border-radius: 10px 10px 0 0;
+      }
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.1),
+                    -8px -8px 20px rgba(255, 255, 255, 0.8),
+                    inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+      }
     }
   }
 }
@@ -226,6 +253,55 @@ onMounted(() => {
       transform: v-bind("isAnimating ? 'translateZ(200px) scale(1.4)' : 'translateZ(0) scale(1)'");
       opacity: v-bind("isAnimating ? '0.8' : '1'");
     }
+  }
+}
+
+/* Logo图片样式增强 */
+:deep(.logo-img) {
+  max-width: 80%;
+  max-height: 60%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.15));
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+:deep(.logo-reflect) {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+}
+
+/* 添加动态光泽效果 */
+.logo-container::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(45deg);
+  animation: shineEffect 3s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes shineEffect {
+  0% {
+    transform: rotate(45deg) translateY(-100%) translateX(-100%);
+  }
+  100% {
+    transform: rotate(45deg) translateY(100%) translateX(100%);
   }
 }
 </style>
