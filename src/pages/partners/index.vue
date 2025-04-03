@@ -104,8 +104,8 @@ const handleWheel = (e: WheelEvent) => {
 
   scrolling.value = true;
 
-  // 向下滚动，最大值改为2
-  if (e.deltaY > 0 && currentSection.value < 2) {
+  // 向下滚动，最大值改为3
+  if (e.deltaY > 0 && currentSection.value < 3) {
     currentSection.value++;
   }
   // 向上滚动
@@ -125,8 +125,8 @@ const handleKeyDown = (e: KeyboardEvent) => {
 
   scrolling.value = true;
 
-  // 向下箭头或Page Down，最大值改为2
-  if ((e.key === 'ArrowDown' || e.key === 'PageDown') && currentSection.value < 2) {
+  // 向下箭头或Page Down，最大值改为3
+  if ((e.key === 'ArrowDown' || e.key === 'PageDown') && currentSection.value < 3) {
     currentSection.value++;
   }
   // 向上箭头或Page Up
