@@ -21,7 +21,7 @@
         </el-button>
 
         <div class="case-section">
-          <h3 class="case-title">典型案例&相关产品</h3>
+          <h3 class="case-title">相关产品</h3>
           <div class="case-items">
             <div class="case-item" v-for="(item, index) in currentCases" :key="index">
               {{ item }}

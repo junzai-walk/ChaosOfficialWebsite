@@ -334,11 +334,11 @@ onMounted(() => {
   font-size: 1rem; /* 16px */
   padding: 0 0.9375rem; /* 15px */
   border-bottom: none !important;
+  // font-weight: bold;
   
   &.is-active {
     background-color: transparent !important;
     position: relative;
-    font-weight: 500;
     
     &::after {
       content: '';
@@ -380,13 +380,26 @@ onMounted(() => {
   display: flex;
   align-items: center;
   flex-direction: row;
-  padding: 0 1.25rem; /* 20px */
+  padding: 0 1.25rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: #fff !important;
+    color: #1890ff !important;
+    
+    .industry-icon {
+      filter: brightness(0) saturate(100%) invert(48%) sepia(57%) 
+              saturate(2163%) hue-rotate(195deg) brightness(102%) contrast(101%);
+    }
+  }
   
   .industry-icon {
-    width: 1.875rem; /* 30px */
-    height: 0.875rem; /* 30px */
+    width: 2.5rem;
+    height: 2.5rem;
     object-fit: contain;
-    margin-right: 0.625rem; /* 10px */
+    margin-right: 0.625rem;
+    filter: brightness(1.3);
+    transition: filter 0.3s ease;
   }
 }
 
@@ -591,5 +604,20 @@ onMounted(() => {
 /* 隐藏导航菜单中的下拉箭头 */
 :deep(.el-sub-menu__icon-arrow) {
   display: none !important;
+}
+
+/* 一级导航菜单鼠标悬停效果 */
+:deep(.el-menu--horizontal > .el-menu-item:not(.is-active):hover),
+:deep(.el-menu--horizontal > .el-sub-menu:not(.is-active):hover .el-sub-menu__title) {
+  color: #409EFF !important;
+  border-bottom-color: transparent !important;
+}
+
+/* 确保首页和非首页都应用相同的悬停效果 */
+.home-header :deep(.el-menu--horizontal > .el-menu-item:not(.is-active):hover),
+.home-header :deep(.el-menu--horizontal > .el-sub-menu:not(.is-active):hover .el-sub-menu__title),
+.app-header:not(.home-header) :deep(.el-menu--horizontal > .el-menu-item:not(.is-active):hover),
+.app-header:not(.home-header) :deep(.el-menu--horizontal > .el-sub-menu:not(.is-active):hover .el-sub-menu__title) {
+  color: #409EFF !important;
 }
 </style>
