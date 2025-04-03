@@ -37,9 +37,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, provide, reactive, onBeforeUnmount, onActivated } from 'vue'
+import { ref, computed, onMounted, provide, reactive, onBeforeUnmount, onActivated, watch } from 'vue'
 import LogoReflect from './LogoReflect.vue'  // 自定义立体效果组件
 import gsap from 'gsap'
+import { useRoute } from 'vue-router'
 
 // 添加动画状态控制
 const isAnimating = ref(true)
@@ -50,6 +51,9 @@ provide('isAnimating', isAnimating)
 const rowRefs = reactive<HTMLElement[]>([])
 const logoRefs = reactive<{el: HTMLElement, rowIndex: number, colIndex: number}[]>([])
 const partnerWall = ref<HTMLElement | null>(null)
+
+// 获取当前路由
+const route = useRoute()
 
 // 合作伙伴logo数据 - 修正图片路径
 const partnerLogos1 = ref([
@@ -272,14 +276,34 @@ const initAnimation = () => {
   }, 100);
 }
 
-// 初始化动画 - 首次加载
+// 添加URL变化监听
+let lastUrl = window.location.href
+const checkURLChange = () => {
+  if (window.location.href !== lastUrl) {
+    lastUrl = window.location.href
+    if (window.location.href.includes('section=4')) {
+      initAnimation()
+    }
+  }
+}
+
 onMounted(() => {
-  initAnimation();
+  initAnimation()
+  
+  // 设置URL变化检测
+  window.addEventListener('popstate', checkURLChange)
+  const intervalId = setInterval(checkURLChange, 500)
+  
+  // 清理监听器
+  onBeforeUnmount(() => {
+    window.removeEventListener('popstate', checkURLChange)
+    clearInterval(intervalId)
+  })
 })
 
 // 每次从路由返回该页面时重新激活动画
 onActivated(() => {
-  initAnimation();
+  initAnimation()
 })
 </script>
 

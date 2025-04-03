@@ -16,7 +16,7 @@
           <el-menu-item index="/">{{ $t('nav.home') }}</el-menu-item>
           
           <!-- 行业方案菜单改为子菜单 -->
-          <el-sub-menu index="/industry" popper-class="industry-submenu">
+          <el-sub-menu index="/industry" popper-class="industry-submenu industry-submenu-for-img">
             <template #title>{{ $t('nav.industry') }}</template>
             <el-menu-item v-for="(industry, index) in industries" :key="industry.section" 
               :index="`/industry?section=${industry.section}`" class="industry-menu-item">

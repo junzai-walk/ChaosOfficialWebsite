@@ -54,18 +54,18 @@
                 <el-icon>
                   <Phone />
                 </el-icon>
-                服务热线：
+                服务热线
               </p>
-              <p>
+              <p class="contact-info-p">
                 025-8313-2381
               </p>
               <p class="info-item">
                 <el-icon>
                   <Location />
                 </el-icon>
-                地址：
+                地址
               </p>
-              <p>
+              <p class="contact-info-p">
                 南京市雨花台区宁双路19号云密城L栋9层
               </p>
             </div>
@@ -105,10 +105,10 @@
               </ul>
             </div>
             <div class="nav-section">
-              <h4 class="decoration-line"  @click="navigateToPartners">客户案例</h4>
-              <ul>
-                <li @click="navigateToPartners">合作伙伴</li>
-              </ul>
+              <h4 class="decoration-line"  @click="navigateToCustomer(0)">客户案例</h4>
+            </div>
+            <div class="nav-section">
+              <h4 class="decoration-line"  @click="navigateToPartners(0)">合作伙伴</h4>
             </div>
           </div>
 
@@ -186,10 +186,17 @@ const navigateToAbout = (sectionIndex: number) => {
   })
 }
 
-const navigateToPartners = () => {
+const navigateToPartners = (sectionIndex: number) => {
   router.push({
     path: '/partners',
-    query: { section: '0' }
+    query: { section: sectionIndex.toString() }
+  })
+}
+
+const navigateToCustomer = (sectionIndex: number) => {
+  router.push({
+    path: '/customer',
+    query: { section: sectionIndex.toString() }
   })
 }
 
@@ -439,7 +446,7 @@ const navigateToProducts = (sectionIndex: number) => {
 
     .nav-section {
       flex: 1;
-      margin-right: 6.9375rem; // 15px -> 0.9375rem
+      margin-right: 5rem; // 15px -> 0.9375rem
       white-space: nowrap;
       text-align: left;
 
@@ -509,11 +516,16 @@ const navigateToProducts = (sectionIndex: number) => {
   align-items: flex-start;
   gap: 0.625rem; // 10px -> 0.625rem
 
+  &-p{
+    font-size: 16px;
+    color: #fff;
+  }
+
   .info-item {
     margin-top: 0.625rem;
 
     .el-icon {
-      margin-right: 0.5rem; // 8px -> 0.5rem
+      // margin-right: 0.5rem; // 8px -> 0.5rem
       margin-top: 0.1875rem; // 3px -> 0.1875rem
       flex-shrink: 0;
     }

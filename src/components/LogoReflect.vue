@@ -111,7 +111,7 @@ onMounted(() => {
   .logo-image {
     display: block;
     max-height: 60%;
-    max-width: 70%;
+    max-width: 80%;
     transform-style: preserve-3d;
     transform-origin: center center;
     position: relative;

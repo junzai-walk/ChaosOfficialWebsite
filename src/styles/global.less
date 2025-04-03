@@ -1,8 +1,41 @@
 //=============================== 全局字体 ===============================
-@font-family-base: "Source Han Sans CN", "思源黑体", "Noto Sans SC", sans-serif;
+@font-family-base: "Alibaba PuHuiTi 3.0";
+
+/* 字体声明 */
+@font-face {
+  font-family: "Alibaba PuHuiTi 3.0";
+  src: url("@/assets/fonts/AlibabaPuHuiTi-3-55-Regular/AlibabaPuHuiTi-3-55-Regular.woff2") format("woff2"),
+       url("@/assets/fonts/AlibabaPuHuiTi-3-55-Regular/AlibabaPuHuiTi-3-55-Regular.woff") format("woff"),
+       url("@/assets/fonts/AlibabaPuHuiTi-3-55-Regular/AlibabaPuHuiTi-3-55-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 加载中等粗体版本(如果有) */
+@font-face {
+  font-family: "Alibaba PuHuiTi 3.0";
+  src: url("@/assets/fonts/AlibabaPuHuiTi-3-65-Medium/AlibabaPuHuiTi-3-65-Medium.woff2") format("woff2"),
+       url("@/assets/fonts/AlibabaPuHuiTi-3-65-Medium/AlibabaPuHuiTi-3-65-Medium.woff") format("woff"),
+       url("@/assets/fonts/AlibabaPuHuiTi-3-65-Medium/AlibabaPuHuiTi-3-65-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 加载粗体版本 */
+@font-face {
+  font-family: "Alibaba PuHuiTi 3.0";
+  src: url("../fonts/AlibabaPuHuiTi-3-Bold.woff2") format("woff2"),
+       url("../fonts/AlibabaPuHuiTi-3-Bold.woff") format("woff"),
+       url("../fonts/AlibabaPuHuiTi-3-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
 
 body {
-  font-family: @font-family-base;
+  font-family: @font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 //=================================全局提示框 ===============================
@@ -118,6 +151,14 @@ body {
   }
 }
 
+//行业方案图片自适应
+.el-menu--horizontal.el-menu--popup-container.industry-submenu.industry-submenu-for-img {
+  img {
+    width: 1.5rem; /* 增大图标尺寸 */
+    height: 2.5rem;
+  }
+}
+
 .industry-submenu {
   transform: translate(0, 0); /* 修复位置偏移问题 */
   left: 0 !important; /* 强制左对齐 */
@@ -127,6 +168,8 @@ body {
   box-shadow: none !important;
   /* 添加背景色设置，与主导航条背景一致 */
   background-color: transparent !important; /* 或与您网站的深色背景匹配 */
+
+
 }
 
 /* 调整第一个菜单项"钢铁"的位置，使其与"行业方案"对齐 */
