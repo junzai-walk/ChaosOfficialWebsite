@@ -20,10 +20,16 @@
       </div>
     </div>
     <!-- 合作伙伴logo墙 -->
-    <div class="partner-wall">
-      <div v-for="(logoRow, rowIndex) in partnerLogosAll" :key="`row-${rowIndex}`" class="partner-row">
-        <div v-for="(logo, index) in logoRow" :key="`logo-${rowIndex}-${index}`" class="logo-container">
-          <logo-reflect :src="logo" :alt="`partner-${rowIndex}-${index}`" />
+    <div class="partner-wall" ref="partnerWall">
+      <div v-for="(logoRow, rowIndex) in partnerLogosAll" :key="`row-${rowIndex}`" class="partner-row" :ref="el => { if(el) rowRefs[rowIndex] = el as HTMLElement }">
+        <div v-for="(logo, index) in logoRow" :key="`logo-${rowIndex}-${index}`" class="logo-container" :ref="el => { if(el) logoRefs.push({el: el as HTMLElement, rowIndex, colIndex: index}) }">
+          <logo-reflect 
+            :src="logo" 
+            :alt="`partner-${rowIndex}-${index}`" 
+            :weight="getLogoWeight(rowIndex, index)"
+            :row-index="rowIndex"
+            :col-index="index"
+          />
         </div>
       </div>
     </div>
@@ -31,13 +37,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, provide } from 'vue'
+import { ref, computed, onMounted, provide, reactive, onBeforeUnmount, onActivated } from 'vue'
 import LogoReflect from './LogoReflect.vue'  // 自定义立体效果组件
+import gsap from 'gsap'
 
 // 添加动画状态控制
 const isAnimating = ref(true)
 // 提供动画状态给子组件
 provide('isAnimating', isAnimating)
+
+// 创建引用收集数组
+const rowRefs = reactive<HTMLElement[]>([])
+const logoRefs = reactive<{el: HTMLElement, rowIndex: number, colIndex: number}[]>([])
+const partnerWall = ref<HTMLElement | null>(null)
 
 // 合作伙伴logo数据 - 修正图片路径
 const partnerLogos1 = ref([
@@ -88,12 +100,186 @@ const partnerLogosAll = computed(() => [
   partnerLogos4.value
 ])
 
-// 初始化动画
-onMounted(() => {
-  // 动画持续5秒后结束
+// 获取Logo权重（用于动画变化）
+const getLogoWeight = (rowIndex: number, colIndex: number): number => {
+  // 设置一些重要品牌的权重更高
+  if ((rowIndex === 0 && colIndex === 3) || 
+      (rowIndex === 1 && colIndex === 0) || 
+      (rowIndex === 2 && colIndex === 5) ||
+      (rowIndex === 3 && colIndex === 2)) {
+    return 4; // 设置为高权重
+  }
+  return 1 + Math.floor(Math.random() * 3); // 其他随机权重1-3
+}
+
+// GSAP时间线
+let masterTimeline: gsap.core.Timeline | null = null;
+
+// 创建进场动画
+const createEntranceAnimation = () => {
+  if (!partnerWall.value) return;
+  
+  // 创建主时间线
+  masterTimeline = gsap.timeline({
+    paused: true,
+    onComplete: () => {
+      isAnimating.value = false;
+      startIdleAnimation();
+    }
+  });
+
+  // 设置初始状态
+  gsap.set(partnerWall.value, { 
+    perspective: 2000,
+  });
+
+  // 对每个logo容器应用初始状态
+  logoRefs.forEach(({el, rowIndex, colIndex}) => {
+    gsap.set(el, { 
+      autoAlpha: 0,
+      scale: 0.5,
+      rotationX: gsap.utils.random(-90, 90),
+      rotationY: gsap.utils.random(-90, 90),
+      rotationZ: gsap.utils.random(-45, 45),
+      z: -1000,
+      transformOrigin: "center center"
+    });
+  });
+
+  // 对每行应用动画
+  rowRefs.forEach((row, index) => {
+    const delay = index * 0.2;
+    
+    masterTimeline!.to(row.children, {
+      duration: 1.8,
+      autoAlpha: 1,
+      stagger: {
+        each: 0.06,
+        from: "random",
+      },
+      rotationX: 0,
+      rotationY: 0,
+      rotationZ: 0,
+      z: 0,
+      scale: 1,
+      ease: "power3.out",
+    }, delay);
+  });
+
+  // 播放动画
+  masterTimeline.play();
+}
+
+// 开始创建持续的悬停/呼吸动画
+const startIdleAnimation = () => {
+  // 为每个Logo添加轻微的悬浮动画
+  logoRefs.forEach(({el, rowIndex, colIndex}) => {
+    const weight = getLogoWeight(rowIndex, colIndex);
+    const randomDelay = Math.random() * 2;
+    
+    // 较高权重的logo有更明显的动画
+    const floatY = weight >= 4 ? gsap.utils.random(8, 12) : gsap.utils.random(3, 7);
+    const duration = weight >= 4 ? gsap.utils.random(2.5, 3.5) : gsap.utils.random(3, 5);
+    const rotationAmount = weight >= 4 ? 1.5 : 0.8;
+    
+    // 创建悬浮动画
+    gsap.to(el, {
+      y: floatY,
+      rotationX: gsap.utils.random(-rotationAmount, rotationAmount),
+      rotationY: gsap.utils.random(-rotationAmount, rotationAmount),
+      duration: duration,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+      delay: randomDelay,
+    });
+    
+    // 为高权重logo添加轻微的缩放动画
+    if (weight >= 4) {
+      gsap.to(el, {
+        scale: 1.05,
+        duration: gsap.utils.random(2, 3),
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: randomDelay + 0.5,
+      });
+    }
+  });
+  
+  // 为整体logo墙添加鼠标视差效果
+  if (partnerWall.value) {
+    partnerWall.value.addEventListener('mousemove', handleMouseParallax);
+  }
+}
+
+// 鼠标视差效果
+const handleMouseParallax = (e: MouseEvent) => {
+  if (!partnerWall.value || isAnimating.value) return;
+  
+  const rect = partnerWall.value.getBoundingClientRect();
+  const mouseX = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+  const mouseY = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+  
+  // 对每行应用不同强度的视差
+  rowRefs.forEach((row, index) => {
+    const depth = (4 - index) * 5; // 上面的行移动更多
+    gsap.to(row, {
+      x: mouseX * depth,
+      duration: 1,
+      ease: "power1.out"
+    });
+  });
+}
+
+// 清理函数
+onBeforeUnmount(() => {
+  if (partnerWall.value) {
+    partnerWall.value.removeEventListener('mousemove', handleMouseParallax);
+  }
+  
+  // 清理所有GSAP动画
+  if (masterTimeline) {
+    masterTimeline.kill();
+  }
+  
+  logoRefs.forEach(({el}) => {
+    gsap.killTweensOf(el);
+  });
+})
+
+// 重置和初始化动画的函数
+const initAnimation = () => {
+  // 重置状态
+  isAnimating.value = true;
+  
+  // 清理之前的动画
+  if (masterTimeline) {
+    masterTimeline.kill();
+  }
+  
+  logoRefs.forEach(({el}) => {
+    gsap.killTweensOf(el);
+  });
+  
+  // 清空引用数组
+  rowRefs.length = 0;
+  logoRefs.length = 0;
+  
+  // 下一帧执行以确保DOM已完全渲染
   setTimeout(() => {
-    isAnimating.value = false
-  }, 5000)
+    createEntranceAnimation();
+  }, 100);
+}
+
+// 初始化动画 - 首次加载
+onMounted(() => {
+  initAnimation();
+})
+
+// 每次从路由返回该页面时重新激活动画
+onActivated(() => {
+  initAnimation();
 })
 </script>
 
@@ -187,6 +373,7 @@ onMounted(() => {
     align-items: center;
     gap: 25px;
     margin-bottom: 30px;
+    transform-style: preserve-3d;
 
     &:last-child {
       margin-bottom: 0;
@@ -197,16 +384,17 @@ onMounted(() => {
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: all 0.5s ease-out;
+      transition: box-shadow 0.5s ease-out;
       width: 180px;
       height: 90px;
-      background: linear-gradient(145deg, #ffffff, #f0f0f0);
+      background: #ffffff;
       border-radius: 10px;
       box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
                   -5px -5px 15px rgba(255, 255, 255, 0.8),
                   inset 0 0 0 1px rgba(255, 255, 255, 0.5);
       position: relative;
       overflow: hidden;
+      transform-style: preserve-3d;
       
       &::before {
         content: '';
@@ -220,38 +408,10 @@ onMounted(() => {
       }
       
       &:hover {
-        transform: translateY(-5px);
         box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.1),
                     -8px -8px 20px rgba(255, 255, 255, 0.8),
                     inset 0 0 0 1px rgba(255, 255, 255, 0.7);
       }
-    }
-  }
-}
-
-/* 添加动画类 */
-.partner-wall {
-  .partner-row {
-    transition: transform 5s ease-out, opacity 5s ease-out;
-
-    &:nth-child(1) {
-      transform: v-bind("isAnimating ? 'translateZ(800px) scale(2.0)' : 'translateZ(0) scale(1)'");
-      opacity: v-bind("isAnimating ? '0.2' : '1'");
-    }
-
-    &:nth-child(2) {
-      transform: v-bind("isAnimating ? 'translateZ(600px) scale(1.8)' : 'translateZ(0) scale(1)'");
-      opacity: v-bind("isAnimating ? '0.4' : '1'");
-    }
-
-    &:nth-child(3) {
-      transform: v-bind("isAnimating ? 'translateZ(400px) scale(1.6)' : 'translateZ(0) scale(1)'");
-      opacity: v-bind("isAnimating ? '0.6' : '1'");
-    }
-
-    &:nth-child(4) {
-      transform: v-bind("isAnimating ? 'translateZ(200px) scale(1.4)' : 'translateZ(0) scale(1)'");
-      opacity: v-bind("isAnimating ? '0.8' : '1'");
     }
   }
 }
@@ -261,7 +421,7 @@ onMounted(() => {
   max-width: 80%;
   max-height: 60%;
   object-fit: contain;
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.15));
+  filter: none;
   transition: all 0.3s ease;
   transform-style: preserve-3d;
   backface-visibility: hidden;
@@ -277,22 +437,22 @@ onMounted(() => {
   transform-style: preserve-3d;
 }
 
-/* 添加动态光泽效果 */
+/* 添加动态光泽效果 - 更加微妙 */
 .logo-container::after {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: -150%;
+  left: -150%;
+  width: 400%;
+  height: 400%;
   background: linear-gradient(
     45deg,
-    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0) 30%,
     rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(255, 255, 255, 0) 70%
   );
   transform: rotate(45deg);
-  animation: shineEffect 3s infinite linear;
+  animation: shineEffect 6s infinite cubic-bezier(0.25, 0.1, 0.25, 1);
   pointer-events: none;
 }
 

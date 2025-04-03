@@ -23,7 +23,8 @@
         <div class="case-section">
           <h3 class="case-title">相关产品</h3>
           <div class="case-items">
-            <div class="case-item" v-for="(item, index) in currentCases" :key="index">
+            <div class="case-item" v-for="(item, index) in currentCases" :key="index" 
+                 @click="navigateToProduct(item)">
               {{ item }}
             </div>
           </div>
@@ -40,6 +41,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { ElMessage } from 'element-plus';
 
 const router = useRouter();
 const activeIndustry = ref(0);
@@ -61,6 +63,37 @@ const navigateToIndustry = (industryIndex: number) => {
     path: '/industry',
     query: { section: sectionMap[industryIndex] }
   });
+};
+
+// 导航到产品页面
+const navigateToProduct = (productName: string) => {
+  // 产品名称到products页面section的映射
+  const productSectionMap: { [key: string]: number } = {
+    '设备预测性维护与健康管理系统': 0,
+    '设备全生命周期管理系统': 5,
+    '先进过程控制系统': 10,
+    '能源管理与优化系统': 15,
+    '库存优化系统': 21,
+    '生产计划排程系统': 26
+  };
+  
+  // 如果找到对应的section，则导航到products页面
+  if (productSectionMap[productName] !== undefined) {
+    router.push({
+      path: '/products',
+      query: { section: productSectionMap[productName] }
+    });
+  } 
+  // else {
+  //   // 对于未找到映射的产品，显示优雅的提示
+  //   ElMessage({
+  //     message: `${productName} 敬请期待，我们正在紧锣密鼓地开发中...`,
+  //     type: 'info',
+  //     duration: 3000,
+  //     showClose: true,
+  //     customClass: 'coming-soon-message'
+  //   });
+  // }
 };
 
 // 示例数据
@@ -193,7 +226,7 @@ const currentCases = computed(() => {
       cursor: pointer;
       border-bottom: 0.125rem solid transparent;
       transition: all 0.3s;
-      font-weight: bolder;
+      font-weight: 500;
 
       &.active {
         // border-bottom: 0.125rem solid #1890ff;
@@ -279,8 +312,34 @@ const currentCases = computed(() => {
         padding-left: 0;
         color: white;
         text-align: left;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease;
+        display: inline-block;
+        width: auto;
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background-color: #FFD700;
+          transition: width 0.3s ease;
+        }
+
+        &:hover {
+          color: #FFD700;
+          transform: translateX(1px);
+          
+          &:after {
+            width: 50%;
+          }
+        }
       }
     }
   }
 }
+
 </style>

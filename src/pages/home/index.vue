@@ -81,8 +81,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, onErrorCaptured } from 'vue'
+import { ref, onMounted, onBeforeUnmount, onErrorCaptured, watch } from 'vue'
 import { useSectionStore } from '@/stores/sectionStore'
+import { useRoute, useRouter } from 'vue-router'
 import HomeBanner from '@/components/HomeBanner.vue'
 import SolutionSection from '@/components/SolutionSection.vue'
 import ProductSystem from '@/components/ProductSystem.vue'
@@ -92,6 +93,8 @@ import NewsSection from '@/components/NewsSection.vue'
 
 // 使用Pinia store代替provide/inject
 const sectionStore = useSectionStore()
+const route = useRoute()
+const router = useRouter()
 
 const scrollDirection = ref<'up' | 'down'>('down');
 const scrolling = ref(false);
@@ -167,6 +170,35 @@ onMounted(() => {
   
   // 禁用浏览器默认滚动行为
   document.body.style.overflow = 'hidden';
+  
+  // 检查URL参数中是否有section，有则跳转到对应section
+  if (route.query.section) {
+    const sectionNumber = parseInt(route.query.section as string)
+    if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 5) {
+      sectionStore.setCurrentSection(sectionNumber)
+    }
+  }
+});
+
+// 监听路由变化，以支持浏览器前进后退按钮
+watch(() => route.query.section, (newSection) => {
+  if (newSection) {
+    const sectionNumber = parseInt(newSection as string)
+    if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 5) {
+      sectionStore.setCurrentSection(sectionNumber)
+    }
+  }
+});
+
+// 监听sectionStore.currentSection变化并更新URL
+watch(() => sectionStore.currentSection, (newSection) => {
+  // 更新URL而不刷新页面
+  router.replace({ 
+    query: { 
+      ...route.query, 
+      section: newSection.toString() 
+    } 
+  })
 });
 
 onBeforeUnmount(() => {

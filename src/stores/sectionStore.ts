@@ -2,10 +2,14 @@ import { defineStore } from 'pinia'
 
 export const useSectionStore = defineStore('section', {
   state: () => ({
-    currentSection: 0
+    currentSection: 0,
+    isSectionLocked: false
   }),
   actions: {
     setCurrentSection(section: number) {
+      if (this.isSectionLocked) {
+        return
+      }
       this.currentSection = section
     },
     resetSection() {
@@ -19,6 +23,20 @@ export const useSectionStore = defineStore('section', {
     prevSection() {
       if (this.currentSection > 0) {
         this.currentSection--
+      }
+    },
+    lockSection(lock: boolean) {
+      this.isSectionLocked = lock
+    },
+    handleScroll(direction: string, maxSection: number) {
+      if (this.isSectionLocked) {
+        return
+      }
+      
+      if (direction === 'next') {
+        this.nextSection(maxSection)
+      } else if (direction === 'prev') {
+        this.prevSection()
       }
     }
   }

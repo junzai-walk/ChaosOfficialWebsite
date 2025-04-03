@@ -40,8 +40,20 @@
     width: 89.0625rem;
     height: 41.5625rem;
     text-align: center;
-    background: url('@/assets/home/Group_416.png') no-repeat center center;
-    background-size: 100% 100%;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('@/assets/home/Group_416.png') no-repeat center center;
+      background-size: contain;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
   }
 }
 

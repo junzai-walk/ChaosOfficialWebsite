@@ -105,7 +105,7 @@
         </el-dropdown>
       </div>
     </div>
-    <div class="search-btn" @mouseenter="showSearchInput = true" @mouseleave="showSearchInput = false">
+    <div class="search-btn" @mouseenter="showSearchInput = false" @mouseleave="showSearchInput = false" @click="handleSearch">
       <div class="search-container" :class="{ 'active': showSearchInput }">
         <input 
           type="text" 
@@ -236,9 +236,36 @@ watch(showSearchInput, (newVal) => {
 // 处理搜索提交
 const handleSearch = () => {
   if (searchText.value.trim()) {
-    console.log('搜索内容:', searchText.value)
-    // 这里可以实现搜索逻辑，例如跳转到搜索结果页
-    // router.push({ path: '/search', query: { q: searchText.value } })
+    // 跳转到搜索页面并传递查询参数，但默认显示搜索主页
+    router.push({
+      path: '/search',
+      query: { 
+        q: searchText.value,
+        section: '0' // 修改为初始显示搜索页面主体部分
+      }
+    })
+  } else {
+    // 没有输入内容时直接跳转到搜索主页
+    router.push({
+      path: '/search',
+      query: { section: '0' } 
+    })
+  }
+  
+  // 隐藏搜索框
+  showSearchInput.value = false
+}
+
+// 点击搜索图标时
+const toggleSearchInput = () => {
+  showSearchInput.value = !showSearchInput.value
+  if (showSearchInput.value) {
+    // 当显示搜索框时，聚焦输入框
+    nextTick(() => {
+      searchInputRef.value?.focus()
+    })
+  } else {
+    // 清空搜索内容
     searchText.value = ''
   }
 }
