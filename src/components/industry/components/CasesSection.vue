@@ -339,7 +339,7 @@ html {
   border-radius: 0.5rem; // 8px
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 1.25rem; // 20px
   box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.05);

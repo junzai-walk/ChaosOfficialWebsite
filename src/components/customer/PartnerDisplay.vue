@@ -202,7 +202,7 @@ const logos = [
 .partner-wall {
   width: 100%;
   height: 100vh;
-  padding: 30px 0 40px 20px;
+  // padding: 30px 0 40px 20px;
   perspective: 2000px;
   transform-style: preserve-3d;
   position: absolute;

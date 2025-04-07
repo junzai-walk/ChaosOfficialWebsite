@@ -199,7 +199,7 @@ html {
 }
 
 .solution-description {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.8;
   color: #333;
   text-align: justify;
