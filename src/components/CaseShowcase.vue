@@ -316,12 +316,106 @@ onActivated(() => {
   flex-direction: column;
   justify-content: flex-start;
   padding-top: 40px;
-  align-items: center
+  align-items: center;
+
+  @media (max-width: 1920px) {
+    .showcase-content {
+      max-width: 1200px;
+    }
+
+    .case-grid {
+      gap: 15px;
+      
+      .case-item {
+        width: 280px;
+        height: 180px;
+      }
+    }
+
+    .partner-wall {
+      .logo-container {
+        width: 160px;
+        height: 80px;
+      }
+    }
+  }
+
+  @media (max-width: 1232px) {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 20px;
+
+    .showcase-content {
+      width: 95%;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      font-size: 28px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      margin: 20px 0;
+    }
+
+    .case-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+
+      .case-item {
+        width: 100%;
+        height: 120px;
+      }
+    }
+
+    .partner-wall {
+      position: relative;
+      top: 0;
+      height: auto;
+      padding: 20px 0;
+      margin-top: 20px;
+
+      .partner-row {
+        gap: 8px;
+        margin-bottom: 8px;
+        flex-wrap: wrap;
+        padding: 0 10px;
+
+        .logo-container {
+          width: 100px;
+          height: 50px;
+          margin: 5px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .case-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .partner-wall {
+      .partner-row {
+        .logo-container {
+          width: 80px;
+          height: 40px;
+        }
+      }
+    }
+  }
 }
 
 .showcase-content {
   width: 90%;
   max-width: 1400px;
+
+  @media screen and (max-width: 1232px) {
+    width: 95%;
+    margin-bottom: 20px;
+  }
 }
 
 .title {
@@ -330,6 +424,10 @@ onActivated(() => {
   text-align: center;
   color: #333;
   margin-bottom: 15px;
+  
+  @media screen and (max-width: 1232px) {
+    font-size: 28px;
+  }
 }
 
 .subtitle {
@@ -337,6 +435,11 @@ onActivated(() => {
   color: #666;
   text-align: center;
   margin: 30px 0;
+  
+  @media screen and (max-width: 1232px) {
+    font-size: 14px;
+    margin: 20px 0;
+  }
 }
 
 .case-grid {
@@ -344,6 +447,12 @@ onActivated(() => {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   margin-bottom: 40px;
+  
+  @media screen and (max-width: 1232px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
 
   .case-item {
     width: 326px;
@@ -378,6 +487,11 @@ onActivated(() => {
       background: url('@/assets/home/Group_420.png') no-repeat center center;
       background-size: 100% 100%;
     }
+
+    @media screen and (max-width: 1232px) {
+      width: 100%;
+      height: 120px;  // 减小高度
+    }
   }
 }
 
@@ -389,7 +503,14 @@ onActivated(() => {
   transform-style: preserve-3d;
   position: absolute;
   top: 380px;
-  // overflow: hidden;
+
+  @media screen and (max-width: 1232px) {
+    position: relative;  // 改为相对定位
+    top: 0;
+    height: auto;  // 自适应高度
+    padding: 20px 0;
+    margin-top: 20px;
+  }
 
   .partner-row {
     display: flex;
@@ -401,6 +522,13 @@ onActivated(() => {
 
     &:last-child {
       margin-bottom: 0;
+    }
+
+    @media screen and (max-width: 1232px) {
+      gap: 8px;  // 减小间距
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      padding: 0 10px;
     }
 
     .logo-container {
@@ -435,6 +563,12 @@ onActivated(() => {
         box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.1),
                     -8px -8px 20px rgba(255, 255, 255, 0.8),
                     inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+      }
+
+      @media screen and (max-width: 1232px) {
+        width: 100px;  // 进一步减小logo大小
+        height: 50px;
+        margin: 5px;
       }
     }
   }

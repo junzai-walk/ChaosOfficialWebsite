@@ -622,4 +622,116 @@ const navigateToProducts = (sectionIndex: number) => {
     font-size: 14px; // 在小屏幕上减小基础字体大小
   }
 }
+
+@media (max-width: 1920px) {
+  .news-section {
+    .content-container {
+      max-width: 1200px;
+    }
+
+    .news-card {
+      width: 600px;
+      height: 300px;
+    }
+
+    .news-image {
+      width: 600px;
+      height: 280px;
+    }
+
+    .news-item {
+      width: 600px;
+    }
+  }
+}
+
+@media (max-width: 1232px) {
+  .news-section {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 1.5rem;
+
+    .content-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .news-card {
+      width: 100%;
+      height: auto;
+    }
+
+    .news-image {
+      width: 100%;
+      height: 200px;
+    }
+
+    .news-item {
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+    }
+
+    .news-item-left {
+      flex: 0 0 100%;
+      margin-right: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .news-item-image {
+      height: 150px;
+    }
+
+    .consultation-section {
+      padding: 1.5rem 0;
+    }
+
+    .consultation-section h3 {
+      font-size: 1.25rem;
+    }
+
+    .footer {
+      padding: 1.5rem 0 3rem 0;
+
+      &-content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      &-left,
+      &-nav,
+      &-qrcode {
+        width: 100%;
+        margin-bottom: 1.5rem;
+      }
+
+      &-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .nav-section {
+          flex: 0 0 45%;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .news-section {
+    .section-title {
+      font-size: 1.75rem;
+    }
+
+    .news-item-image {
+      height: 120px;
+    }
+
+    .footer-nav .nav-section {
+      flex: 0 0 100%;
+    }
+  }
+}
 </style>

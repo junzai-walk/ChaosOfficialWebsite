@@ -502,4 +502,84 @@ const timeline = ref([
     max-width: 8.125rem;
   }
 }
+
+@media (max-width: 1920px) {
+  .profile-content {
+    max-width: 80rem;
+  }
+
+  .stats-container {
+    gap: 6rem;
+  }
+
+  .timeline-box {
+    width: 75rem;
+  }
+}
+
+@media (max-width: 1232px) {
+  .company-profile {
+    height: auto;
+    min-height: 100vh;
+    padding: 2rem 0;
+  }
+
+  .profile-content {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .main-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stats-container {
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .timeline-box {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .timeline {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .timeline-item {
+    flex: 0 0 45%;
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-connector {
+    display: none;
+  }
+
+  .company-intro p {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-item {
+    margin-bottom: 1rem;
+  }
+
+  .timeline-item {
+    flex: 0 0 100%;
+  }
+}
 </style> 

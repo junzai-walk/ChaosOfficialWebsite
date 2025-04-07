@@ -239,11 +239,17 @@ const currentCases = computed(() => {
   .solution-content {
     display: flex;
     margin: 0 auto;
-    width: 87.5rem;
-    height: 28.75rem;
+    width: 90%;
+    max-width: 87.5rem;
+    height: auto;
+    
+    @media (max-width: 1232px) {
+      flex-direction: column;
+      width: 95%;
+    }
 
     .solution-info {
-      width: 59rem;
+      width: 60%;
       background-color: #0072FF;
       color: white;
       padding: 2.5rem;
@@ -252,6 +258,11 @@ const currentCases = computed(() => {
       justify-content: flex-start;
       text-align: left;
       box-sizing: border-box;
+      
+      @media (max-width: 1232px) {
+        width: 100%;
+        padding: 1.5rem;
+      }
 
       .industry-title {
         font-size: 1.75rem;
@@ -264,6 +275,11 @@ const currentCases = computed(() => {
         line-height: 1.6;
         margin-bottom: 1.875rem;
         text-align: left;
+        
+        @media (max-width: 1232px) {
+          font-size: 0.8rem;
+          margin-bottom: 1rem;
+        }
       }
 
       .learn-more-btn {
@@ -277,10 +293,15 @@ const currentCases = computed(() => {
     }
 
     .solution-image {
-      width: 37.5rem;
-      height: 28.75rem;
+      width: 40%;
+      height: auto;
       overflow: hidden;
       opacity: 0.88;
+      
+      @media (max-width: 1232px) {
+        width: 100%;
+        max-height: 12rem;
+      }
 
       img {
         width: 100%;
@@ -294,6 +315,10 @@ const currentCases = computed(() => {
     margin-top: 4rem;
     border-radius: 0.25rem;
     box-sizing: border-box;
+    
+    @media (max-width: 1232px) {
+      margin-top: 2rem;
+    }
 
     .case-title {
       font-size: 1.5rem;
@@ -306,6 +331,15 @@ const currentCases = computed(() => {
     .case-items {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      
+      @media (max-width: 1232px) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+      }
+      
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
 
       .case-item {
         padding: 0.9375rem;
@@ -317,6 +351,12 @@ const currentCases = computed(() => {
         transition: all 0.3s ease;
         display: inline-block;
         width: auto;
+        
+        @media (max-width: 1232px) {
+          padding: 0.5rem;
+          padding-left: 0;
+          font-size: 0.9rem;
+        }
 
         &:after {
           content: '';
@@ -342,4 +382,35 @@ const currentCases = computed(() => {
   }
 }
 
+// Additional responsive styles
+@media (max-width: 1232px) {
+  .solution-section {
+    padding: 2rem 0;
+    min-height: unset;
+    
+    .solution-header {
+      margin-bottom: 1.5rem;
+      
+      .title {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+      }
+      
+      .description {
+        font-size: 0.875rem;
+        max-width: 90%;
+      }
+    }
+    
+    .industry-tabs {
+      margin-bottom: 1rem;
+      
+      .industry-tab {
+        padding: 0.5rem 0.75rem;
+        margin: 0 0.25rem;
+        font-size: 0.875rem;
+      }
+    }
+  }
+}
 </style>

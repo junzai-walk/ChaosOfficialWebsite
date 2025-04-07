@@ -120,4 +120,35 @@ onMounted(() => {
     filter: none;
   }
 }
+
+@media (max-width: 1920px) {
+  .logo-depth-container {
+    .logo-image {
+      max-height: 55%;
+      max-width: 75%;
+    }
+  }
+}
+
+@media (max-width: 1232px) {
+  .logo-depth-container {
+    transform: perspective(800px);
+    
+    .logo-image {
+      max-height: 50%;
+      max-width: 70%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-depth-container {
+    transform: perspective(600px);
+    
+    .logo-image {
+      max-height: 45%;
+      max-width: 65%;
+    }
+  }
+}
 </style> 
