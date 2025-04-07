@@ -83,44 +83,37 @@ onMounted(() => {
   text-align: center;
   color: #fff;
   padding: 0 20px;
-  max-width: 800px;
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
 }
 
 .title {
-  width: 976px;
   font-size: 48px;
   font-weight: bold;
-  margin-bottom: 20px;
   letter-spacing: 2px;
-  position: absolute;
-  top: 333px; 
-  left: 472px;
+  max-width: 90%;
+  margin: 0 auto 20px;
 }
 
 .subtitle {
   font-size: 24px;
-  margin-bottom: 30px;
   opacity: 0.9;
-  width: 353px;
-  height: 42px;
-  top: 457px;
-  left: 783px;
-  position: absolute;
+  margin: 0 auto 30px;
 }
 
 .cta-button {
   padding: 12px 30px;
   font-size: 18px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  width: 200px;
-  height: 56px;
-  top: 580px;
-  left: 860px;
   border-radius: 34px;
-  position: absolute;
+  transition: all 0.3s ease;
   background-color: transparent;
   border: 1px solid #fff;
+  width: 200px;
+  height: 56px;
 }
 
 .cta-button:hover {
@@ -128,13 +121,55 @@ onMounted(() => {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 768px) {
+/* 大屏幕 - 1920x1080 */
+@media (min-width: 1600px) {
   .title {
-    font-size: 36px;
+    font-size: 48px;
+    margin-bottom: 25px;
   }
   
   .subtitle {
-    font-size: 18px;
+    font-size: 24px;
+    margin-bottom: 35px;
   }
 }
-</style> 
+
+/* 中等屏幕 - 适配1232x587分辨率 */
+@media (max-width: 1280px) {
+  .title {
+    font-size: 36px;
+    margin-bottom: 15px;
+  }
+  
+  .subtitle {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .cta-button {
+    width: 180px;
+    height: 50px;
+    font-size: 16px;
+  }
+}
+
+/* 小屏幕 */
+@media (max-width: 768px) {
+  .title {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .cta-button {
+    width: 160px;
+    height: 45px;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+</style>

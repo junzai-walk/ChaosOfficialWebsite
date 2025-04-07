@@ -51,9 +51,8 @@
             </el-icon>
           </button>
         </div>
-        
         <!-- 页码指示器 -->
-        <div class="pagination-indicator">
+        <div class="pagination-indicator" v-if="false">
           <span v-for="page in totalPages" :key="page" 
                 :class="['page-dot', { active: currentPage === page - 1 }]"
                 @click="goToPage(page - 1)"></span>

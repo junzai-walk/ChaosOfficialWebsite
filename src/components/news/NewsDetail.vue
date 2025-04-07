@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref,computed,defineProps,watch} from 'vue'
+import {ref,computed,watch} from 'vue'
 const newsList :any={
   news1:{
     time:'2025.2.25',

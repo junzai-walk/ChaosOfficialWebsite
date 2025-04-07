@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, watch } from 'vue';
+import { ref, watch } from 'vue';
 type CaseData = {
   mainTitle: string;
   subTitle: string;
