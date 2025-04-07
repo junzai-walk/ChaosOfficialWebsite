@@ -67,9 +67,10 @@ const handleConsult = () => {
   left: 50%;
   transform: translateX(-50%);
   height: 84px;
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: 60px;
+  font-weight: 500;
   color: #333;
+  white-space: nowrap;
 }
 
 .experience-btn {
@@ -78,12 +79,13 @@ const handleConsult = () => {
   left: 860px;
   width: 200px;
   height: 56px;
-  background-color: #1890ff;
+  background-color: rgba(0, 114, 255, 1);
   color: white;
   border: none;
   padding: 0.75rem 2rem;
   border-radius: 2rem;
-  font-size: 1rem;
+  font-size: 20px;
+  font-weight: 400;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

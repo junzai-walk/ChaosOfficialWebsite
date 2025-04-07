@@ -58,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref,defineEmits } from 'vue';
+import { ref } from 'vue';
 import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue';
 import Img1 from '@/assets/customer/Rectangle 4136.png'
 import Img2 from '@/assets/customer/Rectangle 4136-2.png'

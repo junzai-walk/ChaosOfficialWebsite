@@ -16,14 +16,21 @@
         <p>{{ description }}</p>
       </div>
       <div class="video-container">
+        <!-- 根据媒体类型展示视频或图片 -->
         <video 
+          v-if="mediaType === 'video'"
           controls 
           class="video-player" 
-          :src="videoSrc"
-          poster="@/assets/products/video-1.png"
+          :src="mediaSrc"
         >
           您的浏览器不支持视频播放
         </video>
+        <img 
+          v-else
+          class="image-player"
+          :src="mediaSrc"
+          alt="产品图片"
+        />
         <!-- <div class="play-button">
           <i class="play-icon"></i>
         </div> -->
@@ -38,7 +45,8 @@ import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue'
 
 const props = defineProps<{
   description: string;
-  videoSrc: string;
+  mediaSrc: string;
+  mediaType: 'video' | 'image'; // 新增：媒体类型，可以是视频或图片
   navSteps: string[];
   defaultActiveStep: number;
   sectionNumbers: number[];
@@ -102,13 +110,19 @@ const updateActiveStep = (newStep: number) => {
   flex-shrink: 0; /* 防止尺寸被压缩 */
   position: relative;
   transform: translateY(-108px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible; /* 允许内容溢出容器 */
 }
 
-.video-player {
-  width: 100%;
-  height: 100%;
+.video-player, .image-player {
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 8px;
-  object-fit: cover; /* 确保视频填充容器 */
+  object-fit: contain; /* 确保视频和图片保持原始比例 */
+  width: auto; /* 让宽度自适应 */
+  height: auto; /* 让高度自适应 */
 }
 
 .play-button {

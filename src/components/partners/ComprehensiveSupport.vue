@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref,defineEmits } from 'vue';
+import { ref } from 'vue';
 
 import Img1 from '@/assets/partners/Block-12.png'
 import Img2 from '@/assets/partners/Block-12-2.png'

@@ -10,7 +10,7 @@
       }"
       ref="steelSection">
       <IndustryHero :background-image="steelBackgroundImage" title="钢铁行业"
-        description="结合机理模型、数据模型、数字孪生技术、多变量预测控制技术，解决钢铁企业生产工艺、设备控制等一系列工业生产痛点，实现工艺流、生产信息流、设备流'三流合一'，稳定提升成品质量，降低生产线设备故障风险、人力成本和能源消耗。" />
+        description="结合机理模型、数据模型、数字孪生技术、多变量预测控制技术，解决钢铁企业生产工艺、设备控制等一系列工业生产痛点，实现工艺流、生产信息流、设备流“三流合一”，稳定提升成品质量，降低生产线设备故障风险、人力成本和能源消耗。" />
     </div>
 
     <!-- 第二部分：钢铁行业挑战 -->
@@ -158,7 +158,7 @@
       }"
       ref="caseSection">
       <IndustryHero :background-image="coalBackgroundImage" title="煤炭行业"
-        description="以数据智能驱动煤矿生产全流程优化，实现煤机设备全寿期、全业务链的集中管控，提升煤矿企业数字化管控能力" />
+        description="以数据智能驱动煤矿生产全流程优化，实现煤机设备全寿期、全业务链的集中管控，提升煤矿企业数字化管控能力。" />
     </div>
 
     <!-- 第十二部分：煤炭行业挑战 -->
@@ -221,7 +221,7 @@
       }"
       ref="chemicalSection">
       <IndustryHero :background-image="chemicalBackgroundImage" title="化工行业"
-        description="以智能运维驱动设备全生命周期管理，保障化工生产安全、高效、可持续" />
+        description="以智能运维驱动设备全生命周期管理，保障化工生产安全、高效、可持续。" />
     </div>
 
     <!-- 第十七部分：化工行业挑战 -->
@@ -285,7 +285,7 @@
       }"
       ref="carSection">
       <IndustryHero :background-image="carBackgroundImage" title="汽车行业"
-        description="以数据智能驱动汽车生产全流程优化，实现汽车设备全寿期、全业务链的集中管控，提升汽车企业数字化管控能力" />
+        description="以设备为核心驱动汽车行业全流程升级，构建高效、可靠、可持续的智慧工厂 。" />
     </div>
 
     <!-- 第二十二部分： 汽车行业挑战 -->
@@ -352,7 +352,7 @@
       }"
       ref="newEnergySection">
       <IndustryHero :background-image="newEnergyBackgroundImage" title="新能源行业"
-        description="以数据智能驱动新能源生产全流程优化，实现新能源设备全寿期、全业务链的集中管控，提升新能源企业数字化管控能力" />
+        description="以智能运维驱动设备可靠性提升，打破信息壁垒，建立规范和有效的集中管理机制，助力新能源行业高效、安全、可持续发展" />
     </div>
 
     <!-- 第二十七部分： 新能源行业挑战 -->
@@ -541,23 +541,23 @@ const handleKeyDown = (e: KeyboardEvent) => {
 const steelChallenges = [
   {
     icon: iconEnergy,
-    title: '碳中和与深度减排压力升级',
-    description: '焦料热成焦耗占比超60%，煤焦气，电智能优化降碳减排，面对"双碳"目标与环保法规。'
+    title: '高能耗与低碳转型压力',
+    description: '煤气放散率居高不下，能源综合利用率低；碳排放强度高，面临“双碳”目标下减排压力。'
   },
   {
     icon: iconEquipment,
-    title: '设备智能化运维协同瓶颈',
-    description: '设备备高价值升与多系统集成需求求高，传统运维模式难以满足高精度预测性维护与跨产线协同。'
+    title: '设备停机损失与运维挑战',
+    description: '核心设备价值高、非计划停机损失巨大；传统维护依赖人工经验，缺乏实时健康状态监测，故障预警准确率低。'
   },
   {
     icon: iconProcess,
-    title: '工艺柔性化与质量一致性挑战',
-    description: '生料配比过弃，设备控制误差大，人工经验已不满足产线提升，质量一致性要求。'
+    title: '工艺优化与质量控制瓶颈',
+    description: '黄金工艺参数挖掘难，高端钢材质量一致性受工艺波动影响； 多工序数据孤岛导致质量追溯耗时，异常根因定位效率低。'
   },
   {
     icon: iconSupply,
-    title: '环保与成本双重挑战',
-    description: '粉尘、氮氧化物治理水平提升，需平衡环保合规与降本增效，智能化技术驱动绿色转型。'
+    title: '生产协同与供应链韧性',
+    description: '板坯库调度依赖人工决策，倒垛效率低，物流成本高； 订单排产与物料供应协同不足，库存周转率与交付准时率存在优化空间。'
   }
 ];
 // 定义水泥行业挑战数据
@@ -565,22 +565,22 @@ const cementChallenges = [
   {
     icon: coalExclamation,
     title: '碳中和与深度减排压力升级',
-    description: '焦料热成焦耗占比超60%，煤焦气，电智能优化降碳减排，面对"双碳"目标与环保法规。'
+    description: '熟料烧成能耗占比超60%，煤耗高，需智能优化降低碳排放，应对“双碳”目标与环保法规。'
   },
   {
     icon: coalDevice,
     title: '设备智能化运维协同瓶颈',
-    description: '设备备高价值升与多系统集成需求求高，传统运维模式难以满足高精度预测性维护与跨产线协同。'
+    description: '设备复杂度提升与多系统集成需求激增，传统运维模式难以满足高精度预测性维护与跨产线协同管理。'
   },
   {
     icon: coalWeak,
     title: '工艺柔性化与质量一致性挑战',
-    description: '生料配比过弃，设备控制误差大，人工经验已不满足产线提升，质量一致性要求。'
+    description: '生料配比波动、窑温控制误差大，人工控制已不满足产线提升精度，质量一致性需求。'
   },
   {
     icon: coalWeak,
     title: '环保与成本双重挑战',
-    description: '粉尘、氮氧化物治理水平提升，需平衡环保合规与降本增效，智能化技术驱动绿色转型。'
+    description: '粉尘、氮氧化物治理成本攀升，需平衡环保合规与降本增效，智能化技术驱动绿色转型。'
   }
 ];
 
@@ -589,7 +589,7 @@ const coalChallenges = [
   {
     icon: coalExclamation,
     title: '设备可靠性不足',
-    description: '核心设备(如提升机、通风机、皮带机)故障率高，依赖人工巡检，非计划停机影响生产连续性。'
+    description: '核心设备（如提升机、通风机、皮带机）故障率高，依赖人工巡检，非计划停机影响生产连续性。'
   },
   {
     icon: coalDevice,
@@ -670,7 +670,7 @@ const cementSolutionsData = {
 
 // 煤炭行业解决方案数据
 const coalSolutionsData = {
-  description: '聚焦核心设备智能化远维，采用物联网、人工智能、大数据等技术，通过特征提取+机理建模的方式实现设备状态感知、智能预警、故障诊断、健康评估，并以统一算法库与知识库为核心，实现矿井设备全生命周期管理，帮助煤矿企业实现数字化转型升级，全面建立起从生产技术到决策管理的智能化煤矿工业新生态。',
+  description: '聚焦核心设备智能化运维，采用物联网、人工智能、大数据等技术，通过特征提取+机理建模的方式实现设备状态感知、智能预警、故障诊断、健康评估，并以统一算法库与知识库赋能矿井设备全生命周期管理，帮助煤矿企业实现数字化转型升级，从而建立起从生产技术到决策管理的智能化的煤矿工业新生态。',
   showImage: true,
   imageSrc: coalSolutionImage
 };
@@ -680,22 +680,22 @@ const steelAdvantages = [
   {
     icon: steelAdvantage1,
     title: '全栈技术能力',
-    description: '覆盖数据采集到智能算法实现，实现"端-边-云"一体化控制。'
+    description: '覆盖智能硬件至智能系统，实现“端-边-云”一体化闭环。'
   },
   {
     icon: steelAdvantage2,
     title: '垂直场景深度适配',
-    description: '基于领域工艺知识与技术积累，提供针对性解决方案，深化应用场景价值。'
+    description: '基于钢铁工艺机理模型开发，覆盖煤气平衡、冷轧控制等核心场景。'
   },
   {
     icon: steelAdvantage3,
     title: '自主可控技术底座',
-    description: '1000+核心算法专利，3D+模型专利，工信部"工业互联网标杆示范项目"认证。'
+    description: '1000+核心算法专利，30+授权专利，工信部“工业互联网平台示范项目”认证'
   },
   {
     icon: steelAdvantage4,
     title: '头部企业验证',
-    description: '宝武集团、包钢集团等行业龙头企业验证，助力数字化转型生产与方案。'
+    description: '宝武集团、敬业钢铁等标杆案例落地，单项目年综合效益超千万元 。'
   }
 ];
 
@@ -703,23 +703,23 @@ const steelAdvantages = [
 const cementAdvantages = [
   {
     icon: iconFullStack,
-    title: '全栈技术能力',
-    description: '覆盖数据采集到智能算法实现，实现"端-边-云"一体化控制。'
+    title: '低碳环保',
+    description: '提升能源利用效率； 减少污染的排放。'
   },
   {
     icon: iconVertical,
-    title: '垂直场景深度适配',
-    description: '基于核心工艺模型和技术力量，覆盖现代化工中、特化技术特性和优势。'
+    title: '智能运维',
+    description: '及时发现设备异常，提前做好维护工作，避免设备故障导致的生产停滞和生产成本增加。'
   },
   {
     icon: iconAutonomous,
-    title: '自主可控技术底座',
-    description: '1000+核心算法专利，3D+模型专利，工信部"工业互联网标杆示范项目"认证。'
+    title: '品质提升',
+    description: '稳定控制参数波动，实现稳定加热和冷却；搅拌过程控制，保证成品的质量。'
   },
   {
     icon: iconHeadEnterprise,
-    title: '头部企业验证',
-    description: '平台部署，覆盖钢铁水泥材料行业等领域，得到头部企业多年数据与方案。'
+    title: '稳定生产',
+    description: '减少温差波动，充分燃烧； 及时响应各个变量之间的关联性。'
   }
 ];
 
@@ -728,17 +728,17 @@ const steelCases = [
   {
     image: steelCase1,
     title: '中国宝武钢铁集团有限公司',
-    description: '跨流程监督管理平台'
+    description: '设备预测性维护与健康管理系统'
   },
   {
     image: steelCase2,
-    title: '敬业集团',
-    description: '知识生产管理平台'
+    title: '敬业钢铁有限公司',
+    description: '设备预测性维护与健康管理系统'
   },
   {
     image: steelCase3,
-    title: '宝山钢铁',
-    description: 'APC'
+    title: '宝山钢铁股份有限公司',
+    description: '先进过程控制系统'
   }
 ];
 
@@ -747,17 +747,17 @@ const cementCases = [
   {
     image: cementCase1,
     title: '安徽海螺水泥股份有限公司',
-    description: '预测性运维管理平台'
+    description: '设备预测性维护与健康管理系统'
   },
   {
     image: cementCase1,
-    title: '安徽海螺水泥股份有限公司',
-    description: 'APC'
+    title: '巢湖海螺水泥有限责任公司',
+    description: '先进过程控制系统'
   },
   {
     image: cementCase2,
-    title: '安徽盘锦水泥',
-    description: 'APC'
+    title: '安徽盘锦水泥有限公司',
+    description: '先进过程控制系统'
   }
 ];
 
@@ -765,33 +765,33 @@ const cementCases = [
 const coalAdvantages = [
   {
     icon: iconFullStack,
-    title: '设备全生命周期管理',
-    description: '设备全流程、全要素、全场景的智能化管理，实现设备运维标准化。'
+    title: '设备全流程标准化管理',
+    description: '覆盖档案、维修、点检全生命周期，实现规范化管控。'
   },
   {
     icon: iconVertical,
-    title: '减少停机时间',
-    description: '减少停机时间，提升生产效率，降低设备维护成本。'
+    title: '减少停机时间，提升生产效率',
+    description: '优化设备利用率，降低突发故障对生产的中断影响。'
   },
   {
     icon: iconAutonomous,
     title: '智能预警实现状态检修',
-    description: '基于物联网和人工智能技术，实现设备状态实时监测和故障预警。'
+    description: '基于振动与大数据技术，精准预测故障，推动计划检修转型。'
   },
   {
     icon: iconHeadEnterprise,
-    title: '运维监控支持远程化作业',
-    description: '智能化远程运维监控，降低人工成本，提升运维效率。'
+    title: '远程监控支持少人化作业',
+    description: '智能化运维减少人工依赖，提升井下作业安全性。'
   },
   {
     icon: iconFullStack,
     title: '知识共享提升人才能力',
-    description: '构建运维知识库系统，促进经验共享，提升专业化人才水平。'
+    description: '构建诊断知识库，促进经验沉淀与专业化人才培养。'
   },
   {
     icon: iconVertical,
-    title: '数据驱动维护链路闭环',
-    description: '实现设备维护数据的全流程管理，优化维护策略，提高服务质量。'
+    title: '数据驱动降低运维成本',
+    description: '实时监测设备健康状态，优化维护策略，延长设备寿命。'
   }
 ];
 
@@ -800,17 +800,17 @@ const coalCases = [
   {
     image: coalCase1,
     title: '山西焦煤集团有限责任公司',
-    description: '预测性运维管理平台'
+    description: '设备预测性维护与健康管理系统'
   },
   {
     image: coalCase1,
     title: '山西焦煤集团有限责任公司',
-    description: 'EAM'
+    description: '设备全生命周期管理系统'
   },
   {
     image: coalCase2,
-    title: '特变电工',
-    description: 'EAM'
+    title: '新疆天池能源有限责任公司',
+    description: '设备全生命周期管理系统'
   }
 ];
 
@@ -819,28 +819,28 @@ const chemicalChallenges = [
   {
     icon: chemicalExclamation,
     title: '设备可靠性风险高',
-    description: '热心设备长期运行，检测手段落后且不足，数据采集覆盖率低，长期依赖人工巡检，无法准确预测设备状况。'
+    description: '核心设备（反应釜、压缩机等）长期处于高温高压环境，腐蚀与疲劳导致故障频发，非计划停机损失占比超15%。'
   },
   {
     icon: chemicalEquipment,
-    title: '传统监控效率较低',
-    description: '传统人工智能缺乏设计计划性，缺乏实时监测手段，设备管理效率，责任体系不完善结构化。'
+    title: '传统运维效率较低',
+    description: '依赖人工经验巡检与计划检修，缺乏实时健康监测，故障预警滞后，备件库存冗余与短缺并存。'
   },
   {
     icon: chemicalProcess,
-    title: '工艺整合与发展缓慢动',
-    description: '多工艺环节（生产、检测）集成性低，人工管理精度不足，设备资源配置和现产品质量偏差大。'
+    title: '工艺耦合性引发质量波动',
+    description: '多工序参数（温度、压力）耦合性强，人工调节精度不足，设备异常直接影响产品质量稳定性。'
   },
   {
     icon: chemicalSupply,
     title: '安全环保合规压力升级',
-    description: '设备密度、VOC排放等项目面临日益严格的力度，环保压力加大，需要提高生产线稳定性与高效性。'
+    description: '设备泄漏、VOCs排放等隐患实时监测能力弱，环保治理成本高，需兼顾生产连续性与合规性。'
   }
 ];
 
 // 化工行业解决方案数据
 const chemicalSolutionsData = {
-  description: '利用物联网、人工智能、专家规则推理等技术，为化工厂线上设备运行数据进行采集、分析和处理，实现对设备状态的实时监控和预警。从而对危设备底层原因，提前进行维修保养，保障设备正常运行，避免因设备故障而造成的生产中断，让多形态数人员安全事故的发生。',
+  description: '利用物联网、人工智能、专家规则推理等技术手段，对化工产线上设备运行数据进行采集、分析和预测，实现对设备状态的实时监控和预警，从而预测设备故障风险，提前进行维修保养，确保设备正常运行，避免因设备故障而造成的生产中断、业务损失和人员安全事故的发生。',
   showImage: true,
   imageSrc: 'src/assets/industry/chemical-solution.png'
 };
@@ -850,32 +850,32 @@ const chemicalAdvantages = [
   {
     icon: chemicalAdvantageIcon,
     title: '智能运维全流程支撑',
-    description: '实现设备远程监控与维护预警，兼顾前置检测与设备修一体的监管。'
+    description: '实现设备远程监控与维护闭环管理，满足跨系统设备统一管控需求。'
   },
   {
     icon: chemicalAdvantageIcon,
     title: '非计划停机风险控制',
-    description: '基于强化分析代建模算法，将意外停机率降95%，停机减速率20%+。'
+    description: '基于振动分析+机理建模技术，故障预警准确率>95%，停机率降低50%+。'
   },
   {
     icon: chemicalAdvantageIcon,
     title: '生产效率与设备利用率提升',
-    description: '实现优化调度计算，打造能源节约，环境管理能效提升。'
+    description: '动态优化设备运行参数，开动率提升，年综合能效成本节约显著。'
   },
   {
     icon: chemicalAdvantageIcon,
     title: '检修成本与人力优化',
-    description: '智能化工业设备检修预判，降低设备故障，工业运营提升。'
+    description: '智能化工单调度+备件库存预测，维护成本下降，工单效率提升。'
   },
   {
     icon: chemicalAdvantageIcon,
-    title: '数据测量与知识沉淀',
-    description: '全生命周期知识库的构建，实现设备质量追溯与经验的积累。'
+    title: '数据溯源与知识沉淀',
+    description: '全生命周期数据可视化存储分析，支持故障根因追溯与经验规则库构建。'
   },
   {
     icon: chemicalAdvantageIcon,
     title: '标准化管理能力升级',
-    description: '集中化管理规范的全面构建系统，实现流程标准化工作优化管理。'
+    description: '推动设备管理从经验驱动转向数据驱动，实现运维流程线上透明化化管控。'
   }
 ];
 
@@ -883,8 +883,8 @@ const chemicalAdvantages = [
 const chemicalCases = [
   {
     image: chemicalCase1, // 化工厂设备图片
-    title: '巴斯夫(中国)',
-    description: '预测性运维管理平台'
+    title: '巴斯夫（中国）有限公司',
+    description: '设备预测性维护与健康管理系统'
   }
 ];
 
@@ -892,23 +892,23 @@ const chemicalCases = [
 const carChallenges = [
   {
     icon: carChallenge1,
-    title: '设备复杂优化与故障风险',
-    description: '设备性能持续变革，无标准对标，导致性能在长时一致性、稳定性维持挑战大。'
+    title: '设备复杂性高与数据孤岛',
+    description: '动力设备种类繁多，点检数据分散，多源信息难以统一管理，导致运维效率低下。'
   },
   {
     icon: carChallenge2,
     title: '非计划停机与安全风险',
-    description: '关键设备（如冲压线、涂装线等）人工预警和计划性检修能力传统依赖处于可控但安全风险影响力。'
+    description: '关键设备（如冲压机、焊接机器人）故障易引发产线停滞，传统维护缺乏实时预警与精准诊断能力。'
   },
   {
     icon: carChallenge3,
     title: '人工依赖与诊断效率瓶颈',
-    description: '传统性设备缺陷检验人工干预分析，多保健维修需要依赖人经验，加重班组与班组24小时。'
+    description: '传统振动监测依赖人工经验分析，多设备监控易导致信息过载，故障定位耗时超24小时。'
   },
   {
     icon: carChallenge4,
-    title: '备件沉余与成本压力',
-    description: '主剖配件性能工艺检测能力存在差异，过度维护带来时间与人力成本，综合备件成本压力。'
+    title: '备件冗余与成本压力',
+    description: '定期检修模式导致备件库存积压，过度维护增加时间与人力成本，综合运维成本占比高。'
   }
 ];
 
@@ -941,22 +941,22 @@ const carAdvantages = [
   {
     icon: 'src/assets/industry/car-advantage-1.png',
     title: '设备状态实时监测',
-    description: '多源传感器【振动/压力/温】的光学数据采集，全程通讯级功能计算并与边缘平台同步，覆盖核心设备全工况运行状态。'
+    description: '多源传感器（振动/应力波）精准采集数据，支持毫秒级边缘计算与云端同步，覆盖核心设备全工况运行状态。'
   },
   {
     icon: 'src/assets/industry/car-advantage-2.png',
     title: '异常预警与健康评估',
-    description: '基于机理模型与AI算法，实现故障早期预警及设备健康状态评估，指导科学维护计划制定。'
+    description: '基于机理模型与AI算法，实现故障早期预警及健康度动态评估，指导科学维护计划制定。'
   },
   {
     icon: 'src/assets/industry/car-advantage-3.png',
     title: '专家诊断与远程运维',
-    description: '内置100+设备故障规则库，透明振动图谱，输入故障专家分析工具，支持远程24小时设备与故障建议生成。'
+    description: '内置100+设备故障规则库，提供振动图谱、轴心轨迹等专家分析工具，支持远程24小时诊断与检修建议生成。'
   },
   {
     icon: 'src/assets/industry/car-advantage-4.png',
     title: '智能备件库存优化',
-    description: 'AI应用备件需求预测服务工业实施算法，结合消耗量监控，优化元件库存方案与提高效能。'
+    description: 'AI驱动的备件需求预测与工单调度算法，库存周转率提升，减少冗余库存与缺货风险。'
   }
 ];
 
@@ -964,8 +964,8 @@ const carAdvantages = [
 const carCases = [
   {
     image: carCase1,
-    title: '丰田集团',
-    description: '预测性运维管理平台'
+    title: '广汽丰田汽车有限公司',
+    description: '设备预测性维护与健康管理系统'
   }
 ];
 
@@ -974,28 +974,28 @@ const newEnergyChallenges = [
   {
     icon: 'src/assets/industry/cement-challenge-2.png',
     title: '设备高故障率与运维成本高',
-    description: '风电场规模、光伏集装等关键设施面临电子元器件、控制环境、故障处理、传输人工维修等难题，急于优化运维资源。'
+    description: '风电齿轮箱、光伏逆变器等关键设备长期处于高负荷、极端环境，故障频发，传统人工巡检效率低，非计划停机损失显著。'
   },
   {
     icon: 'src/assets/industry/cement-challenge-2.png',
     title: '数据孤岛与诊断效率不足',
-    description: '设备运行数据分散于多个平台，缺乏统一分析平台，数据解读压在极少人工带宽，难解资源限制。'
+    description: '设备运行数据分散于多个系统，缺乏统一分析平台，故障根因定位依赖人工经验，异常响应周期长。'
   },
   {
     icon: 'src/assets/industry/cement-challenge-2.png',
     title: '环境适应性要求严苛',
-    description: '设备面临多变环境，恶劣温度湿度应急管理高成本，环境适应要求持续年技术不足。'
+    description: '设备部署于复杂环境，传感器需满足防盐雾、高低温、抗振动等要求，传统监测手段可靠性不足。'
   },
   {
     icon: 'src/assets/industry/cement-challenge-2.png',
     title: '能效优化与资产保值压力',
-    description: '受电效率波动大，设备自能量改善需求，需通过健康评估延长资产寿命，确保资源压力。'
+    description: '发电效率波动大，设备性能衰减难量化，需通过健康评估延长资产寿命，降低度电成本。'
   }
 ];
 
 // 新能源行业解决方案数据
 const newEnergySolutionsData = {
-  description: '通过纯动分析+机理模型实现故障早期预警，边缘计算+云平台构建边云网管理，降低维护成本，提升能效，以全栈技术点配供电环境，保障设备可靠性与资产保值。',
+  description: '通过振动分析+机理模型实现故障早期预警，边缘计算+云平台构建端边云闭环管理，降低非计划停机，提升能效，以全栈技术适配极端环境，保障设备可靠性与资产保值。',
   showImage: true,
   imageSrc: 'src/assets/industry/wind-solution.png'
 };
@@ -1005,27 +1005,27 @@ const newEnergyAdvantages = [
   {
     icon: 'src/assets/industry/wind-advantage-1.png',
     title: '设备智能监测与故障预警',
-    description: '基于端点传感器网络，实时预测设备故障的可能性，提升设备健康管理。'
+    description: '基于振动与机理模型，实时捕捉设备早期异常信号，提升故障预警精准度。'
   },
   {
     icon: 'src/assets/industry/wind-advantage-2.png',
     title: '减少非计划停机风险',
-    description: '通过预测性维护优化设备检修，规避意外停机对生产和检修的影响，保障生产连续性。'
+    description: '通过预测性维护优化检修策略，降低关键设备非计划停机频率，保障生产连续性'
   },
   {
     icon: 'src/assets/industry/wind-advantage-3.png',
-    title: '能效与资源效率优化',
-    description: '设备运行参数实时优化调整，提升设备发电效率，降低运营成本。'
+    title: '能效与发电效率优化',
+    description: '动态调度算法匹配能源供需，提升设备发电效率，降低综合能耗'
   },
   {
     icon: 'src/assets/industry/wind-advantage-2.png',
     title: '恶劣环境高适应性',
-    description: '抗衰、抗震特性保障高地域适应性，满足极端性天气。'
+    description: '抗防爆、耐腐蚀传感器适配极端场景，确保数据稳定采集。'
   },
   {
     icon: 'src/assets/industry/wind-advantage-3.png',
-    title: '全链技术闭环管理',
-    description: '"端+边+云"一体化和可视化故障诊断系统，分析、诊断和排除，减低技术关人才依赖。'
+    title: '全栈技术闭环管理',
+    description: '“端-边-云”一体化架构实现数据采集、分析、控制闭环，赋能远程少人化运维。'
   }
 ];
 

@@ -79,25 +79,25 @@ const activeStep = ref(props.defaultActiveStep || 3);
 const advantages: Advantage[] = [
   {
     title: '多元产品',
-    description: '系统提供全球服，解决常见多级库存，满足各种规模企业的核心产品功能需求，更适不同客户需求适配。',
+    description: '库存健康诊断、库存需求预测、库存智能补货、库存网络优化等多种产品任由选择，满足不同客户的需求和场景。',
     icon: icon1,
     position: { top: 163, left: 360 + 20 }
   },
   {
-    title: '多模式支付',
-    description: 'Web钱包、API、SAAS、私有云等多场景的部署方式在企业中实现，满足不同客户的自由选择能力。',
+    title: '多模式交付',
+    description: 'Web软件、API、SAAS、私有云等多种交付方式任由选择，满足不同客户的需求和场景。',
     icon: icon2,
     position: { top: 163, left: 1121 + 20 }
   },
   {
-    title: '界面/接口便捷应用',
-    description: '系统运行，简洁操作管理调整，采用新UI框架，系统对接API生成标准服标准，支持多版本转换，支持环境。',
+    title: '界面/接口便捷实用',
+    description: '移动端、网页端均可使用，操作简单。提供API接口和企业的ERP、WMS、EAM等系统对接，实现数据的互通。',
     icon: icon3,
     position: { top: 341, left: 310 + 20 }
   },
   {
     title: '免费的POC验证',
-    description: '以数据为驱动，针对海量客户和场景进行建模与诊断，满足不同行业和规模企业的预测流能力。',
+    description: '以数据为核心，针对业务特点构建库存模型，充分的测试与数据分析，验证投资价值。',
     icon: icon4,
     position: { top: 341, left: 1171 + 20 }
   }

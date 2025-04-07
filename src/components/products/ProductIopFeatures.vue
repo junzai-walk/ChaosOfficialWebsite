@@ -72,19 +72,19 @@ const features: Feature[] = [
   },
   {
     title: '库存需求预测',
-    description: '助力中大型企业，针对库存做分析数据，构建需求预测模型。',
+    description: '助力中大型企业，针对性挖掘分析数据，构建需求预测模型。',
     icon: icon2,
     position: { top: 195, left: 1193 + 20 }
   },
   {
     title: '库存智能补货',
-    description: '助力中大型企业，针对性设置分析数据，构建智能补货模型。',
+    description: '助力中大型企业，针对性挖掘分析数据，构建智能补货模型。',
     icon: icon3,
     position: { top: 451, left: 313 + 20 }
   },
   {
     title: '库存网络优化',
-    description: '面向大型企业多级供应网络，进行供应链规划与优化。',
+    description: '面向大型企业多级仓储网络，进行供应链规划与优化 。',
     icon: icon4,
     position: { top: 451, left: 1193 + 20 }
   }

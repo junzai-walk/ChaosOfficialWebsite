@@ -21,7 +21,7 @@
         'slide-next': sectionStore.currentSection < 1
       }">
       <ProductDescription :nav-steps="productSteps" :default-active-step="1" :section-numbers="[1, 2, 3, 4]" :description="productDescription"
-        :video-src="officialVideoSrc" />
+        :media-src="phmVideo" :media-type="'video'" />
     </div>
 
     <!-- 第三部分：产品功能 -->
@@ -65,7 +65,7 @@
         'slide-prev': sectionStore.currentSection > 5,
         'slide-next': sectionStore.currentSection < 5
       }">
-      <ProductHero :background-image="eamBackgroundImage" title="设备全生命周期管理系统(EAM)" />
+      <ProductHero :background-image="eamBackgroundImage" title="设备全生命周期管理系统（EAM）" />
     </div>
 
     <!-- 第七部分：产品概述 -->
@@ -77,7 +77,7 @@
         'slide-next': sectionStore.currentSection < 6
       }">
       <ProductDescription :nav-steps="productSteps" :default-active-step="1" :section-numbers="[6, 7, 8, 9]" :description="productDescriptionEam"
-        :video-src="officialVideoSrc" />
+        :media-src="eamVideo" :media-type="'video'" />
     </div>
 
     <!-- 第八部分：核心功能 -->
@@ -121,7 +121,7 @@
         'slide-prev': sectionStore.currentSection > 10,
         'slide-next': sectionStore.currentSection < 10
       }">
-      <ProductHero :background-image="apcBackgroundImage" title="先进过程控制系统(APC)" />
+      <ProductHero :background-image="apcBackgroundImage" title="先进过程控制系统（APC）" />
     </div>
 
     <!-- 第十二部分：产品概述 -->
@@ -133,7 +133,7 @@
         'slide-next': sectionStore.currentSection < 11
       }">
       <ProductDescription :nav-steps="productSteps" :default-active-step="1" :section-numbers="[11, 12, 13, 14]" :description="productDescriptionApc"
-        :video-src="officialVideoSrc" />
+        :media-src="apcPhoto" :media-type="'image'" />
     </div>
 
     <!-- 第十三部分：核心功能 -->
@@ -177,7 +177,7 @@
         'slide-prev': sectionStore.currentSection > 15,
         'slide-next': sectionStore.currentSection < 15
       }">
-      <ProductHero :background-image="emsBackgroundImage" title="能源管理与优化系统(EMS)" />
+      <ProductHero :background-image="emsBackgroundImage" title="能源管理与优化系统（EMS）" />
     </div>
 
     <!-- 第十七部分：产品概述 -->
@@ -189,7 +189,7 @@
         'slide-next': sectionStore.currentSection < 16
       }">
       <ProductDescription :nav-steps="productStepsEffect" :default-active-step="1" :section-numbers="[16, 17, 18, 19, 20]" :description="productDescriptionEms"
-        :video-src="officialVideoSrc" />
+        :media-src="emsPhoto" :media-type="'image'" />
     </div>
 
     <!-- 第十八部分：核心功能 -->
@@ -246,7 +246,7 @@
         'slide-prev': sectionStore.currentSection > 21,
         'slide-next': sectionStore.currentSection < 21
       }">
-      <ProductHero title="库存优化(IOP)" :background-image="inventoryBackgroundImage" />
+      <ProductHero title="库存优化（IOP）" :background-image="inventoryBackgroundImage" />
     </div>
 
     <!-- 第二十二部分：产品描述 -->
@@ -258,7 +258,7 @@
         'slide-next': sectionStore.currentSection < 22
       }">
       <ProductDescription :nav-steps="productStepsEffect" :default-active-step="1" :section-numbers="[22, 23, 24, 25]" :description="productDescriptionIop"
-        :video-src="officialVideoSrc" />
+        :media-src="iopVideo" :media-type="'video'" />
     </div>
 
     <!-- 第二十三部分：核心功能 -->
@@ -302,7 +302,7 @@
         'slide-prev': sectionStore.currentSection > 26,
         'slide-next': sectionStore.currentSection < 26
       }">
-      <ProductHero title="生产计划排程(APS)" :background-image="apsBackgroundImage" />
+      <ProductHero title="生产计划排程（APS）" :background-image="apsBackgroundImage" />
     </div>
 
     <!-- 第二十七部分：产品概述 -->
@@ -314,7 +314,7 @@
         'slide-next': sectionStore.currentSection < 27
       }">
       <ProductDescription :nav-steps="productStepsAnother" :default-active-step="1" :section-numbers="[27, 28, 29]" :description="productDescriptionAps"
-        :video-src="officialVideoSrc" />
+        :media-src="apsPhoto" :media-type="'image'" />
     </div>
 
     <!-- 第二十八部分：核心功能 -->
@@ -513,6 +513,12 @@ import ProductHardwareSensorModel from '@/components/products/ProductHardwareSen
 // 直接导入图片和视频
 import phmBackgroundImage from '@/assets/products/software-bg-1.png'
 import officialVideoSrc from '@/assets/video/official_video.mp4'
+import phmVideo from "@/assets/video/phm_video.mp4"
+import eamVideo from "@/assets/video/eam_video.mp4"
+import apcPhoto from "@/assets/video/apc_photo.png"
+import emsPhoto from "@/assets/video/ems_photo.png"
+import iopVideo from "@/assets/video/iop_video.mp4"
+import apsPhoto from "@/assets/video/aps_photo.png"
 import eamBackgroundImage from '@/assets/products/bg_EAM.png'
 
 // 导入图标
@@ -644,43 +650,43 @@ const productStepsAnother = ['产品概述', '核心功能', '特色优势']
 const productStepsLight = ['产品亮点', '规格参数']
 
 // 产品描述
-const productDescription = '设备预测性维护与健康管理系统，应用工业设备运维中的感知、数字和智能，采用先进的数据技术，以预测维护+数据感知+机理建模为技术心，实现从设备监测预警到设备故障预测和健康评估的完善流程，快速准确推进生产线设备智能化运维能力，提高设备故障预测和检修效率。'
-const productDescriptionEam = '对设备全生命周期进行管控，记录设备完备的基础信息档率，对日常管理、运行监测、设备点巡检、润滑保养、预防检修、故障维修、备品备件、知识库等进行管理，帮助企业精确掌握设备运行情况。提高设备可用性，降低运行维护成本，提升企业竞争力。'
-const productDescriptionApc = '系统包含数据中心、组件管理、控制编排、系统管理等模块。系统集成了高效率控制算法以及完备的软件安全体系架构，提供强大的建模、优化、控制基础能力，实现数据流、生产流与控制流的协同，提高生产效率，降低生产成本，实现自主可控的智能制造.'
-const productDescriptionEms = '能源管理与优化系统采用自动化、信息化技术和集中管理模式，对用能设备的生产、输配和消耗环节实行集中扁平化的动态监控和数据化管理，通过数据监测、趋势分析与诊断优化，帮助企业针对各种能源需求及用能情况、能源质量、产品能源单耗、各工序能耗、重大能耗设备的能源利用情况等进行能耗监测统计、能源成本分析、用能预测，为企业优化能源管理，提高能源利用效率、挖据节能潜力、节能评估提供基础数据和支持。'
-const productDescriptionIop = '以人工智能驱动的需求预测技术和针对不同成品、原料、备件品类的补货策略为基础，提供补货点、补货量及特殊情景下的备货方案，帮助仓库和工厂做出更明智的采购和补货决策，解决企业面临的预测和库存计划问题。通过为企业定制智能补货方案，真正实现需求驱动的供应链管理与生产智能化提升供应链柔性，降本增效。'
+const productDescription = '设备预测性维护与健康管理系统，深挖工业设备运维中的痛点，基于物联网、大数据、人工智能等相关技术，以特征提取+数据建模+机理建模为技术核心，实现从设备数据采集到设备智能预警和故障诊断的完善运维体系，快速地帮助企业提升设备智能化运维能力，提高设备故障诊断与检修效率。'
+const productDescriptionEam = '对设备全生命周期进行管控，记录设备完备的基础信息档案，对日常管理、运行监测、设备点巡检、润滑保养、预防检修、故障维修、备品备件、知识库等进行管理，帮助企业精确掌握设备运行情况，提高设备可用性，降低运行维护成本，提升企业竞争力。'
+const productDescriptionApc = '系统包含数据中心、组件管理、控制编排、系统管理等模块。系统集成了高效率控制算法以及完备的软件安全体系架构，提供强大的建模、优化、控制基础能力，实现数据流、生产流与控制流的协同，提高生产效率，降低生产成本，实现自主可控的智能制造。'
+const productDescriptionEms = '能源管理与优化系统采用自动化、信息化技术和集中管理模式，对用能设备的生产、输配和消耗环节实行集中扁平化的动态监控和数据化管理，通过数据监测、趋势分析与诊断优化，帮助企业针对各种能源需求及用能情况、能源质量、产品能源单耗、各工序能耗、重大能耗设备的能源利用情况等进行能耗监测统计、能源成本分析、用能预测，为企业优化能源管理，提高能源利用效率、挖掘节能潜力、节能评估提供基础数据和支持。'
+const productDescriptionIop = '以人工智能驱动的需求预测技术和针对不同成品、原料、备件品类的补货策略为基础，提供补货点、补货量及特殊情景下的备货方案，帮助仓库和工厂做出更明智的采购和补货决策，解决企业面临的预测和库存计划问题。通过为企业定制智能补货方案，真正实现需求驱动的供应链管理与生产智能化，提升供应链柔性，降本增效。'
 const productDescriptionAps = '生产计划排程软件使用先进算法平衡需求和产能，生成生产计划，协调物料、人员和设备有效利用，缩短交货时间以满足客户需求，并快速响应生产意外变化。APS系统涵盖数月甚至数年的长期战略规划、数周的中期战术规划以及短期的详细排程。'
 
 // 产品功能数据
 const productFeatures = [
   {
     title: '远程监视',
-    description: '基于局域、区域、互联、内联、容器等多种联网方案，实现异地设备远程监测量采集与显示，提供设备实时状态信息。',
+    description: '基于集团、区域、基地、产线、设备的数据采集，实现多层级远程实时监视，精准掌握设备健康状态、通讯状态及当前工况。',
     icon: remoteMonitoringIcon
   },
   {
     title: '智能预警',
-    description: '建立预警规则，设定预警，AI模型判断设备参数阈值异常，对异常参数预警提醒，提前预知设备异常；根据设备故障预测值，进行补位预警处理。',
+    description: '建立阈值预警、趋势预警、AI预警相结合的多种预警机制，提前预知潜在问题，实时发现异常情况，精准处理设备症结。',
     icon: intelligentAlarmIcon
   },
   {
     title: '自动诊断',
-    description: '基于自研算法，专业深度设备模型建模分析，结合设备，形成自动化识别设备参数规律，包含参数趋势、规律一人人工多维度处理。',
+    description: '基于行业积累、专业沉淀的设备机理诊断模型、知识库、算法库自动给出故障诊断结论，包括故障现象、故障原因和解决建议，辅助一线人员检修维护。',
     icon: automatedDiagnosisIcon
   },
   {
     title: '专家分析',
-    description: '基于不同类型设备，提供不同类型分析模型，打造专家分析工具，融入专家经验与知识，专家设备建模诊断模型，为设备健康提供支撑。',
+    description: '基于不同类型设备，提供不同类型分析图谱，打造的专家分析工具，融入丰富的分析图谱，专家快速诊断设备问题，分析故障根源。',
     icon: analysisIcon
   },
   {
     title: '诊断报告',
-    description: '打造数据分析报告与健康诊断报告，设备健康评分分析，创建报告预处理功能与设备维修执行的计划建议。结合不同场景的多种报告模板，支持更多设备类型。',
+    description: '打造融合设备基础信息关键特征趋势变化、设备运行工况分析、设备健康度分析以及专家机理模型和振动分析图谱的诊断报告，全面掌握设备状态，辅助设备运维决策。',
     icon: reportIcon
   },
   {
     title: '效能分析',
-    description: '为设备运行参数趋势，与设备设计参数进行对比分析，内含设备运行效能分析结果与设备维护效能分析结果，确保设备运行处于最佳状态区间，提升设备使用性能寿命。',
+    description: '实时监控设备参数，与设备设计性能参数进行对比分析，评估设备当前性能、能效和能耗等指标参数的范围分布，确保设备处于最优运行工况，提升设备运行经济性。',
     icon: performanceIcon
   }
 ]
@@ -688,43 +694,43 @@ const productFeatures = [
 // 产品特色优势数据
 const productAdvantages = [
   {
-    title: '灵活配置特性的边缘采集装置',
-    description: '一体化采集和控制组件，兼容性强、扩展性强、稳定性高。可视化组态配置，无编程配置在边缘计算上。',
+    title: '灵活配置特征的边缘采集终端',
+    description: '一键下发常规时域特征、频域特征、电机、轴承、齿轮、泵与风机故障特征，实现设备特征在边缘层计算上传。',
     icon: advantageIcon,
     position: { top: 163, left: 390 },
     iconPosition: 'left' as const
   },
   {
-    title: '全面的专家机理规则库',
-    description: '融合工艺经验，覆盖各种特性，设备的预防性维护计算，打通一整合数据集的链接，数学模型，规则故障预识别和评估模型工具。',
+    title: '全面的专家机理规则建模',
+    description: '融合工艺参数、常规振动特征、设备结构故障特征打造一套包含振动函数、数学函数、逻辑运算、规则函数的可视化机理建模工具。',
     icon: advantageIcon,
     position: { top: 163, left: 1033 },
     iconPosition: 'right' as const
   },
   {
     title: '完整的数据处理流程',
-    description: '内建"埋点指标-探查指标-建模依据-算法模型"一条龙服务流程，为各种情况提供支撑。',
+    description: '构建“传感器自检-数据治理-模型创建-数据应用”一整套数据处理流程，充分发挥数据价值。',
     icon: advantageIcon,
     position: { top: 341, left: 340 },
     iconPosition: 'left' as const
   },
   {
     title: '多技术融合的专家分析工具',
-    description: '融合常见故障原因分析，模型级参数分析，收集数据进行深度分析，打造专家级使用引导，达成完成设备寿命和参数分析工具。',
+    description: '融合滚动轴承故障分析、滑动轴承故障分析、低速重载设备故障分析，打造专家操作便利、快速出具诊断报告的专家分析工具。',
     icon: advantageIcon,
     position: { top: 341, left: 1083 },
     iconPosition: 'right' as const
   },
   {
     title: '强大的大数据AI建模',
-    description: '丰富的数学分析建模，对大数据模式进行科学聚类，建立设备健康评估，以提高设备可靠性。',
+    description: '无监督学习训练模型，对关键数据进行特征提取，建立设备健康样本，让预警诊断更准确。',
     icon: advantageIcon,
     position: { top: 519, left: 390 },
     iconPosition: 'left' as const
   },
   {
-    title: '可视化配置设备健康度评估',
-    description: '高效关键参数指标评估，维纳槽结构话识别，大数据统化非相似设备指标模型。',
+    title: '可视化配置的设备健康度评估',
+    description: '融合关键参数阈值模型、趋势模型和机理模型，支持可视化的动态权重加权配置。',
     icon: advantageIcon,
     position: { top: 519, left: 1033 },
     iconPosition: 'right' as const
@@ -747,32 +753,32 @@ const productCasesApc = [case1Apc, case2Apc, case3Apc, case4Apc];
 const productFeaturesEam = [
   {
     title: '设备编码',
-    description: '建立完整的设备编码体系，循环一物一码一对应关系，可用上下级结构完整定义各级设备的动静参数要素。',
+    description: '建立完善的设备编码体系，通过一物一档一码从空间、时间上实现360°设备全生命周期的动静态档案管理。',
     icon: eamIcon1
   },
   {
     title: '全生命周期管理',
-    description: '覆盖设备购置、中修、安装、从设备需求、采购、入库、领用、报废、移交、调拨、租赁、寄存、合作、资质、报废、更换配备等过程全过程管理。',
+    description: '覆盖设备前期、中期、后期，从设备需求、采购、入库、领用、回退、移交、调剂、租赁、停用、封存、启用、报废、更新改造等进行全过程管理。',
     icon: eamIcon2
   },
   {
     title: '运维管理',
-    description: '以工单为主线，围绕设备维修/保养的流程管理、实现保养、巡检、检修、设备检验、检测管理，为设备提供完善的监控、服务、科学的设备选型服务，实现运维知识的积累。',
+    description: '以工单为主线，通过设备缺陷/故障闭环管理、点巡检、保养、润滑、检修、安全检查、检定管理，为企业提供更为稳定、高效、科学的设备运维服务，实现运维知识的延伸。',
     icon: eamIcon3
   },
   {
     title: '预测性维护',
-    description: '集成设备运行监测设备，基于设备健康模型，对重点设备进行预测预警，评估设备健康度，以及关键零件的使用和网络，并提供设备和设备功能，以确保设备的稳定、高效运行。',
+    description: '集成设备运行监测模块，基于各类算法模型，对重点设备进行在线监测，评估设备健康度，及时发现潜在的故障和问题，并提供预警和诊断功能，以确保设备的稳定、高效运行。',
     icon: eamIcon4
   },
   {
     title: '运行监测',
-    description: '提供设备运行数据采集、运行数据统计分析、性能管理、设备运行各种预测能力、分析预警等功能。',
+    description: '提供设备运行数据采集、运行数据统计与分析、停机管理、设备运行实时数据监测、异常报警等功能。',
     icon: eamIcon5
   },
   {
     title: '备件管理',
-    description: '零部件设备备件消耗变化的跟踪，实现备件安全库存管理能力，让零配件供应高效率。',
+    description: '掌握各设备备件消耗变化的规律，实现备件安全库存智能预警，科学合理地储备备件。',
     icon: eamIcon6
   }
 ]
@@ -781,42 +787,42 @@ const productFeaturesEam = [
 const productAdvantagesEam = [
   {
     title: '基于关键词的设备全文搜索',
-    description: '通过使用分词技术，建立和优化设备全文搜索引擎，可搜索关键词进行多页面信息定位，提高搜索设备信息的匹配和效率。',
+    description: '通过使用分词技术，建立和优化设备全文搜索引擎，将搜索关键词进行更加精准的匹配，提高搜索设备结果的质量和效率。',
     icon: eamFeatureIcon1,
     position: { top: 163, left: 390 },
     iconPosition: 'left' as const
   },
   {
     title: '基于语音模块的智能人机交互',
-    description: '集成语音、特大电气等生活语音设备与各种接头，无需装配，通过有用户本好的语音驱入与人机交互功能。',
+    description: '集成百度、科大讯飞等主流的语音识别与合成技术，实现高效、准确和用户友好的语音输入与人机交互功能。',
     icon: eamFeatureIcon2,
     position: { top: 163, left: 1033 },
     iconPosition: 'right' as const
   },
   {
     title: '基于二维码的设备标识技术',
-    description: '利用二维码的标识能力和设备识别能力，在设备上贴上易读安装等方式标识二维码，通过扫描二维码进行设备的相配识和定位的应用。',
+    description: '利用二维码的编码能力和设备的识别能力，在设备上通过悬挂或粘贴等方式标识二维码，通过扫描二维码进行设备的标识和功能的应用。',
     icon: eamFeatureIcon3,
     position: { top: 341, left: 340 },
     iconPosition: 'left' as const
   },
   {
     title: '智能工单调度算法技术',
-    description: '通过综合算术语言处理技术，和派单类和数据分析技术，专家系统和逻辑计划化及实行规范分派拥堵的技术实现智能化工单派工和调度。',
+    description: '通过结合自然语言处理技术、机器学习和数据分析技术、专家系统和规则引擎以及实时数据处理和通信技术来实现智能化的工单派工和调度。',
     icon: eamFeatureIcon4,
     position: { top: 341, left: 1083 },
     iconPosition: 'right' as const
   },
   {
     title: '备件库存分析',
-    description: '通过算法分析备零部设备备件消耗变化的预警和设备的化提功，低出合理设备备件块流门管理，并对备部安全存储缺少预算在和为不备或大下预模可名符节保障，过越的成格数据预。',
+    description: '通过算法分析掌握各设备备件消耗变化的规律和设备劣化趋势，给出合理设备备件经济订购量，并利用安全库存建议与算法优化的库存上下限进行库存缺货、过剩的AI智能预警。',
     icon: eamFeatureIcon5,
     position: { top: 519, left: 390 },
     iconPosition: 'left' as const
   },
   {
     title: '便捷化设备管理的移动技术',
-    description: '用设备现场，配额维修，点检移执行，保养巡检执行，检设执行多功能移动终端功能，减低企业移动化办公成本，提高设备管理的效率和灵活性。',
+    description: '将设备档案、故障报修、点巡检执行、保养润滑执行、检定执行等功能延伸到移动终端，满足企业移动化办公的需求，提高设备管理的效率和灵活性。',
     icon: eamFeatureIcon6,
     position: { top: 519, left: 1033 },
     iconPosition: 'right' as const
@@ -833,27 +839,27 @@ const productAdvantagesEam = [
 const productFeaturesApc = [
   {
     title: '数据采集',
-    description: '通过连接的 DCS、PLC等相关系统进行数据采集平台和设备之间的连通，主要是提供传感和执行，设备参数数据的采集、处理、聚集、管理等。',
+    description: '通过给定的 DCS、PLC等相关系统通信协议创建平台和设备之间的通讯通道。主要实现异类协议解析，设备测点数据的对接、采集、管理等。',
     icon: apcIcon1
   },
   {
     title: '控制编排',
-    description: '为工业控制软件设计了一个并行任务调度计算框架，支持多进程和并行计算，通过可视化加快控制方式的流控制面板，实现流程控制、数据计算。',
+    description: '为工业控制软件设计了一个并行任务调度计算框架，支持多语言组件并行执行。通过可视化拖拉拽的方式搭建控制画布，实现流程控制、数据计算。',
     icon: apcIcon2
   },
   {
     title: '组件管理',
-    description: '基于UDF实现不同信息间的函数流转，促进多层级组件库和可复用性，在大规模下不同组件的接入与管理。',
+    description: '基于UDP实现不同进程间简易通信协议，使得多语言组件能同时在调度框架中运行，极大提高了调度的扩展性。',
     icon: apcIcon3
   },
   {
     title: '驾驶舱',
-    description: '提供面向生产过程的数据展示和分析，简洁丰富可视化中的各种数据，方便进行单个一个窗、多视、可视化的监控面板。',
+    description: '模块面向生产过程的数据集成和分析，集成生产过程中的各项数据，为管理员提供一个全面、实时、可视化的监控画面。',
     icon: apcIcon4
   },
   {
     title: '先进控制算法',
-    description: '本系统基于先进控制算法如PID、LQR、模糊控制、模型预测控制算法（MPC）等，结合多变量优化（RTO）方法和神经网络连接模型，自动控制最佳方案的数据模型，所涉及的算法应用等能力开发，完全自主可控。',
+    description: '本系统基于经典控制算法如PID、LQR、模糊控制、模型预测控制算法（MPC）等，结合实时在线优化（RT0）方法将传统的机理模型、经验模型融合为复杂的数据模型，所涉及控制算法均为底层开发，完全自主可控。',
     icon: apcIcon5
   }
 ]
@@ -862,42 +868,42 @@ const productFeaturesApc = [
 const productAdvantagesApc = [
   {
     title: '大平台化架构',
-    description: '低代码平台，平面化算法展示，可实现算法快速更新迭代，框架和模型多领域标准集成并入更多实际算法组件，减少二次开发，门槛低，复用高。',
+    description: '低代码平台、插件化算法组件，可实现算法快速更新迭代，根据后续业务场景拓展需要快速载入更多类型算法组件，减少二次开发，门槛低，复用强。',
     icon: apcFeature1,
     position: { top: 163, left: 390 },
     iconPosition: 'left' as const
   },
   {
     title: '模块式设计',
-    description: '本系统所有场景均是模块化，应用实例，与普通等常规操作可以独立部署，针对模型维编写团队可自定义编辑生产版本，计算分析等功能。',
+    description: '本系统所包含的数据中心、控制编排、驾驶舱等模块均可以独立部署，并可根据现场实际提供自定义编排生产报表、计算分析等功能。',
     icon: apcFeature2,
     position: { top: 163, left: 1033 },
     iconPosition: 'right' as const
   },
   {
     title: '工业级系统性能',
-    description: '系统架构性：前置网络分离\n系统双冗余：满足运行阶段的高效稳健性\n全场景开发量：数据并发量支持大于1000条/秒',
+    description: '系统部署快：部署周期2周 系统响应快：画布运行响应时间毫秒级 支持高并发量：数据并发量支持大于1000条/秒',
     icon: apcFeature3,
     position: { top: 341, left: 340 },
     iconPosition: 'left' as const
   },
   {
     title: '解决高耦合大时滞',
-    description: '相对非个控制回路间的多联系多重相互作用，支撑多变量的平行化，通过分析模拟等回避未来出现，操作的制度都设计，根本上解决时延问题。',
+    description: '能对多个控制回路间的关联变量进行解耦，实现多变量协同优化。通过分析预测各回路未来趋势，操作控制点提前动作，根本上解决时延问题。',
     icon: apcFeature4,
     position: { top: 341, left: 1083 },
     iconPosition: 'right' as const
   },
   {
     title: '稳定控制优化',
-    description: '集成理论(多变量提取等)，反馈线状化为一体，通过建立大模型工艺参数的流动，温度机工艺芳香模性，实现可控制。',
+    description: '集前馈(多变量模型预测)、反馈及优化于一体，通过减少关键工艺变量的波动，进而优化工艺装置操作，实现卡边控制。',
     icon: apcFeature5,
     position: { top: 519, left: 390 },
     iconPosition: 'left' as const
   },
   {
     title: '更高级控制模式',
-    description: '常规生活的实时响应基平常室的反馈控制，用以增强制控功力的APC可在运用传统的控制上留住控制思维方向和稳固的刚柔度，提高了控制器的适应有用表现控制的品质。',
+    description: '常规单回路控制器是基于偏差的反馈控制，而以模型预测控制为核心的APC则在反馈控制的基础上，将过程模型作为控制器的内部模型，提高了控制器的信息利用率和控制品质。',
     icon: apcFeature6,
     position: { top: 519, left: 1033 },
     iconPosition: 'right' as const
@@ -914,42 +920,42 @@ const productAdvantagesApc = [
 const productAdvantagesAps = [
   {
     title: '降低成本',
-    description: '在制造业中常见设备的未来集，APS项目使需求合理，避免生产系统中心动态数计的水平生产效率生产用，加强生产编制能力分配，资源更高效，更低成本与货物出产能力。',
+    description: '在制造运营中实现显著的成本降低。APS微调资源分配，通过最大限度地减少浪费和优化库存水平来削减生产费用。告别生产过剩和库存过剩，追求更精简、更具成本效益的生产周期。',
     icon: apsFeature1,
     position: { top: 163, left: 390 },
     iconPosition: 'left' as const
   },
   {
     title: '增强决策能力',
-    description: '以更高为主和重，APS执入为年生产过程，供给产销预测，所有预算与设与方仲优化规划生产掌控，控合整体化力与展的规划，增强决策能力。',
+    description: '以数据为支持决策。APS深入分析生产过程，提供产能规划、库存管理和劳动力分配的战略规划方案。将数据转化为可操作的信息，增强决策能力。',
     icon: apsFeature2,
     position: { top: 163, left: 1033 },
     iconPosition: 'right' as const
   },
   {
     title: '保证准时交货',
-    description: '通过高速的准备能力，实施提供安排，APS可完取确同的生产周期，确保产品按客户需要抹保供货，提出客单组织的资源，项目成本。',
+    description: '通过先进的调度能力，实现准时交货。APS可实现精确的生产排程，确保产品在客户需要时准备就绪。建立更牢固的客户关系、巩固声誉。',
     icon: apsFeature3,
     position: { top: 341, left: 340 },
     iconPosition: 'left' as const
   },
   {
     title: '提高产品质量',
-    description: '提高产品质量和水平，APS确保生产过程保到统行，常规均能促进规则的优质，将一规定应符合规范分级保证生产的满足需，计划方满足，提升能力。',
+    description: '提高产品质量标准。APS确保生产过程顺利运行，降低错误和缺陷的风险。统一调度和资源最佳分配带来更高产品质量，让客户满意，提升品牌力。',
     icon: apsFeature4,
     position: { top: 341, left: 1083 },
     iconPosition: 'right' as const
   },
   {
     title: '提高灵活性和响应能力',
-    description: '通过生产作能录优，APS项模型为结，利用企业应通供与需求分的约束分析策，实现信规则，提出关高度生产计划，保持业务变和动态调整。',
+    description: '通灵活应对市场波动。APS提供灵活性，帮助企业迅速适应需求变化和供应链中断。无论情况如何，通过动态调整生产计划，保持运营效率和竞争优势。',
     icon: apsFeature5,
     position: { top: 519, left: 390 },
     iconPosition: 'left' as const
   },
   {
     title: '支持可持续性发展',
-    description: '制造业现可持续是跟然材料战略合，APS化化资源利用，减少浪废，现地的最终找，可用能量的生产调整的策划，最外作过程降低。',
+    description: '制造实践与可持续发展目标相结合。APS优化资源利用、减少浪费，实现环保目标。采用高效的生产流程提高效益、更保护地球环境。',
     icon: apsFeature6,
     position: { top: 519, left: 1033 },
     iconPosition: 'right' as const
@@ -966,27 +972,27 @@ const productAdvantagesAps = [
 const productFeaturesEms = [
   {
     title: '能耗监测',
-    description: '通过部署北向方案采集各能源数据传输，并且系统能够实时参数管理生成可视化精准分析计算，提供看，运力，温度等，并且在信息展示上进行直观，为能源数据提供支撑，了解到明确数据变化。',
+    description: '通过图形化的方式展示能源管网的布局，并且系统够实时采集管网中各设施的运行数据，如流量、压力、温度等，并在管网图界面上进行展示。用户可以通过观察这些数据，了解管网的实时运行状态，及时发现异常情况。',
     icon: emsIcon1
   },
   {
-    title: '能力平衡与能耗分析',
-    description: '对生物能能源场的进工程设计场，碳能负荷，用能平衡和标准化指导系统的应用，如实现机筒能把模型和能耗模型的搭建，数据收集和用能分析。',
+    title: '能介平衡与能耗分析',
+    description: '对企业能源系统的加工转换站所、输配送管网、用能车间进行全流程的能源流关键节点监控，动态调整匹配供能端与用能端的真实需求量。',
     icon: emsIcon2
   },
   {
     title: '能源成本分析',
-    description: '运用算法北向技术计分析各电站水电站成本分析，归类各电能消耗主要影响因素，功能分析结果。',
+    description: '运用算法分项技术分析共享电耗成本趋势、峰谷平电能等能源成本趋势。',
     icon: emsIcon3
   },
   {
     title: '能源需求预测与规划',
-    description: '应用花果采为加强管理理论化和流程化管理，建立有规模生产历史数据分析计，结合能源预测模型和能源规划技术，达到用能高效规范，降低能源预算预测合理性，过程用量的数据预。',
+    description: '能耗预测作为能源管理与优化系统的核心模块。通过引入核心算法配置模块，探究用能设备工作产出与能耗之间的关系，建立能源消耗分析统计，实现企业未来生产过程所需能源的总量的预估。',
     icon: emsIcon4
   },
   {
     title: '用能诊断与优化',
-    description: '分析和预测能源需求，结合设备运转状态，运行设置，成本分析等因素，并解决能源使用瓶颈，输出综合能源诊断报告及产品建议，设备资源调度建议和能源品质建议。',
+    description: '分析和预测能源需求，结合峰谷平电价、运行效率、成本分析等因素，求解最优资源调度方案，诊断能耗漏洞，给出综合能效诊断报告和生产调度建议、设备资源调度建议和能源调度建议。',
     icon: emsIcon5
   }
 ]
@@ -996,15 +1002,15 @@ const productFeaturesEms = [
 const productEmsPredictions = [
   {
     title: '自回归模型',
-    description: '基于前一个时间段模型，使用过去能中的能源消耗与特性能源需求进行处理，更好的捕捉能源的短期周期性变化，成因在能源需求预测中的能源消耗特征。'
+    description: '通过建立一个回归模型，将历史数据中的能源消耗与其他影响因素进行关联，然后使用模型来预测未来的能源消耗。系统可以根据输入特征的不同，选择最优策略。'
   },
   {
     title: '时间序列算法',
-    description: '对未来的能源消耗与过去的能源消耗规律关联，考虑周期分析和机理模型应用场景的趋势，创造未来的能源预测，帮助企业能源生产计划。'
+    description: '对未来的能源消耗与过去的能源消耗进行关联，系统通过分析和建模时间序列数据，预测未来的能源消耗，帮助企业调整生产计划。'
   },
   {
     title: '负荷预测算法',
-    description: '针对负荷预测和能源管理场景，检验负荷用电预测用于评估未来电用电特定时间段的用电负荷量动力能源趋势值，预能力增长功。'
+    description: '针对电力系统和能源管理领域，选择负荷预测算法用于预测未来特定时间段内系统的能耗负荷，包括长期负荷预测、短期负荷预测等，提前做好电力调度和分配工作。'
   }
 ]
 
@@ -1014,7 +1020,7 @@ const emsStrategies = [
     description: '助力改善园区的照明系统，并结合自动感应、时控开关、远程控制等手段，帮助园区减少不必要的照明能耗。'
   },
   {
-    description: '合理调整用能设备的运行策略，如优化启停时间、降低设备运行负载等，减少不必要的能源消耗'
+    description: '合理调整用能设备的运行策略，如优化启停时间、降低设备运行负载等，减少不必要的能源消耗 。'
   }
 ]
 
@@ -1023,19 +1029,19 @@ const emsResults = [
   {
     icon: emsApplication1,
     title: '降低成本',
-    description: '降低企业实际能源集耗消耗，防止企业能源超标，提高同工作产能，提高企业经济效益',
+    description: '反映企业真实能源耗用成本，协助企业降低能源耗用成本',
     number: '0.83%-1%'
   },
   {
     icon: emsApplication2,
     title: '提升劳动生产率',
-    description: '代替人工工业资源分析采集，做优化调，终止待工作，设备预测生产管理提升',
+    description: '代替人工生成各项日报表，现场抄录、统计等工作，综合劳动生产率提升',
     number: '8%'
   },
   {
     icon: emsApplication3,
     title: '提升合格率',
-    description: '系统自动优化控制应用，用能分析提高生产线能效提升',
+    description: '系统自动按时定时采集，能源审计准确性与合格率提升',
     number: '10%-34%'
   }
 ]
@@ -1045,32 +1051,32 @@ const iopResults = [
   {
     icon: iopApplication1,
     title: '降低库存成本',
-    description: '降低库存成本，利用深度算法和预测分析，帮助客户降低库存水平，合理补货，为用户创造经济效益。'
+    description: '预测未来需求，帮助企业合理规划库存，降低库存持有水平，合理补货，从而降低库存成本。'
   },
   {
     icon: iopApplication2,
-    title: '降低库存积压',
-    description: '提升库存周转率，通过定制化预测流程与柔性化库存算法，确保合适库存水平与天数。'
+    title: '降低库存损耗',
+    description: '减少库存积压，避免因库存货物过期或长期保存带来的商品报废、损坏与丢失等成本。'
   },
   {
     icon: iopApplication3,
-    title: '降低缺货返单险',
-    description: '通过定时库存检验和补充，结合企业实时库存状态，保证供应和用户需求均衡满足能力。'
+    title: '降低供应链风险',
+    description: '通过实时库存数据分析，帮助企业及时了解库存状态，快速响应供应链中断或需求变化。'
   },
   {
     icon: iopApplication4,
     title: '提高客户满意度',
-    description: '保证产品的持续可用性，提高客户满意度，通过订单快速和保证交货，从而提高客户忠诚度和回购率。'
+    description: '保证产品的及时供应，提高库存周转率，减少订单延误和缺货现象，从而提高客户满意度和忠诚度。'
   },
   {
     icon: iopApplication5,
     title: '提高资金利用率',
-    description: '提升资金合理利用率和分配合理性的优化效果，企业可以科学精准地进行并增加金额部署和结构优化，优化生产资金，保证财务运转。'
+    description: '减少库存水平将会减少存货资金的使用，提高资金利用率。企业可以利用释放出来的资金去做更有效的投资，提升生产效率、研发技术等。'
   },
   {
     icon: iopApplication6,
     title: '增强企业竞争力',
-    description: '加强供应链贯通能力，利用科学工具和智能算法增强竞争力，从而增强企业竞争力。'
+    description: '加速设备维修周期，降低停工成本提高生产效率，从而增强企业竞争力。'
   }
 ]
 
@@ -1088,9 +1094,9 @@ const wirelessSmartGatewayTitle = '无线智能网关'
 const wireSensorContent = [
   { title: '加速度传感器（通频）', model: 'CHAOS AC102' },
   { title: '加速度传感器（低频）', model: 'CHAOS AC133' },
-  { title: '振通一体传感器（通频）', model: 'CHAOS TA202' },
-  { title: '振通一体传感器（低频）', model: 'CHAOS TA233' },
-  { title: '防爆振通一体传感器（通频）', model: 'CHAOS TA935' },
+  { title: '振温一体传感器（通频）', model: 'CHAOS TA202' },
+  { title: '振温一体传感器（低频）', model: 'CHAOS TA233' },
+  { title: '防爆振温一体传感器（通频）', model: 'CHAOS TA935' },
   { title: '应力波传感器', model: 'CHAOS SW301' }
 ]
 
@@ -1106,7 +1112,7 @@ const wirelessSensorContent = [
 // 无线智能网关内容
 const wirelessSmartGatewayContent = [
   {
-    title: '支持地温传感器数量',
+    title: '支持振温传感器数量',
     value: '32',
     unit: '个',
     highlight: true
@@ -1127,19 +1133,19 @@ const wirelessSmartGatewayContent = [
 const wireSensorContentLight = [
   {
     title: "型号齐全 应用广泛",
-    description: "产品规格型号丰富的传感器产品线，包括温湿度一体传感器，适应各类应用场景和环境需求。"
+    description: "产品线涵盖从低频到通频的多种型号，包括振温一体和防爆型号传感器，满足各类应用场景的特定需求。"
   },
   {
     title: "低噪设计 精度卓越",
-    description: "通过优化传感器核心电路设计，确保测量结果的稳定性和准确性，为精密分析和控制提供支持。"
+    description: "通过低非线性和噪声水平的设计，确保测量结果的高准确性，为数据分析提供坚实基础。"
   },
   {
     title: "宽频覆盖 全面响应",
-    description: "具有宽频率测量范围的设计，满足各种测试和监控应用的需求。"
+    description: "具有较宽的频率响应范围，适合监测多样化的振动频率。"
   },
   {
     title: "高灵敏度 精准监测",
-    description: "灵敏度高度优化，能够检测到极小的环境变化，为精密监测提供保障。"
+    description: "振动灵敏度高，能够捕捉到微小的振动信号，为精密监测提供保障。"
   }
 ]
 
@@ -1147,27 +1153,27 @@ const wireSensorContentLight = [
 const wirelessSensorContentLight = [
   {
     title: "Zigbee技术 部署灵活",
-    description: "采用Zigbee无线传输技术，提高部署灵活性，无线通信功能强。"
+    description: "采用Zigbee无线传输技术，提高部署灵活性，无线通信功耗低。"
   },
   {
-    title: "NFC配置 便捷无忧",
-    description: "NFC用于传感器参数配置，非接触式参数设置，配置更高效。"
+    title: "NFC配置 便捷无触",
+    description: "NFC用于传感器参数配置，非接触式参数配置，配置更高效。"
   },
   {
-    title: "长寿耐用 维护成本低",
-    description: "根据SDK适当并采用超三年以上续航，减少维护成本。"
+    title: "长寿耐用 维护减费",
+    description: "提供25℃温度环境下三年以上使用寿命，减少维护成本。"
   },
   {
     title: "IP68防护 环境耐受",
-    description: "IP68防护等级，适合各种恶劣的工业环境。"
+    description: "IP68防护等级，适应各种恶劣的工业环境。"
   },
   {
     title: "防爆认证 安全保障",
-    description: "具备防爆认证，适用于需要爆炸风险防护，提供更安全。"
+    description: "具备防爆认证，适用于潜在爆炸风险的环境，使用更安全。"
   },
   {
     title: "边缘计算 智能预警",
-    description: "具备边缘计算能力，将部分计算和数据处理放置到传感器端进行。"
+    description: "具备边缘计算功能，能够进行电量预警和跌落警告等智能分析。"
   }
 ]
 
@@ -1183,7 +1189,7 @@ const edgeSmartCollectorContentLight = [
   },
   {
     title: "WEB配置 高效灵活",
-    description: "通过配置灵活，支持传感器类型众多。"
+    description: "通道配置灵活，支持传感器类型众多。"
   },
   {
     title: "ARM双核 性能强劲",
@@ -1195,7 +1201,7 @@ const edgeSmartCollectorContentLight = [
   },
   {
     title: "通信多样 集成便捷",
-    description: "支持以太网/WIFI/蓝牙等通信方式，易于系统集成和数据传输。"
+    description: "支持以太网/WiFi/蓝牙等通信方式，易于系统集成和数据传输。"
   }
 ]
 
@@ -1203,19 +1209,19 @@ const edgeSmartCollectorContentLight = [
 const wirelessSmartGatewayContentLight = [
   {
     title: "通讯多样 数据可靠",
-    description: "支持5G、4G、WiFi、以太网、光纤等多种通信方式，保障数据传输的完整性与可靠性。"
+    description: "支持4G、5G、Wifi、以太网、光纤等多种通讯方式，确保数据传输的可靠性和灵活性。"
   },
   {
     title: "网页配置 流程简便",
-    description: "支持Web网页配置，无需安装软件，简化配置过程。"
+    description: "支持web网页配置，无需安装软件，简化配置过程。"
   },
   {
     title: "功能丰富 方便易用",
-    description: "集成数据采集、数据转发与分析工具，提高集成部署管理和使用效率。"
+    description: "集成传感器、系统检测与分析工具，提高系统的可靠性和易用性。"
   },
   {
     title: "深入分析 精准诊断",
-    description: "多种数据分析与物联网接口，为设备状态监测和故障诊断提供深入的数据分析。"
+    description: "支持时域、频域与包络分析，为设备状态监测和故障诊断提供深入的数据分析。"
   }
 ]
 
