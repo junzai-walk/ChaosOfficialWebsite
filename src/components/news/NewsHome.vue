@@ -58,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref,computed,defineEmits} from 'vue'
+import {ref,computed} from 'vue'
 const emit = defineEmits(['handleNews'])
 const newsList = ref([
   // { id: 'news1', imgUrl: '/src/assets/news/01 封面图.jpeg', mainTitle: '全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能', subTitle: '凯奥思PHM系统深度融合DeepSeek，全面实现国产化', date: '2025.2.25' },
