@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import routesConfig from './routes'  // 重命名导入
 import SearchResults from '@/components/search/SearchResults.vue'
 
@@ -13,7 +13,7 @@ allRoutes.push({
 })
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: allRoutes
 })
 

@@ -60,7 +60,7 @@ const cultureCard = [
   flex-direction: column;
   align-items: flex-start;
   padding: 3rem 18rem 0 18rem;
-  background-image: url('/src/assets/about/bg.png');
+  background-image: url('@/assets/about/bg.png');
   /* 替换为实际背景图片 */
   background-size: cover;
   background-position: center;

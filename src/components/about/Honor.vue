@@ -12,15 +12,26 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+
+//这样引入，打包后服务器可识别
+import honor1 from '@/assets/about/01.png'
+import honor2 from '@/assets/about/02.png'
+import honor3 from '@/assets/about/03.png'
+import honor4 from '@/assets/about/04.png'
+import honor5 from '@/assets/about/05.jpg'
+import honor6 from '@/assets/about/06.png'
+import honor7 from '@/assets/about/07.png'
+import honor8 from '@/assets/about/08.png'
+
 const honorCard = [
-  { imgUrl: '/src/assets/about/01 国家高新技术企业.png', name: '国家高新技术企业', },
-  { imgUrl: '/src/assets/about/02 江苏省专精特新企业.png', name: '江苏省专精特新企业' },
-  { imgUrl: '/src/assets/about/03 江苏省最具成长潜力的留学人员创业企业.png', name: '江苏省最具成长潜力的留学人员创业企业' },
-  { imgUrl: '/src/assets/about/04 江苏省工业互联网发展示范企业（工业互联网平台类）.png', name: '江苏省工业互联网发展示范企业(工业互联网平台类 )' },
-  { imgUrl: '/src/assets/about/05 2023年新一代信息技术与制造业融合示范.jpg', name: '2023年新一代信息技术与制造业融合发展示范' },
-  { imgUrl: '/src/assets/about/06 江苏省工业软件优秀产品和应用解决方案.png', name: '江苏省工业软件优秀产品和应用解决方案', },
-  { imgUrl: '/src/assets/about/07 第五届“i 创杯”互联网创新创业大赛二等奖.png', name: '第五届“i 创杯”互联网创新创业大赛二等奖' },
-  { imgUrl: '/src/assets/about/08 2021第三届中国工业互联网大赛三等奖.png', name: '2021第三届中国工业互联网大赛三等奖' },
+  { imgUrl: honor1, name: '国家高新技术企业', },
+  { imgUrl: honor2, name: '江苏省专精特新企业' },
+  { imgUrl: honor3, name: '江苏省最具成长潜力的留学人员创业企业' },
+  { imgUrl: honor4, name: '江苏省工业互联网发展示范企业(工业互联网平台类 )' },
+  { imgUrl: honor5, name: '2023年新一代信息技术与制造业融合发展示范' },
+  { imgUrl: honor6, name: '江苏省工业软件优秀产品和应用解决方案', },
+  { imgUrl: honor7, name: '第五届"i 创杯"互联网创新创业大赛二等奖' },
+  { imgUrl: honor8, name: '2021第三届中国工业互联网大赛三等奖' },
 ]
 
 
