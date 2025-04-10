@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint --ext .js,.ts,.vue src",
     "lint:fix": "eslint --ext .js,.ts,.vue src --fix",
-    "format": "prettier --write \"src/**/*.{js,ts,vue,css}\""
+    "format": "prettier --write \"src/**/*.{js,ts,vue,css}\"",
+    "deploy": "npx -y rth-host-helper@latest --site junzaisun --build build --outdir dist"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
@@ -17,7 +18,7 @@
     "gsap": "^3.12.7",
     "pinia": "^3.0.1",
     "vue": "^3.5.13",
-    "vue-i18n": "^12.0.0-alpha.2",
+    "vue-i18n": "^9.2.2",
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
@@ -32,6 +33,7 @@
     "less": "^4.2.2",
     "less-loader": "^12.2.0",
     "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
     "typescript": "~5.7.2",
     "vite": "^6.2.0",
     "vue-tsc": "^2.2.4"
