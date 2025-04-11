@@ -166,7 +166,7 @@ const industries = [
 ]
 // 关于我们数据定义
 const abouts = [
-  { name: '公司概况', section: 1, icon: aboutCompanyIcon },
+  { name: '公司概况', section: 0, icon: aboutCompanyIcon },
   { name: '重要荣誉', section: 2, icon: aboutHonorIcon },
   { name: '加入我们', section: 3, icon: aboutJoinIcon },
   { name: '新闻动态', section: 4, icon: aboutNewsIcon },

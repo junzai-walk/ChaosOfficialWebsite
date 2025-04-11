@@ -107,16 +107,16 @@ import Contact from '@/components/about/Contact.vue'
 import NewsHome from '@/components/news/NewsHome.vue'
 import NewsDetail from '@/components/news/NewsDetail.vue'
 
-// 声明组件以消除类型错误
-const components = {
-  AboutHome,
-  CorporateCulture,
-  Honor,
-  Invite,
-  Contact,
-  NewsHome,
-  NewsDetail
-}
+// Vue 自动会注册组件，不需要声明components
+// const components = {
+//   AboutHome,
+//   CorporateCulture,
+//   Honor,
+//   Invite,
+//   Contact,
+//   NewsHome,
+//   NewsDetail
+// }
 
 // const currentSection = ref(0)
 
@@ -137,6 +137,9 @@ const handleNews = (val: Number | String | string) => {
 
 // 处理鼠标滚轮事件
 const handleWheel = (e: WheelEvent) => {
+  // 阻止默认滚动行为
+  e.preventDefault();
+  
   // 如果页面被锁定，不处理滚动
   if (document.body.classList.contains('no-section-scroll')) {
     return;
@@ -191,12 +194,21 @@ onMounted(() => {
   
   // 禁用浏览器默认滚动行为
   document.body.style.overflow = 'hidden';
+  
+  // 确保没有滚动锁定
+  document.body.classList.remove('no-section-scroll');
+  scrolling.value = false;
 
   // 检查URL参数中是否有section，有则跳转到对应section
   if (route.query.section) {
     const sectionNumber = parseInt(route.query.section as string)
     if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 5) {
       sectionStore.setCurrentSection(sectionNumber)
+      
+      // 添加短延迟确保页面完全加载后启用滚动功能
+      setTimeout(() => {
+        scrolling.value = false;
+      }, 500);
     }
   }
 });

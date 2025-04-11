@@ -3,54 +3,48 @@
     <div class="main-title">联系我们</div>
     <div class="contact-content" >
       <div class="contact-info">
-        <el-descriptions  :column="1" label-width="90"> 
-          <el-descriptions-item label-class-name="my-label">
-            <template #label>
-              <div class="cell-item">
-                <el-icon :style="iconStyle">
-                  <location />
-                </el-icon>
-                公司地址:
-              </div>
-            </template>
-            南京市雨花台区宁双路19号云密城L栋9层
-          </el-descriptions-item>
-          <el-descriptions-item label-class-name="my-label">
-            <template #label>
-              <div class="cell-item">
-                <el-icon :style="iconStyle"  >
-                  <location />
-                </el-icon>
-                客服专线:
-              </div>
-            </template>
-            025-83132381
-          </el-descriptions-item>
-          <el-descriptions-item label-class-name="my-label">
-            <template #label>
-              <div class="cell-item">
-                <el-icon :style="iconStyle">
-                  <location />
-                </el-icon>
-                商务合作:
-              </div>
-            </template>
-            contact@njchaos.com
-          </el-descriptions-item>
-          <el-descriptions-item label="招贤纳士:" label-class-name="my-label">
-            <template #label>
-              <div class="cell-item">
-                <el-icon :style="iconStyle">
-                  <location />
-                </el-icon>
-                商务合作:
-              </div>
-            </template>
-            yao.wei@njchaos.com
-          </el-descriptions-item>
-        </el-descriptions>
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="contact-label">
+              <el-icon :style="iconStyle">
+                <img :src="locationIcon" alt="" class="icon-img-info">
+              </el-icon>
+              <span>公司地址:</span>
+            </div>
+            <div class="contact-value">南京市雨花台区宁双路19号云密城L栋9层</div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-label">
+              <el-icon :style="iconStyle">
+                <img :src="phoneIcon" alt="" class="icon-img-info">
+              </el-icon>
+              <span>客服专线:</span>
+            </div>
+            <div class="contact-value">025-83132381</div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-label">
+              <el-icon :style="iconStyle">
+                <img :src="cooperationIcon" alt="" class="icon-img-info">
+              </el-icon>
+              <span>商务合作:</span>
+            </div>
+            <div class="contact-value">contact@njchaos.com</div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-label">
+              <el-icon :style="iconStyle">
+                <img :src="degreeIcon" alt="" class="icon-img-info">
+              </el-icon>
+              <span>招贤纳士:</span>
+            </div>
+            <div class="contact-value">yao.wei@njchaos.com</div>
+          </div>
+        </div>
       </div>
-      <img :src="Img1" alt="" class="contact-image">
+      <div class="contact-map">
+        <div ref="mapContainer" id="baidu-map" class="map-container"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -63,8 +57,95 @@ import {
   Tickets,
   User,
 } from '@element-plus/icons-vue'
-import { ref, onMounted ,computed} from 'vue'
-import Img1 from '@/assets/about/Block-location.png'
+import locationIcon from '@/assets/about/map-localtion.png'
+import cooperationIcon from '@/assets/about/map-cooperation.png'
+import phoneIcon from '@/assets/about/map-phone.png'
+import degreeIcon from '@/assets/about/map-degree.png'
+
+
+import { ref, onMounted, computed } from 'vue'
+
+const mapContainer = ref<HTMLElement | null>(null)
+
+// 百度地图实现
+onMounted(() => {
+  // 动态加载百度地图API
+  const script = document.createElement('script')
+  script.src = `https://api.map.baidu.com/api?v=3.0&ak=zuocDmYKz4t8GElbKotYajl06BVZTlWM&callback=initMap`
+  document.body.appendChild(script)
+
+  // 定义全局回调函数
+  window.initMap = () => {
+    if (mapContainer.value) {
+      // 创建地图实例
+      const map = new window.BMap.Map(mapContainer.value)
+      
+      // 创建地址解析器实例
+      const myGeo = new window.BMap.Geocoder();
+      // 公司名称和地址
+      const companyName = "凯奥思数据技术有限公司";
+      const address = "南京市雨花台区宁双路19号云密城L栋";
+      
+      // 将地址解析结果显示在地图上，并调整地图视野
+      myGeo.getPoint(address, function(point) {
+        if (point) {
+          map.centerAndZoom(point, 18);
+          // 开启鼠标滚轮缩放
+          map.enableScrollWheelZoom(true);
+          
+          // 添加标记点
+          const marker = new window.BMap.Marker(point);
+          map.addOverlay(marker);
+          
+          // 自定义信息窗口内容
+          const infoContent = `
+            <div style="padding: 10px 0; text-align: center;border-radius: 30px;background-color: #fff;">
+              <div style="font-size: 16px; font-weight: bold; color: #2961FA; margin-bottom: 8px;">${companyName}</div>
+              <div style="font-size: 12px; color: #666; line-height: 1.5;">${address}</div>
+            </div>
+          `;
+          
+          // 添加信息窗口
+          const infoOpts = {
+            width: 280,
+            height: 100,
+            title: '<div style="font-weight: bold; color: #2961FA; padding: 5px 0; border-bottom: 1px solid #eee;">公司位置</div>',
+            enableMessage: false,
+            enableCloseOnClick: false
+          };
+          
+          const infoWindow = new window.BMap.InfoWindow(infoContent, infoOpts);
+          
+          marker.addEventListener("click", function() {
+            map.openInfoWindow(infoWindow, point);
+          });
+          
+          // 默认打开信息窗口
+          map.openInfoWindow(infoWindow, point);
+          
+          // 添加控件
+          map.addControl(new window.BMap.ScaleControl());
+          map.addControl(new window.BMap.NavigationControl());
+        } else {
+          alert("未找到该地址，使用默认坐标");
+          // 使用默认坐标作为备选
+          const defaultPoint = new window.BMap.Point(118.758423, 31.975642);
+          map.centerAndZoom(defaultPoint, 18);
+          // ... 其余代码相同
+        }
+      }, "南京市");
+    }
+  }
+})
+
+// 为TypeScript声明全局变量
+declare global {
+  interface Window {
+    BMap: any
+    BMapGL: any
+    initMap: () => void
+  }
+}
 
 const iconStyle = computed(() => {
   const marginMap:any = {
@@ -111,16 +192,64 @@ const iconStyle = computed(() => {
       justify-content: center;
       background-color: #fff;
       width: 52%;
+      position: relative;
+      
+      .contact-info-list {
+        width: 100%;
+        padding: 1.5rem 0rem 1.5rem 2.5rem;
+        box-sizing: border-box;
+      }
+      .contact-info-item {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1.5rem;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+      .contact-label {
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        
+        .icon-img-info {
+          width: 1rem;
+          height: 1rem;
+          object-fit: contain;
+          margin-right: 0.5rem;
+        }
+      }
+      .contact-value {
+        padding-left: 1rem;
+        color: #333;
+      }
       :deep(.my-label) {
         font-weight: 700 !important;
       }
       .cell-item {
         display: flex;
         align-items: center;
+        // font-weight: 500;
+        // font-size: 22px;
+        // line-height: 44px;
+        // letter-spacing: 0px;
+
+        .icon-img-info {
+          width: 1rem;
+          height: 1rem;
+          object-fit: contain;
+          margin-right: 0.5rem;
+        }
       }
     }
-    .contact-image{
+    .contact-map {
       width: 50%;
+      height: 100%;
+      .map-container {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }

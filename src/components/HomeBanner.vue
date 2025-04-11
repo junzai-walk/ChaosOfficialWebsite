@@ -27,7 +27,7 @@ const router = useRouter()
 const handleConsult = () => {
   // 处理咨询按钮点击
   console.log('咨询按钮被点击')
-  router.push('/about')
+  router.push('/about?section=0')
 }
 
 onMounted(() => {

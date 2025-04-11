@@ -264,7 +264,7 @@ const closeDialog = () => {
 .submit-container {
   display: flex;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 3rem;
   
   .submit-btn {
     width: 200px;

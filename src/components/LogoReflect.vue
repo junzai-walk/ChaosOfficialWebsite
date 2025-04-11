@@ -124,8 +124,8 @@ onMounted(() => {
 @media (max-width: 1920px) {
   .logo-depth-container {
     .logo-image {
-      max-height: 55%;
-      max-width: 75%;
+      max-height: 42%;
+      max-width: 60%;
     }
   }
 }
@@ -135,8 +135,8 @@ onMounted(() => {
     transform: perspective(800px);
     
     .logo-image {
-      max-height: 50%;
-      max-width: 70%;
+      max-height: 42%;
+      max-width: 60%;
     }
   }
 }
@@ -146,8 +146,8 @@ onMounted(() => {
     transform: perspective(600px);
     
     .logo-image {
-      max-height: 45%;
-      max-width: 65%;
+      max-height: 42%;
+      max-width: 60%;
     }
   }
 }
