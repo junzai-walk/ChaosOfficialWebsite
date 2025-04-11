@@ -159,11 +159,11 @@ const industries = [
 ]
 // 关于我们数据定义
 const abouts = [
-  { name: '公司概况', section: 1, icon: 'src/assets/about/Rectangle 4151.png' },
-  { name: '重要荣誉', section: 2, icon: 'src/assets/about/Rectangle 4152.png' },
-  { name: '加入我们', section: 3, icon: 'src/assets/about/Rectangle 4153.png' },
-  { name: '联系我们', section: 4, icon: 'src/assets/about/Rectangle 4154.png' },
-  { name: '新闻动态', section: 5, icon: 'src/assets/about/Rectangle 4155.png' },
+  { name: '公司概况', section: 1, icon: 'src/assets/about/Rectangle4151.png' },
+  { name: '重要荣誉', section: 2, icon: 'src/assets/about/Rectangle4152.png' },
+  { name: '加入我们', section: 3, icon: 'src/assets/about/Rectangle4153.png' },
+  { name: '联系我们', section: 4, icon: 'src/assets/about/Rectangle4154.png' },
+  { name: '新闻动态', section: 5, icon: 'src/assets/about/Rectangle4155.png' },
 ]
 
 const activeMenu = ref('/')

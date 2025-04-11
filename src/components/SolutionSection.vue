@@ -43,6 +43,14 @@ import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { ElMessage } from 'element-plus';
 
+// Import images
+import steelImage from '@/assets/industry/steel.png';
+import cementImage from '@/assets/industry/cement-bg.png';
+import coalImage from '@/assets/industry/coal-bg.png';
+import chemicalImage from '@/assets/industry/chemical-bg.jpg';
+import carImage from '@/assets/industry/car-bg.png';
+import windImage from '@/assets/industry/wind-bg.png';
+
 const router = useRouter();
 const activeIndustry = ref(0);
 
@@ -101,7 +109,7 @@ const industries = ref([
   {
     name: '钢铁行业',
     description: '结合机理模型、数据模型、数字孪生技术、多变量预测控制技术，解决钢铁企业生产工艺、设备控制等一系列工业生产痛点，实现工艺流、生产信息流、设备流"三流合一"，稳定提升成品质量，降低生产线设备故障风险、人力成本和能源消耗',
-    image: './src/assets/industry/steel.png',
+    image: steelImage,
     cases: [
       '设备预测性维护与健康管理系统',
       '设备全生命周期管理系统',
@@ -114,7 +122,7 @@ const industries = ref([
   { 
     name: '水泥行业', 
     description: '基于超思工业互联网平台，为水泥行业提供专业的智能化解决方案。覆盖智能运维、智能控制、能效优化等领域，实现设备健康状态实时监控预警、工艺控制优化，降低运维成本、显著提升能效与产能稳定性', 
-    image: './src/assets/industry/cement-bg.png',
+    image: cementImage,
     cases: [
       '设备预测性维护与健康管理系统',
       '设备全生命周期管理系统',
@@ -127,7 +135,7 @@ const industries = ref([
   { 
     name: '煤炭行业', 
     description: '聚焦核心设备智能化运维，采用物联网、人工智能、大数据等技术，通过特征提取+机理建模的方式实现设备状态感知、智能预警、故障诊断、健康评估，并以统一算法库与知识库赋能矿井设备全生命周期管理，帮助煤矿企业实现数字化转型升级', 
-    image:'./src/assets/industry/coal-bg.png',
+    image: coalImage,
     cases: [
       '设备预测性维护与健康管理系统',
       '设备全生命周期管理系统',
@@ -140,7 +148,7 @@ const industries = ref([
   { 
     name: '化工行业', 
     description: '利用物联网、大数据、人工智能等技术手段，对化工产线上设备运行数据进行采集、分析和预测，从而预测设备故障风险，以智能运维驱动设备全生命周期管理，保障化工生产安全、高效、可持续', 
-    image:'./src/assets/industry/chemical-bg.jpg',
+    image: chemicalImage,
     cases: [
       '设备预测性维护与健康管理系统',
       '设备全生命周期管理系统',
@@ -153,7 +161,7 @@ const industries = ref([
   { 
     name: '汽车行业', 
     description: '为汽车行业提供设备预测性维护、全生命周期管理及供应链优化等解决方案，覆盖冲压、焊接等核心工艺，通过振动分析、动态排产算法及换电站健康监测技术，降低非计划停机，提升物流效率，助力车企实现设备可靠、生产高效与绿色转型', 
-    image: './src/assets/industry/car-bg.png',
+    image: carImage,
     cases: [
       '设备预测性维护与健康管理系统',
       '设备全生命周期管理系统',
@@ -166,7 +174,7 @@ const industries = ref([
   { 
     name: '新能源行业', 
     description: '以智能运维驱动设备可靠性提升，打破信息壁垒，建立规范和有效的集中管理机制，助力新能源行业高效、安全、可持续发展', 
-    image: './src/assets/industry/wind-bg.png',
+    image: windImage,
     cases: [
       '设备预测性维护与健康管理系统',
       '设备全生命周期管理系统',

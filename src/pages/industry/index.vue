@@ -408,10 +408,6 @@
 import { ref, provide, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useSectionStore } from '@/stores/sectionStore'
-import SteelChallenges from '@/components/industry/SteelChallenges.vue'
-import SteelSolutions from '@/components/industry/SteelSolutions.vue'
-import SteelAdvantages from '@/components/industry/SteelAdvantages.vue'
-import SteelCases from '@/components/industry/SteelCases.vue'
 import IndustryHero from '@/components/industry/components/IndustryHero.vue'
 import ChallengesSection from '@/components/industry/components/ChallengesSection.vue'
 import SolutionsSection from '@/components/industry/components/SolutionsSection.vue'
@@ -479,6 +475,26 @@ import chemicalCase1 from '@/assets/industry/chemical-case-1.png'
 // 导入汽车行业案例图片
 import carCase1 from '@/assets/industry/car-case-1.png'
 
+// Import solution images
+import steelSolutionImage from '@/assets/industry/solution-steel-Photoroom.png'
+import cementSolutionImage from '@/assets/industry/solution-cement-Photoroom.png'
+import chemicalSolutionImage from '@/assets/industry/chemical-solution.png'
+import carSolutionImage from '@/assets/industry/solution-car-Photoroom.png'
+import windSolutionImage from '@/assets/industry/wind-solution.png'
+
+// Import car advantage images
+import carAdvantage1 from '@/assets/industry/car-advantage-1.png'
+import carAdvantage2 from '@/assets/industry/car-advantage-2.png'
+import carAdvantage3 from '@/assets/industry/car-advantage-3.png'
+import carAdvantage4 from '@/assets/industry/car-advantage-4.png'
+
+// Import wind advantage images
+import windAdvantage1 from '@/assets/industry/wind-advantage-1.png'
+import windAdvantage2 from '@/assets/industry/wind-advantage-2.png'
+import windAdvantage3 from '@/assets/industry/wind-advantage-3.png'
+
+// Import challenge icons
+import cementChallenge2 from '@/assets/industry/cement-challenge-2.png'
 
 const route = useRoute()
 const router = useRouter()
@@ -626,7 +642,7 @@ const industryThreeSteps = [
 const steelSolutionsData = {
   description: '以超思工业互联网平台为基座，融合数据算法及AI实现全流程智能优化。通过智能硬件及智能应用赋能煤气管网、冷轧生产等核心场景，实现设备预测性维护、能效优化、工艺智能控制，助力钢铁企业降本增效、绿色转型。',
   showImage: true,
-  imageSrc: 'src/assets/industry/solution-steel-Photoroom.png'
+  imageSrc: steelSolutionImage
 }
 
 // const steelSolutionsData = {
@@ -650,7 +666,7 @@ const steelSolutionsData = {
 const cementSolutionsData = {
   description: '基于超思工业互联网平台，为水泥行业提供专业的智能化解决方案。覆盖智能运维、智能控制、能效优化等领域，实现设备健康状态实时监控预警、工艺控制优化，降低运维成本、显著提升能效与产能稳定性。',
   showImage: true,
-  imageSrc: 'src/assets/industry/solution-cement-Photoroom.png'
+  imageSrc: cementSolutionImage
 }
 // const cementSolutionsData = {
 //   description: '基于超恩工业互联网平台，为水泥行业提供智能化解决方案。融合数据智能及AI实现全流程智能化化。通过智能硬件、智能软件、数字化等手段提供管理、工艺智能优化、精细运维本、绿色转型。',
@@ -842,7 +858,7 @@ const chemicalChallenges = [
 const chemicalSolutionsData = {
   description: '利用物联网、人工智能、专家规则推理等技术手段，对化工产线上设备运行数据进行采集、分析和预测，实现对设备状态的实时监控和预警，从而预测设备故障风险，提前进行维修保养，确保设备正常运行，避免因设备故障而造成的生产中断、业务损失和人员安全事故的发生。',
   showImage: true,
-  imageSrc: 'src/assets/industry/chemical-solution.png'
+  imageSrc: chemicalSolutionImage
 };
 
 // 化工行业方案优势数据
@@ -916,7 +932,7 @@ const carChallenges = [
 const carSolutionsData = {
   description: '为汽车行业提供设备预测性维护、全生命周期管理及供应链优化等解决方案，覆盖冲压、焊接等核心工艺，通过振动分析、动态排产算法及换电站健康监测技术，降低非计划停机，提升物流效率，助力车企实现设备可靠、生产高效与绿色转型。',
   showImage: true,
-  imageSrc: 'src/assets/industry/solution-car-Photoroom.png'
+  imageSrc: carSolutionImage
 }
 
 // const carSolutionsData = {
@@ -939,22 +955,22 @@ const carSolutionsData = {
 // 汽车行业方案优势数据
 const carAdvantages = [
   {
-    icon: 'src/assets/industry/car-advantage-1.png',
+    icon: carAdvantage1,
     title: '设备状态实时监测',
     description: '多源传感器（振动/应力波）精准采集数据，支持毫秒级边缘计算与云端同步，覆盖核心设备全工况运行状态。'
   },
   {
-    icon: 'src/assets/industry/car-advantage-2.png',
+    icon: carAdvantage2,
     title: '异常预警与健康评估',
     description: '基于机理模型与AI算法，实现故障早期预警及健康度动态评估，指导科学维护计划制定。'
   },
   {
-    icon: 'src/assets/industry/car-advantage-3.png',
+    icon: carAdvantage3,
     title: '专家诊断与远程运维',
     description: '内置100+设备故障规则库，提供振动图谱、轴心轨迹等专家分析工具，支持远程24小时诊断与检修建议生成。'
   },
   {
-    icon: 'src/assets/industry/car-advantage-4.png',
+    icon: carAdvantage4,
     title: '智能备件库存优化',
     description: 'AI驱动的备件需求预测与工单调度算法，库存周转率提升，减少冗余库存与缺货风险。'
   }
@@ -972,22 +988,22 @@ const carCases = [
 // 新能源行业挑战数据
 const newEnergyChallenges = [
   {
-    icon: 'src/assets/industry/cement-challenge-2.png',
+    icon: cementChallenge2,
     title: '设备高故障率与运维成本高',
     description: '风电齿轮箱、光伏逆变器等关键设备长期处于高负荷、极端环境，故障频发，传统人工巡检效率低，非计划停机损失显著。'
   },
   {
-    icon: 'src/assets/industry/cement-challenge-2.png',
+    icon: cementChallenge2,
     title: '数据孤岛与诊断效率不足',
     description: '设备运行数据分散于多个系统，缺乏统一分析平台，故障根因定位依赖人工经验，异常响应周期长。'
   },
   {
-    icon: 'src/assets/industry/cement-challenge-2.png',
+    icon: cementChallenge2,
     title: '环境适应性要求严苛',
     description: '设备部署于复杂环境，传感器需满足防盐雾、高低温、抗振动等要求，传统监测手段可靠性不足。'
   },
   {
-    icon: 'src/assets/industry/cement-challenge-2.png',
+    icon: cementChallenge2,
     title: '能效优化与资产保值压力',
     description: '发电效率波动大，设备性能衰减难量化，需通过健康评估延长资产寿命，降低度电成本。'
   }
@@ -997,33 +1013,33 @@ const newEnergyChallenges = [
 const newEnergySolutionsData = {
   description: '通过振动分析+机理模型实现故障早期预警，边缘计算+云平台构建端边云闭环管理，降低非计划停机，提升能效，以全栈技术适配极端环境，保障设备可靠性与资产保值。',
   showImage: true,
-  imageSrc: 'src/assets/industry/wind-solution.png'
+  imageSrc: windSolutionImage
 };
 
 // 新能源行业方案优势数据
 const newEnergyAdvantages = [
   {
-    icon: 'src/assets/industry/wind-advantage-1.png',
+    icon: windAdvantage1,
     title: '设备智能监测与故障预警',
     description: '基于振动与机理模型，实时捕捉设备早期异常信号，提升故障预警精准度。'
   },
   {
-    icon: 'src/assets/industry/wind-advantage-2.png',
+    icon: windAdvantage2,
     title: '减少非计划停机风险',
     description: '通过预测性维护优化检修策略，降低关键设备非计划停机频率，保障生产连续性'
   },
   {
-    icon: 'src/assets/industry/wind-advantage-3.png',
+    icon: windAdvantage3,
     title: '能效与发电效率优化',
     description: '动态调度算法匹配能源供需，提升设备发电效率，降低综合能耗'
   },
   {
-    icon: 'src/assets/industry/wind-advantage-2.png',
+    icon: windAdvantage2,
     title: '恶劣环境高适应性',
     description: '抗防爆、耐腐蚀传感器适配极端场景，确保数据稳定采集。'
   },
   {
-    icon: 'src/assets/industry/wind-advantage-3.png',
+    icon: windAdvantage3,
     title: '全栈技术闭环管理',
     description: '“端-边-云”一体化架构实现数据采集、分析、控制闭环，赋能远程少人化运维。'
   }

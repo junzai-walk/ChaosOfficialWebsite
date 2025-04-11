@@ -98,7 +98,7 @@ const router = useRouter()
 
 const scrollDirection = ref<'up' | 'down'>('down');
 const scrolling = ref(false);
-const scrollDelay = 700; // 减少滚动延迟，让切换更加流畅
+const scrollDelay = 300; // 减少滚动延迟，让切换更加流畅
 
 // 页面跳转函数
 const goToSection = (sectionIndex: number) => {
