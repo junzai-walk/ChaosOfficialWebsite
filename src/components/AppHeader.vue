@@ -99,7 +99,7 @@
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item command="zh">中文</el-dropdown-item>
-              <el-dropdown-item command="en">英文</el-dropdown-item>
+              <!-- <el-dropdown-item command="en">英文</el-dropdown-item> -->
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -143,6 +143,13 @@ import chemicalIcon from '@/assets/header/hover-chemical.png'
 import carIcon from '@/assets/header/hover-car.png'
 import newEnergyIcon from '@/assets/header/hover-new-energy.png'
 
+// 关于我们图标导入
+import aboutCompanyIcon from '@/assets/about/Rectangle4151.png'
+import aboutHonorIcon from '@/assets/about/Rectangle4152.png'
+import aboutJoinIcon from '@/assets/about/Rectangle4153.png'
+import aboutContactIcon from '@/assets/about/Rectangle4154.png'
+import aboutNewsIcon from '@/assets/about/Rectangle4155.png'
+
 const route = useRoute()
 const router = useRouter()
 const { t, locale } = useI18n()  // 使用i18n
@@ -159,11 +166,11 @@ const industries = [
 ]
 // 关于我们数据定义
 const abouts = [
-  { name: '公司概况', section: 1, icon: 'src/assets/about/Rectangle4151.png' },
-  { name: '重要荣誉', section: 2, icon: 'src/assets/about/Rectangle4152.png' },
-  { name: '加入我们', section: 3, icon: 'src/assets/about/Rectangle4153.png' },
-  { name: '联系我们', section: 4, icon: 'src/assets/about/Rectangle4154.png' },
-  { name: '新闻动态', section: 5, icon: 'src/assets/about/Rectangle4155.png' },
+  { name: '公司概况', section: 1, icon: aboutCompanyIcon },
+  { name: '重要荣誉', section: 2, icon: aboutHonorIcon },
+  { name: '加入我们', section: 3, icon: aboutJoinIcon },
+  { name: '联系我们', section: 4, icon: aboutContactIcon },
+  { name: '新闻动态', section: 5, icon: aboutNewsIcon },
 ]
 
 const activeMenu = ref('/')
