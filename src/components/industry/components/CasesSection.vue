@@ -250,7 +250,6 @@ html {
 
 .case-card:hover {
   transform: translateY(-0.3125rem); // 5px
-  box-shadow: 0 0.5rem 1rem rgba(24, 144, 255, 0.1);
 }
 
 .case-image {

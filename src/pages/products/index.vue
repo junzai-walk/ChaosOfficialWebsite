@@ -512,7 +512,6 @@ import ProductHardwareSensorModel from '@/components/products/ProductHardwareSen
 
 // 直接导入图片和视频
 import phmBackgroundImage from '@/assets/products/software-bg-1.png'
-import officialVideoSrc from '@/assets/video/official_video.mp4'
 import phmVideo from "@/assets/video/phm_video.mp4"
 import eamVideo from "@/assets/video/eam_video.mp4"
 import apcPhoto from "@/assets/video/apc_photo.png"
@@ -528,7 +527,14 @@ import automatedDiagnosisIcon from '@/assets/products/phm-3.png'
 import analysisIcon from '@/assets/products/phm-4.png'
 import reportIcon from '@/assets/products/phm-5.png'
 import performanceIcon from '@/assets/products/phm-6.png'
-import advantageIcon from '@/assets/products/phm-feature-1.jpg'
+
+import advantageIcon1 from '@/assets/products/phm-advantage-1.jpg'
+import advantageIcon2 from '@/assets/products/phm-advantage-2.jpg'
+import advantageIcon3 from '@/assets/products/phm-advantage-3.jpg'
+import advantageIcon4 from '@/assets/products/phm-advantage-4.png'
+import advantageIcon5 from '@/assets/products/phm-advantage-5.png'
+import advantageIcon6 from '@/assets/products/phm-advantage-6.jpg'
+
 
 import case1 from '@/assets/products/phm-case-1.png'
 import case2 from '@/assets/products/phm-case-2.png'
@@ -696,42 +702,42 @@ const productAdvantages = [
   {
     title: '灵活配置特征的边缘采集终端',
     description: '一键下发常规时域特征、频域特征、电机、轴承、齿轮、泵与风机故障特征，实现设备特征在边缘层计算上传。',
-    icon: advantageIcon,
+    icon: advantageIcon1,
     position: { top: 163, left: 390 },
     iconPosition: 'left' as const
   },
   {
     title: '全面的专家机理规则建模',
     description: '融合工艺参数、常规振动特征、设备结构故障特征打造一套包含振动函数、数学函数、逻辑运算、规则函数的可视化机理建模工具。',
-    icon: advantageIcon,
+    icon: advantageIcon2,
     position: { top: 163, left: 1033 },
     iconPosition: 'right' as const
   },
   {
     title: '完整的数据处理流程',
     description: '构建“传感器自检-数据治理-模型创建-数据应用”一整套数据处理流程，充分发挥数据价值。',
-    icon: advantageIcon,
+    icon: advantageIcon3,
     position: { top: 341, left: 340 },
     iconPosition: 'left' as const
   },
   {
     title: '多技术融合的专家分析工具',
     description: '融合滚动轴承故障分析、滑动轴承故障分析、低速重载设备故障分析，打造专家操作便利、快速出具诊断报告的专家分析工具。',
-    icon: advantageIcon,
+    icon: advantageIcon4,
     position: { top: 341, left: 1083 },
     iconPosition: 'right' as const
   },
   {
     title: '强大的大数据AI建模',
     description: '无监督学习训练模型，对关键数据进行特征提取，建立设备健康样本，让预警诊断更准确。',
-    icon: advantageIcon,
+    icon: advantageIcon5,
     position: { top: 519, left: 390 },
     iconPosition: 'left' as const
   },
   {
     title: '可视化配置的设备健康度评估',
     description: '融合关键参数阈值模型、趋势模型和机理模型，支持可视化的动态权重加权配置。',
-    icon: advantageIcon,
+    icon: advantageIcon6,
     position: { top: 519, left: 1033 },
     iconPosition: 'right' as const
   }

@@ -18,7 +18,7 @@
           <!-- 行业方案菜单改为子菜单 -->
           <el-sub-menu index="/industry" popper-class="industry-submenu industry-submenu-for-img">
             <template #title>{{ $t('nav.industry') }}</template>
-            <el-menu-item v-for="(industry, index) in industries" :key="industry.section" 
+            <el-menu-item v-for="(industry) in industries" :key="industry.section" 
               :index="`/industry?section=${industry.section}`" class="industry-menu-item">
               <img :src="industry.icon" alt="" class="industry-icon" />
               <span>{{ industry.name }}</span>
@@ -71,7 +71,7 @@
           <el-menu-item index="/partners">{{ $t('nav.partners') }}</el-menu-item>
           <el-sub-menu  index="/about" popper-class="industry-submenu">
             <template #title>{{ $t('nav.about') }}</template>
-            <el-menu-item v-for="(about, index) in abouts" :key="about.section" 
+            <el-menu-item v-for="(about) in abouts" :key="about.section" 
               :index="`/about?section=${about.section}`" class="industry-menu-item">
               <img :src="about.icon" alt="" class="industry-icon" />
               <span>{{ about.name }}</span>
@@ -421,8 +421,8 @@ onMounted(() => {
   }
   
   .industry-icon {
-    width: 2.5rem;
-    height: 2.5rem;
+    // width: 1.5rem;
+    // height: 1.5rem;
     object-fit: contain;
     margin-right: 0.625rem;
     filter: brightness(1.3);

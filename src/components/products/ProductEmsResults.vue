@@ -25,10 +25,10 @@
         </div>
         <h3 class="card-title">{{ result.title }}</h3>
         <div class="card-content">
-          <p class="card-description">{{ result.description }}</p>
-        </div>
-        <div class="card-number" :class="`color-${index + 1}`">
-          {{ result.number }}
+          <span class="card-description">{{ result.description }}</span>
+          <span class="card-number" :class="`color-${index + 1}`">
+            {{ result.number }}
+          </span>
         </div>
       </div>
     </div>
@@ -146,7 +146,7 @@ const updateActiveStep = (newStep: number) => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
+  padding: 30px 50px;
   box-sizing: border-box;
   text-align: center;
 }
@@ -155,36 +155,40 @@ const updateActiveStep = (newStep: number) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  width: 72px;
+  height: 80px;
   border-radius: 50%;
   margin-bottom: 15px;
 }
 
 .card-icon img {
-  width: 40px;
-  height: 40px;
+  width:100%;
+  height: 100%;
   object-fit: contain;
 }
 
-.result-card:nth-child(1) .card-icon {
-  background-color: rgba(0, 187, 152, 0.1);
-}
+// .result-card:nth-child(1) .card-icon {
+//   background-color: rgba(0, 187, 152, 0.1);
+// }
 
-.result-card:nth-child(2) .card-icon {
-  background-color: rgba(43, 89, 255, 0.1);
-}
+// .result-card:nth-child(2) .card-icon {
+//   background-color: rgba(43, 89, 255, 0.1);
+// }
 
-.result-card:nth-child(3) .card-icon {
-  background-color: rgba(0, 187, 152, 0.1);
-}
+// .result-card:nth-child(3) .card-icon {
+//   background-color: rgba(0, 187, 152, 0.1);
+// }
 
 .card-title {
   font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
   font-size: 20px;
   font-weight: 600;
   color: #333;
-  margin: 0 0 15px 0;
+  margin: 15px 0 15px 0;
+}
+
+.card-content{
+  text-align: left;
 }
 
 .card-description {
@@ -199,7 +203,7 @@ const updateActiveStep = (newStep: number) => {
   font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
   font-size: 36px;
   font-weight: 600;
-  margin: 0;
+  margin-left: 10px;
 }
 
 .color-1 {
@@ -246,5 +250,11 @@ const updateActiveStep = (newStep: number) => {
     width: 90%;
     max-width: 416px;
   }
+}
+
+.text-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

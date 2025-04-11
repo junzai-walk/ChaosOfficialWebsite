@@ -405,7 +405,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, provide, onMounted, onBeforeUnmount, watch } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useSectionStore } from '@/stores/sectionStore'
 import IndustryHero from '@/components/industry/components/IndustryHero.vue'
@@ -413,6 +413,12 @@ import ChallengesSection from '@/components/industry/components/ChallengesSectio
 import SolutionsSection from '@/components/industry/components/SolutionsSection.vue'
 import AdvantagesSection from '@/components/industry/components/AdvantagesSection.vue'
 import CasesSection from '@/components/industry/components/CasesSection.vue'
+
+import steelBackgroundImage from '@/assets/industry/steel.png'
+import cementBackgroundImage from '@/assets/industry/cement-bg.png'
+import chemicalBackgroundImage from '@/assets/industry/chemical-bg.jpg'
+import carBackgroundImage from '@/assets/industry/car-bg.png'
+import newEnergyBackgroundImage from '@/assets/industry/wind-bg.png'
 
 import iconEnergy from "@/assets/industry/icon-energy.png"
 import iconEquipment from "@/assets/industry/icon-equipment.png"
@@ -424,32 +430,59 @@ import steelAdvantage2 from '@/assets/industry/steel-advantage-2.png'
 import steelAdvantage3 from '@/assets/industry/steel-advantage-3.png'
 import steelAdvantage4 from '@/assets/industry/steel-advantage-4.png'
 
-import steelBackgroundImage from '@/assets/industry/steel.png'
-import cementBackgroundImage from '@/assets/industry/cement-bg.png'
-import chemicalBackgroundImage from '@/assets/industry/chemical-bg.jpg'
-import carBackgroundImage from '@/assets/industry/car-bg.png'
-import newEnergyBackgroundImage from '@/assets/industry/wind-bg.png'
+import cementChallenge1 from '@/assets/industry/cement-challenge-1.png'
+import cementChallenge2 from '@/assets/industry/cement-challenge-2.png'
+import cementChallenge3 from '@/assets/industry/cement-challenge-3.png'
+import cementChallenge4 from '@/assets/industry/cement-challenge-4.png'
+
+import cementAdvantage1 from '@/assets/industry/cement-advantage-1.png'
+import cementAdvantage2 from '@/assets/industry/cement-advantage-2.png'
+import cementAdvantage3 from '@/assets/industry/cement-advantage-3.png'
+import cementAdvantage4 from '@/assets/industry/cement-advantage-4.png'
+
+import coalChallenge1 from '@/assets/industry/coal-challenge-1.png'
+import coalChallenge2 from '@/assets/industry/coal-challenge-2.png'
+import coalChallenge3 from '@/assets/industry/coal-challenge-3.png'
+import coalChallenge4 from '@/assets/industry/coal-challenge-4.png'
+
+import coalAdvantage1 from '@/assets/industry/coal-advantage-1.png'
+import coalAdvantage2 from '@/assets/industry/coal-advantage-2.png'
+import coalAdvantage3 from '@/assets/industry/coal-advantage-3.png'
+import coalAdvantage4 from '@/assets/industry/coal-advantage-4.png'
+import coalAdvantage5 from '@/assets/industry/coal-advantage-5.png'
+import coalAdvantage6 from '@/assets/industry/coal-advantage-6.png'
+
+import chemicalAdvantage1 from '@/assets/industry/chemical-advantage-1.png'
+import chemicalAdvantage2 from '@/assets/industry/chemical-advantage-2.png'
+import chemicalAdvantage3 from '@/assets/industry/chemical-advantage-3.png'
+import chemicalAdvantage4 from '@/assets/industry/chemical-advantage-4.png'
+import chemicalAdvantage5 from '@/assets/industry/chemical-advantage-5.png'
+import chemicalAdvantage6 from '@/assets/industry/chemical-advantage-6.png'
+
+import carAdvantage1 from '@/assets/industry/car-advantage-1.png'
+import carAdvantage2 from '@/assets/industry/car-advantage-2.png'
+import carAdvantage3 from '@/assets/industry/car-advantage-3.png'
+import carAdvantage4 from '@/assets/industry/car-advantage-4.png'
+
+import windChallenge1 from '@/assets/industry/wind-challenge-1.png'
+import windChallenge2 from '@/assets/industry/wind-challenge-2.png'
+import windChallenge3 from '@/assets/industry/wind-challenge-3.png'
+import windChallenge4 from '@/assets/industry/wind-challenge-4.png'
+
+import windAdvantage1 from '@/assets/industry/wind-advantage-1.png'
+import windAdvantage2 from '@/assets/industry/wind-advantage-2.png'
+import windAdvantage3 from '@/assets/industry/wind-advantage-3.png'
+import windAdvantage4 from '@/assets/industry/wind-advantage-4.png'
+import windAdvantage5 from '@/assets/industry/wind-advantage-5.png'
+
 
 // 引入方案优势图标
-import iconFullStack from '@/assets/industry/full-stack-technology-capabilities.png'
-import iconVertical from '@/assets/industry/vertical-scene-depth-adaptation.png'
-import iconAutonomous from '@/assets/industry/autonomous-controllable-technology-base.png'
-import iconHeadEnterprise from '@/assets/industry/head-enterprise-verification.png'
 import coalBackgroundImage from '@/assets/industry/coal-bg.png'
-import coalExclamation from '@/assets/industry/coal-challenge-1.png'
-import coalDevice from '@/assets/industry/coal-challenge-2.png'
-import coalWeak from '@/assets/industry/coal-challenge-3.png'
 import coalSolutionImage from '@/assets/industry/coal-solution-Photoroom.png'
 import chemicalExclamation from '@/assets/industry/chemical-challenge-1.png'
 import chemicalEquipment from '@/assets/industry/chemical-challenge-2.png'
 import chemicalProcess from '@/assets/industry/chemical-challenge-3.png'
 import chemicalSupply from '@/assets/industry/chemical-challenge-4.png'
-
-// 导入化工优势图标
-import chemicalAdvantageIcon from '@/assets/industry/chemical-advantage.png'
-
-// 导入化工行业背景图和案例图片
-import chemicalBgImage from '@/assets/industry/chemical-bg.jpg'
 
 import carChallenge1 from '@/assets/industry/car-challenge-1.png'
 import carChallenge2 from '@/assets/industry/car-challenge-2.png'
@@ -482,25 +515,11 @@ import chemicalSolutionImage from '@/assets/industry/chemical-solution.png'
 import carSolutionImage from '@/assets/industry/solution-car-Photoroom.png'
 import windSolutionImage from '@/assets/industry/wind-solution.png'
 
-// Import car advantage images
-import carAdvantage1 from '@/assets/industry/car-advantage-1.png'
-import carAdvantage2 from '@/assets/industry/car-advantage-2.png'
-import carAdvantage3 from '@/assets/industry/car-advantage-3.png'
-import carAdvantage4 from '@/assets/industry/car-advantage-4.png'
-
-// Import wind advantage images
-import windAdvantage1 from '@/assets/industry/wind-advantage-1.png'
-import windAdvantage2 from '@/assets/industry/wind-advantage-2.png'
-import windAdvantage3 from '@/assets/industry/wind-advantage-3.png'
-
-// Import challenge icons
-import cementChallenge2 from '@/assets/industry/cement-challenge-2.png'
 
 const route = useRoute()
 const router = useRouter()
 const scrolling = ref(false)
 const scrollDelay = 1000 // 滚动延迟，防止连续滚动
-const caseId = ref()
 
 // 使用 Pinia store 代替本地状态
 const sectionStore = useSectionStore()
@@ -579,22 +598,22 @@ const steelChallenges = [
 // 定义水泥行业挑战数据
 const cementChallenges = [
   {
-    icon: coalExclamation,
+    icon: cementChallenge1,
     title: '碳中和与深度减排压力升级',
     description: '熟料烧成能耗占比超60%，煤耗高，需智能优化降低碳排放，应对“双碳”目标与环保法规。'
   },
   {
-    icon: coalDevice,
+    icon: cementChallenge2,
     title: '设备智能化运维协同瓶颈',
     description: '设备复杂度提升与多系统集成需求激增，传统运维模式难以满足高精度预测性维护与跨产线协同管理。'
   },
   {
-    icon: coalWeak,
+    icon: cementChallenge3,
     title: '工艺柔性化与质量一致性挑战',
     description: '生料配比波动、窑温控制误差大，人工控制已不满足产线提升精度，质量一致性需求。'
   },
   {
-    icon: coalWeak,
+    icon: cementChallenge4,
     title: '环保与成本双重挑战',
     description: '粉尘、氮氧化物治理成本攀升，需平衡环保合规与降本增效，智能化技术驱动绿色转型。'
   }
@@ -603,22 +622,22 @@ const cementChallenges = [
 // 煤炭行业挑战数据
 const coalChallenges = [
   {
-    icon: coalExclamation,
+    icon: coalChallenge1,
     title: '设备可靠性不足',
     description: '核心设备（如提升机、通风机、皮带机）故障率高，依赖人工巡检，非计划停机影响生产连续性。'
   },
   {
-    icon: coalDevice,
+    icon: coalChallenge2,
     title: '安全管控难度大',
     description: '井下环境复杂，设备、环境等安全隐患实时监测与预警能力不足，事故风险难以有效预防。'
   },
   {
-    icon: coalWeak,
+    icon: coalChallenge3,
     title: '数据协同能力弱',
     description: '设备、工艺、安全等多系统数据孤岛严重，缺乏统一平台支撑智能化决策。'
   },
   {
-    icon: coalWeak,
+    icon: coalChallenge4,
     title: '能效与环保压力',
     description: '高能耗设备占比大，碳排放与粉尘治理成本攀升，需平衡生产效益与环保合规。'
   }
@@ -718,22 +737,22 @@ const steelAdvantages = [
 // 水泥行业方案优势数据
 const cementAdvantages = [
   {
-    icon: iconFullStack,
+    icon: cementAdvantage1,
     title: '低碳环保',
     description: '提升能源利用效率； 减少污染的排放。'
   },
   {
-    icon: iconVertical,
+    icon: cementAdvantage2,
     title: '智能运维',
     description: '及时发现设备异常，提前做好维护工作，避免设备故障导致的生产停滞和生产成本增加。'
   },
   {
-    icon: iconAutonomous,
+    icon: cementAdvantage3,
     title: '品质提升',
     description: '稳定控制参数波动，实现稳定加热和冷却；搅拌过程控制，保证成品的质量。'
   },
   {
-    icon: iconHeadEnterprise,
+    icon: cementAdvantage4,
     title: '稳定生产',
     description: '减少温差波动，充分燃烧； 及时响应各个变量之间的关联性。'
   }
@@ -780,32 +799,32 @@ const cementCases = [
 // 煤炭行业方案优势数据
 const coalAdvantages = [
   {
-    icon: iconFullStack,
+    icon: coalAdvantage1,
     title: '设备全流程标准化管理',
     description: '覆盖档案、维修、点检全生命周期，实现规范化管控。'
   },
   {
-    icon: iconVertical,
+    icon: coalAdvantage2,
     title: '减少停机时间，提升生产效率',
     description: '优化设备利用率，降低突发故障对生产的中断影响。'
   },
   {
-    icon: iconAutonomous,
+    icon: coalAdvantage3,
     title: '智能预警实现状态检修',
     description: '基于振动与大数据技术，精准预测故障，推动计划检修转型。'
   },
   {
-    icon: iconHeadEnterprise,
+    icon: coalAdvantage4,
     title: '远程监控支持少人化作业',
     description: '智能化运维减少人工依赖，提升井下作业安全性。'
   },
   {
-    icon: iconFullStack,
+    icon: coalAdvantage5,
     title: '知识共享提升人才能力',
     description: '构建诊断知识库，促进经验沉淀与专业化人才培养。'
   },
   {
-    icon: iconVertical,
+    icon: coalAdvantage6,
     title: '数据驱动降低运维成本',
     description: '实时监测设备健康状态，优化维护策略，延长设备寿命。'
   }
@@ -864,32 +883,32 @@ const chemicalSolutionsData = {
 // 化工行业方案优势数据
 const chemicalAdvantages = [
   {
-    icon: chemicalAdvantageIcon,
+    icon: chemicalAdvantage1,
     title: '智能运维全流程支撑',
     description: '实现设备远程监控与维护闭环管理，满足跨系统设备统一管控需求。'
   },
   {
-    icon: chemicalAdvantageIcon,
+    icon: chemicalAdvantage2,
     title: '非计划停机风险控制',
     description: '基于振动分析+机理建模技术，故障预警准确率>95%，停机率降低50%+。'
   },
   {
-    icon: chemicalAdvantageIcon,
+    icon: chemicalAdvantage3,
     title: '生产效率与设备利用率提升',
     description: '动态优化设备运行参数，开动率提升，年综合能效成本节约显著。'
   },
   {
-    icon: chemicalAdvantageIcon,
+    icon: chemicalAdvantage4,
     title: '检修成本与人力优化',
     description: '智能化工单调度+备件库存预测，维护成本下降，工单效率提升。'
   },
   {
-    icon: chemicalAdvantageIcon,
+    icon: chemicalAdvantage5,
     title: '数据溯源与知识沉淀',
     description: '全生命周期数据可视化存储分析，支持故障根因追溯与经验规则库构建。'
   },
   {
-    icon: chemicalAdvantageIcon,
+    icon: chemicalAdvantage6,
     title: '标准化管理能力升级',
     description: '推动设备管理从经验驱动转向数据驱动，实现运维流程线上透明化化管控。'
   }
@@ -988,22 +1007,22 @@ const carCases = [
 // 新能源行业挑战数据
 const newEnergyChallenges = [
   {
-    icon: cementChallenge2,
+    icon: windChallenge1,
     title: '设备高故障率与运维成本高',
     description: '风电齿轮箱、光伏逆变器等关键设备长期处于高负荷、极端环境，故障频发，传统人工巡检效率低，非计划停机损失显著。'
   },
   {
-    icon: cementChallenge2,
+    icon: windChallenge2,
     title: '数据孤岛与诊断效率不足',
     description: '设备运行数据分散于多个系统，缺乏统一分析平台，故障根因定位依赖人工经验，异常响应周期长。'
   },
   {
-    icon: cementChallenge2,
+    icon: windChallenge3,
     title: '环境适应性要求严苛',
     description: '设备部署于复杂环境，传感器需满足防盐雾、高低温、抗振动等要求，传统监测手段可靠性不足。'
   },
   {
-    icon: cementChallenge2,
+    icon: windChallenge4,
     title: '能效优化与资产保值压力',
     description: '发电效率波动大，设备性能衰减难量化，需通过健康评估延长资产寿命，降低度电成本。'
   }
@@ -1034,12 +1053,12 @@ const newEnergyAdvantages = [
     description: '动态调度算法匹配能源供需，提升设备发电效率，降低综合能耗'
   },
   {
-    icon: windAdvantage2,
+    icon: windAdvantage4,
     title: '恶劣环境高适应性',
     description: '抗防爆、耐腐蚀传感器适配极端场景，确保数据稳定采集。'
   },
   {
-    icon: windAdvantage3,
+    icon: windAdvantage5,
     title: '全栈技术闭环管理',
     description: '“端-边-云”一体化架构实现数据采集、分析、控制闭环，赋能远程少人化运维。'
   }

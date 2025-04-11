@@ -154,7 +154,7 @@ const updateActiveStep = (newStep: number) => {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    margin: 20px auto;
+    margin: 0px auto;
   }
 
   .feature-content {

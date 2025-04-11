@@ -332,7 +332,7 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 
   :deep(.right-images .main-image-container) {
     width: 840px !important;
-    height: 770px !important;
+    height: 690px !important;
     top: 120px !important;
     right: 40px !important;
   }
