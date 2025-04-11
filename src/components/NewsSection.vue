@@ -5,7 +5,7 @@
     <!-- 主要内容区 -->
     <div class="content-container">
       <!-- 左侧新闻卡片 -->
-      <div class="news-card" @click="handleNewsItemClick(newsItems[0])">
+      <div class="news-card" @click="handleNewsItemClick({id: 'news1', title: '全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能'})">
         <img src="@/assets/news/image4.png" alt="新闻图片" class="news-image">
         <div class="news-content">
           <h3>全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能</h3>
@@ -148,18 +148,21 @@ interface ConsultFormData {
 
 const newsItems = ref([
   {
+    id: 'news1',
     title: 'AA级！ 凯奥思数据获智能制造系统解决方案供应商分类分级评定',
     description: '近日，工信部直属中国电子技术标准化研究院与智能制造系统解决方案供应商联盟，联合公布了智能制造系统解决方案供应商分类分级评定（第三批）结果。南京凯奥思数据技术有限公司获评集成实施类认定（AA级）以及运行维护类认定（A级）。',
     date: '2024-03-15',
     image: cover1
   },
   {
+    id: 'news3',
     title: '喜报！凯奥思数据荣登南京企业技术中心培育库',
     description: '近日，南京凯奥思数据技术有限公司正式入选南京市工业和信息化局公布的《南京企业技术中心培育库（2024年度）》名单，标志着我司在技术创新和研发能力方面获得了政府部门的高度认可，为公司的未来发展注入了新的动力。',
     date: '2024-03-14',
     image: cover1
   },
   {
+    id: 'news4',
     title: '实力见证！凯奥思数据"设备预测性维护与健康管理系统2.0"又获两项重量级认证',
     description: '12月20日，第六届江苏软件产业发展大会近日在南京隆重召开。大会以"创新驱动，智创未来"为主题，聚焦软件产业的创新发展和应用实践，吸引了众多行业专家、企业代表及政府领导参会。会议期间，与会者围绕软件产业的创新发展、国产化替代等议题进行了深入交流和探讨。',
     date: '2024-03-13',
@@ -180,12 +183,11 @@ const handleConsultSubmit = (formData:ConsultFormData) => {
 
 const handleNewsItemClick = (item: any) => {
   console.log('新闻卡片被点击', item)
-  // 跳转到新闻详情页
+  // 跳转到新闻详情页并传递新闻ID
   router.push({
     path: '/news',
     query: {
-      title: item.title,
-      content: item.description
+      newsId: item.id
     }
   })
 }

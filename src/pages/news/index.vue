@@ -22,10 +22,12 @@
 
 <script setup lang="ts">
 import { ref, provide, onMounted, onBeforeUnmount } from 'vue'
+import { useRoute } from 'vue-router'
 import NewsHome from '@/components/news/NewsHome.vue'
 import NewsDetail from '@/components/news/NewsDetail.vue'
 
-const newsId =ref()
+const route = useRoute()
+const newsId = ref()
 const currentSection = ref(0)
 // 提供 currentSection 给子组件使用
 provide('currentSection', currentSection)
@@ -76,6 +78,12 @@ onMounted(() => {
 
   // 禁用浏览器默认滚动行为
   document.body.style.overflow = 'hidden';
+  
+  // 检查URL参数中是否有newsId，有则跳转到对应的新闻详情
+  if (route.query.newsId) {
+    newsId.value = route.query.newsId
+    currentSection.value = 1
+  }
 });
 
 onBeforeUnmount(() => {
