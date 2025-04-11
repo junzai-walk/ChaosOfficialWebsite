@@ -1,5 +1,5 @@
 <template>
-  <div class="news-detail">
+  <div class="news-detail" @wheel.stop="handleScroll" @touchmove.stop="handleScroll">
     <div class="detail-header"> 新闻动态 </div>
     <div class="detail-body">
       <div class="title">{{ newsDetail?.title }}</div>
@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref,computed,watch} from 'vue'
+import {ref,computed,watch, onMounted, onBeforeUnmount, nextTick} from 'vue'
 import image1 from '@/assets/news/image1.png';
 import image2 from '@/assets/news/image2.png';
 import image3 from '@/assets/news/image3.png';
@@ -36,6 +36,7 @@ import image20 from '@/assets/news/image20.png';
 import image21 from '@/assets/news/image21.png';
 import image22 from '@/assets/news/image22.png';
 import image23 from '@/assets/news/image23.png';
+import { useSectionStore } from '@/stores/sectionStore'
 
 const newsList :any={
   news1:{
@@ -197,6 +198,30 @@ watch(
      newsDetail.value= newsList[newVal] 
   }
 )
+
+const sectionStore = useSectionStore()
+
+// 处理滚动事件，阻止触发页面切换
+const handleScroll = (event: Event) => {
+  // 阻止事件冒泡，避免触发页面切换逻辑
+  event.stopPropagation()
+}
+
+onMounted(() => {
+  // 给新闻详情页添加特殊标记，表示不应触发页面切换
+  document.body.classList.add('no-section-scroll')
+  
+  // 确保页面固定在新闻详情区域
+  nextTick(() => {
+    sectionStore.lockSection(true) // 锁定当前部分，防止滚动切换
+  })
+})
+
+// 组件卸载时移除标记和锁定
+onBeforeUnmount(() => {
+  document.body.classList.remove('no-section-scroll')
+  sectionStore.lockSection(false) // 解除锁定
+})
 </script>
 
 <style scoped lang="less">
