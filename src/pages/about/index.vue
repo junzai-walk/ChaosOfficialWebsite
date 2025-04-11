@@ -128,7 +128,7 @@ const sectionStore = useSectionStore()
 // provide('currentSection', sectionStore.currentSection)
 const newsId =ref()
 const scrolling = ref(false);
-const scrollDelay = 1000; // 滚动延迟，防止连续滚动
+const scrollDelay = 100; // 滚动延迟，防止连续滚动
 
 const handleNews = (val: Number | String | string) => {
   newsId.value = val

@@ -36,7 +36,7 @@ provide('currentSection', currentSection)
 
 
 const scrolling = ref(false);
-const scrollDelay = 1000; // 滚动延迟，防止连续滚动
+const scrollDelay = 100; // 滚动延迟，防止连续滚动
 const caseId = ref()
 
 // 判断是否是新闻详情页

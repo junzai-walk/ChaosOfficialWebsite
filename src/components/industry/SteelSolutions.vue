@@ -174,8 +174,9 @@ html {
 }
 
 .solution-description {
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.8;
+  font-weight: 400;
   color: #333;
   text-align: justify;
   margin-bottom: 20px;

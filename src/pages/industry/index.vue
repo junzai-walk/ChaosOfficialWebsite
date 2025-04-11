@@ -10,7 +10,7 @@
       }"
       ref="steelSection">
       <IndustryHero :background-image="steelBackgroundImage" title="钢铁行业"
-        description="结合机理模型、数据模型、数字孪生技术、多变量预测控制技术，解决钢铁企业生产工艺、设备控制等一系列工业生产痛点，实现工艺流、生产信息流、设备流“三流合一”，稳定提升成品质量，降低生产线设备故障风险、人力成本和能源消耗。" />
+        description="结合机理模型、数据模型、数字孪生技术、多变量预测控制技术，解决钢铁企业生产工艺、设备控制等一系列工业生产痛点，实现工艺流、生产信息流、设备流“三流合一”，稳定提升成品质量，降低生产线设备故障风险、人力成本和能源消耗" />
     </div>
 
     <!-- 第二部分：钢铁行业挑战 -->
@@ -158,7 +158,7 @@
       }"
       ref="caseSection">
       <IndustryHero :background-image="coalBackgroundImage" title="煤炭行业"
-        description="以数据智能驱动煤矿生产全流程优化，实现煤机设备全寿期、全业务链的集中管控，提升煤矿企业数字化管控能力。" />
+        description="以数据智能驱动煤矿生产全流程优化，实现煤机设备全寿期、全业务链的集中管控，提升煤矿企业数字化管控能力" />
     </div>
 
     <!-- 第十二部分：煤炭行业挑战 -->
@@ -221,7 +221,7 @@
       }"
       ref="chemicalSection">
       <IndustryHero :background-image="chemicalBackgroundImage" title="化工行业"
-        description="以智能运维驱动设备全生命周期管理，保障化工生产安全、高效、可持续。" />
+        description="以智能运维驱动设备全生命周期管理，保障化工生产安全、高效、可持续" />
     </div>
 
     <!-- 第十七部分：化工行业挑战 -->
@@ -285,7 +285,7 @@
       }"
       ref="carSection">
       <IndustryHero :background-image="carBackgroundImage" title="汽车行业"
-        description="以设备为核心驱动汽车行业全流程升级，构建高效、可靠、可持续的智慧工厂 。" />
+        description="以设备为核心驱动汽车行业全流程升级，构建高效、可靠、可持续的智慧工厂" />
     </div>
 
     <!-- 第二十二部分： 汽车行业挑战 -->
@@ -519,7 +519,7 @@ import windSolutionImage from '@/assets/industry/wind-solution.png'
 const route = useRoute()
 const router = useRouter()
 const scrolling = ref(false)
-const scrollDelay = 1000 // 滚动延迟，防止连续滚动
+const scrollDelay = 100 // 滚动延迟，防止连续滚动
 
 // 使用 Pinia store 代替本地状态
 const sectionStore = useSectionStore()

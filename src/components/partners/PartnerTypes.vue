@@ -217,7 +217,7 @@ html {
     .card-desc{
       display: flex;
       text-align: left;
-      font-size: 0.75rem;
+      font-size: 15px;
       color: #666;
       line-height: 1.3;
     }

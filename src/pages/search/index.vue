@@ -38,7 +38,7 @@ const router = useRouter()
 const sectionStore = useSectionStore()
 
 const scrolling = ref(false)
-const scrollDelay = 1000 // 滚动延迟，防止连续滚动
+const scrollDelay = 100 // 滚动延迟，防止连续滚动
 
 // 处理鼠标滚轮事件
 const handleWheel = (e: WheelEvent) => {

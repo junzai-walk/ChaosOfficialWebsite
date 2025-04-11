@@ -224,7 +224,7 @@ html {
 .card-desc {
   text-align: left;
   color: #666;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }

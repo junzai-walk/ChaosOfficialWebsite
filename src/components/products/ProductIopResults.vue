@@ -180,7 +180,7 @@ const updateActiveStep = (newStep: number) => {
 
     .card-description {
       font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 24px;
       color: #666;
       margin: 0;

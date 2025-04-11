@@ -94,12 +94,12 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 
 .content {
   // padding-left: 10%;
-  max-width: 610px;
+  max-width: 910px;
   color: #ffffff;
   position: absolute;
   width: 951px;
   height: 308px;
-  top: 315px;
+  top: 235px;
   left: 472px;
   border-radius: 34px;
 }
@@ -118,7 +118,7 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 }
 
 .industry-title {
-  font-size: 48px;
+  font-size: 60px;
   font-weight: bold;
   line-height: 1.2;
   position: relative;
