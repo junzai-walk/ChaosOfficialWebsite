@@ -1,5 +1,5 @@
 <template>
-  <div class="news-box">
+  <div class="news-box" @wheel.stop="handleScroll" @touchmove.stop="handleScroll">
     <div class="news-header"> 新闻中心 </div>
     <div class="news-body">
       <div class="body-left">
@@ -58,7 +58,8 @@
 </template>
 
 <script setup lang="ts">
-import {ref,computed} from 'vue'
+import {ref,computed, onMounted, onBeforeUnmount, nextTick} from 'vue'
+import { useSectionStore } from '@/stores/sectionStore'
 
 // Import news cover images
 import cover1 from '@/assets/news/cover1.jpg'
@@ -70,6 +71,7 @@ import image14 from '@/assets/news/image14.png'
 import image22 from '@/assets/news/image22.png'
 import headerBg from '@/assets/news/Group 129.png'
 
+const sectionStore = useSectionStore()
 const emit = defineEmits(['handleNews'])
 const newsList = ref([
   // { id: 'news1', imgUrl: './src/assets/news/01 封面图.jpeg', mainTitle: '全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能', subTitle: '凯奥思PHM系统深度融合DeepSeek，全面实现国产化', date: '2025.2.25' },
@@ -109,6 +111,28 @@ const loadMore = () => {
 const handleNews = (id:any)=>{
   emit('handleNews',id)
 }
+
+// 处理滚动事件，阻止触发页面切换
+const handleScroll = (event: Event) => {
+  // 阻止事件冒泡，避免触发页面切换逻辑
+  event.stopPropagation()
+}
+
+onMounted(() => {
+  // 给新闻页面添加特殊标记，表示不应触发页面切换
+  document.body.classList.add('no-section-scroll')
+  
+  // 确保页面固定在新闻区域
+  nextTick(() => {
+    sectionStore.lockSection(true) // 锁定当前部分，防止滚动切换
+  })
+})
+
+// 组件卸载时移除标记和锁定
+onBeforeUnmount(() => {
+  document.body.classList.remove('no-section-scroll')
+  sectionStore.lockSection(false) // 解除锁定
+})
 </script>
 
 <style scoped lang="less">

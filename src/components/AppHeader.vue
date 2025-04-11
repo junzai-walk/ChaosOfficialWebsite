@@ -169,8 +169,8 @@ const abouts = [
   { name: '公司概况', section: 1, icon: aboutCompanyIcon },
   { name: '重要荣誉', section: 2, icon: aboutHonorIcon },
   { name: '加入我们', section: 3, icon: aboutJoinIcon },
-  { name: '联系我们', section: 4, icon: aboutContactIcon },
-  { name: '新闻动态', section: 5, icon: aboutNewsIcon },
+  { name: '新闻动态', section: 4, icon: aboutNewsIcon },
+  { name: '联系我们', section: 5, icon: aboutContactIcon },
 ]
 
 const activeMenu = ref('/')
@@ -223,8 +223,21 @@ const handleSelect = (index: string) => {
     // 点击产品中心，直接跳转到第一个产品（section=0）
     router.push('/products?section=0')
   } else if (index === '/about') {
-    // 点击产品中心，直接跳转到第一个产品（section=0）
-    router.push('/about?section=0')
+    // 点击关于我们，直接跳转到第一个关于页面（section=1）
+    router.push('/about?section=1')
+  } else if (index.startsWith('/about?section=')) {
+    // 直接处理关于我们子菜单的跳转，强制更新到对应的section
+    const section = index.split('=')[1]
+    
+    // 确保所有子菜单项的锁定状态被清除
+    document.body.classList.remove('no-section-scroll')
+    const sectionStore = useSectionStore()
+    sectionStore.lockSection(false)
+    
+    router.push({
+      path: '/about',
+      query: { section }
+    })
   } else {
     // 其他正常跳转
     router.push(index)
