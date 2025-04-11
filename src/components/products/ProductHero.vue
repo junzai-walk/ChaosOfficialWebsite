@@ -4,11 +4,16 @@
       <h1 class="title">{{ title }}</h1>
       <button class="experience-btn" @click="handleConsult">预约体验</button>
     </div>
+
+    <!-- 使用新的咨询弹窗组件 -->
+    <ConsultDialog v-model:visible="consultDialogVisible" @submit="handleConsultSubmit" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import ConsultDialog from '@/components/common/ConsultDialog.vue'
+import { ref } from 'vue';
 const router = useRouter()
 
 defineProps({
@@ -22,12 +27,21 @@ defineProps({
   }
 });
 
+interface ConsultFormData {
+  company: string;
+  name: string;
+  phone: string;
+}
+
+const consultDialogVisible = ref(false)
+
 const handleConsult = () => {
-  console.log("点击跳转表单")
-  router.push({
-    path: '/partners',
-    query: { section: '3' }  // 跳转到合作伙伴页面的咨询部分
-  })
+  consultDialogVisible.value = true
+}
+
+const handleConsultSubmit = (formData: ConsultFormData) => {
+  console.log('提交的咨询表单数据：', formData)
+  // 这里可以添加表单提交到服务器的逻辑
 }
 </script>
 

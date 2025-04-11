@@ -1,5 +1,8 @@
 <template>
-  <el-dialog v-model="dialogVisible" :title="currentStep === 1 ? '在线申请' : '申请成功'" width="450px" :style="{height: '67vh', padding: '30px'}" center>
+  <el-dialog v-model="dialogVisible"  width="450px" :style="{height: '67vh', padding: '10px 40px 10px', borderRadius: '14px'}" center>
+    <div class="dialog-header">
+      在线申请
+    </div>
     <!-- 步骤条 -->
     <div class="steps-container">
       <div class="step-line">
@@ -15,9 +18,10 @@
     
     <!-- 步骤1：填写表单 -->
     <div v-if="currentStep === 1">
+      <div class="contact-hotline-title">联系热线：</div>
       <div class="contact-hotline">
         <i class="el-icon-phone-outline"></i>
-        联系热线：025-83132381
+        025-83132381
       </div>
       
       <div class="form-container">
@@ -48,9 +52,13 @@
     <!-- 步骤2：申请成功 -->
     <div v-else class="success-container">
       <div class="success-icon">
-        <el-icon><Check /></el-icon>
       </div>
-      <el-button type="primary" class="close-btn" @click="closeDialog">关闭</el-button>
+      <div class="success-title">
+        申请成功
+      </div>
+      <div class="success-content">
+        请您耐心等待，我们的工作人员将在3个工作日内尽快联系您
+      </div>
     </div>
   </el-dialog>
 </template>
@@ -159,7 +167,7 @@ const closeDialog = () => {
       z-index: 2;
       
       &.active {
-        background-color: #1976d2;
+        background-color: #0072ff;
       }
     }
     
@@ -173,7 +181,7 @@ const closeDialog = () => {
       z-index: 1;
       
       &.completed {
-        background-color: #1976d2;
+        background-color: #0072ff;
       }
     }
   }
@@ -185,17 +193,25 @@ const closeDialog = () => {
     .step-label {
       color: #666;
       font-size: 16px;
-      
+      font-weight: 400;
+
       &.active {
-        color: #1976d2;
-        font-weight: bold;
+        color: #0072ff;
+        font-weight: 400;
       }
     }
   }
 }
 
+.contact-hotline-title {
+  font-size: 16px;
+  color: #0072ff;
+  font-weight: 100;
+  margin-bottom: 10px;
+}
+
 .contact-hotline {
-  background-color: #1976d2;
+  background-color: #0072ff;
   color: white;
   padding: 15px;
   border-radius: 4px;
@@ -213,11 +229,12 @@ const closeDialog = () => {
   
   .form-item {
     display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    border: 1px solid #e0e0e0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    // border: 1px solid #e0e0e0;
     border-radius: 4px;
-    padding: 10px 15px;
     
     i {
       margin-right: 10px;
@@ -226,6 +243,11 @@ const closeDialog = () => {
     
     span {
       min-width: 60px;
+      margin-bottom: 10px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 28px;
+      letter-spacing: 0%;
     }
     
     .el-input {
@@ -249,8 +271,8 @@ const closeDialog = () => {
     height: 45px;
     border-radius: 22.5px;
     font-size: 16px;
-    background-color: #1976d2;
-    border-color: #1976d2;
+    background-color:#0072ff;
+    border-color:#0072ff;
   }
 }
 
@@ -263,18 +285,31 @@ const closeDialog = () => {
   justify-content: center;
   
   .success-icon {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #1976d2;
-    color: white;
+    width: 205px;
+    height: 192px;
+    object-fit: contain;    
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto 40px;
     font-size: 50px;
+    background: url('@/assets/industry/apply-success.png') no-repeat center center;
   }
-  
+
+  .success-title{
+    font-size: 24px;
+    color: rgba(32, 33, 36, 1);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .success-content{
+    font-size: 16px;
+    color: rgba(97, 101, 106, 1);
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 2;
+  }
   .close-btn {
     width: 180px;
     height: 45px;
@@ -292,6 +327,10 @@ const closeDialog = () => {
     padding: 20px;
     text-align: center;
     border-bottom: 1px solid #f0f0f0;
+
+    &.show-close {
+      padding-right: 0px !important;
+    }
     
     .el-dialog__title {
       font-size: 24px;
@@ -304,4 +343,12 @@ const closeDialog = () => {
     padding: 30px;
   }
 }
+
+.dialog-header{
+    font-size: 24px;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
 </style>

@@ -37,6 +37,9 @@
     <div class="experience-button-container">
       <button class="experience-button" @click="handleConsult">预约体验</button>
     </div>
+
+    <!-- 使用新的咨询弹窗组件 -->
+    <ConsultDialog v-model:visible="consultDialogVisible" @submit="handleConsultSubmit" />
   </div>
 </template>
 
@@ -45,6 +48,7 @@ import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter()
 import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
+import ConsultDialog from '@/components/common/ConsultDialog.vue'
 
 interface Result {
   icon: string;
@@ -61,8 +65,17 @@ const props = defineProps<{
   sectionNumbers: number[];
 }>();
 
+interface ConsultFormData {
+  company: string;
+  name: string;
+  phone: string;
+}
+
 // 当前活动步骤
 const activeStep = ref(props.defaultActiveStep || 4);
+
+const consultDialogVisible = ref(false)
+
 
 // 自定义步骤，将"应用案例"改为"应用成效"
 const customSteps = computed(() => {
@@ -73,11 +86,14 @@ const customSteps = computed(() => {
   return steps;
 });
 
+
 const handleConsult = () => {
-  router.push({
-    path: '/partners',
-    query: { section: '3' }  // 跳转到合作伙伴页面的咨询部分
-  })
+  consultDialogVisible.value = true
+}
+
+const handleConsultSubmit = (formData: ConsultFormData) => {
+  console.log('提交的咨询表单数据：', formData)
+  // 这里可以添加表单提交到服务器的逻辑
 }
 
 const updateActiveStep = (newStep: number) => {

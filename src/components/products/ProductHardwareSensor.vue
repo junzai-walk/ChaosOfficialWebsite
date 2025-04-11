@@ -37,13 +37,18 @@
 
     <!-- 右侧图片 -->
     <ProductRightImages :mainImage="mainImage" :secondaryImage="secondaryImage" mainAlt="主图" secondaryAlt="辅助图" />
+    <!-- 使用新的咨询弹窗组件 -->
+    <ConsultDialog v-model:visible="consultDialogVisible" @submit="handleConsultSubmit" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { PropType } from 'vue';
-import ProductRightImages from '@/components/products/ProductRightImages.vue';
+import { PropType, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import ConsultDialog from '@/components/common/ConsultDialog.vue'
+import ProductRightImages  from '@/components/products/ProductRightImages.vue';
+
+
 const router = useRouter()
 
 interface SensorContent {
@@ -77,11 +82,21 @@ defineProps({
   }
 });
 
+interface ConsultFormData {
+  company: string;
+  name: string;
+  phone: string;
+}
+
+const consultDialogVisible = ref(false)
+
 const handleConsult = () => {
-  router.push({
-    path: '/partners',
-    query: { section: '3' }  // 跳转到合作伙伴页面的咨询部分
-  })
+  consultDialogVisible.value = true
+}
+
+const handleConsultSubmit = (formData: ConsultFormData) => {
+  console.log('提交的咨询表单数据：', formData)
+  // 这里可以添加表单提交到服务器的逻辑
 }
 </script>
 

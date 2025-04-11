@@ -1,5 +1,5 @@
 <template>
-  <div class="search-main">
+  <div class="search-main" @wheel.stop="handleScroll" @touchmove.stop="handleScroll">
     <div class="search-container">
       <h1 class="title">搜索</h1>
       <div class="search-input-container">
@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject, onMounted } from 'vue'
+import { ref, inject, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { Search } from '@element-plus/icons-vue'
 import { useSectionStore } from '@/stores/sectionStore'
@@ -86,12 +86,32 @@ const quickSearch = (tag: {text: string, path: string}) => {
   router.push(tag.path);
 }
 
+// 处理滚动事件，阻止触发页面切换
+const handleScroll = (event: Event) => {
+  // 阻止事件冒泡，避免触发页面切换逻辑
+  event.stopPropagation()
+}
+
 onMounted(() => {
+  // 给搜索页添加特殊标记，表示不应触发页面切换
+  document.body.classList.add('no-section-scroll')
+  
   // 如果URL已经有搜索查询，填充到搜索框
   if (route.query.q) {
     searchText.value = route.query.q as string
     console.log("从URL加载搜索查询:", searchText.value) // 添加调试信息
   }
+  
+  // 确保页面固定在搜索区域
+  nextTick(() => {
+    sectionStore.lockSection(true) // 锁定当前部分，防止滚动切换
+  })
+})
+
+// 组件卸载时移除标记和锁定
+onBeforeUnmount(() => {
+  document.body.classList.remove('no-section-scroll')
+  sectionStore.lockSection(false) // 解除锁定
 })
 </script>
 
