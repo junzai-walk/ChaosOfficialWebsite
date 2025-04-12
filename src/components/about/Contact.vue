@@ -1,5 +1,5 @@
 <template>
-  <div class="contact">
+  <div class="contact" @wheel.stop="handleScroll" @touchmove.stop="handleScroll">
     <div class="main-title">联系我们</div>
     <div class="contact-content" >
       <div class="contact-info">
@@ -63,12 +63,28 @@ import phoneIcon from '@/assets/about/map-phone.png'
 import degreeIcon from '@/assets/about/map-degree.png'
 
 
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, nextTick, onBeforeUnmount } from 'vue'
+import { useSectionStore } from '@/stores/sectionStore'
 
+const sectionStore = useSectionStore()
 const mapContainer = ref<HTMLElement | null>(null)
+
+// 处理滚动事件，阻止触发页面切换
+const handleScroll = (event: Event) => {
+  // 阻止事件冒泡，避免触发页面切换逻辑
+  event.stopPropagation()
+}
 
 // 百度地图实现
 onMounted(() => {
+  // 给页面添加特殊标记，表示不应触发页面切换
+  document.body.classList.add('no-section-scroll')
+  
+  // 确保页面固定在当前区域
+  nextTick(() => {
+    sectionStore.lockSection(true) // 锁定当前部分，防止滚动切换
+  })
+
   // 动态加载百度地图API
   const script = document.createElement('script')
   script.src = `https://api.map.baidu.com/api?v=3.0&ak=zuocDmYKz4t8GElbKotYajl06BVZTlWM&callback=initMap`
@@ -87,7 +103,7 @@ onMounted(() => {
       const address = "南京市雨花台区宁双路19号云密城L栋";
       
       // 将地址解析结果显示在地图上，并调整地图视野
-      myGeo.getPoint(address, function(point) {
+      myGeo.getPoint(address, function(point: any) {
         if (point) {
           map.centerAndZoom(point, 18);
           // 开启鼠标滚轮缩放
@@ -136,6 +152,12 @@ onMounted(() => {
       }, "南京市");
     }
   }
+})
+
+// 组件卸载时移除标记和锁定
+onBeforeUnmount(() => {
+  document.body.classList.remove('no-section-scroll')
+  sectionStore.lockSection(false) // 解除锁定
 })
 
 // 为TypeScript声明全局变量
