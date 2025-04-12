@@ -1,5 +1,5 @@
 <template>
-  <div class="case-detail">
+  <div class="case-detail" @wheel.stop="handleScroll" @touchmove.stop="handleScroll">
     <div class="header"></div>
     <div class="content">
       <div class="content-header">
@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, watch, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import image3 from '@/assets/customer/image3.png';
 import image4 from '@/assets/customer/image4.png';
 import image5 from '@/assets/customer/image5.png';
@@ -39,6 +39,7 @@ import image17 from '@/assets/customer/image17.png';
 import image18 from '@/assets/customer/image18.png';
 import image19 from '@/assets/customer/image19.png';
 import image20 from '@/assets/customer/image20.png';
+import { useSectionStore } from '@/stores/sectionStore'
 
 type CaseData = {
   mainTitle: string;
@@ -314,6 +315,26 @@ watch(
   },
   { deep: true, immediate: true }
 )
+
+const sectionStore = useSectionStore()
+
+// Add scroll event handler
+const handleScroll = (event: Event) => {
+  event.stopPropagation()
+}
+
+// Add lifecycle hooks
+onMounted(() => {
+  document.body.classList.add('no-section-scroll')
+  nextTick(() => {
+    sectionStore.lockSection(true)
+  })
+})
+
+onBeforeUnmount(() => {
+  document.body.classList.remove('no-section-scroll')
+  sectionStore.lockSection(false)
+})
 </script>
 
 <style scoped lang="less">

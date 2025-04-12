@@ -99,7 +99,7 @@ onMounted(() => {
       // 创建地址解析器实例
       const myGeo = new window.BMap.Geocoder();
       // 公司名称和地址
-      const companyName = "凯奥思数据技术有限公司";
+      const companyName = "南京凯奥思数据技术有限公司";
       const address = "南京市雨花台区宁双路19号云密城L栋";
       
       // 将地址解析结果显示在地图上，并调整地图视野
