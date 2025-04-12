@@ -215,31 +215,31 @@ html {
   left: 0;
   z-index: 1;
   width: 100vw;
-  height: 20rem; // 320px
+  height: 20rem;
   background: url('@/assets/customer/Group453.png') no-repeat center center;
   background-size: 100% 100%;
-  margin-bottom: 1.25rem; // 20px
+  margin-bottom: 1.25rem;
   margin-top: 4rem;
 }
 .cases-container {
-  position: absolute;
-  top: 50%;
+  position: relative;
+  top: 8rem;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   z-index: 2;
   width: 100%;
-  // height: 50vh;
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1.875rem;
-  max-width: 75rem; // 1200px
-  .main-title{
+  max-width: 75rem;
+  padding: 0 1rem;
+  .main-title {
     width: 100%;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 700;
     text-align: start;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
+    color: #333;
   }
 }
 
@@ -250,8 +250,8 @@ html {
 }
 
 .cases-content {
-  flex: 1;
-  display: inline-flex;
+  width: 100%;
+  display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
@@ -285,7 +285,7 @@ html {
 
 .case-card {
   min-width: calc(25% - 1.25rem); // 15px
-  min-height: 12.5rem; // 260px
+  height: 16rem; // 固定高度为320px
   background-color: #fff;
   border-radius: 0.5rem; // 8px
   overflow: hidden;
@@ -296,16 +296,16 @@ html {
 }
 
 .case-image {
-  flex: 1;
+  height: 60%; // 固定图片区域高度为卡片的60%
   background: no-repeat center center;
-  background-size:cover;
+  background-size: cover;
 }
 
 .case-info {
   box-sizing: border-box;
   padding: 0.8rem;
   padding-bottom: 0.4rem;
-  height: 43.5%;
+  height: 40%; // 固定信息区域高度为卡片的40%
   background-color: #fff;
   display: flex;
   flex-direction: column;

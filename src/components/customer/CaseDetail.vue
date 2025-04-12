@@ -1,6 +1,7 @@
 <template>
   <div class="case-detail" @wheel.stop="handleScroll" @touchmove.stop="handleScroll">
-    <div class="header"></div>
+    <div class="header">
+    </div>
     <div class="content">
       <div class="content-header">
         <div class="header-title">
@@ -9,6 +10,10 @@
         </div>
       </div>
       <div class="content-bottom">
+      <div class="return-button" @click="handleReturn">
+        <el-icon><ArrowLeft /></el-icon>
+        <span>返回</span>
+      </div>
         <div class="sub-title">项目背景</div>
         <p class="sub-content" v-html="showContent.background"></p>
         <div class="sub-title">建设内容</div>
@@ -22,6 +27,8 @@
 
 <script setup lang="ts">
 import { ref, watch, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import { useRouter } from 'vue-router'
+import { ArrowLeft } from '@element-plus/icons-vue';
 import image3 from '@/assets/customer/image3.png';
 import image4 from '@/assets/customer/image4.png';
 import image5 from '@/assets/customer/image5.png';
@@ -40,6 +47,13 @@ import image18 from '@/assets/customer/image18.png';
 import image19 from '@/assets/customer/image19.png';
 import image20 from '@/assets/customer/image20.png';
 import { useSectionStore } from '@/stores/sectionStore'
+
+const router = useRouter()
+
+// Function to handle the return to the case list
+const handleReturn = () => {
+  router.push('customer?section=1')
+}
 
 type CaseData = {
   mainTitle: string;
@@ -378,6 +392,33 @@ html {
     padding-bottom: 120px;
     font-size: 24px;
     font-weight: 700;
+    position: relative;
+    
+    .return-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: normal;
+      transition: all 0.3s ease;
+      z-index: 10;
+      
+      &:hover {
+        background-color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      .el-icon {
+        font-size: 16px;
+      }
+    }
   }
 
   .content {
@@ -394,6 +435,7 @@ html {
       box-sizing: border-box;
       padding-top: 80px;
       flex: 1;
+      position: relative;
 
       .header-title {
         display: flex;
@@ -423,11 +465,38 @@ html {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       overflow: auto;
       padding: 25px;
-      padding-top: 0;
+      padding-top: 40px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-
+      position: relative;
+      
+      .return-button {
+        position: absolute;
+        top: 10px;
+        left: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 10px;
+        cursor: pointer;
+        background-color: white;
+        color: #E53935;
+        border: 1px solid #E53935;
+        border-radius: 4px;
+        font-size: 14px;
+        z-index: 100;
+        
+        .el-icon {
+          margin-right: 2px;
+          font-size: 14px;
+        }
+        
+        &:hover {
+          background-color: #FFEBEE;
+        }
+      }
+      
       .sub-title {
         color: #2760ED;
         margin-top: 25px;
