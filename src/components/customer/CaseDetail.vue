@@ -474,15 +474,15 @@ html {
       .return-button {
         position: absolute;
         top: 10px;
-        left: 25px;
+        left: 15px;
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 5px 10px;
         cursor: pointer;
         background-color: white;
-        color: #E53935;
-        border: 1px solid #E53935;
+        color: #2985f7;
+        // border: 1px solid #2985f7;
         border-radius: 4px;
         font-size: 14px;
         z-index: 100;
@@ -493,7 +493,8 @@ html {
         }
         
         &:hover {
-          background-color: #FFEBEE;
+          color: white;
+          background-color: #2985f7;
         }
       }
       
