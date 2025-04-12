@@ -528,12 +528,12 @@ import analysisIcon from '@/assets/products/phm-4.png'
 import reportIcon from '@/assets/products/phm-5.png'
 import performanceIcon from '@/assets/products/phm-6.png'
 
-import advantageIcon1 from '@/assets/products/phm-advantage-1.jpg'
-import advantageIcon2 from '@/assets/products/phm-advantage-2.jpg'
-import advantageIcon3 from '@/assets/products/phm-advantage-3.jpg'
+import advantageIcon1 from '@/assets/products/phm-advantage-1.png'
+import advantageIcon2 from '@/assets/products/phm-advantage-2.png'
+import advantageIcon3 from '@/assets/products/phm-advantage-3.png'
 import advantageIcon4 from '@/assets/products/phm-advantage-4.png'
 import advantageIcon5 from '@/assets/products/phm-advantage-5.png'
-import advantageIcon6 from '@/assets/products/phm-advantage-6.jpg'
+import advantageIcon6 from '@/assets/products/phm-advantage-6.png'
 
 
 import case1 from '@/assets/products/phm-case-1.png'

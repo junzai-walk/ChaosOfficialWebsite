@@ -61,10 +61,10 @@ const updateActiveStep = (newStep: number) => {
   
   .picture-left-container {
     position: absolute;
-    width: 540px;
+    width: 640px;
     height: 465px;
-    top: 225px;
-    left: 463px;
+    top: 190px;
+    left: 350px;
     z-index: 2;
     
     .picture-left {
@@ -76,10 +76,10 @@ const updateActiveStep = (newStep: number) => {
   
   .picture-right-container {
     position: absolute;
-    width: 540px;
+    width: 640px;
     height: 465px;
-    top: 225px;
-    left: 835px;
+    top: 190px;
+    left: 785px;
     z-index: 2;
     
     .picture-right {
