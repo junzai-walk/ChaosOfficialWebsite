@@ -348,9 +348,9 @@ onMounted(() => {
     margin-right: 0.625rem; /* 10px */
     width: 9.375rem; /* 150px */
     height: 2.125rem; /* 34px */
-    position: absolute;
-    top: 1rem; /* 24px */
-    left: 5.625rem; /* 90px */
+    //position: absolute;
+    //top: 1rem;
+    //left: 5.625rem; 
     
     img {
       width: 100%;
