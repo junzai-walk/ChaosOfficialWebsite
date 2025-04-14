@@ -774,7 +774,7 @@ const productFeaturesEam = [
   },
   {
     title: '预测性维护',
-    description: '集成设备运行监测模块，基于各类算法模型，对重点设备进行在线监测，评估设备健康度，及时发现潜在的故障和问题，并提供预警和诊断功能，以确保设备的稳定、高效运行。',
+    description: '集成设备运行监测模块，基于各类算法模型，对重点设备进行在线监测，评估设备健康度，及时发现潜在的故障和问题，以确保设备的稳定、高效运行。',
     icon: eamIcon4
   },
   {
@@ -888,7 +888,7 @@ const productAdvantagesApc = [
   },
   {
     title: '工业级系统性能',
-    description: '系统部署快：部署周期2周 系统响应快：画布运行响应时间毫秒级 支持高并发量：数据并发量支持大于1000条/秒',
+    description: '系统部署快：部署周期2周 系统响应快：画布运行响应时间毫秒级 支持高并发量：数据并发量支持大于1000条/秒。',
     icon: apcFeature3,
     position: { top: 341, left: 340 },
     iconPosition: 'left' as const
@@ -1091,7 +1091,7 @@ const wireSensorTitle = '有线传感器'
 //无线智能传感器
 const wirelessSensorTitle = '无线智能传感器'
 // 有线传感器规格参数表格标题
-const wireSensorModelTitle = '有无线振温传感器DN102'
+const wireSensorModelTitle = '有线振温传感器DN102'
 // 边缘智能采集器
 const edgeSmartCollectorTitle = '边缘智能采集器'
 // 无线智能网关

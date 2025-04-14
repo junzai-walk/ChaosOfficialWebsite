@@ -615,7 +615,7 @@ const cementChallenges = [
   {
     icon: cementChallenge4,
     title: '环保与成本双重挑战',
-    description: '粉尘、氮氧化物治理成本攀升，需平衡环保合规与降本增效，智能化技术驱动绿色转型。'
+    description: '粉尘、氮氧化物治理成本攀升，需平衡环保合规与降本增效，用智能化技术驱动绿色转型。'
   }
 ];
 
@@ -688,7 +688,7 @@ const cementSolutionsData = {
   imageSrc: cementSolutionImage
 }
 // const cementSolutionsData = {
-//   description: '基于超恩工业互联网平台，为水泥行业提供智能化解决方案。融合数据智能及AI实现全流程智能化化。通过智能硬件、智能软件、数字化等手段提供管理、工艺智能优化、精细运维本、绿色转型。',
+//   description: '基于超恩工业互联网平台，为水泥行业提供智能化解决方案。融合数据智能及AI实现全流程智能化。通过智能硬件、智能软件、数字化等手段提供管理、工艺智能优化、精细运维本、绿色转型。',
 //   specialScenes: ['专项场景', '两废一体工艺优化', '分解炉温度控制', '垃圾发电'],
 //   applications: ['智能应用', '设备预测性维护（PHM）', '先进过程控制（APC）', '能源管理（EMS）', '......'],
 //   platformData: {
@@ -910,7 +910,7 @@ const chemicalAdvantages = [
   {
     icon: chemicalAdvantage6,
     title: '标准化管理能力升级',
-    description: '推动设备管理从经验驱动转向数据驱动，实现运维流程线上透明化化管控。'
+    description: '推动设备管理从经验驱动转向数据驱动，实现运维流程线上透明化管控。'
   }
 ];
 
