@@ -1,5 +1,5 @@
 <template>
-  <div class="industry-page" @wheel.passive="handleWheel">
+  <div class="industry-page" @wheel="handleWheel">
     <!-- 第一部分：钢铁行业 -->
     <div class="section"
       :class="{

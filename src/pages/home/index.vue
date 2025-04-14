@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page" @wheel.passive="handleWheel">
+  <div class="home-page" @wheel="handleWheel">
     <!-- 第一部分：主体Banner -->
     <div
       class="section"

@@ -1,5 +1,5 @@
 <template>
-  <div class="products-page" @wheel.passive="handleWheel">
+  <div class="products-page" @wheel="handleWheel">
     <!-- 产品软件 -->
     <!-- 第一部分：设备预测性维护与健康管理系统 -->
     <div class="section"

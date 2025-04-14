@@ -56,7 +56,7 @@ export function createWheelHandler(
     } else {
       onScrollDown()
     }
-    
+
     // 设置延迟后重置滚动状态
     setTimeout(() => {
       isScrolling.value = false
@@ -65,23 +65,24 @@ export function createWheelHandler(
 
   return function handleWheel(e: WheelEvent) {
     // 如果需要，阻止默认滚动行为
+    // 注意：模板中已移除 .passive 修饰符，所以可以安全地调用 preventDefault
     if (preventDefault) {
       e.preventDefault()
     }
-    
+
     // 检查是否应该锁定滚动
     if (checkLock()) {
       return
     }
-    
+
     // 如果正在滚动中，忽略此次滚动事件
     if (isScrolling.value) {
       return
     }
-    
+
     // 设置滚动状态为true
     isScrolling.value = true
-    
+
     // 确定滚动方向并调用相应的处理函数
     const direction = e.deltaY < 0 ? 'up' : 'down'
     debouncedScrollHandler(direction)
