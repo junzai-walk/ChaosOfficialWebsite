@@ -1335,7 +1335,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .products-page {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   position: relative;
   overflow: hidden;

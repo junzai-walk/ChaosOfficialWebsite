@@ -1132,7 +1132,7 @@ onBeforeUnmount(() => {
 
 <style scoped lang="less">
 .industry-page {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   position: relative;
   overflow: hidden;
