@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="join" :style="{ backgroundImage: `url(${joinBackground})` }">
-      <el-button type="primary" round size="large">加入我们</el-button>
+      <el-button type="primary" round size="large" @click="goToboss">加入我们</el-button>
     </div>
 
   </div>
@@ -65,6 +65,13 @@ const trackStyle = computed(() => {
   };
 })
 startAutoPlay()
+
+
+//跳转至boss页
+
+const goToboss = () => {
+  window.open('https://m.zhipin.com/job_detail/?query=%E5%8D%97%E4%BA%AC%E5%87%AF%E5%A5%A5%E6%80%9D%E6%95%B0%E6%8D%AE%E6%8A%80%E6%9C%AF%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&city=101190200&industry=&position=', '_blank')
+}
 </script>
 
 <style scoped lang="less">
