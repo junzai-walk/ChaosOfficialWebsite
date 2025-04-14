@@ -9,6 +9,8 @@ import i18n from './i18n'
 import './style.css'
 import "@/assets/css/reset.css"
 import "@/styles/global.less"
+import "@/styles/responsive.less"
+import ResponsiveScale from './utils/responsive'
 
 // 计算滚动条宽度并设置 CSS 变量
 const calculateScrollbarWidth = () => {
@@ -44,4 +46,21 @@ app.use(router)
 // 在挂载应用前计算滚动条宽度
 calculateScrollbarWidth()
 
-app.mount('#app')
+// 初始化响应式缩放（仅在非移动设备上启用）
+if (window.innerWidth <= 1366 && window.innerWidth >= 1280) {
+  // 针对1366*768等小屏幕分辨率特殊处理
+  const responsiveScale = new ResponsiveScale({
+    designWidth: 1920,
+    designHeight: 1080,
+    scaleMode: 'both'
+  })
+
+  // 在应用挂载后初始化响应式缩放
+  app.mount('#app')
+  setTimeout(() => {
+    responsiveScale.init('#app')
+  }, 100)
+} else {
+  // 正常挂载应用
+  app.mount('#app')
+}

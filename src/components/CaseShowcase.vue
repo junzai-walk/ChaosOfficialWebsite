@@ -23,9 +23,9 @@
     <div class="partner-wall" ref="partnerWall">
       <div v-for="(logoRow, rowIndex) in partnerLogosAll" :key="`row-${rowIndex}`" class="partner-row" :ref="el => { if(el) rowRefs[rowIndex] = el as HTMLElement }">
         <div v-for="(logo, index) in logoRow" :key="`logo-${rowIndex}-${index}`" class="logo-container" :ref="el => { if(el) logoRefs.push({el: el as HTMLElement, rowIndex, colIndex: index}) }">
-          <logo-reflect 
-            :src="logo" 
-            :alt="`partner-${rowIndex}-${index}`" 
+          <logo-reflect
+            :src="logo"
+            :alt="`partner-${rowIndex}-${index}`"
             :weight="getLogoWeight(rowIndex, index)"
             :row-index="rowIndex"
             :col-index="index"
@@ -107,8 +107,8 @@ const partnerLogosAll = computed(() => [
 // 获取Logo权重（用于动画变化）
 const getLogoWeight = (rowIndex: number, colIndex: number): number => {
   // 设置一些重要品牌的权重更高
-  if ((rowIndex === 0 && colIndex === 3) || 
-      (rowIndex === 1 && colIndex === 0) || 
+  if ((rowIndex === 0 && colIndex === 3) ||
+      (rowIndex === 1 && colIndex === 0) ||
       (rowIndex === 2 && colIndex === 5) ||
       (rowIndex === 3 && colIndex === 2)) {
     return 4; // 设置为高权重
@@ -122,7 +122,7 @@ let masterTimeline: gsap.core.Timeline | null = null;
 // 创建进场动画
 const createEntranceAnimation = () => {
   if (!partnerWall.value) return;
-  
+
   // 创建主时间线
   masterTimeline = gsap.timeline({
     paused: true,
@@ -133,13 +133,13 @@ const createEntranceAnimation = () => {
   });
 
   // 设置初始状态
-  gsap.set(partnerWall.value, { 
+  gsap.set(partnerWall.value, {
     perspective: 2000,
   });
 
   // 对每个logo容器应用初始状态
   logoRefs.forEach(({el, rowIndex, colIndex}) => {
-    gsap.set(el, { 
+    gsap.set(el, {
       autoAlpha: 0,
       scale: 0.5,
       rotationX: gsap.utils.random(-90, 90),
@@ -153,7 +153,7 @@ const createEntranceAnimation = () => {
   // 对每行应用动画
   rowRefs.forEach((row, index) => {
     const delay = index * 0.2;
-    
+
     masterTimeline!.to(row.children, {
       duration: 1.8,
       autoAlpha: 1,
@@ -180,12 +180,12 @@ const startIdleAnimation = () => {
   logoRefs.forEach(({el, rowIndex, colIndex}) => {
     const weight = getLogoWeight(rowIndex, colIndex);
     const randomDelay = Math.random() * 2;
-    
+
     // 较高权重的logo有更明显的动画
     const floatY = weight >= 4 ? gsap.utils.random(8, 12) : gsap.utils.random(3, 7);
     const duration = weight >= 4 ? gsap.utils.random(2.5, 3.5) : gsap.utils.random(3, 5);
     const rotationAmount = weight >= 4 ? 1.5 : 0.8;
-    
+
     // 创建悬浮动画
     gsap.to(el, {
       y: floatY,
@@ -197,7 +197,7 @@ const startIdleAnimation = () => {
       yoyo: true,
       delay: randomDelay,
     });
-    
+
     // 为高权重logo添加轻微的缩放动画
     if (weight >= 4) {
       gsap.to(el, {
@@ -210,7 +210,7 @@ const startIdleAnimation = () => {
       });
     }
   });
-  
+
   // 为整体logo墙添加鼠标视差效果
   if (partnerWall.value) {
     partnerWall.value.addEventListener('mousemove', handleMouseParallax);
@@ -220,11 +220,11 @@ const startIdleAnimation = () => {
 // 鼠标视差效果
 const handleMouseParallax = (e: MouseEvent) => {
   if (!partnerWall.value || isAnimating.value) return;
-  
+
   const rect = partnerWall.value.getBoundingClientRect();
   const mouseX = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
   const mouseY = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
-  
+
   // 对每行应用不同强度的视差
   rowRefs.forEach((row, index) => {
     const depth = (4 - index) * 5; // 上面的行移动更多
@@ -241,12 +241,12 @@ onBeforeUnmount(() => {
   if (partnerWall.value) {
     partnerWall.value.removeEventListener('mousemove', handleMouseParallax);
   }
-  
+
   // 清理所有GSAP动画
   if (masterTimeline) {
     masterTimeline.kill();
   }
-  
+
   logoRefs.forEach(({el}) => {
     gsap.killTweensOf(el);
   });
@@ -256,20 +256,20 @@ onBeforeUnmount(() => {
 const initAnimation = () => {
   // 重置状态
   isAnimating.value = true;
-  
+
   // 清理之前的动画
   if (masterTimeline) {
     masterTimeline.kill();
   }
-  
+
   logoRefs.forEach(({el}) => {
     gsap.killTweensOf(el);
   });
-  
+
   // 清空引用数组
   rowRefs.length = 0;
   logoRefs.length = 0;
-  
+
   // 下一帧执行以确保DOM已完全渲染
   setTimeout(() => {
     createEntranceAnimation();
@@ -289,11 +289,11 @@ const checkURLChange = () => {
 
 onMounted(() => {
   initAnimation()
-  
+
   // 设置URL变化检测
   window.addEventListener('popstate', checkURLChange)
   const intervalId = setInterval(checkURLChange, 500)
-  
+
   // 清理监听器
   onBeforeUnmount(() => {
     window.removeEventListener('popstate', checkURLChange)
@@ -325,7 +325,7 @@ onActivated(() => {
 
     .case-grid {
       gap: 15px;
-      
+
       .case-item {
         width: 280px;
         height: 180px;
@@ -336,6 +336,36 @@ onActivated(() => {
       .logo-container {
         width: 160px;
         height: 80px;
+      }
+    }
+  }
+
+  /* 添加针对1366*768分辨率的特殊处理 */
+  @media (max-width: 1366px) {
+    .showcase-content {
+      max-width: 1100px;
+    }
+
+    .case-grid {
+      gap: 12px;
+
+      .case-item {
+        width: 260px;
+        height: 160px;
+      }
+    }
+
+    .partner-wall {
+      top: 350px;
+
+      .partner-row {
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .logo-container {
+        width: 140px;
+        height: 70px;
       }
     }
   }
@@ -424,7 +454,7 @@ onActivated(() => {
   text-align: center;
   color: #333;
   margin-bottom: 15px;
-  
+
   @media screen and (max-width: 1232px) {
     font-size: 28px;
   }
@@ -435,7 +465,7 @@ onActivated(() => {
   color: #666;
   text-align: center;
   margin: 30px 0;
-  
+
   @media screen and (max-width: 1232px) {
     font-size: 14px;
     margin: 20px 0;
@@ -447,7 +477,7 @@ onActivated(() => {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   margin-bottom: 40px;
-  
+
   @media screen and (max-width: 1232px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
@@ -547,7 +577,7 @@ onActivated(() => {
       position: relative;
       overflow: hidden;
       transform-style: preserve-3d;
-      
+
       &::before {
         content: '';
         position: absolute;
@@ -558,7 +588,7 @@ onActivated(() => {
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
         border-radius: 10px 10px 0 0;
       }
-      
+
       &:hover {
         box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.1),
                     -8px -8px 20px rgba(255, 255, 255, 0.8),
