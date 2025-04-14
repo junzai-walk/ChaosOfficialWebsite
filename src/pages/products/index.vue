@@ -1,10 +1,10 @@
 <template>
-  <div class="products-page" @wheel="handleWheel">
+  <div class="products-page" @wheel.passive="handleWheel">
     <!-- 产品软件 -->
     <!-- 第一部分：设备预测性维护与健康管理系统 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 0, 
+      :class="{
+        active: sectionStore.currentSection === 0,
         inactive: sectionStore.currentSection !== 0,
         'slide-prev': sectionStore.currentSection > 0,
         'slide-next': sectionStore.currentSection < 0
@@ -14,8 +14,8 @@
 
     <!-- 第二部分：产品描述 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 1, 
+      :class="{
+        active: sectionStore.currentSection === 1,
         inactive: sectionStore.currentSection !== 1,
         'slide-prev': sectionStore.currentSection > 1,
         'slide-next': sectionStore.currentSection < 1
@@ -26,8 +26,8 @@
 
     <!-- 第三部分：产品功能 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 2, 
+      :class="{
+        active: sectionStore.currentSection === 2,
         inactive: sectionStore.currentSection !== 2,
         'slide-prev': sectionStore.currentSection > 2,
         'slide-next': sectionStore.currentSection < 2
@@ -37,8 +37,8 @@
 
     <!-- 第四部分：特色优势 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 3, 
+      :class="{
+        active: sectionStore.currentSection === 3,
         inactive: sectionStore.currentSection !== 3,
         'slide-prev': sectionStore.currentSection > 3,
         'slide-next': sectionStore.currentSection < 3
@@ -48,8 +48,8 @@
 
     <!-- 第五部分：典型案例 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 4, 
+      :class="{
+        active: sectionStore.currentSection === 4,
         inactive: sectionStore.currentSection !== 4,
         'slide-prev': sectionStore.currentSection > 4,
         'slide-next': sectionStore.currentSection < 4
@@ -59,8 +59,8 @@
 
     <!-- 第六部分：设备全生命周期管理系统(EAM) -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 5, 
+      :class="{
+        active: sectionStore.currentSection === 5,
         inactive: sectionStore.currentSection !== 5,
         'slide-prev': sectionStore.currentSection > 5,
         'slide-next': sectionStore.currentSection < 5
@@ -70,8 +70,8 @@
 
     <!-- 第七部分：产品概述 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 6, 
+      :class="{
+        active: sectionStore.currentSection === 6,
         inactive: sectionStore.currentSection !== 6,
         'slide-prev': sectionStore.currentSection > 6,
         'slide-next': sectionStore.currentSection < 6
@@ -82,8 +82,8 @@
 
     <!-- 第八部分：核心功能 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 7, 
+      :class="{
+        active: sectionStore.currentSection === 7,
         inactive: sectionStore.currentSection !== 7,
         'slide-prev': sectionStore.currentSection > 7,
         'slide-next': sectionStore.currentSection < 7
@@ -93,8 +93,8 @@
 
     <!-- 第九部分：特色优势 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 8, 
+      :class="{
+        active: sectionStore.currentSection === 8,
         inactive: sectionStore.currentSection !== 8,
         'slide-prev': sectionStore.currentSection > 8,
         'slide-next': sectionStore.currentSection < 8
@@ -104,8 +104,8 @@
 
     <!-- 第十部分：典型案例 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 9, 
+      :class="{
+        active: sectionStore.currentSection === 9,
         inactive: sectionStore.currentSection !== 9,
         'slide-prev': sectionStore.currentSection > 9,
         'slide-next': sectionStore.currentSection < 9
@@ -115,8 +115,8 @@
 
     <!-- 第十一部分：先进过程控制系统(APC) -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 10, 
+      :class="{
+        active: sectionStore.currentSection === 10,
         inactive: sectionStore.currentSection !== 10,
         'slide-prev': sectionStore.currentSection > 10,
         'slide-next': sectionStore.currentSection < 10
@@ -126,8 +126,8 @@
 
     <!-- 第十二部分：产品概述 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 11, 
+      :class="{
+        active: sectionStore.currentSection === 11,
         inactive: sectionStore.currentSection !== 11,
         'slide-prev': sectionStore.currentSection > 11,
         'slide-next': sectionStore.currentSection < 11
@@ -138,8 +138,8 @@
 
     <!-- 第十三部分：核心功能 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 12, 
+      :class="{
+        active: sectionStore.currentSection === 12,
         inactive: sectionStore.currentSection !== 12,
         'slide-prev': sectionStore.currentSection > 12,
         'slide-next': sectionStore.currentSection < 12
@@ -149,8 +149,8 @@
 
     <!-- 第十四部分：特色优势 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 13, 
+      :class="{
+        active: sectionStore.currentSection === 13,
         inactive: sectionStore.currentSection !== 13,
         'slide-prev': sectionStore.currentSection > 13,
         'slide-next': sectionStore.currentSection < 13
@@ -160,8 +160,8 @@
 
     <!-- 第十五部分：典型案例 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 14, 
+      :class="{
+        active: sectionStore.currentSection === 14,
         inactive: sectionStore.currentSection !== 14,
         'slide-prev': sectionStore.currentSection > 14,
         'slide-next': sectionStore.currentSection < 14
@@ -171,8 +171,8 @@
 
     <!-- 第十六部分：能源管理与优化系统(EMS) -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 15, 
+      :class="{
+        active: sectionStore.currentSection === 15,
         inactive: sectionStore.currentSection !== 15,
         'slide-prev': sectionStore.currentSection > 15,
         'slide-next': sectionStore.currentSection < 15
@@ -182,8 +182,8 @@
 
     <!-- 第十七部分：产品概述 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 16, 
+      :class="{
+        active: sectionStore.currentSection === 16,
         inactive: sectionStore.currentSection !== 16,
         'slide-prev': sectionStore.currentSection > 16,
         'slide-next': sectionStore.currentSection < 16
@@ -194,8 +194,8 @@
 
     <!-- 第十八部分：核心功能 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 17, 
+      :class="{
+        active: sectionStore.currentSection === 17,
         inactive: sectionStore.currentSection !== 17,
         'slide-prev': sectionStore.currentSection > 17,
         'slide-next': sectionStore.currentSection < 17
@@ -205,8 +205,8 @@
 
     <!-- 第十八部分：特色优势 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 18, 
+      :class="{
+        active: sectionStore.currentSection === 18,
         inactive: sectionStore.currentSection !== 18,
         'slide-prev': sectionStore.currentSection > 18,
         'slide-next': sectionStore.currentSection < 18
@@ -217,8 +217,8 @@
 
     <!-- 第十九部分：特色优势 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 19, 
+      :class="{
+        active: sectionStore.currentSection === 19,
         inactive: sectionStore.currentSection !== 19,
         'slide-prev': sectionStore.currentSection > 19,
         'slide-next': sectionStore.currentSection < 19
@@ -229,8 +229,8 @@
 
     <!-- 第二十部分：应用成效 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 20, 
+      :class="{
+        active: sectionStore.currentSection === 20,
         inactive: sectionStore.currentSection !== 20,
         'slide-prev': sectionStore.currentSection > 20,
         'slide-next': sectionStore.currentSection < 20
@@ -240,8 +240,8 @@
 
     <!-- 第二十一部分：库存优化(IOP) -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 21, 
+      :class="{
+        active: sectionStore.currentSection === 21,
         inactive: sectionStore.currentSection !== 21,
         'slide-prev': sectionStore.currentSection > 21,
         'slide-next': sectionStore.currentSection < 21
@@ -251,8 +251,8 @@
 
     <!-- 第二十二部分：产品描述 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 22, 
+      :class="{
+        active: sectionStore.currentSection === 22,
         inactive: sectionStore.currentSection !== 22,
         'slide-prev': sectionStore.currentSection > 22,
         'slide-next': sectionStore.currentSection < 22
@@ -263,8 +263,8 @@
 
     <!-- 第二十三部分：核心功能 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 23, 
+      :class="{
+        active: sectionStore.currentSection === 23,
         inactive: sectionStore.currentSection !== 23,
         'slide-prev': sectionStore.currentSection > 23,
         'slide-next': sectionStore.currentSection < 23
@@ -274,8 +274,8 @@
 
     <!-- 第二十四部分：特色优势 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 24, 
+      :class="{
+        active: sectionStore.currentSection === 24,
         inactive: sectionStore.currentSection !== 24,
         'slide-prev': sectionStore.currentSection > 24,
         'slide-next': sectionStore.currentSection < 24
@@ -285,8 +285,8 @@
 
     <!-- 第二十五部分：应用成效 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 25, 
+      :class="{
+        active: sectionStore.currentSection === 25,
         inactive: sectionStore.currentSection !== 25,
         'slide-prev': sectionStore.currentSection > 25,
         'slide-next': sectionStore.currentSection < 25
@@ -296,8 +296,8 @@
 
     <!-- 第二十六部分：生产计划排程(APS) -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 26, 
+      :class="{
+        active: sectionStore.currentSection === 26,
         inactive: sectionStore.currentSection !== 26,
         'slide-prev': sectionStore.currentSection > 26,
         'slide-next': sectionStore.currentSection < 26
@@ -307,8 +307,8 @@
 
     <!-- 第二十七部分：产品概述 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 27, 
+      :class="{
+        active: sectionStore.currentSection === 27,
         inactive: sectionStore.currentSection !== 27,
         'slide-prev': sectionStore.currentSection > 27,
         'slide-next': sectionStore.currentSection < 27
@@ -319,8 +319,8 @@
 
     <!-- 第二十八部分：核心功能 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 28, 
+      :class="{
+        active: sectionStore.currentSection === 28,
         inactive: sectionStore.currentSection !== 28,
         'slide-prev': sectionStore.currentSection > 28,
         'slide-next': sectionStore.currentSection < 28
@@ -330,8 +330,8 @@
 
     <!-- 第二十九部分：特色优势 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 29, 
+      :class="{
+        active: sectionStore.currentSection === 29,
         inactive: sectionStore.currentSection !== 29,
         'slide-prev': sectionStore.currentSection > 29,
         'slide-next': sectionStore.currentSection < 29
@@ -342,8 +342,8 @@
     <!-- 产品硬件 -->
     <!-- 第三十部分：有线传感器 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 30, 
+      :class="{
+        active: sectionStore.currentSection === 30,
         inactive: sectionStore.currentSection !== 30,
         'slide-prev': sectionStore.currentSection > 30,
         'slide-next': sectionStore.currentSection < 30
@@ -354,8 +354,8 @@
 
     <!-- 第三十一部分：有线传感器 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 31, 
+      :class="{
+        active: sectionStore.currentSection === 31,
         inactive: sectionStore.currentSection !== 31,
         'slide-prev': sectionStore.currentSection > 31,
         'slide-next': sectionStore.currentSection < 31
@@ -366,8 +366,8 @@
 
     <!-- 第三十二部分：有线传感器 - 规格参数表格 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 32, 
+      :class="{
+        active: sectionStore.currentSection === 32,
         inactive: sectionStore.currentSection !== 32,
         'slide-prev': sectionStore.currentSection > 32,
         'slide-next': sectionStore.currentSection < 32
@@ -379,8 +379,8 @@
 
     <!-- 第三十三部分：有线传感器 - 无线智能传感器 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 33, 
+      :class="{
+        active: sectionStore.currentSection === 33,
         inactive: sectionStore.currentSection !== 33,
         'slide-prev': sectionStore.currentSection > 33,
         'slide-next': sectionStore.currentSection < 33
@@ -391,8 +391,8 @@
 
     <!-- 第三十四部分：有线传感器 - 产品亮点 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 34, 
+      :class="{
+        active: sectionStore.currentSection === 34,
         inactive: sectionStore.currentSection !== 34,
         'slide-prev': sectionStore.currentSection > 34,
         'slide-next': sectionStore.currentSection < 34
@@ -403,8 +403,8 @@
 
     <!-- 第三十五部分：有线传感器 - 规格参数表格 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 35, 
+      :class="{
+        active: sectionStore.currentSection === 35,
         inactive: sectionStore.currentSection !== 35,
         'slide-prev': sectionStore.currentSection > 35,
         'slide-next': sectionStore.currentSection < 35
@@ -415,8 +415,8 @@
 
     <!-- 第三十六部分：边缘智能采集器-->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 36, 
+      :class="{
+        active: sectionStore.currentSection === 36,
         inactive: sectionStore.currentSection !== 36,
         'slide-prev': sectionStore.currentSection > 36,
         'slide-next': sectionStore.currentSection < 36
@@ -427,8 +427,8 @@
 
     <!-- 第三十七部分：边缘智能采集器 - 产品亮点 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 37, 
+      :class="{
+        active: sectionStore.currentSection === 37,
         inactive: sectionStore.currentSection !== 37,
         'slide-prev': sectionStore.currentSection > 37,
         'slide-next': sectionStore.currentSection < 37
@@ -440,8 +440,8 @@
 
     <!-- 第三十八部分：边缘智能采集器 - 规格参数 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 38, 
+      :class="{
+        active: sectionStore.currentSection === 38,
         inactive: sectionStore.currentSection !== 38,
         'slide-prev': sectionStore.currentSection > 38,
         'slide-next': sectionStore.currentSection < 38
@@ -452,8 +452,8 @@
 
     <!-- 第三十九部分：无线智能网关 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 39, 
+      :class="{
+        active: sectionStore.currentSection === 39,
         inactive: sectionStore.currentSection !== 39,
         'slide-prev': sectionStore.currentSection > 39,
         'slide-next': sectionStore.currentSection < 39
@@ -464,8 +464,8 @@
 
     <!-- 第四十部分：无线智能网关 - 产品亮点-->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 40, 
+      :class="{
+        active: sectionStore.currentSection === 40,
         inactive: sectionStore.currentSection !== 40,
         'slide-prev': sectionStore.currentSection > 40,
         'slide-next': sectionStore.currentSection < 40
@@ -477,8 +477,8 @@
 
     <!-- 第四十一部分：无线智能网关 - 规格参数-->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 41, 
+      :class="{
+        active: sectionStore.currentSection === 41,
         inactive: sectionStore.currentSection !== 41,
         'slide-prev': sectionStore.currentSection > 41,
         'slide-next': sectionStore.currentSection < 41
@@ -494,6 +494,7 @@
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useSectionStore } from '@/stores/sectionStore'
+import { createWheelHandler } from '@/utils/scrollHandler'
 import ProductHero from '@/components/products/ProductHero.vue'
 import ProductDescription from '@/components/products/ProductDescription.vue'
 import ProductFeatures from '@/components/products/ProductFeatures.vue'
@@ -643,8 +644,8 @@ const router = useRouter()
 // 使用 Pinia store 代替本地状态
 const sectionStore = useSectionStore()
 const scrollDirection = ref<'up' | 'down'>('down');
-const scrolling = ref(false);
-const scrollDelay = 700; // 减少滚动延迟，让切换更加流畅
+// 使用统一的滚动延迟，提高响应性
+const scrollDelay = 300;
 
 // 产品步骤
 const productSteps = ['产品概述', '核心功能', '特色优势', '典型案例']
@@ -1233,63 +1234,55 @@ const wirelessSmartGatewayContentLight = [
 
 // 页面跳转函数
 const goToSection = (sectionIndex: number) => {
-  if (sectionIndex >= 0 && sectionIndex <= 41 && !scrolling.value) {
+  if (sectionIndex >= 0 && sectionIndex <= 41) {
     scrollDirection.value = sectionIndex > sectionStore.currentSection ? 'down' : 'up';
-    scrolling.value = true;
-    
+
     // 立即更新当前部分
     sectionStore.currentSection = sectionIndex;
-    
-    // 设置滚动延迟，防止连续滚动
-    setTimeout(() => {
-      scrolling.value = false;
-    }, scrollDelay);
   }
 };
 
-// 处理鼠标滚轮事件
-const handleWheel = (e: WheelEvent) => {
-  if (scrolling.value) return;
-  
-  scrolling.value = true;
-  scrollDirection.value = e.deltaY > 0 ? 'down' : 'up';
-  
-  // 向下滚动，最大值为41
-  if (scrollDirection.value === 'down' && sectionStore.currentSection < 41) {
-    sectionStore.nextSection(41);
-  } 
-  // 向上滚动
-  else if (scrollDirection.value === 'up' && sectionStore.currentSection > 0) {
-    sectionStore.prevSection();
+// 使用优化的滚轮事件处理器
+const handleWheel = createWheelHandler(
+  // 向上滚动回调
+  () => {
+    if (sectionStore.currentSection > 0) {
+      scrollDirection.value = 'up';
+      sectionStore.prevSection();
+    }
+  },
+  // 向下滚动回调
+  () => {
+    if (sectionStore.currentSection < 41) {
+      scrollDirection.value = 'down';
+      sectionStore.nextSection(41);
+    }
+  },
+  // 配置选项
+  {
+    delay: scrollDelay,
+    preventDefault: true,
+    // 检查是否应该锁定滚动
+    checkLock: () => document.body.classList.contains('no-section-scroll')
   }
-  
-  // 设置滚动延迟
-  setTimeout(() => {
-    scrolling.value = false;
-  }, scrollDelay);
-};
+);
 
 // 添加键盘事件处理函数
 const handleKeyDown = (e: KeyboardEvent) => {
-  if (scrolling.value) return;
-  
+  // 如果页面被锁定，不处理键盘事件
+  if (document.body.classList.contains('no-section-scroll')) {
+    return;
+  }
+
   if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
     if (sectionStore.currentSection < 41) {
       scrollDirection.value = 'down';
-      scrolling.value = true;
       sectionStore.nextSection(41);
-      setTimeout(() => {
-        scrolling.value = false;
-      }, scrollDelay);
     }
   } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
     if (sectionStore.currentSection > 0) {
       scrollDirection.value = 'up';
-      scrolling.value = true;
       sectionStore.prevSection();
-      setTimeout(() => {
-        scrolling.value = false;
-      }, scrollDelay);
     }
   }
 };
@@ -1322,10 +1315,10 @@ watch(() => route.query.section, (newSection) => {
 // 监听sectionStore.currentSection变化并更新URL
 watch(() => sectionStore.currentSection, (newSection) => {
   // 更新URL而不刷新页面
-  router.replace({ 
-    query: { 
-      ...route.query, 
-      section: newSection.toString() 
+  router.replace({
+    query: {
+      ...route.query,
+      section: newSection.toString()
     }
   })
 })
@@ -1379,7 +1372,7 @@ onBeforeUnmount(() => {
 }
 
 /* 移除页面指示器相关样式 */
-/* 
+/*
 .page-indicator {
   position: fixed;
   right: 30px;

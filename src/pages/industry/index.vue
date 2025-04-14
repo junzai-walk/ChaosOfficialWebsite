@@ -1,9 +1,9 @@
 <template>
-  <div class="industry-page" @wheel="handleWheel">
+  <div class="industry-page" @wheel.passive="handleWheel">
     <!-- 第一部分：钢铁行业 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 0, 
+      :class="{
+        active: sectionStore.currentSection === 0,
         inactive: sectionStore.currentSection !== 0,
         'slide-next': sectionStore.currentSection < 0,
         'slide-prev': sectionStore.currentSection > 0
@@ -15,8 +15,8 @@
 
     <!-- 第二部分：钢铁行业挑战 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 1, 
+      :class="{
+        active: sectionStore.currentSection === 1,
         inactive: sectionStore.currentSection !== 1,
         'slide-next': sectionStore.currentSection < 1,
         'slide-prev': sectionStore.currentSection > 1
@@ -29,22 +29,22 @@
 
     <!-- 第三部分：钢铁行业解决方案 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 2, 
+      :class="{
+        active: sectionStore.currentSection === 2,
         inactive: sectionStore.currentSection !== 2,
         'slide-next': sectionStore.currentSection < 2,
         'slide-prev': sectionStore.currentSection > 2
       }"
       ref="solutionsSection">
       <!-- <SteelSolutions /> -->
-      <!-- <SolutionsSection 
-         :nav-steps="industrySteps" 
-         :default-active-step="2" 
+      <!-- <SolutionsSection
+         :nav-steps="industrySteps"
+         :default-active-step="2"
          :description="cementSolutionsData.description"
-         :special-scenes="steelSolutionsData.specialScenes" 
+         :special-scenes="steelSolutionsData.specialScenes"
          :applications="steelSolutionsData.applications"
          :platform-data="steelSolutionsData.platformData"
-         :data-collection-methods="steelSolutionsData.dataCollectionMethods" 
+         :data-collection-methods="steelSolutionsData.dataCollectionMethods"
       /> -->
 
       <SolutionsSection :nav-steps="industrySteps" :default-active-step="2" :section-numbers="[1, 2, 3, 4]"
@@ -54,8 +54,8 @@
 
     <!-- 第四部分：钢铁行业方案优势 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 3, 
+      :class="{
+        active: sectionStore.currentSection === 3,
         inactive: sectionStore.currentSection !== 3,
         'slide-next': sectionStore.currentSection < 3,
         'slide-prev': sectionStore.currentSection > 3
@@ -67,8 +67,8 @@
 
     <!-- 第五部分：典型案例 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 4, 
+      :class="{
+        active: sectionStore.currentSection === 4,
         inactive: sectionStore.currentSection !== 4,
         'slide-next': sectionStore.currentSection < 4,
         'slide-prev': sectionStore.currentSection > 4
@@ -80,8 +80,8 @@
 
     <!-- 第六部分：水泥行业 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 5, 
+      :class="{
+        active: sectionStore.currentSection === 5,
         inactive: sectionStore.currentSection !== 5,
         'slide-next': sectionStore.currentSection < 5,
         'slide-prev': sectionStore.currentSection > 5
@@ -92,8 +92,8 @@
 
     <!-- 第七部分：水泥行业挑战 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 6, 
+      :class="{
+        active: sectionStore.currentSection === 6,
         inactive: sectionStore.currentSection !== 6,
         'slide-next': sectionStore.currentSection < 6,
         'slide-prev': sectionStore.currentSection > 6
@@ -105,8 +105,8 @@
 
     <!-- 第八部分：水泥行业解决方案 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 7, 
+      :class="{
+        active: sectionStore.currentSection === 7,
         inactive: sectionStore.currentSection !== 7,
         'slide-next': sectionStore.currentSection < 7,
         'slide-prev': sectionStore.currentSection > 7
@@ -124,8 +124,8 @@
 
     <!-- 第九部分：水泥行业方案优势 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 8, 
+      :class="{
+        active: sectionStore.currentSection === 8,
         inactive: sectionStore.currentSection !== 8,
         'slide-next': sectionStore.currentSection < 8,
         'slide-prev': sectionStore.currentSection > 8
@@ -137,8 +137,8 @@
 
     <!-- 第十部分：水泥行业典型案例 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 9, 
+      :class="{
+        active: sectionStore.currentSection === 9,
         inactive: sectionStore.currentSection !== 9,
         'slide-next': sectionStore.currentSection < 9,
         'slide-prev': sectionStore.currentSection > 9
@@ -150,8 +150,8 @@
 
     <!-- 第十一部分：煤炭行业 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 10, 
+      :class="{
+        active: sectionStore.currentSection === 10,
         inactive: sectionStore.currentSection !== 10,
         'slide-next': sectionStore.currentSection < 10,
         'slide-prev': sectionStore.currentSection > 10
@@ -163,8 +163,8 @@
 
     <!-- 第十二部分：煤炭行业挑战 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 11, 
+      :class="{
+        active: sectionStore.currentSection === 11,
         inactive: sectionStore.currentSection !== 11,
         'slide-next': sectionStore.currentSection < 11,
         'slide-prev': sectionStore.currentSection > 11
@@ -176,8 +176,8 @@
 
     <!-- 第十三部分：煤炭行业解决方案 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 12, 
+      :class="{
+        active: sectionStore.currentSection === 12,
         inactive: sectionStore.currentSection !== 12,
         'slide-next': sectionStore.currentSection < 12,
         'slide-prev': sectionStore.currentSection > 12
@@ -189,8 +189,8 @@
 
     <!-- 第十四部分：煤炭行业方案优势 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 13, 
+      :class="{
+        active: sectionStore.currentSection === 13,
         inactive: sectionStore.currentSection !== 13,
         'slide-next': sectionStore.currentSection < 13,
         'slide-prev': sectionStore.currentSection > 13
@@ -201,8 +201,8 @@
 
     <!-- 第十五部分：煤炭行业典型案例 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 14, 
+      :class="{
+        active: sectionStore.currentSection === 14,
         inactive: sectionStore.currentSection !== 14,
         'slide-next': sectionStore.currentSection < 14,
         'slide-prev': sectionStore.currentSection > 14
@@ -213,8 +213,8 @@
 
     <!-- 第十六部分：化工行业 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 15, 
+      :class="{
+        active: sectionStore.currentSection === 15,
         inactive: sectionStore.currentSection !== 15,
         'slide-next': sectionStore.currentSection < 15,
         'slide-prev': sectionStore.currentSection > 15
@@ -226,8 +226,8 @@
 
     <!-- 第十七部分：化工行业挑战 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 16, 
+      :class="{
+        active: sectionStore.currentSection === 16,
         inactive: sectionStore.currentSection !== 16,
         'slide-next': sectionStore.currentSection < 16,
         'slide-prev': sectionStore.currentSection > 16
@@ -239,8 +239,8 @@
 
     <!-- 第十八部分：化工行业解决方案 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 17, 
+      :class="{
+        active: sectionStore.currentSection === 17,
         inactive: sectionStore.currentSection !== 17,
         'slide-next': sectionStore.currentSection < 17,
         'slide-prev': sectionStore.currentSection > 17
@@ -253,8 +253,8 @@
 
     <!-- 第十九部分：化工行业方案优势 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 18, 
+      :class="{
+        active: sectionStore.currentSection === 18,
         inactive: sectionStore.currentSection !== 18,
         'slide-next': sectionStore.currentSection < 18,
         'slide-prev': sectionStore.currentSection > 18
@@ -265,8 +265,8 @@
 
     <!-- 第二十部分：化工行业典型案例 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 19, 
+      :class="{
+        active: sectionStore.currentSection === 19,
         inactive: sectionStore.currentSection !== 19,
         'slide-next': sectionStore.currentSection < 19,
         'slide-prev': sectionStore.currentSection > 19
@@ -277,8 +277,8 @@
 
     <!-- 第二十一部分： 汽车行业 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 20, 
+      :class="{
+        active: sectionStore.currentSection === 20,
         inactive: sectionStore.currentSection !== 20,
         'slide-next': sectionStore.currentSection < 20,
         'slide-prev': sectionStore.currentSection > 20
@@ -290,8 +290,8 @@
 
     <!-- 第二十二部分： 汽车行业挑战 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 21, 
+      :class="{
+        active: sectionStore.currentSection === 21,
         inactive: sectionStore.currentSection !== 21,
         'slide-next': sectionStore.currentSection < 21,
         'slide-prev': sectionStore.currentSection > 21
@@ -303,8 +303,8 @@
 
     <!-- 第二十三部分： 汽车行业解决方案 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 22, 
+      :class="{
+        active: sectionStore.currentSection === 22,
         inactive: sectionStore.currentSection !== 22,
         'slide-next': sectionStore.currentSection < 22,
         'slide-prev': sectionStore.currentSection > 22
@@ -320,8 +320,8 @@
 
     <!-- 第二十四部分： 汽车行业方案优势 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 23, 
+      :class="{
+        active: sectionStore.currentSection === 23,
         inactive: sectionStore.currentSection !== 23,
         'slide-next': sectionStore.currentSection < 23,
         'slide-prev': sectionStore.currentSection > 23
@@ -332,8 +332,8 @@
 
     <!-- 第二十五部分： 汽车行业典型案例 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 24, 
+      :class="{
+        active: sectionStore.currentSection === 24,
         inactive: sectionStore.currentSection !== 24,
         'slide-next': sectionStore.currentSection < 24,
         'slide-prev': sectionStore.currentSection > 24
@@ -344,8 +344,8 @@
 
     <!-- 第二十六部分： 新能源行业 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 25, 
+      :class="{
+        active: sectionStore.currentSection === 25,
         inactive: sectionStore.currentSection !== 25,
         'slide-next': sectionStore.currentSection < 25,
         'slide-prev': sectionStore.currentSection > 25
@@ -357,8 +357,8 @@
 
     <!-- 第二十七部分： 新能源行业挑战 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 26, 
+      :class="{
+        active: sectionStore.currentSection === 26,
         inactive: sectionStore.currentSection !== 26,
         'slide-next': sectionStore.currentSection < 26,
         'slide-prev': sectionStore.currentSection > 26
@@ -370,8 +370,8 @@
 
     <!-- 第二十八部分： 新能源行业解决方案 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 27, 
+      :class="{
+        active: sectionStore.currentSection === 27,
         inactive: sectionStore.currentSection !== 27,
         'slide-next': sectionStore.currentSection < 27,
         'slide-prev': sectionStore.currentSection > 27
@@ -384,8 +384,8 @@
 
     <!-- 第二十九部分： 新能源行业方案优势 -->
     <div class="section"
-      :class="{ 
-        active: sectionStore.currentSection === 28, 
+      :class="{
+        active: sectionStore.currentSection === 28,
         inactive: sectionStore.currentSection !== 28,
         'slide-next': sectionStore.currentSection < 28,
         'slide-prev': sectionStore.currentSection > 28
@@ -408,6 +408,7 @@
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useSectionStore } from '@/stores/sectionStore'
+import { createWheelHandler } from '@/utils/scrollHandler'
 import IndustryHero from '@/components/industry/components/IndustryHero.vue'
 import ChallengesSection from '@/components/industry/components/ChallengesSection.vue'
 import SolutionsSection from '@/components/industry/components/SolutionsSection.vue'
@@ -518,8 +519,8 @@ import windSolutionImage from '@/assets/industry/wind-solution.png'
 
 const route = useRoute()
 const router = useRouter()
-const scrolling = ref(false)
-const scrollDelay = 100 // 滚动延迟，防止连续滚动
+// 使用统一的滚动延迟，提高响应性
+const scrollDelay = 300
 
 // 使用 Pinia store 代替本地状态
 const sectionStore = useSectionStore()
@@ -527,36 +528,39 @@ const sectionStore = useSectionStore()
 // 页面跳转函数
 const goToSection = (sectionIndex: number) => {
   if (sectionIndex >= 0 && sectionIndex <= 28) {
-    sectionStore.currentSection = sectionIndex;
+    sectionStore.setCurrentSection(sectionIndex);
   }
 };
 
-// 处理鼠标滚轮事件
-const handleWheel = (e: WheelEvent) => {
-  if (scrolling.value) return;
-
-  scrolling.value = true;
-
-  // 向下滚动
-  if (e.deltaY > 0 && sectionStore.currentSection < 28) {
-    sectionStore.nextSection(28);
+// 使用优化的滚轮事件处理器
+const handleWheel = createWheelHandler(
+  // 向上滚动回调
+  () => {
+    if (sectionStore.currentSection > 0) {
+      sectionStore.prevSection();
+    }
+  },
+  // 向下滚动回调
+  () => {
+    if (sectionStore.currentSection < 28) {
+      sectionStore.nextSection(28);
+    }
+  },
+  // 配置选项
+  {
+    delay: scrollDelay,
+    preventDefault: true,
+    // 检查是否应该锁定滚动
+    checkLock: () => document.body.classList.contains('no-section-scroll')
   }
-  // 向上滚动
-  else if (e.deltaY < 0 && sectionStore.currentSection > 0) {
-    sectionStore.prevSection();
-  }
-
-  // 设置滚动延迟，调整为稍短时间提高响应度
-  setTimeout(() => {
-    scrolling.value = false;
-  }, 700);
-};
+);
 
 // 处理键盘事件
 const handleKeyDown = (e: KeyboardEvent) => {
-  if (scrolling.value) return
-
-  scrolling.value = true
+  // 如果页面被锁定，不处理键盘事件
+  if (document.body.classList.contains('no-section-scroll')) {
+    return;
+  }
 
   // 向下箭头或Page Down
   if ((e.key === 'ArrowDown' || e.key === 'PageDown') && sectionStore.currentSection < 28) {
@@ -566,10 +570,6 @@ const handleKeyDown = (e: KeyboardEvent) => {
   else if ((e.key === 'ArrowUp' || e.key === 'PageUp') && sectionStore.currentSection > 0) {
     sectionStore.prevSection()
   }
-
-  setTimeout(() => {
-    scrolling.value = false
-  }, scrollDelay)
 }
 
 // 钢铁行业挑战数据
