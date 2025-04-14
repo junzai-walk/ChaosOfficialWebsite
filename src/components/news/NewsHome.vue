@@ -69,7 +69,7 @@ import image4 from '@/assets/news/image4.png'
 import image11 from '@/assets/news/image11.png'
 import image14 from '@/assets/news/image14.png'
 import image22 from '@/assets/news/image22.png'
-import headerBg from '@/assets/news/Group 129.png'
+// import headerBg from '@/assets/news/Group 129.png'
 
 const sectionStore = useSectionStore()
 const emit = defineEmits(['handleNews'])
@@ -150,7 +150,7 @@ onBeforeUnmount(() => {
     padding: 0 15rem;
     width: 100%;
     min-height: 10rem;
-    background: url(headerBg) no-repeat center center;
+    background: url("@/assets/news/Group 129.png") no-repeat center center;
     background-size: 100% 100%;
     font-size: 1.75rem;
     font-weight: 700;
@@ -168,6 +168,7 @@ onBeforeUnmount(() => {
     padding: 0 11.5rem;
     padding-top: 2rem;
     gap: 2rem;
+    // overflow-y: auto;
 
     .title {
       width: 100%;
