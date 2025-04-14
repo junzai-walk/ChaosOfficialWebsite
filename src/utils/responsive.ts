@@ -19,11 +19,10 @@ class ResponsiveScale {
   constructor(options: ResponsiveOptions) {
     // 默认配置
     this.options = {
-      designWidth: 1920,
-      designHeight: 1080,
       minWidth: 1280,
       minHeight: 720,
       scaleMode: 'both',
+      // 使用传入的选项覆盖默认值
       ...options
     };
   }
@@ -125,7 +124,7 @@ class ResponsiveScale {
    */
   public destroy(): void {
     window.removeEventListener('resize', this.handleResize.bind(this));
-    
+
     if (this.resizeObserver && this.rootElement) {
       this.resizeObserver.unobserve(this.rootElement);
       this.resizeObserver.disconnect();
