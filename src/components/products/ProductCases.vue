@@ -129,7 +129,7 @@ const updateActiveStep = (newStep: number) => {
   width: 200px;
   height: 56px;
   left: 860px;
-  top: 710px;
+  top: 640px;
   background-color: #2B7FE8;
   color: white;
   border-radius: 25px;

@@ -1092,7 +1092,7 @@ const wireSensorTitle = '有线传感器'
 //无线智能传感器
 const wirelessSensorTitle = '无线智能传感器'
 // 有线传感器规格参数表格标题
-const wireSensorModelTitle = '有线振温传感器DN102'
+const wireSensorModelTitle = '无线振温传感器DN102'
 // 边缘智能采集器
 const edgeSmartCollectorTitle = '边缘智能采集器'
 // 无线智能网关

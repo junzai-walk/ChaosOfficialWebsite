@@ -51,7 +51,7 @@
             </el-menu-item-group>
             
             <!-- 智能硬件分组 -->
-            <el-menu-item-group title="智能硬件">
+            <el-menu-item-group title="智能硬件" style="transform: translateY(-4px);">
               <el-menu-item index="/products?section=30" class="product-menu-item">
                 有线传感器
               </el-menu-item>
