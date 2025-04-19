@@ -97,12 +97,26 @@
             </div>
             <div class="nav-section">
               <h4 class="decoration-line"  @click="navigateToCustomer(0)">客户案例</h4>
+              <ul>
+                <li @click="navigateToCustomer(0)">案例中心</li>
+                <li @click="navigateToCustomer(1)">标杆案例</li>
+                <li @click="navigateToCustomer(2)">客户展示</li>
+              </ul>
             </div>
             <div class="nav-section">
               <h4 class="decoration-line"  @click="navigateToPartners(0)">合作伙伴</h4>
+              <ul>
+                <li @click="navigateToPartners(0)">诚邀合作</li>
+                <li @click="navigateToPartners(1)">伙伴招募</li>
+                <li @click="navigateToPartners(2)">专业保障</li>
+                <li @click="navigateToPartners(3)">成为伙伴</li>
+              </ul>
             </div>
             <div class="nav-section">
-              <h4 class="decoration-line"  @click="navigateToNews()">新闻动态</h4>
+              <h4 class="decoration-line"  @click="navigateToNews(0)">资讯中心</h4>
+              <ul>
+                <li @click="navigateToNews(0)">新闻动态</li>
+              </ul>
             </div>  
             <div class="nav-section">
               <h4 class="decoration-line" @click="navigateToAbout(1)">关于我们</h4>
@@ -230,9 +244,10 @@ const navigateToProducts = (sectionIndex: number) => {
   })
 }
 
-const navigateToNews = () => {
+const navigateToNews = (sectionIndex: number) => {
   router.push({
-    path: '/news'
+    path: '/news',
+    query: { section: sectionIndex.toString() }
   })
 }
 </script>
