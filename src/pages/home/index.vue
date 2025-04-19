@@ -23,7 +23,9 @@
         'slide-prev': sectionStore.currentSection > 1
       }"
       ref="solutionSection">
-      <solution-section />
+      <keep-alive>
+        <solution-section />
+     </keep-alive>
     </div>
 
     <!-- 第三部分：产品体系 -->
