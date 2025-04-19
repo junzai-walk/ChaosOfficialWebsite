@@ -525,13 +525,6 @@ const scrollDelay = 300
 // 使用 Pinia store 代替本地状态
 const sectionStore = useSectionStore()
 
-// 页面跳转函数
-const goToSection = (sectionIndex: number) => {
-  if (sectionIndex >= 0 && sectionIndex <= 28) {
-    sectionStore.setCurrentSection(sectionIndex);
-  }
-};
-
 // 使用优化的滚轮事件处理器
 const handleWheel = createWheelHandler(
   // 向上滚动回调

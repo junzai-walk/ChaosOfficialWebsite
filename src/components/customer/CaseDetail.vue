@@ -5,7 +5,7 @@
     <div class="content">
       <div class="content-header">
         <div class="header-title">
-          <span>{{ showContent.mainTitle }}</span>
+          <span class="header-title-main">{{ showContent.mainTitle }}</span>
           <p>{{ showContent.subTitle }}</p>
         </div>
       </div>
@@ -423,7 +423,7 @@ html {
 
   .content {
     position: absolute;
-    top: 50%;
+    top: 49%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
@@ -449,6 +449,11 @@ html {
         padding-bottom: 35px;
         color: #fff;
 
+        &-main{
+          font-size: 24px;
+          margin-bottom: 10px;
+        }
+
         p {
           font-size: 32px;
         }
@@ -460,11 +465,10 @@ html {
       width: 100%;
       height: 80vh;
       background-color: #fff;
-      border-top-left-radius: 15px;
-      border-top-right-radius: 25px;
+      border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       overflow: auto;
-      padding: 25px;
+      padding: 45px;
       padding-top: 40px;
       display: flex;
       flex-direction: column;
@@ -505,6 +509,7 @@ html {
       }
 
       .sub-content {
+        text-indent: 2em;
         margin: 15px 0;
         font-size: 14px;
         line-height: 1.8;
@@ -516,8 +521,9 @@ html {
         justify-content: center;
         text-align: left;
         :deep(img){
-          width: 20rem;
+          width: 40rem;
           height: auto;
+          margin: 20px;
         }
         :deep(p){
         

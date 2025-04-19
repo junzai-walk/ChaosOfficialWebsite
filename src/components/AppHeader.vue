@@ -69,6 +69,7 @@
           
           <el-menu-item index="/customer">{{ $t('nav.customer') }}</el-menu-item>
           <el-menu-item index="/partners">{{ $t('nav.partners') }}</el-menu-item>
+          <el-menu-item index="/news">{{ $t('nav.news') }}</el-menu-item>
           <el-sub-menu  index="/about" popper-class="industry-submenu">
             <template #title>{{ $t('nav.about') }}</template>
             <el-menu-item v-for="(about) in abouts" :key="about.section" 
@@ -169,8 +170,7 @@ const abouts = [
   { name: '公司概况', section: 0, icon: aboutCompanyIcon },
   { name: '重要荣誉', section: 2, icon: aboutHonorIcon },
   { name: '加入我们', section: 3, icon: aboutJoinIcon },
-  { name: '新闻动态', section: 4, icon: aboutNewsIcon },
-  { name: '联系我们', section: 5, icon: aboutContactIcon },
+  { name: '联系我们', section: 4, icon: aboutContactIcon },
 ]
 
 const activeMenu = ref('/')

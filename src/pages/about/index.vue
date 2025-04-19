@@ -53,7 +53,7 @@
     </div>
     
     <!-- 第五部分：新闻 -->
-    <div 
+    <!-- <div 
       class="section" 
       :class="{ 
         active: sectionStore.currentSection === 4, 
@@ -63,23 +63,23 @@
       }"
       ref="caseShowcaseSection">
       <NewsHome @handleNews="handleNews"/>
-    </div>
+    </div> -->
     
     <!-- 第六部分：联系我们 -->
     <div 
       class="section" 
       :class="{ 
-        active: sectionStore.currentSection === 5, 
-        inactive: sectionStore.currentSection !== 5,
-        'slide-next': sectionStore.currentSection < 5,
-        'slide-prev': sectionStore.currentSection > 5
+        active: sectionStore.currentSection === 4, 
+        inactive: sectionStore.currentSection !== 4,
+        'slide-next': sectionStore.currentSection < 4,
+        'slide-prev': sectionStore.currentSection > 4
       }"
       ref="contactSection">
       <Contact />
     </div>
     
      <!-- 第七部分：新闻详情 -->
-     <div 
+     <!-- <div 
       class="section" 
       :class="{ 
         active: sectionStore.currentSection === 6, 
@@ -89,7 +89,7 @@
       }"
       ref="newsDetailSection">
       <NewsDetail :newsId="newsId"/>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -150,7 +150,7 @@ const handleWheel = (e: WheelEvent) => {
   scrolling.value = true;
   
   // 向下滚动，允许滚动到所有定义的部分（最大section为5）
-  if (e.deltaY > 0 && sectionStore.currentSection < 5) {
+  if (e.deltaY > 0 && sectionStore.currentSection < 4) {
     sectionStore.currentSection++;
   } 
   // 向上滚动
@@ -176,8 +176,8 @@ const handleKeyDown = (e: KeyboardEvent) => {
   scrolling.value = true;
   
   // 向下箭头或Page Down
-  if ((e.key === 'ArrowDown' || e.key === 'PageDown') && sectionStore.currentSection < 5) {
-    sectionStore.nextSection(5)
+  if ((e.key === 'ArrowDown' || e.key === 'PageDown') && sectionStore.currentSection < 4) {
+    sectionStore.nextSection(4)
   } 
   // 向上箭头或Page Up
   else if ((e.key === 'ArrowUp' || e.key === 'PageUp') && sectionStore.currentSection > 0) {
@@ -202,7 +202,7 @@ onMounted(() => {
   // 检查URL参数中是否有section，有则跳转到对应section
   if (route.query.section) {
     const sectionNumber = parseInt(route.query.section as string)
-    if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 5) {
+    if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 4) {
       sectionStore.setCurrentSection(sectionNumber)
       
       // 添加短延迟确保页面完全加载后启用滚动功能
@@ -217,7 +217,7 @@ onMounted(() => {
 watch(() => route.query.section, (newSection) => {
   if (newSection) {
     const sectionNumber = parseInt(newSection as string)
-    if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 5) {
+    if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 4) {
       // 强制更新section状态
       sectionStore.setCurrentSection(sectionNumber)
       

@@ -96,21 +96,23 @@
               </ul>
             </div>
             <div class="nav-section">
+              <h4 class="decoration-line"  @click="navigateToCustomer(0)">客户案例</h4>
+            </div>
+            <div class="nav-section">
+              <h4 class="decoration-line"  @click="navigateToPartners(0)">合作伙伴</h4>
+            </div>
+            <div class="nav-section">
+              <h4 class="decoration-line"  @click="navigateToNews()">新闻动态</h4>
+            </div>  
+            <div class="nav-section">
               <h4 class="decoration-line" @click="navigateToAbout(1)">关于我们</h4>
               <ul>
                 <li @click="navigateToAbout(1)">公司概况</li>
                 <li @click="navigateToAbout(2)">重要荣誉</li>
                 <li @click="navigateToAbout(3)">加入我们</li>
                 <li @click="navigateToAbout(4)">联系我们</li>
-                <li @click="navigateToAbout(5)">新闻动态</li>
               </ul>
-            </div>
-            <div class="nav-section">
-              <h4 class="decoration-line"  @click="navigateToCustomer(0)">客户案例</h4>
-            </div>
-            <div class="nav-section">
-              <h4 class="decoration-line"  @click="navigateToPartners(0)">合作伙伴</h4>
-            </div>
+            </div>          
           </div>
 
           <div class="footer-qrcode">
@@ -135,7 +137,8 @@ import cover1 from '@/assets/home/cover1.jpg'
 import cover2 from '@/assets/home/cover2.jpeg'
 import { useRouter } from 'vue-router'
 import { Phone, Location } from '@element-plus/icons-vue'
-import ConsultDialog from '@/components/common/ConsultDialog.vue'
+import * as ConsultDialogComponent from '@/components/common/ConsultDialog.vue'
+const ConsultDialog = ConsultDialogComponent
 
 const router = useRouter()
 
@@ -224,6 +227,12 @@ const navigateToProducts = (sectionIndex: number) => {
   router.push({
     path: '/products',
     query: { section: sectionIndex.toString() }
+  })
+}
+
+const navigateToNews = () => {
+  router.push({
+    path: '/news'
   })
 }
 </script>

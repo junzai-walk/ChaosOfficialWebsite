@@ -6,7 +6,7 @@ export default {
     customer: '客户案例',
     partners: '合作伙伴',
     about: '关于我们',
-    news: '新闻资讯'
+    news: '咨讯中心'
   },
   common: {
     phone: '400-8375-7867',

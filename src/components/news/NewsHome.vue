@@ -1,6 +1,6 @@
 <template>
   <div class="news-box" @wheel.stop="handleScroll" @touchmove.stop="handleScroll">
-    <div class="news-header"> 新闻中心 </div>
+    <div class="news-header"> 新闻动态 </div>
     <div class="news-body">
       <div class="body-left">
         <div class="title">凯奥思资讯</div>
@@ -109,7 +109,11 @@ const loadMore = () => {
   showCount.value = Math.min(showCount.value + pageSize.value, newsList.value.length)
 }
 const handleNews = (id:any)=>{
-  emit('handleNews',id)
+  console.log('点击新闻项，触发handleNews事件，ID:', id);
+  // 解除锁定，确保父组件可以切换section
+  sectionStore.lockSection(false);
+  // 触发事件
+  emit('handleNews', id);
 }
 
 // 处理滚动事件，阻止触发页面切换
@@ -121,11 +125,9 @@ const handleScroll = (event: Event) => {
 onMounted(() => {
   // 给新闻页面添加特殊标记，表示不应触发页面切换
   document.body.classList.add('no-section-scroll')
-  
-  // 确保页面固定在新闻区域
-  nextTick(() => {
-    sectionStore.lockSection(true) // 锁定当前部分，防止滚动切换
-  })
+
+  // 在新闻首页不锁定section，以便可以切换到新闻详情页
+  // 仅在新闻详情页才锁定section
 })
 
 // 组件卸载时移除标记和锁定
@@ -147,15 +149,15 @@ onBeforeUnmount(() => {
 
   .news-header {
     box-sizing: border-box;
-    padding: 0 15rem;
+    padding: 0 0 0 11.5rem;
     width: 100%;
-    min-height: 10rem;
-    background: url("@/assets/news/Group 129.png") no-repeat center center;
+    min-height: 14rem;
+    background: url("@/assets/news/banner.png") no-repeat center center;
     background-size: 100% 100%;
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #fff;
-    line-height: 7rem;
+    line-height: 14rem;
     display: flex;
     align-items: flex-start;
   }
@@ -313,6 +315,8 @@ onBeforeUnmount(() => {
           height: 5rem;
           text-align: left;
           margin-bottom: 0.75rem;
+          cursor: pointer;
+          
           .hotpot-title{
             font-weight: 700;
             margin-bottom: 0.75rem;

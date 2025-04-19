@@ -1232,16 +1232,6 @@ const wirelessSmartGatewayContentLight = [
   }
 ]
 
-// 页面跳转函数
-const goToSection = (sectionIndex: number) => {
-  if (sectionIndex >= 0 && sectionIndex <= 41) {
-    scrollDirection.value = sectionIndex > sectionStore.currentSection ? 'down' : 'up';
-
-    // 立即更新当前部分
-    sectionStore.currentSection = sectionIndex;
-  }
-};
-
 // 使用优化的滚轮事件处理器
 const handleWheel = createWheelHandler(
   // 向上滚动回调

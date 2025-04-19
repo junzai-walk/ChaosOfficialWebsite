@@ -2,17 +2,29 @@
   <div class="news-detail" @wheel.stop="handleScroll" @touchmove.stop="handleScroll">
     <div class="detail-header"> 新闻动态 </div>
     <div class="detail-body">
-      <div class="title">{{ newsDetail?.title }}</div>
-      <!-- <div class="date">{{ newsDetail.abstract }}</div> -->
-      <div class="date">{{ newsDetail?.time }}</div>
-      <div class="content " v-html="newsDetail?.content">
-       </div>
+      <div class="return-button" @click="handleReturn">
+        <el-icon><ArrowLeft /></el-icon>
+        <span>返回</span>
+      </div>
+      <div class="news-container">
+        <div class="news-header">
+          <h1 class="title">{{ newsDetail?.title }}</h1>
+          <div class="meta-info">
+            <span class="date">发布时间：{{ newsDetail?.time }}</span>
+            <span class="source">来源：凯奥思数据</span>
+          </div>
+        </div>
+        <div class="content-wrapper">
+          <div class="content" v-html="newsDetail?.content"></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {ref,computed,watch, onMounted, onBeforeUnmount, nextTick} from 'vue'
+import {ref, watch, onMounted, onBeforeUnmount, nextTick} from 'vue'
+import { useRouter } from 'vue-router'
 import image1 from '@/assets/news/image1.png';
 import image2 from '@/assets/news/image2.png';
 import image3 from '@/assets/news/image3.png';
@@ -37,6 +49,8 @@ import image21 from '@/assets/news/image21.png';
 import image22 from '@/assets/news/image22.png';
 import image23 from '@/assets/news/image23.png';
 import { useSectionStore } from '@/stores/sectionStore'
+
+const router = useRouter()
 
 const newsList :any={
   news1:{
@@ -191,13 +205,40 @@ const props = defineProps({
     required: true
   },
 });
-const newsDetail:any =ref()
+const newsDetail:any = ref()
+
+// 监听newsId变化并更新新闻详情
 watch(
-  ()=>props.newsId,
-  (newVal,oldVal)=>{
-     newsDetail.value= newsList[newVal] 
-  }
+  () => props.newsId,
+  (newVal) => {
+    console.log('NewsDetail接收到新的newsId:', newVal);
+    if (newVal && newsList[newVal]) {
+      newsDetail.value = newsList[newVal];
+    } else {
+      // console.error('未找到对应的新闻ID:');
+    }
+  },
+  { immediate: true } // 添加immediate:true确保组件挂载时立即执行一次
 )
+
+const handleReturn = () => {
+  // 始终返回到新闻列表页，而不是使用浏览器的历史记录
+
+  // 先移除特殊标记，表示可以触发页面切换
+  document.body.classList.remove('no-section-scroll')
+
+  // 解除锁定，允许页面切换
+  sectionStore.lockSection(false)
+
+  // 先将section设置为0（新闻列表页）
+  sectionStore.setCurrentSection(0)
+
+  // 然后跳转到新闻页面，并清除newsId参数
+  router.push({
+    path: '/news',
+    query: { section: '0' }
+  })
+}
 
 const sectionStore = useSectionStore()
 
@@ -210,7 +251,7 @@ const handleScroll = (event: Event) => {
 onMounted(() => {
   // 给新闻详情页添加特殊标记，表示不应触发页面切换
   document.body.classList.add('no-section-scroll')
-  
+
   // 确保页面固定在新闻详情区域
   nextTick(() => {
     sectionStore.lockSection(true) // 锁定当前部分，防止滚动切换
@@ -232,20 +273,20 @@ onBeforeUnmount(() => {
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  overflow: scroll;
+  overflow: auto;
+  background-color: #f5f5f5;
 
   .detail-header {
     box-sizing: border-box;
     padding: 0 15rem;
-    // margin-top: 2rem;
     width: 100%;
-    height: 10rem;
-    background: url('@/assets/news/VCG41157308861 1.png') no-repeat center center;
+    height: 11rem;
+    background: url('@/assets/news/detail_header.png') no-repeat center center;
     background-size: 100% 100%;
     font-size: 1.75rem;
     font-weight: 700;
     color: #fff;
-    line-height: 7rem;
+    line-height: 11rem;
     display: flex;
     align-items: flex-start;
   }
@@ -253,34 +294,124 @@ onBeforeUnmount(() => {
   .detail-body {
     box-sizing: border-box;
     flex: 1;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 0 11.5rem;
-    padding-top: 2rem;
-    gap: 2rem;
-    .title{
-      font-weight: 700;
-    }
-    .date{
-      font-size: 0.75rem;
-      color: #bbb;
-    }
-    .content{
-      width: 100%;
+    align-items: center;
+    padding: 0 1rem;
+    position: relative;
+
+    .return-button {
+      position: absolute;
+      top: 25px;
+      right: 10%;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: left;
-      line-height: 1.5;
-      :deep(img){
-        width: 20rem;
-        height: auto;
+      gap: 5px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: normal;
+      transition: all 0.3s ease;
+      z-index: 10;
+      color: #2985f7;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+      &:active{
+        font-weight: bolder;
+        color: #0572f8;
       }
-      :deep(p){
+
+      &:hover {
+        background-color: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .el-icon {
+        font-size: 16px;
+      }
+    }
+
+    .news-container {
+      max-width: 1000px;
+      width: 100%;
+      margin: 2rem auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .news-header {
+      padding: 2rem 3rem;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #333;
+      margin: 0 0 1.5rem 0;
+      line-height: 1.4;
+    }
+
+    .meta-info {
+      display: flex;
+      gap: 2rem;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    .content-wrapper {
+      padding: 2rem 3rem 3rem;
+    }
+
+    .content {
+      width: 100%;
+      text-align: left;
+      line-height: 1.8;
+      color: #333;
+      font-size: 1rem;
+
+      :deep(img) {
+        max-width: 100%;
+        height: auto;
+        margin: 1.5rem auto;
+        display: block;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      :deep(p) {
+        margin: 1.2rem 0;
         text-indent: 2em;
+      }
+
+      :deep(b) {
+        display: block;
+        font-size: 1.2rem;
+        margin: 1.5rem 0 1rem;
+        color: #222;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .news-detail {
+    .detail-body {
+      .news-container {
+        max-width: 900px;
+      }
+
+      .title {
+        font-size: 1.6rem;
+      }
+
+      .content-wrapper {
+        padding: 1.5rem 2.5rem 2.5rem;
       }
     }
   }
