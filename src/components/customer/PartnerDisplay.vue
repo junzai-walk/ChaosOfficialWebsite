@@ -6,6 +6,7 @@
       <br />
       <h2 class="title">驱动每一次精准决策</h2>
     </div>
+    <div class="bg"></div>
     <!-- <div class="logo-box">
       <div class="image-grid">
         <div class="image-item" v-for="item in logos">
@@ -18,18 +19,18 @@
         <div v-for="(logo, index) in leftLogos"
           :key="`left-${index}`"
           class="logo-container"
-          :class="[`size-${getRandomSize(index)}`]"
+          :class="[`size-${getRandomSize()}`]"
           :style="getRandomLeftPosition(index)">
-          <logo-reflect :src="logo" :alt="`partner-left-${index}`" />
+          <img :src="logo" :alt="`partner-left-${index}`">
         </div>
       </div>
       <div class="right-side">
         <div v-for="(logo, index) in rightLogos"
           :key="`right-${index}`"
           class="logo-container"
-          :class="[`size-${getRandomSize(index)}`]"
+          :class="[`size-${getRandomSize()}`]"
           :style="getRandomRightPosition(index)">
-          <logo-reflect :src="logo" :alt="`partner-right-${index}`" />
+          <img :src="logo" :alt="`partner-left-${index}`">
         </div>
       </div>
     </div>
@@ -38,9 +39,8 @@
 
 <script setup lang="ts">
 import { ref, computed, provide, onMounted } from 'vue'
-import LogoReflect from '../LogoReflect.vue' // 自定义立体效果组件
 
-// 添加动画状态控制
+// 添加动画状态控制 - 始终保持动画开启
 const isAnimating = ref(true)
 // 提供动画状态给子组件
 provide('isAnimating', isAnimating)
@@ -94,50 +94,56 @@ const getFixedPosition = (index: number, isLeft: boolean) => {
   // 为每个图片创建唯一的位置
   const positions = isLeft ? [
     // 第一列
-    { x: 10, y: 10 },    // 左上角
-    { x: 10, y: 30 },    // 左上
-    { x: 10, y: 50 },    // 左中
-    { x: 10, y: 70 },    // 左下
-    { x: 10, y: 90 },    // 左下角
+    { x: 20, y: 10 },    // 左上角
+    { x: 20, y: 30 },    // 左上
+    { x: 20, y: 50 },    // 左中
+    { x: 20, y: 70 },    // 左下
+    { x: 20, y: 90 },    // 左下角
     // 第二列
-    { x: 25, y: 20 },    // 左上中
-    { x: 25, y: 40 },    // 左中上
-    { x: 25, y: 60 },    // 左中下
-    { x: 25, y: 80 },    // 左下中
+    { x: 40, y: 20 },    // 左上中
+    { x: 40, y: 40 },    // 左中上
+    { x: 40, y: 60 },    // 左中下
+    { x: 40, y: 80 },    // 左下中
     // 第三列
-    { x: 40, y: 15 },    // 左上偏右
-    { x: 40, y: 35 },    // 左中上偏右
-    { x: 40, y: 55 },    // 左中偏右
-    { x: 40, y: 75 },    // 左中下偏右
-    { x: 40, y: 95 },    // 左下偏右
+    { x: 60, y: 15 },    // 左上偏右
+    { x: 60, y: 35 },    // 左中上偏右
+    { x: 60, y: 55 },    // 左中偏右
+    { x: 60, y: 75 },    // 左中下偏右
+    { x: 60, y: 95 },    // 左下偏右
   ] : [
     // 第一列
-    { x: 60, y: 10 },    // 右上角
-    { x: 60, y: 30 },    // 右上
-    { x: 60, y: 50 },    // 右中
-    { x: 60, y: 70 },    // 右下
-    { x: 60, y: 90 },    // 右下角
+    { x: 40, y: 10 },    // 右上角
+    { x: 40, y: 30 },    // 右上
+    { x: 40, y: 50 },    // 右中
+    { x: 40, y: 70 },    // 右下
+    { x: 40, y: 90 },    // 右下角
     // 第二列
-    { x: 75, y: 20 },    // 右上中
-    { x: 75, y: 40 },    // 右中上
-    { x: 75, y: 60 },    // 右中下
-    { x: 75, y: 80 },    // 右下中
+    { x: 60, y: 20 },    // 右上中
+    { x: 60, y: 40 },    // 右中上
+    { x: 60, y: 60 },    // 右中下
+    { x: 60, y: 80 },    // 右下中
     // 第三列
-    { x: 90, y: 15 },    // 右上偏右
-    { x: 90, y: 35 },    // 右中上偏右
-    { x: 90, y: 55 },    // 右中偏右
-    { x: 90, y: 75 },    // 右中下偏右
-    { x: 90, y: 95 },    // 右下偏右
+    { x: 80, y: 15 },    // 右上偏右
+    { x: 80, y: 35 },    // 右中上偏右
+    { x: 80, y: 55 },    // 右中偏右
+    { x: 80, y: 75 },    // 右中下偏右
+    { x: 80, y: 95 },    // 右下偏右
   ]
 
   const position = positions[index % positions.length]
+  const duration = getBreathingDuration(index)
 
   return {
     position: 'absolute' as const,
     left: `${position.x}%`,
-    top: `${position.y}%`,
+    '--y-pos': `${position.y}%`,  // 使用CSS变量来设置基础Y轴位置
+    top: `${position.y}%`,  // 初始位置
     transform: 'translate(-50%, -50%)',
-    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+    animation: `breathingEffect ${duration}s infinite ease-in-out`,
+    // 添加随机的动画延迟，使呼吸效果错开
+    animationDelay: `${(index * 0.5) % 3}s`,
+    // 确保动画效果能正确应用
+    animationFillMode: 'both'
   }
 }
 
@@ -151,20 +157,26 @@ const getRandomRightPosition = (index: number) => {
   return getFixedPosition(index, false)
 }
 
-// 修改大小分配逻辑
-const getRandomSize = (index: number) => {
-  // 均匀分配大小，确保不会因为大小不同而重叠
-  // 大部分使用小尺寸，减少重叠可能
-  if (index % 5 === 0) return 'large'    // 20%的logo使用大尺寸
-  if (index % 5 === 1) return 'medium'   // 20%的logo使用中尺寸
-  return 'small'                        // 60%的logo使用小尺寸
+// 随机分配大小逻辑
+const getRandomSize = () => {
+  // 完全随机分配大小，每次渲染时随机选择一种尺寸
+  const sizes = ['large', 'medium', 'small']
+  const randomIndex = Math.floor(Math.random() * sizes.length)
+  return sizes[randomIndex]
 }
 
-// 组件挂载后启动动画
+// 获取随机的呼吸动画持续时间
+const getBreathingDuration = (index: number) => {
+  // 基础持续时间在3-7秒之间，根据索引变化以确保不同频率
+  const baseDuration = 3 + (index % 5) * 0.8
+  // 添加一点随机性，使每个卡片的呼吸频率更加不同
+  return baseDuration + Math.random() * 1.2
+}
+
+// 组件挂载后确保动画始终运行
 onMounted(() => {
-  setTimeout(() => {
-    isAnimating.value = false
-  }, 1000)
+  // 保持isAnimating为true，确保动画一直运行
+  isAnimating.value = true
 })
 </script>
 
@@ -184,6 +196,7 @@ onMounted(() => {
     padding: 2rem 0 0 0;
     text-align: center;
     z-index: 2;
+    transform: translateY(30%);
 
     .title {
       font-size: 36px;
@@ -191,6 +204,17 @@ onMounted(() => {
       color: #333;
       margin-bottom: 15px;
     }
+  }
+
+  .bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('@/assets/customer/logo-wall-bg.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: 0;
   }
 
   .logo-box {
@@ -249,6 +273,52 @@ onMounted(() => {
     }
   }
 
+  @keyframes breathing {
+    0% {
+      transform: translate(-50%, calc(-50% - 5px));
+      background-color: rgba(255, 255, 255, 0.35);
+      box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.08),
+        0 4px 8px rgba(0, 0, 0, 0.06),
+        inset 0 -2px 5px rgba(255, 255, 255, 0.8),
+        inset 0 2px 2px rgba(255, 255, 255, 0.9);
+    }
+    50% {
+      transform: translate(-50%, calc(-50% + 5px));
+      background-color: rgba(255, 255, 255, 0.55);
+      box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.1),
+        0 6px 10px rgba(0, 0, 0, 0.08),
+        inset 0 -2px 5px rgba(255, 255, 255, 0.8),
+        inset 0 2px 2px rgba(255, 255, 255, 0.9);
+    }
+    100% {
+      transform: translate(-50%, calc(-50% - 5px));
+      background-color: rgba(255, 255, 255, 0.35);
+      box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.08),
+        0 4px 8px rgba(0, 0, 0, 0.06),
+        inset 0 -2px 5px rgba(255, 255, 255, 0.8),
+        inset 0 2px 2px rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  /* 定义一个简单的呼吸动画 */
+  @keyframes logoBreathing {
+    0% {
+      transform: translateY(-5px);
+      background-color: rgba(255, 255, 255, 0.35);
+    }
+    50% {
+      transform: translateY(5px);
+      background-color: rgba(255, 255, 255, 0.55);
+    }
+    100% {
+      transform: translateY(-5px);
+      background-color: rgba(255, 255, 255, 0.35);
+    }
+  }
+
   .partner-wall {
     position: absolute;
     top: 140px;
@@ -268,14 +338,40 @@ onMounted(() => {
 
     .logo-container {
       position: absolute;
-      background: #fff;
+      // background: linear-gradient(145deg, #ffffff, #f5f5f5);
       border-radius: 50%;  // 确保是圆形
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      // box-shadow:
+      //   0 8px 16px rgba(0, 0, 0, 0.08),
+      //   0 4px 8px rgba(0, 0, 0, 0.06),
+      //   inset 0 -2px 5px rgba(255, 255, 255, 0.8),
+      //   inset 0 2px 2px rgba(255, 255, 255, 0.9);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s ease;
       padding: 10px;  // 减少内边距以显示更多内容
+      transform-style: preserve-3d;
+      perspective: 800px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.35);
+      // 添加默认的呼吸动画，使用新定义的breathingEffect动画
+      animation: breathingEffect 4s infinite ease-in-out;
+      // 添加will-change属性来优化动画性能
+      will-change: transform, background-color;
+      transition: transform 0.3s ease-in-out;
+
+      // 添加白色半透明覆盖层，增强立体感
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.1) 100%);
+        border-radius: 50%;
+        z-index: 1;
+        pointer-events: none;
+      }
 
       &.size-small {
         width: 80px;
@@ -293,19 +389,27 @@ onMounted(() => {
       }
 
       &:hover {
-        transform: scale(1.05) !important;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-        z-index: 10;
+        transform: scale(1.2) !important;
+        // 移除缩放效果
+        // box-shadow:
+        //   0 12px 24px rgba(0, 0, 0, 0.12),
+        //   0 8px 12px rgba(0, 0, 0, 0.08),
+        //   inset 0 -2px 5px rgba(255, 255, 255, 0.8),
+        //   inset 0 2px 2px rgba(255, 255, 255, 0.9);
+        z-index: 1;
       }
 
       ::v-deep(img) {
         width: 90%;  // 增加图片大小比例
         height: 90%;
         object-fit: contain;
+        position: relative;
+        z-index: 2;
       }
     }
   }
 }
+
 
 @media (max-width: 1024px) {
   .case-showcase {
