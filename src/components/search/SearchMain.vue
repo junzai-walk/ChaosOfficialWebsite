@@ -133,10 +133,11 @@ onBeforeUnmount(() => {
   width: 80%;
   max-width: 800px;
   text-align: center;
-  background-color: #fff;
+  background-color: #ffffff9c;
   border-radius: 8px;
   padding: 40px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateY(-110px);
 }
 
 .title {
