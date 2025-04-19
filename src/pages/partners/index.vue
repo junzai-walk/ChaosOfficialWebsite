@@ -229,12 +229,12 @@ onBeforeUnmount(() => {
   align-items: center;
 
   .content {
-    max-width: 610px;
     color: #000000;
 
     .main-title {
-      font-size: 36px;
+      font-size: 48px;
       font-weight: 700;
+      color: #fff;
     }
 
     .sub-title {

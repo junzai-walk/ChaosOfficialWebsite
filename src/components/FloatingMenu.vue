@@ -3,10 +3,10 @@
     <div class="menu-item top" @click="handleScrollToTop">
       <img src="@/assets/fixed/Group_5.png" alt="Top" class="menu-icon">
     </div>
-    <div class="menu-item service" @mouseenter="showServiceTooltip = true" @mouseleave="showServiceTooltip = false">
+    <!-- <div class="menu-item service" @mouseenter="showServiceTooltip = true" @mouseleave="showServiceTooltip = false">
       <img src="@/assets/fixed/Group_6.png" alt="Service" class="menu-icon">
       <div class="tooltip" v-show="showServiceTooltip">在线客服</div>
-    </div>
+    </div> -->
     <div class="menu-item phone" @mouseenter="showPhoneTooltip = true" @mouseleave="showPhoneTooltip = false">
       <img src="@/assets/fixed/Group_7.png" alt="Phone" class="menu-icon">
       <div class="tooltip" v-show="showPhoneTooltip">400-8375-7867</div>
@@ -49,7 +49,7 @@ const handleScrollToTop = () => {
 .floating-menu {
   position: fixed;
   right: 1.25rem;
-  bottom: 6.25rem;
+  bottom: 23.25rem;
   z-index: 99;
   display: flex;
   flex-direction: column;

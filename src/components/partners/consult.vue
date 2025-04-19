@@ -29,7 +29,7 @@
             </el-form>
           </div>
         </div>
-        <span style="font-size: 0.75rem;">联系电话：18652002566</span>
+        <span style="font-size: 1rem;">联系电话：18652002566</span>
       </div>
     </div>
     <!-- 添加底部填充区域 -->

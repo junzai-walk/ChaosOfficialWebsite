@@ -114,20 +114,20 @@ html {
   justify-content: center;
   .main-title{
     color: #fff;
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
   }
   .sub-title{
     color: #fff;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 700;
     margin-bottom: 0.5rem;
   }
 }
 .partner-container {
   position: absolute;
-  top: 50%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -135,7 +135,7 @@ html {
   display: flex;
   flex-direction: column;
   gap: 1.875rem;
-  max-width: 75rem; // 1200px
+  max-width: 85rem; // 1200px
   .main-title{
     width: 100%;
     font-size: 32px;
@@ -197,8 +197,8 @@ html {
     align-items: center;
     justify-content: space-around;
     .card-icon {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       background-color: #E2EEFE;
       border-radius: 50%;
       display: flex;
@@ -213,6 +213,7 @@ html {
     }
     .card-title{
       font-weight: 700;
+      font-size: 24px;
     }
     .card-desc{
       display: flex;

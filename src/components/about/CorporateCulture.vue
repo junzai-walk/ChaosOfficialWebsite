@@ -43,8 +43,8 @@ const statisticCard = [
 ]
 const cultureCard = [
   { imgUrl: icon1, title: '愿景', desc: '让工业更智能' },
-  { imgUrl: icon2, title: '使命', desc: '客户需求驱动，用数据技术为客户创造最大价值，不断提升中国工业智能化水平。' },
-  { imgUrl: icon3, title: '价值观', desc: '客户价值、结果导向、自我批判、工匠精神、团队合作、诚实守信。' },
+  { imgUrl: icon2, title: '使命', desc: '客户需求驱动，用数据技术为客户创造最大价值，不断提升中国工业智能化水平' },
+  { imgUrl: icon3, title: '价值观', desc: '客户价值、结果导向、自我批判、工匠精神、团队合作、诚实守信' },
 ]
 
 </script>
@@ -60,7 +60,7 @@ const cultureCard = [
   flex-direction: column;
   align-items: flex-start;
   padding: 3rem 18rem 0 18rem;
-  background-image: url('@/assets/about/bg.png');
+  background-image: url('@/assets/home/bg_sub.png');
   /* 替换为实际背景图片 */
   background-size: cover;
   background-position: center;
@@ -69,7 +69,7 @@ const cultureCard = [
   .main-title,
   .second-title {
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 2.2rem;
   }
 
   /* 数据统计样式 */
@@ -78,7 +78,7 @@ const cultureCard = [
     width: 100%;
     height: 5rem;
     flex-wrap: wrap;
-    margin-top: 1.25rem;
+    margin-top: 2rem;
     margin-bottom: 1.25rem;
     gap: 10rem;
 
@@ -103,7 +103,7 @@ const cultureCard = [
       .plus {
         font-size: 20px;
         position: relative;
-        top: -10px;
+        top: 0px;
       }
 
       .stat-desc {
@@ -134,14 +134,18 @@ const cultureCard = [
   }
 
   .company-desc {
-    color: #aaa;
+    color: #444444;
     text-align: left;
     line-height: 1.3;
-    font-size: 0.75rem;
+    font-size: 1rem;
+
+    p{
+      line-height: 1.5;
+    }
   }
 
   .second-title {
-    margin-top: 2rem;
+    margin-top: 5rem;
     margin-bottom: 2rem;
   }
 
@@ -182,12 +186,13 @@ const cultureCard = [
 
       .card-title {
         font-weight: 700;
+        font-size: 1.75rem;    
       }
 
       .card-desc {
         display: flex;
-        text-align: left;
-        font-size: 0.75rem;
+        text-align: center;
+        font-size: 0.9375rem;
         color: #666;
         line-height: 1.3;
       }

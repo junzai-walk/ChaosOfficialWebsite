@@ -10,6 +10,7 @@
         @mouseleave="handleMouseLeave"
         :style="{ backgroundImage: `url(${card.background})` }"
       >
+        <div class="card-overlay"></div>
         <div class="text">
           <div class="main-title">{{ card.mainTitle }}</div>
           <div class="sub-title">{{ card.subTitle }}</div>
@@ -55,15 +56,15 @@ const handleMouseLeave = () => {
 // 根字体大小设置，用于rem计算
 html {
   font-size: 16px;
-  
+
   @media (min-width: 1920px) {
     font-size: calc(16px * (1920 / 1920));
   }
-  
+
   @media (max-width: 1440px) {
     font-size: calc(16px * (1440 / 1920));
   }
-  
+
   @media (max-width: 1280px) {
     font-size: calc(16px * (1280 / 1920));
   }
@@ -103,16 +104,38 @@ html {
       border-radius: 25px;
       background-size: cover;
       background-position: center;
-      transition: flex 0.3s ease;
+      transition: flex 0.3s ease, box-shadow 0.3s ease;
       position: relative;
       overflow: hidden;
       display: grid; /* 启用 Grid 布局 */
       place-items: center;
       text-align: left;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      // border: 1px solid rgba(255, 255, 255, 0.2);
+
+      .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        // background: rgba(255, 255, 255, 0.85);
+        z-index: 1;
+        transition: background 0.3s ease;
+      }
+
+      &:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      }
     }
 
     .support-card.active {
       flex: 2;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+      .card-overlay {
+        background: rgba(255, 255, 255, 0.3);
+      }
     }
 
     .support-card .text {
@@ -120,8 +143,9 @@ html {
       padding: 0 3rem;
       color: #000;
       opacity: 0;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease, transform 0.3s ease;
       z-index: 2;
+      transform: translateY(10px);
       .main-title{
         width: 100%;
         text-align: center;
@@ -135,19 +159,21 @@ html {
         opacity: 1  !important;
       }
     }
-    
+
     .support-card.active .text {
       opacity: 1;
+      transform: translateY(0);
     }
 
     .support-card:hover {
-      flex: 2;     
+      flex: 2;
     }
     .support-card:hover.text {
       opacity: 0.1;
     }
     .support-card:hover .text {
       opacity: 1;
+      transform: translateY(0);
     }
   }
 }
@@ -180,11 +206,11 @@ html {
     max-width: 18.75rem; // 300px
     margin-bottom: 1.25rem; // 20px
   }
-  
+
   .partner-page {
     flex-wrap: wrap;
   }
-  
+
   .partner-card {
     width: calc(50% - 0.625rem); // 10px
   }
@@ -199,7 +225,7 @@ html {
 /* 底部背景补充 */
 .background-footer {
   background-color: #f5f7fa;
-  height: 5rem; 
+  height: 5rem;
   width: 100%;
 }
 </style>

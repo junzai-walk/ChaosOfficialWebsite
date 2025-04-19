@@ -233,12 +233,13 @@ onBeforeUnmount(() => {
     color: #000000;
 
     .main-title {
-      font-size: 36px;
+      font-size: 48px;
       font-weight: 700;
     }
 
     .sub-title {
-      margin-top: 15px;
+      font-size: 24px;
+      margin-top: 30px;
     }
   }
 }

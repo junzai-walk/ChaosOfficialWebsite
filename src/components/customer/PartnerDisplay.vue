@@ -1,7 +1,10 @@
 <template>
   <div class="case-showcase">
     <div class="showcase-content">
-      <h2 class="title">以数据算法携手全球200+工业领跑者驱动每一次精准决策</h2>
+      <h2 class="title">以数据算法携手全球200+工业领跑者</h2>
+      <br />
+      <br />
+      <h2 class="title">驱动每一次精准决策</h2>
     </div>
     <!-- <div class="logo-box">
       <div class="image-grid">
@@ -11,9 +14,22 @@
       </div>
     </div> -->
     <div class="partner-wall">
-      <div v-for="(logoRow, rowIndex) in partnerLogosAll" :key="`row-${rowIndex}`" class="partner-row">
-        <div v-for="(logo, index) in logoRow" :key="`logo-${rowIndex}-${index}`" class="logo-container">
-          <logo-reflect :src="logo" :alt="`partner-${rowIndex}-${index}`" />
+      <div class="left-side">
+        <div v-for="(logo, index) in leftLogos"
+          :key="`left-${index}`"
+          class="logo-container"
+          :class="[`size-${getRandomSize(index)}`]"
+          :style="getRandomLeftPosition(index)">
+          <logo-reflect :src="logo" :alt="`partner-left-${index}`" />
+        </div>
+      </div>
+      <div class="right-side">
+        <div v-for="(logo, index) in rightLogos"
+          :key="`right-${index}`"
+          class="logo-container"
+          :class="[`size-${getRandomSize(index)}`]"
+          :style="getRandomRightPosition(index)">
+          <logo-reflect :src="logo" :alt="`partner-right-${index}`" />
         </div>
       </div>
     </div>
@@ -21,16 +37,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed,provide } from 'vue'
-
+import { ref, computed, provide, onMounted } from 'vue'
 import LogoReflect from '../LogoReflect.vue' // 自定义立体效果组件
+
 // 添加动画状态控制
 const isAnimating = ref(true)
 // 提供动画状态给子组件
 provide('isAnimating', isAnimating)
 
-// 合作伙伴logo数据 - 修正图片路径
-const partnerLogos1 = ref([
+// 保留所有logo数据
+const allLogos = ref([
   new URL('@/assets/logo-wall/Group 422.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 423.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 424.png', import.meta.url).href,
@@ -38,9 +54,6 @@ const partnerLogos1 = ref([
   new URL('@/assets/logo-wall/Group 426.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 427.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 428.png', import.meta.url).href,
-])
-
-const partnerLogos2 = ref([
   new URL('@/assets/logo-wall/Group 429.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 430.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 431.png', import.meta.url).href,
@@ -48,9 +61,6 @@ const partnerLogos2 = ref([
   new URL('@/assets/logo-wall/Group 433.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 434.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 435.png', import.meta.url).href,
-])
-
-const partnerLogos3 = ref([
   new URL('@/assets/logo-wall/Group 437.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 438.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 439.png', import.meta.url).href,
@@ -58,58 +68,104 @@ const partnerLogos3 = ref([
   new URL('@/assets/logo-wall/Group 441.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 442.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 443.png', import.meta.url).href,
-])
-
-const partnerLogos4 = ref([
   new URL('@/assets/logo-wall/Group 444.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 445.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 446.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 447.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 448.png', import.meta.url).href,
   new URL('@/assets/logo-wall/Group 449.png', import.meta.url).href,
-  new URL('@/assets/logo-wall/Group 450.png', import.meta.url).href, // 修正为Group 450.png
+  new URL('@/assets/logo-wall/Group 450.png', import.meta.url).href,
 ])
 
-// 汇总所有logo行
-const partnerLogosAll = computed(() => [
-  partnerLogos1.value,
-  partnerLogos2.value,
-  partnerLogos3.value,
-  partnerLogos4.value
-])
+// 将logo分为左右两列
+const leftLogos = computed(() => {
+  const mid = Math.ceil(allLogos.value.length / 2)
+  return allLogos.value.slice(0, mid)
+})
 
-// 合作伙伴logo数据 - 修正图片路径
-const logos = [
-  './src/assets/logos/Group 422.png',
-  './src/assets/logos/Group 423.png',
-  './src/assets/logos/Group 424.png',
-  './src/assets/logos/Group 425.png',
-  './src/assets/logos/Group 426.png',
-  './src/assets/logos/Group 427.png',
-  './src/assets/logos/Group 428.png',
-  './src/assets/logos/Group 429.png',
-  './src/assets/logos/Group 430.png',
-  './src/assets/logos/Group 431.png',
-  './src/assets/logos/Group 432.png',
-  './src/assets/logos/Group 433.png',
-  './src/assets/logos/Group 434.png',
-  './src/assets/logos/Group 435.png',
-  './src/assets/logos/Group 437.png',
-  './src/assets/logos/Group 438.png',
-  './src/assets/logos/Group 439.png',
-  './src/assets/logos/Group 440.png',
-  './src/assets/logos/Group 441.png',
-  './src/assets/logos/Group 442.png',
-  './src/assets/logos/Group 443.png',
-  './src/assets/logos/Group 444.png',
-  './src/assets/logos/Group 445.png',
-  './src/assets/logos/Group 446.png',
-  './src/assets/logos/Group 447.png',
-  './src/assets/logos/Group 448.png',
-  './src/assets/logos/Group 449.png',
-  './src/assets/logos/Group 450.png'
-]
+const rightLogos = computed(() => {
+  const mid = Math.ceil(allLogos.value.length / 2)
+  return allLogos.value.slice(mid)
+})
 
+// 修改位置计算逻辑
+const getFixedPosition = (index: number, isLeft: boolean) => {
+  // 定义更分散的位置分布模式 - 确保不重叠
+  // 为每个图片创建唯一的位置
+  const positions = isLeft ? [
+    // 第一列
+    { x: 10, y: 10 },    // 左上角
+    { x: 10, y: 30 },    // 左上
+    { x: 10, y: 50 },    // 左中
+    { x: 10, y: 70 },    // 左下
+    { x: 10, y: 90 },    // 左下角
+    // 第二列
+    { x: 25, y: 20 },    // 左上中
+    { x: 25, y: 40 },    // 左中上
+    { x: 25, y: 60 },    // 左中下
+    { x: 25, y: 80 },    // 左下中
+    // 第三列
+    { x: 40, y: 15 },    // 左上偏右
+    { x: 40, y: 35 },    // 左中上偏右
+    { x: 40, y: 55 },    // 左中偏右
+    { x: 40, y: 75 },    // 左中下偏右
+    { x: 40, y: 95 },    // 左下偏右
+  ] : [
+    // 第一列
+    { x: 60, y: 10 },    // 右上角
+    { x: 60, y: 30 },    // 右上
+    { x: 60, y: 50 },    // 右中
+    { x: 60, y: 70 },    // 右下
+    { x: 60, y: 90 },    // 右下角
+    // 第二列
+    { x: 75, y: 20 },    // 右上中
+    { x: 75, y: 40 },    // 右中上
+    { x: 75, y: 60 },    // 右中下
+    { x: 75, y: 80 },    // 右下中
+    // 第三列
+    { x: 90, y: 15 },    // 右上偏右
+    { x: 90, y: 35 },    // 右中上偏右
+    { x: 90, y: 55 },    // 右中偏右
+    { x: 90, y: 75 },    // 右中下偏右
+    { x: 90, y: 95 },    // 右下偏右
+  ]
+
+  const position = positions[index % positions.length]
+
+  return {
+    position: 'absolute' as const,
+    left: `${position.x}%`,
+    top: `${position.y}%`,
+    transform: 'translate(-50%, -50%)',
+    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+  }
+}
+
+// 左侧位置
+const getRandomLeftPosition = (index: number) => {
+  return getFixedPosition(index, true)
+}
+
+// 右侧位置
+const getRandomRightPosition = (index: number) => {
+  return getFixedPosition(index, false)
+}
+
+// 修改大小分配逻辑
+const getRandomSize = (index: number) => {
+  // 均匀分配大小，确保不会因为大小不同而重叠
+  // 大部分使用小尺寸，减少重叠可能
+  if (index % 5 === 0) return 'large'    // 20%的logo使用大尺寸
+  if (index % 5 === 1) return 'medium'   // 20%的logo使用中尺寸
+  return 'small'                        // 60%的logo使用小尺寸
+}
+
+// 组件挂载后启动动画
+onMounted(() => {
+  setTimeout(() => {
+    isAnimating.value = false
+  }, 1000)
+})
 </script>
 
 <style lang="less" scoped>
@@ -117,25 +173,21 @@ const logos = [
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  height: 100vh;       
+  height: 100vh;
   background-color: #f7f9fc;
   padding-top: 4.25rem;
+  overflow: hidden;
 
   .showcase-content {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 20rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
+    position: relative;
+    width: 100%;
+    padding: 2rem 0 0 0;
+    text-align: center;
+    z-index: 2;
 
     .title {
       font-size: 36px;
       font-weight: bold;
-      text-align: center;
       color: #333;
       margin-bottom: 15px;
     }
@@ -169,7 +221,7 @@ const logos = [
   }
 
   .image-item {
-    height: 55px; 
+    height: 55px;
     width: 25rem;
     aspect-ratio: 1;
     overflow: hidden;
@@ -196,63 +248,119 @@ const logos = [
       opacity: 0;
     }
   }
-}
 
-
-.partner-wall {
-  width: 100%;
-  height: 100vh;
-  // padding: 30px 0 40px 20px;
-  perspective: 2000px;
-  transform-style: preserve-3d;
-  position: absolute;
-  top: 450px;
-  // overflow: hidden;
-
-  .partner-row {
+  .partner-wall {
+    position: absolute;
+    top: 140px;
+    width: 100%;
+    height: calc(100vh - 180px);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    margin-bottom: 30px;
+    justify-content: space-between;
 
-    &:last-child {
-      margin-bottom: 0;
+    .left-side,
+    .right-side {
+      position: relative;
+      width: 50%;  // 增加两侧区域宽度
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .logo-container {
-      perspective: 800px;
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;  // 确保是圆形
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
       display: flex;
-      justify-content: center;
       align-items: center;
-      transition: all 0.5s ease-out;
+      justify-content: center;
+      transition: all 0.3s ease;
+      padding: 10px;  // 减少内边距以显示更多内容
+
+      &.size-small {
+        width: 80px;
+        height: 80px;
+      }
+
+      &.size-medium {
+        width: 100px;
+        height: 100px;
+      }
+
+      &.size-large {
+        width: 120px;
+        height: 120px;
+      }
+
+      &:hover {
+        transform: scale(1.05) !important;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        z-index: 10;
+      }
+
+      ::v-deep(img) {
+        width: 90%;  // 增加图片大小比例
+        height: 90%;
+        object-fit: contain;
+      }
     }
   }
 }
 
-/* 添加动画类 */
-.partner-wall {
-  .partner-row {
-    transition: transform 5s ease-out, opacity 5s ease-out;
+@media (max-width: 1024px) {
+  .case-showcase {
+    .partner-wall {
+      padding: 0 10%;
 
-    &:nth-child(1) {
-      transform: v-bind("isAnimating ? 'translateZ(800px) scale(2.0)' : 'translateZ(0) scale(1)'");
-      opacity: v-bind("isAnimating ? '0.2' : '1'");
+      .logo-container {
+        &.size-small {
+          width: 60px;
+          height: 60px;
+        }
+
+        &.size-medium {
+          width: 65px;
+          height: 65px;
+        }
+
+        &.size-large {
+          width: 70px;
+          height: 70px;
+        }
+      }
     }
+  }
+}
 
-    &:nth-child(2) {
-      transform: v-bind("isAnimating ? 'translateZ(600px) scale(1.8)' : 'translateZ(0) scale(1)'");
-      opacity: v-bind("isAnimating ? '0.4' : '1'");
-    }
+@media (max-width: 768px) {
+  .case-showcase {
+    .partner-wall {
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
 
-    &:nth-child(3) {
-      transform: v-bind("isAnimating ? 'translateZ(400px) scale(1.6)' : 'translateZ(0) scale(1)'");
-      opacity: v-bind("isAnimating ? '0.6' : '1'");
-    }
+      .left-side,
+      .right-side {
+        width: 100%;
+        height: 45%;
+      }
 
-    &:nth-child(4) {
-      transform: v-bind("isAnimating ? 'translateZ(200px) scale(1.4)' : 'translateZ(0) scale(1)'");
-      opacity: v-bind("isAnimating ? '0.8' : '1'");
+      .logo-container {
+        &.size-small {
+          width: 50px;
+          height: 50px;
+        }
+
+        &.size-medium {
+          width: 55px;
+          height: 55px;
+        }
+
+        &.size-large {
+          width: 60px;
+          height: 60px;
+        }
+      }
     }
   }
 }

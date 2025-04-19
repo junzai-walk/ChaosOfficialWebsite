@@ -122,7 +122,11 @@ onBeforeUnmount(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5f7fa;
+  /* background-color: #f5f7fa; */
+  background-image: url('@/assets/search/search_bg.jpg');
+  background-size: cover;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .search-container {
