@@ -60,35 +60,44 @@ const updateActiveStep = (newStep: number) => {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
+/* 设置基准根元素字体大小 */
+:root {
+  font-size: 16px;
+  
+  @media (max-width: 1366px) {
+    font-size: 14px;
+  }
+}
+
 .product-description {
   width: 100%;
   min-height: 100vh;
   display: flex;
   background-color: white;
-  padding: 336px 187px 0 295px; /* 顶部对齐 336px，左侧对齐 187px */
+  padding: 21rem 11.6875rem 0 18.4375rem;
   box-sizing: border-box;
-  gap: 51px; /* 左侧导航与内容区域的间距 */
+  gap: 3.1875rem;
 }
 
 .left-side {
-  width: 83px;
-  height: 192px;
-  flex-shrink: 0; /* 防止宽度被压缩 */
+  width: 5.1875rem;
+  height: 12rem;
+  flex-shrink: 0;
 }
 
 .content {
   flex: 1;
   display: flex;
-  gap: 221px; /* description 与 video-container 的间距 */
+  gap: 13.8125rem;
 }
 
 .description {
-    text-indent: 2em;
-    font-size: 16px;
-    line-height: 1.8;
-    color: #333;
-    text-align: left;
+  text-indent: 2em;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #333;
+  text-align: left;
 }
 
 .side-nav-container {
@@ -99,36 +108,36 @@ const updateActiveStep = (newStep: number) => {
 }
 
 .description p {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.8;
   color: #333;
 }
 
 .video-container {
-  width: 636px;
-  height: 355px;
-  flex-shrink: 0; /* 防止尺寸被压缩 */
+  width: 39.75rem;
+  height: 22.1875rem;
+  flex-shrink: 0;
   position: relative;
-  transform: translateY(-108px);
+  transform: translateY(-6.75rem);
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: visible; /* 允许内容溢出容器 */
+  overflow: visible;
 }
 
 .video-player, .image-player {
   max-width: 100%;
   max-height: 100%;
-  border-radius: 8px;
-  object-fit: contain; /* 确保视频和图片保持原始比例 */
-  width: auto; /* 让宽度自适应 */
-  height: auto; /* 让高度自适应 */
+  border-radius: 0.5rem;
+  object-fit: contain;
+  width: auto;
+  height: auto;
 }
 
 .play-button {
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 5rem;
+  height: 5rem;
   background-color: rgba(24, 144, 255, 0.9);
   border-radius: 50%;
   display: flex;
@@ -150,15 +159,15 @@ const updateActiveStep = (newStep: number) => {
 .play-button::before {
   content: '点击播放视频';
   position: absolute;
-  bottom: -30px;
+  bottom: -1.875rem;
   white-space: nowrap;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 14px;
+  padding: 0.3125rem 0.625rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(0.625rem);
   transition: all 0.3s ease;
 }
 
@@ -171,33 +180,132 @@ const updateActiveStep = (newStep: number) => {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 15px 0 15px 25px;
+  border-width: 0.9375rem 0 0.9375rem 1.5625rem;
   border-color: transparent transparent transparent white;
-  margin-left: 5px;
+  margin-left: 0.3125rem;
 }
 
-@media (max-width: 1920px) {
+/* 媒体查询 - 适配不同分辨率 */
+@media (min-width: 1920px) {
   .product-description {
-    padding: calc(336px * 100vw / 1920) calc(187px * 100vw / 1920) 0;
-    gap: calc(51px * 100vw / 1920);
+    padding: 21rem 11.6875rem 0 18.4375rem;
+    gap: 3.1875rem;
   }
   
   .content {
-    gap: calc(221px * 100vw / 1920);
-  }
-  
-  .left-side {
-    width: calc(83px * 100vw / 1920);
-    height: calc(192px * 100vw / 1920);
-  }
-  
-  .description {
-    width: calc(439px * 100vw / 1920);
+    gap: 13.8125rem;
   }
   
   .video-container {
-    width: calc(636px * 100vw / 1920);
-    height: calc(355px * 100vw / 1920);
+    width: 39.75rem;
+    height: 22.1875rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  .product-description {
+    padding: 15rem 5rem 0 10rem;
+    gap: 2.5rem;
+  }
+  
+  .content {
+    gap: 8rem;
+  }
+  
+  .video-container {
+    width: 30rem;
+    height: 16.875rem;
+    transform: translateY(-1rem);
+  }
+  
+  .description {
+    margin-left: 13rem;
+  }
+  
+  .description p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .product-description {
+    padding: 12rem 3rem 0 6rem;
+    gap: 2rem;
+  }
+  
+  .content {
+    gap: 5rem;
+  }
+  
+  .video-container {
+    width: 25rem;
+    height: 14.0625rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .product-description {
+    flex-direction: column;
+    padding: 8rem 2rem 4rem;
+    align-items: center;
+  }
+  
+  .side-nav-container {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  
+  .content {
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+  }
+  
+  .video-container {
+    width: 100%;
+    max-width: 40rem;
+    height: auto;
+    transform: translateY(0);
+    margin-top: 3rem;
+  }
+  
+  .description {
+    width: 100%;
+    max-width: 40rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-description {
+    padding: 6rem 1.5rem 3rem;
+  }
+  
+  .description {
+    font-size: 0.875rem;
+  }
+  
+  .description p {
+    font-size: 0.875rem;
+  }
+  
+  .play-button {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-description {
+    padding: 5rem 1rem 2rem;
+  }
+  
+  .description {
+    font-size: 0.8125rem;
+  }
+  
+  .description p {
+    font-size: 0.8125rem;
   }
 }
 </style> 

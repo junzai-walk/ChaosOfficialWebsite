@@ -439,5 +439,9 @@ export default {
       margin-bottom: 1rem;
     }
   }
+
+  :deep(.el-input__inner){
+    font-size: 0.875rem;
+  }
 }
 </style>

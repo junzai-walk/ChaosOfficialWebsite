@@ -45,7 +45,16 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+/* 设置基准根元素字体大小 */
+:root {
+  font-size: 16px;
+  
+  @media (max-width: 1366px) {
+    font-size: 14px;
+  }
+}
+
 .product-hero {
   width: 100%;
   height: 100vh;
@@ -53,7 +62,7 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
   background-position: center;
   display: flex;
   align-items: center;
-  background-color: #f0f8ff; /* 浅蓝色背景，如果背景图加载失败 */
+  background-color: #f0f8ff;
   position: relative;
 }
 
@@ -64,7 +73,6 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
   left: 0;
   width: 100%;
   height: 100%;
-  /* background-color: rgba(255, 255, 255, 0.233); */
   z-index: 1;
 }
 
@@ -77,11 +85,11 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 
 .title {
   position: absolute;
-  top: 309px;
+  top: 19.3125rem;
   left: 50%;
   transform: translateX(-50%);
-  height: 84px;
-  font-size: 60px;
+  height: 5.25rem;
+  font-size: 3.75rem;
   font-weight: 500;
   color: #333;
   white-space: nowrap;
@@ -89,16 +97,16 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 
 .experience-btn {
   position: absolute;
-  top: 494px;
-  left: 860px;
-  width: 200px;
-  height: 56px;
+  top: 30.875rem;
+  left: 53.75rem;
+  width: 12.5rem;
+  height: 3.5rem;
   background-color: rgba(0, 114, 255, 1);
   color: white;
   border: none;
   padding: 0.75rem 2rem;
   border-radius: 2rem;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 400;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -108,19 +116,86 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
   background-color: #0066cc;
 }
 
-/* 响应式设计 */
+/* 媒体查询 - 适配不同分辨率 */
+@media (min-width: 1920px) {
+  .title {
+    top: 19.3125rem;
+    font-size: 3.75rem;
+  }
+  
+  .experience-btn {
+    top: 30.875rem;
+    left: 53.75rem;
+    width: 12.5rem;
+    height: 3.5rem;
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  .title {
+    top: 16rem;
+    font-size: 3rem;
+    height: 4.5rem;
+  }
+  
+  .experience-btn {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10rem;
+    height: 3rem;
+    font-size: 1.125rem;
+    padding: 0.6rem 1.75rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .title {
+    top: 12rem;
+    font-size: 2.5rem;
+  }
+  
+  .experience-btn {
+    top: 20rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10rem;
+  }
+}
+
 @media (max-width: 768px) {
   .title {
     font-size: 2rem;
     position: relative;
     top: 30%;
-    left: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 90%;
+    white-space: normal;
   }
   
   .experience-btn {
     position: relative;
     top: 40%;
-    left: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 15rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 1.75rem;
+    top: 25%;
+  }
+  
+  .experience-btn {
+    top: 35%;
+    height: 2.75rem;
+    font-size: 1rem;
   }
 }
 </style> 

@@ -51,17 +51,24 @@ const updateActiveStep = (newStep: number) => {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
+/* 设置基准根元素字体大小 */
+:root {
+  font-size: 16px;
+  
+  @media (max-width: 1366px) {
+    font-size: 14px;
+  }
+}
+
 .product-features {
   width: 100%;
   min-height: 100vh;
   display: flex;
   background-color: white;
-  padding: 230px 0 0 187px;
-  /* 顶部对齐 336px，左侧对齐 187px */
+  padding: 14.375rem 0 0 11.6875rem;
   box-sizing: border-box;
-  gap: 51px;
-  /* 左侧导航与内容区域的间距 */
+  gap: 3.1875rem;
 }
 
 .side-nav-container {
@@ -73,108 +80,108 @@ const updateActiveStep = (newStep: number) => {
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(3, 416px);
-  grid-template-rows: repeat(2, 220px);
-  gap: 20px;
-  padding-left: 100px;
+  grid-template-columns: repeat(3, 26rem);
+  grid-template-rows: repeat(2, 13.75rem);
+  gap: 1.25rem;
+  padding-left: 6.25rem;
 }
 
 .feature-card {
   background: linear-gradient(145deg, #ffffff, #f9f9f9);
-  border-radius: 16px;
+  border-radius: 1rem;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.02);
-  padding: 24px;
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.06), 0 0.125rem 0.375rem rgba(0, 0, 0, 0.02);
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.8);
   position: relative;
   overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 6px;
-    opacity: 0.6;
-    border-radius: 16px 16px 0 0;
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 10px;
-    right: 10px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
-    border-radius: 50%;
-  }
-  
-  &:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(255, 255, 255, 1);
-    
-    .feature-icon {
-      transform: translateY(-5px);
-      box-shadow: 12px 12px 20px rgba(174, 174, 192, 0.2), -12px -12px 20px hsla(0, 0%, 100%, 0.8);
-    }
-  }
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.375rem;
+  opacity: 0.6;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.feature-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0.625rem;
+  right: 0.625rem;
+  height: 0.0625rem;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
+  border-radius: 50%;
+}
+
+.feature-card:hover {
+  transform: translateY(-0.5rem) scale(1.02);
+  box-shadow: 0 1.25rem 1.875rem rgba(0, 0, 0, 0.1), 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.05);
+  border: 0.0625rem solid rgba(255, 255, 255, 1);
+}
+
+.feature-card:hover .feature-icon {
+  transform: translateY(-0.3125rem);
+  box-shadow: 0.75rem 0.75rem 1.25rem rgba(174, 174, 192, 0.2), -0.75rem -0.75rem 1.25rem hsla(0, 0%, 100%, 0.8);
 }
 
 .feature-icon {
-  width: 50px;
-  height: 50px;
+  width: 3.125rem;
+  height: 3.125rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 16px;
-  box-shadow: 8px 8px 16px rgba(174, 174, 192, 0.18), -8px -8px 16px hsla(0, 0%, 100%, 0.8);
+  margin-bottom: 1rem;
+  box-shadow: 0.5rem 0.5rem 1rem rgba(174, 174, 192, 0.18), -0.5rem -0.5rem 1rem hsla(0, 0%, 100%, 0.8);
   transition: all .4s cubic-bezier(.4, 0, .2, 1);
   position: relative;
   z-index: 1;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    width: 76px;
-    height: 76px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(120, 200, 160, 0.05) 0%, rgba(120, 200, 160, 0) 70%);
-    z-index: -1;
-  }
+}
 
-  img {
-    width: 24px;
-    height: 24px;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-    object-fit: contain;
-  }
+.feature-icon::before {
+  content: '';
+  position: absolute;
+  width: 4.75rem;
+  height: 4.75rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(120, 200, 160, 0.05) 0%, rgba(120, 200, 160, 0) 70%);
+  z-index: -1;
+}
+
+.feature-icon img {
+  width: 1.5rem;
+  height: 1.5rem;
+  filter: drop-shadow(0 0.125rem 0.25rem rgba(0, 0, 0, 0.1));
+  object-fit: contain;
 }
 
 .feature-title {
   font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
   color: #333;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0.0625rem 0.125rem rgba(255, 255, 255, 0.8);
 }
 
 .feature-description {
   font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 0.875rem;
+  line-height: 1.5;
   color: #666;
   text-align: left;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0.0625rem 0.0625rem rgba(255, 255, 255, 0.5);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -182,31 +189,136 @@ const updateActiveStep = (newStep: number) => {
   text-overflow: ellipsis;
 }
 
-@media (max-width: 1920px) {
+/* 媒体查询 - 适配不同分辨率 */
+@media (min-width: 1920px) {
   .product-features {
-    padding: calc(336px * 100vw / 1920) 0 0 calc(187px * 100vw / 1920);
-    gap: calc(51px * 100vw / 1920);
+    padding: 14.375rem 0 0 11.6875rem;
+    gap: 3.1875rem;
   }
 
   .features-grid {
-    grid-template-columns: repeat(3, calc(416px * 100vw / 1920));
-    grid-template-rows: repeat(2, calc(220px * 100vw / 1920));
-    gap: calc(20px * 100vw / 1920);
-    padding-right: calc(187px * 100vw / 1920);
+    grid-template-columns: repeat(3, 26rem);
+    grid-template-rows: repeat(2, 13.75rem);
+    gap: 1.25rem;
   }
 
   .feature-icon {
-    width: calc(50px * 100vw / 1920);
-    height: calc(50px * 100vw / 1920);
+    width: 3.125rem;
+    height: 3.125rem;
   }
 
   .feature-title {
-    font-size: calc(20px * 100vw / 1920);
+    font-size: 1.25rem;
   }
 
   .feature-description {
-    font-size: calc(14px * 100vw / 1920);
-    line-height: calc(24px * 100vw / 1920);
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  .product-features {
+    padding: 10rem 0 0 7rem;
+    gap: 2.5rem;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(3, 25rem);
+    grid-template-rows: repeat(2, 20rem);
+    gap: 1rem;
+    padding-left: 3.75rem;
+    margin-left: 13rem;
+  }
+
+  .feature-card {
+    padding: 3rem 2rem;
+    height: 19rem;
+    box-sizing: border-box;
+  }
+
+  .feature-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-icon img {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .feature-title {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-description {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 1200px) {
+  .product-features {
+    padding: 8rem 3rem 4rem;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 12rem);
+    padding-left: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .product-features {
+    flex-direction: column;
+    padding: 6rem 2rem 4rem;
+    align-items: center;
+  }
+
+  .side-nav-container {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-features {
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+  }
+
+  .feature-card {
+    height: auto;
+    min-height: 10rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-features {
+    padding: 4rem 1rem 2rem;
+  }
+
+  .feature-title {
+    font-size: 1rem;
+  }
+
+  .feature-description {
+    font-size: 0.75rem;
   }
 }
 </style>

@@ -78,15 +78,25 @@ const updateActiveStep = (newStep: number) => {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
+/* 设置基准根元素字体大小 */
+:root {
+  font-size: 16px;
+  
+  @media (max-width: 1366px) {
+    font-size: 14px;
+  }
+}
+
 .product-cases {
   width: 100%;
   min-height: 100vh;
   display: flex;
   background-color: white;
-  padding: 230px 0 0 187px;
+  padding: 14.375rem 0 0 11.6875rem;
   box-sizing: border-box;
-  gap: 51px;
+  gap: 3.1875rem;
+  position: relative;
 }
 
 .side-nav-container {
@@ -99,23 +109,22 @@ const updateActiveStep = (newStep: number) => {
 .cases-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  padding-left: 100px;
+  gap: 1.25rem;
+  padding-left: 6.25rem;
 }
 
 .case-card {
-  width: 310px;
-  height: 260px;
+  width: 19.375rem;
+  height: 16.25rem;
   position: relative;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .case-card:hover {
-  transform: translateY(-5px);
-  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); */
+  transform: translateY(-0.3125rem);
 }
 
 .case-image {
@@ -126,18 +135,18 @@ const updateActiveStep = (newStep: number) => {
 
 .appointment-btn {
   position: absolute;
-  width: 200px;
-  height: 56px;
-  left: 860px;
-  top: 640px;
+  width: 12.5rem;
+  height: 3.5rem;
+  left: 53.75rem;
+  top: 40rem;
   background-color: #2B7FE8;
   color: white;
-  border-radius: 25px;
+  border-radius: 1.5625rem;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 
@@ -145,28 +154,132 @@ const updateActiveStep = (newStep: number) => {
   background-color: #1e6fd4;
 }
 
-@media (max-width: 1920px) {
+/* 媒体查询 - 适配不同分辨率 */
+@media (min-width: 1920px) {
   .product-cases {
-    padding: calc(230px * 100vw / 1920) 0 0 calc(187px * 100vw / 1920);
-    gap: calc(51px * 100vw / 1920);
+    padding: 14.375rem 0 0 11.6875rem;
+    gap: 3.1875rem;
   }
   
   .cases-grid {
-    gap: calc(20px * 100vw / 1920);
-    padding-right: calc(187px * 100vw / 1920);
+    gap: 1.25rem;
+    padding-left: 6.25rem;
   }
 
   .case-card {
-    width: calc(310px * 100vw / 1920);
-    height: calc(260px * 100vw / 1920);
+    width: 19.375rem;
+    height: 16.25rem;
   }
 
   .appointment-btn {
-    width: calc(200px * 100vw / 1920);
-    height: calc(56px * 100vw / 1920);
-    left: calc(860px * 100vw / 1920);
-    top: calc(710px * 100vw / 1920);
-    font-size: calc(16px * 100vw / 1920);
+    width: 12.5rem;
+    height: 3.5rem;
+    left: 53.75rem;
+    top: 40rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  .product-cases {
+    padding: 10rem 0 0 7rem;
+    gap: 2.5rem;
+  }
+  
+  .cases-grid {
+    gap: 1rem;
+    padding-left: 13rem;
+  }
+
+  .case-card {
+    width: 19rem;
+    height: 17rem;
+  }
+
+  .appointment-btn {
+    width: 10rem;
+    height: 3rem;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -70%);
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .product-cases {
+    padding: 8rem 3rem 4rem;
+  }
+  
+  .cases-grid {
+    padding-left: 5rem;
+  }
+  
+  .appointment-btn {
+    position: relative;
+    left: auto;
+    top: auto;
+    margin: 3rem auto;
+  }
+}
+
+@media (max-width: 992px) {
+  .product-cases {
+    flex-direction: column;
+    padding: 6rem 2rem 4rem;
+    align-items: center;
+  }
+  
+  .side-nav-container {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  
+  .cases-grid {
+    padding-left: 0;
+    justify-content: center;
+  }
+  
+  .case-card {
+    width: calc(50% - 0.5rem);
+    height: 12rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-cases {
+    padding: 5rem 1.5rem 3rem;
+  }
+  
+  .cases-grid {
+    gap: 1rem;
+  }
+  
+  .case-card {
+    width: 100%;
+    height: 12rem;
+    max-width: 25rem;
+  }
+  
+  .appointment-btn {
+    width: 80%;
+    max-width: 15rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-cases {
+    padding: 4rem 1rem 2rem;
+  }
+  
+  .case-card {
+    height: 10rem;
+  }
+  
+  .appointment-btn {
+    height: 2.75rem;
+    font-size: 0.875rem;
   }
 }
 </style> 
