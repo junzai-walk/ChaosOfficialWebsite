@@ -151,8 +151,7 @@ import cover1 from '@/assets/home/cover1.jpg'
 import cover2 from '@/assets/home/cover2.jpeg'
 import { useRouter } from 'vue-router'
 import { Phone, Location } from '@element-plus/icons-vue'
-import * as ConsultDialogComponent from '@/components/common/ConsultDialog.vue'
-const ConsultDialog = ConsultDialogComponent
+import ConsultDialog from '@/components/common/ConsultDialog.vue'
 
 const router = useRouter()
 
@@ -311,7 +310,8 @@ const navigateToNews = (sectionIndex: number) => {
 }
 
 .news-content {
-  padding: 0.9375rem; // 15px -> 0.9375rem
+  padding: 0.5rem; // 15px -> 0.9375rem
+  padding-left: 0;
   text-align: left;
 
   .news-content-p {
@@ -562,7 +562,7 @@ const navigateToNews = (sectionIndex: number) => {
   gap: 0.625rem; // 10px -> 0.625rem
 
   &-p{
-    font-size: 16px;
+    font-size: 1rem;  
     color: #fff;
   }
 
@@ -656,17 +656,17 @@ const navigateToNews = (sectionIndex: number) => {
     }
 
     .news-card {
-      width: 600px;
-      height: 300px;
+      width: 37.5rem;
+      height: 18.75rem;
     }
 
     .news-image {
-      width: 600px;
-      height: 280px;
+      width: 37.5rem;
+      height: 18.75rem;
     }
 
     .news-item {
-      width: 600px;
+      width: 37.5rem;
     }
   }
 }

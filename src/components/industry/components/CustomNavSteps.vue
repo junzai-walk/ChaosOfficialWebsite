@@ -86,16 +86,38 @@ onMounted(() => {
     }
   }
 });
+
+// 暴露组件属性和方法
+defineExpose({
+  currentActiveStep,
+  updateActiveStep
+});
+</script>
+
+<script lang="ts">
+// 添加默认导出
+export default {
+  name: 'CustomNavSteps'
+}
 </script>
 
 <style scoped lang="less">
+/* 设置基准根元素字体大小 */
+:root {
+  font-size: 16px;
+  
+  @media (max-width: 1366px) {
+    font-size: 14px;
+  }
+}
+
 .custom-nav-steps {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   position: absolute;
-  top: 336px;
-  left: 187px;
+  top: 21rem; /* 336px -> 21rem */
+  left: 11.6875rem; /* 187px -> 11.6875rem */
   
   .steps-container {
     display: flex;
@@ -107,34 +129,34 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.875rem; // 30px
+    margin-bottom: 1.875rem;
     cursor: pointer;
     position: relative;
-    padding-right: 0.5rem; // 8px
+    padding-right: 0.5rem;
     
     &:last-child {
       margin-bottom: 0;
     }
     
     .step-title {
-      font-size: 1rem; // 16px
+      font-size: 1rem;
       color: #666;
-      line-height: 1.25rem; // 20px
+      line-height: 1.25rem;
       flex: 1;
     }
     
     .step-indicator {
       position: relative;
-      width: 0.75rem; // 12px
-      height: 0.75rem; // 12px
-      margin-left: 0.625rem; // 10px
+      width: 0.75rem;
+      height: 0.75rem;
+      margin-left: 0.625rem;
       
       .step-dot {
         position: absolute;
         top: 0;
         right: 0;
-        width: 0.75rem; // 12px
-        height: 0.75rem; // 12px
+        width: 0.75rem;
+        height: 0.75rem;
         border-radius: 50%;
         background-color: #c0c4cc;
         transition: all 0.3s;
@@ -142,10 +164,10 @@ onMounted(() => {
       
       .step-dot-outer {
         position: absolute;
-        top: -0.25rem; // -4px
-        right: -0.25rem; // -4px
-        width: 1.25rem; // 20px
-        height: 1.25rem; // 20px
+        top: -0.25rem;
+        right: -0.25rem;
+        width: 1.25rem;
+        height: 1.25rem;
         border-radius: 50%;
         opacity: 0;
         transition: all 0.3s;
@@ -153,10 +175,10 @@ onMounted(() => {
       
       .step-line {
         position: absolute;
-        top: 1rem; // 16px
-        right: 0.3125rem; // 5px
-        width: 0.125rem; // 2px
-        height: 1.875rem; // 30px
+        top: 1rem;
+        right: 0.3125rem;
+        width: 0.125rem;
+        height: 1.875rem;
         background-color: #e4e7ed;
       }
     }
@@ -177,6 +199,73 @@ onMounted(() => {
           opacity: 1;
         }
       }
+    }
+  }
+}
+
+/* 媒体查询 - 适配不同分辨率 */
+@media (min-width: 1920px) {
+  .custom-nav-steps {
+    top: 21rem;
+    left: 11.6875rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  .custom-nav-steps {
+    top: 18rem;
+    left: 8rem;
+  }
+  
+  .step-item {
+    margin-bottom: 1.5rem;
+    
+    .step-title {
+      font-size: 0.9rem;
+    }
+    
+    .step-indicator {
+      width: 0.7rem;
+      height: 0.7rem;
+      
+      .step-dot {
+        width: 0.7rem;
+        height: 0.7rem;
+      }
+      
+      .step-dot-outer {
+        width: 1.1rem;
+        height: 1.1rem;
+      }
+      
+      .step-line {
+        height: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-nav-steps {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    margin-bottom: 1.5rem;
+  }
+  
+  .steps-container {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .step-item {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    
+    .step-line {
+      display: none;
     }
   }
 }

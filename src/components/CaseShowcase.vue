@@ -21,8 +21,8 @@
     </div>
     <!-- 合作伙伴logo墙 -->
     <div class="partner-wall" ref="partnerWall">
-      <div v-for="(logoRow, rowIndex) in partnerLogosAll" :key="`row-${rowIndex}`" class="partner-row" :ref="el => { if(el) rowRefs[rowIndex] = el as HTMLElement }">
-        <div v-for="(logo, index) in logoRow" :key="`logo-${rowIndex}-${index}`" class="logo-container" :ref="el => { if(el) logoRefs.push({el: el as HTMLElement, rowIndex, colIndex: index}) }">
+      <div v-for="(logoRow, rowIndex) in partnerLogosAll" :key="`row-${rowIndex}`" class="partner-row" :ref="el => setRowRef(el, rowIndex)">
+        <div v-for="(logo, index) in logoRow" :key="`logo-${rowIndex}-${index}`" class="logo-container" :ref="el => addLogoRef(el, rowIndex, index)">
           <logo-reflect
             :src="logo"
             :alt="`partner-${rowIndex}-${index}`"
@@ -48,9 +48,27 @@ const isAnimating = ref(true)
 provide('isAnimating', isAnimating)
 
 // 创建引用收集数组
-const rowRefs = reactive<HTMLElement[]>([])
-const logoRefs = reactive<{el: HTMLElement, rowIndex: number, colIndex: number}[]>([])
+const rowRefs = reactive<(HTMLElement | null)[]>([])
+const logoRefs = reactive<{el: HTMLElement | null, rowIndex: number, colIndex: number}[]>([])
 const partnerWall = ref<HTMLElement | null>(null)
+
+// 设置行引用的辅助函数
+const setRowRef = (el: any, index: number) => {
+  if (el) {
+    rowRefs[index] = el as HTMLElement;
+  }
+}
+
+// 添加Logo引用的辅助函数
+const addLogoRef = (el: any, rowIndex: number, colIndex: number) => {
+  if (el) {
+    logoRefs.push({
+      el: el as HTMLElement,
+      rowIndex,
+      colIndex
+    });
+  }
+}
 
 // 获取当前路由
 const route = useRoute()
@@ -227,12 +245,14 @@ const handleMouseParallax = (e: MouseEvent) => {
 
   // 对每行应用不同强度的视差
   rowRefs.forEach((row, index) => {
-    const depth = (4 - index) * 5; // 上面的行移动更多
-    gsap.to(row, {
-      x: mouseX * depth,
-      duration: 1,
-      ease: "power1.out"
-    });
+    if (row && row.children) {
+      const depth = (4 - index) * 5; // 上面的行移动更多
+      gsap.to(row, {
+        x: mouseX * depth,
+        duration: 1,
+        ease: "power1.out"
+      });
+    }
   });
 }
 
@@ -307,7 +327,23 @@ onActivated(() => {
 })
 </script>
 
+<script lang="ts">
+// 为组件添加默认导出
+export default {
+  name: 'CaseShowcase'
+}
+</script>
+
 <style lang="less" scoped>
+/* 设置基准根元素字体大小 */
+:root {
+  font-size: 16px;
+  
+  @media (max-width: 1366px) {
+    font-size: 14px;
+  }
+}
+
 .case-showcase {
   width: 100%;
   height: 100vh;
@@ -315,27 +351,57 @@ onActivated(() => {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 40px;
+  padding-top: 2.5rem; /* 40px -> 2.5rem */
   align-items: center;
 
-  @media (max-width: 1920px) {
+  /* 媒体查询 - 适配不同分辨率 */
+  @media (min-width: 1920px) {
     .showcase-content {
-      max-width: 1200px;
+      max-width: 75rem; /* 1200px -> 75rem */
     }
 
     .case-grid {
-      gap: 15px;
+      gap: 1.25rem; /* 20px -> 1.25rem */
 
       .case-item {
-        width: 280px;
-        height: 180px;
+        width: 20.375rem; /* 326px -> 20.375rem */
+        height: 12.5rem; /* 200px -> 12.5rem */
+      }
+    }
+
+    .partner-wall {
+      top: 23.75rem; /* 380px -> 23.75rem */
+      
+      .partner-row {
+        gap: 1.5625rem; /* 25px -> 1.5625rem */
+        margin-bottom: 1.875rem; /* 30px -> 1.875rem */
+      }
+      
+      .logo-container {
+        width: 11.25rem; /* 180px -> 11.25rem */
+        height: 5.625rem; /* 90px -> 5.625rem */
+      }
+    }
+  }
+
+  @media (max-width: 1920px) {
+    .showcase-content {
+      max-width: 75rem; /* 1200px -> 75rem */
+    }
+
+    .case-grid {
+      gap: 0.9375rem; /* 15px -> 0.9375rem */
+
+      .case-item {
+        width: 17.5rem; /* 280px -> 17.5rem */
+        height: 11.25rem; /* 180px -> 11.25rem */
       }
     }
 
     .partner-wall {
       .logo-container {
-        width: 160px;
-        height: 80px;
+        width: 10rem; /* 160px -> 10rem */
+        height: 5rem; /* 80px -> 5rem */
       }
     }
   }
@@ -343,29 +409,38 @@ onActivated(() => {
   /* 添加针对1366*768分辨率的特殊处理 */
   @media (max-width: 1366px) {
     .showcase-content {
-      max-width: 1100px;
+      max-width: 68.75rem; /* 1100px -> 68.75rem */
+    }
+
+    .title {
+      font-size: 2rem; /* 32px -> 2rem */
+    }
+
+    .subtitle {
+      font-size: 1rem; /* 16px -> 1rem */
+      margin: 1.5rem 0; /* 24px -> 1.5rem */
     }
 
     .case-grid {
-      gap: 12px;
+      gap: 0.75rem; /* 12px -> 0.75rem */
 
       .case-item {
-        width: 260px;
-        height: 160px;
+        width: 16.25rem; /* 260px -> 16.25rem */
+        height: 10rem; /* 160px -> 10rem */
       }
     }
 
     .partner-wall {
-      top: 350px;
+      top: 21.875rem; /* 350px -> 21.875rem */
 
       .partner-row {
-        gap: 15px;
-        margin-bottom: 20px;
+        gap: 0.9375rem; /* 15px -> 0.9375rem */
+        margin-bottom: 1.25rem; /* 20px -> 1.25rem */
       }
 
       .logo-container {
-        width: 140px;
-        height: 70px;
+        width: 8.75rem; /* 140px -> 8.75rem */
+        height: 4.375rem; /* 70px -> 4.375rem */
       }
     }
   }
@@ -373,30 +448,30 @@ onActivated(() => {
   @media (max-width: 1232px) {
     height: auto;
     min-height: 100vh;
-    padding-top: 20px;
+    padding-top: 1.25rem; /* 20px -> 1.25rem */
 
     .showcase-content {
       width: 95%;
-      margin-bottom: 20px;
+      margin-bottom: 1.25rem; /* 20px -> 1.25rem */
     }
 
     .title {
-      font-size: 28px;
+      font-size: 1.75rem; /* 28px -> 1.75rem */
     }
 
     .subtitle {
-      font-size: 14px;
-      margin: 20px 0;
+      font-size: 0.875rem; /* 14px -> 0.875rem */
+      margin: 1.25rem 0; /* 20px -> 1.25rem */
     }
 
     .case-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 0.625rem; /* 10px -> 0.625rem */
+      margin-bottom: 1.25rem; /* 20px -> 1.25rem */
 
       .case-item {
         width: 100%;
-        height: 120px;
+        height: 7.5rem; /* 120px -> 7.5rem */
       }
     }
 
@@ -404,19 +479,19 @@ onActivated(() => {
       position: relative;
       top: 0;
       height: auto;
-      padding: 20px 0;
-      margin-top: 20px;
+      padding: 1.25rem 0; /* 20px -> 1.25rem */
+      margin-top: 1.25rem; /* 20px -> 1.25rem */
 
       .partner-row {
-        gap: 8px;
-        margin-bottom: 8px;
+        gap: 0.5rem; /* 8px -> 0.5rem */
+        margin-bottom: 0.5rem; /* 8px -> 0.5rem */
         flex-wrap: wrap;
-        padding: 0 10px;
+        padding: 0 0.625rem; /* 10px -> 0.625rem */
 
         .logo-container {
-          width: 100px;
-          height: 50px;
-          margin: 5px;
+          width: 6.25rem; /* 100px -> 6.25rem */
+          height: 3.125rem; /* 50px -> 3.125rem */
+          margin: 0.3125rem; /* 5px -> 0.3125rem */
         }
       }
     }
@@ -430,8 +505,8 @@ onActivated(() => {
     .partner-wall {
       .partner-row {
         .logo-container {
-          width: 80px;
-          height: 40px;
+          width: 5rem; /* 80px -> 5rem */
+          height: 2.5rem; /* 40px -> 2.5rem */
         }
       }
     }
@@ -440,61 +515,61 @@ onActivated(() => {
 
 .showcase-content {
   width: 90%;
-  max-width: 1400px;
+  max-width: 87.5rem; /* 1400px -> 87.5rem */
 
   @media screen and (max-width: 1232px) {
     width: 95%;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
   }
 }
 
 .title {
-  font-size: 36px;
+  font-size: 2.25rem; /* 36px -> 2.25rem */
   font-weight: bold;
   text-align: center;
   color: #333;
-  margin-bottom: 15px;
+  margin-bottom: 0.9375rem; /* 15px -> 0.9375rem */
 
   @media screen and (max-width: 1232px) {
-    font-size: 28px;
+    font-size: 1.75rem; /* 28px -> 1.75rem */
   }
 }
 
 .subtitle {
-  font-size: 16px;
+  font-size: 1rem; /* 16px -> 1rem */
   color: #666;
   text-align: center;
-  margin: 30px 0;
+  margin: 1.875rem 0; /* 30px -> 1.875rem */
 
   @media screen and (max-width: 1232px) {
-    font-size: 14px;
-    margin: 20px 0;
+    font-size: 0.875rem; /* 14px -> 0.875rem */
+    margin: 1.25rem 0; /* 20px -> 1.25rem */
   }
 }
 
 .case-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-bottom: 40px;
+  gap: 1.25rem; /* 20px -> 1.25rem */
+  margin-bottom: 2.5rem; /* 40px -> 2.5rem */
 
   @media screen and (max-width: 1232px) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 0.625rem; /* 10px -> 0.625rem */
+    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
   }
 
   .case-item {
-    width: 326px;
-    height: 200px;
+    width: 20.375rem; /* 326px -> 20.375rem */
+    height: 12.5rem; /* 200px -> 12.5rem */
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 0.5rem; /* 8px -> 0.5rem */
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1); /* 4px 12px -> 0.25rem 0.75rem */
     transition: transform 0.3s ease;
 
     &:hover {
-      transform: translateY(-5px);
+      transform: translateY(-0.3125rem); /* -5px -> -0.3125rem */
     }
 
     &.baowu {
@@ -520,7 +595,7 @@ onActivated(() => {
 
     @media screen and (max-width: 1232px) {
       width: 100%;
-      height: 120px;  // 减小高度
+      height: 7.5rem; /* 120px -> 7.5rem */
     }
   }
 }
@@ -528,26 +603,25 @@ onActivated(() => {
 .partner-wall {
   width: 100%;
   height: 100vh;
-  // padding: 30px 0 40px 0px;
   perspective: 2000px;
   transform-style: preserve-3d;
   position: absolute;
-  top: 380px;
+  top: 23.75rem; /* 380px -> 23.75rem */
 
   @media screen and (max-width: 1232px) {
-    position: relative;  // 改为相对定位
+    position: relative;
     top: 0;
-    height: auto;  // 自适应高度
-    padding: 20px 0;
-    margin-top: 20px;
+    height: auto;
+    padding: 1.25rem 0; /* 20px -> 1.25rem */
+    margin-top: 1.25rem; /* 20px -> 1.25rem */
   }
 
   .partner-row {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px;
-    margin-bottom: 30px;
+    gap: 1.5625rem; /* 25px -> 1.5625rem */
+    margin-bottom: 1.875rem; /* 30px -> 1.875rem */
     transform-style: preserve-3d;
 
     &:last-child {
@@ -555,10 +629,10 @@ onActivated(() => {
     }
 
     @media screen and (max-width: 1232px) {
-      gap: 8px;  // 减小间距
-      margin-bottom: 8px;
+      gap: 0.5rem; /* 8px -> 0.5rem */
+      margin-bottom: 0.5rem; /* 8px -> 0.5rem */
       flex-wrap: wrap;
-      padding: 0 10px;
+      padding: 0 0.625rem; /* 10px -> 0.625rem */
     }
 
     .logo-container {
@@ -567,13 +641,13 @@ onActivated(() => {
       justify-content: center;
       align-items: center;
       transition: box-shadow 0.5s ease-out;
-      width: 180px;
-      height: 90px;
+      width: 11.25rem; /* 180px -> 11.25rem */
+      height: 5.625rem; /* 90px -> 5.625rem */
       background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
-                  -5px -5px 15px rgba(255, 255, 255, 0.8),
-                  inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      border-radius: 0.625rem; /* 10px -> 0.625rem */
+      box-shadow: 0.3125rem 0.3125rem 0.9375rem rgba(0, 0, 0, 0.1),
+                  -0.3125rem -0.3125rem 0.9375rem rgba(255, 255, 255, 0.8),
+                  inset 0 0 0 0.0625rem rgba(255, 255, 255, 0.5); /* 5px -> 0.3125rem, 15px -> 0.9375rem, 1px -> 0.0625rem */
       position: relative;
       overflow: hidden;
       transform-style: preserve-3d;
@@ -586,19 +660,19 @@ onActivated(() => {
         right: 0;
         height: 40%;
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
-        border-radius: 10px 10px 0 0;
+        border-radius: 0.625rem 0.625rem 0 0; /* 10px -> 0.625rem */
       }
 
       &:hover {
-        box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.1),
-                    -8px -8px 20px rgba(255, 255, 255, 0.8),
-                    inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+        box-shadow: 0.5rem 0.5rem 1.25rem rgba(0, 0, 0, 0.1),
+                    -0.5rem -0.5rem 1.25rem rgba(255, 255, 255, 0.8),
+                    inset 0 0 0 0.0625rem rgba(255, 255, 255, 0.7); /* 8px -> 0.5rem, 20px -> 1.25rem, 1px -> 0.0625rem */
       }
 
       @media screen and (max-width: 1232px) {
-        width: 100px;  // 进一步减小logo大小
-        height: 50px;
-        margin: 5px;
+        width: 6.25rem; /* 100px -> 6.25rem */
+        height: 3.125rem; /* 50px -> 3.125rem */
+        margin: 0.3125rem; /* 5px -> 0.3125rem */
       }
     }
   }

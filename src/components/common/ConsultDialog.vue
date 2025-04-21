@@ -1,5 +1,5 @@
 <template>
-  <el-dialog v-model="dialogVisible"  width="450px" :style="{height: '67vh', padding: '10px 40px 10px', borderRadius: '14px'}" center>
+  <el-dialog v-model="dialogVisible"  width="28.125rem" :style="{height: '67vh', padding: '0.625rem 2.5rem 0.625rem', borderRadius: '0.875rem'}" center>
     <div class="dialog-header">
       在线申请
     </div>
@@ -140,23 +140,46 @@ const submitForm = () => {
 const closeDialog = () => {
   dialogVisible.value = false
 }
+
+// 添加默认导出
+defineExpose({
+  dialogVisible,
+  submitForm,
+  closeDialog
+})
+</script>
+
+<script lang="ts">
+// 添加默认导出
+export default {
+  name: 'ConsultDialog'
+}
 </script>
 
 <style lang="less" scoped>
+/* 设置基准根元素字体大小 */
+:root {
+  font-size: 16px;
+  
+  @media (max-width: 1366px) {
+    font-size: 14px;
+  }
+}
+
 /* 咨询弹窗样式 */
 .steps-container {
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
   
   .step-line {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
     
     .step-circle {
-      width: 30px;
-      height: 30px;
+      width: 1.875rem;
+      height: 1.875rem;
       border-radius: 50%;
       background-color: #e0e0e0;
       color: #fff;
@@ -173,10 +196,10 @@ const closeDialog = () => {
     
     .step-progress {
       position: absolute;
-      top: 15px;
-      left: 30px;
-      right: 30px;
-      height: 2px;
+      top: 0.9375rem;
+      left: 1.875rem;
+      right: 1.875rem;
+      height: 0.125rem;
       background-color: #e0e0e0;
       z-index: 1;
       
@@ -192,7 +215,7 @@ const closeDialog = () => {
     
     .step-label {
       color: #666;
-      font-size: 16px;
+      font-size: 1rem;
       font-weight: 400;
 
       &.active {
@@ -204,49 +227,48 @@ const closeDialog = () => {
 }
 
 .contact-hotline-title {
-  font-size: 16px;
+  font-size: 1rem;
   color: #0072ff;
   font-weight: 100;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 }
 
 .contact-hotline {
   background-color: #0072ff;
   color: white;
-  padding: 15px;
-  border-radius: 4px;
-  margin-bottom: 20px;
+  padding: 0.9375rem;
+  border-radius: 0.25rem;
+  margin-bottom: 1.25rem;
   display: flex;
   align-items: center;
   
   i {
-    margin-right: 10px;
+    margin-right: 0.625rem;
   }
 }
 
 .form-container {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   
   .form-item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    margin-bottom: 10px;
-    // border: 1px solid #e0e0e0;
-    border-radius: 4px;
+    margin-bottom: 0.625rem;
+    border-radius: 0.25rem;
     
     i {
-      margin-right: 10px;
+      margin-right: 0.625rem;
       color: #666;
     }
     
     span {
-      min-width: 60px;
-      margin-bottom: 10px;
+      min-width: 3.75rem;
+      margin-bottom: 0.625rem;
       font-weight: 400;
-      font-size: 16px;
-      line-height: 28px;
+      font-size: 1rem;
+      line-height: 1.75rem;
       letter-spacing: 0%;
     }
     
@@ -267,10 +289,10 @@ const closeDialog = () => {
   margin-top: 3rem;
   
   .submit-btn {
-    width: 200px;
-    height: 45px;
-    border-radius: 22.5px;
-    font-size: 16px;
+    width: 12.5rem;
+    height: 2.8125rem;
+    border-radius: 1.40625rem;
+    font-size: 1rem;
     background-color:#0072ff;
     border-color:#0072ff;
   }
@@ -278,77 +300,144 @@ const closeDialog = () => {
 
 .success-container {
   text-align: center;
-  padding: 50px 20px;
+  padding: 3.125rem 1.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   
   .success-icon {
-    width: 205px;
-    height: 192px;
+    width: 12.8125rem;
+    height: 12rem;
     object-fit: contain;    
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto 40px;
-    font-size: 50px;
+    margin: 0 auto 2.5rem;
+    font-size: 3.125rem;
     background: url('@/assets/industry/apply-success.png') no-repeat center center;
+    background-size: contain;
   }
 
   .success-title{
-    font-size: 24px;
+    font-size: 1.5rem;
     color: rgba(32, 33, 36, 1);
     font-weight: 500;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
   }
 
   .success-content{
-    font-size: 16px;
+    font-size: 1rem;
     color: rgba(97, 101, 106, 1);
     font-weight: 400;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     line-height: 2;
   }
   .close-btn {
-    width: 180px;
-    height: 45px;
-    border-radius: 22.5px;
-    font-size: 16px;
+    width: 11.25rem;
+    height: 2.8125rem;
+    border-radius: 1.40625rem;
+    font-size: 1rem;
   }
 }
 
 :deep(.el-dialog) {
-  border-radius: 8px;
+  border-radius: 0.5rem;
   overflow: hidden;
   
   .el-dialog__header {
     background-color: white;
-    padding: 20px;
+    padding: 1.25rem;
     text-align: center;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 0.0625rem solid #f0f0f0;
 
     &.show-close {
-      padding-right: 0px !important;
+      padding-right: 0 !important;
     }
     
     .el-dialog__title {
-      font-size: 24px;
+      font-size: 1.5rem;
       color: #333;
       font-weight: normal;
     }
   }
   
   .el-dialog__body {
-    padding: 30px;
+    padding: 1.875rem;
   }
 }
 
 .dialog-header{
-    font-size: 24px;
-    text-align: center;
-    color: #000;
-    font-weight: bold;
-    margin-bottom: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 1.25rem;
+}
+
+/* 媒体查询 - 适配不同分辨率 */
+@media (min-width: 1920px) {
+  .submit-container {
+    .submit-btn {
+      width: 14rem;
+      height: 3.125rem;
+      font-size: 1.125rem;
+    }
   }
+  
+  .success-container {
+    .success-icon {
+      width: 14rem;
+      height: 13rem;
+    }
+    
+    .success-title {
+      font-size: 1.75rem;
+    }
+    
+    .success-content {
+      font-size: 1.125rem;
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+  .steps-container {
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-hotline {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .submit-container {
+    margin-top: 2.5rem;
+    
+    .submit-btn {
+      width: 11rem;
+      height: 2.5rem;
+    }
+  }
+  
+  .success-container {
+    padding: 2.5rem 1rem;
+    
+    .success-icon {
+      width: 11rem;
+      height: 10rem;
+      margin-bottom: 2rem;
+    }
+    
+    .success-title {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .success-content {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
 </style>

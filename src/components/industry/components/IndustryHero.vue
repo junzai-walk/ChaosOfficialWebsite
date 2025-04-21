@@ -61,6 +61,15 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 </script>
 
 <style scoped lang="less">
+/* 设置基准根元素字体大小 */
+:root {
+  font-size: 16px;
+  
+  @media (max-width: 1366px) {
+    font-size: 14px;
+  }
+}
+
 .industry-hero {
   position: relative;
   width: 100%;
@@ -79,7 +88,7 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
   background-position: center center;
   background-size: 100% 100%;
   z-index: 1;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1));
+  filter: drop-shadow(0 0 0.625rem rgba(0, 0, 0, 1));
 }
 
 .content-wrapper {
@@ -93,32 +102,31 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 }
 
 .content {
-  // padding-left: 10%;
-  max-width: 910px;
+  max-width: 56.875rem;
   color: #ffffff;
   position: absolute;
-  width: 951px;
-  height: 308px;
-  top: 235px;
-  left: 472px;
-  border-radius: 34px;
+  width: 59.4375rem;
+  height: 19.25rem;
+  top: 14.6875rem;
+  left: 29.5rem;
+  border-radius: 2.125rem;
 }
 
 .title-container {
   display: flex;
   align-items: center;
-  margin-bottom: 25px;
+  margin-bottom: 1.5625rem;
 }
 
 .title-line {
-  width: 8px;
-  height: 50px;
+  width: 0.5rem;
+  height: 3.125rem;
   background-color: #ffffff;
-  margin-right: 15px;
+  margin-right: 0.9375rem;
 }
 
 .industry-title {
-  font-size: 60px;
+  font-size: 3.75rem;
   font-weight: bold;
   line-height: 1.2;
   position: relative;
@@ -126,46 +134,113 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 }
 
 .industry-desc {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.8;
-  margin-bottom: 35px;
+  margin-bottom: 2.1875rem;
   opacity: 0.9;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.03125rem;
   text-align: justify;
 }
 
 .button-container {
   text-align: left;
-  margin-top: 100px;
+  margin-top: 6.25rem;
 }
 
 .consult-button {
-  font-size: 16px;
-  padding: 12px 35px;
+  font-size: 1rem;
+  padding: 0.75rem 2.1875rem;
   background-color: #1890ff;
   border: none;
   transition: all 0.3s ease;
-  border-radius: 50px;
+  border-radius: 3.125rem;
 }
 
 .consult-button:hover {
   background-color: #40a9ff;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-0.1875rem);
+  box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.2);
+}
+
+/* 媒体查询 - 适配不同分辨率 */
+@media (min-width: 1920px) {
+  .content {
+    top: 14.6875rem;
+    left: 29.5rem;
+    width: 59.4375rem;
+    height: 19.25rem;
+  }
+  
+  .industry-title {
+    font-size: 3.75rem;
+  }
+  
+  .button-container {
+    margin-top: 6.25rem;
+  }
+  
+  .consult-button {
+    padding: 0.75rem 2.1875rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  .content {
+    top: 10rem;
+    left: 20rem;
+    width: 42rem;
+    height: 16rem;
+  }
+  
+  .title-container {
+    margin-bottom: 1.25rem;
+  }
+  
+  .title-line {
+    height: 2.5rem;
+  }
+  
+  .industry-title {
+    font-size: 2.8rem;
+  }
+  
+  .industry-desc {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .button-container {
+    margin-top: 4rem;
+  }
+  
+  .consult-button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.8rem;
+  }
 }
 
 @media (max-width: 768px) {
   .content {
     padding-left: 5%;
     padding-right: 5%;
+    position: relative;
+    width: 90%;
+    height: auto;
+    top: 0;
+    left: 0;
+    margin: 0 auto;
   }
 
   .industry-title {
-    font-size: 36px;
+    font-size: 2.25rem;
   }
 
   .industry-desc {
-    font-size: 14px;
+    font-size: 0.875rem;
+  }
+  
+  .button-container {
+    margin-top: 3rem;
   }
 }
 </style>

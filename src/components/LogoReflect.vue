@@ -151,4 +151,11 @@ onMounted(() => {
     }
   }
 }
-</style> 
+</style>
+
+<script lang="ts">
+// 添加默认导出
+export default {
+  name: 'LogoReflect'
+}
+</script> 
