@@ -157,20 +157,12 @@ const updateActiveStep = (newStep: number) => {
 </script>
 
 <style scoped lang="less">
-// 根字体大小设置，用于rem计算
-html {
+/* 设置基准根元素字体大小 */
+:root {
   font-size: 16px;
   
-  @media (min-width: 1920px) {
-    font-size: calc(16px * (1920 / 1920));
-  }
-  
-  @media (max-width: 1440px) {
-    font-size: calc(16px * (1440 / 1920));
-  }
-  
-  @media (max-width: 1280px) {
-    font-size: calc(16px * (1280 / 1920));
+  @media (max-width: 1366px) {
+    font-size: 14px;
   }
 }
 
@@ -180,7 +172,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 4.375rem);
   position: relative;
 }
 
@@ -188,15 +180,15 @@ html {
   width: 100%;
   display: flex;
   gap: 1.875rem;
-  max-width: 75rem; // 1200px
+  max-width: 75rem;
   margin: 0 auto 2.5rem;
 }
 
 .side-nav-container {
   height: 70%;
   display: inline-flex;
-  justify-content: flex-start; // 改为flex-start使文字靠左
-  align-items: center; // 确保顶部对齐
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .cases-content {
@@ -210,11 +202,11 @@ html {
 /* 上方背景图 */
 .background-header {
   width: 100vw;
-  height: 12.5rem; // 200px
+  height: 12.5rem;
   background: url('@/assets/industry/case-banner.png') no-repeat center center;
   background-size: cover;
-  border-radius: 0.5rem; // 8px
-  margin-bottom: 1.25rem; // 20px
+  border-radius: 0.5rem;
+  margin-bottom: 1.25rem;
 }
 
 /* 图片展示区域 */
@@ -222,7 +214,7 @@ html {
   width: 100%;
   overflow: hidden;
   position: relative;
-  margin-bottom: 1.25rem; // 20px
+  margin-bottom: 1.25rem;
 }
 
 .case-cards {
@@ -233,46 +225,46 @@ html {
 .case-page {
   display: flex;
   flex-wrap: nowrap;
-  gap: 1.25rem; // 20px
+  gap: 1.25rem;
   position: relative;
 }
 
 .case-card {
-  width: calc(25% - 0.9375rem); // 计算每个卡片宽度，考虑间距
-  height: 360px;
-  border-radius: 0.5rem; // 8px
+  width: calc(25% - 0.9375rem);
+  height: 22.5rem;
+  border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
   background-color: #fff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #eaeaea;
+  border: 0.0625rem solid #eaeaea;
 }
 
 .case-card:hover {
-  transform: translateY(-0.3125rem); // 5px
+  transform: translateY(-0.3125rem);
 }
 
 .case-image {
   width: 100%;
-  height: 250px;
+  height: 15.625rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .case-info {
-  padding: 2rem 1rem; // 15px
+  padding: 1.25rem 1rem;
   text-align: left;
 }
 
 .case-info h3 {
-  font-size: 1rem; // 16px
-  margin: 0 0 0.625rem; // 10px
+  font-size: 1rem;
+  margin: 0 0 0.625rem;
   color: #333;
 }
 
 .case-info p {
-  font-size: 0.875rem; // 14px
+  font-size: 0.875rem;
   color: #666;
   margin: 0;
 }
@@ -281,13 +273,13 @@ html {
 .navigation-buttons {
   display: flex;
   justify-content: center;
-  gap: 3rem; // 20px
-  margin: 1.25rem 0; // 20px 0
+  gap: 3rem;
+  margin: 1.25rem 0;
 }
 
 .nav-button {
-  width: 2.5rem; // 40px
-  height: 2.5rem; // 40px
+  width: 2.5rem;
+  height: 2.5rem;
   border: none;
   border-radius: 50%;
   display: flex;
@@ -333,30 +325,105 @@ html {
 /* 申请试用区域 */
 .apply-trial {
   width: 100%;
-  height: 8.5rem; // 136px
+  height: 8.5rem;
   background-color: #fff;
-  border-radius: 0.5rem; // 8px
+  border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 1.25rem; // 20px
+  padding: 1.25rem;
   box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.05);
   background: url('@/assets/industry/apply-bg.png') no-repeat center center;
   background-size: 100% 100%;
 }
 
 .apply-trial h3 {
-  font-size: 1.25rem; // 20px
-  margin-bottom: 1.25rem; // 20px
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
   color: #333;
 }
 
 .apply-form {
   display: flex;
-  gap: 0.9375rem; // 15px
+  gap: 0.9375rem;
   width: 100%;
-  max-width: 31.25rem; // 500px
+  max-width: 31.25rem;
+}
+
+/* 媒体查询 - 适配不同分辨率 */
+@media (min-width: 1920px) {
+  .cases-container {
+    max-width: 90rem;
+  }
+  
+  .case-card {
+    height: 25rem;
+  }
+  
+  .case-image {
+    height: 17.5rem;
+  }
+  
+  .case-info {
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .case-info h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .case-info p {
+    font-size: 1rem;
+  }
+  
+  .apply-trial {
+    height: 9.5rem;
+  }
+  
+  .apply-trial h3 {
+    font-size: 1.5rem;
+  }
+  
+  .apply-form {
+    max-width: 37.5rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  .cases-container {
+    max-width: 70rem;
+  }
+  
+  .case-card {
+    height: 20rem;
+  }
+  
+  .case-image {
+    height: 13.75rem;
+  }
+  
+  .case-info {
+    padding: 1rem 0.875rem;
+  }
+  
+  .case-info h3 {
+    font-size: 0.9375rem;
+  }
+  
+  .case-info p {
+    font-size: 0.8125rem;
+  }
+  
+  .apply-trial {
+    height: 7.5rem;
+  }
+  
+  .apply-trial h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
 }
 
 @media (max-width: 1400px) {
@@ -367,28 +434,106 @@ html {
 
 @media (max-width: 992px) {
   .cases-section {
-    padding: 0;
+    padding: 0 1.25rem;
   }
 
   .cases-container {
     flex-direction: column;
     align-items: center;
+    margin-bottom: 1.875rem;
   }
 
   .side-nav-container {
     width: 100%;
-    max-width: 18.75rem; // 300px
-    margin-bottom: 1.25rem; // 20px
+    max-width: 18.75rem;
+    margin-bottom: 1.25rem;
   }
   
   .case-card {
-    width: calc(50% - 0.625rem); // 10px
+    width: calc(50% - 0.625rem);
+    height: auto;
+    min-height: 18.75rem;
+  }
+  
+  .case-image {
+    height: 12.5rem;
+  }
+  
+  .navigation-buttons {
+    gap: 2rem;
+  }
+  
+  .nav-button {
+    width: 2.25rem;
+    height: 2.25rem;
   }
 }
 
 @media (max-width: 768px) {
+  .cases-section {
+    padding: 0 1rem;
+  }
+  
+  .background-header {
+    height: 10rem;
+  }
+  
+  .case-page {
+    gap: 1rem;
+  }
+  
   .case-card {
     width: 100%;
+    min-height: 16.25rem;
+  }
+  
+  .case-image {
+    height: 10rem;
+  }
+  
+  .case-info {
+    padding: 0.875rem 0.75rem;
+  }
+  
+  .apply-trial {
+    height: auto;
+    padding: 1.5rem 1rem;
+  }
+  
+  .apply-form {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .navigation-buttons {
+    gap: 1.5rem;
+  }
+  
+  .nav-button {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .cases-section {
+    padding: 0 0.75rem;
+  }
+  
+  .background-header {
+    height: 8rem;
+  }
+  
+  .case-image {
+    height: 9.375rem;
+  }
+  
+  .case-info h3 {
+    font-size: 0.875rem;
+  }
+  
+  .case-info p {
+    font-size: 0.75rem;
   }
 }
 </style> 

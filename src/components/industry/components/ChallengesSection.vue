@@ -275,8 +275,8 @@ const updateActiveStep = (newStep: number) => {
   }
   
   .challenge-card {
-    height: 11rem;
-    padding: 1.5rem;
+    height: 10rem;
+    padding: 4.5rem 2rem;
     border-radius: 0.75rem;
   }
   
