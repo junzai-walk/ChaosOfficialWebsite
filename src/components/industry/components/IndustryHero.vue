@@ -149,7 +149,7 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 
 .consult-button {
   font-size: 1rem;
-  padding: 0.75rem 2.1875rem;
+  padding: 0.3rem 1rem;
   background-color: #1890ff;
   border: none;
   transition: all 0.3s ease;
@@ -214,7 +214,8 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
   }
   
   .consult-button {
-    font-size: 0.9rem;
+    width: 10rem;
+    font-size: 1rem;
     padding: 0.6rem 1.8rem;
   }
 }

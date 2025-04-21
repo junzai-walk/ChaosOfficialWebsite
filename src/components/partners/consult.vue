@@ -13,7 +13,7 @@
         <!-- 图片展示区 -->
         <div class="consult-showcase">
           <div class="consult-rows" :style="{ transform: `translateX(-${currentPage * 50}%)` }">
-            <el-form :model="form" label-position="right" label-width="100px">
+            <el-form :model="form" label-position="right" label-width="6.25rem">
               <el-form-item label="姓名：">
                 <el-input v-model="form.name" />
               </el-form-item>
@@ -56,15 +56,22 @@ const form = ref({
 html {
   font-size: 16px;
 
+  // 1920*1080分辨率适配
   @media (min-width: 1920px) {
-    font-size: calc(16px * (1920 / 1920));
+    font-size: 16px;
   }
 
-  @media (max-width: 1440px) {
+  // 1366*768分辨率适配
+  @media (max-width: 1366px) {
+    font-size: calc(16px * (1366 / 1920));
+  }
+
+  // 其他分辨率适配
+  @media (max-width: 1440px) and (min-width: 1367px) {
     font-size: calc(16px * (1440 / 1920));
   }
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1280px) and (min-width: 993px) {
     font-size: calc(16px * (1280 / 1920));
   }
 }
@@ -74,13 +81,10 @@ html {
   width: 100%;
   background-color: #f5f7fa;
   padding: 0;
-  /* 移除padding */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* 改为flex-start而非center */
   min-height: 100vh;
-  /* 确保最小高度填满视口 */
 }
 
 /* 上方背景图 */
@@ -95,14 +99,14 @@ html {
   height: 40vh;
   background: url('@/assets/partners/Group 46.png') no-repeat center center;
   background-size: 100% 100%;
-  margin-bottom: 1.25rem; // 20px
+  margin-bottom: 1.25rem;
   margin-top: 4rem;
   display: flex;
   justify-content: center;
 
   .main-title {
     color: #000;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
   }
@@ -118,11 +122,11 @@ html {
   display: flex;
   flex-direction: column;
   gap: 1.875rem;
-  max-width: 75rem; // 1200px
+  max-width: 75rem;
 
   .main-title {
     width: 100%;
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 700;
     text-align: start;
     margin-bottom: 5rem;
@@ -143,8 +147,6 @@ html {
   position: relative;
 }
 
-
-
 /* 图片展示区域 */
 .consult-showcase {
   box-sizing: border-box;
@@ -152,7 +154,7 @@ html {
   width: 100%;
   overflow: hidden;
   position: relative;
-  margin-bottom: 2rem; // 32px
+  margin-bottom: 2rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -165,10 +167,18 @@ html {
   height: 18rem;
   background-color: #fff;
   transition: transform 0.5s ease;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 0.625rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: flex-start !important;
+}
+
+// 1920*1080分辨率适配
+@media (min-width: 1920px) {
+  .consult-rows {
+    width: 30%;
+    height: 18rem;
+  }
 }
 
 @media (max-width: 1400px) {
@@ -178,7 +188,7 @@ html {
   }
 
   .consult-card {
-    width: calc(25% - 0.9375rem); // 15px
+    width: calc(25% - 0.9375rem);
   }
 }
 
@@ -194,8 +204,8 @@ html {
 
   .side-nav-container {
     width: 100%;
-    max-width: 18.75rem; // 300px
-    margin-bottom: 1.25rem; // 20px
+    max-width: 18.75rem;
+    margin-bottom: 1.25rem;
   }
 
   .consult-page {
@@ -203,7 +213,11 @@ html {
   }
 
   .consult-card {
-    width: calc(50% - 0.625rem); // 10px
+    width: calc(50% - 0.625rem);
+  }
+
+  .consult-rows {
+    width: 50%;
   }
 }
 
@@ -211,6 +225,31 @@ html {
   .consult-card {
     width: 100%;
   }
+
+  .consult-rows {
+    width: 80%;
+    padding: 1.5rem 0.75rem;
+  }
+
+  .background-header {
+    padding-top: 8rem;
+    
+    .main-title {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 1366px) {
+
+.consult-rows {
+  width: 40%;
+  height: 23rem;
+
+ :deep(.el-form-item__label) {
+    font-size: 1rem !important;
+  }
+}
 }
 
 /* 底部背景补充 */
