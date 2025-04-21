@@ -2,13 +2,13 @@
   <div class="product-iop-features">
     <!-- 左侧导航栏 -->
     <div class="side-nav-container">
-      <CustomNavSteps 
-          :width="120" 
-          :height="192" 
-          :steps="navSteps" 
-          :active-step="activeStep" 
-          :section-numbers="sectionNumbers" 
-          @update:active-step="updateActiveStep" 
+      <CustomNavSteps
+          :width="120"
+          :height="192"
+          :steps="navSteps"
+          :active-step="activeStep"
+          :section-numbers="sectionNumbers"
+          @update:active-step="updateActiveStep"
         />
     </div>
 
@@ -68,33 +68,33 @@ const features: Feature[] = [
     title: '库存健康诊断',
     description: '助力中大型企业，进行库存健康智能诊断。',
     icon: icon1,
-    position: { top: 195, left: 313 + 20 }
+    position: { top: 12.1875, left: 20.8125 } // 195px/16=12.1875rem, (313+20)px/16=20.8125rem
   },
   {
     title: '库存需求预测',
     description: '助力中大型企业，针对性挖掘分析数据，构建需求预测模型。',
     icon: icon2,
-    position: { top: 195, left: 1193 + 20 }
+    position: { top: 12.1875, left: 75.8125 } // 195px/16=12.1875rem, (1193+20)px/16=75.8125rem
   },
   {
     title: '库存智能补货',
     description: '助力中大型企业，针对性挖掘分析数据，构建智能补货模型。',
     icon: icon3,
-    position: { top: 451, left: 313 + 20 }
+    position: { top: 28.1875, left: 20.8125 } // 451px/16=28.1875rem, (313+20)px/16=20.8125rem
   },
   {
     title: '库存网络优化',
     description: '面向大型企业多级仓储网络，进行供应链规划与优化 。',
     icon: icon4,
-    position: { top: 451, left: 1193 + 20 }
+    position: { top: 28.1875, left: 75.8125 } // 451px/16=28.1875rem, (1193+20)px/16=75.8125rem
   }
 ];
 
 // 计算卡片样式，包括响应式位置
 const getCardStyle = (position: Position) => {
   return {
-    top: `${position.top}px`,
-    left: `${position.left}px`,
+    top: `${position.top}rem`,
+    left: `${position.left}rem`,
   };
 };
 
@@ -104,19 +104,28 @@ const updateActiveStep = (newStep: number) => {
 </script>
 
 <style scoped lang="less">
+/* 设置基准根元素字体大小 */
+:root {
+  font-size: 16px;
+
+  @media (max-width: 1366px) {
+    font-size: 14px;
+  }
+}
+
 .product-iop-features {
   width: 100%;
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  padding-top: 100px;
+  padding-top: 6.25rem; /* 100px/16=6.25rem */
 
   .center-image-container {
     position: absolute;
-    width: 450.52px;
-    height: 433px;
-    top: 200px;
-    left: 730px;
+    width: 28.1575rem; /* 450.52px/16=28.1575rem */
+    height: 27.0625rem; /* 433px/16=27.0625rem */
+    top: 12rem; /* 200px/16=12.5rem */
+    left: 45.625rem; /* 730px/16=45.625rem */
     z-index: 1;
 
     .center-image {
@@ -128,33 +137,33 @@ const updateActiveStep = (newStep: number) => {
 
   .feature-card {
     position: absolute;
-    width: 316px;
-    height: 170px;
+    width: 19.75rem; /* 316px/16=19.75rem */
+    height: 10.625rem; /* 170px/16=10.625rem */
     background-color: white;
-    border-radius: 10px;
-    padding: 24px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 0.625rem; /* 10px/16=0.625rem */
+    padding: 1.5rem; /* 24px/16=1.5rem */
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08); /* 4px/16=0.25rem, 12px/16=0.75rem */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 1rem; /* 16px/16=1rem */
     z-index: 2;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+      transform: translateY(-0.3125rem); /* -5px/16=-0.3125rem */
+      box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.12); /* 10px/16=0.625rem, 20px/16=1.25rem */
     }
   }
 
   .feature-icon {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem; /* 40px/16=2.5rem */
+    height: 2.5rem; /* 40px/16=2.5rem */
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    margin: 0px auto;
+    margin: 0 auto;
   }
 
   .feature-content {
@@ -178,17 +187,17 @@ const updateActiveStep = (newStep: number) => {
   }
 
   .feature-icon img {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem; /* 20px/16=1.25rem */
+    height: 1.25rem; /* 20px/16=1.25rem */
     object-fit: contain;
   }
 
   .feature-title {
     font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 1.25rem; /* 20px/16=1.25rem */
     line-height: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 0.75rem; /* 12px/16=0.75rem */
     color: #333;
     text-align: center;
   }
@@ -196,56 +205,70 @@ const updateActiveStep = (newStep: number) => {
   .feature-description {
     font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 0.875rem; /* 14px/16=0.875rem */
+    line-height: 1.5rem; /* 24px/16=1.5rem */
     color: #666;
     text-align: left;
   }
 }
 
-@media (max-width: 1920px) {
+/* 1920x1080分辨率适配 */
+@media (min-width: 1367px) and (max-width: 1920px) {
   .product-iop-features {
-    padding-top: calc(100px * 100vw / 1920);
+    .side-nav-container {
+      top: 21rem; /* 336px/16=21rem */
+      left: 11.6875rem; /* 187px/16=11.6875rem */
+      width: 7.5rem; /* 120px/16=7.5rem */
+      height: 12rem; /* 192px/16=12rem */
+    }
+  }
+}
+
+/* 1366x768分辨率适配 */
+@media (max-width: 1366px) {
+  .product-iop-features {
+    padding-top: 5rem;
 
     .side-nav-container {
-      top: calc(336px * 100vw / 1920);
-      left: calc(187px * 100vw / 1920);
-      width: calc(120px * 100vw / 1920);
-      height: calc(192px * 100vw / 1920);
+      top: 18rem;
+      left: 8rem;
+      width: 6.5rem;
+      height: 10.5rem;
     }
 
     .center-image-container {
-      width: calc(450.52px * 100vw / 1920);
-      height: calc(433px * 100vw / 1920);
-      top: calc(200px * 100vw / 1920);
-      left: calc(730px * 100vw / 1920);
+      width: 27rem;
+      height: 20rem;
+      top: 15rem;
+      left: 48rem;
     }
 
     .feature-card {
-      width: calc(316px * 100vw / 1920);
-      height: calc(170px * 100vw / 1920);
-      padding: calc(24px * 100vw / 1920);
+      width: 25rem;
+      height: 10rem;
+      padding: 1rem;
+      gap: 0.8rem;
     }
 
     .feature-icon {
-      width: calc(40px * 100vw / 1920);
-      height: calc(40px * 100vw / 1920);
-      margin-bottom: calc(16px * 100vw / 1920);
+      width: 2.2rem;
+      height: 2.2rem;
     }
 
     .feature-icon img {
-      width: calc(20px * 100vw / 1920);
-      height: calc(20px * 100vw / 1920);
+      width: 1.1rem;
+      height: 1.1rem;
     }
 
     .feature-title {
-      font-size: calc(20px * 100vw / 1920);
-      margin-bottom: calc(12px * 100vw / 1920);
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
     }
 
     .feature-description {
-      font-size: calc(14px * 100vw / 1920);
-      line-height: calc(24px * 100vw / 1920);
+      font-size: 0.9rem;
+      line-height: 1.3rem;
+      text-align: center;
     }
   }
 }

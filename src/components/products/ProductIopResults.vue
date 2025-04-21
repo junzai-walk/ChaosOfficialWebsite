@@ -33,8 +33,8 @@
       预约体验
     </div>
 
-        <!-- 使用新的咨询弹窗组件 -->
-        <ConsultDialog v-model:visible="consultDialogVisible" @submit="handleConsultSubmit" />
+    <!-- 使用新的咨询弹窗组件 -->
+    <ConsultDialog v-model:visible="consultDialogVisible" @submit="handleConsultSubmit" />
   </div>
 </template>
 
@@ -95,21 +95,32 @@ const updateActiveStep = (newStep: number) => {
 </script>
 
 <style scoped lang="less">
+/* 设置基准根元素字体大小 */
+:root {
+  font-size: 16px;
+}
+
+@media (max-width: 1366px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
 .product-iop-results {
   width: 100%;
   min-height: 100vh;
   position: relative;
   background-color: white;
-  padding-top: 150px; 
+  padding-top: 9.375rem; 
   box-sizing: border-box;
 
   .title-container {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 3.75rem;
 
     .results-title {
       font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-      font-size: 32px;
+      font-size: 2rem;
       font-weight: 600;
       color: #333;
     }
@@ -117,41 +128,41 @@ const updateActiveStep = (newStep: number) => {
 
   .results-cards {
     display: grid;
-    grid-template-columns: repeat(3, 416px);
-    grid-template-rows: repeat(2, 220px);
-    gap: 20px;
+    grid-template-columns: repeat(3, 26rem);
+    grid-template-rows: repeat(2, 13.75rem);
+    gap: 1.25rem;
     justify-content: center;
     margin: 0 auto;
-    max-width: 1288px;
-    padding-left: 50px;
+    max-width: 80.5rem;
+    padding-left: 3.125rem;
   }
 
   .result-card {
     background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    padding: 24px;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: left;
 
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+      transform: translateY(-0.3125rem);
+      box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.12);
     }
 
     .card-icon-wrapper {
       position: relative;
-      width: 40px;
-      height: 40px;
-      margin: 16px auto;
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: 1rem auto;
       position: relative;
 
       .card-icon-bg {
         position: absolute;
-        width: 40px;
-        height: 40px;
+        width: 2.5rem;
+        height: 2.5rem;
         border-radius: 50%;
         background-color: rgba(0, 187, 152, 0.2);
         z-index: 1;
@@ -162,8 +173,8 @@ const updateActiveStep = (newStep: number) => {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 24px;
-        height: 24px;
+        width: 1.5rem;
+        height: 1.5rem;
         object-fit: contain;
         z-index: 2;
       }
@@ -171,17 +182,17 @@ const updateActiveStep = (newStep: number) => {
 
     .card-title {
       font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: 600;
       color: #333;
-      margin: 0 0 12px 0;
+      margin: 0 0 0.75rem 0;
       text-align: center;
     }
 
     .card-description {
       font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-      font-size: 16px;
-      line-height: 24px;
+      font-size: 1rem;
+      line-height: 1.5;
       color: #666;
       margin: 0;
       flex-grow: 1;
@@ -189,19 +200,17 @@ const updateActiveStep = (newStep: number) => {
   }
 
   .experience-button {
-    position: absolute;
-    width: 200px;
-    height: 56px;
-    left: 860px;
-    top: 710px;
+    margin: 5rem auto 3rem;
+    width: 12.5rem;
+    height: 3.5rem;
     background-color: #0072FF;
     color: white;
-    border-radius: 30px;
+    border-radius: 1.875rem;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 500;
     transition: background-color 0.3s;
 
@@ -210,66 +219,174 @@ const updateActiveStep = (newStep: number) => {
     }
   }
 
-  @media (max-width: 1920px) {
-    padding-top: calc(230px * 100vw / 1920);
-    
-    .side-nav-container {
-      top: calc(336px * 100vw / 1920);
-      left: calc(187px * 100vw / 1920);
-    }
+  /* 媒体查询 - 针对1920*1080分辨率 */
+  @media (min-width: 1920px) {
+    padding-top: 9.375rem;
     
     .title-container {
-      margin-bottom: calc(60px * 100vw / 1920);
-      
-      .results-title {
-        font-size: calc(32px * 100vw / 1920);
-      }
+      margin-bottom: 3.75rem;
     }
     
     .results-cards {
-      grid-template-columns: repeat(3, calc(416px * 100vw / 1920));
-      grid-template-rows: repeat(2, calc(220px * 100vw / 1920));
-      gap: calc(20px * 100vw / 1920);
-      max-width: calc(1288px * 100vw / 1920);
+      grid-template-columns: repeat(3, 26rem);
+      grid-template-rows: repeat(2, 13.75rem);
+      gap: 1.25rem;
+      max-width: 80.5rem;
     }
     
     .result-card {
-      padding: calc(24px * 100vw / 1920);
+      padding: 1.5rem;
       
       .card-icon-wrapper {
-        width: calc(40px * 100vw / 1920);
-        height: calc(40px * 100vw / 1920);
-        margin-bottom: calc(16px * 100vw / 1920);
+        width: 2.5rem;
+        height: 2.5rem;
         
         .card-icon-bg {
-          width: calc(40px * 100vw / 1920);
-          height: calc(40px * 100vw / 1920);
+          width: 2.5rem;
+          height: 2.5rem;
         }
         
         .card-icon {
-          width: calc(40px * 100vw / 1920);
-          height: calc(40px * 100vw / 1920);
+          width: 1.5rem;
+          height: 1.5rem;
         }
       }
       
       .card-title {
-        font-size: calc(20px * 100vw / 1920);
-        margin-bottom: calc(12px * 100vw / 1920);
+        font-size: 1.25rem;
       }
       
       .card-description {
-        font-size: calc(14px * 100vw / 1920);
-        line-height: calc(24px * 100vw / 1920);
+        font-size: 1rem;
+        line-height: 1.5;
       }
     }
     
     .experience-button {
-      width: calc(200px * 100vw / 1920);
-      height: calc(56px * 100vw / 1920);
-      left: calc(860px * 100vw / 1920);
-      top: calc(710px * 100vw / 1920);
-      font-size: calc(18px * 100vw / 1920);
-      border-radius: calc(10px * 100vw / 1920);
+      width: 12.5rem;
+      height: 3.5rem;
+      font-size: 1.125rem;
+    }
+  }
+  
+  /* 媒体查询 - 针对1366*768分辨率 */
+  @media (max-width: 1366px) {
+    padding-top: 6.25rem;
+    
+    .side-nav-container {
+      top: 12.5rem;
+      left: 7.5rem;
+    }
+    
+    .title-container {
+      margin-bottom: 3rem;
+    }
+    
+    .results-cards {
+      grid-template-columns: repeat(3, 21rem);
+      grid-template-rows: repeat(2, 12rem);
+      gap: 1rem;
+      max-width: 65rem;
+      padding-left: 5rem;
+    }
+    
+    .result-card {
+      padding: 1.25rem;
+      
+      .card-icon-wrapper {
+        width: 2.25rem;
+        height: 2.25rem;
+        margin: 0.75rem auto;
+        
+        .card-icon-bg {
+          width: 2.25rem;
+          height: 2.25rem;
+        }
+        
+        .card-icon {
+          width: 1.25rem;
+          height: 1.25rem;
+        }
+      }
+      
+      .card-title {
+        font-size: 1.125rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .card-description {
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+    }
+    
+    .experience-button {
+      margin: 4rem auto 2.5rem;
+      width: 11rem;
+      height: 3rem;
+      font-size: 1rem;
+    }
+  }
+  
+  /* 媒体查询 - 针对小屏幕 */
+  @media (max-width: 1200px) {
+    .results-cards {
+      grid-template-columns: repeat(2, 22rem);
+      grid-template-rows: repeat(3, 12rem);
+      padding-left: 0;
+    }
+  }
+  
+  /* 媒体查询 - 针对平板设备 */
+  @media (max-width: 992px) {
+    .side-nav-container {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    
+    .results-cards {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 2rem;
+    }
+    
+    .experience-button {
+      position: relative;
+      left: auto;
+      top: auto;
+    }
+  }
+  
+  /* 媒体查询 - 移动设备 */
+  @media (max-width: 768px) {
+    padding-top: 4rem;
+    
+    .results-cards {
+      grid-template-columns: 1fr;
+      padding: 0 1.5rem;
+    }
+    
+    .result-card {
+      min-height: 10rem;
+    }
+    
+    .card-title {
+      font-size: 1rem;
+    }
+    
+    .card-description {
+      font-size: 0.875rem;
+    }
+    
+    .experience-button {
+      width: 10rem;
+      height: 2.75rem;
+      font-size: 0.9375rem;
+      margin: 3rem auto 2rem;
     }
   }
 }
