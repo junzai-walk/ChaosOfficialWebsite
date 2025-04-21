@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <div class="sensor-list" v-else="content.length > 0">
+      <div class="sensor-list" v-else>
         <div v-for="(item, index) in content" :key="index"
           :class="['sensor-item', { 'sensor-item-no-model': !item.model }]">
           <img class="check-icon" src="@/assets/products/hardware-yes.png" alt="勾选图标" />
@@ -46,7 +46,7 @@
 import { PropType, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import ConsultDialog from '@/components/common/ConsultDialog.vue'
-import ProductRightImages  from '@/components/products/ProductRightImages.vue';
+import ProductRightImages from '@/components/products/ProductRightImages.vue';
 
 
 const router = useRouter()
@@ -101,6 +101,11 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 </script>
 
 <style lang="less" scoped>
+:root {
+  /* 基准字体大小，1920px宽度下为16px */
+  font-size: 16px;
+}
+
 .product-hardware-sensor {
   position: relative;
   width: 100%;
@@ -110,10 +115,10 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
   // 左侧背景图案
   .background-pattern {
     position: absolute;
-    width: 657.22px;
-    height: 679.84px;
-    top: 95px;
-    left: -154.59px;
+    width: 41.076rem;
+    height: 42.49rem;
+    top: 5.9375rem;
+    left: -9.662rem;
     opacity: 0.5;
     transform: rotate(-52.37deg);
 
@@ -127,26 +132,26 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
   // 中间内容区域
   .content-container {
     position: absolute;
-    width: 603px;
-    height: 420px;
-    top: 239px;
-    left: 314px;
+    width: 37.6875rem;
+    height: 26.25rem;
+    top: 14.9375rem;
+    left: 19.625rem;
     z-index: 2;
 
     .title {
       font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
       font-weight: 600;
-      font-size: 36px;
+      font-size: 2.25rem;
       color: #333;
-      margin-bottom: 32px;
+      margin-bottom: 2rem;
       text-align: left;
     }
 
     .sensor-list {
       display: flex;
       flex-direction: column;
-      gap: 24px;
-      margin-bottom: 40px;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
 
       .sensor-item {
         display: flex;
@@ -155,11 +160,11 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
         position: relative;
 
         .check-icon {
-          width: 14px;
-          height: 12px;
+          width: 0.875rem;
+          height: 0.75rem;
           flex-shrink: 0;
-          margin-right: 12px;
-          transform: translateY(3px);
+          margin-right: 0.75rem;
+          transform: translateY(0.1875rem);
         }
 
         &.sensor-item-no-model {
@@ -169,7 +174,7 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 
         .item-title {
           font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-          font-size: 18px;
+          font-size: 1.125rem;
           color: #333;
           flex: 0.8;
           text-align: left;
@@ -178,14 +183,14 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 
         .item-line {
           flex: 1;
-          height: 1px;
+          height: 0.0625rem;
           background-color: #E5E5E5;
-          margin: 0 15px;
+          margin: 0 0.9375rem;
         }
 
         .item-model {
           font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-          font-size: 18px;
+          font-size: 1.125rem;
           color: #333;
           text-align: right;
           flex: 0.8;
@@ -197,8 +202,8 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
     .sensor-info-list {
       display: flex;
       flex-direction: column;
-      gap: 24px;
-      margin-bottom: 40px;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
 
       .sensor-info-item {
         display: flex;
@@ -206,48 +211,48 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
         position: relative;
 
         .check-icon {
-          width: 14px;
-          height: 12px;
+          width: 0.875rem;
+          height: 0.75rem;
           flex-shrink: 0;
-          margin-right: 12px;
-          transform: translateY(3px);
+          margin-right: 0.75rem;
+          transform: translateY(0.1875rem);
         }
 
         .info-title {
           font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-          font-size: 18px;
+          font-size: 1.125rem;
           color: #333;
-          margin-right: 8px;
+          margin-right: 0.5rem;
         }
 
         .info-value {
           font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-          font-size: 48px;
+          font-size: 3rem;
           font-weight: bold;
           color: #0072FF;
-          margin-right: 4px;
-          transform: translateY(-10px);
+          margin-right: 0.25rem;
+          transform: translateY(-0.625rem);
         }
 
         .info-unit {
           font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-          font-size: 18px;
+          font-size: 1.125rem;
           color: #333;
         }
       }
     }
 
     .action-button {
-      width: 200px;
-      height: 56px;
+      width: 12.5rem;
+      height: 3.5rem;
       background-color: #0072FF;
-      border-radius: 28px;
+      border-radius: 1.75rem;
       display: flex;
       justify-content: center;
       align-items: center;
       color: white;
       font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-      font-size: 18px;
+      font-size: 1.125rem;
       cursor: pointer;
       transition: background-color 0.3s;
 
@@ -257,84 +262,25 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
     }
   }
 
-  @media (max-width: 1920px) {
-    .background-pattern {
-      width: calc(657.22px * 100vw / 1920);
-      height: calc(679.84px * 100vw / 1920);
-      top: calc(95px * 100vw / 1920);
-      left: calc(285.41px * 100vw / 1920);
-    }
-
-    .content-container {
-      width: calc(603px * 100vw / 1920);
-      height: calc(420px * 100vw / 1920);
-      top: calc(239px * 100vw / 1920);
-      left: calc(314px * 100vw / 1920);
-
-      .title {
-        font-size: calc(36px * 100vw / 1920);
-        margin-bottom: calc(32px * 100vw / 1920);
-      }
-
-      .sensor-list,
-      .sensor-info-list {
-        gap: calc(24px * 100vw / 1920);
-        margin-bottom: calc(40px * 100vw / 1920);
-      }
-
-      .sensor-list .sensor-item {
-        .check-icon {
-          width: calc(14px * 100vw / 1920);
-          height: calc(12px * 100vw / 1920);
-          margin-right: calc(12px * 100vw / 1920);
-        }
-
-        .item-title,
-        .item-model {
-          font-size: calc(18px * 100vw / 1920);
-        }
-
-        .item-line {
-          margin: 0 calc(15px * 100vw / 1920);
-        }
-      }
-
-      .sensor-info-list .sensor-info-item {
-        .check-icon {
-          width: calc(14px * 100vw / 1920);
-          height: calc(12px * 100vw / 1920);
-          margin-right: calc(12px * 100vw / 1920);
-        }
-
-        .info-title {
-          font-size: calc(18px * 100vw / 1920);
-          margin-right: calc(8px * 100vw / 1920);
-        }
-
-        .info-value {
-          font-size: calc(26px * 100vw / 1920);
-          margin-right: calc(4px * 100vw / 1920);
-        }
-
-        .info-unit {
-          font-size: calc(18px * 100vw / 1920);
-        }
-      }
-
-      .action-button {
-        width: calc(200px * 100vw / 1920);
-        height: calc(56px * 100vw / 1920);
-        border-radius: calc(28px * 100vw / 1920);
-        font-size: calc(18px * 100vw / 1920);
-      }
-    }
-  }
-
   :deep(.right-images .main-image-container) {
-    width: 840px !important;
-    height: 690px !important;
-    top: 120px !important;
-    right: 40px !important;
+    width: 52.5rem !important;
+    height: 43.125rem !important;
+    top: 7.5rem !important;
+    right: 2.5rem !important;
+  }
+}
+
+/* 媒体查询 - 1920*1080分辨率 */
+@media (max-width: 1920px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+/* 媒体查询 - 1366*768分辨率 */
+@media (max-width: 1366px) {
+  :root {
+    font-size: 11.38px; /* 16px * (1366/1920) = ~11.38px */
   }
 }
 </style>

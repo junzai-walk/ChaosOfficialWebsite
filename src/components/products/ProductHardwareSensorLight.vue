@@ -83,6 +83,11 @@ const updateActiveStep = (newStep: number) => {
 </script>
 
 <style scoped lang="less">
+:root {
+  /* 基准字体大小，1920px宽度下为16px */
+  font-size: 16px;
+}
+
 .product-hardware-sensor-light {
   width: 100%;
   min-height: 100vh;
@@ -91,36 +96,36 @@ const updateActiveStep = (newStep: number) => {
 
   .content-container {
     position: absolute;
-    width: 603px;
-    top: 239px;
-    left: 314px;
+    width: 37.6875rem;
+    top: 14.9375rem;
+    left: 19.625rem;
     z-index: 2;
 
     .title {
       font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-      font-size: 36px;
+      font-size: 2.25rem;
       font-weight: 600;
       color: #333;
-      margin-bottom: 32px;
+      margin-bottom: 2rem;
       text-align: left;
     }
 
     .feature-list {
       display: flex;
       flex-direction: column;
-      gap: 24px;
-      margin-bottom: 40px;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
 
       .feature-item {
         display: flex;
         align-items: flex-start;
 
         .check-icon {
-          width: 14px;
-          height: 12px;
+          width: 0.875rem;
+          height: 0.75rem;
           flex-shrink: 0;
-          margin-right: 12px;
-          transform: translateY(3px);
+          margin-right: 0.75rem;
+          transform: translateY(0.1875rem);
         }
 
         .feature-content {
@@ -128,17 +133,17 @@ const updateActiveStep = (newStep: number) => {
 
           .feature-title {
             font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 600;
             color: #333;
-            margin-bottom: 8px;
+            margin-bottom: 0.5rem;
             text-align: left;
           }
 
           .feature-description {
             font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-            font-size: 14px;
-            line-height: 24px;
+            font-size: 0.875rem;
+            line-height: 1.5rem;
             color: #666;
             text-align: left;
           }
@@ -147,55 +152,25 @@ const updateActiveStep = (newStep: number) => {
     }
   }
 
-  @media (max-width: 1920px) {
-    .side-nav-container {
-      top: calc(336px * 100vw / 1920);
-      left: calc(187px * 100vw / 1920);
-    }
-
-    .content-container {
-      width: calc(603px * 100vw / 1920);
-      top: calc(239px * 100vw / 1920);
-      left: calc(314px * 100vw / 1920);
-
-      .title {
-        font-size: calc(36px * 100vw / 1920);
-        margin-bottom: calc(32px * 100vw / 1920);
-      }
-
-      .feature-list {
-        gap: calc(24px * 100vw / 1920);
-        margin-bottom: calc(40px * 100vw / 1920);
-
-        .feature-item {
-          .check-icon {
-            width: calc(24px * 100vw / 1920);
-            height: calc(24px * 100vw / 1920);
-            font-size: calc(16px * 100vw / 1920);
-            margin-right: calc(12px * 100vw / 1920);
-          }
-
-          .feature-content {
-            .feature-title {
-              font-size: calc(18px * 100vw / 1920);
-              margin-bottom: calc(8px * 100vw / 1920);
-            }
-
-            .feature-description {
-              font-size: calc(14px * 100vw / 1920);
-              line-height: calc(24px * 100vw / 1920);
-            }
-          }
-        }
-      }
-    }
-  }
-
   :deep(.right-images .main-image-container) {
-    width: 840px !important;
-    height: 690px !important;
-    top: 120px !important;
-    right: 40px !important;
+    width: 52.5rem !important;
+    height: 43.125rem !important;
+    top: 7.5rem !important;
+    right: 2.5rem !important;
+  }
+}
+
+/* 媒体查询 - 1920*1080分辨率 */
+@media (max-width: 1920px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+/* 媒体查询 - 1366*768分辨率 */
+@media (max-width: 1366px) {
+  :root {
+    font-size: 11.38px; /* 16px * (1366/1920) = ~11.38px */
   }
 }
 </style>
