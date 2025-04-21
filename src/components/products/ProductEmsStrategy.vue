@@ -73,6 +73,11 @@ const updateActiveStep = (newStep: number) => {
 </script>
 
 <style scoped>
+:root {
+  font-size: 16px;
+}
+
+/* 基于1920*1080的rem计算，以16px为基准 */
 .product-ems-strategy {
   width: 100%;
   min-height: 100vh;
@@ -85,11 +90,11 @@ const updateActiveStep = (newStep: number) => {
 
 .laptop-container {
   position: absolute;
-  left: 360px;
+  left: 22.5rem; /* 360px */
   top: 40%;
   transform: translateY(-40%);
-  width: 640px;
-  height: 420px;
+  width: 40rem; /* 640px */
+  height: 26.25rem; /* 420px */
 }
 
 .laptop-image {
@@ -99,58 +104,58 @@ const updateActiveStep = (newStep: number) => {
 }
 
 .content-container {
-    position: absolute;
-    left: 1200px;
-    right: 100px;
-    top: 43%;
-    transform: translateY(-43%);
+  position: absolute;
+  left: 75rem; /* 1200px */
+  right: 6.25rem; /* 100px */
+  top: 43%;
+  transform: translateY(-43%);
 }
 
 .strategy-title {
   font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-  font-size: 32px;
+  font-size: 2rem; /* 32px */
   font-weight: 600;
   color: #333;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem; /* 40px */
   text-align: left;
 }
 
 .strategy-cards {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem; /* 20px */
   width: 100%;
 }
 
 .strategy-card {
-  width: 542px;
+  width: 33.875rem; /* 542px */
   display: flex;
   align-items: flex-start;
-  padding: 20px;
+  padding: 1.25rem; /* 20px */
   background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-  gap: 16px;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05); /* 0 2px 8px */
+  border-radius: 0.625rem; /* 10px */
+  gap: 1rem; /* 16px */
   transition: all 0.3s ease;
   cursor: pointer;
+}
 
-  &:hover{
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-    background-color: #eef5ff;
-  }
+.strategy-card:hover {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1); /* 0 4px 12px */
+  transform: translateY(-0.125rem); /* -2px */
+  background-color: #eef5ff;
 }
 
 .strategy-number {
-  width: 32px;
-  height: 32px;
+  width: 2rem; /* 32px */
+  height: 2rem; /* 32px */
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1rem; /* 16px */
   flex-shrink: 0;
 }
 
@@ -168,7 +173,7 @@ const updateActiveStep = (newStep: number) => {
 
 .strategy-description {
   font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
-  font-size: 16px;
+  font-size: 1rem; /* 16px */
   line-height: 1.6;
   color: #666;
   text-align: left;
@@ -176,58 +181,85 @@ const updateActiveStep = (newStep: number) => {
 }
 
 /* 更好的响应式设计 */
+/* 1600px以下的屏幕适配 */
 @media (max-width: 1600px) {
   .laptop-container {
-    left: 130px;
-    width: 500px;
-    height: 330px;
+    left: 8.125rem; /* 130px */
+    width: 31.25rem; /* 500px */
+    height: 20.625rem; /* 330px */
   }
   
   .content-container {
-    left: 700px;
+    left: 43.75rem; /* 700px */
   }
 }
 
+/* 1366px屏幕专用适配 */
 @media (max-width: 1366px) {
+  :root {
+    font-size: 14px; /* 调整基础字体大小，使rem更适合1366分辨率 */
+  }
+  
   .product-ems-strategy {
     flex-direction: column;
     align-items: center;
-    padding-top: 120px;
+    padding-top: 8.57rem; /* 120px */
     height: auto;
+  }
+  
+  .side-nav-container {
+    position: absolute;
+    top: 1.42rem; /* 20px */
+    left: 1.42rem; /* 20px */
   }
   
   .laptop-container {
     position: relative;
-    left: 0;
-    top: 0;
+    left: -18rem;
+    right: 0;
     transform: none;
     width: 80%;
-    max-width: 560px;
+    max-width: 40rem; /* 560px */
     height: auto;
-    margin-bottom: 40px;
-    margin-top: 60px;
+    margin-bottom: 2.85rem; /* 40px */
+    margin-top: 4.28rem; /* 60px */
   }
   
   .content-container {
     position: relative;
-    left: 0;
-    right: 0;
-    top: 0;
+    left: 25.875rem;
+    top: -22rem;
     transform: none;
     width: 90%;
-    max-width: 800px;
-    padding: 0 20px;
+    max-width: 45rem; /* 800px */
+    padding: 0 1.42rem; /* 0 20px */
   }
   
   .strategy-title {
     text-align: center;
     width: 100%;
+    font-size: 1.85rem; /* ~26px */
+    margin-bottom: 1.78rem; /* ~25px */
+  }
+  
+  .strategy-card {
+    width: 100%;
+    padding: 1.07rem; /* ~15px */
+  }
+  
+  .strategy-cards {
+    gap: 1.07rem; /* ~15px */
   }
 }
 
+/* 移动设备适配 */
 @media (max-width: 768px) {
+  :root {
+    font-size: 12px;
+  }
+  
   .side-nav-container {
-    left: 10px;
+    left: 0.83rem; /* 10px */
   }
   
   .laptop-container {
@@ -235,15 +267,15 @@ const updateActiveStep = (newStep: number) => {
   }
   
   .strategy-title {
-    font-size: 24px;
+    font-size: 2rem; /* 24px */
   }
   
   .strategy-card {
-    padding: 15px;
+    padding: 1.25rem; /* 15px */
   }
   
   .strategy-description {
-    font-size: 14px;
+    font-size: 1.16rem; /* 14px */
   }
 }
 </style> 

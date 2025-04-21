@@ -73,7 +73,7 @@ const featuresContainerStyle = computed(() => ({
   height: 'auto',
   maxHeight: 'clamp(350px, 29vw, 556px)',
   top: 'clamp(120px, 10.5vw, 205px)',
-  left: 'clamp(200px, 16vw, 313px)',
+  left: 'clamp(200px, 19vw, 313px)',
   borderRadius: '10px',
 }));
 
@@ -232,5 +232,61 @@ const updateActiveStep = (newStep: number) => {
 
 @media (max-width: 1920px) {
   /* 可以删除这部分 */
+}
+
+@media screen and (max-width: 1366px) {
+  .product-ems-features {
+    padding: 6rem 1.5rem 0 5rem;
+  }
+  
+  .title-container {
+    top: 4rem;
+    left: 10rem;
+  }
+  
+  .main-title {
+    font-size: 1.5rem;
+  }
+  
+  .sub-title {
+    font-size: 0.9rem;
+  }
+  
+  .features-list {
+    top: 7rem;
+    left: 10rem;
+    width: 20rem;
+    max-height: 30rem;
+  }
+  
+  .feature-card {
+    min-height: 7.5rem;
+    padding: 2rem;
+  }
+  
+  .feature-title {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .feature-description {
+    font-size: 1rem;
+  }
+  
+  .feature-number {
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+  }
+  
+  .feature-image-container {
+    width: 28rem;
+    height: 18rem;
+    top: 9rem;
+    right: 2rem;
+  }
 }
 </style> 
