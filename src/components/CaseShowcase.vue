@@ -172,20 +172,23 @@ const createEntranceAnimation = () => {
   rowRefs.forEach((row, index) => {
     const delay = index * 0.2;
 
-    masterTimeline!.to(row.children, {
-      duration: 1.8,
-      autoAlpha: 1,
-      stagger: {
-        each: 0.06,
-        from: "random",
-      },
-      rotationX: 0,
-      rotationY: 0,
-      rotationZ: 0,
-      z: 0,
-      scale: 1,
-      ease: "power3.out",
-    }, delay);
+    // 添加非空检查
+    if (row) {
+      masterTimeline!.to(row.children, {
+        duration: 1.8,
+        autoAlpha: 1,
+        stagger: {
+          each: 0.06,
+          from: "random",
+        },
+        rotationX: 0,
+        rotationY: 0,
+        rotationZ: 0,
+        z: 0,
+        scale: 1,
+        ease: "power3.out",
+      }, delay);
+    }
   });
 
   // 播放动画
