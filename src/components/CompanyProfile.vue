@@ -1,8 +1,18 @@
 <template>
   <div class="company-profile">
+    <!-- 动画控制开关 -->
+    <div class="animation-toggle" v-show="false">
+      <el-switch
+        v-model="animationStore.animationsEnabled"
+        active-text="动画开启"
+        inactive-text="动画关闭"
+        @change="handleAnimationToggle"
+      />
+    </div>
+
     <div class="profile-content">
       <h2 class="main-title">凯奥思数据 工业智能服务商</h2>
-      
+
       <!-- 数据统计展示 -->
       <div class="stats-container">
         <div class="stat-item">
@@ -30,25 +40,25 @@
           <div class="stat-desc">合作客户</div>
         </div>
       </div>
-      
+
       <!-- 公司简介文字 -->
       <div class="company-intro">
         <p>南京凯奥思数据技术有限公司（CHAOS DATA）是国内专业的工业智能服务商，专注工业智能，以边缘计算、工业大数据、先进控制和运筹优化等人工智能算法技术为核心驱动，为工业企业提供智慧运维、能源管理、工业控制、供应链优化等服务。</p>
         <p>基于海归技术团队在全球上百个项目应用经验，覆盖钢铁、水泥、化工、煤炭、汽车、新能源等行业，打造更加智能、安全、经济的工业产品和解决方案，助力工业企业智能化升级。</p>
       </div>
-      
+
       <!-- 公司发展历程 -->
       <div class="company-history">
         <h3 class="history-title">公司历程</h3>
-        
+
         <div class="timeline-box" ref="timelineContainer">
           <div class="timeline">
             <!-- 添加连接图标的横线 -->
             <div class="timeline-connector"></div>
-            
-            <div 
-              class="timeline-item" 
-              v-for="(year, index) in timeline" 
+
+            <div
+              class="timeline-item"
+              v-for="(year, index) in timeline"
               :key="index"
               :class="{ 'show': index <= currentStep }"
               :style="{ animationDelay: `${index * (animationDuration / timeline.length)}s` }"
@@ -58,9 +68,9 @@
               </div>
               <div class="year">{{ year.year }}</div>
               <div class="events">
-                <div 
-                  class="event" 
-                  v-for="(event, eIndex) in year.events" 
+                <div
+                  class="event"
+                  v-for="(event, eIndex) in year.events"
                   :key="eIndex"
                 >
                   {{ event }}
@@ -77,9 +87,13 @@
 <script setup lang="ts">
 import { ref, onMounted, reactive, watch, onBeforeUnmount } from 'vue';
 import { useSectionStore } from '@/stores/sectionStore';
+import { useAnimationStore } from '@/stores/animationStore';
 
 // 使用section store来监听当前活跃section
 const sectionStore = useSectionStore();
+
+// 使用animation store来控制动画开关
+const animationStore = useAnimationStore();
 
 // 定义最终数字
 const finalNumbers = {
@@ -110,30 +124,30 @@ const clearAllTimeouts = () => {
 const animateNumber = (key: string, finalValue: number, duration: number) => {
   // 重置初始值
   animatedNumbers[key as keyof typeof animatedNumbers] = 0;
-  
+
   const startTime = Date.now();
   let animationFrameId: number;
-  
+
   const updateNumber = () => {
     const currentTime = Date.now();
     const elapsedTime = currentTime - startTime;
-    
+
     if (elapsedTime < duration) {
       // 计算当前应该显示的数字
       const progress = elapsedTime / duration;
       // 使用easeOutQuart缓动函数使动画更自然
       const easedProgress = 1 - Math.pow(1 - progress, 4);
       animatedNumbers[key as keyof typeof animatedNumbers] = Math.floor(easedProgress * finalValue);
-      
+
       animationFrameId = requestAnimationFrame(updateNumber);
     } else {
       // 确保最终显示的是精确的目标值
       animatedNumbers[key as keyof typeof animatedNumbers] = finalValue;
     }
   };
-  
+
   animationFrameId = requestAnimationFrame(updateNumber);
-  
+
   // 保存动画帧 ID 用于清除
   const timeoutId = setTimeout(() => {
     cancelAnimationFrame(animationFrameId);
@@ -150,13 +164,13 @@ const timelineContainer = ref<HTMLElement | null>(null);
 const startTimelineAnimation = () => {
   const totalSteps = timeline.value.length;
   const stepInterval = animationDuration / totalSteps;
-  
+
   // 清除之前的所有计时器
   clearAllTimeouts();
-  
+
   // 重置
   currentStep.value = -1;
-  
+
   // 逐个显示时间轴项目
   for (let i = 0; i < totalSteps; i++) {
     const timeoutId = setTimeout(() => {
@@ -171,16 +185,28 @@ const startTimelineAnimation = () => {
 const startAllAnimations = () => {
   // 清除之前的所有计时器
   clearAllTimeouts();
-  
+
   // 重置状态
   currentStep.value = -1;
-  
+
+  // 如果动画开关关闭，则直接显示最终结果
+  if (!animationStore.animationsEnabled) {
+    // 直接设置最终数字
+    Object.entries(finalNumbers).forEach(([key, value]) => {
+      animatedNumbers[key as keyof typeof animatedNumbers] = value;
+    });
+
+    // 直接显示所有时间轴项目
+    currentStep.value = timeline.value.length - 1;
+    return;
+  }
+
   // 启动数字动画
   const duration = 3000; // 3秒
   Object.entries(finalNumbers).forEach(([key, value]) => {
     animateNumber(key, value, duration);
   });
-  
+
   // 启动时间轴动画
   startTimelineAnimation();
 };
@@ -191,7 +217,7 @@ watch(() => sectionStore.currentSection, (newSection, oldSection) => {
   if (oldSection === 3 && newSection !== 3) {
     clearAllTimeouts();
   }
-  
+
   // 当切换到公司简介section时(索引为3)，重新开始所有动画
   if (newSection === 3) {
     // 短暂延迟，确保在section滑入动画完成后开始内部动画
@@ -207,7 +233,24 @@ onBeforeUnmount(() => {
   clearAllTimeouts();
 });
 
+// 处理动画开关切换
+const handleAnimationToggle = (value: boolean) => {
+  // 保存用户偏好到本地存储
+  localStorage.setItem('animation-enabled', value ? 'true' : 'false');
+
+  // 如果当前在公司简介section，重新启动动画（或直接显示最终结果）
+  if (sectionStore.currentSection === 3) {
+    startAllAnimations();
+  }
+};
+
 onMounted(() => {
+  // 从本地存储加载用户偏好
+  const savedPreference = localStorage.getItem('animation-enabled');
+  if (savedPreference !== null) {
+    animationStore.setAnimationsEnabled(savedPreference === 'true');
+  }
+
   // 初始检查，如果当前已经在公司简介section，直接启动动画
   if (sectionStore.currentSection === 3) {
     startAllAnimations();
@@ -260,14 +303,14 @@ const timeline = ref([
     events: [
       '完成亿元A+轮融资',
       '江苏省专精特新中小企业认证、国家级特色专业型工业互联网平台认证',
+      '入选江苏省互联网成长型企业',
+      '获评南京市瞪羚企业',
       '联合创始人孙磊博士入选国家级人才'
     ]
   },
   {
     year: '2024年',
     events: [
-      '入选江苏省互联网成长型企业TOP10榜单',
-      '获评南京市瞪羚企业',
       '南京市首家民营科技企业数据资产入报表',
       '南京市工程技术研究中心认定'
     ]
@@ -290,6 +333,19 @@ const timeline = ref([
   background-repeat: no-repeat;
   overflow-y: auto;
   padding: 3.125rem 0;
+  position: relative;
+}
+
+/* 动画开关样式 */
+.animation-toggle {
+  position: absolute;
+  top: 4.25rem;
+  right: 1.25rem;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
 }
 
 .profile-content {
@@ -329,7 +385,7 @@ const timeline = ref([
   /* 添加字体平滑效果 */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
   &.blue {
     color: @blue-color;
   }
@@ -349,7 +405,7 @@ const timeline = ref([
 .company-intro {
   margin-bottom: 3.125rem;
   line-height: 1.8;
-  
+
   p {
     margin-bottom: 0.9375rem;
     text-align: justify;
@@ -409,26 +465,26 @@ const timeline = ref([
   transform: translateY(1.25rem);
   transition: opacity 0.5s ease, transform 0.5s ease;
   pointer-events: none;
-  
+
   &.show {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
     animation: fadeInUp 0.8s ease forwards;
-    
+
     .marker-container {
       animation: fadeInUp 0.6s ease forwards;
     }
-    
+
     .year {
       animation: fadeInUp 0.6s ease 0.2s forwards;
     }
-    
+
     .events {
       animation: fadeInUp 0.6s ease 0.4s forwards;
     }
   }
-  
+
   .marker-container,
   .year,
   .events {
@@ -478,7 +534,7 @@ const timeline = ref([
 
 .event {
   margin-bottom: 0.375rem;
-  max-width: 9.375rem;
+  max-width: 8.375rem;
   text-align: left;
   font-size: 0.75rem;
 }
@@ -496,7 +552,7 @@ const timeline = ref([
   .timeline-box {
     width: 100%;
   }
-  
+
   .event {
     font-size: 0.6875rem;
     max-width: 8.125rem;
@@ -582,4 +638,4 @@ const timeline = ref([
     flex: 0 0 100%;
   }
 }
-</style> 
+</style>
