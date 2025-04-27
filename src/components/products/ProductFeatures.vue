@@ -56,7 +56,7 @@ const updateActiveStep = (newStep: number) => {
 :root {
   font-size: 16px;
   
-  @media (max-width: 1500px) {
+  @media (max-width: 1366px) {
     font-size: 14px;
   }
 }
@@ -217,7 +217,7 @@ const updateActiveStep = (newStep: number) => {
   }
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1366px) {
   .product-features {
     padding: 10rem 0 0 7rem;
     gap: 2.5rem;
@@ -291,7 +291,7 @@ const updateActiveStep = (newStep: number) => {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .product-features {
     padding: 5rem 1.5rem 3rem;
   }

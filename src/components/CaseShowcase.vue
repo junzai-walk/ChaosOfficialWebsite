@@ -163,7 +163,7 @@ const createEntranceAnimation = () => {
       rotationX: gsap.utils.random(-90, 90),
       rotationY: gsap.utils.random(-90, 90),
       rotationZ: gsap.utils.random(-45, 45),
-      z: -1000,
+      z: -768,
       transformOrigin: "center center"
     });
   });
@@ -342,7 +342,7 @@ export default {
 :root {
   font-size: 16px;
   
-  @media (max-width: 1500px) {
+  @media (max-width: 1366px) {
     font-size: 14px;
   }
 }
@@ -409,8 +409,8 @@ export default {
     }
   }
 
-  /* 添加针对1500*1000分辨率的特殊处理 */
-  @media (max-width: 1500px) {
+  /* 添加针对1366*768分辨率的特殊处理 */
+  @media (max-width: 1366px) {
     .showcase-content {
       max-width: 68.75rem; /* 1100px -> 68.75rem */
     }
@@ -500,7 +500,7 @@ export default {
     }
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 768px) {
     .case-grid {
       grid-template-columns: 1fr;
     }

@@ -96,7 +96,7 @@ onMounted(() => {
 .logo-depth-container {
   position: relative;
   transform-style: preserve-3d;
-  transform: perspective(1000px);
+  transform: perspective(768px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -141,7 +141,7 @@ onMounted(() => {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .logo-depth-container {
     transform: perspective(600px);
     

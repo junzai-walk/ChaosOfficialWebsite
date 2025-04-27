@@ -108,7 +108,7 @@ const updateActiveStep = (newStep: number) => {
 :root {
   font-size: 16px;
 
-  @media (max-width: 1500px) {
+  @media (max-width: 1366px) {
     font-size: 14px;
   }
 }
@@ -224,8 +224,8 @@ const updateActiveStep = (newStep: number) => {
   }
 }
 
-/* 1500x1000分辨率适配 */
-@media (max-width: 1500px) {
+/* 1366x768分辨率适配 */
+@media (max-width: 1366px) {
   .product-iop-features {
     padding-top: 5rem;
 

@@ -345,7 +345,7 @@ const currentCases = computed(() => {
         gap: 0.5rem;
       }
       
-      @media (max-width: 1000px) {
+      @media (max-width: 768px) {
         grid-template-columns: 1fr;
       }
 

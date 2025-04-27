@@ -50,7 +50,7 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 :root {
   font-size: 16px;
   
-  @media (max-width: 1500px) {
+  @media (max-width: 1366px) {
     font-size: 14px;
   }
 }
@@ -132,7 +132,7 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
   }
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1366px) {
   .title {
     top: 16rem;
     font-size: 3rem;
@@ -164,7 +164,7 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .title {
     font-size: 2rem;
     position: relative;

@@ -436,7 +436,7 @@ onMounted(() => {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .case-showcase {
     .partner-wall {
       flex-direction: column;

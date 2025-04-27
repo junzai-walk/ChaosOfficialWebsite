@@ -9,7 +9,7 @@
       :keyboard="{ enabled: true, onlyInViewport: true }"
       :effect="'fade'"
       :fadeEffect="{ crossFade: true }"
-      :speed="1000"
+      :speed="768"
       :resistance="false"
       :threshold="10"
       @swiper="onSwiperInitialized"

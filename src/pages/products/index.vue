@@ -889,7 +889,7 @@ const productAdvantagesApc = [
   },
   {
     title: '工业级系统性能',
-    description: '系统部署快：部署周期2周 系统响应快：画布运行响应时间毫秒级 支持高并发量：数据并发量支持大于1000条/秒。',
+    description: '系统部署快：部署周期2周 系统响应快：画布运行响应时间毫秒级 支持高并发量：数据并发量支持大于768条/秒。',
     icon: apcFeature3,
     position: { top: 341, left: 340 },
     iconPosition: 'left' as const

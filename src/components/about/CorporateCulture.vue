@@ -37,7 +37,7 @@ import icon2 from '@/assets/about/ion_rocket-outline.png'
 import icon3 from '@/assets/about/cil_book.png'
 const statisticCard = [
   { value: 15, name: '工业智能服务经验', suffix: '年+' },
-  { value: 1000, name: '核心算法' },
+  { value: 768, name: '核心算法' },
   { value: 15, name: '行业覆盖' },
   { value: 200, name: '合作客户' },
 ]
@@ -200,7 +200,7 @@ const cultureCard = [
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .title {
     font-size: 36px;
   }

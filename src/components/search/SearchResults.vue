@@ -119,7 +119,7 @@ const performSearch = async () => {
   
   try {
     // 模拟API调用延迟
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise(resolve => setTimeout(resolve, 768))
     
     // 确保搜索查询存在且不为空
     if (searchQuery.value && searchQuery.value.toString().trim()) {
@@ -368,7 +368,7 @@ watch(() => route.query.q, (newValue) => {
 
 .results-container {
   width: 80%;
-  max-width: 1000px;
+  max-width: 768px;
   margin: 0 auto;
   position: relative;
   margin-bottom: 3rem;

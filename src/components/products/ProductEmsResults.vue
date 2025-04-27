@@ -107,8 +107,8 @@ const updateActiveStep = (newStep: number) => {
   font-size: 16px;
 }
 
-/* 媒体查询 - 针对1500*1000屏幕，设置不同的基准字体大小 */
-@media (max-width: 1500px) {
+/* 媒体查询 - 针对1366*768屏幕，设置不同的基准字体大小 */
+@media (max-width: 1366px) {
   :root {
     font-size: 14px;
   }
@@ -283,8 +283,8 @@ const updateActiveStep = (newStep: number) => {
   }
 }
 
-/* 媒体查询 - 针对1500*1000屏幕 */
-@media (max-width: 1500px) {
+/* 媒体查询 - 针对1366*768屏幕 */
+@media (max-width: 1366px) {
   .product-ems-results {
     padding: 5rem 0;
   }
@@ -352,7 +352,7 @@ const updateActiveStep = (newStep: number) => {
 }
 
 /* 媒体查询 - 移动设备 */
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .product-ems-results {
     padding: 4rem 1rem;
   }

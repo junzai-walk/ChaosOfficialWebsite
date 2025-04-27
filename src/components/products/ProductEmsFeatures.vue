@@ -234,7 +234,7 @@ const updateActiveStep = (newStep: number) => {
   /* 可以删除这部分 */
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1366px) {
   .product-ems-features {
     padding: 6rem 1.5rem 0 5rem;
   }

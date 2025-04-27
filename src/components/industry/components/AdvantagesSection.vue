@@ -79,7 +79,7 @@ const updateActiveStep = (newStep: number) => {
 :root {
   font-size: 16px;
   
-  @media (max-width: 1500px) {
+  @media (max-width: 1366px) {
     font-size: 14px;
   }
 }
@@ -260,7 +260,7 @@ const updateActiveStep = (newStep: number) => {
   }
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1366px) {
   .advantages-section {
     padding: 1.875rem;
   }
@@ -328,7 +328,7 @@ const updateActiveStep = (newStep: number) => {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .advantages-container {
     margin: 2.5rem auto;
   }

@@ -314,7 +314,7 @@ html {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .case-card {
     width: 100%;
   }

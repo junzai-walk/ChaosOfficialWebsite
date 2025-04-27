@@ -100,7 +100,7 @@ const updateActiveStep = (newStep: number) => {
   font-size: 16px;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1366px) {
   :root {
     font-size: 14px;
   }
@@ -269,8 +269,8 @@ const updateActiveStep = (newStep: number) => {
     }
   }
   
-  /* 媒体查询 - 针对1500*1000分辨率 */
-  @media (max-width: 1500px) {
+  /* 媒体查询 - 针对1366*768分辨率 */
+  @media (max-width: 1366px) {
     padding-top: 6.25rem;
     
     .side-nav-container {
@@ -362,7 +362,7 @@ const updateActiveStep = (newStep: number) => {
   }
   
   /* 媒体查询 - 移动设备 */
-  @media (max-width: 1000px) {
+  @media (max-width: 768px) {
     padding-top: 4rem;
     
     .results-cards {

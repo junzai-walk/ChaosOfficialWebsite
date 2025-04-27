@@ -74,7 +74,7 @@ const activeStep = ref(props.defaultActiveStep || 3);
 // 计算卡片样式，包括响应式位置
 const getCardStyle = (position: Position) => {
   // 根据窗口宽度决定基准字体大小
-  const baseSize = window.innerWidth > 1500 ? 16 : 14;
+  const baseSize = window.innerWidth > 1366 ? 16 : 14;
   
   return {
     top: `${position.top / baseSize}rem`,
@@ -92,7 +92,7 @@ const updateActiveStep = (newStep: number) => {
 :root {
   font-size: 16px;
   
-  @media (max-width: 1500px) {
+  @media (max-width: 1366px) {
     font-size: 14px;
   }
 }
@@ -249,7 +249,7 @@ const updateActiveStep = (newStep: number) => {
   }
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1366px) {
   .product-advantages {
     padding: 10rem 0 0 7rem;
     gap: 2.5rem;
@@ -328,7 +328,7 @@ const updateActiveStep = (newStep: number) => {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .product-advantages {
     padding: 5rem 1.5rem 3rem;
   }

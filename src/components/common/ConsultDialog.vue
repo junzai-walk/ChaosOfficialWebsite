@@ -161,7 +161,7 @@ export default {
 :root {
   font-size: 16px;
   
-  @media (max-width: 1500px) {
+  @media (max-width: 1366px) {
     font-size: 14px;
   }
 }
@@ -401,7 +401,7 @@ export default {
   }
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1366px) {
   .steps-container {
     margin-bottom: 1.5rem;
   }

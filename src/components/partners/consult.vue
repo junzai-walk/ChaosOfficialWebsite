@@ -61,9 +61,9 @@ html {
     font-size: 16px;
   }
 
-  // 1500*1000分辨率适配
-  @media (max-width: 1500px) {
-    font-size: calc(16px * (1500 / 1920));
+  // 1366*768分辨率适配
+  @media (max-width: 1366px) {
+    font-size: calc(16px * (1366 / 1920));
   }
 
   // 其他分辨率适配
@@ -221,7 +221,7 @@ html {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .consult-card {
     width: 100%;
   }
@@ -240,7 +240,7 @@ html {
   }
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1366px) {
 
 .consult-rows {
   width: 40%;

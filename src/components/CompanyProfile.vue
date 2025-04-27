@@ -84,7 +84,7 @@ const sectionStore = useSectionStore();
 // 定义最终数字
 const finalNumbers = {
   years: 15,
-  algorithms: 1000,
+  algorithms: 768,
   industries: 15,
   clients: 200
 };
@@ -568,7 +568,7 @@ const timeline = ref([
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .stats-container {
     flex-direction: column;
     align-items: center;

@@ -276,7 +276,7 @@ const iconStyle = computed(() => {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .title {
     font-size: 36px;
   }

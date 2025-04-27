@@ -718,7 +718,7 @@ const steelAdvantages = [
   {
     icon: steelAdvantage3,
     title: '自主可控技术底座',
-    description: '1000+核心算法专利，30+授权专利，工信部“工业互联网平台示范项目”认证'
+    description: '768+核心算法专利，30+授权专利，工信部“工业互联网平台示范项目”认证'
   },
   {
     icon: steelAdvantage4,

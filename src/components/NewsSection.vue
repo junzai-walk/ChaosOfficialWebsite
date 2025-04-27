@@ -616,7 +616,7 @@ const navigateToNews = (sectionIndex: number) => {
 }
 
 // 增强移动端适配
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .content-container {
     flex-direction: column;
   }
@@ -745,7 +745,7 @@ const navigateToNews = (sectionIndex: number) => {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .news-section {
     .section-title {
       font-size: 1.75rem;

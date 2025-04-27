@@ -83,7 +83,7 @@ onMounted(() => {
   text-align: center;
   color: #fff;
   padding: 0 20px;
-  max-width: 1000px;
+  max-width: 768px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -154,7 +154,7 @@ onMounted(() => {
 }
 
 /* 小屏幕 */
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .title {
     font-size: 28px;
     margin-bottom: 10px;
