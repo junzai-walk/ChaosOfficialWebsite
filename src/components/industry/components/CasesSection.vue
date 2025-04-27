@@ -6,13 +6,13 @@
     <div class="cases-container">
       <!-- 左侧导航栏 - 使用自定义组件 -->
       <div class="side-nav-container">
-        <CustomNavSteps 
-          :width="120" 
-          :height="192" 
-          :steps="navSteps" 
-          :active-step="activeStep" 
-          :section-numbers="sectionNumbers" 
-          @update:active-step="updateActiveStep" 
+        <CustomNavSteps
+          :width="120"
+          :height="192"
+          :steps="navSteps"
+          :active-step="activeStep"
+          :section-numbers="sectionNumbers"
+          @update:active-step="updateActiveStep"
         />
       </div>
 
@@ -23,10 +23,11 @@
           <div class="case-cards" :style="{ width: `${totalPages * 100}%`, transform: `translateX(-${currentPage * (100/totalPages)}%)` }">
             <!-- 动态生成每页内容 -->
             <div v-for="page in totalPages" :key="page" class="case-page" :style="{ width: `${100/totalPages}%` }">
-              <div 
-                v-for="(card, index) in getPageCases(page-1)" 
-                :key="index" 
+              <div
+                v-for="(card, index) in getPageCases(page-1)"
+                :key="index"
                 class="case-card"
+                @click="handleCardClick(card)"
               >
                 <div class="case-image" :style="{ backgroundImage: `url(${card.image})` }"></div>
                 <div class="case-info">
@@ -53,7 +54,7 @@
         </div>
         <!-- 页码指示器 -->
         <div class="pagination-indicator" v-if="false">
-          <span v-for="page in totalPages" :key="page" 
+          <span v-for="page in totalPages" :key="page"
                 :class="['page-dot', { active: currentPage === page - 1 }]"
                 @click="goToPage(page - 1)"></span>
         </div>
@@ -73,6 +74,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { useRouter } from 'vue-router';
 import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue';
 import CustomNavSteps from './CustomNavSteps.vue';
 import { ElMessage } from 'element-plus';
@@ -82,6 +84,7 @@ interface CaseCard {
   image: string;
   title: string;
   description: string;
+  section?: string; // 案例ID，用于跳转到详情页
 }
 
 // 定义组件属性
@@ -92,6 +95,9 @@ const props = defineProps<{
   defaultActiveStep?: number;
   sectionNumbers: number[];
 }>();
+
+// 获取路由实例
+const router = useRouter();
 
 // 当前活动步骤
 const activeStep = ref(props.defaultActiveStep || 4); // 默认显示典型案例（第四项）
@@ -138,14 +144,14 @@ const submitConsultation = () => {
     ElMessage.warning('请输入手机号码');
     return;
   }
-  
+
   // 手机号格式校验
   const phoneRegex = /^1[3-9]\d{9}$/;
   if (!phoneRegex.test(contactInfo.value)) {
     ElMessage.warning('请输入正确的手机号码格式');
     return;
   }
-  
+
   // 提交逻辑
   ElMessage.success('申请成功，工作人员将会尽快联系您');
   contactInfo.value = ''; // 清空输入框
@@ -154,13 +160,30 @@ const submitConsultation = () => {
 const updateActiveStep = (newStep: number) => {
   activeStep.value = newStep;
 };
+
+// 处理卡片点击事件
+const handleCardClick = (card: CaseCard) => {
+  console.log("%c card", "color:red;", card)
+  if (card.section) {
+    // 如果有案例ID，跳转到案例详情页
+    router.push({
+      path: '/products',
+      query: {
+        section: card.section  // 案例详情页的section
+      }
+    });
+  } else {
+    // 如果没有案例ID，显示提示信息
+    ElMessage.info('该案例暂无详细信息');
+  }
+};
 </script>
 
 <style scoped lang="less">
 /* 设置基准根元素字体大小 */
 :root {
   font-size: 16px;
-  
+
   @media (max-width: 1366px) {
     font-size: 14px;
   }
@@ -238,10 +261,12 @@ const updateActiveStep = (newStep: number) => {
   background-color: #fff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 0.0625rem solid #eaeaea;
+  cursor: pointer; /* 添加指针样式，表示可点击 */
 }
 
 .case-card:hover {
   transform: translateY(-0.3125rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* 增强悬停时的阴影效果 */
 }
 
 .case-image {
@@ -356,36 +381,36 @@ const updateActiveStep = (newStep: number) => {
   .cases-container {
     max-width: 90rem;
   }
-  
+
   .case-card {
     height: 25rem;
   }
-  
+
   .case-image {
     height: 17.5rem;
   }
-  
+
   .case-info {
     padding: 1.5rem 1.25rem;
   }
-  
+
   .case-info h3 {
     font-size: 1.125rem;
     margin-bottom: 0.75rem;
   }
-  
+
   .case-info p {
     font-size: 1rem;
   }
-  
+
   .apply-trial {
     height: 9.5rem;
   }
-  
+
   .apply-trial h3 {
     font-size: 1.5rem;
   }
-  
+
   .apply-form {
     max-width: 37.5rem;
   }
@@ -395,31 +420,31 @@ const updateActiveStep = (newStep: number) => {
   .cases-container {
     max-width: 70rem;
   }
-  
+
   .case-card {
     height: 20rem;
   }
-  
+
   .case-image {
     height: 13.75rem;
   }
-  
+
   .case-info {
     padding: 1rem 0.875rem;
   }
-  
+
   .case-info h3 {
     font-size: 0.9375rem;
   }
-  
+
   .case-info p {
     font-size: 0.8125rem;
   }
-  
+
   .apply-trial {
     height: 7.5rem;
   }
-  
+
   .apply-trial h3 {
     font-size: 1.125rem;
     margin-bottom: 1rem;
@@ -448,21 +473,21 @@ const updateActiveStep = (newStep: number) => {
     max-width: 18.75rem;
     margin-bottom: 1.25rem;
   }
-  
+
   .case-card {
     width: calc(50% - 0.625rem);
     height: auto;
     min-height: 18.75rem;
   }
-  
+
   .case-image {
     height: 12.5rem;
   }
-  
+
   .navigation-buttons {
     gap: 2rem;
   }
-  
+
   .nav-button {
     width: 2.25rem;
     height: 2.25rem;
@@ -473,42 +498,42 @@ const updateActiveStep = (newStep: number) => {
   .cases-section {
     padding: 0 1rem;
   }
-  
+
   .background-header {
     height: 10rem;
   }
-  
+
   .case-page {
     gap: 1rem;
   }
-  
+
   .case-card {
     width: 100%;
     min-height: 16.25rem;
   }
-  
+
   .case-image {
     height: 10rem;
   }
-  
+
   .case-info {
     padding: 0.875rem 0.75rem;
   }
-  
+
   .apply-trial {
     height: auto;
     padding: 1.5rem 1rem;
   }
-  
+
   .apply-form {
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .navigation-buttons {
     gap: 1.5rem;
   }
-  
+
   .nav-button {
     width: 2rem;
     height: 2rem;
@@ -519,21 +544,21 @@ const updateActiveStep = (newStep: number) => {
   .cases-section {
     padding: 0 0.75rem;
   }
-  
+
   .background-header {
     height: 8rem;
   }
-  
+
   .case-image {
     height: 9.375rem;
   }
-  
+
   .case-info h3 {
     font-size: 0.875rem;
   }
-  
+
   .case-info p {
     font-size: 0.75rem;
   }
 }
-</style> 
+</style>

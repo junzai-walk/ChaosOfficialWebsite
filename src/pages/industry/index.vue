@@ -756,17 +756,20 @@ const steelCases = [
   {
     image: steelCase1,
     title: '中国宝武钢铁集团有限公司',
-    description: '设备预测性维护与健康管理系统'
+    description: '设备预测性维护与健康管理系统',
+    section: '0'
   },
   {
     image: steelCase2,
     title: '敬业钢铁有限公司',
-    description: '设备预测性维护与健康管理系统'
+    description: '设备预测性维护与健康管理系统',
+    section: '0'
   },
   {
     image: steelCase3,
     title: '宝山钢铁股份有限公司',
-    description: '先进过程控制系统'
+    description: '先进过程控制系统',
+    section: '10'
   }
 ];
 
@@ -775,17 +778,20 @@ const cementCases = [
   {
     image: cementCase1,
     title: '安徽海螺水泥股份有限公司',
-    description: '设备预测性维护与健康管理系统'
+    description: '设备预测性维护与健康管理系统',
+    section: '0'
   },
   {
     image: cementCase1,
     title: '巢湖海螺水泥有限责任公司',
-    description: '先进过程控制系统'
+    description: '先进过程控制系统',
+    section: '10'
   },
   {
     image: cementCase2,
     title: '安徽盘锦水泥有限公司',
-    description: '先进过程控制系统'
+    description: '先进过程控制系统',
+    section: '10'
   }
 ];
 
@@ -828,17 +834,20 @@ const coalCases = [
   {
     image: coalCase1,
     title: '山西焦煤集团有限责任公司',
-    description: '设备预测性维护与健康管理系统'
+    description: '设备预测性维护与健康管理系统',
+    section: '0'
   },
   {
     image: coalCase1,
     title: '山西焦煤集团有限责任公司',
-    description: '设备全生命周期管理系统'
+    description: '设备全生命周期管理系统',
+    section: '5'
   },
   {
     image: coalCase2,
     title: '新疆天池能源有限责任公司',
-    description: '设备全生命周期管理系统'
+    description: '设备全生命周期管理系统',
+    section: '5'
   }
 ];
 
@@ -912,7 +921,8 @@ const chemicalCases = [
   {
     image: chemicalCase1, // 化工厂设备图片
     title: '巴斯夫（中国）有限公司',
-    description: '设备预测性维护与健康管理系统'
+    description: '设备预测性维护与健康管理系统',
+    section: '0'
   }
 ];
 
@@ -993,7 +1003,8 @@ const carCases = [
   {
     image: carCase1,
     title: '广汽丰田汽车有限公司',
-    description: '设备预测性维护与健康管理系统'
+    description: '设备预测性维护与健康管理系统',
+    section: '0'
   }
 ];
 
