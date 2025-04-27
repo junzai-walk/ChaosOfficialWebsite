@@ -293,9 +293,9 @@ const timeline = ref([
 }
 
 .profile-content {
-  max-width: 87.5rem;
+  max-width: 90rem;
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 4rem 1.25rem;
 }
 
 .main-title {
@@ -492,7 +492,7 @@ const timeline = ref([
 }
 
 /* 响应式调整 */
-@media (max-width: 87.5rem) {
+@media (max-width: 90rem) {
   .timeline-box {
     width: 100%;
   }
@@ -503,19 +503,19 @@ const timeline = ref([
   }
 }
 
-@media (max-width: 1920px) {
-  .profile-content {
-    max-width: 80rem;
-  }
+// @media (max-width: 1920px) {
+//   .profile-content {
+//     max-width: 80rem;
+//   }
 
-  .stats-container {
-    gap: 6rem;
-  }
+//   .stats-container {
+//     gap: 6rem;
+//   }
 
-  .timeline-box {
-    width: 75rem;
-  }
-}
+//   .timeline-box {
+//     width: 75rem;
+//   }
+// }
 
 @media (max-width: 1232px) {
   .company-profile {
@@ -568,7 +568,7 @@ const timeline = ref([
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .stats-container {
     flex-direction: column;
     align-items: center;

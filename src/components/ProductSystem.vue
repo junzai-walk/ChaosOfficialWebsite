@@ -245,7 +245,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .product-system {
     .system-content {
       height: 20rem;

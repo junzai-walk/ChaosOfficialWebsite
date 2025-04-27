@@ -399,7 +399,7 @@ onBeforeUnmount(() => {
   }
 }
 
-@media screen and (max-width: 1366px) {
+@media screen and (max-width: 1500px) {
   .news-detail {
     .detail-body {
       .news-container {

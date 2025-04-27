@@ -342,7 +342,7 @@ export default {
 :root {
   font-size: 16px;
   
-  @media (max-width: 1366px) {
+  @media (max-width: 1500px) {
     font-size: 14px;
   }
 }
@@ -409,8 +409,8 @@ export default {
     }
   }
 
-  /* 添加针对1366*768分辨率的特殊处理 */
-  @media (max-width: 1366px) {
+  /* 添加针对1500*1000分辨率的特殊处理 */
+  @media (max-width: 1500px) {
     .showcase-content {
       max-width: 68.75rem; /* 1100px -> 68.75rem */
     }
@@ -500,7 +500,7 @@ export default {
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     .case-grid {
       grid-template-columns: 1fr;
     }

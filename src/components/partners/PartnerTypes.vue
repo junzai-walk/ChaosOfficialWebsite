@@ -363,7 +363,7 @@ html {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .partner-card {
     width: 100%;
   }

@@ -200,7 +200,7 @@ const cultureCard = [
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .title {
     font-size: 36px;
   }

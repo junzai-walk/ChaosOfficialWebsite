@@ -141,7 +141,7 @@ onMounted(() => {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .logo-depth-container {
     transform: perspective(600px);
     

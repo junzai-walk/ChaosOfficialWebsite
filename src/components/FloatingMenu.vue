@@ -9,7 +9,7 @@
     </div> -->
     <div class="menu-item phone" @mouseenter="showPhoneTooltip = true" @mouseleave="showPhoneTooltip = false">
       <img src="@/assets/fixed/Group_7.png" alt="Phone" class="menu-icon">
-      <div class="tooltip" v-show="showPhoneTooltip">400-8375-7867</div>
+      <div class="tooltip" v-show="showPhoneTooltip"> 025-83132381</div>
     </div>
     <div class="menu-item qrcode" @mouseenter="showQRTooltip = true" @mouseleave="showQRTooltip = false">
       <img src="@/assets/fixed/Group_8.png" alt="QR Code" class="menu-icon">

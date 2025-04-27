@@ -277,10 +277,10 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
   }
 }
 
-/* 媒体查询 - 1366*768分辨率 */
-@media (max-width: 1366px) {
+/* 媒体查询 - 1500*1000分辨率 */
+@media (max-width: 1500px) {
   :root {
-    font-size: 11.38px; /* 16px * (1366/1920) = ~11.38px */
+    font-size: 11.38px; /* 16px * (1500/1920) = ~11.38px */
   }
 }
 </style>

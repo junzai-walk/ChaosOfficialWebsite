@@ -103,7 +103,7 @@ onMounted(() => {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .title {
     font-size: 36px;
   }

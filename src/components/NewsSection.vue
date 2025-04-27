@@ -273,7 +273,7 @@ const navigateToNews = (sectionIndex: number) => {
   padding-bottom: 2.5rem; // 40px -> 2.5rem
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .section-title {
@@ -281,7 +281,7 @@ const navigateToNews = (sectionIndex: number) => {
   font-weight: bold;
   text-align: center;
   color: #333;
-  margin: 1.25rem 0; // 20px -> 1.25rem
+  margin: 2rem 0 1rem 0; // 20px -> 1.25rem
 }
 
 .content-container {
@@ -616,7 +616,7 @@ const navigateToNews = (sectionIndex: number) => {
 }
 
 // 增强移动端适配
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .content-container {
     flex-direction: column;
   }
@@ -745,7 +745,7 @@ const navigateToNews = (sectionIndex: number) => {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .news-section {
     .section-title {
       font-size: 1.75rem;

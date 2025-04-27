@@ -105,10 +105,10 @@ class ResponsiveScale {
     document.body.style.height = `${designHeight * scale}px`;
     document.body.style.overflow = 'auto';
 
-    // 特殊处理1366*768分辨率
-    if (windowWidth <= 1366 && windowWidth > 1280) {
+    // 特殊处理1500*1000分辨率
+    if (windowWidth <= 1500 && windowWidth > 1280) {
       // 可以添加特殊处理逻辑
-      console.log('Applying special handling for 1366*768 resolution');
+      console.log('Applying special handling for 1500*1000 resolution');
     }
   }
 

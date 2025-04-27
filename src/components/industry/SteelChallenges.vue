@@ -134,7 +134,7 @@ html {
   display: flex;
   gap: 20px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     flex-direction: column;
   }
 }

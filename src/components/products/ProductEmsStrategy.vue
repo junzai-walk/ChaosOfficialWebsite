@@ -194,10 +194,10 @@ const updateActiveStep = (newStep: number) => {
   }
 }
 
-/* 1366px屏幕专用适配 */
-@media (max-width: 1366px) {
+/* 1500px屏幕专用适配 */
+@media (max-width: 1500px) {
   :root {
-    font-size: 14px; /* 调整基础字体大小，使rem更适合1366分辨率 */
+    font-size: 14px; /* 调整基础字体大小，使rem更适合1500分辨率 */
   }
   
   .product-ems-strategy {
@@ -253,7 +253,7 @@ const updateActiveStep = (newStep: number) => {
 }
 
 /* 移动设备适配 */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   :root {
     font-size: 12px;
   }

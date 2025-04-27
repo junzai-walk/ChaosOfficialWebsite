@@ -106,7 +106,7 @@ export default {
 :root {
   font-size: 16px;
   
-  @media (max-width: 1366px) {
+  @media (max-width: 1500px) {
     font-size: 14px;
   }
 }
@@ -211,7 +211,7 @@ export default {
   }
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1500px) {
   .custom-nav-steps {
     top: 18rem;
     left: 8rem;
@@ -245,7 +245,7 @@ export default {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .custom-nav-steps {
     position: relative;
     top: 0;

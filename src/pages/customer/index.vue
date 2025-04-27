@@ -244,7 +244,7 @@ onBeforeUnmount(() => {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .content {
     padding-left: 5%;
     padding-right: 5%;

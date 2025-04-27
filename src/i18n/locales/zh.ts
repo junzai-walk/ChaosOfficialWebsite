@@ -9,7 +9,7 @@ export default {
     news: '咨讯中心'
   },
   common: {
-    phone: '400-8375-7867',
+    phone: ' 025-83132381',
     search: '搜索',
     language: '中文'
   }

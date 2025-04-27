@@ -56,7 +56,7 @@ const updateActiveStep = (newStep: number) => {
   font-size: 16px;
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1500px) {
   :root {
     font-size: 14px;
   }
@@ -141,8 +141,8 @@ const updateActiveStep = (newStep: number) => {
     }
   }
   
-  /* 媒体查询 - 针对1366*768分辨率 */
-  @media (max-width: 1366px) {
+  /* 媒体查询 - 针对1500*1000分辨率 */
+  @media (max-width: 1500px) {
     padding-top: 4.5rem;
     
     .picture-left-container {
@@ -206,7 +206,7 @@ const updateActiveStep = (newStep: number) => {
   }
   
   /* 媒体查询 - 移动设备 */
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     padding-top: 3rem;
     
     .picture-left-container,

@@ -74,10 +74,11 @@ const route = useRoute()
 const router = useRouter()
 
 // Swiper实例
-const swiperInstance = ref(null)
+import type { Swiper as SwiperType } from 'swiper'
+const swiperInstance = ref<SwiperType | null>(null)
 
 // 初始化Swiper
-const onSwiperInitialized = (swiper) => {
+const onSwiperInitialized = (swiper: SwiperType) => {
   swiperInstance.value = swiper
   console.log('Swiper已初始化')
 
@@ -85,8 +86,8 @@ const onSwiperInitialized = (swiper) => {
   swiper.mousewheel.enable()
 
   // 添加额外的事件处理来防止过度滚动
-  swiper.on('scroll', (e) => {
-    e.preventDefault()
+  swiper.on('scroll', (_swiper: SwiperType, event: WheelEvent) => {
+    event.preventDefault()
   })
 
   // 检查URL参数中是否有section，有则跳转到对应section
@@ -102,7 +103,7 @@ const onSwiperInitialized = (swiper) => {
 }
 
 // 处理页面切换事件
-const onSlideChange = (swiper) => {
+const onSlideChange = (swiper: SwiperType) => {
   const currentIndex = swiper.activeIndex
   // 更新store中的当前页面索引
   sectionStore.setCurrentSection(currentIndex)

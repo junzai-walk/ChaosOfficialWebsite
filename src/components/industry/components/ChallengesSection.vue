@@ -72,7 +72,7 @@ const updateActiveStep = (newStep: number) => {
 :root {
   font-size: 16px;
   
-  @media (max-width: 1366px) {
+  @media (max-width: 1500px) {
     font-size: 14px;
   }
 }
@@ -118,7 +118,7 @@ const updateActiveStep = (newStep: number) => {
   display: flex;
   gap: 1.25rem; /* 20px -> 1.25rem */
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     flex-direction: column;
   }
 }
@@ -255,7 +255,7 @@ const updateActiveStep = (newStep: number) => {
   }
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1500px) {
   .challenges-section {
     padding: 1.8rem;
   }
