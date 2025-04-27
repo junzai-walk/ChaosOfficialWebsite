@@ -46,6 +46,7 @@
         <div ref="mapContainer" id="baidu-map" class="map-container"></div>
       </div>
     </div>
+    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -61,6 +62,7 @@ import locationIcon from '@/assets/about/map-localtion.png'
 import cooperationIcon from '@/assets/about/map-cooperation.png'
 import phoneIcon from '@/assets/about/map-phone.png'
 import degreeIcon from '@/assets/about/map-degree.png'
+import Footer from '@/components/common/Footer.vue'
 
 
 import { ref, onMounted, computed, nextTick, onBeforeUnmount } from 'vue'
