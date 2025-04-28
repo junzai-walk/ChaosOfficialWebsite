@@ -161,7 +161,7 @@ const navigateToNews = (sectionIndex: number) => {
 .footer {
   background-color: @primary-color;
   color: #fff;
-  padding: 2.5rem 0 6.25rem 0; // 40px 0 100px 0 -> 2.5rem 0 6.25rem 0
+  padding: 2.5rem 0 4.25rem 0; // 40px 0 100px 0 -> 2.5rem 0 6.25rem 0
 
   &-content {
     max-width: 100rem; // 1200px -> 75rem

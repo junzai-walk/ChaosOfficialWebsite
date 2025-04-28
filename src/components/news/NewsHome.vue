@@ -54,12 +54,18 @@
         </div>
       </div>
     </div>
+
+     <!-- 使用新的Footer组件 -->
+     <!-- <div class='footer-wrapper'>
+      <Footer />
+    </div> -->
   </div>
 </template>
 
 <script setup lang="ts">
 import {ref,computed, onMounted, onBeforeUnmount, nextTick} from 'vue'
 import { useSectionStore } from '@/stores/sectionStore'
+import Footer from '@/components/common/Footer.vue'    
 
 // Import news cover images
 import cover1 from '@/assets/news/cover1.jpg'
@@ -146,6 +152,16 @@ onBeforeUnmount(() => {
   width: 100vw;
   height: 100vh;
   overflow: scroll;
+
+  .footer-wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    :deep(.footer){
+      padding: 2.5rem 0 1rem 0 !important;
+    }
+  }
 
   .news-header {
     box-sizing: border-box;

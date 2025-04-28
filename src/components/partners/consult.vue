@@ -34,11 +34,18 @@
     </div>
     <!-- 添加底部填充区域 -->
     <div class="background-footer"></div>
+
+      <!-- 使用新的Footer组件 -->
+    <div class='footer-wrapper'>
+      <Footer />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import Footer from '@/components/common/Footer.vue'
+
 const emit = defineEmits(['recruit']);
 const currentPage = ref(0);
 
@@ -85,12 +92,22 @@ html {
   flex-direction: column;
   justify-content: flex-start;
   min-height: 100vh;
+
+  .footer-wrapper {
+    position: absolute;
+    bottom: 0rem;
+    width: 100%;
+
+    :deep(.footer){
+      padding: 2.5rem 0 1rem 0 !important;
+    }
+  }
 }
 
 /* 上方背景图 */
 .background-header {
   box-sizing: border-box;
-  padding-top: 10rem;
+  padding-top: 4rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -114,9 +131,9 @@ html {
 
 .consult-container {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -40%);
   z-index: 2;
   width: 100%;
   display: flex;

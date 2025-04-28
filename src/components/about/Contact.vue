@@ -1,6 +1,7 @@
 <template>
   <div class="contact" @wheel.stop="handleScroll" @touchmove.stop="handleScroll">
-    <div class="main-title">联系我们</div>
+    <div class="main-wrapper">
+      <div class="main-title">联系我们</div>
     <div class="contact-content" >
       <div class="contact-info">
         <div class="contact-info-list">
@@ -46,7 +47,11 @@
         <div ref="mapContainer" id="baidu-map" class="map-container"></div>
       </div>
     </div>
-    <!-- <Footer /> -->
+    </div>
+      <!-- 使用新的Footer组件 -->
+  <div class='footer-wrapper'>
+    <Footer />
+  </div>
   </div>
 </template>
 
@@ -194,8 +199,23 @@ const iconStyle = computed(() => {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 3rem 18rem 0 18rem;
   background-color: #F9F9F9;
+
+  .main-wrapper{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 18rem 0 18rem;
+  }
+
+
+  .footer-wrapper {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+  }
   .main-title {
     font-weight: 700;
     font-size: 1.5rem;
