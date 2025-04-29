@@ -25,6 +25,12 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  name: 'CaseDetail'
+}
+</script>
+
 <script setup lang="ts">
 import { ref, watch, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import { useRouter } from 'vue-router'

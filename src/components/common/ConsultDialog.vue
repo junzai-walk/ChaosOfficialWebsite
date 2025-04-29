@@ -15,7 +15,7 @@
         <div class="step-label" :class="{'active': currentStep > 1}">申请成功</div>
       </div>
     </div>
-    
+
     <!-- 步骤1：填写表单 -->
     <div v-if="currentStep === 1">
       <div class="contact-hotline-title">联系热线：</div>
@@ -23,32 +23,32 @@
         <i class="el-icon-phone-outline"></i>
         025-83132381
       </div>
-      
+
       <div class="form-container">
         <div class="form-item">
           <i class="el-icon-office-building"></i>
           <span>单位：</span>
           <el-input v-model="form.company" placeholder="请输入企业名称"></el-input>
         </div>
-        
+
         <div class="form-item">
           <i class="el-icon-user"></i>
           <span>姓名：</span>
           <el-input v-model="form.name" placeholder="请输入姓名"></el-input>
         </div>
-        
+
         <div class="form-item">
           <i class="el-icon-mobile-phone"></i>
           <span>电话：</span>
           <el-input v-model="form.phone" placeholder="请输入号码"></el-input>
         </div>
       </div>
-      
+
       <div class="submit-container">
         <el-button type="primary" class="submit-btn" @click="submitForm">点击提交</el-button>
       </div>
     </div>
-    
+
     <!-- 步骤2：申请成功 -->
     <div v-else class="success-container">
       <div class="success-icon">
@@ -64,9 +64,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref,  watch } from 'vue'
+import { ref, watch } from 'vue'
 import { Check } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
+import { submitConsultForm } from '@/api/consult'
 
 const props = defineProps({
   visible: {
@@ -108,7 +109,7 @@ const resetForm = () => {
   }
 }
 
-const submitForm = () => {
+const submitForm = async () => {
   // 验证手机号码格式
   const phoneRegex = /^(1[3-9]\d{9}|0\d{2,3}-\d{7,8})$/
   if (!form.value.company) {
@@ -127,14 +128,22 @@ const submitForm = () => {
     ElMessage.warning('请输入正确的手机号码格式')
     return
   }
-  
-  // 提交表单数据给父组件
-  emit('submit', { ...form.value })
-  
-  // 模拟提交后的成功状态
-  setTimeout(() => {
+
+  try {
+    // 提交表单数据到服务器
+    const response = await submitConsultForm(form.value)
+
+    // 提交表单数据给父组件
+    emit('submit', { ...form.value })
+
+    // 提交成功，显示成功状态
     currentStep.value = 2
-  }, 500)
+
+    console.log('表单提交成功:', response)
+  } catch (error) {
+    console.error('表单提交失败:', error)
+    ElMessage.error('提交失败，请稍后重试')
+  }
 }
 
 const closeDialog = () => {
@@ -160,7 +169,7 @@ export default {
 /* 设置基准根元素字体大小 */
 :root {
   font-size: 16px;
-  
+
   @media (max-width: 1366px) {
     font-size: 14px;
   }
@@ -169,14 +178,14 @@ export default {
 /* 咨询弹窗样式 */
 .steps-container {
   margin-bottom: 1.875rem;
-  
+
   .step-line {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0.625rem;
-    
+
     .step-circle {
       width: 1.875rem;
       height: 1.875rem;
@@ -188,12 +197,12 @@ export default {
       align-items: center;
       font-weight: bold;
       z-index: 2;
-      
+
       &.active {
         background-color: #0072ff;
       }
     }
-    
+
     .step-progress {
       position: absolute;
       top: 0.9375rem;
@@ -202,17 +211,17 @@ export default {
       height: 0.125rem;
       background-color: #e0e0e0;
       z-index: 1;
-      
+
       &.completed {
         background-color: #0072ff;
       }
     }
   }
-  
+
   .step-labels {
     display: flex;
     justify-content: space-between;
-    
+
     .step-label {
       color: #666;
       font-size: 1rem;
@@ -241,7 +250,7 @@ export default {
   margin-bottom: 1.25rem;
   display: flex;
   align-items: center;
-  
+
   i {
     margin-right: 0.625rem;
   }
@@ -249,7 +258,7 @@ export default {
 
 .form-container {
   margin-bottom: 1.25rem;
-  
+
   .form-item {
     display: flex;
     flex-direction: column;
@@ -257,12 +266,12 @@ export default {
     justify-content: flex-start;
     margin-bottom: 0.625rem;
     border-radius: 0.25rem;
-    
+
     i {
       margin-right: 0.625rem;
       color: #666;
     }
-    
+
     span {
       min-width: 3.75rem;
       margin-bottom: 0.625rem;
@@ -271,10 +280,10 @@ export default {
       line-height: 1.75rem;
       letter-spacing: 0%;
     }
-    
+
     .el-input {
       flex: 1;
-      
+
       :deep(.el-input__inner) {
         border: none;
         padding: 0;
@@ -287,7 +296,7 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 3rem;
-  
+
   .submit-btn {
     width: 12.5rem;
     height: 2.8125rem;
@@ -305,11 +314,11 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+
   .success-icon {
     width: 12.8125rem;
     height: 12rem;
-    object-fit: contain;    
+    object-fit: contain;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -344,7 +353,7 @@ export default {
 :deep(.el-dialog) {
   border-radius: 0.5rem;
   overflow: hidden;
-  
+
   .el-dialog__header {
     background-color: white;
     padding: 1.25rem;
@@ -354,14 +363,14 @@ export default {
     &.show-close {
       padding-right: 0 !important;
     }
-    
+
     .el-dialog__title {
       font-size: 1.5rem;
       color: #333;
       font-weight: normal;
     }
   }
-  
+
   .el-dialog__body {
     padding: 1.875rem;
   }
@@ -384,17 +393,17 @@ export default {
       font-size: 1.125rem;
     }
   }
-  
+
   .success-container {
     .success-icon {
       width: 14rem;
       height: 13rem;
     }
-    
+
     .success-title {
       font-size: 1.75rem;
     }
-    
+
     .success-content {
       font-size: 1.125rem;
     }
@@ -405,35 +414,35 @@ export default {
   .steps-container {
     margin-bottom: 1.5rem;
   }
-  
+
   .contact-hotline {
     padding: 0.75rem;
     margin-bottom: 1rem;
   }
-  
+
   .submit-container {
     margin-top: 2.5rem;
-    
+
     .submit-btn {
       width: 11rem;
       height: 2.5rem;
     }
   }
-  
+
   .success-container {
     padding: 2.5rem 1rem;
-    
+
     .success-icon {
       width: 11rem;
       height: 10rem;
       margin-bottom: 2rem;
     }
-    
+
     .success-title {
       font-size: 1.3rem;
       margin-bottom: 1rem;
     }
-    
+
     .success-content {
       font-size: 0.9rem;
       margin-bottom: 1rem;

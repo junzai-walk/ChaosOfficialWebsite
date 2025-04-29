@@ -85,6 +85,12 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  name: 'SolutionsSection'
+}
+</script>
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import CustomNavSteps from './CustomNavSteps.vue';

@@ -33,6 +33,12 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  name: 'AdvantagesSection'
+}
+</script>
+
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import CustomNavSteps from './CustomNavSteps.vue';

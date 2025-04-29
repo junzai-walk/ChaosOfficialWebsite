@@ -75,12 +75,20 @@ const currentSection = ref(0)
 // 提供 currentSection 给子组件使用
 provide('currentSection', currentSection)
 
+// 定义caseId变量来传递给CaseDetail组件
+const caseId = ref('')
+
 // 监听路由参数变化
-watch(() => route.query.section, (newSection) => {
-  if (newSection) {
-    currentSection.value = parseInt(newSection as string);
+watch(() => route.query, (newQuery) => {
+  if (newQuery.section) {
+    currentSection.value = parseInt(newQuery.section as string);
   }
-}, { immediate: true });
+  
+  // 如果URL中有caseId参数，更新caseId值
+  if (newQuery.caseId) {
+    caseId.value = newQuery.caseId as string;
+  }
+}, { immediate: true, deep: true });
 
 // 监听 currentSection 变化，更新 URL
 watch(() => currentSection.value, (newSection) => {
@@ -97,7 +105,6 @@ watch(() => currentSection.value, (newSection) => {
 
 const scrolling = ref(false);
 const scrollDelay = 100; // 滚动延迟，防止连续滚动
-const caseId = ref()
 
 // 处理鼠标滚轮事件
 const handleWheel = (e: WheelEvent) => {
@@ -140,9 +147,19 @@ const handleKeyDown = (e: KeyboardEvent) => {
   }, scrollDelay);
 };
 
+// BenchmarkCase组件点击卡片时触发的事件
 const selectActiveCard = (val: Number | String | string) => {
-  caseId.value = val
+  caseId.value = val as string
   currentSection.value = 3
+  
+  // 更新URL，添加caseId参数
+  router.replace({ 
+    query: { 
+      ...route.query, 
+      section: '3',
+      caseId: val as string
+    } 
+  })
 }
 
 onMounted(() => {

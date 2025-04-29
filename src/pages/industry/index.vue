@@ -9,8 +9,11 @@
         'slide-prev': sectionStore.currentSection > 0
       }"
       ref="steelSection">
-      <IndustryHero :background-image="steelBackgroundImage" title="钢铁行业"
-        description="结合机理模型、数据模型、数字孪生技术、多变量预测控制技术，解决钢铁企业生产工艺、设备控制等一系列工业生产痛点，实现工艺流、生产信息流、设备流“三流合一”，稳定提升成品质量，降低生产线设备故障风险、人力成本和能源消耗" />
+      <IndustryHero 
+        :background-image="steelBackgroundImage" 
+        title="钢铁行业"
+        :description="steelDescription" 
+      />
     </div>
 
     <!-- 第二部分：钢铁行业挑战 -->
@@ -570,7 +573,7 @@ const steelChallenges = [
   {
     icon: iconEnergy,
     title: '高能耗与低碳转型压力',
-    description: '煤气放散率居高不下，能源综合利用率低；碳排放强度高，面临“双碳”目标下减排压力。'
+    description: '煤气放散率居高不下，能源综合利用率低；碳排放强度高，面临"双碳"目标下减排压力。'
   },
   {
     icon: iconEquipment,
@@ -593,7 +596,7 @@ const cementChallenges = [
   {
     icon: cementChallenge1,
     title: '碳中和与深度减排压力升级',
-    description: '熟料烧成能耗占比超60%，煤耗高，需智能优化降低碳排放，应对“双碳”目标与环保法规。'
+    description: '熟料烧成能耗占比超60%，煤耗高，需智能优化降低碳排放，应对"双碳"目标与环保法规。'
   },
   {
     icon: cementChallenge2,
@@ -708,7 +711,7 @@ const steelAdvantages = [
   {
     icon: steelAdvantage1,
     title: '全栈技术能力',
-    description: '覆盖智能硬件至智能系统，实现“端-边-云”一体化闭环。'
+    description: '覆盖智能硬件至智能系统，实现"端-边-云"一体化闭环。'
   },
   {
     icon: steelAdvantage2,
@@ -718,7 +721,7 @@ const steelAdvantages = [
   {
     icon: steelAdvantage3,
     title: '自主可控技术底座',
-    description: '768+核心算法专利，30+授权专利，工信部“工业互联网平台示范项目”认证'
+    description: '768+核心算法专利，30+授权专利，工信部"工业互联网平台示范项目"认证'
   },
   {
     icon: steelAdvantage4,
@@ -757,19 +760,19 @@ const steelCases = [
     image: steelCase1,
     title: '中国宝武钢铁集团有限公司',
     description: '设备预测性维护与健康管理系统',
-    section: '0'
+    section: 'baogangphm'
   },
   {
     image: steelCase2,
     title: '敬业钢铁有限公司',
     description: '设备预测性维护与健康管理系统',
-    section: '0'
+    section: 'jingyephm'
   },
   {
     image: steelCase3,
     title: '宝山钢铁股份有限公司',
     description: '先进过程控制系统',
-    section: '10'
+    section: 'baogangapc'
   }
 ];
 
@@ -779,19 +782,19 @@ const cementCases = [
     image: cementCase1,
     title: '安徽海螺水泥股份有限公司',
     description: '设备预测性维护与健康管理系统',
-    section: '0'
+    section: 'hailuophm'
   },
   {
     image: cementCase1,
     title: '巢湖海螺水泥有限责任公司',
     description: '先进过程控制系统',
-    section: '10'
+    section: 'chaohuapc'
   },
   {
     image: cementCase2,
     title: '安徽盘锦水泥有限公司',
     description: '先进过程控制系统',
-    section: '10'
+    section: 'panjingapc'
   }
 ];
 
@@ -835,19 +838,19 @@ const coalCases = [
     image: coalCase1,
     title: '山西焦煤集团有限责任公司',
     description: '设备预测性维护与健康管理系统',
-    section: '0'
+    section: 'jiaomeiphm'
   },
   {
     image: coalCase1,
     title: '山西焦煤集团有限责任公司',
     description: '设备全生命周期管理系统',
-    section: '5'
+    section: 'jiaomeieam'
   },
   {
     image: coalCase2,
     title: '新疆天池能源有限责任公司',
     description: '设备全生命周期管理系统',
-    section: '5'
+    section: 'tianchieam'
   }
 ];
 
@@ -892,7 +895,7 @@ const chemicalAdvantages = [
   {
     icon: chemicalAdvantage2,
     title: '非计划停机风险控制',
-    description: '基于振动分析+机理建模技术，故障预警准确率>95%，停机率降低50%+。'
+    description: '基于振动分析+机理建模技术，故障预警准确率>95%，停机率降低50%+'
   },
   {
     icon: chemicalAdvantage3,
@@ -922,7 +925,7 @@ const chemicalCases = [
     image: chemicalCase1, // 化工厂设备图片
     title: '巴斯夫（中国）有限公司',
     description: '设备预测性维护与健康管理系统',
-    section: '0'
+    section: 'basifuphm'
   }
 ];
 
@@ -1004,7 +1007,7 @@ const carCases = [
     image: carCase1,
     title: '广汽丰田汽车有限公司',
     description: '设备预测性维护与健康管理系统',
-    section: '0'
+    section: 'fengtianphm'
   }
 ];
 
@@ -1064,7 +1067,7 @@ const newEnergyAdvantages = [
   {
     icon: windAdvantage5,
     title: '全栈技术闭环管理',
-    description: '“端-边-云”一体化架构实现数据采集、分析、控制闭环，赋能远程少人化运维。'
+    description: '"端-边-云"一体化架构实现数据采集、分析、控制闭环，赋能远程少人化运维。'
   }
 ];
 
@@ -1086,6 +1089,9 @@ const newEnergyCases = [
     description: '预测性故障管理平台'
   }
 ];
+
+// 添加页面描述变量
+const steelDescription = '结合机理模型、数据模型、数字孪生技术、多变量预测控制技术，解决钢铁企业生产工艺、设备控制等一系列工业生产痛点，实现工艺流、生产信息流、设备流"三流合一"，稳定提升成品质量，降低生产线设备故障风险、人力成本和能源消耗';
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeyDown)

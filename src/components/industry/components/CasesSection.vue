@@ -72,6 +72,12 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  name: 'CasesSection'
+}
+</script>
+
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
@@ -167,9 +173,10 @@ const handleCardClick = (card: CaseCard) => {
   if (card.section) {
     // 如果有案例ID，跳转到案例详情页
     router.push({
-      path: '/products',
+      path: '/customer',
       query: {
-        section: card.section  // 案例详情页的section
+        section: '3',  // 跳转到案例详情页的section
+        caseId: card.section  // 将行业案例的section作为caseId传递给CaseDetail组件
       }
     });
   } else {

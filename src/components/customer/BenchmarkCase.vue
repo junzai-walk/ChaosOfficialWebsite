@@ -25,7 +25,7 @@
             </div>
             <!-- 第二页的4图片 -->
             <div class="case-page">
-              <div class="case-card" v-for="(it,index) in caseList2" :key="it.id" @click="handleSelectCard(it.id)"> 
+              <div class="case-card" v-for="it in caseList2" :key="it.id" @click="handleSelectCard(it.id)"> 
                 <div class="case-image" :style="{ backgroundImage: `url(${it.imgUrl})`  }"></div>
                 <div class="case-info">
                   <h3>{{it.mainTitle}}</h3>
@@ -56,6 +56,12 @@
     <div class="background-footer"></div>
   </div>
 </template>
+
+<script lang="ts">
+export default {
+  name: 'BenchmarkCase'
+}
+</script>
 
 <script setup lang="ts">
 import { ref } from 'vue';

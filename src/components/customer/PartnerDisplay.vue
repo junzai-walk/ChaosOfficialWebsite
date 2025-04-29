@@ -37,6 +37,12 @@
   </div>
 </template>
 
+<script lang="ts">
+export default {
+  name: 'PartnerDisplay'
+}
+</script>
+
 <script setup lang="ts">
 import { ref, computed, provide, onMounted } from 'vue'
 
