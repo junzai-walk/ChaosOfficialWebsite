@@ -7,7 +7,7 @@
 
     <div class="industry-tabs">
       <div v-for="(industry, index) in industries" :key="index" class="industry-tab"
-        :class="{ active: activeIndustry === index }" @click="activeIndustry = index">
+        :class="{ active: activeIndustry === index }" @click="setActiveIndustry(index)">
         {{ industry.name }}
       </div>
     </div>
@@ -39,8 +39,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import { useRouter } from 'vue-router';
+import { ref, computed, onMounted, watch } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import { ElMessage } from 'element-plus';
 
 // Import images
@@ -52,7 +52,26 @@ import carImage from '@/assets/industry/car-bg.png';
 import windImage from '@/assets/industry/wind-bg.png';
 
 const router = useRouter();
+const route = useRoute();
 const activeIndustry = ref(0);
+
+// 设置当前选中的行业并更新URL
+const setActiveIndustry = (index: number) => {
+  activeIndustry.value = index;
+  // 将选中的行业索引添加到URL中，不触发路由变化
+  updateUrlWithoutNavigation(index);
+};
+
+// 不触发导航的情况下更新URL
+const updateUrlWithoutNavigation = (index: number) => {
+  const query = { ...route.query, industryTab: index.toString() };
+  // 使用history.replaceState直接更新URL而不触发导航
+  const newUrl = router.resolve({
+    path: route.path,
+    query
+  }).href;
+  window.history.replaceState({}, '', newUrl);
+};
 
 // 导航到行业详情页面
 const navigateToIndustry = (industryIndex: number) => {
@@ -66,10 +85,13 @@ const navigateToIndustry = (industryIndex: number) => {
     5: 25  // 新能源行业 - section 25
   };
   
-  // 导航到industry页面并传递section参数
+  // 导航到industry页面并传递section参数以及当前选中的行业tab
   router.push({
     path: '/industry',
-    query: { section: sectionMap[industryIndex] }
+    query: { 
+      section: sectionMap[industryIndex],
+      industryTab: industryIndex.toString() // 保存当前选中的行业tab
+    }
   });
 };
 
@@ -89,7 +111,10 @@ const navigateToProduct = (productName: string) => {
   if (productSectionMap[productName] !== undefined) {
     router.push({
       path: '/products',
-      query: { section: productSectionMap[productName] }
+      query: { 
+        section: productSectionMap[productName],
+        industryTab: activeIndustry.value.toString() // 保存当前选中的行业tab
+      }
     });
   } 
   // else {
@@ -103,6 +128,123 @@ const navigateToProduct = (productName: string) => {
   //   });
   // }
 };
+
+// 获取从化工行业跳转回来的映射关系
+const getIndustryFromSection = (section: any): number => {
+  // 确保section是一个数字
+  let sectionNum: number;
+  if (typeof section === 'string') {
+    sectionNum = parseInt(section, 10);
+  } else if (typeof section === 'number') {
+    sectionNum = section;
+  } else {
+    // 如果是其他类型，返回默认值0
+    return 0;
+  }
+  
+  // 如果解析失败，返回默认值0
+  if (isNaN(sectionNum)) {
+    return 0;
+  }
+
+  const sectionToIndustryMap: { [key: number]: number } = {
+    0: 0,   // 钢铁行业
+    5: 1,   // 水泥行业
+    10: 2,  // 煤炭行业
+    15: 3,  // 化工行业
+    20: 4,  // 汽车行业
+    25: 5   // 新能源行业
+  };
+  
+  return sectionToIndustryMap[sectionNum] !== undefined ? sectionToIndustryMap[sectionNum] : 0;
+};
+
+// 监听路由参数变化 - industryTab参数
+watch(
+  () => route.query.industryTab,
+  (newTabIndex) => {
+    if (newTabIndex) {
+      const tabIndex = parseInt(newTabIndex as string, 10);
+      // 确保索引有效
+      if (!isNaN(tabIndex) && tabIndex >= 0 && tabIndex < industries.value.length) {
+        activeIndustry.value = tabIndex;
+      }
+    }
+  }
+);
+
+// 监听路由参数变化 - section参数（处理从其他页面回退的情况）
+watch(
+  () => route.query.section,
+  (newSection) => {
+    // 如果URL中有section参数，但没有industryTab参数
+    if (newSection && route.path === '/' && !route.query.industryTab) {
+      // 将section=1映射到适当的行业索引
+      if (newSection === '1') {
+        // section=1对应解决方案页面，我们需要根据之前的状态或设置默认值
+        // 检查本地存储中是否有上次访问的行业索引
+        const lastIndustryTab = localStorage.getItem('lastIndustryTab');
+        if (lastIndustryTab) {
+          const tabIndex = parseInt(lastIndustryTab, 10);
+          if (!isNaN(tabIndex) && tabIndex >= 0 && tabIndex < industries.value.length) {
+            activeIndustry.value = tabIndex;
+            // 延迟更新URL，确保在Vue更新DOM之后
+            setTimeout(() => {
+              updateUrlWithoutNavigation(tabIndex);
+            }, 100);
+          }
+        }
+      } else {
+        // 对于其他section值，可能是从特定的行业页面回退的
+        const industryIndex = getIndustryFromSection(newSection);
+        activeIndustry.value = industryIndex;
+        // 延迟更新URL，确保在Vue更新DOM之后
+        setTimeout(() => {
+          updateUrlWithoutNavigation(industryIndex);
+        }, 100);
+      }
+    }
+  },
+  { immediate: true }
+);
+
+// 组件挂载时检查URL参数
+onMounted(() => {
+  // 检查URL中是否有industryTab参数
+  if (route.query.industryTab) {
+    const tabIndex = parseInt(route.query.industryTab as string, 10);
+    // 确保索引有效
+    if (!isNaN(tabIndex) && tabIndex >= 0 && tabIndex < industries.value.length) {
+      activeIndustry.value = tabIndex;
+      // 保存到本地存储，以便在浏览器回退时恢复
+      localStorage.setItem('lastIndustryTab', tabIndex.toString());
+    }
+  } 
+  // 如果没有industryTab参数，但有section参数
+  else if (route.query.section) {
+    // 将section参数映射到行业索引
+    const section = route.query.section as string;
+    if (section === '1') {
+      // section=1代表用户在"解决方案"页面
+      // 从本地存储中获取上一次访问的行业索引
+      const lastIndustryTab = localStorage.getItem('lastIndustryTab');
+      if (lastIndustryTab) {
+        const tabIndex = parseInt(lastIndustryTab, 10);
+        if (!isNaN(tabIndex) && tabIndex >= 0 && tabIndex < industries.value.length) {
+          activeIndustry.value = tabIndex;
+          // 更新URL添加industryTab参数
+          updateUrlWithoutNavigation(tabIndex);
+        }
+      }
+    } else {
+      // 对于其他section值，可能是从特定的行业页面回退的
+      const industryIndex = getIndustryFromSection(section);
+      activeIndustry.value = industryIndex;
+      // 更新URL添加industryTab参数
+      updateUrlWithoutNavigation(industryIndex);
+    }
+  }
+});
 
 // 示例数据
 const industries = ref([
