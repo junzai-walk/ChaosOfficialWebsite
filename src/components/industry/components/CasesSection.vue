@@ -211,7 +211,7 @@ const handleCardClick = (card: CaseCard) => {
   display: flex;
   gap: 1.875rem;
   max-width: 75rem;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 0rem;
 }
 
 .side-nav-container {
@@ -386,7 +386,7 @@ const handleCardClick = (card: CaseCard) => {
 }
 
 /* 媒体查询 - 适配不同分辨率 */
-@media (min-width: 1920px) {
+@media (min-width: 1910px) {
   .cases-container {
     max-width: 90rem;
   }

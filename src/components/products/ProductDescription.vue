@@ -189,7 +189,7 @@ const updateActiveStep = (newStep: number) => {
 @media (min-width: 1920px) {
   .product-description {
     padding: 21rem 11.6875rem 0 18.4375rem;
-    gap: 3.1875rem;
+    gap: 4rem;
   }
   
   .content {
@@ -202,24 +202,24 @@ const updateActiveStep = (newStep: number) => {
   }
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1470px) {
   .product-description {
     padding: 15rem 5rem 0 10rem;
     gap: 2.5rem;
   }
   
   .content {
-    gap: 8rem;
+    gap: 0rem;
   }
   
   .video-container {
-    width: 30rem;
-    height: 16.875rem;
+    width: 46rem;
+    height: 21rem;
     transform: translateY(-1rem);
   }
   
   .description {
-    margin-left: 13rem;
+    margin-left: 10rem;
   }
   
   .description p {

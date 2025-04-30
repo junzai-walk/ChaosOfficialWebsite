@@ -108,7 +108,7 @@ const updateActiveStep = (newStep: number) => {
 }
 
 /* 媒体查询 - 针对1366*768屏幕，设置不同的基准字体大小 */
-@media (max-width: 1366px) {
+@media (min-width: 1367px) and (max-width: 1500px) {
   :root {
     font-size: 14px;
   }
@@ -151,8 +151,6 @@ const updateActiveStep = (newStep: number) => {
   gap: 1.875rem;
   width: 100%;
   max-width: 87.5rem;
-  margin-top: 7.5rem;
-  margin-left: 7.5rem;
 }
 
 .result-card {
@@ -296,7 +294,6 @@ const updateActiveStep = (newStep: number) => {
 
   .results-cards {
     margin-top: 5rem;
-    margin-left: 5rem;
     gap: 1.5rem;
   }
   

@@ -90,7 +90,7 @@ const updateActiveStep = (newStep: number) => {
 
 .laptop-container {
   position: absolute;
-  left: 22.5rem; /* 360px */
+  left: 26.5rem; /* 360px */
   top: 40%;
   transform: translateY(-40%);
   width: 40rem; /* 640px */
@@ -182,15 +182,15 @@ const updateActiveStep = (newStep: number) => {
 
 /* 更好的响应式设计 */
 /* 1600px以下的屏幕适配 */
-@media (max-width: 1600px) {
+@media (min-width: 1367px) and (max-width: 1500px){
   .laptop-container {
-    left: 8.125rem; /* 130px */
-    width: 31.25rem; /* 500px */
+    left: 22.5rem; /* 360px */
+    width: 40rem; /* 500px */
     height: 20.625rem; /* 330px */
   }
   
   .content-container {
-    left: 43.75rem; /* 700px */
+    left: 65rem; /* 700px */
   }
 }
 

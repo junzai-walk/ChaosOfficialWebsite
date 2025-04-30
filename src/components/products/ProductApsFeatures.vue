@@ -123,26 +123,26 @@ const updateActiveStep = (newStep: number) => {
       width: 40rem;
       height: 29.0625rem;
       top: 11.875rem;
-      left: 21.875rem;
+      left: 25.875rem;
     }
     
     .picture-right-container {
       width: 40rem;
       height: 29.0625rem;
       top: 11.875rem;
-      left: 49.0625rem;
+      left: 54.0625rem;
     }
     
     .picture-bottom-container {
       width: 67.625rem;
       height: 38.0625rem;
       top: 16.0625rem;
-      left: 26.1875rem;
+      left: 28.1875rem;
     }
   }
   
   /* 媒体查询 - 针对1366*768分辨率 */
-  @media (max-width: 1366px) {
+  @media (min-width: 1200px) and (max-width: 1500px) {
     padding-top: 4.5rem;
     
     .picture-left-container {

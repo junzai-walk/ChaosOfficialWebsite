@@ -26,18 +26,23 @@ import FloatingMenu from '@/components/FloatingMenu.vue'
 }
 
 /* 大屏幕 - 1401及以上 */
-@media (min-width: 1280px) and (max-width: 1500px) {
+@media (min-width: 1401px) {
+  .cushion {
+    height: 70px;
+  }
+}
+
+/* 小屏幕 - 1400px及以下 */
+@media (max-width: 1400px) {
   .cushion {
     height: 45px;
   }
 }
 
-
-
 /* 小屏幕 - 1400px及以下 */
-@media (min-width: 1501px) and  (max-width: 1920px) {
+@media (max-width: 1440px) {
   .cushion {
-    height: 70px;
+    height: 45px;
   }
 }
 

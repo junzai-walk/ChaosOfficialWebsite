@@ -117,7 +117,7 @@ export default {
   justify-content: flex-start;
   position: absolute;
   top: 21rem; /* 336px -> 21rem */
-  left: 11.6875rem; /* 187px -> 11.6875rem */
+  left: 2rem; /* 187px -> 11.6875rem */
   
   .steps-container {
     display: flex;

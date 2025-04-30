@@ -338,7 +338,7 @@ const currentCases = computed(() => {
 .solution-section {
   width: 100%;
   min-height: 100vh;
-  padding: 5rem 0;
+  padding: 7rem 0 5rem 0;
   box-sizing: border-box;
   background-image: url('@/assets/home/bg.png');
   background-size: cover;
