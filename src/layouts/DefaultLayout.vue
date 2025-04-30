@@ -28,7 +28,7 @@ import FloatingMenu from '@/components/FloatingMenu.vue'
 /* 大屏幕 - 1401及以上 */
 @media (min-width: 1280px) and (max-width: 1500px) {
   .cushion {
-    height: 50px;
+    height: 45px;
   }
 }
 

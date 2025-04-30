@@ -117,15 +117,16 @@ const updateActiveStep = (newStep: number) => {
 .advantage-content {
   flex: 1;
   display: inline-flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
 }
 
 .advantage-cards {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 1.25rem;
-  width: 100%;
+  width: 90%;
 }
 
 .card-row {

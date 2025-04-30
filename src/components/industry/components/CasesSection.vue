@@ -254,6 +254,8 @@ const handleCardClick = (card: CaseCard) => {
 
 .case-page {
   display: flex;
+  // justify-content: center;
+  margin-left: 4rem;
   flex-wrap: nowrap;
   gap: 1.25rem;
   position: relative;
