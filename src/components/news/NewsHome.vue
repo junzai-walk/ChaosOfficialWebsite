@@ -41,7 +41,7 @@
         </div>
         <div class="button">
           <el-button @click="loadMore" v-if="hasMore">加载更多</el-button>
-          <el-divider content-position="center" v-else>到底啦</el-divider>
+          <el-divider content-position="center" v-else style="margin: 30px 0;">到底啦</el-divider>
         </div>
       </div>
       <div class="body-right">
@@ -146,7 +146,7 @@ onBeforeUnmount(() => {
 <style scoped lang="less">
 .news-box {
   box-sizing: border-box;
-  padding-bottom: 3.5rem;
+  padding-bottom: 2.5rem;
   display: flex;
   flex-direction: column;
   width: 100vw;
