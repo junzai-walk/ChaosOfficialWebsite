@@ -14,7 +14,7 @@
                 凯奥思PHM系统深度融合DeepSeek，全面实现国产化
               </div>
               <div class="time">
-                2025.2.25
+                2025.02.25
               </div>
             </div>
             <div class="content-main-action" @click="handleNews('news1')">
@@ -56,9 +56,9 @@
     </div>
 
      <!-- 使用新的Footer组件 -->
-     <!-- <div class='footer-wrapper'>
+     <div class='footer-wrapper'>
       <Footer />
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -80,25 +80,25 @@ import image22 from '@/assets/news/image22.png'
 const sectionStore = useSectionStore()
 const emit = defineEmits(['handleNews'])
 const newsList = ref([
-  // { id: 'news1', imgUrl: './src/assets/news/01 封面图.jpeg', mainTitle: '全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能', subTitle: '凯奥思PHM系统深度融合DeepSeek，全面实现国产化', date: '2025.2.25' },
+  // { id: 'news1', imgUrl: './src/assets/news/01 封面图.jpeg', mainTitle: '全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能', subTitle: '凯奥思PHM系统深度融合DeepSeek，全面实现国产化', date: '2025.02.25' },
   { id: 'news2', imgUrl: cover1, mainTitle: 'AA级！ 凯奥思数据获智能制造系统解决方案供应商分类分级评定', subTitle: '南京凯奥思数据技术有限公司获评集成实施类认定（AA级）以及运行维护类认定（A级）', date: '2025.01.08' },
-  { id: 'news3', imgUrl: cover1, mainTitle: '喜报！凯奥思数据荣登南京企业技术中心培育库', subTitle: '南京凯奥思数据技术有限公司正式入选南京市工业和信息化局公布的《南京企业技术中心培育库（2024年度）》名单', date: '2025.1.2' },
+  { id: 'news3', imgUrl: cover1, mainTitle: '喜报！凯奥思数据荣登南京企业技术中心培育库', subTitle: '南京凯奥思数据技术有限公司正式入选南京市工业和信息化局公布的《南京企业技术中心培育库（2024年度）》名单', date: '2025.01.02' },
   { id: 'news4', imgUrl: image1, mainTitle: '实力见证！凯奥思数据"设备预  测性维护与健康管理系统2.0"又获两项重量级认证', subTitle: '"设备预测性维护与健康管理系统2.0"获全国首批应用软件国产化等级认证及2024苏商数实融合先锋企业案例认证', date: '2024.12.23' },
   { id: 'news5', imgUrl: image11, mainTitle: '凯奥思数据荣膺"首批数据要素价值创新示范基地" ，加速释放数据资产价值', subTitle: '南京凯奥思数据技术有限公司荣获"首批数据要素价值创新示范基地"称号', date: '2024.12.5' },
   { id: 'news6', imgUrl: image14, mainTitle: '凯奥思数据精彩亮相2024中国（西安）国际采矿展 助力煤矿智能化发展', subTitle: '凯奥思数据携煤矿智能化产品及解决方案亮相2024中国（西安）国际采矿展', date: '2024.10.30' },
-  { id: 'news7', imgUrl: cover2, mainTitle: '激发数据资产潜力，"数据资产驱动未来 创新实践交流论坛"圆满举办', subTitle: '凯奥思数据承办"数据资产驱动未来 创新实践交流论坛",促进释放数据要素价值和市场潜力。', date: '2024.9.2' },
-  { id: 'news8', imgUrl: image22, mainTitle: '授信768万！南京市民营科技企业首笔数据资产融资突破', subTitle: '凯奥思数据通过数据资产成功获得768万元的融资授信', date: '2024.8.14' },
-  { id: 'news9', imgUrl: image1, mainTitle: '夯实数据要素：凯奥思数据引领南京市民营科技企业数据资产入表先河', subTitle: '凯奥思数据成为首家南京市民营科技企业数据资产入表的企业', date: '2024.7.1' },
+  { id: 'news7', imgUrl: cover2, mainTitle: '激发数据资产潜力，"数据资产驱动未来 创新实践交流论坛"圆满举办', subTitle: '凯奥思数据承办"数据资产驱动未来 创新实践交流论坛",促进释放数据要素价值和市场潜力。', date: '2024.09.02' },
+  { id: 'news8', imgUrl: image22, mainTitle: '授信768万！南京市民营科技企业首笔数据资产融资突破', subTitle: '凯奥思数据通过数据资产成功获得768万元的融资授信', date: '2024.08.14' },
+  { id: 'news9', imgUrl: image1, mainTitle: '夯实数据要素：凯奥思数据引领南京市民营科技企业数据资产入表先河', subTitle: '凯奥思数据成为首家南京市民营科技企业数据资产入表的企业', date: '2024.07.01' },
 ])
 const hotpotList =[
-  { id: 'news1', mainTitle: '全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能', date: '2025.2.25' },
+  { id: 'news1', mainTitle: '全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能', date: '2025.02.25' },
   { id: 'news4', mainTitle: '实力见证！凯奥思数据"设备预测性维护与健康管理系统2.0"又获两项重量级认证', date: '2024.12.23' },
-  { id: 'news8', mainTitle: '授信768万！南京市民营科技企业首笔数据资产融资突破', date: '2024.8.14' },
-  { id: 'news9', mainTitle: '夯实数据要素：凯奥思数据引领南京市民营科技企业数据资产入表先河', date: '2024.7.1' },
+  { id: 'news8', mainTitle: '授信768万！南京市民营科技企业首笔数据资产融资突破', date: '2024.08.14' },
+  { id: 'news9', mainTitle: '夯实数据要素：凯奥思数据引领南京市民营科技企业数据资产入表先河', date: '2024.07.01' },
 
 ]
 // 显示控制
-const showCount = ref(5)
+const showCount = ref(8) // 限制显示8条新闻
 const pageSize = ref(5)
 
 // 计算属性
@@ -154,8 +154,6 @@ onBeforeUnmount(() => {
   overflow: scroll;
 
   .footer-wrapper {
-    position: absolute;
-    bottom: 0;
     width: 100%;
 
     :deep(.footer){
@@ -228,14 +226,14 @@ onBeforeUnmount(() => {
             }
 
             .content-sub-title {
-              font-size: 0.75rem;
+              font-size: 0.85rem;
               font-weight: 700;
               margin-bottom: 0.75rem;
               color: #bbb;
             }
 
             .time {
-              font-size: 0.75rem;
+              font-size: 0.85rem;
               color: #bbb;
             }
           }
@@ -301,7 +299,7 @@ onBeforeUnmount(() => {
                 font-weight: 700;
                 margin-bottom: 0.5rem;
                 color: #bbb;
-                font-size: 0.75rem;
+                font-size: 0.85rem;
               }
             }
 
