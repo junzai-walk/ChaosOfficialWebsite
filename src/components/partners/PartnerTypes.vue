@@ -73,11 +73,11 @@ const recruit = ()=>{
 html {
   font-size: 16px;
   
-  @media (min-width: 1920px) {
+  @media (max-width: 1920px) {
     font-size: calc(16px * (1920 / 1920));
   }
   
-  @media (max-width: 1440px) {
+  @media (min-width: 1200px) and (max-width: 1500px) {
     font-size: calc(16px * (1440 / 1920));
   }
   
@@ -327,7 +327,7 @@ html {
   cursor: not-allowed;
 }
 
-@media (max-width: 1400px) {
+ @media (min-width: 1200px) and (max-width: 1500px){
   .partner-page {
     flex-wrap: nowrap;
     justify-content: space-between;
@@ -335,6 +335,14 @@ html {
 
   .partner-card {
     width: calc(25% - 0.9375rem); // 15px
+  }
+
+  .card-title{
+    font-size: 1.5rem !important;
+  }
+
+  .card-desc{
+    font-size: 1rem !important; 
   }
 }
 

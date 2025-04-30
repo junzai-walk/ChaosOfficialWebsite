@@ -417,10 +417,9 @@ onMounted(() => {
 }
 
 
-@media (max-width: 1024px) {
+@media (min-width: 1200px) and (max-width: 1500px) {
   .case-showcase {
     .partner-wall {
-      padding: 0 10%;
 
       .logo-container {
         &.size-small {

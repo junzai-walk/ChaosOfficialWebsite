@@ -248,7 +248,7 @@ html {
 }
 
 // 1920*1080分辨率适配
-@media (min-width: 1920px) {
+@media (max-width: 1920px) {
   .consult-rows {
     width: 30%;
     height: 18rem;
@@ -314,7 +314,7 @@ html {
   }
 }
 
-@media (max-width: 1366px) {
+@media (min-width: 1200px) and (max-width: 1500px) {
 
 .consult-rows {
   width: 40%;
