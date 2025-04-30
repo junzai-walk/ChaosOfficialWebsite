@@ -364,35 +364,6 @@ export default {
     }
 
     .case-grid {
-      gap: 1.25rem; /* 20px -> 1.25rem */
-
-      .case-item {
-        width: 20.375rem; /* 326px -> 20.375rem */
-        height: 12.5rem; /* 200px -> 12.5rem */
-      }
-    }
-
-    .partner-wall {
-      top: 23.75rem; /* 380px -> 23.75rem */
-      
-      .partner-row {
-        gap: 1.5625rem; /* 25px -> 1.5625rem */
-        margin-bottom: 1.875rem; /* 30px -> 1.875rem */
-      }
-      
-      .logo-container {
-        width: 11.25rem; /* 180px -> 11.25rem */
-        height: 5.625rem; /* 90px -> 5.625rem */
-      }
-    }
-  }
-
-  @media (max-width: 1920px) {
-    .showcase-content {
-      max-width: 75rem; /* 1200px -> 75rem */
-    }
-
-    .case-grid {
       gap: 0.9375rem; /* 15px -> 0.9375rem */
 
       .case-item {
@@ -410,7 +381,7 @@ export default {
   }
 
   /* 添加针对1366*768分辨率的特殊处理 */
-  @media (max-width: 1366px) {
+  @media screen and (min-width: 1440px) and (max-width: 1470px){
     .showcase-content {
       max-width: 68.75rem; /* 1100px -> 68.75rem */
     }
@@ -421,7 +392,7 @@ export default {
 
     .subtitle {
       font-size: 1rem; /* 16px -> 1rem */
-      margin: 1.5rem 0; /* 24px -> 1.5rem */
+      margin: 2rem 0; /* 24px -> 1.5rem */
     }
 
     .case-grid {
@@ -442,60 +413,8 @@ export default {
       }
 
       .logo-container {
-        width: 8.75rem; /* 140px -> 8.75rem */
-        height: 4.375rem; /* 70px -> 4.375rem */
-      }
-    }
-  }
-
-  @media (max-width: 1232px) {
-    height: auto;
-    min-height: 100vh;
-    padding-top: 1.25rem; /* 20px -> 1.25rem */
-
-    .showcase-content {
-      width: 95%;
-      margin-bottom: 1.25rem; /* 20px -> 1.25rem */
-    }
-
-    .title {
-      font-size: 1.75rem; /* 28px -> 1.75rem */
-    }
-
-    .subtitle {
-      font-size: 0.875rem; /* 14px -> 0.875rem */
-      margin: 1.25rem 0; /* 20px -> 1.25rem */
-    }
-
-    .case-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.625rem; /* 10px -> 0.625rem */
-      margin-bottom: 1.25rem; /* 20px -> 1.25rem */
-
-      .case-item {
-        width: 100%;
-        height: 7.5rem; /* 120px -> 7.5rem */
-      }
-    }
-
-    .partner-wall {
-      position: relative;
-      top: 0;
-      height: auto;
-      padding: 1.25rem 0; /* 20px -> 1.25rem */
-      margin-top: 1.25rem; /* 20px -> 1.25rem */
-
-      .partner-row {
-        gap: 0.5rem; /* 8px -> 0.5rem */
-        margin-bottom: 0.5rem; /* 8px -> 0.5rem */
-        flex-wrap: wrap;
-        padding: 0 0.625rem; /* 10px -> 0.625rem */
-
-        .logo-container {
-          width: 6.25rem; /* 100px -> 6.25rem */
-          height: 3.125rem; /* 50px -> 3.125rem */
-          margin: 0.3125rem; /* 5px -> 0.3125rem */
-        }
+        width: 6rem; /* 140px -> 8.75rem */
+        height: 4rem; /* 70px -> 4.375rem */
       }
     }
   }
@@ -519,11 +438,6 @@ export default {
 .showcase-content {
   width: 90%;
   max-width: 87.5rem; /* 1400px -> 87.5rem */
-
-  @media screen and (max-width: 1232px) {
-    width: 95%;
-    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
-  }
 }
 
 .title {
@@ -532,10 +446,6 @@ export default {
   text-align: center;
   color: #333;
   margin-bottom: 0.9375rem; /* 15px -> 0.9375rem */
-
-  @media screen and (max-width: 1232px) {
-    font-size: 1.75rem; /* 28px -> 1.75rem */
-  }
 }
 
 .subtitle {
@@ -543,11 +453,6 @@ export default {
   color: #666;
   text-align: center;
   margin: 1.875rem 0; /* 30px -> 1.875rem */
-
-  @media screen and (max-width: 1232px) {
-    font-size: 0.875rem; /* 14px -> 0.875rem */
-    margin: 1.25rem 0; /* 20px -> 1.25rem */
-  }
 }
 
 .case-grid {
@@ -555,12 +460,6 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem; /* 20px -> 1.25rem */
   margin-bottom: 2.5rem; /* 40px -> 2.5rem */
-
-  @media screen and (max-width: 1232px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.625rem; /* 10px -> 0.625rem */
-    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
-  }
 
   .case-item {
     width: 20.375rem; /* 326px -> 20.375rem */
@@ -595,11 +494,6 @@ export default {
       background: url('@/assets/home/Group_420.png') no-repeat center center;
       background-size: 100% 100%;
     }
-
-    @media screen and (max-width: 1232px) {
-      width: 100%;
-      height: 7.5rem; /* 120px -> 7.5rem */
-    }
   }
 }
 
@@ -611,14 +505,6 @@ export default {
   position: absolute;
   top: 23.75rem; /* 380px -> 23.75rem */
 
-  @media screen and (max-width: 1232px) {
-    position: relative;
-    top: 0;
-    height: auto;
-    padding: 1.25rem 0; /* 20px -> 1.25rem */
-    margin-top: 1.25rem; /* 20px -> 1.25rem */
-  }
-
   .partner-row {
     display: flex;
     justify-content: center;
@@ -629,13 +515,6 @@ export default {
 
     &:last-child {
       margin-bottom: 0;
-    }
-
-    @media screen and (max-width: 1232px) {
-      gap: 0.5rem; /* 8px -> 0.5rem */
-      margin-bottom: 0.5rem; /* 8px -> 0.5rem */
-      flex-wrap: wrap;
-      padding: 0 0.625rem; /* 10px -> 0.625rem */
     }
 
     .logo-container {
@@ -670,12 +549,6 @@ export default {
         box-shadow: 0.5rem 0.5rem 1.25rem rgba(0, 0, 0, 0.1),
                     -0.5rem -0.5rem 1.25rem rgba(255, 255, 255, 0.8),
                     inset 0 0 0 0.0625rem rgba(255, 255, 255, 0.7); /* 8px -> 0.5rem, 20px -> 1.25rem, 1px -> 0.0625rem */
-      }
-
-      @media screen and (max-width: 1232px) {
-        width: 6.25rem; /* 100px -> 6.25rem */
-        height: 3.125rem; /* 50px -> 3.125rem */
-        margin: 0.3125rem; /* 5px -> 0.3125rem */
       }
     }
   }

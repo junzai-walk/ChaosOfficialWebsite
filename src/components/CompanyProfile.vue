@@ -331,7 +331,7 @@ const timeline = ref([
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow-y: auto;
+  overflow-y: hidden;
   padding: 3.125rem 0;
   position: relative;
 }
@@ -547,31 +547,6 @@ const timeline = ref([
   display: none;
 }
 
-/* 响应式调整 */
-@media (max-width: 90rem) {
-  .timeline-box {
-    width: 100%;
-  }
-
-  .event {
-    font-size: 0.6875rem;
-    max-width: 8.125rem;
-  }
-}
-
-// @media (max-width: 1920px) {
-//   .profile-content {
-//     max-width: 80rem;
-//   }
-
-//   .stats-container {
-//     gap: 6rem;
-//   }
-
-//   .timeline-box {
-//     width: 75rem;
-//   }
-// }
 
 @media (max-width: 1232px) {
   .company-profile {
@@ -621,6 +596,21 @@ const timeline = ref([
 
   .company-intro p {
     font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 1440px) and (max-width: 1500px) {
+  .company-history{
+    height: 15rem;
+  }
+
+  .profile-content {
+    padding: 4rem 2rem 6rem;
+    box-sizing: border-box;
+
+    .timeline-box{
+      width: 80rem;
+    }
   }
 }
 
