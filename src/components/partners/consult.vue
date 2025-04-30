@@ -20,16 +20,17 @@
               <el-form-item label="手机号码：" >
                 <el-input v-model="form.phone" />
               </el-form-item>
-              <el-form-item label="公司：">
+              <el-form-item label="企业名称：">
                 <el-input v-model="form.company" />
               </el-form-item>
               <el-form-item label="合作意向：" >
-                <el-input v-model="form.remark" />
+                <el-input v-model="form.wish" />
               </el-form-item>
+              <el-button type="primary" @click="handleSubmit" :loading="loading">提交</el-button>
             </el-form>
           </div>
         </div>
-        <span style="font-size: 1rem;">联系电话：18652002566</span>
+        <span style="font-size: 1rem;">联系电话：025-83132381</span>
       </div>
     </div>
     <!-- 添加底部填充区域 -->
@@ -44,18 +45,65 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { submitCooperationForm } from '@/api/consult'
+import { ElMessage } from 'element-plus'
 import Footer from '@/components/common/Footer.vue'
 
 const emit = defineEmits(['recruit']);
 const currentPage = ref(0);
+const loading = ref(false)
 
 const form = ref({
   name:'',
   phone:'',
   company:'',
-  remark:''
+  wish:''
 })
 
+const handleSubmit = async () => {
+  // 验证手机号码格式
+  const phoneRegex = /^(1[3-9]\d{9}|0\d{2,3}-\d{7,8})$/
+  if (!form.value.company) {
+    ElMessage.warning('请输入企业名称')
+    return
+  }
+  if (!form.value.name) {
+    ElMessage.warning('请输入姓名')
+    return
+  }
+  if (!form.value.phone) {
+    ElMessage.warning('请输入手机号')
+    return
+  }
+  if (!phoneRegex.test(form.value.phone)) {
+    ElMessage.warning('请输入正确的手机号码格式')
+    return
+  }
+
+  loading.value = true
+
+  try {
+    // 提交表单数据到服务器
+    const response = await submitCooperationForm(form.value)
+    if (response.success) {
+      ElMessage.success(response.message)
+    } else {
+      ElMessage.error(response.message)
+    }
+
+    loading.value = false
+    form.value = {
+      name: '',
+      phone: '',
+      company: '',
+      wish: ''
+    }
+
+  } catch (error) {
+    console.error('表单提交失败:', error)
+    ElMessage.error('提交失败，请稍后重试')
+  }
+}
 </script>
 
 <style scoped lang="less">
@@ -188,6 +236,15 @@ html {
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: flex-start !important;
+
+  :deep(.el-button) {
+    width: 30%;
+    height: 2rem;
+    font-size: 1rem;
+    margin-top: 0rem;
+    margin-left: 2.5rem;
+    border-radius: 6rem;
+  }
 }
 
 // 1920*1080分辨率适配
@@ -262,9 +319,24 @@ html {
 .consult-rows {
   width: 40%;
   height: 23rem;
+  padding: 2rem 0rem 2rem 3rem;
 
  :deep(.el-form-item__label) {
     font-size: 1rem !important;
+  }
+
+  :deep(.el-input__inner) {
+    font-size: 1rem;
+    height: 2rem;
+  }
+
+  :deep(.el-button) {
+    width: 30%;
+    height: 2.5rem;
+    font-size: 1rem;
+    margin-top: -1rem;
+    margin-left: 2.5rem;
+    border-radius: 6rem;
   }
 }
 }

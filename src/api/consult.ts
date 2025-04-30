@@ -7,11 +7,19 @@ export interface ConsultFormData {
   phone: string;
 }
 
+export interface CooperationFormData {
+  company: string;
+  name: string;
+  phone: string;
+  wish: string;
+}
+
 // 定义响应数据接口
 export interface ApiResponse<T = any> {
   code: number;
   message: string;
   data: T;
+  success: boolean;
 }
 
 /**
@@ -21,4 +29,13 @@ export interface ApiResponse<T = any> {
  */
 export function submitConsultForm(data: ConsultFormData): Promise<ApiResponse<any>> {
   return post<ApiResponse<any>>('/api/contact', data);
+}
+
+/**
+ * 提交合作意向表单
+ * @param data 表单数据
+ * @returns Promise
+ */
+export function submitCooperationForm(data: CooperationFormData): Promise<ApiResponse<any>> {
+  return post<ApiResponse<any>>('/api/cooperation', data)
 }

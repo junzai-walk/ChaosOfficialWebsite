@@ -224,7 +224,7 @@ onMounted(() => {
   else if (route.query.section) {
     // 将section参数映射到行业索引
     const section = route.query.section as string;
-    if (section === '1') {
+    if (section === '0') {
       // section=1代表用户在"解决方案"页面
       // 从本地存储中获取上一次访问的行业索引
       const lastIndustryTab = localStorage.getItem('lastIndustryTab');
