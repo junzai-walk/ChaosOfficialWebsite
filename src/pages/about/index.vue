@@ -94,11 +94,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, provide, onMounted, onBeforeUnmount ,watch} from 'vue'
+import { ref, provide, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useSectionStore } from '@/stores/sectionStore'
 
-// 手动导入组件
+// 手动导入组件，添加类型断言
 import AboutHome from '@/components/about/AboutHome.vue'
 import CorporateCulture from '@/components/about/CorporateCulture.vue'
 import Honor from '@/components/about/Honor.vue'
@@ -118,15 +118,13 @@ import NewsDetail from '@/components/news/NewsDetail.vue'
 //   NewsDetail
 // }
 
-// const currentSection = ref(0)
-
 const route = useRoute()
 const router = useRouter()
 // 使用 Pinia store 代替本地状态
 const sectionStore = useSectionStore()
-// 提供 currentSection 给子组件使用
-// provide('currentSection', sectionStore.currentSection)
-const newsId =ref()
+// 提供 sectionStore.currentSection 给子组件使用
+provide('currentSection', () => sectionStore.currentSection)
+const newsId = ref()
 const scrolling = ref(false);
 const scrollDelay = 100; // 滚动延迟，防止连续滚动
 
@@ -149,13 +147,13 @@ const handleWheel = (e: WheelEvent) => {
   
   scrolling.value = true;
   
-  // 向下滚动，允许滚动到所有定义的部分（最大section为5）
+  // 向下滚动，允许滚动到所有定义的部分（最大section为4）
   if (e.deltaY > 0 && sectionStore.currentSection < 4) {
-    sectionStore.currentSection++;
+    sectionStore.nextSection(4);
   } 
   // 向上滚动
   else if (e.deltaY < 0 && sectionStore.currentSection > 0) {
-    sectionStore.currentSection--;
+    sectionStore.prevSection();
   }
   
   // 设置滚动延迟
@@ -218,13 +216,8 @@ watch(() => route.query.section, (newSection) => {
   if (newSection) {
     const sectionNumber = parseInt(newSection as string)
     if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 4) {
-      // 强制更新section状态
+      // 设置section状态
       sectionStore.setCurrentSection(sectionNumber)
-      
-      // 确保页面响应section变化
-      setTimeout(() => {
-        sectionStore.setCurrentSection(sectionNumber)
-      }, 100)
     }
   } else {
     // 如果没有section参数，默认显示第一个section
@@ -232,10 +225,11 @@ watch(() => route.query.section, (newSection) => {
   }
 }, { immediate: true })
 
-// 监听 currentSection 变化，更新 URL
+// 监听 sectionStore.currentSection 变化，更新 URL
 watch(() => sectionStore.currentSection, (newSection) => {
   // 只有当 section 变化且不是从 URL 参数触发的变化时才更新 URL
-  if (parseInt(route.query.section as string) !== newSection) {
+  const currentSection = route.query.section ? parseInt(route.query.section as string) : null
+  if (currentSection !== newSection) {
     router.replace({ 
       query: { 
         ...route.query, 
@@ -250,8 +244,8 @@ onBeforeUnmount(() => {
   
   // 恢复浏览器默认滚动行为
   document.body.style.overflow = '';
-    // 重置section状态, 否则在返回时会停留在当前section
-    sectionStore.setCurrentSection(0)
+  // 重置section状态, 否则在返回时会停留在当前section
+  sectionStore.resetSection()
 });
 </script>
 
