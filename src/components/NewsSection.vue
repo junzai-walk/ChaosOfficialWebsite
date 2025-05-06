@@ -9,7 +9,10 @@
         <img src="@/assets/news/image4.png" alt="新闻图片" class="news-image">
         <div class="news-content">
           <h3>全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能</h3>
-          <p class="news-content-p">凯奥思PHM系统深度融合DeepSeek，全面实现国产化</p>
+          <div class="news-content-p">
+            <span>凯奥思PHM系统深度融合DeepSeek，全面实现国产化</span>
+            <span>2025.02.25</span>
+          </div>
         </div>
       </div>
 
@@ -24,6 +27,7 @@
           </div>
           <div class="news-item-content">
             <h4>{{ item.title }}</h4>
+            <p class="item-date">{{ item.date }}</p>
             <p v-for="(line, i) in item.description.split('...')" :key="i" class="news-item-content-p">
               {{ line }}{{ i < item.description.split('...').length - 1 ? '...' : '' }} </p>
           </div>
@@ -74,21 +78,21 @@ const newsItems = ref([
     id: 'news2',
     title: 'AA级！ 凯奥思数据获智能制造系统解决方案供应商分类分级评定',
     description: '近日，工信部直属中国电子技术标准化研究院与智能制造系统解决方案供应商联盟，联合公布了智能制造系统解决方案供应商分类分级评定（第三批）结果。南京凯奥思数据技术有限公司获评集成实施类认定（AA级）以及运行维护类认定（A级）。',
-    date: '2024-03-15',
+    date: '2025.02.25',
     image: cover1
   },
   {
     id: 'news3',
     title: '喜报！凯奥思数据荣登南京企业技术中心培育库',
     description: '近日，南京凯奥思数据技术有限公司正式入选南京市工业和信息化局公布的《南京企业技术中心培育库（2024年度）》名单，标志着我司在技术创新和研发能力方面获得了政府部门的高度认可，为公司的未来发展注入了新的动力。',
-    date: '2024-03-14',
+    date: '2025.01.02',
     image: cover1
   },
   {
     id: 'news4',
     title: '实力见证！凯奥思数据"设备预测性维护与健康管理系统2.0"又获两项重量级认证',
     description: '12月20日，第六届江苏软件产业发展大会近日在南京隆重召开。大会以"创新驱动，智创未来"为主题，聚焦软件产业的创新发展和应用实践，吸引了众多行业专家、企业代表及政府领导参会。会议期间，与会者围绕软件产业的创新发展、国产化替代等议题进行了深入交流和探讨。',
-    date: '2024-03-13',
+    date: '2024.12.23',
     image: cover2
   }
 ])
@@ -180,6 +184,8 @@ const handleNewsItemClick = (item: any) => {
   text-align: left;
 
   .news-content-p {
+    display: flex;
+    justify-content: space-between;
     font-size: 0.875rem; // 14px -> 0.875rem
     color: #666;
     line-height: 1.5;
@@ -232,7 +238,7 @@ const handleNewsItemClick = (item: any) => {
 
 .news-item-image {
   width: 100%;
-  height: 5rem; // 80px -> 5rem
+  height: 5.7rem; // 80px -> 5rem
   background-color: #f5f5f5;
   border-radius: 0.1875rem; // 3px -> 0.1875rem
 }
@@ -243,6 +249,11 @@ const handleNewsItemClick = (item: any) => {
   align-items: flex-start;
   flex-direction: column;
   justify-content: space-evenly;
+
+  .item-date{
+    width: 100%;
+    text-align: right;
+  }
 
   .news-item-content-p {
     font-size: 0.875rem; // 14px -> 0.875rem
