@@ -3,8 +3,8 @@ import { ElMessage } from 'element-plus';
 
 // 创建 axios 实例
 const service = axios.create({
-  // 在开发环境中使用代理
-  baseURL: import.meta.env.MODE === 'development' ? '' : 'http://localhost:5000',
+  // 在开发环境中使用代理，生产环境使用实际域名
+  baseURL: import.meta.env.MODE === 'development' ? '' : 'https://www.njchaos.com',
   timeout: 15000, // 请求超时时间
   headers: {
     'Content-Type': 'application/json;charset=utf-8',
