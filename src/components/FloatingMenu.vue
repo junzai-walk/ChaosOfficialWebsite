@@ -39,9 +39,77 @@ const handleScrollToTop = () => {
   //获取当前url的path
   const path = router.currentRoute.value.path
 
-  router.push(path).then(() => {
-    sectionStore.resetSection()
-  })
+  // 确保解除页面滚动锁定
+  document.body.classList.remove('no-section-scroll')
+  document.body.style.overflow = ''
+  sectionStore.lockSection(false)
+
+  // 根据当前路径跳转到对应模块的第一页
+  if (path === '/' || path === '/home') {
+    // 首页
+    router.push({
+      path: '/',
+      query: { section: '0' }
+    }).then(() => {
+      sectionStore.setCurrentSection(0)
+    })
+  } else if (path.includes('/industry')) {
+    // 行业方案
+    router.push({
+      path: '/industry',
+      query: { section: '0' }
+    }).then(() => {
+      sectionStore.setCurrentSection(0)
+    })
+  } else if (path.includes('/products')) {
+    // 产品中心
+    router.push({
+      path: '/products',
+      query: { section: '0' }
+    }).then(() => {
+      sectionStore.setCurrentSection(0)
+    })
+  } else if (path.includes('/customer')) {
+    // 客户案例
+    router.push({
+      path: '/customer',
+      query: { section: '0' }
+    }).then(() => {
+      sectionStore.setCurrentSection(0)
+    })
+  } else if (path.includes('/partners')) {
+    // 合作伙伴
+    router.push({
+      path: '/partners',
+      query: { section: '0' }
+    }).then(() => {
+      sectionStore.setCurrentSection(0)
+    })
+  } else if (path.includes('/news')) {
+    // 资讯中心
+    router.push({
+      path: '/news',
+      query: { section: '0' }
+    }).then(() => {
+      sectionStore.setCurrentSection(0)
+    })
+  } else if (path.includes('/about')) {
+    // 关于我们
+    router.push({
+      path: '/about',
+      query: { section: '0' }
+    }).then(() => {
+      sectionStore.setCurrentSection(0)
+    })
+  } else {
+    // 其他页面，默认回到当前页面的第一部分
+    router.push({
+      path: path,
+      query: { section: '0' }
+    }).then(() => {
+      sectionStore.setCurrentSection(0)
+    })
+  }
 }
 </script>
 
@@ -174,4 +242,4 @@ const handleScrollToTop = () => {
     transform: translateX(0);
   }
 }
-</style> 
+</style>
