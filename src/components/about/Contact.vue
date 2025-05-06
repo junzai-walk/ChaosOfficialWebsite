@@ -70,9 +70,11 @@ import degreeIcon from '@/assets/about/map-degree.png'
 import Footer from '@/components/common/Footer.vue'
 
 
-import { ref, onMounted, computed, nextTick, onBeforeUnmount } from 'vue'
+import { ref, onMounted, computed, nextTick, onBeforeUnmount, watch } from 'vue'
 import { useSectionStore } from '@/stores/sectionStore'
+import { useRoute } from 'vue-router'
 
+const route = useRoute()
 const sectionStore = useSectionStore()
 const mapContainer = ref<HTMLElement | null>(null)
 
@@ -82,11 +84,20 @@ const handleScroll = (event: Event) => {
   event.stopPropagation()
 }
 
+// 监听路由参数变化，如果不是联系我们页面，则解除锁定
+watch(() => route.query.section, (newSection) => {
+  if (newSection && newSection !== '4') {
+    // 如果不是联系我们页面，解除锁定
+    document.body.classList.remove('no-section-scroll')
+    sectionStore.lockSection(false)
+  }
+})
+
 // 百度地图实现
 onMounted(() => {
   // 给页面添加特殊标记，表示不应触发页面切换
   document.body.classList.add('no-section-scroll')
-  
+
   // 确保页面固定在当前区域
   nextTick(() => {
     sectionStore.lockSection(true) // 锁定当前部分，防止滚动切换
@@ -102,24 +113,24 @@ onMounted(() => {
     if (mapContainer.value) {
       // 创建地图实例
       const map = new window.BMap.Map(mapContainer.value)
-      
+
       // 创建地址解析器实例
       const myGeo = new window.BMap.Geocoder();
       // 公司名称和地址
       const companyName = "南京凯奥思数据技术有限公司";
       const address = "南京市雨花台区宁双路19号云密城L栋";
-      
+
       // 将地址解析结果显示在地图上，并调整地图视野
       myGeo.getPoint(address, function(point: any) {
         if (point) {
           map.centerAndZoom(point, 18);
           // 开启鼠标滚轮缩放
           map.enableScrollWheelZoom(true);
-          
+
           // 添加标记点
           const marker = new window.BMap.Marker(point);
           map.addOverlay(marker);
-          
+
           // 自定义信息窗口内容
           const infoContent = `
             <div style="padding: 10px 0; text-align: center;border-radius: 30px;background-color: #fff;">
@@ -127,7 +138,7 @@ onMounted(() => {
               <div style="font-size: 12px; color: #666; line-height: 1.5;">${address}</div>
             </div>
           `;
-          
+
           // 添加信息窗口
           const infoOpts = {
             width: 280,
@@ -136,16 +147,16 @@ onMounted(() => {
             enableMessage: false,
             enableCloseOnClick: false
           };
-          
+
           const infoWindow = new window.BMap.InfoWindow(infoContent, infoOpts);
-          
+
           marker.addEventListener("click", function() {
             map.openInfoWindow(infoWindow, point);
           });
-          
+
           // 默认打开信息窗口
           map.openInfoWindow(infoWindow, point);
-          
+
           // 添加控件
           map.addControl(new window.BMap.ScaleControl());
           map.addControl(new window.BMap.NavigationControl());
@@ -237,7 +248,7 @@ const iconStyle = computed(() => {
       background-color: #fff;
       width: 52%;
       position: relative;
-      
+
       .contact-info-list {
         width: 100%;
         padding: 1.5rem 0rem 1.5rem 2.5rem;
@@ -256,7 +267,7 @@ const iconStyle = computed(() => {
         align-items: center;
         font-weight: 700;
         margin-bottom: 0.5rem;
-        
+
         .icon-img-info {
           width: 1rem;
           height: 1rem;

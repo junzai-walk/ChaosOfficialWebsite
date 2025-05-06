@@ -74,7 +74,7 @@
           <ul>
             <li @click="navigateToNews(0)">新闻动态</li>
           </ul>
-        </div>  
+        </div>
         <div class="nav-section">
           <h4 class="decoration-line" @click="navigateToAbout(1)">关于我们</h4>
           <ul>
@@ -83,7 +83,7 @@
             <li @click="navigateToAbout(3)">加入我们</li>
             <li @click="navigateToAbout(4)">联系我们</li>
           </ul>
-        </div>          
+        </div>
       </div>
 
       <div class="footer-qrcode">
@@ -97,6 +97,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { Phone, Location } from '@element-plus/icons-vue'
+import { useSectionStore } from '@/stores/sectionStore'
 
 const router = useRouter()
 
@@ -108,6 +109,15 @@ const navigateToIndustry = (sectionIndex: number) => {
 }
 
 const navigateToAbout = (sectionIndex: number) => {
+  // 先解除页面锁定状态
+  document.body.classList.remove('no-section-scroll')
+
+  // 导入并使用sectionStore
+  const sectionStore = useSectionStore()
+  // 解除section锁定
+  sectionStore.lockSection(false)
+
+  // 然后进行路由跳转
   router.push({
     path: '/about',
     query: { section: sectionIndex.toString() }
@@ -281,7 +291,7 @@ const navigateToNews = (sectionIndex: number) => {
   gap: 0.625rem; // 10px -> 0.625rem
 
   &-p{
-    font-size: 1rem;  
+    font-size: 1rem;
     color: #fff;
   }
 
@@ -373,4 +383,4 @@ const navigateToNews = (sectionIndex: number) => {
     flex: 0 0 100%;
   }
 }
-</style> 
+</style>

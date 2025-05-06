@@ -1,10 +1,10 @@
 <template>
   <div class="home-page" @wheel="handleWheel">
     <!-- 第一部分：关于主体 -->
-    <div 
-      class="section" 
-      :class="{ 
-        active: sectionStore.currentSection === 0, 
+    <div
+      class="section"
+      :class="{
+        active: sectionStore.currentSection === 0,
         inactive: sectionStore.currentSection !== 0,
         'slide-next': sectionStore.currentSection < 0,
         'slide-prev': sectionStore.currentSection > 0
@@ -12,12 +12,12 @@
       ref="bannerSection">
       <AboutHome />
     </div>
-    
+
     <!-- 第二部分：企业文化 -->
-    <div 
-      class="section" 
-      :class="{ 
-        active: sectionStore.currentSection === 1, 
+    <div
+      class="section"
+      :class="{
+        active: sectionStore.currentSection === 1,
         inactive: sectionStore.currentSection !== 1,
         'slide-next': sectionStore.currentSection < 1,
         'slide-prev': sectionStore.currentSection > 1
@@ -25,12 +25,12 @@
       ref="solutionSection">
       <CorporateCulture />
     </div>
-    
+
     <!-- 第三部分：重要荣誉 -->
-    <div 
-      class="section" 
-      :class="{ 
-        active: sectionStore.currentSection === 2, 
+    <div
+      class="section"
+      :class="{
+        active: sectionStore.currentSection === 2,
         inactive: sectionStore.currentSection !== 2,
         'slide-next': sectionStore.currentSection < 2,
         'slide-prev': sectionStore.currentSection > 2
@@ -38,12 +38,12 @@
       ref="productSystemSection">
       <Honor />
     </div>
-    
+
     <!-- 第四部分：诚聘英才 -->
-    <div 
-      class="section" 
-      :class="{ 
-        active: sectionStore.currentSection === 3, 
+    <div
+      class="section"
+      :class="{
+        active: sectionStore.currentSection === 3,
         inactive: sectionStore.currentSection !== 3,
         'slide-next': sectionStore.currentSection < 3,
         'slide-prev': sectionStore.currentSection > 3
@@ -51,12 +51,12 @@
       ref="companyProfileSection">
       <Invite />
     </div>
-    
+
     <!-- 第五部分：新闻 -->
-    <!-- <div 
-      class="section" 
-      :class="{ 
-        active: sectionStore.currentSection === 4, 
+    <!-- <div
+      class="section"
+      :class="{
+        active: sectionStore.currentSection === 4,
         inactive: sectionStore.currentSection !== 4,
         'slide-next': sectionStore.currentSection < 4,
         'slide-prev': sectionStore.currentSection > 4
@@ -64,12 +64,12 @@
       ref="caseShowcaseSection">
       <NewsHome @handleNews="handleNews"/>
     </div> -->
-    
+
     <!-- 第六部分：联系我们 -->
-    <div 
-      class="section" 
-      :class="{ 
-        active: sectionStore.currentSection === 4, 
+    <div
+      class="section"
+      :class="{
+        active: sectionStore.currentSection === 4,
         inactive: sectionStore.currentSection !== 4,
         'slide-next': sectionStore.currentSection < 4,
         'slide-prev': sectionStore.currentSection > 4
@@ -77,12 +77,12 @@
       ref="contactSection">
       <Contact />
     </div>
-    
+
      <!-- 第七部分：新闻详情 -->
-     <!-- <div 
-      class="section" 
-      :class="{ 
-        active: sectionStore.currentSection === 6, 
+     <!-- <div
+      class="section"
+      :class="{
+        active: sectionStore.currentSection === 6,
         inactive: sectionStore.currentSection !== 6,
         'slide-next': sectionStore.currentSection < 6,
         'slide-prev': sectionStore.currentSection > 6
@@ -137,25 +137,25 @@ const handleNews = (val: Number | String | string) => {
 const handleWheel = (e: WheelEvent) => {
   // 阻止默认滚动行为
   e.preventDefault();
-  
+
   // 如果页面被锁定，不处理滚动
   if (document.body.classList.contains('no-section-scroll')) {
     return;
   }
-  
+
   if (scrolling.value) return;
-  
+
   scrolling.value = true;
-  
+
   // 向下滚动，允许滚动到所有定义的部分（最大section为4）
   if (e.deltaY > 0 && sectionStore.currentSection < 4) {
     sectionStore.nextSection(4);
-  } 
+  }
   // 向上滚动
   else if (e.deltaY < 0 && sectionStore.currentSection > 0) {
     sectionStore.prevSection();
   }
-  
+
   // 设置滚动延迟
   setTimeout(() => {
     scrolling.value = false;
@@ -168,20 +168,20 @@ const handleKeyDown = (e: KeyboardEvent) => {
   if (document.body.classList.contains('no-section-scroll')) {
     return;
   }
-  
+
   if (scrolling.value) return;
-  
+
   scrolling.value = true;
-  
+
   // 向下箭头或Page Down
   if ((e.key === 'ArrowDown' || e.key === 'PageDown') && sectionStore.currentSection < 4) {
     sectionStore.nextSection(4)
-  } 
+  }
   // 向上箭头或Page Up
   else if ((e.key === 'ArrowUp' || e.key === 'PageUp') && sectionStore.currentSection > 0) {
     sectionStore.prevSection()
   }
-  
+
   setTimeout(() => {
     scrolling.value = false;
   }, scrollDelay);
@@ -189,10 +189,10 @@ const handleKeyDown = (e: KeyboardEvent) => {
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeyDown);
-  
+
   // 禁用浏览器默认滚动行为
   document.body.style.overflow = 'hidden';
-  
+
   // 确保没有滚动锁定
   document.body.classList.remove('no-section-scroll');
   scrolling.value = false;
@@ -202,7 +202,7 @@ onMounted(() => {
     const sectionNumber = parseInt(route.query.section as string)
     if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 4) {
       sectionStore.setCurrentSection(sectionNumber)
-      
+
       // 添加短延迟确保页面完全加载后启用滚动功能
       setTimeout(() => {
         scrolling.value = false;
@@ -216,11 +216,20 @@ watch(() => route.query.section, (newSection) => {
   if (newSection) {
     const sectionNumber = parseInt(newSection as string)
     if (!isNaN(sectionNumber) && sectionNumber >= 0 && sectionNumber <= 4) {
+      // 如果页面被锁定且不是从联系我们页面切换到其他页面，先解除锁定
+      if (document.body.classList.contains('no-section-scroll') && sectionNumber !== 4) {
+        document.body.classList.remove('no-section-scroll')
+        sectionStore.lockSection(false)
+      }
+
       // 设置section状态
       sectionStore.setCurrentSection(sectionNumber)
     }
   } else {
     // 如果没有section参数，默认显示第一个section
+    // 确保解除锁定状态
+    document.body.classList.remove('no-section-scroll')
+    sectionStore.lockSection(false)
     sectionStore.setCurrentSection(0)
   }
 }, { immediate: true })
@@ -230,18 +239,18 @@ watch(() => sectionStore.currentSection, (newSection) => {
   // 只有当 section 变化且不是从 URL 参数触发的变化时才更新 URL
   const currentSection = route.query.section ? parseInt(route.query.section as string) : null
   if (currentSection !== newSection) {
-    router.replace({ 
-      query: { 
-        ...route.query, 
-        section: newSection.toString() 
-      } 
+    router.replace({
+      query: {
+        ...route.query,
+        section: newSection.toString()
+      }
     })
   }
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeyDown);
-  
+
   // 恢复浏览器默认滚动行为
   document.body.style.overflow = '';
   // 重置section状态, 否则在返回时会停留在当前section
