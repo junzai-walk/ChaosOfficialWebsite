@@ -74,7 +74,7 @@ import image1 from '@/assets/news/image1.png'
 import image4 from '@/assets/news/image4.png'
 import image11 from '@/assets/news/image11.png'
 import image14 from '@/assets/news/image14.jpg'
-import image22 from '@/assets/news/image22.png'
+import image22 from '@/assets/news/image22.jpg'
 // import headerBg from '@/assets/news/Group 129.png'
 
 const sectionStore = useSectionStore()
