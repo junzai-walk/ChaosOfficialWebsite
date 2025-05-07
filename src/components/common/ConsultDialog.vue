@@ -45,7 +45,7 @@
       </div>
 
       <div class="submit-container">
-        <el-button type="primary" class="submit-btn" @click="submitForm">点击提交</el-button>
+        <el-button type="primary" class="submit-btn" @click="submitForm" :loading="isSubmitting" :disabled="isSubmitting">点击提交</el-button>
       </div>
     </div>
 
@@ -80,6 +80,7 @@ const emit = defineEmits(['update:visible', 'submit'])
 
 const dialogVisible = ref(props.visible)
 const currentStep = ref(1)
+const isSubmitting = ref(false) // 添加提交状态变量，用于防止重复提交
 const form = ref({
   company: '',
   name: '',
@@ -102,6 +103,7 @@ watch(() => dialogVisible.value, (newValue) => {
 
 const resetForm = () => {
   currentStep.value = 1
+  isSubmitting.value = false // 重置提交状态
   form.value = {
     company: '',
     name: '',
@@ -110,6 +112,11 @@ const resetForm = () => {
 }
 
 const submitForm = async () => {
+  // 如果已经在提交中，则不重复提交
+  if (isSubmitting.value) {
+    return
+  }
+
   // 验证手机号码格式
   const phoneRegex = /^(1[3-9]\d{9}|0\d{2,3}-\d{7,8})$/
   if (!form.value.company) {
@@ -129,6 +136,9 @@ const submitForm = async () => {
     return
   }
 
+  // 设置提交状态为true，防止重复提交
+  isSubmitting.value = true
+
   try {
     // 提交表单数据到服务器
     const response = await submitConsultForm(form.value)
@@ -143,6 +153,9 @@ const submitForm = async () => {
   } catch (error) {
     console.error('表单提交失败:', error)
     ElMessage.error('提交失败，请稍后重试')
+  } finally {
+    // 无论成功还是失败，都将提交状态设置为false
+    isSubmitting.value = false
   }
 }
 
