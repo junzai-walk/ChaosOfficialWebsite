@@ -418,11 +418,11 @@ import SolutionsSection from '@/components/industry/components/SolutionsSection.
 import AdvantagesSection from '@/components/industry/components/AdvantagesSection.vue'
 import CasesSection from '@/components/industry/components/CasesSection.vue'
 
-import steelBackgroundImage from '@/assets/industry/steel.png'
-import cementBackgroundImage from '@/assets/industry/cement-bg.png'
+import steelBackgroundImage from '@/assets/industry/steel.jpg'
+import cementBackgroundImage from '@/assets/industry/cement-bg.jpg'
 import chemicalBackgroundImage from '@/assets/industry/chemical-bg.jpg'
-import carBackgroundImage from '@/assets/industry/car-bg.png'
-import newEnergyBackgroundImage from '@/assets/industry/wind-bg.png'
+import carBackgroundImage from '@/assets/industry/car-bg.jpg'
+import newEnergyBackgroundImage from '@/assets/industry/wind-bg.jpg'
 
 import iconEnergy from "@/assets/industry/icon-energy.png"
 import iconEquipment from "@/assets/industry/icon-equipment.png"
@@ -481,7 +481,7 @@ import windAdvantage5 from '@/assets/industry/wind-advantage-5.png'
 
 
 // 引入方案优势图标
-import coalBackgroundImage from '@/assets/industry/coal-bg.png'
+import coalBackgroundImage from '@/assets/industry/coal-bg.jpg'
 import coalSolutionImage from '@/assets/industry/coal-solution-Photoroom.png'
 import chemicalExclamation from '@/assets/industry/chemical-challenge-1.png'
 import chemicalEquipment from '@/assets/industry/chemical-challenge-2.png'

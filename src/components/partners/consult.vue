@@ -162,7 +162,7 @@ html {
   z-index: 1;
   width: 100vw;
   height: 40vh;
-  background: url('@/assets/partners/Group 46.png') no-repeat center center;
+  background: url('@/assets/partners/Group 46.jpg') no-repeat center center;
   background-size: 100% 100%;
   margin-bottom: 1.25rem;
   margin-top: 4rem;

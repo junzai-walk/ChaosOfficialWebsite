@@ -233,7 +233,7 @@ const handleCardClick = (card: CaseCard) => {
 .background-header {
   width: 100vw;
   height: 12.5rem;
-  background: url('@/assets/industry/case-banner.png') no-repeat center center;
+  background: url('@/assets/industry/case-banner.jpg') no-repeat center center;
   background-size: cover;
   border-radius: 0.5rem;
   margin-bottom: 1.25rem;

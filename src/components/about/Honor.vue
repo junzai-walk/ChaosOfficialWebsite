@@ -14,14 +14,14 @@
 import { ref, onMounted } from 'vue'
 
 //这样引入，打包后服务器可识别
-import honor1 from '@/assets/about/01.png'
-import honor2 from '@/assets/about/02.png'
-import honor3 from '@/assets/about/03.png'
-import honor4 from '@/assets/about/04.png'
+import honor1 from '@/assets/about/01.jpg'
+import honor2 from '@/assets/about/02.jpg'
+import honor3 from '@/assets/about/03.jpg'
+import honor4 from '@/assets/about/04.jpg'
 import honor5 from '@/assets/about/05.jpg'
-import honor6 from '@/assets/about/06.png'
-import honor7 from '@/assets/about/07.png'
-import honor8 from '@/assets/about/08.png'
+import honor6 from '@/assets/about/06.jpg'
+import honor7 from '@/assets/about/07.jpg'
+import honor8 from '@/assets/about/08.jpg'
 
 const honorCard = [
   { imgUrl: honor1, name: '国家高新技术企业', },

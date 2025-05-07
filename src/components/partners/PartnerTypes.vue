@@ -95,7 +95,7 @@ html {
   flex-direction: column;
   justify-content: flex-start; /* 改为flex-start而非center */
   min-height: 100vh; /* 确保最小高度填满视口 */
-  // background: url("@/assets/partners/Group 45.png") no-repeat 100% 100% / cover;
+  // background: url("@/assets/partners/Group 45.jpg") no-repeat 100% 100% / cover;
 }
 /* 上方背景图 */
 .background-header {
@@ -107,7 +107,7 @@ html {
   z-index: 1;
   width: 100vw;
   height: 52vh;
-  background: url('@/assets/partners/Group 45.png') no-repeat center center;
+  background: url('@/assets/partners/Group 45.jpg') no-repeat center center;
 
   background-size: cover;
   margin-bottom: 1.25rem; // 20px

@@ -37,7 +37,7 @@ import { useRouter } from 'vue-router'
 import { ArrowLeft } from '@element-plus/icons-vue';
 import image3 from '@/assets/customer/image3.png';
 import image4 from '@/assets/customer/image4.png';
-import image5 from '@/assets/customer/image5.png';
+import image5 from '@/assets/customer/image5.jpg';
 import image6 from '@/assets/customer/image6.png';
 import image8 from '@/assets/customer/image8.png';
 import image9 from '@/assets/customer/image9.png';
@@ -391,7 +391,7 @@ html {
     width: 100%;
     height: 320px;
     display: flex;
-    background: url('@/assets/customer/Group455.png') no-repeat center center;
+    background: url('@/assets/customer/Group455.jpg') no-repeat center center;
     background-size: 100% 100%;
     align-items: flex-end;
     justify-content: center;

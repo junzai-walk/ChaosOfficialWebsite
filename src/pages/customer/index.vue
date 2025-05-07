@@ -229,7 +229,7 @@ onBeforeUnmount(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('@/assets/customer/Group454.png') no-repeat center center;
+  background: url('@/assets/customer/Group454.jpg') no-repeat center center;
   background-size: 100% 100%;
   z-index: 1;
   opacity: 90%;

@@ -39,15 +39,15 @@ import block12Image from '@/assets/about/Block-12.png'
 import block12Image1 from '@/assets/about/Block-12-1.png'
 import block12Image2 from '@/assets/about/Block-12-2.png'
 
-import banner12 from '@/assets/about/banner-12.png'
-import banner12_1 from '@/assets/about/banner-12-1.png'
+import banner12 from '@/assets/about/banner-12.jpg'
+import banner12_1 from '@/assets/about/banner-12-1.jpg'
 import banner12_2 from '@/assets/about/banner-12-2.png'
 import banner12_3 from '@/assets/about/banner-12-3.png'
 import banner12_4 from '@/assets/about/banner-12-4.png'
-import banner12_5 from '@/assets/about/banner-12-5.png'
+import banner12_5 from '@/assets/about/banner-12-5.jpg'
 import banner12_6 from '@/assets/about/banner-12-6.png'
 
-import joinBackground from '@/assets/about/Group 42.png'
+import joinBackground from '@/assets/about/Group 42.jpg'
 
 const cards = ref([
   { background: block12Image, mainTitle: '坚实的保障', subTitle: '我们为每位伙伴提供贴心保障，涵盖五险一金，出差补贴，加班福利，下午茶等，全方位护航你的职场征程。' },

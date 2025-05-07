@@ -44,12 +44,12 @@ import { useRouter, useRoute } from 'vue-router';
 import { ElMessage } from 'element-plus';
 
 // Import images
-import steelImage from '@/assets/industry/steel.png';
-import cementImage from '@/assets/industry/cement-bg.png';
-import coalImage from '@/assets/industry/coal-bg.png';
+import steelImage from '@/assets/industry/steel.jpg';
+import cementImage from '@/assets/industry/cement-bg.jpg';
+import coalImage from '@/assets/industry/coal-bg.jpg';
 import chemicalImage from '@/assets/industry/chemical-bg.jpg';
-import carImage from '@/assets/industry/car-bg.png';
-import windImage from '@/assets/industry/wind-bg.png';
+import carImage from '@/assets/industry/car-bg.jpg';
+import windImage from '@/assets/industry/wind-bg.jpg';
 
 const router = useRouter();
 const route = useRoute();
