@@ -1,17 +1,17 @@
 <template>
   <div class="challenges-section">
     <div class="challenges-container">
-      <!-- 左侧导航 - 使用自定义组件 -->
-      <div class="side-nav-container">
-        <CustomNavSteps 
-          :width="120" 
-          :height="192" 
-          :steps="navSteps" 
-          :active-step="activeStep" 
-          :section-numbers="sectionNumbers" 
-          @update:active-step="updateActiveStep" 
+      <!-- 左侧导航 - 已隐藏，使用全局导航 -->
+      <!-- <div class="side-nav-container">
+        <CustomNavSteps
+          :width="120"
+          :height="192"
+          :steps="navSteps"
+          :active-step="activeStep"
+          :section-numbers="sectionNumbers"
+          @update:active-step="updateActiveStep"
         />
-      </div>
+      </div> -->
 
       <!-- 右侧内容 -->
       <div class="challenges-content">
@@ -77,7 +77,7 @@ const updateActiveStep = (newStep: number) => {
 /* 设置基准根元素字体大小 */
 :root {
   font-size: 16px;
-  
+
   @media (max-width: 1366px) {
     font-size: 14px;
   }
@@ -145,7 +145,7 @@ const updateActiveStep = (newStep: number) => {
   border: 0.0625rem solid rgba(255, 255, 255, 0.8); /* 1px -> 0.0625rem */
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -156,7 +156,7 @@ const updateActiveStep = (newStep: number) => {
     opacity: 0.6;
     border-radius: 1rem 1rem 0 0; /* 16px -> 1rem */
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -167,12 +167,12 @@ const updateActiveStep = (newStep: number) => {
     background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.05), transparent);
     border-radius: 50%;
   }
-  
+
   &:hover {
     transform: translateY(-0.5rem) scale(1.02); /* -8px -> -0.5rem */
     box-shadow: 0 1.25rem 1.875rem rgba(0, 0, 0, 0.1), 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.05);
     border: 0.0625rem solid rgba(255, 255, 255, 1);
-    
+
     .card-icon {
       transform: translateY(-0.3125rem); /* -5px -> -0.3125rem */
       box-shadow: 0.75rem 0.75rem 1.25rem rgba(174, 174, 192, 0.2), -0.75rem -0.75rem 1.25rem hsla(0, 0%, 100%, 0.8);
@@ -193,7 +193,7 @@ const updateActiveStep = (newStep: number) => {
   border-radius: 50%;
   position: relative;
   z-index: 1;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -234,28 +234,28 @@ const updateActiveStep = (newStep: number) => {
     gap: 2.5rem;
     margin: 7.5rem auto;
   }
-  
+
   .challenge-card {
     height: 13.75rem;
     padding: 2.25rem;
   }
-  
+
   .card-icon {
     width: 3.5rem;
     height: 3.5rem;
     margin-bottom: 1.5rem;
-    
+
     img {
       width: 1.75rem;
       height: 1.75rem;
     }
   }
-  
+
   .card-title {
     font-size: 1.3125rem;
     margin-bottom: 1rem;
   }
-  
+
   .card-desc {
     font-size: 1.0625rem;
   }
@@ -265,48 +265,48 @@ const updateActiveStep = (newStep: number) => {
   .challenges-section {
     padding: 1.8rem;
   }
-  
+
   .challenges-container {
     max-width: 65rem;
     gap: 1.5rem;
     margin: 5rem auto;
   }
-  
+
   .challenge-cards {
     gap: 1rem;
   }
-  
+
   .challenge-row {
     gap: 1rem;
   }
-  
+
   .challenge-card {
     height: 10rem;
     padding: 4.5rem 2rem;
     border-radius: 0.75rem;
   }
-  
+
   .card-icon {
     width: 2.8rem;
     height: 2.8rem;
     margin-bottom: 1rem;
-    
+
     &::before {
       width: 4.2rem;
       height: 4.2rem;
     }
-    
+
     img {
       width: 1.4rem;
       height: 1.4rem;
     }
   }
-  
+
   .card-title {
     font-size: 1rem;
     margin-bottom: 0.7rem;
   }
-  
+
   .card-desc {
     font-size: 0.85rem;
   }

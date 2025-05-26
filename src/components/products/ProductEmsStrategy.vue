@@ -1,31 +1,31 @@
 <template>
   <div class="product-ems-strategy">
-    <!-- 左侧导航栏 -->
-    <div class="side-nav-container">
-      <CustomNavSteps 
-          :width="120" 
-          :height="192" 
-          :steps="navSteps" 
-          :active-step="activeStep" 
-          :section-numbers="sectionNumbers" 
-          @update:active-step="updateActiveStep" 
+    <!-- 左侧导航栏 - 已隐藏，使用全局导航 -->
+    <!-- <div class="side-nav-container">
+      <CustomNavSteps
+          :width="120"
+          :height="192"
+          :steps="navSteps"
+          :active-step="activeStep"
+          :section-numbers="sectionNumbers"
+          @update:active-step="updateActiveStep"
         />
-    </div>
-    
+    </div> -->
+
     <!-- 左侧笔记本图片展示 -->
     <div class="laptop-container">
       <img :src="laptopImage" alt="能源管理系统" class="laptop-image" />
     </div>
-    
+
     <!-- 右侧内容区域 -->
     <div class="content-container">
       <!-- 标题 -->
       <h1 class="strategy-title">{{ title }}</h1>
-      
+
       <!-- 策略卡片列表 -->
       <div class="strategy-cards">
-        <div 
-          v-for="(strategy, index) in strategies" 
+        <div
+          v-for="(strategy, index) in strategies"
           :key="index"
           class="strategy-card"
         >
@@ -188,7 +188,7 @@ const updateActiveStep = (newStep: number) => {
     width: 40rem; /* 500px */
     height: 20.625rem; /* 330px */
   }
-  
+
   .content-container {
     left: 65rem; /* 700px */
   }
@@ -199,20 +199,20 @@ const updateActiveStep = (newStep: number) => {
   :root {
     font-size: 14px; /* 调整基础字体大小，使rem更适合1366分辨率 */
   }
-  
+
   .product-ems-strategy {
     flex-direction: column;
     align-items: center;
     padding-top: 8.57rem; /* 120px */
     height: auto;
   }
-  
+
   .side-nav-container {
     position: absolute;
     top: 1.42rem; /* 20px */
     left: 1.42rem; /* 20px */
   }
-  
+
   .laptop-container {
     position: relative;
     left: -18rem;
@@ -224,7 +224,7 @@ const updateActiveStep = (newStep: number) => {
     margin-bottom: 2.85rem; /* 40px */
     margin-top: 4.28rem; /* 60px */
   }
-  
+
   .content-container {
     position: relative;
     left: 25.875rem;
@@ -234,19 +234,19 @@ const updateActiveStep = (newStep: number) => {
     max-width: 45rem; /* 800px */
     padding: 0 1.42rem; /* 0 20px */
   }
-  
+
   .strategy-title {
     text-align: center;
     width: 100%;
     font-size: 1.85rem; /* ~26px */
     margin-bottom: 1.78rem; /* ~25px */
   }
-  
+
   .strategy-card {
     width: 100%;
     padding: 1.07rem; /* ~15px */
   }
-  
+
   .strategy-cards {
     gap: 1.07rem; /* ~15px */
   }
@@ -257,25 +257,25 @@ const updateActiveStep = (newStep: number) => {
   :root {
     font-size: 12px;
   }
-  
+
   .side-nav-container {
     left: 0.83rem; /* 10px */
   }
-  
+
   .laptop-container {
     width: 90%;
   }
-  
+
   .strategy-title {
     font-size: 2rem; /* 24px */
   }
-  
+
   .strategy-card {
     padding: 1.25rem; /* 15px */
   }
-  
+
   .strategy-description {
     font-size: 1.16rem; /* 14px */
   }
 }
-</style> 
+</style>

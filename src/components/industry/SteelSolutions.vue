@@ -1,11 +1,6 @@
 <template>
   <div class="steel-solutions">
     <div class="solutions-container">
-      <!-- 左侧导航栏 - 使用自定义组件 -->
-      <div class="side-nav-container">
-        <CustomNavSteps :width="120" :height="192" :steps="solutionSteps" v-model:activeStep="activeStep" />
-      </div>
-
       <!-- 右侧内容区 -->
       <div class="solution-content">
         <!-- 顶部描述文本 -->
@@ -109,33 +104,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-// 替换导航组件
-import CustomNavSteps from './CustomNavSteps.vue';
-
-const activeStep = ref(2); // 默认显示解决方案
-
-const solutionSteps = [
-  '行业挑战',
-  '解决方案',
-  '方案优势',
-  '典型案例'
-];
+// 移除了导航相关的代码，现在使用全局固定导航
 </script>
 
 <style scoped lang="less">
 /* 添加根字体设置用于rem计算 */
 html {
   font-size: 16px;
-  
+
   @media (min-width: 1920px) {
     font-size: calc(16px * (1920 / 1920));
   }
-  
+
   @media (max-width: 1440px) {
     font-size: calc(16px * (1440 / 1920));
   }
-  
+
   @media (max-width: 1280px) {
     font-size: calc(16px * (1280 / 1920));
   }

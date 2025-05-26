@@ -1,16 +1,16 @@
 <template>
   <div class="product-iop-results">
-    <!-- 左侧导航栏 -->
-    <div class="side-nav-container">
-      <CustomNavSteps 
-          :width="120" 
-          :height="192" 
-          :steps="navSteps" 
-          :active-step="activeStep" 
-          :section-numbers="sectionNumbers" 
-          @update:active-step="updateActiveStep" 
+    <!-- 左侧导航栏 - 已隐藏，使用全局导航 -->
+    <!-- <div class="side-nav-container">
+      <CustomNavSteps
+          :width="120"
+          :height="192"
+          :steps="navSteps"
+          :active-step="activeStep"
+          :section-numbers="sectionNumbers"
+          @update:active-step="updateActiveStep"
         />
-    </div>
+    </div> -->
 
     <!-- 标题区域 -->
     <div class="title-container">
@@ -111,7 +111,7 @@ const updateActiveStep = (newStep: number) => {
   min-height: 100vh;
   position: relative;
   background-color: white;
-  padding-top: 9.375rem; 
+  padding-top: 9.375rem;
   box-sizing: border-box;
 
   .title-container {
@@ -222,66 +222,66 @@ const updateActiveStep = (newStep: number) => {
   /* 媒体查询 - 针对1920*1080分辨率 */
   @media (min-width: 1920px) {
     padding-top: 9.375rem;
-    
+
     .title-container {
       margin-bottom: 3.75rem;
     }
-    
+
     .results-cards {
       grid-template-columns: repeat(3, 26rem);
       grid-template-rows: repeat(2, 13.75rem);
       gap: 1.25rem;
       max-width: 80.5rem;
     }
-    
+
     .result-card {
       padding: 1.5rem;
-      
+
       .card-icon-wrapper {
         width: 2.5rem;
         height: 2.5rem;
-        
+
         .card-icon-bg {
           width: 2.5rem;
           height: 2.5rem;
         }
-        
+
         .card-icon {
           width: 1.5rem;
           height: 1.5rem;
         }
       }
-      
+
       .card-title {
         font-size: 1.25rem;
       }
-      
+
       .card-description {
         font-size: 1rem;
         line-height: 1.5;
       }
     }
-    
+
     .experience-button {
       width: 12.5rem;
       height: 3.5rem;
       font-size: 1.125rem;
     }
   }
-  
+
   /* 媒体查询 - 针对1366*768分辨率 */
   @media (max-width: 1366px) {
     padding-top: 6.25rem;
-    
+
     .side-nav-container {
       top: 12.5rem;
       left: 7.5rem;
     }
-    
+
     .title-container {
       margin-bottom: 3rem;
     }
-    
+
     .results-cards {
       grid-template-columns: repeat(3, 21rem);
       grid-template-rows: repeat(2, 12rem);
@@ -289,37 +289,37 @@ const updateActiveStep = (newStep: number) => {
       max-width: 65rem;
       padding-left: 5rem;
     }
-    
+
     .result-card {
       padding: 1.25rem;
-      
+
       .card-icon-wrapper {
         width: 2.25rem;
         height: 2.25rem;
         margin: 0.75rem auto;
-        
+
         .card-icon-bg {
           width: 2.25rem;
           height: 2.25rem;
         }
-        
+
         .card-icon {
           width: 1.25rem;
           height: 1.25rem;
         }
       }
-      
+
       .card-title {
         font-size: 1.125rem;
         margin-bottom: 0.5rem;
       }
-      
+
       .card-description {
         font-size: 0.9rem;
         line-height: 1.4;
       }
     }
-    
+
     .experience-button {
       margin: 4rem auto 2.5rem;
       width: 11rem;
@@ -327,7 +327,7 @@ const updateActiveStep = (newStep: number) => {
       font-size: 1rem;
     }
   }
-  
+
   /* 媒体查询 - 针对小屏幕 */
   @media (max-width: 1200px) {
     .results-cards {
@@ -336,7 +336,7 @@ const updateActiveStep = (newStep: number) => {
       padding-left: 0;
     }
   }
-  
+
   /* 媒体查询 - 针对平板设备 */
   @media (max-width: 992px) {
     .side-nav-container {
@@ -348,40 +348,40 @@ const updateActiveStep = (newStep: number) => {
       justify-content: center;
       margin-bottom: 3rem;
     }
-    
+
     .results-cards {
       grid-template-columns: repeat(2, 1fr);
       padding: 0 2rem;
     }
-    
+
     .experience-button {
       position: relative;
       left: auto;
       top: auto;
     }
   }
-  
+
   /* 媒体查询 - 移动设备 */
   @media (max-width: 768px) {
     padding-top: 4rem;
-    
+
     .results-cards {
       grid-template-columns: 1fr;
       padding: 0 1.5rem;
     }
-    
+
     .result-card {
       min-height: 10rem;
     }
-    
+
     .card-title {
       font-size: 1rem;
     }
-    
+
     .card-description {
       font-size: 0.875rem;
     }
-    
+
     .experience-button {
       width: 10rem;
       height: 2.75rem;
@@ -390,4 +390,4 @@ const updateActiveStep = (newStep: number) => {
     }
   }
 }
-</style> 
+</style>

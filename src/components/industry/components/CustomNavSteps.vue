@@ -1,9 +1,13 @@
 <template>
-  <div class="custom-nav-steps" :style="{ width: `${width}px`, height: `${height}px` }">
+  <div
+    v-show="isInitialized"
+    class="custom-nav-steps"
+    :style="{ width: `${width}px`, height: `${height}px` }"
+  >
     <div class="steps-container">
-      <div 
-        v-for="(step, index) in steps" 
-        :key="index" 
+      <div
+        v-for="(step, index) in steps"
+        :key="index"
         class="step-item"
         :class="{ 'active': index + 1 === currentActiveStep }"
         @click="updateActiveStep(index + 1)"
@@ -21,7 +25,7 @@
 
 <script setup lang="ts">
 import { useSectionStore } from '@/stores/sectionStore';
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, computed, nextTick } from 'vue';
 
 const props = defineProps({
   width: {
@@ -48,13 +52,26 @@ const props = defineProps({
 
 const emit = defineEmits(['update:activeStep']);
 const sectionStore = useSectionStore();
-const currentActiveStep = ref(props.activeStep);
+
+// 计算初始的 activeStep，避免在组件挂载时出现闪烁
+const initialActiveStep = computed(() => {
+  if (props.sectionNumbers && props.sectionNumbers.length > 0) {
+    const activeIndex = props.sectionNumbers.findIndex(num => num === sectionStore.currentSection);
+    if (activeIndex !== -1) {
+      return activeIndex + 1;
+    }
+  }
+  return props.activeStep;
+});
+
+const currentActiveStep = ref(initialActiveStep.value);
+const isInitialized = ref(false);
 
 // 点击导航步骤时的处理函数
 const updateActiveStep = (stepIndex: number) => {
   currentActiveStep.value = stepIndex;
   emit('update:activeStep', stepIndex);
-  
+
   if (props.sectionNumbers && props.sectionNumbers.length >= stepIndex) {
     const sectionNumber = props.sectionNumbers[stepIndex - 1];
     if (sectionNumber !== undefined) {
@@ -65,26 +82,43 @@ const updateActiveStep = (stepIndex: number) => {
 
 // 监听当前Section的变化，反向更新导航的激活状态
 watch(() => sectionStore.currentSection, (newSection) => {
+  // 只有在组件初始化完成后才响应 section 变化，避免初始化时的闪烁
+  if (!isInitialized.value) return;
+
   if (props.sectionNumbers && props.sectionNumbers.length > 0) {
     // 找到当前section对应的导航索引
     const activeIndex = props.sectionNumbers.findIndex(num => num === newSection);
     if (activeIndex !== -1) {
-      currentActiveStep.value = activeIndex + 1;
-      emit('update:activeStep', activeIndex + 1);
+      const newActiveStep = activeIndex + 1;
+      // 只有当 activeStep 真正发生变化时才更新，避免不必要的重渲染
+      if (currentActiveStep.value !== newActiveStep) {
+        currentActiveStep.value = newActiveStep;
+        emit('update:activeStep', newActiveStep);
+      }
     }
   }
 });
 
 // 当组件挂载时，确保初始状态正确
-onMounted(() => {
+onMounted(async () => {
+  // 等待下一个 tick，确保所有初始化完成
+  await nextTick();
+
   // 如果当前section已经在sectionNumbers中，则初始化activeStep
   if (props.sectionNumbers && props.sectionNumbers.length > 0) {
     const activeIndex = props.sectionNumbers.findIndex(num => num === sectionStore.currentSection);
     if (activeIndex !== -1) {
-      currentActiveStep.value = activeIndex + 1;
-      emit('update:activeStep', activeIndex + 1);
+      const correctActiveStep = activeIndex + 1;
+      // 只有当计算出的 activeStep 与当前值不同时才更新
+      if (currentActiveStep.value !== correctActiveStep) {
+        currentActiveStep.value = correctActiveStep;
+        emit('update:activeStep', correctActiveStep);
+      }
     }
   }
+
+  // 标记组件已初始化完成
+  isInitialized.value = true;
 });
 
 // 暴露组件属性和方法
@@ -105,9 +139,21 @@ export default {
 /* 设置基准根元素字体大小 */
 :root {
   font-size: 16px;
-  
+
   @media (max-width: 1366px) {
     font-size: 14px;
+  }
+}
+
+/* 添加淡入动画关键帧 */
+@keyframes fadeInNav {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -118,13 +164,15 @@ export default {
   position: absolute;
   top: 21rem; /* 336px -> 21rem */
   left: 2rem; /* 187px -> 11.6875rem */
-  
+  opacity: 0;
+  animation: fadeInNav 0.3s ease-in-out 0.1s forwards;
+
   .steps-container {
     display: flex;
     flex-direction: column;
     height: 100%;
   }
-  
+
   .step-item {
     display: flex;
     align-items: center;
@@ -133,24 +181,25 @@ export default {
     cursor: pointer;
     position: relative;
     padding-right: 0.5rem;
-    
+
     &:last-child {
       margin-bottom: 0;
     }
-    
+
     .step-title {
       font-size: 1rem;
       color: #666;
       line-height: 1.25rem;
       flex: 1;
+      transition: color 0.2s ease;
     }
-    
+
     .step-indicator {
       position: relative;
       width: 0.75rem;
       height: 0.75rem;
       margin-left: 0.625rem;
-      
+
       .step-dot {
         position: absolute;
         top: 0;
@@ -159,9 +208,9 @@ export default {
         height: 0.75rem;
         border-radius: 50%;
         background-color: #c0c4cc;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
       }
-      
+
       .step-dot-outer {
         position: absolute;
         top: -0.25rem;
@@ -170,9 +219,9 @@ export default {
         height: 1.25rem;
         border-radius: 50%;
         opacity: 0;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
       }
-      
+
       .step-line {
         position: absolute;
         top: 1rem;
@@ -182,18 +231,18 @@ export default {
         background-color: #e4e7ed;
       }
     }
-    
+
     &.active {
       .step-title {
         color: #1890ff;
         font-weight: 500;
       }
-      
+
       .step-indicator {
         .step-dot {
           background-color: #1890ff;
         }
-        
+
         .step-dot-outer {
           background-color: rgba(24, 144, 255, 0.2);
           opacity: 1;
@@ -215,29 +264,31 @@ export default {
   .custom-nav-steps {
     top: 18rem;
     left: 8rem;
+    /* 在小屏幕上稍微延迟动画，确保页面布局稳定后再显示 */
+    animation-delay: 0.15s;
   }
-  
+
   .step-item {
     margin-bottom: 1.5rem;
-    
+
     .step-title {
       font-size: 0.9rem;
     }
-    
+
     .step-indicator {
       width: 0.7rem;
       height: 0.7rem;
-      
+
       .step-dot {
         width: 0.7rem;
         height: 0.7rem;
       }
-      
+
       .step-dot-outer {
         width: 1.1rem;
         height: 1.1rem;
       }
-      
+
       .step-line {
         height: 1.5rem;
       }
@@ -253,20 +304,20 @@ export default {
     width: 100% !important;
     margin-bottom: 1.5rem;
   }
-  
+
   .steps-container {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
   }
-  
+
   .step-item {
     margin-right: 1rem;
     margin-bottom: 1rem;
-    
+
     .step-line {
       display: none;
     }
   }
 }
-</style> 
+</style>

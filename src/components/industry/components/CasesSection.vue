@@ -4,8 +4,8 @@
     <div class="background-header"></div>
 
     <div class="cases-container">
-      <!-- 左侧导航栏 - 使用自定义组件 -->
-      <div class="side-nav-container">
+      <!-- 左侧导航栏 - 已隐藏，使用全局导航 -->
+      <!-- <div class="side-nav-container">
         <CustomNavSteps
           :width="120"
           :height="192"
@@ -14,7 +14,7 @@
           :section-numbers="sectionNumbers"
           @update:active-step="updateActiveStep"
         />
-      </div>
+      </div> -->
 
       <!-- 右侧内容区 -->
       <div class="cases-content">

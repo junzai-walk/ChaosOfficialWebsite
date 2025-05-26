@@ -1,28 +1,28 @@
 <template>
   <div class="product-ems-features">
-    <!-- 左侧导航栏 -->
-    <div class="side-nav-container">
-      <CustomNavSteps 
-          :width="120" 
-          :height="192" 
-          :steps="navSteps" 
-          :active-step="activeStep" 
-          :section-numbers="sectionNumbers" 
-          @update:active-step="updateActiveStep" 
+    <!-- 左侧导航栏 - 已隐藏，使用全局导航 -->
+    <!-- <div class="side-nav-container">
+      <CustomNavSteps
+          :width="120"
+          :height="192"
+          :steps="navSteps"
+          :active-step="activeStep"
+          :section-numbers="sectionNumbers"
+          @update:active-step="updateActiveStep"
         />
-    </div>
-    
+    </div> -->
+
     <!-- 标题区域 -->
     <div class="title-container">
       <h1 class="main-title">{{ mainTitle }}</h1>
       <h2 class="sub-title">{{ subTitle }}</h2>
     </div>
-    
+
     <!-- 左侧卡片列表 -->
     <div class="features-list" :style="featuresContainerStyle">
-      <div 
-        v-for="(feature, index) in features" 
-        :key="index" 
+      <div
+        v-for="(feature, index) in features"
+        :key="index"
         class="feature-card"
         :class="{'active': activeFeature === index}"
         @click="activeFeature = index"
@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- 右侧图片 -->
     <div class="feature-image-container" :style="imageContainerStyle">
       <img :src="emsFeatureImage" alt="EMS特性" class="feature-image" />
@@ -238,41 +238,41 @@ const updateActiveStep = (newStep: number) => {
   .product-ems-features {
     padding: 6rem 1.5rem 0 5rem;
   }
-  
+
   .title-container {
     top: 4rem;
     left: 10rem;
   }
-  
+
   .main-title {
     font-size: 1.5rem;
   }
-  
+
   .sub-title {
     font-size: 0.9rem;
   }
-  
+
   .features-list {
     top: 7rem;
     left: 10rem;
     width: 20rem;
     max-height: 30rem;
   }
-  
+
   .feature-card {
     min-height: 7.5rem;
     padding: 2rem;
   }
-  
+
   .feature-title {
     font-size: 1rem;
     margin-bottom: 0.3rem;
   }
-  
+
   .feature-description {
     font-size: 1rem;
   }
-  
+
   .feature-number {
     min-width: 1.5rem;
     min-height: 1.5rem;
@@ -281,7 +281,7 @@ const updateActiveStep = (newStep: number) => {
     font-size: 0.8rem;
     margin-right: 0.5rem;
   }
-  
+
   .feature-image-container {
     width: 28rem;
     height: 18rem;
@@ -289,4 +289,4 @@ const updateActiveStep = (newStep: number) => {
     right: 2rem;
   }
 }
-</style> 
+</style>

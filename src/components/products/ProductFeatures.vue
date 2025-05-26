@@ -1,16 +1,5 @@
 <template>
   <div class="product-features">
-    <!-- 左侧导航栏 -->
-    <div class="side-nav-container">
-      <CustomNavSteps 
-          :width="120" 
-          :height="192" 
-          :steps="navSteps" 
-          :active-step="activeStep" 
-          :section-numbers="sectionNumbers" 
-          @update:active-step="updateActiveStep" 
-        />
-    </div>
 
     <!-- 右侧功能卡片区域 -->
     <div class="features-grid">
@@ -28,9 +17,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
-
 interface Feature {
   title: string;
   description: string;
@@ -38,24 +24,17 @@ interface Feature {
 }
 
 const props = defineProps<{
-  navSteps: string[];
-  defaultActiveStep: number;
   features: Feature[];
-  sectionNumbers: number[];
 }>();
 
-// 当前活动步骤
-const activeStep = ref(props.defaultActiveStep || 1);
-const updateActiveStep = (newStep: number) => {
-  activeStep.value = newStep;
-};
+// 移除了导航相关的代码，现在使用全局固定导航
 </script>
 
 <style scoped lang="less">
 /* 设置基准根元素字体大小 */
 :root {
   font-size: 16px;
-  
+
   @media (max-width: 1366px) {
     font-size: 14px;
   }

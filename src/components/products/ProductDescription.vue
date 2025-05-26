@@ -1,7 +1,7 @@
 <template>
   <div class="product-description">
       <!-- 左侧导航栏 - 使用自定义组件 -->
-      <div class="side-nav-container">
+      <!-- <div class="side-nav-container">
         <CustomNavSteps 
           :width="120" 
           :height="192" 
@@ -10,7 +10,7 @@
           :section-numbers="sectionNumbers" 
           @update:active-step="updateActiveStep" 
         />
-      </div>
+      </div> -->
     <div class="content">
       <div class="description">
         <p>{{ description }}</p>

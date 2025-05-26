@@ -2,7 +2,7 @@
   <div class="advantages-section">
     <div class="advantages-container">
       <!-- 左侧导航栏 -->
-      <div class="side-nav-container">
+      <!-- <div class="side-nav-container">
         <CustomNavSteps 
           :width="120" 
           :height="192" 
@@ -11,7 +11,7 @@
           :section-numbers="sectionNumbers" 
           @update:active-step="updateActiveStep" 
         />
-      </div>
+      </div> -->
 
       <!-- 右侧内容区 -->
       <div class="advantage-content">

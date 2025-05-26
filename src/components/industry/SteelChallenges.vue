@@ -1,10 +1,6 @@
 <template>
   <div class="steel-challenges">
     <div class="challenges-container">
-      <!-- 左侧导航 - 使用自定义组件 -->
-      <div class="side-nav-container">
-        <CustomNavSteps :width="120" :height="192" :steps="challengeSteps" v-model:activeStep="activeStep" />
-      </div>
 
       <!-- 右侧内容 -->
       <div class="challenges-content">
@@ -61,33 +57,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-// 替换导航组件
-import CustomNavSteps from './CustomNavSteps.vue';
-
-const activeStep = ref(1); // 默认显示行业挑战
-
-const challengeSteps = [
-  '行业挑战',
-  '解决方案',
-  '方案优势',
-  '典型案例'
-];
+// 移除了导航相关的代码，现在使用全局固定导航
 </script>
 
 <style scoped lang="less">
 /* 添加根字体设置用于rem计算 */
 html {
   font-size: 16px;
-  
+
   @media (min-width: 1920px) {
     font-size: calc(16px * (1920 / 1920));
   }
-  
+
   @media (max-width: 1440px) {
     font-size: calc(16px * (1440 / 1920));
   }
-  
+
   @media (max-width: 1280px) {
     font-size: calc(16px * (1280 / 1920));
   }
@@ -106,21 +91,14 @@ html {
   max-width: 75rem; // 1200px
   width: 100%;
   display: flex;
-  gap: 1.875rem; // 30px
+  justify-content: center; // 居中显示内容
   margin: 100px auto; // 添加水平居中
 }
 
-.side-nav-container {
-  height: 70%;
-  display: inline-flex;
-  justify-content: flex-start; // 改为flex-start使文字靠左
-  align-items: center; // 确保顶部对齐
-}
-
 .challenges-content {
-  flex: 1;
-  display: inline-flex;
-  justify-content: flex-start; // 修改为左对齐
+  width: 100%;
+  display: flex;
+  justify-content: center; // 居中显示
   align-items: flex-start; // 确保顶部对齐
 }
 
@@ -190,12 +168,6 @@ html {
   .challenges-container {
     flex-direction: column;
     align-items: center;
-  }
-
-  .side-nav-container {
-    width: 100%;
-    max-width: 300px;
-    margin-bottom: 20px;
   }
 }
 </style>

@@ -1,17 +1,17 @@
 <template>
   <div class="solutions-section">
     <div class="solutions-container">
-      <!-- 左侧导航栏 - 使用自定义组件 -->
-      <div class="side-nav-container">
-        <CustomNavSteps 
-          :width="120" 
-          :height="192" 
-          :steps="navSteps" 
-          :active-step="activeStep" 
-          :section-numbers="sectionNumbers" 
-          @update:active-step="updateActiveStep" 
+      <!-- 左侧导航栏 - 已隐藏，使用全局导航 -->
+      <!-- <div class="side-nav-container">
+        <CustomNavSteps
+          :width="120"
+          :height="192"
+          :steps="navSteps"
+          :active-step="activeStep"
+          :section-numbers="sectionNumbers"
+          @update:active-step="updateActiveStep"
         />
-      </div>
+      </div> -->
 
       <div class="solution-content-container">
         <!-- 顶部描述文本 -->
@@ -92,8 +92,8 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import CustomNavSteps from './CustomNavSteps.vue';
+// import { ref } from 'vue';
+// import CustomNavSteps from './CustomNavSteps.vue';
 
 // 定义组件属性
 const props = withDefaults(defineProps<{
@@ -123,19 +123,19 @@ const props = withDefaults(defineProps<{
   dataCollectionMethods: () => []
 });
 
-// 当前活动步骤
-const activeStep = ref(props.defaultActiveStep);
+// 当前活动步骤 - 已注释，使用全局导航
+// const activeStep = ref(props.defaultActiveStep);
 
-const updateActiveStep = (newStep: number) => {
-  activeStep.value = newStep;
-};
+// const updateActiveStep = (newStep: number) => {
+//   activeStep.value = newStep;
+// };
 </script>
 
 <style scoped lang="less">
 /* 设置基准根元素字体大小 */
 :root {
   font-size: 16px;
-  
+
   @media (max-width: 1366px) {
     font-size: 14px;
   }
@@ -398,37 +398,37 @@ const updateActiveStep = (newStep: number) => {
     max-width: 90rem;
     margin: 7.5rem auto;
   }
-  
+
   .solution-description {
     font-size: 1.25rem;
   }
-  
+
   .solution-section {
     padding: 1.5rem;
     border-radius: 0.75rem;
   }
-  
+
   .section-title {
     width: 7.5rem;
     font-size: 1.125rem;
   }
-  
+
   .tag-item,
   .scene-tag-item {
     padding: 0.625rem 1.125rem;
     font-size: 1rem;
   }
-  
+
   .platform-box-title {
     font-size: 1rem;
     padding: 0.625rem 0.875rem;
   }
-  
+
   .platform-box-content {
     padding: 0.875rem;
     font-size: 0.9375rem;
   }
-  
+
   .app-item {
     padding: 0.875rem 1.125rem;
     font-size: 1rem;
@@ -439,48 +439,48 @@ const updateActiveStep = (newStep: number) => {
   .solutions-section {
     padding: 1.875rem;
   }
-  
+
   .solutions-container {
     max-width: 70rem;
     gap: 1.25rem;
     margin: 5rem auto;
   }
-  
+
   .solution-description {
     font-size: 1rem;
   }
-  
+
   .solution-section {
     padding: 1rem;
   }
-  
+
   .section-title {
     width: 5.5rem;
     font-size: 0.9375rem;
   }
-  
+
   .tag-item,
   .scene-tag-item {
     padding: 0.4375rem 0.8125rem;
     font-size: 0.8125rem;
     min-width: 6.5rem;
   }
-  
+
   .platform-box-title {
     padding: 0.4375rem 0.625rem;
     font-size: 0.8125rem;
   }
-  
+
   .platform-box-content {
     padding: 0.625rem;
     font-size: 0.75rem;
   }
-  
+
   .app-item {
     padding: 0.625rem 0.8125rem;
     font-size: 0.8125rem;
   }
-  
+
   .solution-sections {
     gap: 1rem;
   }
@@ -504,7 +504,7 @@ const updateActiveStep = (newStep: number) => {
     max-width: 18.75rem;
     margin-bottom: 1.25rem;
   }
-  
+
   .solution-image {
     width: 90%;
   }
@@ -514,30 +514,30 @@ const updateActiveStep = (newStep: number) => {
   .solutions-container {
     margin: 2.5rem auto;
   }
-  
+
   .solution-section {
     flex-direction: column;
   }
-  
+
   .section-title {
     width: 100%;
     padding: 0.5rem 0;
     margin-bottom: 0.75rem;
   }
-  
+
   .platform-row {
     flex-direction: column;
   }
-  
+
   .application-bar {
     flex-direction: column;
   }
-  
+
   .app-item {
     border-right: none;
     border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.5);
   }
-  
+
   .app-item:last-child {
     border-bottom: none;
   }
@@ -547,11 +547,11 @@ const updateActiveStep = (newStep: number) => {
   .solutions-section {
     padding: 1rem;
   }
-  
+
   .solution-description {
     font-size: 0.9375rem;
   }
-  
+
   .scene-tag-item {
     min-width: 100%;
   }

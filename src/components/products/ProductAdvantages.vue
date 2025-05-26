@@ -1,21 +1,21 @@
 <template>
   <div class="product-advantages">
-    <!-- 左侧导航栏 -->
-    <div class="side-nav-container">
-      <CustomNavSteps 
-          :width="120" 
-          :height="192" 
-          :steps="navSteps" 
-          :active-step="activeStep" 
-          :section-numbers="sectionNumbers" 
-          @update:active-step="updateActiveStep" 
+    <!-- 左侧导航栏 - 已隐藏，使用全局导航 -->
+    <!-- <div class="side-nav-container">
+      <CustomNavSteps
+          :width="120"
+          :height="192"
+          :steps="navSteps"
+          :active-step="activeStep"
+          :section-numbers="sectionNumbers"
+          @update:active-step="updateActiveStep"
         />
-    </div>
-    
+    </div> -->
+
     <!-- 右侧特色优势卡片区域 -->
     <div class="advantages-container">
-      <div 
-        v-for="(advantage, index) in advantages" 
+      <div
+        v-for="(advantage, index) in advantages"
         :key="index"
         class="advantage-card"
         :style="getCardStyle(advantage.position)"
@@ -45,8 +45,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
+// import { ref, computed } from 'vue';
+// import CustomNavSteps from '@/components/industry/components/CustomNavSteps.vue';
 
 interface Position {
   top: number;
@@ -68,30 +68,30 @@ const props = defineProps<{
   sectionNumbers: number[];
 }>();
 
-// 当前活动步骤
-const activeStep = ref(props.defaultActiveStep || 3);
+// 当前活动步骤 - 已注释，使用全局导航
+// const activeStep = ref(props.defaultActiveStep || 3);
 
 // 计算卡片样式，包括响应式位置
 const getCardStyle = (position: Position) => {
   // 根据窗口宽度决定基准字体大小
   const baseSize = window.innerWidth > 1366 ? 16 : 14;
-  
+
   return {
     top: `${position.top / baseSize}rem`,
     left: `${position.left / baseSize}rem`,
   };
 };
 
-const updateActiveStep = (newStep: number) => {
-  activeStep.value = newStep;
-};
+// const updateActiveStep = (newStep: number) => {
+//   activeStep.value = newStep;
+// };
 </script>
 
 <style scoped lang="less">
 /* 设置基准根元素字体大小 */
 :root {
   font-size: 16px;
-  
+
   @media (max-width: 1366px) {
     font-size: 14px;
   }
@@ -224,25 +224,25 @@ const updateActiveStep = (newStep: number) => {
     padding: 14.375rem 0 0 11.6875rem;
     gap: 3.1875rem;
   }
-  
+
   .advantage-card {
     width: 27.5rem;
     height: 6.25rem;
     padding: 1.5rem;
     gap: 1.25rem;
   }
-  
+
   .advantage-icon {
     width: 2.25rem;
     height: 2.25rem;
     padding: 0.375rem;
   }
-  
+
   .advantage-title {
     font-size: 1.25rem;
     margin-bottom: 0.75rem;
   }
-  
+
   .advantage-description {
     font-size: 0.875rem;
     line-height: 1.5;
@@ -254,33 +254,33 @@ const updateActiveStep = (newStep: number) => {
     padding: 10rem 0 0 7rem;
     gap: 2.5rem;
   }
-  
+
   .advantages-container {
     margin-left: 13rem;
   }
-  
+
   .advantage-card {
     width: 25rem;
     height: 8rem;
     padding: 2rem;
     gap: 1rem;
   }
-  
+
   .advantage-icon {
     width: 3rem;
     height: 3rem;
   }
-  
+
   .advantage-icon img {
     width: 2.5rem;
     height: 2.5rem;
   }
-  
+
   .advantage-title {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .advantage-description {
     font-size: 1rem;
     line-height: 1.4;
@@ -291,7 +291,7 @@ const updateActiveStep = (newStep: number) => {
   .product-advantages {
     padding: 8rem 2rem 4rem;
   }
-  
+
   .advantages-container {
     position: relative;
     display: flex;
@@ -300,7 +300,7 @@ const updateActiveStep = (newStep: number) => {
     margin-left: 6rem;
     margin-top: 2rem;
   }
-  
+
   .advantage-card {
     position: relative;
     top: auto !important;
@@ -316,13 +316,13 @@ const updateActiveStep = (newStep: number) => {
     padding: 6rem 2rem 4rem;
     align-items: center;
   }
-  
+
   .side-nav-container {
     width: 100%;
     justify-content: center;
     margin-bottom: 3rem;
   }
-  
+
   .advantages-container {
     margin-left: 0;
   }
@@ -332,18 +332,18 @@ const updateActiveStep = (newStep: number) => {
   .product-advantages {
     padding: 5rem 1.5rem 3rem;
   }
-  
+
   .advantage-card {
     height: auto;
     min-height: 7rem;
     padding: 1.25rem;
   }
-  
+
   .advantage-icon {
     width: 2.5rem;
     height: 2.5rem;
   }
-  
+
   .advantage-title {
     font-size: 1.125rem;
   }
@@ -353,24 +353,24 @@ const updateActiveStep = (newStep: number) => {
   .product-advantages {
     padding: 4rem 1rem 2rem;
   }
-  
+
   .advantage-card {
     padding: 1rem;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.75rem;
   }
-  
+
   .advantage-icon {
     margin-bottom: 0.5rem;
   }
-  
+
   .advantage-title {
     font-size: 1rem;
   }
-  
+
   .advantage-description {
     font-size: 0.875rem;
   }
 }
-</style> 
+</style>

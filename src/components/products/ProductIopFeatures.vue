@@ -1,7 +1,7 @@
 <template>
   <div class="product-iop-features">
-    <!-- 左侧导航栏 -->
-    <div class="side-nav-container">
+    <!-- 左侧导航栏 - 已隐藏，使用全局导航 -->
+    <!-- <div class="side-nav-container">
       <CustomNavSteps
           :width="120"
           :height="192"
@@ -10,7 +10,7 @@
           :section-numbers="sectionNumbers"
           @update:active-step="updateActiveStep"
         />
-    </div>
+    </div> -->
 
     <!-- 中心图片 -->
     <div class="center-image-container">

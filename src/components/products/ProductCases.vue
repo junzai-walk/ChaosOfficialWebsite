@@ -1,29 +1,29 @@
 <template>
   <div class="product-cases">
-    <!-- 左侧导航栏 -->
-    <div class="side-nav-container">
-      <CustomNavSteps 
-          :width="120" 
-          :height="192" 
-          :steps="navSteps" 
-          :active-step="activeStep" 
-          :section-numbers="sectionNumbers" 
-          @update:active-step="updateActiveStep" 
+    <!-- 左侧导航栏 - 已隐藏，使用全局导航 -->
+    <!-- <div class="side-nav-container">
+      <CustomNavSteps
+          :width="120"
+          :height="192"
+          :steps="navSteps"
+          :active-step="activeStep"
+          :section-numbers="sectionNumbers"
+          @update:active-step="updateActiveStep"
         />
-    </div>
-    
+    </div> -->
+
     <!-- 右侧案例展示区域 -->
     <div class="cases-grid">
-      <div 
-        v-for="(image, index) in cases" 
-        :key="index" 
+      <div
+        v-for="(image, index) in cases"
+        :key="index"
         class="case-card"
         @click="handleCaseClick(index)"
       >
         <img :src="image" :alt="`案例 ${index + 1}`" class="case-image" />
       </div>
     </div>
-    
+
     <!-- 预约体验按钮 -->
     <div class="appointment-btn" @click="handleConsult">
       预约体验
@@ -82,7 +82,7 @@ const updateActiveStep = (newStep: number) => {
 /* 设置基准根元素字体大小 */
 :root {
   font-size: 16px;
-  
+
   @media (max-width: 1366px) {
     font-size: 14px;
   }
@@ -160,7 +160,7 @@ const updateActiveStep = (newStep: number) => {
     padding: 14.375rem 0 0 11.6875rem;
     gap: 3.1875rem;
   }
-  
+
   .cases-grid {
     gap: 1.25rem;
     padding-left: 6.25rem;
@@ -185,7 +185,7 @@ const updateActiveStep = (newStep: number) => {
     padding: 10rem 0 0 7rem;
     gap: 2.5rem;
   }
-  
+
   .cases-grid {
     gap: 1rem;
     padding-left: 13rem;
@@ -210,11 +210,11 @@ const updateActiveStep = (newStep: number) => {
   .product-cases {
     padding: 8rem 3rem 4rem;
   }
-  
+
   .cases-grid {
     padding-left: 5rem;
   }
-  
+
   .appointment-btn {
     position: relative;
     left: auto;
@@ -229,18 +229,18 @@ const updateActiveStep = (newStep: number) => {
     padding: 6rem 2rem 4rem;
     align-items: center;
   }
-  
+
   .side-nav-container {
     width: 100%;
     justify-content: center;
     margin-bottom: 3rem;
   }
-  
+
   .cases-grid {
     padding-left: 0;
     justify-content: center;
   }
-  
+
   .case-card {
     width: calc(50% - 0.5rem);
     height: 12rem;
@@ -251,17 +251,17 @@ const updateActiveStep = (newStep: number) => {
   .product-cases {
     padding: 5rem 1.5rem 3rem;
   }
-  
+
   .cases-grid {
     gap: 1rem;
   }
-  
+
   .case-card {
     width: 100%;
     height: 12rem;
     max-width: 25rem;
   }
-  
+
   .appointment-btn {
     width: 80%;
     max-width: 15rem;
@@ -272,14 +272,14 @@ const updateActiveStep = (newStep: number) => {
   .product-cases {
     padding: 4rem 1rem 2rem;
   }
-  
+
   .case-card {
     height: 10rem;
   }
-  
+
   .appointment-btn {
     height: 2.75rem;
     font-size: 0.875rem;
   }
 }
-</style> 
+</style>
