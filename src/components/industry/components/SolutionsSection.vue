@@ -396,7 +396,7 @@ const props = withDefaults(defineProps<{
 @media (min-width: 1920px) {
   .solutions-container {
     max-width: 90rem;
-    margin: 7.5rem auto;
+    margin: 0 7.5rem 0;
   }
 
   .solution-description {

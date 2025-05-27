@@ -411,8 +411,8 @@ onMounted(() => {
 /* 媒体查询 - 适配不同分辨率 */
 @media (min-width: 1920px) {
   .global-nav-steps {
-    top: 21rem;
-    left: 11.6875rem;
+    top: 22rem;
+    left: 3rem;
   }
 }
 
