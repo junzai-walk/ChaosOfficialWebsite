@@ -848,6 +848,7 @@ const generateChartData = () => {
         series: [{
           data: formTypeData.map(item => item.value),
           type: 'bar',
+          barWidth: '30%',
           itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
               { offset: 0, color: 'rgba(30, 144, 255, 0.8)' },
@@ -878,7 +879,7 @@ const generateChartData = () => {
         },
         legend: {
           orient: 'vertical',
-          left: 'left',
+          left: 'right',
           textStyle: {
             color: 'rgba(255, 255, 255, 0.8)'
           }
