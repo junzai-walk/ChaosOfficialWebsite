@@ -89,9 +89,13 @@
       </div>
       
       <div class="toolbar-right">
-        <el-button
+        <el-button @click="refreshData">
+          <el-icon><Refresh /></el-icon>
+          刷新
+        </el-button>
+                <el-button
           type="success"
-          @click="showChartDialog"
+          @click="goToCharts"
         >
           <el-icon><TrendCharts /></el-icon>
           图表展示
@@ -104,10 +108,6 @@
         >
           <el-icon><Download /></el-icon>
           导出数据
-        </el-button>
-        <el-button @click="refreshData">
-          <el-icon><Refresh /></el-icon>
-          刷新
         </el-button>
       </div>
     </div>
@@ -324,128 +324,7 @@
       </Transition>
     </Teleport>
 
-    <!-- 图表展示弹窗 -->
-    <Teleport to="body">
-      <Transition name="chart-dialog" appear>
-        <el-dialog
-          v-model="chartDialogVisible"
-          title="数据图表展示"
-          width="1000px"
-          custom-class="chart-dialog tech-modal"
-          :show-close="false"
-        >
-          <template #header>
-            <div class="tech-modal-header">
-              <div class="header-title">
-                <div class="title-icon">
-                  <el-icon><TrendCharts /></el-icon>
-                </div>
-                <div class="title-text">
-                  <h3>数据图表展示</h3>
-                  <div class="title-subtitle">Data Visualization Dashboard</div>
-                </div>
-              </div>
-              <div class="header-actions">
-                <button class="tech-close-btn" @click="chartDialogVisible = false">
-                  <el-icon><Close /></el-icon>
-                </button>
-              </div>
-            </div>
-          </template>
 
-          <div class="chart-container tech-content">
-            <!-- 图表控制面板 -->
-            <div class="chart-control-panel">
-              <div class="control-header">
-                <div class="control-title">
-                  <el-icon><Setting /></el-icon>
-                  图表类型选择
-                </div>
-                <div class="control-divider"></div>
-              </div>
-
-              <!-- 图表类型切换按钮 -->
-              <div class="chart-tabs tech-tabs">
-                <button
-                  :class="['tech-tab-btn', { active: currentChartType === 'bar' }]"
-                  @click="switchChartType('bar')"
-                >
-                  <div class="tab-icon">
-                    <el-icon><Histogram /></el-icon>
-                  </div>
-                  <div class="tab-text">
-                    <span class="tab-title">柱状图</span>
-                    <span class="tab-subtitle">Bar Chart</span>
-                  </div>
-                </button>
-                <button
-                  :class="['tech-tab-btn', { active: currentChartType === 'pie' }]"
-                  @click="switchChartType('pie')"
-                >
-                  <div class="tab-icon">
-                    <el-icon><PieChart /></el-icon>
-                  </div>
-                  <div class="tab-text">
-                    <span class="tab-title">饼图</span>
-                    <span class="tab-subtitle">Pie Chart</span>
-                  </div>
-                </button>
-                <button
-                  :class="['tech-tab-btn', { active: currentChartType === 'line' }]"
-                  @click="switchChartType('line')"
-                >
-                  <div class="tab-icon">
-                    <el-icon><TrendCharts /></el-icon>
-                  </div>
-                  <div class="tab-text">
-                    <span class="tab-title">趋势图</span>
-                    <span class="tab-subtitle">Line Chart</span>
-                  </div>
-                </button>
-              </div>
-            </div>
-
-            <!-- 图表容器 -->
-            <div class="chart-display-area">
-              <div class="chart-wrapper tech-chart-wrapper">
-                <div class="chart-loading" v-if="!chartOption.series">
-                  <div class="loading-spinner">
-                    <div class="spinner-ring"></div>
-                    <div class="loading-text">正在加载图表数据...</div>
-                  </div>
-                </div>
-                <v-chart
-                  ref="chartRef"
-                  :option="chartOption"
-                  :style="{ width: '100%', height: '450px' }"
-                  autoresize
-                  class="tech-chart"
-                />
-                <!-- 图表装饰边框 -->
-                <div class="chart-border-decoration">
-                  <div class="corner corner-tl"></div>
-                  <div class="corner corner-tr"></div>
-                  <div class="corner corner-bl"></div>
-                  <div class="corner corner-br"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <template #footer>
-            <div class="tech-modal-footer">
-              <el-button
-                class="tech-button tech-button-secondary"
-                @click="chartDialogVisible = false"
-              >
-                <el-icon><Close /></el-icon>
-                关闭
-              </el-button>
-            </div>
-          </template>
-        </el-dialog>
-      </Transition>
-    </Teleport>
   </div>
 </template>
 
@@ -464,19 +343,14 @@ import {
   View,
   Delete,
   TrendCharts,
-  Histogram,
-  PieChart,
   User,
   Close,
   InfoFilled,
   Key,
   OfficeBuilding,
   Phone,
-  Clock,
-  Setting
+  Clock
 } from '@element-plus/icons-vue'
-import VChart from 'vue-echarts'
-import * as echarts from 'echarts'
 import {
   getContactList,
   getContactStats,
@@ -509,11 +383,7 @@ const stats = ref<StatsData>({
 const detailDialogVisible = ref(false)
 const selectedContact = ref<ContactData | null>(null)
 
-// 图表相关
-const chartDialogVisible = ref(false)
-const currentChartType = ref<'bar' | 'pie' | 'line'>('bar')
-const chartRef = ref<HTMLElement>()
-const chartOption = ref<any>({})
+
 
 // 搜索和筛选
 const searchQuery = ref('')
@@ -772,7 +642,7 @@ const handleLogout = async () => {
       type: 'warning',
       customClass: 'custom-message-box'
     })
-    
+
     adminLogout()
     ElMessage.success('已退出登录')
     router.push('/admin/login')
@@ -781,212 +651,13 @@ const handleLogout = async () => {
   }
 }
 
-// 图表相关函数
-const showChartDialog = () => {
-  chartDialogVisible.value = true
-  generateChartData()
+// 导航到图表页面
+const goToCharts = () => {
+  router.push('/admin/charts')
 }
 
-const switchChartType = (type: 'bar' | 'pie' | 'line') => {
-  currentChartType.value = type
-  generateChartData()
-}
 
-const generateChartData = () => {
-  const formTypeData = [
-    { name: '咨询表单', value: stats.value.consult },
-    { name: '合作意向', value: stats.value.cooperation }
-  ]
 
-  switch (currentChartType.value) {
-    case 'bar':
-      chartOption.value = {
-        backgroundColor: 'transparent',
-        title: {
-          text: '表单类型统计',
-          textStyle: {
-            color: 'rgba(255, 255, 255, 0.9)',
-            fontSize: 16
-          }
-        },
-        tooltip: {
-          trigger: 'axis',
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          borderColor: 'rgba(30, 144, 255, 0.4)',
-          textStyle: {
-            color: 'rgba(255, 255, 255, 0.9)'
-          }
-        },
-        xAxis: {
-          type: 'category',
-          data: formTypeData.map(item => item.name),
-          axisLine: {
-            lineStyle: {
-              color: 'rgba(30, 144, 255, 0.4)'
-            }
-          },
-          axisLabel: {
-            color: 'rgba(255, 255, 255, 0.8)'
-          }
-        },
-        yAxis: {
-          type: 'value',
-          axisLine: {
-            lineStyle: {
-              color: 'rgba(30, 144, 255, 0.4)'
-            }
-          },
-          axisLabel: {
-            color: 'rgba(255, 255, 255, 0.8)'
-          },
-          splitLine: {
-            lineStyle: {
-              color: 'rgba(30, 144, 255, 0.2)'
-            }
-          }
-        },
-        series: [{
-          data: formTypeData.map(item => item.value),
-          type: 'bar',
-          barWidth: '30%',
-          itemStyle: {
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: 'rgba(30, 144, 255, 0.8)' },
-              { offset: 1, color: 'rgba(0, 100, 255, 0.6)' }
-            ])
-          }
-        }]
-      }
-      break
-
-    case 'pie':
-      chartOption.value = {
-        backgroundColor: 'transparent',
-        title: {
-          text: '表单类型分布',
-          textStyle: {
-            color: 'rgba(255, 255, 255, 0.9)',
-            fontSize: 16
-          }
-        },
-        tooltip: {
-          trigger: 'item',
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          borderColor: 'rgba(30, 144, 255, 0.4)',
-          textStyle: {
-            color: 'rgba(255, 255, 255, 0.9)'
-          }
-        },
-        legend: {
-          orient: 'vertical',
-          left: 'right',
-          textStyle: {
-            color: 'rgba(255, 255, 255, 0.8)'
-          }
-        },
-        series: [{
-          name: '表单类型',
-          type: 'pie',
-          radius: '50%',
-          data: formTypeData,
-          emphasis: {
-            itemStyle: {
-              shadowBlur: 10,
-              shadowOffsetX: 0,
-              shadowColor: 'rgba(30, 144, 255, 0.5)'
-            }
-          },
-          itemStyle: {
-            color: (params: any) => {
-              const colors = [
-                'rgba(30, 144, 255, 0.8)',
-                'rgba(0, 191, 255, 0.8)'
-              ]
-              return colors[params.dataIndex % colors.length]
-            }
-          }
-        }]
-      }
-      break
-
-    case 'line':
-      // 生成最近7天的数据（模拟）
-      const dates = []
-      const values = []
-      for (let i = 6; i >= 0; i--) {
-        const date = new Date()
-        date.setDate(date.getDate() - i)
-        dates.push(date.toLocaleDateString())
-        values.push(Math.floor(Math.random() * 20) + 5)
-      }
-
-      chartOption.value = {
-        backgroundColor: 'transparent',
-        title: {
-          text: '最近7天表单提交趋势',
-          textStyle: {
-            color: 'rgba(255, 255, 255, 0.9)',
-            fontSize: 16
-          }
-        },
-        tooltip: {
-          trigger: 'axis',
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          borderColor: 'rgba(30, 144, 255, 0.4)',
-          textStyle: {
-            color: 'rgba(255, 255, 255, 0.9)'
-          }
-        },
-        xAxis: {
-          type: 'category',
-          data: dates,
-          axisLine: {
-            lineStyle: {
-              color: 'rgba(30, 144, 255, 0.4)'
-            }
-          },
-          axisLabel: {
-            color: 'rgba(255, 255, 255, 0.8)'
-          }
-        },
-        yAxis: {
-          type: 'value',
-          axisLine: {
-            lineStyle: {
-              color: 'rgba(30, 144, 255, 0.4)'
-            }
-          },
-          axisLabel: {
-            color: 'rgba(255, 255, 255, 0.8)'
-          },
-          splitLine: {
-            lineStyle: {
-              color: 'rgba(30, 144, 255, 0.2)'
-            }
-          }
-        },
-        series: [{
-          data: values,
-          type: 'line',
-          smooth: true,
-          lineStyle: {
-            color: 'rgba(30, 144, 255, 0.8)',
-            width: 3
-          },
-          itemStyle: {
-            color: 'rgba(30, 144, 255, 0.8)'
-          },
-          areaStyle: {
-            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: 'rgba(30, 144, 255, 0.3)' },
-              { offset: 1, color: 'rgba(30, 144, 255, 0.1)' }
-            ])
-          }
-        }]
-      }
-      break
-  }
-}
 
 // 强制应用滚动条样式的函数
 const applyScrollbarStyles = () => {
@@ -1047,7 +718,7 @@ const applyScrollbarStyles = () => {
 }
 
 // 监听弹窗状态变化
-watch([detailDialogVisible, chartDialogVisible], () => {
+watch([detailDialogVisible], () => {
   nextTick(() => {
     // 强制应用滚动条样式
     applyScrollbarStyles()
@@ -1062,12 +733,7 @@ onMounted(() => {
   applyScrollbarStyles()
 })
 
-// 注册组件
-defineOptions({
-  components: {
-    VChart
-  }
-})
+
 </script>
 
 <style>
@@ -1636,16 +1302,12 @@ defineOptions({
 
 /* 弹窗过渡动画 */
 .detail-dialog-enter-active,
-.detail-dialog-leave-active,
-.chart-dialog-enter-active,
-.chart-dialog-leave-active {
+.detail-dialog-leave-active {
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .detail-dialog-enter-from,
-.detail-dialog-leave-to,
-.chart-dialog-enter-from,
-.chart-dialog-leave-to {
+.detail-dialog-leave-to {
   opacity: 0;
   transform: scale(0.9) translateY(-20px);
 }
@@ -2239,122 +1901,7 @@ defineOptions({
   }
 }
 
-/* 图表显示区域 */
-.chart-display-area {
-  position: relative;
-}
 
-.tech-chart-wrapper {
-  position: relative;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(30, 144, 255, 0.3);
-  padding: 1.5rem;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:
-      radial-gradient(circle at 20% 20%, rgba(30, 144, 255, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(0, 191, 255, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .tech-chart {
-    position: relative;
-    z-index: 1;
-  }
-}
-
-/* 图表装饰边框 */
-.chart-border-decoration {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  z-index: 2;
-
-  .corner {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 2px solid rgba(30, 144, 255, 0.6);
-
-    &.corner-tl {
-      top: 10px;
-      left: 10px;
-      border-right: none;
-      border-bottom: none;
-    }
-
-    &.corner-tr {
-      top: 10px;
-      right: 10px;
-      border-left: none;
-      border-bottom: none;
-    }
-
-    &.corner-bl {
-      bottom: 10px;
-      left: 10px;
-      border-right: none;
-      border-top: none;
-    }
-
-    &.corner-br {
-      bottom: 10px;
-      right: 10px;
-      border-left: none;
-      border-top: none;
-    }
-  }
-}
-
-/* 图表加载状态 */
-.chart-loading {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
-  z-index: 10;
-
-  .loading-spinner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-
-    .spinner-ring {
-      width: 60px;
-      height: 60px;
-      border: 3px solid rgba(30, 144, 255, 0.3);
-      border-top: 3px solid rgba(30, 144, 255, 0.8);
-      border-radius: 50%;
-      animation: tech-spin 1s linear infinite;
-    }
-
-    .loading-text {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.9rem;
-      text-shadow: 0 0 10px rgba(30, 144, 255, 0.5);
-    }
-  }
-}
 
 @keyframes tech-spin {
   0% {
@@ -3432,126 +2979,9 @@ defineOptions({
   padding: 1.5rem 2rem !important;
 }
 
-/* 图表弹窗样式 */
-.chart-dialog {
-  background: rgba(0, 0, 0, 0.95) !important;
-  backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(30, 144, 255, 0.4) !important;
-  border-radius: 0 !important;
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.6),
-    0 0 20px rgba(30, 144, 255, 0.3) !important;
-  z-index: 3003 !important; /* 确保在正确层级 */
-}
 
-.chart-dialog .el-dialog__header {
-  background: transparent !important;
-  border-bottom: 1px solid rgba(30, 144, 255, 0.3) !important;
-  padding: 1.5rem 2rem 1rem !important;
-}
 
-.chart-dialog .el-dialog__title {
-  color: rgba(255, 255, 255, 0.95) !important;
-  font-weight: 600 !important;
-  font-size: 1.25rem !important;
-  text-shadow: 0 0 10px rgba(30, 144, 255, 0.5) !important;
-}
 
-.chart-dialog .el-dialog__body {
-  background: transparent !important;
-  padding: 1.5rem 2rem !important;
-}
 
-.chart-container {
-  .chart-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(30, 144, 255, 0.2);
-    border-radius: 8px;
-    backdrop-filter: blur(10px);
-  }
 
-  .chart-wrapper {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(30, 144, 255, 0.3);
-    border-radius: 8px;
-    padding: 1rem;
-    backdrop-filter: blur(15px);
-    box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-}
-
-/* 图表按钮样式 */
-.chart-tabs .el-button {
-  border-radius: 0 !important;
-  min-width: 100px !important;
-
-  &.el-button--primary {
-    background: linear-gradient(135deg, #1E90FF 0%, #0066FF 100%) !important;
-    border: 1px solid rgba(30, 144, 255, 0.4) !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.5) !important;
-
-    &:hover {
-      background: linear-gradient(135deg, #00BFFF 0%, #1E90FF 100%) !important;
-      box-shadow: 0 6px 20px rgba(30, 144, 255, 0.6) !important;
-      transform: translateY(-1px) !important;
-    }
-  }
-
-  &.el-button--default {
-    background: #160906 !important;
-    border: 1px solid rgba(30, 144, 255, 0.4) !important;
-    color: rgba(255, 255, 255, 0.8) !important;
-    backdrop-filter: blur(10px) !important;
-
-    &:hover {
-      background: rgba(30, 144, 255, 0.2) !important;
-      border-color: rgba(0, 191, 255, 0.6) !important;
-      color: #ffffff !important;
-      transform: translateY(-1px) !important;
-    }
-  }
-
-  &.el-button--success {
-    background: linear-gradient(135deg, #00BFFF 0%, #1E90FF 100%) !important;
-    border: 1px solid rgba(0, 191, 255, 0.4) !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.5) !important;
-
-    &:hover {
-      background: linear-gradient(135deg, #1E90FF 0%, #0066FF 100%) !important;
-      box-shadow: 0 6px 20px rgba(0, 191, 255, 0.6) !important;
-      transform: translateY(-1px) !important;
-    }
-  }
-}
-
-/* 响应式图表设计 */
-@media (max-width: 768px) {
-  .chart-dialog {
-    width: 95% !important;
-    margin: 0 auto !important;
-  }
-
-  .chart-container .chart-tabs {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .chart-container .chart-wrapper {
-    padding: 0.5rem;
-  }
-
-  .chart-tabs .el-button {
-    min-width: auto !important;
-    width: 100% !important;
-  }
-}
 </style>

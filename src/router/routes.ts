@@ -72,6 +72,15 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
+        path: 'charts',
+        name: 'AdminCharts',
+        component: () => import('../views/admin/Charts.vue'),
+        meta: {
+          title: '数据图表',
+          requiresAuth: true // 需要登录状态
+        }
+      },
+      {
         path: '',
         redirect: '/admin/dashboard'
       }
