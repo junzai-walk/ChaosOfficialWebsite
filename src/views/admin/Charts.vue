@@ -6,6 +6,23 @@
         <h1>数据图表展示</h1>
       </div>
       <div class="header-right">
+        <!-- 主题切换按钮 -->
+        <div class="theme-toggle-container">
+          <el-button
+            class="theme-toggle-btn"
+            :class="{ 'theme-dark': themeStore.isDarkMode, 'theme-light': themeStore.isLightMode }"
+            @click="handleThemeToggle"
+            :title="themeStore.themeText"
+          >
+            <div class="theme-toggle-content">
+              <el-icon class="theme-icon">
+                <Sunny v-if="themeStore.isDarkMode" />
+                <Moon v-else />
+              </el-icon>
+              <span class="theme-text">{{ themeStore.themeText }}</span>
+            </div>
+          </el-button>
+        </div>
         <el-button type="primary" plain @click="goBack">返回管理后台</el-button>
         <span class="welcome-text">欢迎，{{ adminUsername }}</span>
         <el-button type="danger" plain @click="handleLogout">退出登录</el-button>
@@ -104,7 +121,9 @@ import {
   TrendCharts,
   Histogram,
   PieChart,
-  Setting
+  Setting,
+  Sunny,
+  Moon
 } from '@element-plus/icons-vue'
 import VChart from 'vue-echarts'
 import * as echarts from 'echarts'
@@ -114,8 +133,12 @@ import {
   getAdminUserInfo,
   type StatsData
 } from '@/api/admin'
+import { useThemeStore } from '@/stores/themeStore'
 
 const router = useRouter()
+
+// 主题管理
+const themeStore = useThemeStore()
 
 // 响应式数据
 const stats = ref<StatsData>({
@@ -179,6 +202,12 @@ const handleLogout = async () => {
 const switchChartType = (type: 'bar' | 'pie' | 'line') => {
   currentChartType.value = type
   generateChartData()
+}
+
+// 主题切换处理
+const handleThemeToggle = () => {
+  themeStore.toggleTheme()
+  ElMessage.success(`已切换到${themeStore.themeText}`)
 }
 
 // 生成图表数据
@@ -373,6 +402,9 @@ const generateChartData = () => {
 
 // 组件挂载时获取数据
 onMounted(() => {
+  // 初始化主题
+  themeStore.initTheme()
+
   fetchStats()
 })
 
@@ -385,9 +417,11 @@ defineOptions({
 </script>
 
 <style lang="less" scoped>
+/* 主题变量应用 */
+
 .admin-charts {
   min-height: 100vh;
-  background: linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a1a 50%, #0a0a0a 75%, #000000 100%);
+  background: var(--theme-bg-primary);
   background-attachment: fixed;
   padding: 0;
   padding-top: 1px;
@@ -420,20 +454,20 @@ defineOptions({
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--theme-bg-header);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(30, 144, 255, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid var(--theme-border-primary);
+  box-shadow: var(--theme-shadow-card);
 
   .header-left h1 {
     margin: 0;
     font-size: 1.8rem;
     font-weight: 600;
-    background: linear-gradient(135deg, #1E90FF 0%, #00BFFF 100%);
+    background: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-hover) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 20px rgba(30, 144, 255, 0.5);
+    text-shadow: 0 0 20px var(--theme-accent);
   }
 
   .header-right {
@@ -441,8 +475,81 @@ defineOptions({
     align-items: center;
     gap: 1rem;
 
+    .theme-toggle-container {
+      position: relative;
+
+      .theme-toggle-btn {
+        background: rgba(0, 100, 255, 0.15) !important;
+        border: 1px solid rgba(30, 144, 255, 0.3) !important;
+        color: #ffffff !important;
+        backdrop-filter: blur(10px);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(30, 144, 255, 0.2), transparent);
+          transition: left 0.5s ease;
+        }
+
+        &:hover {
+          background: rgba(30, 144, 255, 0.25) !important;
+          border-color: rgba(0, 191, 255, 0.6) !important;
+          box-shadow: 0 0 20px rgba(30, 144, 255, 0.4);
+          transform: translateY(-2px);
+
+          &::before {
+            left: 100%;
+          }
+
+          .theme-icon {
+            transform: scale(1.1) rotate(15deg);
+          }
+        }
+
+        &.theme-light {
+          background: rgba(255, 255, 255, 0.9) !important;
+          border-color: rgba(0, 123, 255, 0.3) !important;
+          color: #333333 !important;
+
+          &:hover {
+            background: rgba(255, 255, 255, 1) !important;
+            border-color: rgba(0, 123, 255, 0.6) !important;
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+          }
+        }
+
+        .theme-toggle-content {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          position: relative;
+          z-index: 1;
+
+          .theme-icon {
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+          }
+
+          .theme-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+
     .welcome-text {
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--theme-text-secondary);
       font-size: 0.9rem;
     }
   }
@@ -450,14 +557,12 @@ defineOptions({
 
 .chart-control-panel {
   margin: 2rem;
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--theme-bg-card);
   backdrop-filter: blur(15px);
-  border: 1px solid rgba(30, 144, 255, 0.3);
+  border: 1px solid var(--theme-border-primary);
   border-radius: 12px;
   padding: 2rem;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: var(--theme-shadow-card);
 
   .control-header {
     margin-bottom: 2rem;
@@ -468,7 +573,7 @@ defineOptions({
       gap: 0.5rem;
       font-size: 1.2rem;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.9);
+      color: var(--theme-text-primary);
       margin-bottom: 1rem;
 
       .el-icon {
@@ -561,14 +666,12 @@ defineOptions({
   margin: 2rem;
 
   .chart-wrapper {
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(30, 144, 255, 0.3);
+    background: var(--theme-bg-card);
+    border: 1px solid var(--theme-border-primary);
     border-radius: 12px;
     padding: 2rem;
     backdrop-filter: blur(15px);
-    box-shadow:
-      0 8px 32px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: var(--theme-shadow-card);
     position: relative;
     overflow: hidden;
 
