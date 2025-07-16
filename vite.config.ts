@@ -16,12 +16,12 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://localhost:8888',
+        target: 'http://localhost:30002',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       },
       '/admin': {
-        target: 'http://localhost:8888',
+        target: 'http://localhost:30002',
         changeOrigin: true
       }
     }
