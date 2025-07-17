@@ -8,7 +8,7 @@
       <div class="header-right">
         <!-- 主题切换按钮 -->
         <div class="theme-toggle-container">
-          <el-button
+          <!-- <el-button
             class="theme-toggle-btn"
             :class="{ 'theme-dark': themeStore.isDarkMode, 'theme-light': themeStore.isLightMode }"
             @click="handleThemeToggle"
@@ -21,7 +21,7 @@
               </el-icon>
               <span class="theme-text">{{ themeStore.themeText }}</span>
             </div>
-          </el-button>
+          </el-button> -->
         </div>
         <el-button type="primary" plain @click="goBack">返回管理后台</el-button>
         <span class="welcome-text">欢迎，{{ adminUsername }}</span>
@@ -114,7 +114,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed, nextTick } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import {
@@ -208,6 +208,13 @@ const switchChartType = (type: 'bar' | 'pie' | 'line') => {
 const handleThemeToggle = () => {
   themeStore.toggleTheme()
   ElMessage.success(`已切换到${themeStore.themeText}`)
+  // 重新生成图表数据以应用新主题
+  generateChartData()
+}
+
+// 获取CSS变量值的辅助函数
+const getCSSVariable = (variableName: string): string => {
+  return getComputedStyle(document.documentElement).getPropertyValue(variableName).trim()
 }
 
 // 生成图表数据
@@ -217,6 +224,14 @@ const generateChartData = () => {
     { name: '合作意向', value: stats.value.cooperation }
   ]
 
+  // 获取当前主题的CSS变量值
+  const textPrimary = getCSSVariable('--theme-text-primary') || 'rgba(255, 255, 255, 0.9)'
+  const textSecondary = getCSSVariable('--theme-text-secondary') || 'rgba(255, 255, 255, 0.8)'
+  const borderPrimary = getCSSVariable('--theme-border-primary') || 'rgba(30, 144, 255, 0.4)'
+  const borderSecondary = getCSSVariable('--theme-border-secondary') || 'rgba(30, 144, 255, 0.2)'
+  const bgModal = getCSSVariable('--theme-bg-modal') || 'rgba(0, 0, 0, 0.8)'
+  const accent = getCSSVariable('--theme-accent') || '#1E90FF'
+
   switch (currentChartType.value) {
     case 'bar':
       chartOption.value = {
@@ -224,16 +239,16 @@ const generateChartData = () => {
         title: {
           text: '表单类型统计',
           textStyle: {
-            color: 'rgba(255, 255, 255, 0.9)',
+            color: textPrimary,
             fontSize: 16
           }
         },
         tooltip: {
           trigger: 'axis',
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          borderColor: 'rgba(30, 144, 255, 0.4)',
+          backgroundColor: bgModal,
+          borderColor: borderPrimary,
           textStyle: {
-            color: 'rgba(255, 255, 255, 0.9)'
+            color: textPrimary
           }
         },
         xAxis: {
@@ -241,26 +256,26 @@ const generateChartData = () => {
           data: formTypeData.map(item => item.name),
           axisLine: {
             lineStyle: {
-              color: 'rgba(30, 144, 255, 0.4)'
+              color: borderPrimary
             }
           },
           axisLabel: {
-            color: 'rgba(255, 255, 255, 0.8)'
+            color: textSecondary
           }
         },
         yAxis: {
           type: 'value',
           axisLine: {
             lineStyle: {
-              color: 'rgba(30, 144, 255, 0.4)'
+              color: borderPrimary
             }
           },
           axisLabel: {
-            color: 'rgba(255, 255, 255, 0.8)'
+            color: textSecondary
           },
           splitLine: {
             lineStyle: {
-              color: 'rgba(30, 144, 255, 0.2)'
+              color: borderSecondary
             }
           }
         },
@@ -271,8 +286,8 @@ const generateChartData = () => {
           data: formTypeData.map(item => item.value),
           itemStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: 'rgba(30, 144, 255, 0.8)' },
-              { offset: 1, color: 'rgba(30, 144, 255, 0.3)' }
+              { offset: 0, color: accent + 'CC' }, // 80% opacity
+              { offset: 1, color: accent + '4D' }  // 30% opacity
             ])
           }
         }]
@@ -285,23 +300,23 @@ const generateChartData = () => {
         title: {
           text: '表单类型分布',
           textStyle: {
-            color: 'rgba(255, 255, 255, 0.9)',
+            color: textPrimary,
             fontSize: 16
           }
         },
         tooltip: {
           trigger: 'item',
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          borderColor: 'rgba(30, 144, 255, 0.4)',
+          backgroundColor: bgModal,
+          borderColor: borderPrimary,
           textStyle: {
-            color: 'rgba(255, 255, 255, 0.9)'
+            color: textPrimary
           }
         },
         legend: {
           orient: 'vertical',
           left: 'right',
           textStyle: {
-            color: 'rgba(255, 255, 255, 0.8)'
+            color: textSecondary
           }
         },
         series: [{
@@ -313,14 +328,15 @@ const generateChartData = () => {
             itemStyle: {
               shadowBlur: 10,
               shadowOffsetX: 0,
-              shadowColor: 'rgba(30, 144, 255, 0.5)'
+              shadowColor: accent + '80' // 50% opacity
             }
           },
           itemStyle: {
             color: (params: any) => {
+              const accentHover = getCSSVariable('--theme-accent-hover') || '#00BFFF'
               const colors = [
-                'rgba(30, 144, 255, 0.8)',
-                'rgba(0, 191, 255, 0.8)'
+                accent + 'CC', // 80% opacity
+                accentHover + 'CC' // 80% opacity
               ]
               return colors[params.dataIndex % colors.length]
             }
@@ -335,16 +351,16 @@ const generateChartData = () => {
         title: {
           text: '表单趋势分析',
           textStyle: {
-            color: 'rgba(255, 255, 255, 0.9)',
+            color: textPrimary,
             fontSize: 16
           }
         },
         tooltip: {
           trigger: 'axis',
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          borderColor: 'rgba(30, 144, 255, 0.4)',
+          backgroundColor: bgModal,
+          borderColor: borderPrimary,
           textStyle: {
-            color: 'rgba(255, 255, 255, 0.9)'
+            color: textPrimary
           }
         },
         xAxis: {
@@ -352,26 +368,26 @@ const generateChartData = () => {
           data: ['今日', '本周', '本月'],
           axisLine: {
             lineStyle: {
-              color: 'rgba(30, 144, 255, 0.4)'
+              color: borderPrimary
             }
           },
           axisLabel: {
-            color: 'rgba(255, 255, 255, 0.8)'
+            color: textSecondary
           }
         },
         yAxis: {
           type: 'value',
           axisLine: {
             lineStyle: {
-              color: 'rgba(30, 144, 255, 0.4)'
+              color: borderPrimary
             }
           },
           axisLabel: {
-            color: 'rgba(255, 255, 255, 0.8)'
+            color: textSecondary
           },
           splitLine: {
             lineStyle: {
-              color: 'rgba(30, 144, 255, 0.2)'
+              color: borderSecondary
             }
           }
         },
@@ -380,18 +396,18 @@ const generateChartData = () => {
           type: 'line',
           data: [stats.value.today, stats.value.week, stats.value.month],
           lineStyle: {
-            color: 'rgba(30, 144, 255, 0.8)',
+            color: accent + 'CC', // 80% opacity
             width: 3
           },
           itemStyle: {
-            color: 'rgba(30, 144, 255, 1)',
-            borderColor: 'rgba(255, 255, 255, 0.8)',
+            color: accent,
+            borderColor: textSecondary,
             borderWidth: 2
           },
           areaStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-              { offset: 0, color: 'rgba(30, 144, 255, 0.3)' },
-              { offset: 1, color: 'rgba(30, 144, 255, 0.1)' }
+              { offset: 0, color: accent + '4D' }, // 30% opacity
+              { offset: 1, color: accent + '1A' }  // 10% opacity
             ])
           }
         }]
@@ -436,9 +452,9 @@ defineOptions({
     right: 0;
     bottom: 0;
     background:
-      radial-gradient(circle at 20% 80%, rgba(0, 100, 255, 0.2) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(30, 144, 255, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(0, 191, 255, 0.1) 0%, transparent 50%);
+      radial-gradient(circle at 20% 80%, var(--theme-accent) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, var(--theme-border-primary) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, var(--theme-accent-hover) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
   }
@@ -496,14 +512,14 @@ defineOptions({
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(30, 144, 255, 0.2), transparent);
+          background: linear-gradient(90deg, transparent, var(--theme-border-secondary), transparent);
           transition: left 0.5s ease;
         }
 
         &:hover {
-          background: rgba(30, 144, 255, 0.25) !important;
-          border-color: rgba(0, 191, 255, 0.6) !important;
-          box-shadow: 0 0 20px rgba(30, 144, 255, 0.4);
+          background: var(--theme-border-secondary) !important;
+          border-color: var(--theme-accent-hover) !important;
+          box-shadow: 0 0 20px var(--theme-accent);
           transform: translateY(-2px);
 
           &::before {
@@ -516,14 +532,14 @@ defineOptions({
         }
 
         &.theme-light {
-          background: rgba(255, 255, 255, 0.9) !important;
-          border-color: rgba(0, 123, 255, 0.3) !important;
-          color: #333333 !important;
+          background: var(--theme-bg-card) !important;
+          border-color: var(--theme-accent) !important;
+          color: var(--theme-text-primary) !important;
 
           &:hover {
-            background: rgba(255, 255, 255, 1) !important;
-            border-color: rgba(0, 123, 255, 0.6) !important;
-            box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+            background: var(--theme-bg-tertiary) !important;
+            border-color: var(--theme-accent-hover) !important;
+            box-shadow: 0 0 20px var(--theme-accent);
           }
         }
 
@@ -551,6 +567,8 @@ defineOptions({
     .welcome-text {
       color: var(--theme-text-secondary);
       font-size: 0.9rem;
+      /* 白天模式下移除阴影效果 */
+      text-shadow: var(--theme-welcome-text-shadow, 0 0 10px var(--theme-text-secondary));
     }
   }
 }
@@ -577,13 +595,13 @@ defineOptions({
       margin-bottom: 1rem;
 
       .el-icon {
-        color: #1E90FF;
+        color: var(--theme-accent);
       }
     }
 
     .control-divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(30, 144, 255, 0.5) 50%, transparent 100%);
+      background: linear-gradient(90deg, transparent 0%, var(--theme-accent) 50%, transparent 100%);
     }
   }
 }
@@ -598,8 +616,8 @@ defineOptions({
     align-items: center;
     gap: 1rem;
     padding: 1rem 2rem;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(30, 144, 255, 0.3);
+    background: var(--theme-bg-tertiary);
+    border: 1px solid var(--theme-border-primary);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -607,37 +625,35 @@ defineOptions({
     min-width: 160px;
 
     &:hover {
-      background: rgba(30, 144, 255, 0.1);
-      border-color: rgba(30, 144, 255, 0.6);
+      background: var(--theme-border-primary);
+      border-color: var(--theme-accent);
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(30, 144, 255, 0.3);
+      box-shadow: 0 8px 25px var(--theme-accent);
     }
 
     &.active {
-      background: linear-gradient(135deg, rgba(30, 144, 255, 0.2) 0%, rgba(0, 191, 255, 0.1) 100%);
-      border-color: rgba(30, 144, 255, 0.8);
-      box-shadow:
-        0 0 20px rgba(30, 144, 255, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      background: linear-gradient(135deg, var(--theme-border-secondary) 0%, var(--theme-accent-hover) 100%);
+      border-color: var(--theme-accent);
+      box-shadow: var(--theme-shadow-card);
 
       .tab-icon .el-icon {
-        color: #00BFFF;
-        text-shadow: 0 0 10px rgba(0, 191, 255, 0.8);
+        color: var(--theme-accent-hover);
+        text-shadow: 0 0 10px var(--theme-accent-hover);
       }
 
       .tab-title {
-        color: #ffffff;
+        color: var(--theme-text-primary);
       }
 
       .tab-subtitle {
-        color: rgba(0, 191, 255, 0.8);
+        color: var(--theme-accent-hover);
       }
     }
 
     .tab-icon {
       .el-icon {
         font-size: 1.5rem;
-        color: rgba(255, 255, 255, 0.7);
+        color: var(--theme-text-tertiary);
         transition: all 0.3s ease;
       }
     }
@@ -646,14 +662,14 @@ defineOptions({
       .tab-title {
         font-size: 1rem;
         font-weight: 600;
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--theme-text-secondary);
         margin-bottom: 0.2rem;
         transition: all 0.3s ease;
       }
 
       .tab-subtitle {
         font-size: 0.75rem;
-        color: rgba(255, 255, 255, 0.5);
+        color: var(--theme-text-muted);
         font-weight: 400;
         letter-spacing: 0.5px;
         transition: all 0.3s ease;
@@ -685,7 +701,7 @@ defineOptions({
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: rgba(0, 0, 0, 0.8);
+      background: var(--theme-bg-modal);
       backdrop-filter: blur(10px);
       z-index: 10;
 
@@ -698,14 +714,14 @@ defineOptions({
         .spinner-ring {
           width: 40px;
           height: 40px;
-          border: 3px solid rgba(30, 144, 255, 0.3);
-          border-top: 3px solid #1E90FF;
+          border: 3px solid var(--theme-border-primary);
+          border-top: 3px solid var(--theme-accent);
           border-radius: 50%;
           animation: spin 1s linear infinite;
         }
 
         .loading-text {
-          color: rgba(255, 255, 255, 0.8);
+          color: var(--theme-text-secondary);
           font-size: 0.9rem;
         }
       }
@@ -726,7 +742,7 @@ defineOptions({
     position: absolute;
     width: 20px;
     height: 20px;
-    border: 2px solid rgba(30, 144, 255, 0.6);
+    border: 2px solid var(--theme-accent);
 
     &.corner-tl {
       top: 10px;
@@ -831,73 +847,73 @@ defineOptions({
 <style>
 /* 全局样式覆盖 */
 .el-button {
-  background: rgba(0, 0, 0, 0.6) !important;
-  border: 1px solid rgba(30, 144, 255, 0.4) !important;
-  color: rgba(255, 255, 255, 0.9) !important;
+  background: var(--theme-bg-tertiary) !important;
+  border: 1px solid var(--theme-border-primary) !important;
+  color: var(--theme-text-primary) !important;
   backdrop-filter: blur(10px) !important;
   transition: all 0.3s ease !important;
 
   &:hover {
-    background: rgba(30, 144, 255, 0.2) !important;
-    border-color: rgba(30, 144, 255, 0.6) !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3) !important;
+    background: var(--theme-border-secondary) !important;
+    border-color: var(--theme-accent) !important;
+    color: var(--theme-text-primary) !important;
+    box-shadow: 0 4px 15px var(--theme-accent) !important;
     transform: translateY(-1px) !important;
   }
 
   &.el-button--primary {
-    background: linear-gradient(135deg, #1E90FF 0%, #00BFFF 100%) !important;
-    border: 1px solid rgba(30, 144, 255, 0.4) !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4) !important;
+    background: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-hover) 100%) !important;
+    border: 1px solid var(--theme-border-primary) !important;
+    color: var(--theme-text-primary) !important;
+    box-shadow: 0 4px 15px var(--theme-accent) !important;
 
     &:hover {
-      background: linear-gradient(135deg, #00BFFF 0%, #0066FF 100%) !important;
-      box-shadow: 0 6px 20px rgba(30, 144, 255, 0.6) !important;
+      background: linear-gradient(135deg, var(--theme-accent-hover) 0%, var(--theme-accent) 100%) !important;
+      box-shadow: 0 6px 20px var(--theme-accent) !important;
       transform: translateY(-1px) !important;
     }
   }
 
   &.el-button--danger {
-    background: linear-gradient(135deg, #FF4757 0%, #FF3742 100%) !important;
-    border: 1px solid rgba(255, 71, 87, 0.4) !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4) !important;
+    background: linear-gradient(135deg, var(--theme-danger) 0%, var(--theme-danger) 100%) !important;
+    border: 1px solid var(--theme-danger) !important;
+    color: var(--theme-text-primary) !important;
+    box-shadow: 0 4px 15px var(--theme-danger) !important;
 
     &:hover {
-      background: linear-gradient(135deg, #FF3742 0%, #FF1744 100%) !important;
-      box-shadow: 0 6px 20px rgba(255, 71, 87, 0.6) !important;
+      background: linear-gradient(135deg, var(--theme-danger) 0%, var(--theme-danger) 100%) !important;
+      box-shadow: 0 6px 20px var(--theme-danger) !important;
       transform: translateY(-1px) !important;
     }
   }
 }
 
 .custom-message-box {
-  background: rgba(0, 0, 0, 0.95) !important;
+  background: var(--theme-bg-modal) !important;
   backdrop-filter: blur(20px) !important;
-  border: 1px solid rgba(30, 144, 255, 0.4) !important;
+  border: 1px solid var(--theme-border-primary) !important;
   border-radius: 8px !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
+  box-shadow: var(--theme-shadow-card) !important;
 
   .el-message-box__header {
     background: transparent !important;
-    border-bottom: 1px solid rgba(30, 144, 255, 0.3) !important;
+    border-bottom: 1px solid var(--theme-border-primary) !important;
     padding: 1.5rem 2rem 1rem !important;
   }
 
   .el-message-box__title {
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: var(--theme-text-primary) !important;
   }
 
   .el-message-box__content {
     background: transparent !important;
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: var(--theme-text-secondary) !important;
     padding: 1rem 2rem !important;
   }
 
   .el-message-box__btns {
     background: transparent !important;
-    border-top: 1px solid rgba(30, 144, 255, 0.3) !important;
+    border-top: 1px solid var(--theme-border-primary) !important;
     padding: 1rem 2rem 1.5rem !important;
   }
 }

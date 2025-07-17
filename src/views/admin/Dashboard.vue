@@ -8,7 +8,7 @@
       <div class="header-right">
         <!-- 主题切换按钮 -->
         <div class="theme-toggle-container">
-          <el-button
+          <!-- <el-button
             class="theme-toggle-btn"
             :class="{ 'theme-dark': themeStore.isDarkMode, 'theme-light': themeStore.isLightMode }"
             @click="handleThemeToggle"
@@ -21,7 +21,7 @@
               </el-icon>
               <span class="theme-text">{{ themeStore.themeText }}</span>
             </div>
-          </el-button>
+          </el-button> -->
         </div>
         <span class="welcome-text">欢迎，{{ adminUsername }}</span>
         <el-button type="danger" plain @click="handleLogout">退出登录</el-button>
@@ -771,92 +771,92 @@ onMounted(() => {
 <style>
   .el-select-dropdown,
     .el-picker-panel {
-      background: rgba(0, 0, 0, 0.95) !important; /* 统一深黑色背景 */
-      border: 1px solid rgba(30, 144, 255, 0.4) !important;
-      border-radius: 0 !important; /* 移除日期选择器圆角 */
+      background: var(--theme-bg-modal) !important;
+      border: 1px solid var(--theme-border-primary) !important;
+      border-radius: 0 !important;
       backdrop-filter: blur(20px);
 
     .el-picker-panel__content {
-      color: rgba(255, 255, 255, 0.8) !important;
+      color: var(--theme-text-secondary) !important;
     }
 
     .el-date-table td.available:hover {
-      background: rgba(30, 144, 255, 0.2) !important;
-      color: #ffffff !important;
+      background: var(--theme-border-secondary) !important;
+      color: var(--theme-text-primary) !important;
     }
 
     .el-date-table td.current {
-      background: rgba(30, 144, 255, 0.3) !important;
-      color: #ffffff !important;
+      background: var(--theme-border-primary) !important;
+      color: var(--theme-text-primary) !important;
     }
   }
 
   .el-select__placeholder{
-    color: #a8abac;
+    color: var(--theme-text-muted);
   }
 
   /* 白天模式下的组件样式重置 */
   .theme-light {
     /* 重置筛选组件为默认主题 */
     .el-input__wrapper {
-      background-color: #ffffff !important;
-      border-color: #dcdfe6 !important;
-      color: #606266 !important;
+      background-color: var(--theme-bg-card) !important;
+      border-color: var(--theme-border-primary) !important;
+      color: var(--theme-text-primary) !important;
     }
 
     .el-select .el-input__wrapper {
-      background-color: #ffffff !important;
-      border-color: #dcdfe6 !important;
-      color: #606266 !important;
+      background-color: var(--theme-bg-card) !important;
+      border-color: var(--theme-border-primary) !important;
+      color: var(--theme-text-primary) !important;
     }
 
     .el-date-editor .el-input__wrapper {
-      background-color: #ffffff !important;
-      border-color: #dcdfe6 !important;
-      color: #606266 !important;
+      background-color: var(--theme-bg-card) !important;
+      border-color: var(--theme-border-primary) !important;
+      color: var(--theme-text-primary) !important;
     }
 
     /* 重置分页组件为默认主题 */
     .el-pagination {
       .el-pager li {
-        background-color: #ffffff !important;
-        color: #606266 !important;
-        border-color: #dcdfe6 !important;
+        background-color: var(--theme-bg-card) !important;
+        color: var(--theme-text-primary) !important;
+        border-color: var(--theme-border-primary) !important;
 
         &:hover {
-          background-color: #f5f7fa !important;
-          color: #409eff !important;
+          background-color: var(--theme-bg-tertiary) !important;
+          color: var(--theme-accent) !important;
         }
 
         &.is-active {
-          background-color: #409eff !important;
-          color: #ffffff !important;
-          border-color: #409eff !important;
+          background-color: var(--theme-accent) !important;
+          color: var(--theme-bg-card) !important;
+          border-color: var(--theme-accent) !important;
         }
       }
 
       .btn-prev,
       .btn-next {
-        background-color: #ffffff !important;
-        color: #606266 !important;
-        border-color: #dcdfe6 !important;
+        background-color: var(--theme-bg-card) !important;
+        color: var(--theme-text-primary) !important;
+        border-color: var(--theme-border-primary) !important;
 
         &:hover {
-          background-color: #f5f7fa !important;
-          color: #409eff !important;
+          background-color: var(--theme-bg-tertiary) !important;
+          color: var(--theme-accent) !important;
         }
 
         &:disabled {
-          background-color: #ffffff !important;
-          color: #c0c4cc !important;
-          border-color: #e4e7ed !important;
+          background-color: var(--theme-bg-card) !important;
+          color: var(--theme-text-muted) !important;
+          border-color: var(--theme-border-secondary) !important;
         }
       }
 
       .el-select .el-input__wrapper {
-        background-color: #ffffff !important;
-        border-color: #dcdfe6 !important;
-        color: #606266 !important;
+        background-color: var(--theme-bg-card) !important;
+        border-color: var(--theme-border-primary) !important;
+        color: var(--theme-text-primary) !important;
       }
     }
   }
@@ -882,10 +882,10 @@ onMounted(() => {
     right: 0;
     bottom: 0;
     background:
-      radial-gradient(circle at 20% 80%, rgba(0, 100, 255, 0.2) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(30, 144, 255, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(0, 191, 255, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 60% 60%, rgba(0, 102, 255, 0.08) 0%, transparent 50%);
+      radial-gradient(circle at 20% 80%, var(--theme-accent) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, var(--theme-border-primary) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, var(--theme-accent-hover) 0%, transparent 50%),
+      radial-gradient(circle at 60% 60%, var(--theme-border-secondary) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
   }
@@ -947,14 +947,14 @@ onMounted(() => {
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(30, 144, 255, 0.2), transparent);
+          background: linear-gradient(90deg, transparent, var(--theme-border-secondary), transparent);
           transition: left 0.5s ease;
         }
 
         &:hover {
-          background: rgba(30, 144, 255, 0.25) !important;
-          border-color: rgba(0, 191, 255, 0.6) !important;
-          box-shadow: 0 0 20px rgba(30, 144, 255, 0.4);
+          background: var(--theme-border-secondary) !important;
+          border-color: var(--theme-accent-hover) !important;
+          box-shadow: 0 0 20px var(--theme-accent);
           transform: translateY(-2px);
 
           &::before {
@@ -967,14 +967,14 @@ onMounted(() => {
         }
 
         &.theme-light {
-          background: rgba(255, 255, 255, 0.9) !important;
-          border-color: rgba(0, 123, 255, 0.3) !important;
-          color: #333333 !important;
+          background: var(--theme-bg-card) !important;
+          border-color: var(--theme-accent) !important;
+          color: var(--theme-text-primary) !important;
 
           &:hover {
-            background: rgba(255, 255, 255, 1) !important;
-            border-color: rgba(0, 123, 255, 0.6) !important;
-            box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+            background: var(--theme-bg-tertiary) !important;
+            border-color: var(--theme-accent-hover) !important;
+            box-shadow: 0 0 20px var(--theme-accent);
           }
         }
 
@@ -1007,15 +1007,15 @@ onMounted(() => {
     }
 
     .el-button {
-      background: rgba(0, 100, 255, 0.15);
-      border: 1px solid rgba(30, 144, 255, 0.3);
-      color: #ffffff;
+      background: var(--theme-bg-secondary);
+      border: 1px solid var(--theme-border-primary);
+      color: var(--theme-text-primary);
       backdrop-filter: blur(10px);
 
       &:hover {
-        background: rgba(30, 144, 255, 0.25);
-        border-color: rgba(0, 191, 255, 0.6);
-        box-shadow: 0 0 20px rgba(30, 144, 255, 0.4);
+        background: var(--theme-border-secondary);
+        border-color: var(--theme-accent-hover);
+        box-shadow: 0 0 20px var(--theme-accent);
       }
 
       /* 白天模式下退出登录按钮样式 */
@@ -1062,16 +1062,16 @@ onMounted(() => {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(30, 144, 255, 0.15), transparent);
+    background: linear-gradient(90deg, transparent, var(--theme-border-secondary), transparent);
     transition: left 0.5s ease;
   }
 
   &:hover {
     transform: translateY(-5px);
     box-shadow:
-      0 20px 40px rgba(0, 0, 0, 0.6),
-      0 0 30px rgba(30, 144, 255, 0.4);
-    border-color: rgba(0, 191, 255, 0.5);
+      0 20px 40px var(--theme-shadow),
+      0 0 30px var(--theme-accent);
+    border-color: var(--theme-accent-hover);
 
     &::before {
       left: 100%;
@@ -1102,23 +1102,23 @@ onMounted(() => {
     }
 
     &.total {
-      background: linear-gradient(135deg, #1E90FF 0%, #0066FF 100%);
-      box-shadow: 0 8px 20px rgba(30, 144, 255, 0.6);
+      background: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-hover) 100%);
+      box-shadow: 0 8px 20px var(--theme-accent);
     }
 
     &.consult {
-      background: linear-gradient(135deg, #00BFFF 0%, #1E90FF 100%);
-      box-shadow: 0 8px 20px rgba(0, 191, 255, 0.6);
+      background: linear-gradient(135deg, var(--theme-accent-hover) 0%, var(--theme-accent) 100%);
+      box-shadow: 0 8px 20px var(--theme-accent-hover);
     }
 
     &.cooperation {
-      background: linear-gradient(135deg, #4169E1 0%, #0000CD 100%);
-      box-shadow: 0 8px 20px rgba(65, 105, 225, 0.6);
+      background: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-hover) 100%);
+      box-shadow: 0 8px 20px var(--theme-accent);
     }
 
     &.today {
-      background: linear-gradient(135deg, #00CED1 0%, #008B8B 100%);
-      box-shadow: 0 8px 20px rgba(0, 206, 209, 0.6);
+      background: linear-gradient(135deg, var(--theme-accent-hover) 0%, var(--theme-accent) 100%);
+      box-shadow: 0 8px 20px var(--theme-accent-hover);
     }
   }
 
@@ -1141,7 +1141,7 @@ onMounted(() => {
       color: var(--theme-text-secondary);
       margin-top: 0.5rem;
       font-weight: 500;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      text-shadow: 0 0 10px var(--theme-text-secondary);
     }
   }
 }
@@ -1194,7 +1194,7 @@ onMounted(() => {
   // }
 
   .no-wish {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--theme-text-muted);
   }
 }
 
@@ -1202,15 +1202,13 @@ onMounted(() => {
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: flex-end;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--theme-bg-secondary);
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--theme-border-secondary);
   border-top: none;
   margin: 0 2rem;
   border-radius: 0 0 12px 12px;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: var(--theme-shadow-card);
 }
 
 // 响应式设计 - 针对常见屏幕分辨率优化
@@ -1417,65 +1415,65 @@ onMounted(() => {
 :deep(.el-pagination) {
   .el-pagination__total,
   .el-pagination__jump {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--theme-text-secondary);
   }
 
   .el-pager li {
-    background: #160906 !important; /* 统一深棕黑色背景 */
-    color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(30, 144, 255, 0.4) !important; /* 统一边框颜色 */
-    border-radius: 0 !important; /* 移除圆角 */
+    background: var(--theme-bg-card) !important;
+    color: var(--theme-text-secondary);
+    border: 1px solid var(--theme-border-primary) !important;
+    border-radius: 0 !important;
     margin: 0 2px;
 
     &:hover {
-      background: rgba(30, 144, 255, 0.25);
-      border-color: rgba(0, 191, 255, 0.6);
-      color: #ffffff;
+      background: var(--theme-border-secondary);
+      border-color: var(--theme-accent-hover);
+      color: var(--theme-text-primary);
     }
 
     &.is-active {
-      background: linear-gradient(135deg, #1E90FF 0%, #0066FF 100%);
+      background: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-hover) 100%);
       border-color: transparent;
-      color: #ffffff;
-      box-shadow: 0 0 15px rgba(30, 144, 255, 0.6);
+      color: var(--theme-text-primary);
+      box-shadow: 0 0 15px var(--theme-accent);
     }
   }
 
   .btn-prev,
   .btn-next {
-    background: #160906 !important; /* 统一深棕黑色背景 */
-    color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(30, 144, 255, 0.4) !important; /* 统一边框颜色 */
-    border-radius: 0 !important; /* 移除圆角 */
+    background: var(--theme-bg-card) !important;
+    color: var(--theme-text-secondary);
+    border: 1px solid var(--theme-border-primary) !important;
+    border-radius: 0 !important;
 
     &:hover {
-      background: rgba(30, 144, 255, 0.25);
-      border-color: rgba(0, 191, 255, 0.6);
-      color: #ffffff;
+      background: var(--theme-border-secondary);
+      border-color: var(--theme-accent-hover);
+      color: var(--theme-text-primary);
     }
 
     &:disabled {
-      background: #160906 !important; /* 统一深棕黑色背景 */
-      color: rgba(255, 255, 255, 0.3);
-      border-color: rgba(30, 144, 255, 0.2);
+      background: var(--theme-bg-card) !important;
+      color: var(--theme-text-muted);
+      border-color: var(--theme-border-secondary);
     }
   }
 
   .el-select .el-input__wrapper {
-    background: #160906 !important; /* 统一深棕黑色背景 */
-    border: 1px solid rgba(30, 144, 255, 0.4) !important; /* 统一边框颜色 */
-    border-radius: 0 !important; /* 移除圆角 */
-    color: rgba(255, 255, 255, 0.8);
+    background: var(--theme-bg-card) !important;
+    border: 1px solid var(--theme-border-primary) !important;
+    border-radius: 0 !important;
+    color: var(--theme-text-secondary);
 
     &:hover {
-      border-color: rgba(120, 219, 255, 0.4);
+      border-color: var(--theme-accent);
     }
   }
 }
 
 //边框样式设置
 :deep(.el-input){
-  --el-input-border-color:rgba(30, 144, 255, 0.4) !important;
+  --el-input-border-color: var(--theme-border-primary) !important;
 }
 
 /* ==================== 科技感弹窗样式 ==================== */
@@ -1494,14 +1492,11 @@ onMounted(() => {
 
 /* 科技感模态框基础样式 */
 :deep(.tech-modal) {
-  background: rgba(0, 0, 0, 0.98) !important;
+  background: var(--theme-bg-modal) !important;
   backdrop-filter: blur(25px) !important;
   border: 2px solid transparent !important;
   border-radius: 0 !important;
-  box-shadow:
-    0 25px 50px rgba(0, 0, 0, 0.8),
-    0 0 30px rgba(30, 144, 255, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  box-shadow: var(--theme-shadow-card) !important;
   position: relative;
   overflow: hidden;
 
@@ -1514,10 +1509,10 @@ onMounted(() => {
     bottom: 0;
     background: linear-gradient(
       135deg,
-      rgba(30, 144, 255, 0.1) 0%,
+      var(--theme-border-primary) 0%,
       transparent 25%,
       transparent 75%,
-      rgba(0, 191, 255, 0.1) 100%
+      var(--theme-accent-hover) 100%
     );
     pointer-events: none;
     z-index: 0;
@@ -1532,11 +1527,11 @@ onMounted(() => {
     bottom: -2px;
     background: linear-gradient(
       45deg,
-      rgba(30, 144, 255, 0.6) 0%,
-      rgba(0, 191, 255, 0.4) 25%,
-      rgba(0, 100, 255, 0.6) 50%,
-      rgba(30, 144, 255, 0.4) 75%,
-      rgba(0, 191, 255, 0.6) 100%
+      var(--theme-accent) 0%,
+      var(--theme-accent-hover) 25%,
+      var(--theme-accent) 50%,
+      var(--theme-accent-hover) 75%,
+      var(--theme-accent) 100%
     );
     background-size: 400% 400%;
     animation: tech-border-glow 3s ease-in-out infinite;
@@ -1552,7 +1547,7 @@ onMounted(() => {
 
   .el-dialog__body {
     background: transparent !important;
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: var(--theme-text-primary) !important;
     padding: 0 !important;
     position: relative;
     z-index: 1;
@@ -1583,10 +1578,10 @@ onMounted(() => {
   padding: 1.5rem 2rem;
   background: linear-gradient(
     135deg,
-    rgba(30, 144, 255, 0.15) 0%,
-    rgba(0, 100, 255, 0.1) 100%
+    var(--theme-border-primary) 0%,
+    var(--theme-border-secondary) 100%
   );
-  border-bottom: 2px solid rgba(30, 144, 255, 0.3);
+  border-bottom: 2px solid var(--theme-border-primary);
   position: relative;
 
   &::before {
@@ -1599,7 +1594,7 @@ onMounted(() => {
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(30, 144, 255, 0.8) 50%,
+      var(--theme-accent) 50%,
       transparent 100%
     );
     animation: tech-line-scan 2s ease-in-out infinite;
@@ -1613,23 +1608,21 @@ onMounted(() => {
     .title-icon {
       width: 3rem;
       height: 3rem;
-      background: linear-gradient(135deg, #1E90FF 0%, #0066FF 100%);
+      background: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-hover) 100%);
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
-      color: white;
-      box-shadow:
-        0 8px 20px rgba(30, 144, 255, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      color: var(--theme-text-primary);
+      box-shadow: var(--theme-shadow-card);
       position: relative;
 
       &::before {
         content: '';
         position: absolute;
         inset: -2px;
-        background: linear-gradient(45deg, rgba(30, 144, 255, 0.6), rgba(0, 191, 255, 0.6));
+        background: linear-gradient(45deg, var(--theme-accent), var(--theme-accent-hover));
         border-radius: 10px;
         z-index: -1;
         animation: tech-icon-pulse 2s ease-in-out infinite;
@@ -1641,9 +1634,9 @@ onMounted(() => {
         margin: 0;
         font-size: 1.5rem;
         font-weight: 700;
-        color: #ffffff;
-        text-shadow: 0 0 15px rgba(30, 144, 255, 0.6);
-        background: linear-gradient(135deg, #00BFFF 0%, #1E90FF 50%, #0066FF 100%);
+        color: var(--theme-text-primary);
+        text-shadow: 0 0 15px var(--theme-accent);
+        background: linear-gradient(135deg, var(--theme-accent-hover) 0%, var(--theme-accent) 50%, var(--theme-accent-hover) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -1651,7 +1644,7 @@ onMounted(() => {
 
       .title-subtitle {
         font-size: 0.75rem;
-        color: rgba(255, 255, 255, 0.6);
+        color: var(--theme-text-tertiary);
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-top: 0.25rem;
@@ -1664,10 +1657,10 @@ onMounted(() => {
     .tech-close-btn {
       width: 2.5rem;
       height: 2.5rem;
-      background: rgba(255, 71, 87, 0.2);
-      border: 1px solid rgba(255, 71, 87, 0.4);
+      background: var(--theme-danger);
+      border: 1px solid var(--theme-danger);
       border-radius: 6px;
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--theme-text-primary);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -1677,10 +1670,10 @@ onMounted(() => {
       backdrop-filter: blur(10px);
 
       &:hover {
-        background: rgba(255, 71, 87, 0.3);
-        border-color: rgba(255, 71, 87, 0.6);
-        color: #ffffff;
-        box-shadow: 0 0 15px rgba(255, 71, 87, 0.5);
+        background: var(--theme-danger);
+        border-color: var(--theme-danger);
+        color: var(--theme-text-primary);
+        box-shadow: 0 0 15px var(--theme-danger);
         transform: scale(1.05);
       }
 
@@ -1720,19 +1713,17 @@ onMounted(() => {
 
 /* 信息卡片样式 */
 .info-card {
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--theme-bg-tertiary);
   backdrop-filter: blur(15px);
-  border: 1px solid rgba(30, 144, 255, 0.3);
+  border: 1px solid var(--theme-border-primary);
   margin-bottom: 1.5rem;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
 
   &:hover {
-    border-color: rgba(0, 191, 255, 0.5);
-    box-shadow:
-      0 8px 25px rgba(0, 0, 0, 0.4),
-      0 0 20px rgba(30, 144, 255, 0.2);
+    border-color: var(--theme-accent-hover);
+    box-shadow: var(--theme-shadow-card);
     transform: translateY(-2px);
   }
 
@@ -1743,7 +1734,7 @@ onMounted(() => {
     left: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(30, 144, 255, 0.8), transparent);
+    background: linear-gradient(90deg, transparent, var(--theme-accent), transparent);
     animation: card-scan 3s ease-in-out infinite;
   }
 
@@ -1751,10 +1742,10 @@ onMounted(() => {
     padding: 1rem 1.5rem;
     background: linear-gradient(
       135deg,
-      rgba(30, 144, 255, 0.1) 0%,
-      rgba(0, 100, 255, 0.05) 100%
+      var(--theme-border-primary) 0%,
+      var(--theme-border-secondary) 100%
     );
-    border-bottom: 1px solid rgba(30, 144, 255, 0.2);
+    border-bottom: 1px solid var(--theme-border-secondary);
     position: relative;
 
     .card-title {
@@ -1763,12 +1754,12 @@ onMounted(() => {
       gap: 0.75rem;
       font-size: 1rem;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.9);
-      text-shadow: 0 0 10px rgba(30, 144, 255, 0.5);
+      color: var(--theme-text-primary);
+      text-shadow: 0 0 10px var(--theme-accent);
 
       .el-icon {
         font-size: 1.2rem;
-        color: rgba(30, 144, 255, 0.8);
+        color: var(--theme-accent);
       }
     }
 
@@ -1781,7 +1772,7 @@ onMounted(() => {
       background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(30, 144, 255, 0.6) 50%,
+        var(--theme-accent) 50%,
         transparent 100%
       );
     }
@@ -1807,14 +1798,14 @@ onMounted(() => {
   align-items: center;
   margin-bottom: 1.2rem;
   padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--theme-bg-secondary);
   border-left: 2px solid transparent;
   transition: all 0.3s ease;
   position: relative;
 
   &:hover {
-    background: rgba(30, 144, 255, 0.05);
-    border-left-color: rgba(30, 144, 255, 0.6);
+    background: var(--theme-border-secondary);
+    border-left-color: var(--theme-accent);
     transform: translateX(5px);
   }
 
@@ -1828,26 +1819,26 @@ onMounted(() => {
     gap: 0.5rem;
     width: 120px;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--theme-text-secondary);
     flex-shrink: 0;
     font-size: 0.9rem;
 
     .el-icon {
       font-size: 1rem;
-      color: rgba(30, 144, 255, 0.7);
+      color: var(--theme-accent);
     }
   }
 
   .detail-value {
     flex: 1;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--theme-text-primary);
     word-break: break-all;
     font-family: 'Courier New', monospace;
 
     &.tech-value {
-      background: rgba(30, 144, 255, 0.1);
+      background: var(--theme-border-primary);
       padding: 0.5rem 0.75rem;
-      border: 1px solid rgba(30, 144, 255, 0.3);
+      border: 1px solid var(--theme-border-primary);
       font-family: inherit;
       position: relative;
 
@@ -1860,8 +1851,8 @@ onMounted(() => {
         height: 100%;
         background: linear-gradient(
           180deg,
-          rgba(30, 144, 255, 0.8) 0%,
-          rgba(0, 191, 255, 0.8) 100%
+          var(--theme-accent) 0%,
+          var(--theme-accent-hover) 100%
         );
       }
     }
@@ -1871,8 +1862,8 @@ onMounted(() => {
 /* 科技感标签 */
 .tech-tag {
   border: none !important;
-  background: linear-gradient(135deg, #1E90FF 0%, #0066FF 100%) !important;
-  color: #ffffff !important;
+  background: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-hover) 100%) !important;
+  color: var(--theme-text-primary) !important;
   font-weight: 600;
   padding: 0.5rem 1rem;
   position: relative;
@@ -1885,7 +1876,7 @@ onMounted(() => {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, var(--theme-text-primary), transparent);
     transition: left 0.5s ease;
   }
 
@@ -1898,12 +1889,12 @@ onMounted(() => {
 .tech-wish {
   background: linear-gradient(
     135deg,
-    rgba(255, 215, 0, 0.1) 0%,
-    rgba(255, 165, 0, 0.05) 100%
+    var(--theme-warning) 0%,
+    var(--theme-border-secondary) 100%
   ) !important;
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  border: 1px solid var(--theme-warning);
   padding: 1.5rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--theme-text-primary);
   line-height: 1.8;
   white-space: pre-wrap;
   position: relative;
@@ -1918,8 +1909,8 @@ onMounted(() => {
     height: 100%;
     background: linear-gradient(
       180deg,
-      rgba(255, 215, 0, 0.8) 0%,
-      rgba(255, 165, 0, 0.8) 100%
+      var(--theme-warning) 0%,
+      var(--theme-accent) 100%
     );
   }
 
@@ -1937,9 +1928,9 @@ onMounted(() => {
 
 /* 图表控制面板 */
 .chart-control-panel {
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--theme-bg-tertiary);
   backdrop-filter: blur(15px);
-  border: 1px solid rgba(30, 144, 255, 0.3);
+  border: 1px solid var(--theme-border-primary);
   margin-bottom: 2rem;
   position: relative;
   overflow: hidden;
@@ -1948,10 +1939,10 @@ onMounted(() => {
     padding: 1rem 1.5rem;
     background: linear-gradient(
       135deg,
-      rgba(30, 144, 255, 0.1) 0%,
-      rgba(0, 100, 255, 0.05) 100%
+      var(--theme-border-primary) 0%,
+      var(--theme-border-secondary) 100%
     );
-    border-bottom: 1px solid rgba(30, 144, 255, 0.2);
+    border-bottom: 1px solid var(--theme-border-secondary);
     position: relative;
 
     .control-title {
@@ -1960,12 +1951,12 @@ onMounted(() => {
       gap: 0.75rem;
       font-size: 1rem;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.9);
-      text-shadow: 0 0 10px rgba(30, 144, 255, 0.5);
+      color: var(--theme-text-primary);
+      text-shadow: 0 0 10px var(--theme-accent);
 
       .el-icon {
         font-size: 1.2rem;
-        color: rgba(30, 144, 255, 0.8);
+        color: var(--theme-accent);
       }
     }
 
@@ -1978,7 +1969,7 @@ onMounted(() => {
       background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(30, 144, 255, 0.6) 50%,
+        var(--theme-accent) 50%,
         transparent 100%
       );
     }
@@ -1998,9 +1989,9 @@ onMounted(() => {
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(30, 144, 255, 0.3);
-  color: rgba(255, 255, 255, 0.8);
+  background: var(--theme-bg-tertiary);
+  border: 1px solid var(--theme-border-primary);
+  color: var(--theme-text-secondary);
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -2015,15 +2006,15 @@ onMounted(() => {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(30, 144, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, var(--theme-border-secondary), transparent);
     transition: left 0.5s ease;
   }
 
   &:hover {
-    border-color: rgba(0, 191, 255, 0.6);
-    color: #ffffff;
+    border-color: var(--theme-accent-hover);
+    color: var(--theme-text-primary);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(30, 144, 255, 0.3);
+    box-shadow: 0 8px 20px var(--theme-accent);
 
     &::before {
       left: 100%;
@@ -2031,33 +2022,31 @@ onMounted(() => {
 
     .tab-icon {
       transform: scale(1.1);
-      color: rgba(0, 191, 255, 0.9);
+      color: var(--theme-accent-hover);
     }
   }
 
   &.active {
-    background: linear-gradient(135deg, rgba(30, 144, 255, 0.2) 0%, rgba(0, 100, 255, 0.1) 100%);
-    border-color: rgba(30, 144, 255, 0.8);
-    color: #ffffff;
-    box-shadow:
-      0 8px 20px rgba(30, 144, 255, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, var(--theme-border-secondary) 0%, var(--theme-border-primary) 100%);
+    border-color: var(--theme-accent);
+    color: var(--theme-text-primary);
+    box-shadow: var(--theme-shadow-card);
 
     .tab-icon {
-      color: rgba(30, 144, 255, 0.9);
+      color: var(--theme-accent);
       transform: scale(1.1);
     }
 
     .tab-title {
-      color: rgba(30, 144, 255, 0.9);
-      text-shadow: 0 0 10px rgba(30, 144, 255, 0.5);
+      color: var(--theme-accent);
+      text-shadow: 0 0 10px var(--theme-accent);
     }
   }
 
   .tab-icon {
     font-size: 1.5rem;
     transition: all 0.3s ease;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--theme-text-tertiary);
   }
 
   .tab-text {
@@ -2073,7 +2062,7 @@ onMounted(() => {
 
     .tab-subtitle {
       font-size: 0.7rem;
-      color: rgba(255, 255, 255, 0.5);
+      color: var(--theme-text-muted);
       text-transform: uppercase;
       letter-spacing: 0.5px;
       font-family: 'Courier New', monospace;
@@ -2099,10 +2088,10 @@ onMounted(() => {
   padding: 1.5rem 2rem;
   background: linear-gradient(
     135deg,
-    rgba(30, 144, 255, 0.1) 0%,
-    rgba(0, 100, 255, 0.05) 100%
+    var(--theme-border-primary) 0%,
+    var(--theme-border-secondary) 100%
   );
-  border-top: 2px solid rgba(30, 144, 255, 0.3);
+  border-top: 2px solid var(--theme-border-primary);
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
@@ -2118,7 +2107,7 @@ onMounted(() => {
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(30, 144, 255, 0.8) 50%,
+      var(--theme-accent) 50%,
       transparent 100%
     );
     animation: tech-line-scan 2s ease-in-out infinite reverse;
@@ -2149,7 +2138,7 @@ onMounted(() => {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, var(--theme-text-primary), transparent);
     transition: left 0.5s ease;
   }
 
@@ -2159,7 +2148,7 @@ onMounted(() => {
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 20px var(--theme-shadow);
   }
 
   &:active {
@@ -2171,42 +2160,42 @@ onMounted(() => {
   }
 
   &.tech-button-primary {
-    background: linear-gradient(135deg, #1E90FF 0%, #0066FF 100%);
-    border: 1px solid rgba(30, 144, 255, 0.4);
-    color: #ffffff;
-    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
+    background: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-hover) 100%);
+    border: 1px solid var(--theme-border-primary);
+    color: var(--theme-text-primary);
+    box-shadow: 0 4px 15px var(--theme-accent);
 
     &:hover {
-      background: linear-gradient(135deg, #00BFFF 0%, #1E90FF 100%);
-      border-color: rgba(0, 191, 255, 0.6);
-      box-shadow: 0 8px 25px rgba(30, 144, 255, 0.6);
+      background: linear-gradient(135deg, var(--theme-accent-hover) 0%, var(--theme-accent) 100%);
+      border-color: var(--theme-accent-hover);
+      box-shadow: 0 8px 25px var(--theme-accent);
     }
   }
 
   &.tech-button-secondary {
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(30, 144, 255, 0.4);
-    color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    background: var(--theme-bg-tertiary);
+    border: 1px solid var(--theme-border-primary);
+    color: var(--theme-text-secondary);
+    box-shadow: 0 4px 15px var(--theme-shadow);
 
     &:hover {
-      background: rgba(30, 144, 255, 0.2);
-      border-color: rgba(0, 191, 255, 0.6);
-      color: #ffffff;
-      box-shadow: 0 8px 25px rgba(30, 144, 255, 0.4);
+      background: var(--theme-border-secondary);
+      border-color: var(--theme-accent-hover);
+      color: var(--theme-text-primary);
+      box-shadow: 0 8px 25px var(--theme-accent);
     }
   }
 
   &.tech-button-danger {
-    background: linear-gradient(135deg, #ff4757 0%, #c44569 100%);
-    border: 1px solid rgba(255, 71, 87, 0.4);
-    color: #ffffff;
-    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+    background: linear-gradient(135deg, var(--theme-danger) 0%, var(--theme-danger) 100%);
+    border: 1px solid var(--theme-danger);
+    color: var(--theme-text-primary);
+    box-shadow: 0 4px 15px var(--theme-danger);
 
     &:hover {
-      background: linear-gradient(135deg, #ff6b7a 0%, #d63384 100%);
-      border-color: rgba(255, 71, 87, 0.6);
-      box-shadow: 0 8px 25px rgba(255, 71, 87, 0.6);
+      background: linear-gradient(135deg, var(--theme-danger) 0%, var(--theme-danger) 100%);
+      border-color: var(--theme-danger);
+      box-shadow: 0 8px 25px var(--theme-danger);
     }
   }
 }
