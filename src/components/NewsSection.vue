@@ -401,7 +401,7 @@ onMounted(() => {
 
     .news-image {
       width: 37.5rem;
-      height: 18.75rem;
+      // height: 18.75rem;
     }
 
     .news-item {
