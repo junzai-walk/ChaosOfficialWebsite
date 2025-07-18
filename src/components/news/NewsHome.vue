@@ -5,39 +5,52 @@
       <div class="body-left">
         <div class="title">凯奥思资讯</div>
         <div class="main-news">
-          <div class="main-news-left">
+          <div v-if="featuredNews" class="main-news-left">
             <div class="news-left-content">
               <div class="content-main-title">
-                全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能
+                {{ featuredNews.title }}
               </div>
               <div class="content-sub-title">
-                凯奥思PHM系统深度融合DeepSeek，全面实现国产化
+                {{ featuredNews.subTitle }}
               </div>
               <div class="time">
-                2025.02.25
+                {{ featuredNews.date }}
               </div>
             </div>
-            <div class="content-main-action" @click="handleNews('news1')">
+            <div class="content-main-action" @click="handleNews(featuredNews.id)">
               <div class="text">查看详情</div>
               <div class="icon">→</div>
             </div>
           </div>
-          <div class="main-news-right" :style="{ backgroundImage: `url(${image4})` }"></div>
-        </div>
-        <div class="news-list">
-          <div class="news-row" v-for="item in visibleNews" :key="item.id" @click="handleNews(item.id)">
-            <div class="main-image" :style="{ backgroundImage: `url(${item.imgUrl})` }"></div>
-            <div class="news-rows-content">
-              <div class="rows-title">
-                <div class="row-main-title">{{ item.mainTitle }}</div>
-                <div class="row-sub-title">{{ item.subTitle }}</div>
-              </div>
-              <div class="rows-time">
-                <div class="icon">↗</div>
-                <div class="date">{{ item.date }}</div>
-              </div>
+          <div v-else class="main-news-left loading">
+            <div class="news-left-content">
+              <div class="content-main-title">加载中...</div>
+              <div class="content-sub-title">正在获取最新新闻</div>
+              <div class="time">--</div>
             </div>
           </div>
+          <div class="main-news-right" :style="{ backgroundImage: `url(${featuredNews?.imgUrl || image4})` }"></div>
+        </div>
+        <div class="news-list">
+          <div v-if="loading" class="loading-container">
+            <div class="loading-spinner"></div>
+            <p>加载新闻列表中...</p>
+          </div>
+          <template v-else>
+            <div class="news-row" v-for="item in visibleNews" :key="item.id" @click="handleNews(item.id)">
+              <div class="main-image" :style="{ backgroundImage: `url(${item.imgUrl})` }"></div>
+              <div class="news-rows-content">
+                <div class="rows-title">
+                  <div class="row-main-title">{{ item.mainTitle }}</div>
+                  <div class="row-sub-title">{{ item.subTitle }}</div>
+                </div>
+                <div class="rows-time">
+                  <div class="icon">↗</div>
+                  <div class="date">{{ item.date }}</div>
+                </div>
+              </div>
+            </div>
+          </template>
         </div>
         <div class="button">
           <el-button @click="loadMore" v-if="hasMore">加载更多</el-button>
@@ -47,10 +60,16 @@
       <div class="body-right">
         <div class="title">热点推荐</div>
         <div class="hotpot-list">
-          <div class="hotpot-row" v-for="item in hotpotList" :key="item.id" @click="handleNews(item.id)">
-            <div class="hotpot-title">{{ item.mainTitle }}</div>
-            <div class="hotpot-time">{{item.date}}</div>
+          <div v-if="loading" class="loading-container">
+            <div class="loading-spinner"></div>
+            <p>加载热点推荐中...</p>
           </div>
+          <template v-else>
+            <div class="hotpot-row" v-for="item in hotpotList" :key="item.id" @click="handleNews(item.id)">
+              <div class="hotpot-title">{{ item.mainTitle }}</div>
+              <div class="hotpot-time">{{item.date}}</div>
+            </div>
+          </template>
         </div>
       </div>
     </div>
@@ -65,38 +84,58 @@
 <script setup lang="ts">
 import {ref,computed, onMounted, onBeforeUnmount, nextTick} from 'vue'
 import { useSectionStore } from '@/stores/sectionStore'
-import Footer from '@/components/common/Footer.vue'    
-
-// Import news cover images
-import cover1 from '@/assets/news/cover1.jpg'
-import cover2 from '@/assets/news/cover2.jpeg'
-import image1 from '@/assets/news/image1.png'
+import Footer from '@/components/common/Footer.vue'
+import newsService from '@/data/newsService.js'
 import image4 from '@/assets/news/image4.png'
-import image11 from '@/assets/news/image11.png'
-import image14 from '@/assets/news/image14.jpg'
-import image22 from '@/assets/news/image22.jpg'
-// import headerBg from '@/assets/news/Group 129.png'
 
 const sectionStore = useSectionStore()
 const emit = defineEmits(['handleNews'])
-const newsList = ref([
-  // { id: 'news1', imgUrl: './src/assets/news/01 封面图.jpeg', mainTitle: '全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能', subTitle: '凯奥思PHM系统深度融合DeepSeek，全面实现国产化', date: '2025.02.25' },
-  { id: 'news2', imgUrl: cover1, mainTitle: 'AA级！ 凯奥思数据获智能制造系统解决方案供应商分类分级评定', subTitle: '南京凯奥思数据技术有限公司获评集成实施类认定（AA级）以及运行维护类认定（A级）', date: '2025.01.08' },
-  { id: 'news3', imgUrl: cover1, mainTitle: '喜报！凯奥思数据荣登南京企业技术中心培育库', subTitle: '南京凯奥思数据技术有限公司正式入选南京市工业和信息化局公布的《南京企业技术中心培育库（2024年度）》名单', date: '2025.01.02' },
-  { id: 'news4', imgUrl: image1, mainTitle: '实力见证！凯奥思数据"设备预  测性维护与健康管理系统2.0"又获两项重量级认证', subTitle: '"设备预测性维护与健康管理系统2.0"获全国首批应用软件国产化等级认证及2024苏商数实融合先锋企业案例认证', date: '2024.12.23' },
-  { id: 'news5', imgUrl: image11, mainTitle: '凯奥思数据荣膺"首批数据要素价值创新示范基地" ，加速释放数据资产价值', subTitle: '南京凯奥思数据技术有限公司荣获"首批数据要素价值创新示范基地"称号', date: '2024.12.05' },
-  { id: 'news6', imgUrl: image14, mainTitle: '凯奥思数据精彩亮相2024中国（西安）国际采矿展 助力煤矿智能化发展', subTitle: '凯奥思数据携煤矿智能化产品及解决方案亮相2024中国（西安）国际采矿展', date: '2024.10.30' },
-  { id: 'news7', imgUrl: cover2, mainTitle: '激发数据资产潜力，"数据资产驱动未来 创新实践交流论坛"圆满举办', subTitle: '凯奥思数据承办"数据资产驱动未来 创新实践交流论坛",促进释放数据要素价值和市场潜力。', date: '2024.09.02' },
-  { id: 'news8', imgUrl: image22, mainTitle: '授信768万！南京市民营科技企业首笔数据资产融资突破', subTitle: '凯奥思数据通过数据资产成功获得768万元的融资授信', date: '2024.08.14' },
-  { id: 'news9', imgUrl: image1, mainTitle: '夯实数据要素：凯奥思数据引领南京市民营科技企业数据资产入表先河', subTitle: '凯奥思数据成为首家南京市民营科技企业数据资产入表的企业', date: '2024.07.01' },
-])
-const hotpotList =[
-  { id: 'news1', mainTitle: '全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能', date: '2025.02.25' },
-  { id: 'news4', mainTitle: '实力见证！凯奥思数据"设备预测性维护与健康管理系统2.0"又获两项重量级认证', date: '2024.12.23' },
-  { id: 'news8', mainTitle: '授信768万！南京市民营科技企业首笔数据资产融资突破', date: '2024.08.14' },
-  { id: 'news9', mainTitle: '夯实数据要素：凯奥思数据引领南京市民营科技企业数据资产入表先河', date: '2024.07.01' },
 
-]
+// 响应式数据
+const newsList = ref([])
+const hotpotList = ref([])
+const featuredNews = ref(null)
+const loading = ref(true)
+
+// 加载新闻数据
+const loadNewsData = async () => {
+  try {
+    loading.value = true
+
+    // 获取所有新闻数据（已排序）
+    const allNews = await newsService.getAllNews()
+
+    if (allNews && allNews.length > 0) {
+      // 设置主要新闻（第一条）
+      featuredNews.value = allNews[0]
+
+      // 设置新闻列表（除第一条外的其他新闻），转换数据格式以适配现有模板
+      newsList.value = allNews.slice(1).map(news => ({
+        id: news.id,
+        imgUrl: news.imgUrl,
+        mainTitle: news.title,
+        subTitle: news.subTitle,
+        date: news.date
+      }))
+    }
+
+    // 获取热点新闻
+    const hotNews = await newsService.getHotNews()
+    if (hotNews && hotNews.length > 0) {
+      hotpotList.value = hotNews.map(news => ({
+        id: news.id,
+        mainTitle: news.title,
+        date: news.date
+      }))
+    }
+
+  } catch (error) {
+    console.error('加载新闻数据失败:', error)
+    // 可以设置默认数据或显示错误信息
+  } finally {
+    loading.value = false
+  }
+}
 // 显示控制
 const showCount = ref(8) // 限制显示8条新闻
 const pageSize = ref(5)
@@ -114,7 +153,8 @@ const hasMore = computed(() => {
 const loadMore = () => {
   showCount.value = Math.min(showCount.value + pageSize.value, newsList.value.length)
 }
-const handleNews = (id:any)=>{
+
+const handleNews = (id: any) => {
   console.log('点击新闻项，触发handleNews事件，ID:', id);
   // 解除锁定，确保父组件可以切换section
   sectionStore.lockSection(false);
@@ -134,6 +174,9 @@ onMounted(() => {
 
   // 在新闻首页不锁定section，以便可以切换到新闻详情页
   // 仅在新闻详情页才锁定section
+
+  // 加载新闻数据
+  loadNewsData()
 })
 
 // 组件卸载时移除标记和锁定
@@ -344,6 +387,66 @@ onBeforeUnmount(() => {
         }
       }
     }
+  }
+}
+
+/* 加载状态样式 */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: #666;
+
+  p {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+.loading-spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #278AFA;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading {
+  opacity: 0.6;
+
+  .content-main-title {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+    height: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .content-sub-title {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+    height: 1rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }
 </style>

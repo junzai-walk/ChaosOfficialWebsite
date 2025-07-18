@@ -5,13 +5,25 @@
     <!-- 主要内容区 -->
     <div class="content-container">
       <!-- 左侧新闻卡片 -->
-      <div class="news-card" @click="handleNewsItemClick({id: 'news1', title: '全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能'})">
-        <img src="@/assets/news/image4.png" alt="新闻图片" class="news-image">
+      <div v-if="featuredNews" class="news-card" @click="handleNewsItemClick(featuredNews)">
+        <img :src="featuredNews.imgUrl" :alt="featuredNews.title" class="news-image">
         <div class="news-content">
-          <h3>全面国产化：凯奥思PHM系统深度融合DeepSeek，让设备运维更智能</h3>
+          <h3>{{ featuredNews.title }}</h3>
           <div class="news-content-p">
-            <span>凯奥思PHM系统深度融合DeepSeek，全面实现国产化</span>
-            <span>2025.02.25</span>
+            <span>{{ featuredNews.subTitle }}</span>
+            <span>{{ featuredNews.date }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 加载状态或默认内容 -->
+      <div v-else class="news-card loading-placeholder">
+        <div class="news-image-placeholder"></div>
+        <div class="news-content">
+          <h3>加载中...</h3>
+          <div class="news-content-p">
+            <span>正在获取最新新闻</span>
+            <span>--</span>
           </div>
         </div>
       </div>
@@ -58,11 +70,10 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import cover1 from '@/assets/home/cover1.jpg'
-import cover2 from '@/assets/home/cover2.jpeg'
 import { useRouter } from 'vue-router'
 import ConsultDialog from '@/components/common/ConsultDialog.vue'
 import Footer from '@/components/common/Footer.vue'
+import newsService from '@/data/newsService.js'
 
 const router = useRouter()
 
@@ -73,29 +84,34 @@ interface ConsultFormData {
   phone: string;
 }
 
-const newsItems = ref([
-  {
-    id: 'news2',
-    title: 'AA级！ 凯奥思数据获智能制造系统解决方案供应商分类分级评定',
-    description: '近日，工信部直属中国电子技术标准化研究院与智能制造系统解决方案供应商联盟，联合公布了智能制造系统解决方案供应商分类分级评定（第三批）结果。南京凯奥思数据技术有限公司获评集成实施类认定（AA级）以及运行维护类认定（A级）。',
-    date: '2025.02.25',
-    image: cover1
-  },
-  {
-    id: 'news3',
-    title: '喜报！凯奥思数据荣登南京企业技术中心培育库',
-    description: '近日，南京凯奥思数据技术有限公司正式入选南京市工业和信息化局公布的《南京企业技术中心培育库（2024年度）》名单，标志着我司在技术创新和研发能力方面获得了政府部门的高度认可，为公司的未来发展注入了新的动力。',
-    date: '2025.01.02',
-    image: cover1
-  },
-  {
-    id: 'news4',
-    title: '实力见证！凯奥思数据"设备预测性维护与健康管理系统2.0"又获两项重量级认证',
-    description: '12月20日，第六届江苏软件产业发展大会近日在南京隆重召开。大会以"创新驱动，智创未来"为主题，聚焦软件产业的创新发展和应用实践，吸引了众多行业专家、企业代表及政府领导参会。会议期间，与会者围绕软件产业的创新发展、国产化替代等议题进行了深入交流和探讨。',
-    date: '2024.12.23',
-    image: cover2
+// 新闻数据响应式引用
+const newsItems = ref([])
+const featuredNews = ref(null)
+
+// 加载新闻数据
+const loadNewsData = async () => {
+  try {
+    // 获取最新的4条新闻用于展示
+    const latestNews = await newsService.getLatestNews(4)
+
+    if (latestNews && latestNews.length > 0) {
+      // 第一条作为主要新闻卡片
+      featuredNews.value = latestNews[0]
+
+      // 其余作为右侧新闻列表，转换数据格式以适配现有模板
+      newsItems.value = latestNews.slice(1).map(news => ({
+        id: news.id,
+        title: news.title,
+        description: news.description,
+        date: news.date,
+        image: news.imgUrl
+      }))
+    }
+  } catch (error) {
+    console.error('加载新闻数据失败:', error)
+    // 如果加载失败，可以设置默认数据或显示错误信息
   }
-])
+}
 
 const consultDialogVisible = ref(false)
 
@@ -118,6 +134,11 @@ const handleNewsItemClick = (item: any) => {
     }
   })
 }
+
+// 组件挂载时加载数据
+onMounted(() => {
+  loadNewsData()
+})
 </script>
 
 <style lang="less" scoped>
@@ -170,6 +191,29 @@ const handleNewsItemClick = (item: any) => {
   border-radius: 0.25rem; // 4px -> 0.25rem
   transition: transform 0.3s ease;
   cursor: pointer;
+}
+
+/* 加载状态样式 */
+.loading-placeholder {
+  opacity: 0.7;
+
+  .news-image-placeholder {
+    width: 38.5rem;
+    height: 17.875rem;
+    background-color: #f0f0f0;
+    background-image: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .news-image {
