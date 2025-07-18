@@ -87,14 +87,15 @@ import { useSectionStore } from '@/stores/sectionStore'
 import Footer from '@/components/common/Footer.vue'
 import newsService from '@/data/newsService.js'
 import image4 from '@/assets/news/image4.png'
+import type { NewsItem, NewsListItem, HotNewsItem } from '@/types/news'
 
 const sectionStore = useSectionStore()
 const emit = defineEmits(['handleNews'])
 
 // 响应式数据
-const newsList = ref([])
-const hotpotList = ref([])
-const featuredNews = ref(null)
+const newsList = ref<NewsListItem[]>([])
+const hotpotList = ref<HotNewsItem[]>([])
+const featuredNews = ref<NewsItem | null>(null)
 const loading = ref(true)
 
 // 加载新闻数据
@@ -110,7 +111,7 @@ const loadNewsData = async () => {
       featuredNews.value = allNews[0]
 
       // 设置新闻列表（除第一条外的其他新闻），转换数据格式以适配现有模板
-      newsList.value = allNews.slice(1).map(news => ({
+      newsList.value = allNews.slice(1).map((news: NewsItem): NewsListItem => ({
         id: news.id,
         imgUrl: news.imgUrl,
         mainTitle: news.title,
@@ -122,7 +123,7 @@ const loadNewsData = async () => {
     // 获取热点新闻
     const hotNews = await newsService.getHotNews()
     if (hotNews && hotNews.length > 0) {
-      hotpotList.value = hotNews.map(news => ({
+      hotpotList.value = hotNews.map((news: NewsItem): HotNewsItem => ({
         id: news.id,
         mainTitle: news.title,
         date: news.date

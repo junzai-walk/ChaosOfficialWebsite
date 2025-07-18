@@ -40,8 +40,8 @@
           <div class="news-item-content">
             <h4>{{ item.title }}</h4>
             <p class="item-date">{{ item.date }}</p>
-            <p v-for="(line, i) in item.description.split('...')" :key="i" class="news-item-content-p">
-              {{ line }}{{ i < item.description.split('...').length - 1 ? '...' : '' }} </p>
+            <p v-for="(line, i) in (item.description || '').split('...')" :key="i" class="news-item-content-p">
+              {{ line }}{{ i < (item.description || '').split('...').length - 1 ? '...' : '' }} </p>
           </div>
         </div>
       </div>
@@ -74,6 +74,7 @@ import { useRouter } from 'vue-router'
 import ConsultDialog from '@/components/common/ConsultDialog.vue'
 import Footer from '@/components/common/Footer.vue'
 import newsService from '@/data/newsService.js'
+import type { NewsItem, NewsListItem } from '@/types/news'
 
 const router = useRouter()
 
@@ -85,8 +86,8 @@ interface ConsultFormData {
 }
 
 // 新闻数据响应式引用
-const newsItems = ref([])
-const featuredNews = ref(null)
+const newsItems = ref<NewsListItem[]>([])
+const featuredNews = ref<NewsItem | null>(null)
 
 // 加载新闻数据
 const loadNewsData = async () => {
@@ -99,12 +100,14 @@ const loadNewsData = async () => {
       featuredNews.value = latestNews[0]
 
       // 其余作为右侧新闻列表，转换数据格式以适配现有模板
-      newsItems.value = latestNews.slice(1).map(news => ({
+      newsItems.value = latestNews.slice(1).map((news: NewsItem): NewsListItem => ({
         id: news.id,
         title: news.title,
+        subTitle: news.subTitle,
         description: news.description,
         date: news.date,
-        image: news.imgUrl
+        image: news.imgUrl,
+        imgUrl: news.imgUrl
       }))
     }
   } catch (error) {

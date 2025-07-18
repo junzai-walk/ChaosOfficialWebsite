@@ -15,7 +15,7 @@
           <div class="news-header">
             <h1 class="title">{{ newsDetail.title }}</h1>
             <div class="meta-info">
-              <span class="date">发布时间：{{ newsDetail.time }}</span>
+              <span class="date">发布时间：{{ newsDetail.date }}</span>
               <span class="source">来源：凯奥思数据</span>
             </div>
           </div>
@@ -37,12 +37,13 @@ import {ref, watch, onMounted, onBeforeUnmount, nextTick} from 'vue'
 import { useRouter } from 'vue-router'
 import { useSectionStore } from '@/stores/sectionStore'
 import newsService from '@/data/newsService.js'
+import type { NewsItem } from '@/types/news'
 
 const router = useRouter()
 const sectionStore = useSectionStore()
 
 // 响应式数据
-const newsDetail = ref<any>(null)
+const newsDetail = ref<NewsItem | null>(null)
 const loading = ref(true)
 
 // 组件属性定义
@@ -62,11 +63,7 @@ const loadNewsDetail = async (newsId: string) => {
     const detail = await newsService.getNewsDetail(newsId)
 
     if (detail) {
-      newsDetail.value = {
-        title: detail.title,
-        time: detail.date,
-        content: detail.content
-      }
+      newsDetail.value = detail
     } else {
       console.error('未找到对应的新闻ID:', newsId)
     }
