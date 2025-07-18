@@ -138,7 +138,7 @@ const loadNewsData = async () => {
   }
 }
 // 显示控制
-const showCount = ref(8) // 限制显示8条新闻
+const showCount = ref(15) // 限制显示15条新闻
 const pageSize = ref(5)
 
 // 计算属性
