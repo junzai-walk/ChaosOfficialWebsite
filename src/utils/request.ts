@@ -4,8 +4,8 @@ import { ElMessage } from 'element-plus';
 // 创建 axios 实例
 const service = axios.create({
   // 在开发环境中使用代理，生产环境使用实际域名
-  // baseURL: import.meta.env.MODE === 'development' ? '' : 'https://www.njchaos.com',
-  baseURL: import.meta.env.MODE === 'development' ? '' : 'http://175.178.87.16:30002',  
+  baseURL: import.meta.env.MODE === 'development' ? '' : 'https://www.njchaos.com',
+  // baseURL: import.meta.env.MODE === 'development' ? '' : 'http://175.178.87.16:30002',  
   timeout: 15000, // 请求超时时间
   headers: {
     'Content-Type': 'application/json;charset=utf-8',
