@@ -61,7 +61,7 @@
               <el-menu-item index="/products?section=36" class="product-menu-item">
                 边缘智能采集器
               </el-menu-item>
-              <el-menu-item index="/products?section=39" class="product-menu-item">
+              <el-menu-item index="/products?section=38" class="product-menu-item">
                 无线智能网关
               </el-menu-item>
             </el-menu-item-group>

@@ -433,12 +433,14 @@
         'slide-prev': sectionStore.currentSection > 37,
         'slide-next': sectionStore.currentSection < 37
       }">
-      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1" :section-numbers="[37, 38]"
+      <ProductHardwareSensorLight :nav-steps="['产品亮点']" :default-active-step="1" :section-numbers="[37]"
         :title="edgeSmartCollectorTitle" :content="edgeSmartCollectorContentLight" :main-image="hardwareEdge2"
         :secondary-image="hardwareImage2" />
     </div>
 
     <!-- 第三十八部分：边缘智能采集器 - 规格参数 -->
+    <!-- 已隐藏：边缘智能采集器模块的规格参数部分 -->
+    <!--
     <div class="section"
       :class="{
         active: sectionStore.currentSection === 38,
@@ -449,8 +451,21 @@
       <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2" :section-numbers="[37, 38]"
         :title="edgeSmartCollectorTitle" :main-image="hardwareTable3" :secondary-image="hardwareImage2" />
     </div>
+    -->
 
-    <!-- 第三十九部分：无线智能网关 -->
+    <!-- 第三十八部分：无线智能网关 -->
+    <div class="section"
+      :class="{
+        active: sectionStore.currentSection === 38,
+        inactive: sectionStore.currentSection !== 38,
+        'slide-prev': sectionStore.currentSection > 38,
+        'slide-next': sectionStore.currentSection < 38
+      }">
+      <ProductHardwareSensor :title="wirelessSmartGatewayTitle" :content="wirelessSmartGatewayContent"
+        :background-image="hardwareBackground1" :main-image="hardwareGateway" :secondary-image="hardwareImage2" />
+    </div>
+
+    <!-- 第三十九部分：无线智能网关 - 产品亮点-->
     <div class="section"
       :class="{
         active: sectionStore.currentSection === 39,
@@ -458,11 +473,12 @@
         'slide-prev': sectionStore.currentSection > 39,
         'slide-next': sectionStore.currentSection < 39
       }">
-      <ProductHardwareSensor :title="wirelessSmartGatewayTitle" :content="wirelessSmartGatewayContent"
-        :background-image="hardwareBackground1" :main-image="hardwareGateway" :secondary-image="hardwareImage2" />
+      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1" :section-numbers="[38, 39, 40]"
+        :title="wirelessSmartGatewayTitle" :content="wirelessSmartGatewayContentLight" :main-image="hardwareGateway"
+        :secondary-image="hardwareImage2" />
     </div>
 
-    <!-- 第四十部分：无线智能网关 - 产品亮点-->
+    <!-- 第四十部分：无线智能网关 - 规格参数-->
     <div class="section"
       :class="{
         active: sectionStore.currentSection === 40,
@@ -470,20 +486,7 @@
         'slide-prev': sectionStore.currentSection > 40,
         'slide-next': sectionStore.currentSection < 40
       }">
-      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1" :section-numbers="[40, 41]"
-        :title="wirelessSmartGatewayTitle" :content="wirelessSmartGatewayContentLight" :main-image="hardwareGateway"
-        :secondary-image="hardwareImage2" />
-    </div>
-
-    <!-- 第四十一部分：无线智能网关 - 规格参数-->
-    <div class="section"
-      :class="{
-        active: sectionStore.currentSection === 41,
-        inactive: sectionStore.currentSection !== 41,
-        'slide-prev': sectionStore.currentSection > 41,
-        'slide-next': sectionStore.currentSection < 41
-      }">
-      <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2" :section-numbers="[40, 41]"
+      <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2" :section-numbers="[38, 39, 40]"
         :title="wirelessSmartGatewayTitle" :main-image="hardwareTable4" :secondary-image="hardwareImage2" />
     </div>
 
@@ -635,7 +638,7 @@ import hardwareTable2 from '@/assets/products/hardware-table-2.png'
 import hardwareWireless from '@/assets/products/hardware-wireless-1.png'
 import hardwareEdge from '@/assets/products/hardware-edge-1.png'
 import hardwareEdge2 from '@/assets/products/hardware-edge-2.png'
-import hardwareTable3 from '@/assets/products/hardware-table-3.png'
+
 import hardwareGateway from '@/assets/products/hardware-gateway-1.png'
 import hardwareTable4 from '@/assets/products/hardware-table-4.png'
 
@@ -1232,20 +1235,35 @@ const wirelessSmartGatewayContentLight = [
   }
 ]
 
+// 自定义滚动处理函数，跳过隐藏的原section 38（边缘智能采集器规格参数）
+// 现在section编号已重新调整：37->38(无线智能网关)->39(产品亮点)->40(规格参数)
+const getNextSection = (currentSection: number, direction: 'up' | 'down'): number => {
+  // 正常的section跳转，因为已经重新编号，不需要特殊处理
+  if (direction === 'down') {
+    return Math.min(currentSection + 1, 40); // 最大到40
+  } else {
+    return Math.max(currentSection - 1, 0); // 最小到0
+  }
+};
+
 // 使用优化的滚轮事件处理器
 const handleWheel = createWheelHandler(
   // 向上滚动回调
   () => {
     if (sectionStore.currentSection > 0) {
       scrollDirection.value = 'up';
-      sectionStore.prevSection();
+      const nextSection = getNextSection(sectionStore.currentSection, 'up');
+      sectionStore.setCurrentSection(nextSection);
     }
   },
   // 向下滚动回调
   () => {
-    if (sectionStore.currentSection < 41) {
+    if (sectionStore.currentSection < 40) {
       scrollDirection.value = 'down';
-      sectionStore.nextSection(41);
+      const nextSection = getNextSection(sectionStore.currentSection, 'down');
+      if (nextSection <= 40) {
+        sectionStore.setCurrentSection(nextSection);
+      }
     }
   },
   // 配置选项
@@ -1265,14 +1283,18 @@ const handleKeyDown = (e: KeyboardEvent) => {
   }
 
   if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-    if (sectionStore.currentSection < 41) {
+    if (sectionStore.currentSection < 40) {
       scrollDirection.value = 'down';
-      sectionStore.nextSection(41);
+      const nextSection = getNextSection(sectionStore.currentSection, 'down');
+      if (nextSection <= 40) {
+        sectionStore.setCurrentSection(nextSection);
+      }
     }
   } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
     if (sectionStore.currentSection > 0) {
       scrollDirection.value = 'up';
-      sectionStore.prevSection();
+      const nextSection = getNextSection(sectionStore.currentSection, 'up');
+      sectionStore.setCurrentSection(nextSection);
     }
   }
 };

@@ -139,19 +139,19 @@ const pageNavConfigs: Record<string, NavConfig[]> = {
       startSection: 34,
       endSection: 35
     },
-    //边缘智能采集器
+    //边缘智能采集器（已隐藏规格参数）
     {
-      steps: ['产品亮点', '规格参数'],
-      sectionNumbers: [37, 38],
+      steps: ['产品亮点'],
+      sectionNumbers: [37],
       startSection: 37,
-      endSection: 38
+      endSection: 37
     },
     //无线智能网关
     {
       steps: ['产品亮点', '规格参数'],
-      sectionNumbers: [40, 41],
-      startSection: 40,
-      endSection: 41
+      sectionNumbers: [38, 39, 40],
+      startSection: 38,
+      endSection: 40
     }
 
     // 硬件传感器 sections 17-20
