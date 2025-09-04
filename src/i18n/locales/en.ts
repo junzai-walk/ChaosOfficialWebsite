@@ -9,7 +9,7 @@ export default {
     news: 'News'
   },
   common: {
-    phone: ' 025-83132381',
+    phone: ' 18913908978',
     search: 'Search',
     language: 'English'
   }

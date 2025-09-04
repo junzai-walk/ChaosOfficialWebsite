@@ -30,7 +30,7 @@
             </el-form>
           </div>
         </div>
-        <span style="font-size: 1rem;">联系电话：025-83132381</span>
+        <span style="font-size: 1rem;">联系电话：18913908978</span>
       </div>
     </div>
     <!-- 添加底部填充区域 -->

@@ -21,7 +21,7 @@
               </el-icon>
               <span>客服专线:</span>
             </div>
-            <div class="contact-value">025-83132381</div>
+            <div class="contact-value">18913908978</div>
           </div>
           <div class="contact-info-item">
             <div class="contact-label">
