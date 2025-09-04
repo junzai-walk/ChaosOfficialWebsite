@@ -645,7 +645,7 @@ import hardwareImage2 from '@/assets/products/hardware-2.png'
 
 import hardwareWireless from '@/assets/products/hardware-wireless-1.png'
 import hardwareEdge from '@/assets/products/hardware-edge-1.png'
-import hardwareEdge2 from '@/assets/products/hardware-edge-2.png'
+import hardwareEdge2 from '@/assets/products/hardware-edge-2.png' //四图整合变五图
 
 import hardwareGateway from '@/assets/products/hardware-gateway-1.png'
 
