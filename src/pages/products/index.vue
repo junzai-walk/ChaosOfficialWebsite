@@ -360,11 +360,13 @@
         'slide-prev': sectionStore.currentSection > 31,
         'slide-next': sectionStore.currentSection < 31
       }">
-      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1" :title="wireSensorTitle" :section-numbers="[31, 32]"
+      <ProductHardwareSensorLight :nav-steps="['产品亮点']" :default-active-step="1" :title="wireSensorTitle" :section-numbers="[31]"
         :content="wireSensorContentLight" :main-image="hardwareScrew" :secondary-image="hardwareImage2" />
     </div>
 
     <!-- 第三十二部分：有线传感器 - 规格参数表格 -->
+    <!-- 已隐藏：有线传感器模块的规格参数部分 -->
+    <!--
     <div class="section"
       :class="{
         active: sectionStore.currentSection === 32,
@@ -375,6 +377,7 @@
       <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2" :title="wireSensorTitle" :section-numbers="[31, 32]"
         :main-image="hardwareTable" :secondary-image="hardwareImage2" />
     </div>
+    -->
 
 
     <!-- 第三十三部分：有线传感器 - 无线智能传感器 -->
@@ -397,11 +400,13 @@
         'slide-prev': sectionStore.currentSection > 34,
         'slide-next': sectionStore.currentSection < 34
       }">
-      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1" :section-numbers="[34, 35]" :title="wirelessSensorTitle"
+      <ProductHardwareSensorLight :nav-steps="['产品亮点']" :default-active-step="1" :section-numbers="[34]" :title="wirelessSensorTitle"
         :content="wirelessSensorContentLight" :main-image="hardwareWireless" :secondary-image="hardwareImage2" />
     </div>
 
-    <!-- 第三十五部分：有线传感器 - 规格参数表格 -->
+    <!-- 第三十五部分：无线智能传感器 - 规格参数表格 -->
+    <!-- 已隐藏：无线智能传感器模块的规格参数部分 -->
+    <!--
     <div class="section"
       :class="{
         active: sectionStore.currentSection === 35,
@@ -412,8 +417,21 @@
       <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2" :section-numbers="[34, 35]" :title="wireSensorModelTitle"
         :main-image="hardwareTable2" :secondary-image="hardwareImage2" />
     </div>
+    -->
 
-    <!-- 第三十六部分：边缘智能采集器-->
+    <!-- 第三十五部分：边缘智能采集器-->
+    <div class="section"
+      :class="{
+        active: sectionStore.currentSection === 35,
+        inactive: sectionStore.currentSection !== 35,
+        'slide-prev': sectionStore.currentSection > 35,
+        'slide-next': sectionStore.currentSection < 35
+      }">
+      <ProductHardwareSensor :title="edgeSmartCollectorTitle" :content="wirelessSensorContent"
+        :background-image="hardwareBackground1" :main-image="hardwareEdge" :secondary-image="hardwareImage2" />
+    </div>
+
+    <!-- 第三十六部分：边缘智能采集器 - 产品亮点 -->
     <div class="section"
       :class="{
         active: sectionStore.currentSection === 36,
@@ -421,19 +439,7 @@
         'slide-prev': sectionStore.currentSection > 36,
         'slide-next': sectionStore.currentSection < 36
       }">
-      <ProductHardwareSensor :title="edgeSmartCollectorTitle" :content="wirelessSensorContent"
-        :background-image="hardwareBackground1" :main-image="hardwareEdge" :secondary-image="hardwareImage2" />
-    </div>
-
-    <!-- 第三十七部分：边缘智能采集器 - 产品亮点 -->
-    <div class="section"
-      :class="{
-        active: sectionStore.currentSection === 37,
-        inactive: sectionStore.currentSection !== 37,
-        'slide-prev': sectionStore.currentSection > 37,
-        'slide-next': sectionStore.currentSection < 37
-      }">
-      <ProductHardwareSensorLight :nav-steps="['产品亮点']" :default-active-step="1" :section-numbers="[37]"
+      <ProductHardwareSensorLight :nav-steps="['产品亮点']" :default-active-step="1" :section-numbers="[35, 36]"
         :title="edgeSmartCollectorTitle" :content="edgeSmartCollectorContentLight" :main-image="hardwareEdge2"
         :secondary-image="hardwareImage2" />
     </div>
@@ -453,7 +459,19 @@
     </div>
     -->
 
-    <!-- 第三十八部分：无线智能网关 -->
+    <!-- 第三十七部分：无线智能网关 -->
+    <div class="section"
+      :class="{
+        active: sectionStore.currentSection === 37,
+        inactive: sectionStore.currentSection !== 37,
+        'slide-prev': sectionStore.currentSection > 37,
+        'slide-next': sectionStore.currentSection < 37
+      }">
+      <ProductHardwareSensor :title="wirelessSmartGatewayTitle" :content="wirelessSmartGatewayContent"
+        :background-image="hardwareBackground1" :main-image="hardwareGateway" :secondary-image="hardwareImage2" />
+    </div>
+
+    <!-- 第三十八部分：无线智能网关 - 产品亮点-->
     <div class="section"
       :class="{
         active: sectionStore.currentSection === 38,
@@ -461,24 +479,14 @@
         'slide-prev': sectionStore.currentSection > 38,
         'slide-next': sectionStore.currentSection < 38
       }">
-      <ProductHardwareSensor :title="wirelessSmartGatewayTitle" :content="wirelessSmartGatewayContent"
-        :background-image="hardwareBackground1" :main-image="hardwareGateway" :secondary-image="hardwareImage2" />
-    </div>
-
-    <!-- 第三十九部分：无线智能网关 - 产品亮点-->
-    <div class="section"
-      :class="{
-        active: sectionStore.currentSection === 39,
-        inactive: sectionStore.currentSection !== 39,
-        'slide-prev': sectionStore.currentSection > 39,
-        'slide-next': sectionStore.currentSection < 39
-      }">
-      <ProductHardwareSensorLight :nav-steps="productStepsLight" :default-active-step="1" :section-numbers="[38, 39, 40]"
+      <ProductHardwareSensorLight :nav-steps="['产品亮点']" :default-active-step="1" :section-numbers="[37, 38]"
         :title="wirelessSmartGatewayTitle" :content="wirelessSmartGatewayContentLight" :main-image="hardwareGateway"
         :secondary-image="hardwareImage2" />
     </div>
 
     <!-- 第四十部分：无线智能网关 - 规格参数-->
+    <!-- 已隐藏：无线智能网关模块的规格参数部分 -->
+    <!--
     <div class="section"
       :class="{
         active: sectionStore.currentSection === 40,
@@ -489,6 +497,7 @@
       <ProductHardwareSensorModel :nav-steps="productStepsLight" :default-active-step="2" :section-numbers="[38, 39, 40]"
         :title="wirelessSmartGatewayTitle" :main-image="hardwareTable4" :secondary-image="hardwareImage2" />
     </div>
+    -->
 
   </div>
 </template>
@@ -633,14 +642,13 @@ import apsFeature6 from '@/assets/products/aps-feature-6.png'
 import hardwareBackground1 from '@/assets/products/hardware-1.png'
 import hardwareScrew from '@/assets/products/hardware-screw.png'
 import hardwareImage2 from '@/assets/products/hardware-2.png'
-import hardwareTable from '@/assets/products/hardware-table-1.png'
-import hardwareTable2 from '@/assets/products/hardware-table-2.png'
+
 import hardwareWireless from '@/assets/products/hardware-wireless-1.png'
 import hardwareEdge from '@/assets/products/hardware-edge-1.png'
 import hardwareEdge2 from '@/assets/products/hardware-edge-2.png'
 
 import hardwareGateway from '@/assets/products/hardware-gateway-1.png'
-import hardwareTable4 from '@/assets/products/hardware-table-4.png'
+
 
 const route = useRoute()
 const router = useRouter()
@@ -656,8 +664,8 @@ const productSteps = ['产品概述', '核心功能', '特色优势', '典型案
 const productStepsEffect = ['产品概述', '核心功能', '特色优势', '应用成效']
 //产品步骤 - 简略
 const productStepsAnother = ['产品概述', '核心功能', '特色优势']
-//产品步骤 - 有线传感器
-const productStepsLight = ['产品亮点', '规格参数']
+//产品步骤 - 有线传感器（已移除规格参数）
+// const productStepsLight = ['产品亮点', '规格参数']
 
 // 产品描述
 const productDescription = '设备预测性维护与健康管理系统，深挖工业设备运维中的痛点，基于物联网、大数据、人工智能等相关技术，以特征提取+数据建模+机理建模为技术核心，实现从设备数据采集到设备智能预警和故障诊断的完善运维体系，快速地帮助企业提升设备智能化运维能力，提高设备故障诊断与检修效率。'
@@ -1094,8 +1102,8 @@ const iopResults = [
 const wireSensorTitle = '有线传感器'
 //无线智能传感器
 const wirelessSensorTitle = '无线智能传感器'
-// 有线传感器规格参数表格标题
-const wireSensorModelTitle = '无线振温传感器DN102'
+// 有线传感器规格参数表格标题（已移除）
+// const wireSensorModelTitle = '无线振温传感器DN102'
 // 边缘智能采集器
 const edgeSmartCollectorTitle = '边缘智能采集器'
 // 无线智能网关
@@ -1235,14 +1243,25 @@ const wirelessSmartGatewayContentLight = [
   }
 ]
 
-// 自定义滚动处理函数，跳过隐藏的原section 38（边缘智能采集器规格参数）
-// 现在section编号已重新调整：37->38(无线智能网关)->39(产品亮点)->40(规格参数)
+// 自定义滚动处理函数，跳过隐藏的规格参数sections（32, 35, 原38）
+// 现在section编号已重新调整，最大section为38
 const getNextSection = (currentSection: number, direction: 'up' | 'down'): number => {
-  // 正常的section跳转，因为已经重新编号，不需要特殊处理
+  const hiddenSections = [32, 35]; // 被隐藏的规格参数sections
+
   if (direction === 'down') {
-    return Math.min(currentSection + 1, 40); // 最大到40
+    let nextSection = currentSection + 1;
+    // 跳过隐藏的sections
+    while (hiddenSections.includes(nextSection) && nextSection <= 38) {
+      nextSection++;
+    }
+    return Math.min(nextSection, 38); // 最大到38
   } else {
-    return Math.max(currentSection - 1, 0); // 最小到0
+    let prevSection = currentSection - 1;
+    // 跳过隐藏的sections
+    while (hiddenSections.includes(prevSection) && prevSection >= 0) {
+      prevSection--;
+    }
+    return Math.max(prevSection, 0); // 最小到0
   }
 };
 
@@ -1258,10 +1277,10 @@ const handleWheel = createWheelHandler(
   },
   // 向下滚动回调
   () => {
-    if (sectionStore.currentSection < 40) {
+    if (sectionStore.currentSection < 38) {
       scrollDirection.value = 'down';
       const nextSection = getNextSection(sectionStore.currentSection, 'down');
-      if (nextSection <= 40) {
+      if (nextSection <= 38) {
         sectionStore.setCurrentSection(nextSection);
       }
     }
@@ -1283,10 +1302,10 @@ const handleKeyDown = (e: KeyboardEvent) => {
   }
 
   if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-    if (sectionStore.currentSection < 40) {
+    if (sectionStore.currentSection < 38) {
       scrollDirection.value = 'down';
       const nextSection = getNextSection(sectionStore.currentSection, 'down');
-      if (nextSection <= 40) {
+      if (nextSection <= 38) {
         sectionStore.setCurrentSection(nextSection);
       }
     }

@@ -125,33 +125,33 @@ const pageNavConfigs: Record<string, NavConfig[]> = {
       startSection: 27,
       endSection: 29
     },
-    //有线传感器
+    //有线传感器（已隐藏规格参数）
     {
-      steps: ['产品亮点', '规格参数'],
-      sectionNumbers: [31, 32],
+      steps: ['产品亮点'],
+      sectionNumbers: [31],
       startSection: 31,
-      endSection: 32
+      endSection: 31
     },
-    //无线智能传感器
+    //无线智能传感器（已隐藏规格参数）
     {
-      steps: ['产品亮点', '规格参数'],
-      sectionNumbers: [34, 35],
+      steps: ['产品亮点'],
+      sectionNumbers: [34],
       startSection: 34,
-      endSection: 35
+      endSection: 34
     },
     //边缘智能采集器（已隐藏规格参数）
     {
       steps: ['产品亮点'],
-      sectionNumbers: [37],
-      startSection: 37,
-      endSection: 37
+      sectionNumbers: [35, 36],
+      startSection: 35,
+      endSection: 36
     },
-    //无线智能网关
+    //无线智能网关（已隐藏规格参数）
     {
-      steps: ['产品亮点', '规格参数'],
-      sectionNumbers: [38, 39, 40],
-      startSection: 38,
-      endSection: 40
+      steps: ['产品亮点'],
+      sectionNumbers: [37, 38],
+      startSection: 37,
+      endSection: 38
     }
 
     // 硬件传感器 sections 17-20
