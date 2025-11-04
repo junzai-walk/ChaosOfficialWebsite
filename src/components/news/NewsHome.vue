@@ -201,7 +201,7 @@ onBeforeUnmount(() => {
     width: 100%;
 
     :deep(.footer){
-      padding: 2.5rem 0 1rem 0 !important;
+      padding: 2.5rem 0 2rem 0 !important;
     }
   }
 
