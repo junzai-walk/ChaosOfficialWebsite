@@ -59,7 +59,7 @@ const honorCard = [
   .honor-row {
     display: flex;
     align-items: flex-start; /* Change from center to flex-start to align at the top */
-    gap: 3rem;
+    gap: 2rem;
     width: 100%;
     height: auto; /* Change from fixed height to auto */
     margin-top: 1.25rem;
