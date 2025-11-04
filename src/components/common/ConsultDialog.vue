@@ -308,7 +308,7 @@ export default {
 .submit-container {
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: 2rem;
 
   .submit-btn {
     width: 12.5rem;
