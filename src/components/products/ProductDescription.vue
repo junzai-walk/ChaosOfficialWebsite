@@ -61,64 +61,59 @@ const updateActiveStep = (newStep: number) => {
 </script>
 
 <style scoped lang="less">
-/* 设置基准根元素字体大小 */
-:root {
-  font-size: 16px;
-  
-  @media (max-width: 1366px) {
-    font-size: 14px;
-  }
-}
-
 .product-description {
   width: 100%;
   min-height: 100vh;
   display: flex;
   background-color: white;
-  padding: 21rem 11.6875rem 0 18.4375rem;
+  padding: 15vh 8% 0 10%;
   box-sizing: border-box;
-  gap: 3.1875rem;
+  gap: 2%;
 }
 
 .left-side {
-  width: 5.1875rem;
-  height: 12rem;
+  width: 8%;
+  min-width: 80px;
   flex-shrink: 0;
 }
 
 .content {
   flex: 1;
   display: flex;
-  gap: 13.8125rem;
+  gap: 5%;
+  align-items: flex-start;
 }
 
 .description {
+  flex: 1;
   text-indent: 2em;
-  font-size: 1rem;
+  font-size: clamp(14px, 1vw, 18px);
   line-height: 1.8;
   color: #333;
   text-align: left;
+  min-width: 0;
+  margin-top: 20px;
 }
 
 .side-nav-container {
   height: 70%;
   display: inline-flex;
   justify-content: flex-start;
-  align-items: center; 
+  align-items: center;
 }
 
 .description p {
-  font-size: 1rem;
+  font-size: clamp(14px, 1vw, 18px);
   line-height: 1.8;
   color: #333;
 }
 
 .video-container {
-  width: 39.75rem;
-  height: 22.1875rem;
+  width: 45%;
+  max-width: 636px;
+  aspect-ratio: 16 / 9;
   flex-shrink: 0;
   position: relative;
-  transform: translateY(-6.75rem);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,18 +121,16 @@ const updateActiveStep = (newStep: number) => {
 }
 
 .video-player, .image-player {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 0.5rem;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
   object-fit: contain;
-  width: auto;
-  height: auto;
 }
 
 .play-button {
   position: absolute;
-  width: 5rem;
-  height: 5rem;
+  width: 80px;
+  height: 80px;
   background-color: rgba(24, 144, 255, 0.9);
   border-radius: 50%;
   display: flex;
@@ -159,15 +152,15 @@ const updateActiveStep = (newStep: number) => {
 .play-button::before {
   content: '点击播放视频';
   position: absolute;
-  bottom: -1.875rem;
+  bottom: -30px;
   white-space: nowrap;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
-  padding: 0.3125rem 0.625rem;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
   opacity: 0;
-  transform: translateY(0.625rem);
+  transform: translateY(10px);
   transition: all 0.3s ease;
 }
 
@@ -180,132 +173,134 @@ const updateActiveStep = (newStep: number) => {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 0.9375rem 0 0.9375rem 1.5625rem;
+  border-width: 15px 0 15px 25px;
   border-color: transparent transparent transparent white;
-  margin-left: 0.3125rem;
+  margin-left: 5px;
 }
 
 /* 媒体查询 - 适配不同分辨率 */
 @media (min-width: 1920px) {
   .product-description {
-    padding: 21rem 11.6875rem 0 18.4375rem;
-    gap: 4rem;
+    padding: 18vh 10% 0 12%;
   }
-  
+
   .content {
-    gap: 13.8125rem;
+    gap: 8%;
   }
-  
+
   .video-container {
-    width: 39.75rem;
-    height: 22.1875rem;
+    width: 42%;
   }
 }
 
 @media (max-width: 1470px) {
   .product-description {
-    padding: 15rem 5rem 0 10rem;
-    gap: 2.5rem;
+    padding: 12vh 5% 0 8%;
+    gap: 3%;
   }
-  
+
   .content {
-    gap: 0rem;
+    gap: 4%;
   }
-  
+
   .video-container {
-    width: 46rem;
-    height: 21rem;
-    transform: translateY(-1rem);
-  }
-  
-  .description {
-    margin-left: 10rem;
-  }
-  
-  .description p {
-    font-size: 1.2rem;
+    width: 48%;
   }
 }
 
 @media (max-width: 1200px) {
   .product-description {
-    padding: 12rem 3rem 0 6rem;
-    gap: 2rem;
+    padding: 10vh 4% 0 6%;
+    gap: 2%;
   }
-  
+
   .content {
-    gap: 5rem;
+    gap: 3%;
   }
-  
+
   .video-container {
-    width: 25rem;
-    height: 14.0625rem;
+    width: 50%;
   }
 }
 
 @media (max-width: 992px) {
   .product-description {
     flex-direction: column;
-    padding: 8rem 2rem 4rem;
+    padding: 8vh 5% 4vh;
     align-items: center;
   }
-  
+
   .side-nav-container {
     width: 100%;
     justify-content: center;
-    margin-bottom: 3rem;
+    margin-bottom: 5vh;
   }
-  
+
   .content {
     flex-direction: column;
-    gap: 3rem;
+    gap: 5vh;
     align-items: center;
+    width: 100%;
   }
-  
+
   .video-container {
-    width: 100%;
-    max-width: 40rem;
-    height: auto;
-    transform: translateY(0);
-    margin-top: 3rem;
+    width: 90%;
+    max-width: 640px;
   }
-  
+
   .description {
-    width: 100%;
-    max-width: 40rem;
+    width: 90%;
+    max-width: 640px;
   }
 }
 
 @media (max-width: 768px) {
   .product-description {
-    padding: 6rem 1.5rem 3rem;
+    padding: 6vh 4% 3vh;
   }
-  
+
   .description {
-    font-size: 0.875rem;
+    font-size: clamp(13px, 2vw, 16px);
   }
-  
+
   .description p {
-    font-size: 0.875rem;
+    font-size: clamp(13px, 2vw, 16px);
   }
-  
+
   .play-button {
-    width: 4rem;
-    height: 4rem;
+    width: 60px;
+    height: 60px;
+  }
+
+  .video-container {
+    width: 95%;
   }
 }
 
 @media (max-width: 576px) {
   .product-description {
-    padding: 5rem 1rem 2rem;
+    padding: 5vh 3% 2vh;
   }
-  
+
   .description {
-    font-size: 0.8125rem;
+    font-size: clamp(12px, 2.5vw, 14px);
   }
-  
+
   .description p {
-    font-size: 0.8125rem;
+    font-size: clamp(12px, 2.5vw, 14px);
+  }
+
+  .play-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .play-icon {
+    border-width: 12px 0 12px 20px;
+  }
+
+  .content {
+    gap: 4vh;
   }
 }
-</style> 
+</style>
