@@ -135,8 +135,8 @@ onBeforeUnmount(() => {
   padding-bottom: 3.5rem;
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow: auto;
   background-color: #f5f5f5;
 
@@ -258,24 +258,6 @@ onBeforeUnmount(() => {
         font-size: 1.2rem;
         margin: 1.5rem 0 1rem;
         color: #222;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 1366px) {
-  .news-detail {
-    .detail-body {
-      .news-container {
-        max-width: 900px;
-      }
-
-      .title {
-        font-size: 1.6rem;
-      }
-
-      .content-wrapper {
-        padding: 1.5rem 2.5rem 2.5rem;
       }
     }
   }

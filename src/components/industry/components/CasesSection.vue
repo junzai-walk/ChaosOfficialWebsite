@@ -191,9 +191,6 @@ const handleCardClick = (card: CaseCard) => {
 :root {
   font-size: 16px;
 
-  @media (max-width: 1366px) {
-    font-size: 14px;
-  }
 }
 
 .cases-section {
@@ -202,7 +199,7 @@ const handleCardClick = (card: CaseCard) => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: calc(100vh - 4.375rem);
+  height: 100%;
   position: relative;
 }
 
@@ -231,7 +228,7 @@ const handleCardClick = (card: CaseCard) => {
 
 /* 上方背景图 */
 .background-header {
-  width: 100vw;
+  width: 100%;
   height: 12.5rem;
   background: url('@/assets/industry/case-banner.jpg') no-repeat center center;
   background-size: cover;
@@ -386,188 +383,4 @@ const handleCardClick = (card: CaseCard) => {
 }
 
 /* 媒体查询 - 适配不同分辨率 */
-@media (min-width: 1910px) {
-  .cases-container {
-    max-width: 90rem;
-  }
-
-  .case-card {
-    height: 25rem;
-  }
-
-  .case-image {
-    height: 17.5rem;
-  }
-
-  .case-info {
-    padding: 1.5rem 1.25rem;
-  }
-
-  .case-info h3 {
-    font-size: 1.125rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .case-info p {
-    font-size: 1rem;
-  }
-
-  .apply-trial {
-    height: 9.5rem;
-  }
-
-  .apply-trial h3 {
-    font-size: 1.5rem;
-  }
-
-  .apply-form {
-    max-width: 37.5rem;
-  }
-}
-
-@media (max-width: 1366px) {
-  .cases-container {
-    max-width: 70rem;
-  }
-
-  .case-card {
-    height: 20rem;
-  }
-
-  .case-image {
-    height: 13.75rem;
-  }
-
-  .case-info {
-    padding: 1rem 0.875rem;
-  }
-
-  .case-info h3 {
-    font-size: 0.9375rem;
-  }
-
-  .case-info p {
-    font-size: 0.8125rem;
-  }
-
-  .apply-trial {
-    height: 7.5rem;
-  }
-
-  .apply-trial h3 {
-    font-size: 1.125rem;
-    margin-bottom: 1rem;
-  }
-}
-
-@media (max-width: 1400px) {
-  .case-card {
-    width: calc(25% - 0.9375rem);
-  }
-}
-
-@media (max-width: 992px) {
-  .cases-section {
-    padding: 0 1.25rem;
-  }
-
-  .cases-container {
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1.875rem;
-  }
-
-  .side-nav-container {
-    width: 100%;
-    max-width: 18.75rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .case-card {
-    width: calc(50% - 0.625rem);
-    height: auto;
-    min-height: 18.75rem;
-  }
-
-  .case-image {
-    height: 12.5rem;
-  }
-
-  .navigation-buttons {
-    gap: 2rem;
-  }
-
-  .nav-button {
-    width: 2.25rem;
-    height: 2.25rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .cases-section {
-    padding: 0 1rem;
-  }
-
-  .background-header {
-    height: 10rem;
-  }
-
-  .case-page {
-    gap: 1rem;
-  }
-
-  .case-card {
-    width: 100%;
-    min-height: 16.25rem;
-  }
-
-  .case-image {
-    height: 10rem;
-  }
-
-  .case-info {
-    padding: 0.875rem 0.75rem;
-  }
-
-  .apply-trial {
-    height: auto;
-    padding: 1.5rem 1rem;
-  }
-
-  .apply-form {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .navigation-buttons {
-    gap: 1.5rem;
-  }
-
-  .nav-button {
-    width: 2rem;
-    height: 2rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .cases-section {
-    padding: 0 0.75rem;
-  }
-
-  .background-header {
-    height: 8rem;
-  }
-
-  .case-image {
-    height: 9.375rem;
-  }
-
-  .case-info h3 {
-    font-size: 0.875rem;
-  }
-
-  .case-info p {
-    font-size: 0.75rem;
-  }
-}
 </style>

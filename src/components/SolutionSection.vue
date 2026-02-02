@@ -337,7 +337,7 @@ const currentCases = computed(() => {
 <style scoped lang="less">
 .solution-section {
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   padding: 4rem 0 5rem 0;
   box-sizing: border-box;
   background-image: url('@/assets/home/bg.png');
@@ -389,8 +389,8 @@ const currentCases = computed(() => {
   .solution-content {
     display: flex;
     margin: 0 auto;
-    width: 90%;
-    max-width: 87.5rem;
+    width: 95%;
+    max-width: 110rem;
     height: auto;
 
     .solution-info {
@@ -469,12 +469,6 @@ const currentCases = computed(() => {
         display: inline-block;
         width: auto;
         
-        @media (min-width: 1200px) and (max-width: 1500px) {
-          padding: 0.5rem;
-          padding-left: 0;
-          font-size: 1rem;
-        }
-
         &:after {
           content: '';
           position: absolute;

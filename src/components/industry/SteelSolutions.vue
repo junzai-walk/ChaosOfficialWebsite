@@ -112,22 +112,11 @@
 html {
   font-size: 16px;
 
-  @media (min-width: 1920px) {
-    font-size: calc(16px * (1920 / 1920));
-  }
-
-  @media (max-width: 1440px) {
-    font-size: calc(16px * (1440 / 1920));
-  }
-
-  @media (max-width: 1280px) {
-    font-size: calc(16px * (1280 / 1920));
-  }
 }
 
 .steel-solutions {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   background-color: #f5f7fa;
   padding: 2.5rem; // 40px
   display: flex;
@@ -289,24 +278,6 @@ html {
 }
 
 /* 响应式设计 */
-@media (max-width: 992px) {
-  .steel-solutions {
-    padding: 20px;
-  }
-
-  .solutions-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .side-nav-container {
-    flex-shrink: 0;
-    width: 100%;
-    max-width: 300px;
-    margin-bottom: 20px;
-  }
-}
-
 /* 专项场景特殊样式 */
 .scene-section {
   display: flex;

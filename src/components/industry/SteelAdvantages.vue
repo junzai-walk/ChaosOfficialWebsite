@@ -65,22 +65,11 @@
 html {
   font-size: 16px;
 
-  @media (min-width: 1920px) {
-    font-size: calc(16px * (1920 / 1920));
-  }
-
-  @media (max-width: 1440px) {
-    font-size: calc(16px * (1440 / 1920));
-  }
-
-  @media (max-width: 1280px) {
-    font-size: calc(16px * (1280 / 1920));
-  }
 }
 
 .steel-advantages {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   background-color: #f5f7fa;
   padding: 2.5rem; // 40px
   display: flex;
@@ -165,32 +154,4 @@ html {
   line-height: 1.6;
 }
 
-@media (max-width: 1200px) {
-  .advantage-card {
-    width: 100%;
-    height: auto;
-    min-height: 255px;
-  }
-
-  .card-row {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 992px) {
-  .steel-advantages {
-    padding: 20px;
-  }
-
-  .advantages-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .side-nav-container {
-    width: 100%;
-    max-width: 300px;
-    margin-bottom: 20px;
-  }
-}
 </style>

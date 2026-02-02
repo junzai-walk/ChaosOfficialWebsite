@@ -86,7 +86,7 @@
           </template>
         </el-input>
         
-        <el-select v-model="filterType" placeholder="表单类型" style="width: 120px" @change="handleFilter">
+        <el-select v-model="filterType" placeholder="表单类型" style="width: 120px" @change="handleFilter" :teleported="false">
           <el-option label="全部" value="all" />
           <el-option label="咨询表单" value="consult" />
           <el-option label="合作意向" value="cooperation" />
@@ -101,6 +101,7 @@
           format="YYYY-MM-DD"
           value-format="YYYY-MM-DD"
           popper-class="date-picker-popper"
+          :teleported="false"
           @change="handleDateFilter"
         />
       </div>
@@ -193,13 +194,14 @@
         :page-sizes="[10, 20, 50, 100]"
         :total="totalCount"
         layout="total, sizes, prev, pager, next, jumper"        
+        :teleported="false"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       />
     </div>
 
     <!-- 详情模态框 -->
-    <Teleport to="body">
+    <Teleport to=".screen-adapter">
       <Transition name="detail-dialog" appear>
         <el-dialog
           v-model="detailDialogVisible"
@@ -866,7 +868,7 @@ onMounted(() => {
 /* 主题变量应用 */
 
 .admin-dashboard {
-  min-height: 100vh;
+  min-height: 100%;
   background: var(--theme-bg-primary);
   background-attachment: fixed;
   padding: 0;
@@ -1213,138 +1215,9 @@ onMounted(() => {
 
 // 响应式设计 - 针对常见屏幕分辨率优化
 /* 1920×1080 (Full HD) 屏幕优化 */
-@media screen and (min-width: 1900px) and (min-height: 900px) {
-  .admin-dashboard {
-    min-height: 100vh;
-    max-height: 100vh;
-    overflow-y: auto;
-  }
-
-  .data-table {
-    max-height: calc(100vh - 320px); /* 减去头部、统计卡片、工具栏和分页的高度 */
-    overflow-y: auto;
-
-    :deep(.el-table__body-wrapper) {
-      max-height: calc(100vh - 520px);
-      overflow-y: auto;
-    }
-  }
-
-  .stats-cards {
-    grid-template-columns: repeat(4, 1fr); // 4列布局
-    gap: 1.5rem;
-  }
-
-  .dashboard-header {
-    padding: 1.5rem 2rem;
-  }
-
-  .toolbar {
-    padding: 1.5rem 2rem;
-  }
-}
-
 /* 1366×768 (标准笔记本) 屏幕优化 */
-@media screen and (min-width: 1366px) and (max-width: 1919px) and (min-height: 768px) {
-  .admin-dashboard {
-    min-height: 100vh;
-    max-height: 100vh;
-    overflow-y: auto;
-  }
-
-  .data-table {
-    max-height: calc(100vh - 280px); /* 针对较小屏幕调整高度 */
-    overflow-y: auto;
-
-    :deep(.el-table__body-wrapper) {
-      max-height: calc(100vh - 380px);
-      overflow-y: auto;
-    }
-  }
-
-  .stats-cards {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin: 0 1.5rem 1.5rem;
-  }
-
-  .dashboard-header {
-    padding: 1rem 1.5rem;
-    margin: 0.5rem 1.5rem 1.5rem;
-
-    .header-left h1 {
-      font-size: 1.6rem;
-    }
-  }
-
-  .toolbar {
-    padding: 1rem 1.5rem;
-    margin: 0 1.5rem 1rem;
-  }
-
-  .data-table {
-    margin: 0 1.5rem;
-  }
-
-  .pagination {
-    padding: 1rem 1.5rem;
-    margin: 0 1.5rem;
-  }
-}
-
 /* 通用响应式优化 - 确保内容不溢出视口 */
-@media screen and (max-height: 900px) {
-  .admin-dashboard {
-    overflow-y: auto;
-  }
-
-  .data-table {
-    max-height: calc(100vh - 350px);
-    overflow-y: auto;
-
-    :deep(.el-table__body-wrapper) {
-      max-height: calc(100vh - 450px);
-      overflow-y: auto;
-    }
-  }
-}
-
 /* 移动端响应式设计 */
-@media (max-width: 768px) {
-  .dashboard-header {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
-
-  .stats-cards {
-    grid-template-columns: 1fr;
-    margin: 0 1rem 2rem;
-  }
-
-  .toolbar {
-    margin: 0 1rem 1rem;
-    flex-direction: column;
-    align-items: stretch;
-
-    .toolbar-left,
-    .toolbar-right {
-      justify-content: center;
-    }
-  }
-
-  .data-table {
-    margin: 0 1rem;
-    max-height: calc(100vh - 300px);
-    overflow-y: auto;
-
-    :deep(.el-table__body-wrapper) {
-      max-height: calc(100vh - 400px);
-      overflow-y: auto;
-    }
-  }
-}
-
 :deep(.el-table) {
   background: transparent !important;
   border-radius: 0 !important; /* 移除圆角 */
@@ -2203,98 +2076,8 @@ onMounted(() => {
 /* ==================== 响应式设计优化 ==================== */
 
 /* 移动端优化 */
-@media (max-width: 768px) {
-  .tech-modal {
-    width: 95% !important;
-    margin: 0 auto !important;
-  }
-
-  .tech-modal-header {
-    padding: 1rem 1.5rem;
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-
-    .header-title {
-      flex-direction: column;
-      gap: 0.5rem;
-
-      .title-icon {
-        width: 2.5rem;
-        height: 2.5rem;
-        font-size: 1.2rem;
-      }
-
-      .title-text h3 {
-        font-size: 1.2rem;
-      }
-    }
-  }
-
-  .tech-content {
-    padding: 1rem;
-  }
-
-  .detail-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-
-    .detail-label {
-      width: auto;
-    }
-
-    .detail-value.tech-value {
-      width: 100%;
-    }
-  }
-
-  .tech-tabs {
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1rem;
-
-    .tech-tab-btn {
-      min-width: auto;
-      justify-content: center;
-    }
-  }
-
-  .tech-modal-footer {
-    padding: 1rem 1.5rem;
-    justify-content: center;
-  }
-}
-
 /* 平板端优化 */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .tech-modal {
-    width: 85% !important;
-  }
-
-  .tech-tabs {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .tech-tab-btn {
-    min-width: 120px;
-  }
-}
-
 /* 确保弹窗在所有设备上都能正确显示 */
-@media (max-height: 600px) {
-  .tech-modal {
-    max-height: 90vh !important;
-    overflow-y: auto !important;
-  }
-
-  .tech-content {
-    max-height: calc(90vh - 200px);
-    overflow-y: auto;
-  }
-}
-
 /* 操作按钮样式 */
 :deep(.el-table) {
   .el-button + .el-button {
@@ -2873,30 +2656,7 @@ onMounted(() => {
 }
 
 /* 响应式滚动条优化 */
-@media (max-width: 768px) {
-  .el-dialog__body::-webkit-scrollbar {
-    width: 6px !important;
-  }
-
-  .tech-content::-webkit-scrollbar {
-    width: 4px !important;
-  }
-
-  .info-card .card-content::-webkit-scrollbar {
-    width: 3px !important;
-  }
-}
-
 /* 高分辨率屏幕优化 */
-@media (min-resolution: 2dppx) {
-  .el-dialog__body::-webkit-scrollbar {
-    width: 10px !important;
-  }
-
-  .el-dialog__body::-webkit-scrollbar-thumb {
-    border-width: 2px !important;
-  }
-}
 </style>
 
 <style>
@@ -3080,44 +2840,17 @@ onMounted(() => {
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   margin: 0 !important;
-  max-height: 90vh !important;
+  max-height: 90% !important;
   background: #0b0923;
 }
 
 /* 确保模态框内容不会溢出 */
 .el-dialog__body {
-  max-height: calc(90vh - 120px) !important;
+  max-height: calc(90% - 120px) !important;
   overflow-y: auto !important;
 }
 
 /* 响应式设计 - 移动端优化 */
-@media (max-width: 768px) {
-  .el-message-box {
-    width: 90% !important;
-    margin: 0 auto !important;
-  }
-
-  .el-message-box__header,
-  .el-message-box__content,
-  .el-message-box__btns {
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
-  }
-
-  .el-message-box__title {
-    font-size: 1rem !important;
-  }
-
-  .el-message-box__message {
-    font-size: 0.9375rem !important;
-  }
-
-  .el-message-box__btns .el-button {
-    min-width: 70px !important;
-    font-size: 0.875rem !important;
-  }
-}
-
 /* 详情弹窗样式 */
 .detail-dialog {
   background: rgba(0, 0, 0, 0.95) !important;

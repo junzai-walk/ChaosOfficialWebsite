@@ -267,15 +267,6 @@ onMounted(() => {
 </script>
 
 <style scoped lang="less">
-/* 设置基准根元素字体大小 */
-:root {
-  font-size: 16px;
-
-  @media (max-width: 1366px) {
-    font-size: 14px;
-  }
-}
-
 /* 淡入淡出动画 */
 @keyframes fadeInNav {
   from {
@@ -301,8 +292,8 @@ onMounted(() => {
 
 .global-nav-steps {
   position: fixed;
-  top: 21rem;
-  left: 2rem;
+  top: 22rem;
+  left: 3rem;
   z-index: 1000;
   opacity: 0;
   transform: translateX(-20px);
@@ -315,144 +306,96 @@ onMounted(() => {
     pointer-events: auto;
     animation: fadeInNav 0.3s ease-in-out forwards;
   }
+}
 
-  .steps-container {
-    display: flex;
-    flex-direction: column;
+.steps-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.875rem;
+  cursor: pointer;
+  position: relative;
+  padding-right: 0.5rem;
+  min-width: 120px;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 
-  .step-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.875rem;
-    cursor: pointer;
+  .step-title {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.25rem;
+    flex: 1;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .step-indicator {
     position: relative;
-    padding-right: 0.5rem;
-    min-width: 120px;
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-left: 0.625rem;
 
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    .step-title {
-      font-size: 1rem;
-      color: #666;
-      line-height: 1.25rem;
-      flex: 1;
-      transition: color 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .step-indicator {
-      position: relative;
+    .step-dot {
+      position: absolute;
+      top: 0;
+      right: 0;
       width: 0.75rem;
       height: 0.75rem;
-      margin-left: 0.625rem;
-
-      .step-dot {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 0.75rem;
-        height: 0.75rem;
-        border-radius: 50%;
-        background-color: #c0c4cc;
-        transition: all 0.3s ease;
-      }
-
-      .step-dot-outer {
-        position: absolute;
-        top: -0.25rem;
-        right: -0.25rem;
-        width: 1.25rem;
-        height: 1.25rem;
-        border-radius: 50%;
-        opacity: 0;
-        transition: all 0.3s ease;
-      }
-
-      .step-line {
-        position: absolute;
-        top: 1rem;
-        right: 0.3125rem;
-        width: 0.125rem;
-        height: 1.875rem;
-        background-color: #e4e7ed;
-      }
+      border-radius: 50%;
+      background-color: #c0c4cc;
+      transition: all 0.3s ease;
     }
 
-    &.active {
-      .step-title {
-        color: #1890ff;
-        font-weight: 500;
-      }
-
-      .step-indicator {
-        .step-dot {
-          background-color: #1890ff;
-        }
-
-        .step-dot-outer {
-          background-color: rgba(24, 144, 255, 0.2);
-          opacity: 1;
-        }
-      }
+    .step-dot-outer {
+      position: absolute;
+      top: -0.25rem;
+      right: -0.25rem;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      opacity: 0;
+      transition: all 0.3s ease;
     }
 
-    &:hover:not(.active) {
-      .step-title {
-        color: #1890ff;
-      }
+    .step-line {
+      position: absolute;
+      top: 1rem;
+      right: 0.3125rem;
+      width: 0.125rem;
+      height: 1.875rem;
+      background-color: #e4e7ed;
     }
   }
-}
 
-/* 媒体查询 - 适配不同分辨率 */
-@media (min-width: 1920px) {
-  .global-nav-steps {
-    top: 22rem;
-    left: 3rem;
-  }
-}
-
-@media (max-width: 1366px) {
-  .global-nav-steps {
-    top: 22rem;
-    left: 3rem;
-  }
-
-  .step-item {
-    margin-bottom: 1.5rem;
-
+  &.active {
     .step-title {
-      font-size: 0.9rem;
+      color: #1890ff;
+      font-weight: 500;
     }
 
     .step-indicator {
-      width: 0.7rem;
-      height: 0.7rem;
-
       .step-dot {
-        width: 0.7rem;
-        height: 0.7rem;
+        background-color: #1890ff;
       }
 
       .step-dot-outer {
-        width: 1.1rem;
-        height: 1.1rem;
-      }
-
-      .step-line {
-        height: 1.5rem;
+        background-color: rgba(24, 144, 255, 0.2);
+        opacity: 1;
       }
     }
   }
-}
 
-@media (max-width: 768px) {
-  .global-nav-steps {
-    display: none; /* 在移动端隐藏 */
+  &:hover:not(.active) {
+    .step-title {
+      color: #1890ff;
+    }
   }
 }
 </style>

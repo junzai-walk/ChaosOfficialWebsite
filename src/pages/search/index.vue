@@ -142,14 +142,14 @@ onBeforeUnmount(() => {
 <style scoped>
 .search-page {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: relative;
   overflow: hidden;
 }
 
 .section {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;

@@ -24,47 +24,11 @@ import GlobalNavSteps from '@/components/GlobalNavSteps.vue'
 }
 
 .cushion {
-  /* 默认不设置高度 */
-  height: auto;
-}
-
-/* 大屏幕 - 1401及以上 */
-@media (min-width: 1401px) {
-  .cushion {
-    height: 70px;
-  }
-}
-
-/* 小屏幕 - 1400px及以下 */
-@media (max-width: 1400px) {
-  .cushion {
-    height: 45px;
-  }
-}
-
-/* 小屏幕 - 1400px及以下 */
-@media (max-width: 1440px) {
-  .cushion {
-    height: 45px;
-  }
+  height: 70px;
 }
 
 .page-content {
   width: 100%;
-  height: auto;
-}
-
-/* 大屏幕 - 1920x1080及以上 */
-@media (min-width: 1401px) {
-  .page-content {
-    height: calc(100% - 70px);
-  }
-}
-
-/* 小屏幕 - 1280px及以下 */
-@media (max-width: 1400px) {
-  .page-content {
-    height: calc(100% - 45px);
-  }
+  height: calc(100% - 70px);
 }
 </style>

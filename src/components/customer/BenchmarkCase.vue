@@ -191,17 +191,8 @@ const nextPage = () => {
 html {
   font-size: 16px;
   
-  @media (min-width: 1920px) {
-    font-size: calc(16px * (1920 / 1920));
-  }
   
-  @media (max-width: 1440px) {
-    font-size: calc(16px * (1440 / 1920));
-  }
   
-  @media (max-width: 1280px) {
-    font-size: calc(16px * (1280 / 1920));
-  }
 }
 
 .benchmark-cases {
@@ -212,7 +203,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* 改为flex-start而非center */
-  min-height: 100vh; /* 确保最小高度填满视口 */
+  min-height: 100%; /* 确保最小高度填满视口 */
 }
 /* 上方背景图 */
 .background-header {
@@ -220,7 +211,7 @@ html {
   top: 0;
   left: 0;
   z-index: 1;
-  width: 100vw;
+  width: 100%;
   height: 20rem;
   background: url('@/assets/customer/Group453.png') no-repeat center center;
   background-size: 100% 100%;
@@ -268,7 +259,7 @@ html {
 /* 图片展示区域 */
 .case-showcase {
   width: 100%;
-  // height: 100vh;
+  // height: 100%;
   overflow: hidden;
   position: relative;
   margin-bottom: 2rem; // 32px
@@ -377,48 +368,6 @@ html {
 .nav-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-@media (max-width: 1400px) {
-  .case-page {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-  }
-
-  .case-card {
-    width: calc(25% - 0.9375rem); // 15px
-  }
-}
-
-@media (max-width: 992px) {
-  .benchmark-cases {
-    padding: 0;
-  }
-
-  .cases-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .side-nav-container {
-    width: 100%;
-    max-width: 18.75rem; // 300px
-    margin-bottom: 1.25rem; // 20px
-  }
-  
-  .case-page {
-    flex-wrap: wrap;
-  }
-  
-  .case-card {
-    width: calc(50% - 0.625rem); // 10px
-  }
-}
-
-@media (max-width: 768px) {
-  .case-card {
-    width: 100%;
-  }
 }
 
 /* 底部背景补充 */

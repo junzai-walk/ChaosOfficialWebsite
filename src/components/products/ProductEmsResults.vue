@@ -108,15 +108,9 @@ const updateActiveStep = (newStep: number) => {
 }
 
 /* 媒体查询 - 针对1366*768屏幕，设置不同的基准字体大小 */
-@media (min-width: 1367px) and (max-width: 1500px) {
-  :root {
-    font-size: 14px;
-  }
-}
-
 .product-ems-results {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -245,159 +239,9 @@ const updateActiveStep = (newStep: number) => {
 }
 
 /* 媒体查询 - 针对大屏幕 */
-@media (min-width: 1920px) {
-  .results-cards {
-    margin-top: 7.5rem;
-    gap: 1.875rem;
-  }
-
-  :deep(.side-nav-container) {
-    top: 0rem;
-    left: 0rem;
-  }
-  
-  .result-card {
-    width: 26rem;
-    height: 18.0625rem;
-    padding: 1.875rem 3.125rem;
-  }
-  
-  .card-title {
-    font-size: 1.25rem;
-  }
-  
-  .card-description {
-    font-size: 1rem;
-  }
-  
-  .card-number {
-    font-size: 2.25rem;
-  }
-  
-  .experience-button {
-    width: 12.5rem;
-    height: 3.5rem;
-    font-size: 1.125rem;
-  }
-}
-
 /* 媒体查询 - 针对1366*768屏幕 */
-@media (max-width: 1366px) {
-  .product-ems-results {
-    padding: 5rem 0;
-  }
-  
-  :deep(.side-nav-container) {
-    top: 0rem;
-    left: 0rem;
-  }
-
-  .results-cards {
-    margin-top: 5rem;
-    gap: 1.5rem;
-  }
-  
-  .result-card {
-    width: 22rem;
-    height: 16rem;
-    padding: 1.5rem 2.5rem;
-  }
-  
-  .card-icon {
-    width: 4rem;
-    height: 4.5rem;
-    margin-bottom: 0.75rem;
-  }
-  
-  .card-title {
-    font-size: 1.125rem;
-    margin: 0.75rem 0;
-  }
-  
-  .card-description {
-    font-size: 0.9rem;
-    margin: 0 0 1rem 0;
-  }
-  
-  .card-number {
-    font-size: 2rem;
-  }
-  
-  .experience-button-container {
-    margin-top: 4rem;
-  }
-  
-  .experience-button {
-    width: 11rem;
-    height: 3rem;
-    font-size: 1rem;
-  }
-}
-
 /* 媒体查询 - 针对小屏幕 */
-@media (max-width: 1200px) {
-  .results-cards {
-    flex-direction: column;
-    align-items: center;
-    margin-left: 0;
-  }
-  
-  .result-card {
-    width: 90%;
-    max-width: 26rem;
-  }
-}
-
 /* 媒体查询 - 移动设备 */
-@media (max-width: 768px) {
-  .product-ems-results {
-    padding: 4rem 1rem;
-  }
-  
-  .side-nav-container {
-    position: relative;
-    top: 0;
-    left: 0;
-    margin-bottom: 3rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .results-cards {
-    margin-top: 2rem;
-  }
-  
-  .result-card {
-    width: 100%;
-    height: auto;
-    padding: 1.25rem;
-  }
-  
-  .card-icon {
-    width: 3.5rem;
-    height: 4rem;
-  }
-  
-  .card-title {
-    font-size: 1rem;
-  }
-  
-  .card-description {
-    font-size: 0.875rem;
-  }
-  
-  .card-number {
-    font-size: 1.75rem;
-  }
-  
-  .experience-button {
-    width: 10rem;
-    height: 2.75rem;
-    font-size: 0.9375rem;
-  }
-}
-
 .text-container {
   display: flex;
   align-items: center;

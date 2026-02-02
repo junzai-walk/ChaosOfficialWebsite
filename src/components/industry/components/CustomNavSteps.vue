@@ -140,9 +140,6 @@ export default {
 :root {
   font-size: 16px;
 
-  @media (max-width: 1366px) {
-    font-size: 14px;
-  }
 }
 
 /* 添加淡入动画关键帧 */
@@ -253,71 +250,4 @@ export default {
 }
 
 /* 媒体查询 - 适配不同分辨率 */
-@media (min-width: 1920px) {
-  .custom-nav-steps {
-    top: 21rem;
-    left: 11.6875rem;
-  }
-}
-
-@media (max-width: 1366px) {
-  .custom-nav-steps {
-    top: 18rem;
-    left: 8rem;
-    /* 在小屏幕上稍微延迟动画，确保页面布局稳定后再显示 */
-    animation-delay: 0.15s;
-  }
-
-  .step-item {
-    margin-bottom: 1.5rem;
-
-    .step-title {
-      font-size: 0.9rem;
-    }
-
-    .step-indicator {
-      width: 0.7rem;
-      height: 0.7rem;
-
-      .step-dot {
-        width: 0.7rem;
-        height: 0.7rem;
-      }
-
-      .step-dot-outer {
-        width: 1.1rem;
-        height: 1.1rem;
-      }
-
-      .step-line {
-        height: 1.5rem;
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .custom-nav-steps {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100% !important;
-    margin-bottom: 1.5rem;
-  }
-
-  .steps-container {
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-
-  .step-item {
-    margin-right: 1rem;
-    margin-bottom: 1rem;
-
-    .step-line {
-      display: none;
-    }
-  }
-}
 </style>

@@ -326,7 +326,7 @@ const timeline = ref([
 
 .company-profile {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-image: url('@/assets/home/bg_sub.png');
   background-size: cover;
   background-position: center;
@@ -539,93 +539,11 @@ const timeline = ref([
   font-size: 0.75rem;
 }
 
-/* 删除不再需要的动画和旧的时间轴样式 */
+/* 移除旧的时间轴样式 */
 .timeline-line,
 .dot,
 .pulse,
 .glow {
   display: none;
-}
-
-
-@media (max-width: 1232px) {
-  .company-profile {
-    height: auto;
-    min-height: 100vh;
-    padding: 2rem 0;
-  }
-
-  .profile-content {
-    max-width: 100%;
-    padding: 0 1rem;
-  }
-
-  .main-title {
-    font-size: 1.75rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .stats-container {
-    gap: 2rem;
-    justify-content: center;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-  }
-
-  .timeline-box {
-    width: 100%;
-    height: auto;
-    padding: 1rem;
-  }
-
-  .timeline {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .timeline-item {
-    flex: 0 0 45%;
-    margin-bottom: 1.5rem;
-  }
-
-  .timeline-connector {
-    display: none;
-  }
-
-  .company-intro p {
-    font-size: 0.875rem;
-  }
-}
-
-@media (min-width: 1440px) and (max-width: 1500px) {
-  .company-history{
-    height: 15rem;
-  }
-
-  .profile-content {
-    padding: 4rem 2rem 6rem;
-    box-sizing: border-box;
-
-    .timeline-box{
-      width: 80rem;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .stats-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .stat-item {
-    margin-bottom: 1rem;
-  }
-
-  .timeline-item {
-    flex: 0 0 100%;
-  }
 }
 </style>

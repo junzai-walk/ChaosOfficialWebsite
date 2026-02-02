@@ -13,7 +13,7 @@
 <style scoped lang="less">
 .product-system {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #f5f7fa;
   display: flex;
   justify-content: center;
@@ -37,7 +37,7 @@
   }
   
   .system-content {
-    width: 89.0625rem;
+    width: 110rem;
     height: 41.5625rem;
     text-align: center;
     position: relative;
@@ -169,107 +169,6 @@
   }
   100% {
     box-shadow: 0 0 0 0 rgba(24, 144, 255, 0);
-  }
-}
-
-@media (max-width: 1920px) {
-  .product-system {
-    .system-content {
-      width: 80rem;
-      height: 37.5rem;
-    }
-  }
-}
-
-@media (max-width: 1232px) {
-  .product-system {
-    height: auto;
-    min-height: 100vh;
-    padding: 2rem 0;
-
-    .title {
-      font-size: 1.75rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .subtitle {
-      font-size: 0.875rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .system-content {
-      width: 100%;
-      height: 25rem;
-      padding: 0 1rem;
-    }
-  }
-
-  .product-diagram {
-    .product-icons {
-      .icon-group {
-        gap: 0.75rem;
-      }
-
-      .icon-circle {
-        width: 4rem;
-        height: 4rem;
-        font-size: 1rem;
-      }
-
-      .icon-text {
-        font-size: 0.75rem;
-      }
-    }
-  }
-
-  .platform-diagram {
-    .platform-circle {
-      width: 15rem;
-      height: 15rem;
-    }
-  }
-
-  .hardware-icons {
-    gap: 2rem;
-
-    .hardware-item {
-      img {
-        width: 3rem;
-        height: 3rem;
-      }
-
-      span {
-        font-size: 0.75rem;
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .product-system {
-    .system-content {
-      height: 20rem;
-    }
-  }
-
-  .product-diagram {
-    .product-icons {
-      .icon-group {
-        flex-direction: column;
-      }
-    }
-  }
-
-  .platform-diagram {
-    .platform-circle {
-      width: 12rem;
-      height: 12rem;
-    }
-  }
-
-  .hardware-icons {
-    flex-wrap: wrap;
-    gap: 1rem;
   }
 }
 </style> 

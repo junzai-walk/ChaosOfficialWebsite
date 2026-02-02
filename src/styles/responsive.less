@@ -1,55 +1,13 @@
-/* 响应式设计样式 */
+/* 响应式设计样式 - 已切换为 transform: scale 方案 (1920*1080) */
 
 /* 基础字体大小设置 */
 html {
   font-size: 16px;
 }
 
-/* 1366分辨率特殊处理 */
-@media screen and (max-width: 1366px) and (min-width: 1281px) {
-  /* 微调一些元素的样式以适应缩放 */
-  .partner-wall .logo-container {
-    margin: 8px !important;
-  }
-  
-  .app-header .container {
-    padding: 0 15px !important;
-  }
-  
-  /* 优化固定定位元素 */
-  .floating-menu {
-    right: 20px !important;
-  }
-}
-
-/* 其他响应式样式保持不变 */
-@media (min-width: 1600px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 1440px) {
-  html {
-    font-size: calc(16px * (1440 / 1920));
-  }
-}
-
-@media (max-width: 1280px) {
-  html {
-    font-size: calc(16px * (1280 / 1920));
-  }
-}
-
-/* 移动设备样式保持不变 */
-@media (max-width: 768px) {
-  html {
-    font-size: calc(16px * (768 / 1920));
-  }
-}
-
-@media (max-width: 576px) {
-  html {
-    font-size: calc(16px * (576 / 1920));
-  }
-}
+/* 
+  注意：
+  当前项目已采用 ScreenAdapter 方案进行整体缩放。
+  所有组件均按照 1920 * 1080 的基准设计。
+  不需要再通过 @media 查询来微调不同分辨率下的尺寸。
+*/

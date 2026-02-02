@@ -190,15 +190,17 @@ onBeforeUnmount(() => {
 <style scoped lang="less">
 .news-box {
   box-sizing: border-box;
-  padding-bottom: 2.5rem;
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  overflow: scroll;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #fff;
+  color: #333;
 
   .footer-wrapper {
     width: 100%;
+    margin-top: auto;
 
     :deep(.footer){
       padding: 2.5rem 0 2rem 0 !important;
@@ -222,8 +224,8 @@ onBeforeUnmount(() => {
 
   .news-body {
     box-sizing: border-box;
-    flex: 1;
-    width: 100vw;
+    flex: 1 0 auto; // Allow it to grow and not shrink too much
+    width: 100%;
     display: flex;
     padding: 0 11.5rem;
     padding-top: 2rem;
@@ -235,8 +237,10 @@ onBeforeUnmount(() => {
       height: 3.5rem;
       background-color: #fff;
       text-align: left;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       font-weight: 700;
+      color: #333;
+      margin-bottom: 1rem;
     }
 
     .body-left {
@@ -264,21 +268,22 @@ onBeforeUnmount(() => {
             align-items: flex-start;
 
             .content-main-title {
-              font-size: 1rem;
+              font-size: 1.25rem;
               font-weight: 700;
-              margin-bottom: 0.75rem;
+              margin-bottom: 1rem;
+              color: #333;
             }
 
             .content-sub-title {
-              font-size: 0.85rem;
-              font-weight: 700;
-              margin-bottom: 0.75rem;
-              color: #bbb;
+              font-size: 0.9rem;
+              line-height: 1.6;
+              margin-bottom: 1rem;
+              color: #666;
             }
 
             .time {
               font-size: 0.85rem;
-              color: #bbb;
+              color: #999;
             }
           }
 
@@ -300,12 +305,11 @@ onBeforeUnmount(() => {
           height: 100%;
           background-size: cover;
           background-position: center;
-          background-blend-mode: overlay;
         }
       }
 
       .news-list {
-        min-height: 30vh;
+        min-height: 30%;
 
         .news-row {
           display: flex;
@@ -320,7 +324,6 @@ onBeforeUnmount(() => {
             margin-right: 2rem;
             background-size: cover;
             background-position: center;
-            background-blend-mode: overlay;
           }
 
           .news-rows-content {
@@ -336,14 +339,21 @@ onBeforeUnmount(() => {
 
               .row-main-title {
                 font-weight: 700;
-                margin-bottom: 0.75rem;
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+                color: #333;
               }
 
               .row-sub-title {
-                font-weight: 700;
                 margin-bottom: 0.5rem;
-                color: #bbb;
-                font-size: 0.85rem;
+                color: #666;
+                font-size: 0.9rem;
+                line-height: 1.5;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
+                overflow: hidden;
               }
             }
 
@@ -351,8 +361,8 @@ onBeforeUnmount(() => {
               width: 100%;
               display: flex;
               justify-content: space-between;
-              color: #bbb;
-              font-size: 0.75rem;
+              color: #999;
+              font-size: 0.85rem;
             }
           }
         }
@@ -377,13 +387,19 @@ onBeforeUnmount(() => {
           
           .hotpot-title{
             font-weight: 700;
-            margin-bottom: 0.75rem;
-            line-height: 1.3;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            overflow: hidden;
           }
           .hotpot-time{
-            font-weight: 700;
-            font-size: 0.75rem;
-            color: #aaa;
+            font-size: 0.85rem;
+            color: #999;
           }
         }
       }

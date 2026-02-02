@@ -71,9 +71,6 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 :root {
   font-size: 16px;
   
-  @media (max-width: 1366px) {
-    font-size: 14px;
-  }
 }
 
 .industry-hero {
@@ -169,85 +166,4 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 }
 
 /* 媒体查询 - 适配不同分辨率 */
-@media (min-width: 1920px) {
-  .content {
-    top: 14.6875rem;
-    left: 29.5rem;
-    width: 59.4375rem;
-    height: 19.25rem;
-  }
-  
-  .industry-title {
-    font-size: 3.75rem;
-  }
-  
-  .button-container {
-    margin-top: 6.25rem;
-  }
-  
-  .consult-button {
-    padding: 0.75rem 2.1875rem;
-  }
-}
-
-@media (max-width: 1366px) {
-  .content {
-    top: 10rem;
-    left: 20rem;
-    width: 42rem;
-    height: 16rem;
-  }
-  
-  .title-container {
-    margin-bottom: 1.25rem;
-  }
-  
-  .title-line {
-    height: 2.5rem;
-  }
-  
-  .industry-title {
-    font-size: 2.8rem;
-  }
-  
-  .industry-desc {
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .button-container {
-    margin-top: 4rem;
-  }
-  
-  .consult-button {
-    width: 10rem;
-    font-size: 1rem;
-    padding: 0.6rem 1.8rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .content {
-    padding-left: 5%;
-    padding-right: 5%;
-    position: relative;
-    width: 90%;
-    height: auto;
-    top: 0;
-    left: 0;
-    margin: 0 auto;
-  }
-
-  .industry-title {
-    font-size: 2.25rem;
-  }
-
-  .industry-desc {
-    font-size: 0.875rem;
-  }
-  
-  .button-container {
-    margin-top: 3rem;
-  }
-}
 </style>

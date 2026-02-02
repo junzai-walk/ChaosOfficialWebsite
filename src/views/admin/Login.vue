@@ -113,7 +113,7 @@ const handleLogin = async () => {
 
 <style lang="less" scoped>
 .admin-login {
-  min-height: 100vh;
+  min-height: 100%;
   background: linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a1a 50%, #0a0a0a 75%, #000000 100%);
   background-attachment: fixed;
   display: flex;
@@ -272,82 +272,8 @@ const handleLogin = async () => {
 }
 
 /* 响应式设计 - 1920×1080 屏幕优化 */
-@media screen and (min-width: 1900px) and (min-height: 900px) {
-  .login-container {
-    max-width: 28rem;
-    padding: 3.5rem;
-  }
-
-  .login-header h2 {
-    font-size: 2rem;
-  }
-
-  .login-header p {
-    font-size: 1rem;
-  }
-
-  .login-form .login-btn {
-    height: 3.5rem;
-    font-size: 1.125rem;
-  }
-
-  :deep(.el-input__wrapper) {
-    min-height: 2.75rem;
-  }
-}
-
 /* 响应式设计 - 1366×768 屏幕优化 */
-@media screen and (min-width: 1366px) and (max-width: 1919px) and (min-height: 768px) {
-  .login-container {
-    max-width: 26rem;
-    padding: 3.25rem;
-  }
-
-  .login-header h2 {
-    font-size: 1.875rem;
-  }
-
-  .login-form .login-btn {
-    height: 3.25rem;
-    font-size: 1.0625rem;
-  }
-
-  :deep(.el-input__wrapper) {
-    min-height: 2.625rem;
-  }
-}
-
 /* 移动端响应式设计 */
-@media (max-width: 480px) {
-  .admin-login {
-    padding: 1rem;
-  }
-
-  .login-container {
-    padding: 2rem 1.5rem;
-    margin: 0 0.5rem;
-    border: 1px solid rgba(30, 144, 255, 0.3);
-    max-width: none;
-  }
-
-  .login-header h2 {
-    font-size: 1.5rem;
-  }
-
-  .login-header p {
-    font-size: 0.8125rem;
-  }
-
-  .login-form .login-btn {
-    height: 2.75rem;
-    font-size: 0.9375rem;
-  }
-
-  :deep(.el-input__wrapper) {
-    min-height: 2.5rem;
-  }
-}
-
 /* 自定义滚动条样式 */
 .admin-login::-webkit-scrollbar {
   width: 8px;

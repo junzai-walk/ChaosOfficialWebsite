@@ -73,24 +73,26 @@ body {
 
 // ==============================导航菜单相关================================
 .el-menu--horizontal.el-menu--popup-container.industry-submenu {
-  max-width: 100vw !important;
+  max-width: 100% !important;
   background-color: transparent !important; /* 与主导航背景色一致 */
 
   /* 行业子菜单和产品中心子菜单的通用样式 */
   // ul
   .el-menu {
-    width: 100vw;
+    width: 100%;
     display: flex;  /* 改为flex布局以便更精确控制间距 */
     justify-content: center;  /* 居中显示所有菜单项 */
     padding: 0;
     height: 100px; /* 设置固定高度为70px */
-    margin-top: -0.7rem; //间隙
-    // font-weight: bolder; //单项子菜单粗细
+    margin-top: 0; // 移除负边距，使其紧贴导航栏
+    background-color: #F4FCFF !important; // 默认浅蓝背景
+    border: none !important;
   }
 
   // li
   .el-menu-item {
-    height: 100px; /* 设置菜单项高度为70px */
+    height: 100px;
+    background-color: transparent !important; // 确保背景透明，形成横条感
     line-height: normal;
     display: flex;
     flex-direction: column;
@@ -161,16 +163,23 @@ body {
 }
 
 .industry-submenu {
-  transform: translate(0, 0); /* 修复位置偏移问题 */
-  left: 0 !important; /* 强制左对齐 */
-  right: 0 !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  box-shadow: none !important;
-  /* 添加背景色设置，与主导航条背景一致 */
-  background-color: transparent !important; /* 或与您网站的深色背景匹配 */
+  position: fixed !important;
+  left: 0 !important;
+  top: 70px !important;
+  width: 100% !important;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05) !important;
+  background-color: #F4FCFF !important;
+}
 
-
+/* 首页深色样式适配 */
+.home-header .industry-submenu {
+  background-color: #000 !important;
+  .el-menu {
+    background-color: #000 !important;
+  }
 }
 
 /* 调整第一个菜单项"钢铁"的位置，使其与"行业方案"对齐 */
@@ -189,20 +198,21 @@ body {
 
 /* 产品中心子菜单样式 */
 .el-menu--horizontal.el-menu--popup-container.products-submenu {
-  max-width: 100vw !important;
+  max-width: 100% !important;
   background-color: transparent !important;
   margin: 0 !important;
   padding: 0 !important;
 
   .el-menu {
-    width: 100vw;
+    width: 100%;
     display: flex !important;
     justify-content: center;
     padding: 20px 0;
     min-height: 200px;
     margin: 0;
     box-shadow: none !important;
-    margin-top: -0.7rem;
+    background-color: #F4FCFF !important;
+    border: none !important;
   }
 
   /* 分组容器样式 */
@@ -260,11 +270,20 @@ body {
 
 /* 修复产品中心和行业方案下拉菜单的定位 */
 .products-submenu, .industry-submenu {
-  transform: translate(0, 0) !important;
+  position: fixed !important;
   left: 0 !important;
-  right: 0 !important;
+  top: 70px !important; // 强制统一顶部距离，修复间隙
   width: 100% !important;
   border: none !important;
+  transform: none !important;
+}
+
+/* 首页产品中心深色适配 */
+.home-header .products-submenu {
+  background-color: #000 !important;
+  .el-menu {
+    background-color: #000 !important;
+  }
 }
 
 /* 去除下拉菜单的阴影 */
@@ -272,15 +291,8 @@ body {
   box-shadow: none !important;
 }
 
-// 添加一级导航菜单加粗样式
+// 一级导航菜单加粗样式
 .el-menu--horizontal > .el-menu-item,
 .el-menu--horizontal > .el-sub-menu > .el-sub-menu__title {
   font-weight: 500 !important;
-}
-
-//1366px分辨率下，产品中心子菜单样式
-@media (max-width: 1366px) {
-  .el-menu--horizontal {
-    height: auto !important;
-  }
 }

@@ -191,7 +191,7 @@ onMounted(() => {
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #f7f9fc;
   padding-top: 4.25rem;
   overflow: hidden;
@@ -226,7 +226,7 @@ onMounted(() => {
   .logo-box {
     perspective: 300px;
     /* 3D 景深 */
-    height: 100vh;
+    height: 100%;
     width: 100%;
     position: relative;
     gap: 10px;
@@ -329,7 +329,7 @@ onMounted(() => {
     position: absolute;
     top: 140px;
     width: 100%;
-    height: calc(100vh - 180px);
+    height: calc(100% - 180px);
     display: flex;
     justify-content: space-between;
 
@@ -417,60 +417,4 @@ onMounted(() => {
 }
 
 
-@media (min-width: 1200px) and (max-width: 1500px) {
-  .case-showcase {
-    .partner-wall {
-
-      .logo-container {
-        &.size-small {
-          width: 60px;
-          height: 60px;
-        }
-
-        &.size-medium {
-          width: 65px;
-          height: 65px;
-        }
-
-        &.size-large {
-          width: 70px;
-          height: 70px;
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .case-showcase {
-    .partner-wall {
-      flex-direction: column;
-      align-items: center;
-      padding: 0;
-
-      .left-side,
-      .right-side {
-        width: 100%;
-        height: 45%;
-      }
-
-      .logo-container {
-        &.size-small {
-          width: 50px;
-          height: 50px;
-        }
-
-        &.size-medium {
-          width: 55px;
-          height: 55px;
-        }
-
-        &.size-large {
-          width: 60px;
-          height: 60px;
-        }
-      }
-    }
-  }
-}
 </style>

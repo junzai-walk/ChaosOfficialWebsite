@@ -90,7 +90,7 @@ const updateActiveStep = (newStep: number) => {
 
 .product-hardware-sensor-light {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   position: relative;
   background: #fff;
 
@@ -161,16 +161,5 @@ const updateActiveStep = (newStep: number) => {
 }
 
 /* 媒体查询 - 1920*1080分辨率 */
-@media (max-width: 1920px) {
-  :root {
-    font-size: 16px;
-  }
-}
-
 /* 媒体查询 - 1366*768分辨率 */
-@media (max-width: 1366px) {
-  :root {
-    font-size: 11.38px; /* 16px * (1366/1920) = ~11.38px */
-  }
-}
 </style>

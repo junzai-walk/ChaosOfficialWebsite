@@ -89,17 +89,6 @@ const nextPage = () => {
 html {
   font-size: 16px;
 
-  @media (min-width: 1920px) {
-    font-size: calc(16px * (1920 / 1920));
-  }
-
-  @media (max-width: 1440px) {
-    font-size: calc(16px * (1440 / 1920));
-  }
-
-  @media (max-width: 1280px) {
-    font-size: calc(16px * (1280 / 1920));
-  }
 }
 
 .steel-cases {
@@ -109,7 +98,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* 改为flex-start而非center */
-  min-height: calc(100vh - 70px); /* 确保最小高度填满视口 */
+  min-height: calc(100% - 70px); /* 确保最小高度填满视口 */
   position: relative;
 }
 
@@ -138,7 +127,7 @@ html {
 
 /* 上方背景图 */
 .background-header {
-  width: 100vw;
+  width: 100%;
   height: 12.5rem; // 200px
   background: url('@/assets/industry/bg.jpg') no-repeat center center;
   background-size: cover;
@@ -264,45 +253,4 @@ html {
   max-width: 31.25rem; // 500px
 }
 
-@media (max-width: 1400px) {
-  .case-page {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-  }
-
-  .case-card {
-    width: calc(25% - 0.9375rem); // 15px
-  }
-}
-
-@media (max-width: 992px) {
-  .steel-cases {
-    padding: 0;
-  }
-
-  .cases-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .side-nav-container {
-    width: 100%;
-    max-width: 18.75rem; // 300px
-    margin-bottom: 1.25rem; // 20px
-  }
-
-  .case-page {
-    flex-wrap: wrap;
-  }
-
-  .case-card {
-    width: calc(50% - 0.625rem); // 10px
-  }
-}
-
-@media (max-width: 768px) {
-  .case-card {
-    width: 100%;
-  }
-}
 </style>

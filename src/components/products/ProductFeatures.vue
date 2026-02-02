@@ -35,14 +35,11 @@ const props = defineProps<{
 :root {
   font-size: 16px;
 
-  @media (max-width: 1366px) {
-    font-size: 14px;
-  }
 }
 
 .product-features {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   background-color: white;
   padding: 14.375rem 0 0 11.6875rem;
@@ -169,135 +166,4 @@ const props = defineProps<{
 }
 
 /* 媒体查询 - 适配不同分辨率 */
-@media (min-width: 1920px) {
-  .product-features {
-    padding: 14.375rem 0 0 11.6875rem;
-    gap: 3.1875rem;
-  }
-
-  .features-grid {
-    grid-template-columns: repeat(3, 26rem);
-    grid-template-rows: repeat(2, 13.75rem);
-    gap: 1.25rem;
-  }
-
-  .feature-icon {
-    width: 3.125rem;
-    height: 3.125rem;
-  }
-
-  .feature-title {
-    font-size: 1.25rem;
-  }
-
-  .feature-description {
-    font-size: 0.875rem;
-    line-height: 1.5rem;
-  }
-}
-
-@media (max-width: 1366px) {
-  .product-features {
-    padding: 10rem 0 0 7rem;
-    gap: 2.5rem;
-  }
-
-  .features-grid {
-    grid-template-columns: repeat(3, 25rem);
-    grid-template-rows: repeat(2, 20rem);
-    gap: 1rem;
-    padding-left: 3.75rem;
-    margin-left: 13rem;
-  }
-
-  .feature-card {
-    padding: 3rem 2rem;
-    height: 19rem;
-    box-sizing: border-box;
-  }
-
-  .feature-icon {
-    width: 2.75rem;
-    height: 2.75rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .feature-icon img {
-    width: 1.25rem;
-    height: 1.25rem;
-  }
-
-  .feature-title {
-    font-size: 1.125rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .feature-description {
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-}
-
-@media (max-width: 1200px) {
-  .product-features {
-    padding: 8rem 3rem 4rem;
-  }
-
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 12rem);
-    padding-left: 2rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .product-features {
-    flex-direction: column;
-    padding: 6rem 2rem 4rem;
-    align-items: center;
-  }
-
-  .side-nav-container {
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 3rem;
-  }
-
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding-left: 0;
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .product-features {
-    padding: 5rem 1.5rem 3rem;
-  }
-
-  .features-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: 1rem;
-  }
-
-  .feature-card {
-    height: auto;
-    min-height: 10rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .product-features {
-    padding: 4rem 1rem 2rem;
-  }
-
-  .feature-title {
-    font-size: 1rem;
-  }
-
-  .feature-description {
-    font-size: 0.75rem;
-  }
-}
 </style>

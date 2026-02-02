@@ -120,14 +120,11 @@ const updateActiveStep = (newStep: number) => {
 :root {
   font-size: 16px;
 
-  @media (max-width: 1366px) {
-    font-size: 14px;
-  }
 }
 
 .product-iop-advantages {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: relative;
   overflow: hidden;
   padding-top: 6.25rem; /* 100px/16=6.25rem */
@@ -215,64 +212,5 @@ const updateActiveStep = (newStep: number) => {
 }
 
 /* 1920x1080分辨率适配 */
-@media (min-width: 1367px) and (max-width: 1920px) {
-  .product-iop-advantages {
-    .side-nav-container {
-      top: 21rem; /* 336px/16=21rem */
-      left: 11.6875rem; /* 187px/16=11.6875rem */
-      width: 7.5rem; /* 120px/16=7.5rem */
-      height: 12rem; /* 192px/16=12rem */
-    }
-  }
-}
-
 /* 1366x768分辨率适配 */
-@media (max-width: 1366px) {
-  .product-iop-advantages {
-    padding-top: 5rem;
-
-    .side-nav-container {
-      top: 18rem;
-      left: 8rem;
-      width: 6.5rem;
-      height: 10.5rem;
-    }
-
-    .background-image-container {
-      width: 85rem;
-        height: 60rem;
-        top: 3.5rem;
-        left: 20rem;
-    }
-
-    .advantage-card {
-      width: 30rem;
-      height: 7rem;
-      padding:2rem 20px 0;
-      gap: 0.8rem;
-    }
-
-    .advantage-icon {
-      width: 2.2rem;
-      height: 2.2rem;
-
-      img {
-        width: 2.2rem;
-        height: 2.2rem;
-      }
-    }
-
-    .advantage-content {
-      .advantage-title {
-        font-size: 1.1rem;
-        margin-bottom: 0.6rem;
-      }
-
-      .advantage-description {
-        font-size: 1rem;
-        line-height: 1.3rem;
-      }
-    }
-  }
-}
 </style>

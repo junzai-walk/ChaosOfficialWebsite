@@ -121,36 +121,6 @@ onMounted(() => {
   }
 }
 
-@media (max-width: 1920px) {
-  .logo-depth-container {
-    .logo-image {
-      max-height: 42%;
-      max-width: 60%;
-    }
-  }
-}
-
-@media (max-width: 1232px) {
-  .logo-depth-container {
-    transform: perspective(800px);
-    
-    .logo-image {
-      max-height: 42%;
-      max-width: 60%;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .logo-depth-container {
-    transform: perspective(600px);
-    
-    .logo-image {
-      max-height: 42%;
-      max-width: 60%;
-    }
-  }
-}
 </style>
 
 <script lang="ts">

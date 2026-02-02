@@ -54,12 +54,13 @@ const cultureCard = [
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 3rem 18rem 0 18rem;
+  background-color: #fff;
   background-image: url('@/assets/home/bg_sub.png');
   /* 替换为实际背景图片 */
   background-size: cover;
@@ -200,13 +201,4 @@ const cultureCard = [
   }
 }
 
-@media (max-width: 768px) {
-  .title {
-    font-size: 36px;
-  }
-
-  .subtitle {
-    font-size: 18px;
-  }
-}
 </style>

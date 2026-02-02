@@ -116,7 +116,7 @@ onMounted(() => {
 .home-hero {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -244,72 +244,11 @@ onMounted(() => {
   border: 1px solid #fff;
   width: 200px;
   height: 56px;
+  color: #fff;
 }
 
 .cta-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* 大屏幕 - 1920x1080 */
-@media (min-width: 1600px) {
-  .title {
-    font-size: 48px;
-    margin-bottom: 25px;
-  }
-
-  .subtitle {
-    font-size: 24px;
-    margin-bottom: 35px;
-  }
-}
-
-/* 中等屏幕 - 适配1232x587分辨率 */
-@media (max-width: 1280px) {
-  .title {
-    font-size: 36px;
-    margin-bottom: 15px;
-  }
-
-  .subtitle {
-    font-size: 20px;
-    margin-bottom: 25px;
-  }
-
-  .cta-button {
-    width: 180px;
-    height: 50px;
-    font-size: 16px;
-  }
-
-  .loading-spinner {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-}
-
-/* 小屏幕 */
-@media (max-width: 768px) {
-  .title {
-    font-size: 28px;
-    margin-bottom: 10px;
-  }
-
-  .subtitle {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-
-  .cta-button {
-    width: 160px;
-    height: 45px;
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-
-  .loading-spinner {
-    width: 2rem;
-    height: 2rem;
-  }
 }
 </style>

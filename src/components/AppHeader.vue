@@ -16,7 +16,7 @@
           <el-menu-item index="/">{{ $t('nav.home') }}</el-menu-item>
           
           <!-- 行业方案菜单改为子菜单 -->
-          <el-sub-menu index="/industry" popper-class="industry-submenu industry-submenu-for-img">
+          <el-sub-menu index="/industry" popper-class="industry-submenu industry-submenu-for-img" :teleported="false">
             <template #title>{{ $t('nav.industry') }}</template>
             <el-menu-item v-for="(industry) in industries" :key="industry.section" 
               :index="`/industry?section=${industry.section}`" class="industry-menu-item">
@@ -26,7 +26,7 @@
           </el-sub-menu>
           
           <!-- 将产品中心改为下拉子菜单 -->
-          <el-sub-menu index="/products" popper-class="products-submenu">
+          <el-sub-menu index="/products" popper-class="products-submenu" :teleported="false">
             <template #title>{{ $t('nav.products') }}</template>
             <!-- 智慧软件分组 -->
             <el-menu-item-group title="智慧软件">
@@ -70,7 +70,7 @@
           <el-menu-item index="/customer">{{ $t('nav.customer') }}</el-menu-item>
           <el-menu-item index="/partners">{{ $t('nav.partners') }}</el-menu-item>
           <el-menu-item index="/news">{{ $t('nav.news') }}</el-menu-item>
-          <el-sub-menu  index="/about" popper-class="industry-submenu">
+          <el-sub-menu  index="/about" popper-class="industry-submenu" :teleported="false">
             <template #title>{{ $t('nav.about') }}</template>
             <el-menu-item v-for="(about) in abouts" :key="about.section" 
               :index="`/about?section=${about.section}`" class="industry-menu-item">
@@ -89,7 +89,7 @@
           <img :src="isHomePage ? telephoneWhite : telephoneBlack" alt="电话" class="icon-img"/>
           <span>{{ $t('common.phone') }}</span>
         </div>
-        <el-dropdown @command="handleLanguageChange">
+        <el-dropdown @command="handleLanguageChange" :teleported="false">
           <div class="lang-switch">
             <img :src="isHomePage ? earthWhite : earthBlack" alt="位置" class="icon-img"/>
             <span>{{ $t('common.language') }}</span>

@@ -89,20 +89,5 @@ onMounted(() => {
     }
   }
   
-  @media (max-width: 1920px) {
-    .main-image-container {
-      width: calc(488px * 100vw / 1920);
-      height: calc(651px * 100vw / 1920);
-      top: calc(123px * 100vw / 1920);
-      left: calc(1133px * 100vw / 1920);
-    }
-    
-    .secondary-image-container {
-      width: calc(204px * 100vw / 1920);
-      height: calc(132px * 100vw / 1920);
-      top: calc(203px * 100vw / 1920);
-      left: calc(1441px * 100vw / 1920);
-    }
-  }
 }
 </style> 

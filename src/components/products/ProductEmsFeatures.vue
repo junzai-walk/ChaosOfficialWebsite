@@ -93,12 +93,12 @@ const updateActiveStep = (newStep: number) => {
 <style scoped>
 .product-ems-features {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   background-color: white;
-  padding: clamp(120px, 12vw, 230px) clamp(30px, 3vw, 60px) 0 clamp(100px, 9.7vw, 187px);
+  padding: clamp(120px, 12%, 230px) clamp(30px, 3%, 60px) 0 clamp(100px, 9.7%, 187px);
   box-sizing: border-box;
-  gap: clamp(20px, 2.6vw, 51px);
+  gap: clamp(20px, 2.6%, 51px);
   position: relative;
 }
 
@@ -110,22 +110,22 @@ const updateActiveStep = (newStep: number) => {
 
 .title-container {
   position: absolute;
-  top: clamp(80px, 6.25vw, 120px);
-  left: clamp(200px, 16vw, 313px);
+  top: clamp(80px, 6.25%, 120px);
+  left: clamp(200px, 16%, 313px);
 }
 
 .main-title {
   font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
   font-weight: 600;
-  font-size: clamp(24px, 1.66vw, 32px);
+  font-size: clamp(24px, 1.66%, 32px);
   color: #333;
-  margin-bottom: clamp(6px, 0.52vw, 10px);
+  margin-bottom: clamp(6px, 0.52%, 10px);
 }
 
 .sub-title {
   font-family: 'Alibaba PuHuiTi 3.0', sans-serif;
   font-weight: 500;
-  font-size: clamp(16px, 1.04vw, 20px);
+  font-size: clamp(16px, 1.04%, 20px);
   color: #666;
   text-align: left;
 }
@@ -134,22 +134,22 @@ const updateActiveStep = (newStep: number) => {
   position: absolute;
   display: flex;
   flex-direction: column;
-  gap: clamp(10px, 0.83vw, 16px);
-  padding: clamp(12px, 1.04vw, 20px);
+  gap: clamp(10px, 0.83%, 16px);
+  padding: clamp(12px, 1.04%, 20px);
   border-radius: 10px;
   overflow: auto;
-  max-height: 80vh;
+  max-height: 80%;
 }
 
 .feature-card {
   width: 100%;
   height: auto;
-  min-height: clamp(80px, 6vw, 116px);
+  min-height: clamp(80px, 6%, 116px);
   background-color: white;
   border-radius: 10px;
   display: flex;
   align-items: flex-start;
-  padding: clamp(10px, 0.83vw, 16px);
+  padding: clamp(10px, 0.83%, 16px);
   box-sizing: border-box;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -181,19 +181,19 @@ const updateActiveStep = (newStep: number) => {
 }
 
 .feature-number {
-  min-width: clamp(24px, 1.87vw, 36px);
-  min-height: clamp(24px, 1.87vw, 36px);
-  width: clamp(24px, 1.87vw, 36px);
-  height: clamp(24px, 1.87vw, 36px);
+  min-width: clamp(24px, 1.87%, 36px);
+  min-height: clamp(24px, 1.87%, 36px);
+  width: clamp(24px, 1.87%, 36px);
+  height: clamp(24px, 1.87%, 36px);
   background-color: #2B7FE8;
   color: white;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: clamp(14px, 0.94vw, 18px);
+  font-size: clamp(14px, 0.94%, 18px);
   font-weight: 600;
-  margin-right: clamp(10px, 0.83vw, 16px);
+  margin-right: clamp(10px, 0.83%, 16px);
   flex-shrink: 0;
 }
 
@@ -230,63 +230,4 @@ const updateActiveStep = (newStep: number) => {
   object-fit: contain;
 }
 
-@media (max-width: 1920px) {
-  /* 可以删除这部分 */
-}
-
-@media screen and (max-width: 1366px) {
-  .product-ems-features {
-    padding: 6rem 1.5rem 0 5rem;
-  }
-
-  .title-container {
-    top: 4rem;
-    left: 10rem;
-  }
-
-  .main-title {
-    font-size: 1.5rem;
-  }
-
-  .sub-title {
-    font-size: 0.9rem;
-  }
-
-  .features-list {
-    top: 7rem;
-    left: 10rem;
-    width: 20rem;
-    max-height: 30rem;
-  }
-
-  .feature-card {
-    min-height: 7.5rem;
-    padding: 2rem;
-  }
-
-  .feature-title {
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
-  }
-
-  .feature-description {
-    font-size: 1rem;
-  }
-
-  .feature-number {
-    min-width: 1.5rem;
-    min-height: 1.5rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 0.8rem;
-    margin-right: 0.5rem;
-  }
-
-  .feature-image-container {
-    width: 28rem;
-    height: 18rem;
-    top: 9rem;
-    right: 2rem;
-  }
-}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <el-dialog v-model="dialogVisible"  width="28.125rem" :style="{height: '67vh', padding: '0.625rem 2.5rem 0.625rem', borderRadius: '0.875rem'}" center>
+  <el-dialog v-model="dialogVisible" width="30rem" :style="{ minHeight: '38rem', padding: '1rem 2.5rem', borderRadius: '1rem' }" center :teleported="false">
     <div class="dialog-header">
       在线申请
     </div>
@@ -183,9 +183,6 @@ export default {
 :root {
   font-size: 16px;
 
-  @media (max-width: 1366px) {
-    font-size: 14px;
-  }
 }
 
 /* 咨询弹窗样式 */
@@ -398,72 +395,4 @@ export default {
 }
 
 /* 媒体查询 - 适配不同分辨率 */
-@media (min-width: 1920px) {
-  .submit-container {
-    .submit-btn {
-      width: 14rem;
-      height: 3.125rem;
-      font-size: 1.125rem;
-    }
-  }
-
-  .success-container {
-    .success-icon {
-      width: 14rem;
-      height: 13rem;
-    }
-
-    .success-title {
-      font-size: 1.75rem;
-    }
-
-    .success-content {
-      font-size: 1.125rem;
-    }
-  }
-}
-
-@media (max-width: 1366px) {
-  .steps-container {
-    margin-bottom: 1.5rem;
-  }
-
-  .contact-hotline {
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .submit-container {
-    margin-top: 2.5rem;
-
-    .submit-btn {
-      width: 11rem;
-      height: 2.5rem;
-    }
-  }
-
-  .success-container {
-    padding: 2.5rem 1rem;
-
-    .success-icon {
-      width: 11rem;
-      height: 10rem;
-      margin-bottom: 2rem;
-    }
-
-    .success-title {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-    }
-
-    .success-content {
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-  }
-
-  :deep(.el-input__inner){
-    font-size: 0.875rem;
-  }
-}
 </style>

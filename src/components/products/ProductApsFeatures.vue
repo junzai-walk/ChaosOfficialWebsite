@@ -56,15 +56,9 @@ const updateActiveStep = (newStep: number) => {
   font-size: 16px;
 }
 
-@media (max-width: 1366px) {
-  :root {
-    font-size: 14px;
-  }
-}
-
 .product-aps-features {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   position: relative;
   background-color: white;
   padding-top: 6.25rem;
@@ -116,109 +110,8 @@ const updateActiveStep = (newStep: number) => {
   }
 
   /* 媒体查询 - 针对1920*1080分辨率 */
-  @media (min-width: 1920px) {
-    padding-top: 6.25rem;
-
-    .picture-left-container {
-      width: 40rem;
-      height: 29.0625rem;
-      top: 11.875rem;
-      left: 25.875rem;
-    }
-
-    .picture-right-container {
-      width: 40rem;
-      height: 29.0625rem;
-      top: 11.875rem;
-      left: 54.0625rem;
-    }
-
-    .picture-bottom-container {
-      width: 67.625rem;
-      height: 38.0625rem;
-      top: 16.0625rem;
-      left: 28.1875rem;
-    }
-  }
-
   /* 媒体查询 - 针对1366*768分辨率 */
-  @media (min-width: 1200px) and (max-width: 1500px) {
-    padding-top: 4.5rem;
-
-    .picture-left-container {
-      width: 34rem;
-        height: 20.35rem;
-        top: 26rem;
-        left: 31rem;
-    }
-
-    .picture-right-container {
-      width: 34rem;
-        height: 20.35rem;
-        top: 26rem;
-        left: 57rem;
-    }
-
-    .picture-bottom-container {
-      width: 47.5rem;
-        height: 26.75rem;
-        top: 32rem;
-        left: 41rem;
-    }
-  }
-
   /* 媒体查询 - 针对平板设备 */
-  @media (max-width: 992px) {
-    padding-top: 4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .side-nav-container {
-      position: relative;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-bottom: 3rem;
-    }
-
-    .picture-left-container,
-    .picture-right-container,
-    .picture-bottom-container {
-      position: relative;
-      width: 90%;
-      height: auto;
-      top: auto;
-      left: auto;
-      margin-bottom: 2rem;
-    }
-
-    .picture-left-container,
-    .picture-right-container {
-      z-index: 3;
-    }
-
-    .picture-bottom-container {
-      margin-top: -5rem;
-    }
-  }
-
   /* 媒体查询 - 移动设备 */
-  @media (max-width: 768px) {
-    padding-top: 3rem;
-
-    .picture-left-container,
-    .picture-right-container,
-    .picture-bottom-container {
-      width: 95%;
-      margin-bottom: 1.5rem;
-    }
-
-    .picture-bottom-container {
-      margin-top: -3rem;
-    }
-  }
 }
 </style>

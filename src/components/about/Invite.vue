@@ -19,9 +19,11 @@
           <img :src="img" alt="轮播图" class="slide-img" />
         </div>
       </div> -->
-      <el-carousel :interval="3000" type="card" height="300px">
+      <el-carousel :interval="3000" type="card" height="15rem">
         <el-carousel-item v-for="item in images" :key="item">
-          <img :src="item" alt="轮播图" class="slide-img" />
+          <div class="carousel-item-content">
+            <img :src="item" alt="轮播图" class="slide-img" />
+          </div>
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -167,11 +169,11 @@ const goToboss = () => {
 .invite {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch; 
   background-color: #F9F9F9;
 
   .main-title {
@@ -243,8 +245,11 @@ const goToboss = () => {
 
   .carousel-container {
     width: 100%;
-    height: 15rem;
-    margin-top: 5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1rem;
     overflow: hidden;
     position: relative;
 
@@ -300,36 +305,34 @@ const goToboss = () => {
 
     .slide-img {
       border-radius: 15px;
-      width: 63%;
-      height: 14rem;
-      // padding: 10px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+  }
+
+  .carousel-item-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .join {
     box-sizing: border-box;
     width: 100%;
-    flex: 1;
+    height: 12rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-size: 100% 100%;
+    background-size: cover;
     background-position: center;
-    padding-bottom: 3rem;
+    padding-bottom: 1.5rem;
 
-    button{
-      width: 8%;
+    button {
+      width: 10rem; // More proportionate width
     }
-  }
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 36px;
-  }
-
-  .subtitle {
-    font-size: 18px;
   }
 }
 

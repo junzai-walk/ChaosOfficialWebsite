@@ -57,17 +57,6 @@ const handleMouseLeave = () => {
 html {
   font-size: 16px;
 
-  @media (min-width: 1920px) {
-    font-size: calc(16px * (1920 / 1920));
-  }
-
-  @media (max-width: 1440px) {
-    font-size: calc(16px * (1440 / 1920));
-  }
-
-  @media (max-width: 1280px) {
-    font-size: calc(16px * (1280 / 1920));
-  }
 }
 
 .comprehensive-support {
@@ -80,7 +69,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* 改为flex-start而非center */
-  min-height: 100vh; /* 确保最小高度填满视口 */
+  min-height: 100%; /* 确保最小高度填满视口 */
   .header-title{
     width: 100%;
     height:8rem ;
@@ -179,48 +168,6 @@ html {
 }
 
 
-
-@media (max-width: 1400px) {
-  .partner-page {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-  }
-
-  .partner-card {
-    width: calc(25% - 0.9375rem); // 15px
-  }
-}
-
-@media (max-width: 992px) {
-  .comprehensive-support {
-    padding: 0;
-  }
-
-  .partner-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .side-nav-container {
-    width: 100%;
-    max-width: 18.75rem; // 300px
-    margin-bottom: 1.25rem; // 20px
-  }
-
-  .partner-page {
-    flex-wrap: wrap;
-  }
-
-  .partner-card {
-    width: calc(50% - 0.625rem); // 10px
-  }
-}
-
-@media (max-width: 768px) {
-  .partner-card {
-    width: 100%;
-  }
-}
 
 /* 底部背景补充 */
 .background-footer {

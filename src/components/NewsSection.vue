@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <div>
+    <div class="bottom-container">
       <!-- 咨询区域 -->
       <div class="consultation-section">
         <h3 style="font-weight: bolder;">工业智能化升级，凯奥思数据与您同行</h3>
@@ -161,12 +161,10 @@ onMounted(() => {
 
 .news-section {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #f7f9fc;
-  padding-bottom: 2.5rem; // 40px -> 2.5rem
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 
 .section-title {
@@ -180,10 +178,17 @@ onMounted(() => {
 .content-container {
   display: flex;
   justify-content: space-between;
-  gap: 1.25rem; // 20px -> 1.25rem
-  max-width: 75rem; // 1200px -> 75rem
+  gap: 1.25rem;
+  max-width: 75rem;
   margin: 0 auto;
-  padding: 0 1.25rem; // 20px -> 1.25rem
+  padding: 0 1.25rem;
+  flex: 1; // Allow content to take up remaining space to push footer down
+  align-items: center;
+}
+
+.bottom-container {
+  width: 100%;
+  margin-top: auto;
 }
 
 /* 左侧新闻卡片样式 */
@@ -257,6 +262,7 @@ onMounted(() => {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 1;
+  line-clamp: 1;
   -webkit-box-orient: vertical;
 }
 
@@ -311,6 +317,7 @@ onMounted(() => {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
   }
 }
@@ -354,122 +361,10 @@ onMounted(() => {
 .consult-btn {
   height: 2.5rem;
   line-height: 2.5rem;
-  padding: 1rem 1.875rem; // 12px 30px -> 0.75rem 1.875rem
-  font-size: 1rem; // 16px -> 1rem
-  border-radius: 1rem; // 4px -> 0.25rem
+  padding: 1rem 1.875rem;
+  font-size: 1rem;
+  border-radius: 1rem;
   background-color: #0072FF;
   color: #fff;
-}
-
-// 响应式样式
-@media (max-width: 768px) {
-  .content-container {
-    flex-direction: column;
-  }
-
-  .news-card,
-  .news-image {
-    width: 100%;
-    height: auto;
-  }
-
-  .news-item {
-    width: 100%;
-  }
-}
-
-@media (max-width: 576px) {
-  .section-title {
-    font-size: 1.75rem; // 更小的标题字体
-  }
-}
-
-// 添加一个用于小屏幕手机的媒体查询
-@media (max-width: 375px) {
-  html {
-    font-size: 14px; // 在小屏幕上减小基础字体大小
-  }
-}
-
-@media (max-width: 1920px) {
-  .news-section {
-    .content-container {
-      max-width: 1200px;
-    }
-
-    .news-card {
-      width: 37.5rem;
-      height: 18.75rem;
-    }
-
-    .news-image {
-      width: 37.5rem;
-      // height: 18.75rem;
-    }
-
-    .news-item {
-      width: 37.5rem;
-    }
-  }
-}
-
-@media (max-width: 1232px) {
-  .news-section {
-    height: auto;
-    min-height: 100vh;
-    padding-bottom: 1.5rem;
-
-    .content-container {
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .news-card {
-      width: 100%;
-      height: auto;
-    }
-
-    .news-image {
-      width: 100%;
-      height: 200px;
-    }
-
-    .news-item {
-      width: 100%;
-      height: auto;
-      flex-direction: column;
-    }
-
-    .news-item-left {
-      flex: 0 0 100%;
-      margin-right: 0;
-      margin-bottom: 0.5rem;
-    }
-
-    .news-item-image {
-      height: 150px;
-    }
-
-    .consultation-section {
-      padding: 1.5rem 0;
-    }
-
-    .consultation-section h3 {
-      font-size: 1.25rem;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .news-section {
-    .section-title {
-      font-size: 1.75rem;
-    }
-
-    .news-item-image {
-      height: 120px;
-    }
-  }
 }
 </style>

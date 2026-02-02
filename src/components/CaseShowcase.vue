@@ -338,101 +338,15 @@ export default {
 </script>
 
 <style lang="less" scoped>
-/* 设置基准根元素字体大小 */
-:root {
-  font-size: 16px;
-  
-  @media (max-width: 1366px) {
-    font-size: 14px;
-  }
-}
-
 .case-showcase {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #f7f9fc;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 2.5rem; /* 40px -> 2.5rem */
+  padding-top: 2.5rem;
   align-items: center;
-
-  /* 媒体查询 - 适配不同分辨率 */
-  @media (min-width: 1920px) {
-    .showcase-content {
-      max-width: 75rem; /* 1200px -> 75rem */
-    }
-
-    .case-grid {
-      gap: 0.9375rem; /* 15px -> 0.9375rem */
-
-      .case-item {
-        width: 17.5rem; /* 280px -> 17.5rem */
-        height: 11.25rem; /* 180px -> 11.25rem */
-      }
-    }
-
-    .partner-wall {
-      .logo-container {
-        width: 10rem; /* 160px -> 10rem */
-        height: 5rem; /* 80px -> 5rem */
-      }
-    }
-  }
-
-  /* 添加针对1366*768分辨率的特殊处理 */
-  @media screen and (min-width: 1440px) and (max-width: 1470px){
-    .showcase-content {
-      max-width: 68.75rem; /* 1100px -> 68.75rem */
-    }
-
-    .title {
-      font-size: 2rem; /* 32px -> 2rem */
-    }
-
-    .subtitle {
-      font-size: 1rem; /* 16px -> 1rem */
-      margin: 2rem 0; /* 24px -> 1.5rem */
-    }
-
-    .case-grid {
-      gap: 0.75rem; /* 12px -> 0.75rem */
-
-      .case-item {
-        width: 16.25rem; /* 260px -> 16.25rem */
-        height: 10rem; /* 160px -> 10rem */
-      }
-    }
-
-    .partner-wall {
-      top: 21.875rem; /* 350px -> 21.875rem */
-
-      .partner-row {
-        gap: 0.9375rem; /* 15px -> 0.9375rem */
-        margin-bottom: 1.25rem; /* 20px -> 1.25rem */
-      }
-
-      .logo-container {
-        width: 6rem; /* 140px -> 8.75rem */
-        height: 4rem; /* 70px -> 4.375rem */
-      }
-    }
-  }
-
-  @media (max-width: 768px) {
-    .case-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .partner-wall {
-      .partner-row {
-        .logo-container {
-          width: 5rem; /* 80px -> 5rem */
-          height: 2.5rem; /* 40px -> 2.5rem */
-        }
-      }
-    }
-  }
 }
 
 .showcase-content {
@@ -499,7 +413,7 @@ export default {
 
 .partner-wall {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   perspective: 2000px;
   transform-style: preserve-3d;
   position: absolute;

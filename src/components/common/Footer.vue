@@ -171,7 +171,7 @@ const navigateToNews = (sectionIndex: number) => {
 .footer {
   background-color: @primary-color;
   color: #fff;
-  padding: 2.5rem 0 4.25rem 0; // 40px 0 100px 0 -> 2.5rem 0 6.25rem 0
+  padding: 2.5rem 0 2rem 0; 
 
   &-content {
     max-width: 100rem; // 1200px -> 75rem
@@ -316,71 +316,4 @@ const navigateToNews = (sectionIndex: number) => {
 }
 
 // 响应式样式
-@media (max-width: 992px) {
-  .footer {
-    &-content {
-      flex-direction: column;
-    }
-
-    &-left,
-    &-nav,
-    &-qrcode {
-      flex: 0 0 100%;
-      margin-bottom: 1.875rem; // 30px -> 1.875rem
-    }
-
-    &-nav {
-      flex-wrap: wrap;
-
-      .nav-section {
-        flex: 0 0 45%;
-        margin-bottom: 1.25rem; // 20px -> 1.25rem
-      }
-    }
-
-    &-qrcode {
-      align-self: center;
-    }
-  }
-}
-
-@media (max-width: 576px) {
-  .footer-nav .nav-section {
-    flex: 0 0 100%;
-  }
-}
-
-@media (max-width: 1232px) {
-  .footer {
-    padding: 1.5rem 0 3rem 0;
-
-    &-content {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    &-left,
-    &-nav,
-    &-qrcode {
-      width: 100%;
-      margin-bottom: 1.5rem;
-    }
-
-    &-nav {
-      flex-wrap: wrap;
-      justify-content: center;
-
-      .nav-section {
-        flex: 0 0 45%;
-        margin-bottom: 1rem;
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .footer-nav .nav-section {
-    flex: 0 0 100%;
-  }
-}
 </style>

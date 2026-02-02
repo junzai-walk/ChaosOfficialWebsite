@@ -78,14 +78,11 @@ const updateActiveStep = (newStep: number) => {
 :root {
   font-size: 16px;
 
-  @media (max-width: 1366px) {
-    font-size: 14px;
-  }
 }
 
 .challenges-section {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   background-color: #f5f7fa;
   padding: 2.5rem;
   display: flex;
@@ -124,9 +121,6 @@ const updateActiveStep = (newStep: number) => {
   display: flex;
   gap: 1.25rem; /* 20px -> 1.25rem */
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
 }
 
 .challenge-card {
@@ -228,104 +222,4 @@ const updateActiveStep = (newStep: number) => {
 }
 
 /* 媒体查询 - 适配不同分辨率 */
-@media (min-width: 1920px) {
-  .challenges-container {
-    max-width: 80rem;
-    gap: 2.5rem;
-    margin: 7.5rem auto;
-  }
-
-  .challenge-card {
-    height: 13.75rem;
-    padding: 2.25rem;
-  }
-
-  .card-icon {
-    width: 3.5rem;
-    height: 3.5rem;
-    margin-bottom: 1.5rem;
-
-    img {
-      width: 1.75rem;
-      height: 1.75rem;
-    }
-  }
-
-  .card-title {
-    font-size: 1.3125rem;
-    margin-bottom: 1rem;
-  }
-
-  .card-desc {
-    font-size: 1.0625rem;
-  }
-}
-
-@media (max-width: 1366px) {
-  .challenges-section {
-    padding: 1.8rem;
-  }
-
-  .challenges-container {
-    max-width: 65rem;
-    gap: 1.5rem;
-    margin: 5rem auto;
-  }
-
-  .challenge-cards {
-    gap: 1rem;
-  }
-
-  .challenge-row {
-    gap: 1rem;
-  }
-
-  .challenge-card {
-    height: 10rem;
-    padding: 4.5rem 2rem;
-    border-radius: 0.75rem;
-  }
-
-  .card-icon {
-    width: 2.8rem;
-    height: 2.8rem;
-    margin-bottom: 1rem;
-
-    &::before {
-      width: 4.2rem;
-      height: 4.2rem;
-    }
-
-    img {
-      width: 1.4rem;
-      height: 1.4rem;
-    }
-  }
-
-  .card-title {
-    font-size: 1rem;
-    margin-bottom: 0.7rem;
-  }
-
-  .card-desc {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .challenges-section {
-    padding: 1.25rem;
-  }
-
-  .challenges-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .side-nav-container {
-    width: 100%;
-    max-width: 18.75rem; /* 300px -> 18.75rem */
-    margin-bottom: 1.25rem; /* 20px -> 1.25rem */
-  }
-}
 </style>

@@ -108,14 +108,11 @@ const updateActiveStep = (newStep: number) => {
 :root {
   font-size: 16px;
 
-  @media (max-width: 1366px) {
-    font-size: 14px;
-  }
 }
 
 .product-iop-features {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   position: relative;
   overflow: hidden;
   padding-top: 6.25rem; /* 100px/16=6.25rem */
@@ -213,63 +210,5 @@ const updateActiveStep = (newStep: number) => {
 }
 
 /* 1920x1080分辨率适配 */
-@media (min-width: 1367px) and (max-width: 1920px) {
-  .product-iop-features {
-    .side-nav-container {
-      top: 21rem; /* 336px/16=21rem */
-      left: 11.6875rem; /* 187px/16=11.6875rem */
-      width: 7.5rem; /* 120px/16=7.5rem */
-      height: 12rem; /* 192px/16=12rem */
-    }
-  }
-}
-
 /* 1366x768分辨率适配 */
-@media (max-width: 1366px) {
-  .product-iop-features {
-    padding-top: 5rem;
-
-    .side-nav-container {
-      top: 18rem;
-      left: 8rem;
-      width: 6.5rem;
-      height: 10.5rem;
-    }
-
-    .center-image-container {
-      width: 27rem;
-      height: 20rem;
-      top: 15rem;
-      left: 48rem;
-    }
-
-    .feature-card {
-      width: 25rem;
-      height: 10rem;
-      padding: 1rem;
-      gap: 0.8rem;
-    }
-
-    .feature-icon {
-      width: 2.2rem;
-      height: 2.2rem;
-    }
-
-    .feature-icon img {
-      width: 1.1rem;
-      height: 1.1rem;
-    }
-
-    .feature-title {
-      font-size: 1.1rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .feature-description {
-      font-size: 0.9rem;
-      line-height: 1.3rem;
-      text-align: center;
-    }
-  }
-}
 </style>

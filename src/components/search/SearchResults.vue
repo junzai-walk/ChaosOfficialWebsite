@@ -43,7 +43,7 @@
         
         <div class="sort-section">
           <span class="filter-label">排序:</span>
-          <el-select v-model="sortBy" size="small" @change="sortResults" class="sort-select" popper-class="search-sort-popper">
+          <el-select v-model="sortBy" size="small" @change="sortResults" class="sort-select" popper-class="search-sort-popper" :teleported="false">
             <el-option label="相关度" value="relevance"></el-option>
             <el-option label="最新发布" value="date"></el-option>
           </el-select>
@@ -82,6 +82,7 @@
             :page-size="pageSize"
             :current-page="currentPage"
             @current-change="handlePageChange"
+            :teleported="false"
           />
         </div>
       </div>
@@ -356,7 +357,7 @@ watch(() => route.query.q, (newValue) => {
 <style scoped>
 .search-results {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #f9f9f9;
   padding: 3rem 0 6rem;
   overflow-y: auto;

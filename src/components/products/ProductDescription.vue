@@ -63,10 +63,10 @@ const updateActiveStep = (newStep: number) => {
 <style scoped lang="less">
 .product-description {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   background-color: white;
-  padding: 15vh 8% 0 10%;
+  padding: 15% 8% 0 10%;
   box-sizing: border-box;
   gap: 2%;
 }
@@ -87,7 +87,7 @@ const updateActiveStep = (newStep: number) => {
 .description {
   flex: 1;
   text-indent: 2em;
-  font-size: clamp(14px, 1vw, 18px);
+  font-size: clamp(14px, 1%, 18px);
   line-height: 1.8;
   color: #333;
   text-align: left;
@@ -103,7 +103,7 @@ const updateActiveStep = (newStep: number) => {
 }
 
 .description p {
-  font-size: clamp(14px, 1vw, 18px);
+  font-size: clamp(14px, 1%, 18px);
   line-height: 1.8;
   color: #333;
 }
@@ -179,128 +179,4 @@ const updateActiveStep = (newStep: number) => {
 }
 
 /* 媒体查询 - 适配不同分辨率 */
-@media (min-width: 1920px) {
-  .product-description {
-    padding: 18vh 10% 0 12%;
-  }
-
-  .content {
-    gap: 8%;
-  }
-
-  .video-container {
-    width: 42%;
-  }
-}
-
-@media (max-width: 1470px) {
-  .product-description {
-    padding: 12vh 5% 0 8%;
-    gap: 3%;
-  }
-
-  .content {
-    gap: 4%;
-  }
-
-  .video-container {
-    width: 48%;
-  }
-}
-
-@media (max-width: 1200px) {
-  .product-description {
-    padding: 10vh 4% 0 6%;
-    gap: 2%;
-  }
-
-  .content {
-    gap: 3%;
-  }
-
-  .video-container {
-    width: 50%;
-  }
-}
-
-@media (max-width: 992px) {
-  .product-description {
-    flex-direction: column;
-    padding: 8vh 5% 4vh;
-    align-items: center;
-  }
-
-  .side-nav-container {
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 5vh;
-  }
-
-  .content {
-    flex-direction: column;
-    gap: 5vh;
-    align-items: center;
-    width: 100%;
-  }
-
-  .video-container {
-    width: 90%;
-    max-width: 640px;
-  }
-
-  .description {
-    width: 90%;
-    max-width: 640px;
-  }
-}
-
-@media (max-width: 768px) {
-  .product-description {
-    padding: 6vh 4% 3vh;
-  }
-
-  .description {
-    font-size: clamp(13px, 2vw, 16px);
-  }
-
-  .description p {
-    font-size: clamp(13px, 2vw, 16px);
-  }
-
-  .play-button {
-    width: 60px;
-    height: 60px;
-  }
-
-  .video-container {
-    width: 95%;
-  }
-}
-
-@media (max-width: 576px) {
-  .product-description {
-    padding: 5vh 3% 2vh;
-  }
-
-  .description {
-    font-size: clamp(12px, 2.5vw, 14px);
-  }
-
-  .description p {
-    font-size: clamp(12px, 2.5vw, 14px);
-  }
-
-  .play-button {
-    width: 50px;
-    height: 50px;
-  }
-
-  .play-icon {
-    border-width: 12px 0 12px 20px;
-  }
-
-  .content {
-    gap: 4vh;
-  }
-}
 </style>

@@ -362,17 +362,6 @@ onBeforeUnmount(() => {
 html {
   font-size: 16px;
 
-  @media (min-width: 1920px) {
-    font-size: calc(16px * (1920 / 1920));
-  }
-
-  @media (max-width: 1440px) {
-    font-size: calc(16px * (1440 / 1920));
-  }
-
-  @media (max-width: 1280px) {
-    font-size: calc(16px * (1280 / 1920));
-  }
 }
 
 .case-detail {
@@ -383,7 +372,7 @@ html {
   flex-direction: column;
   justify-content: flex-start;
   /* 改为flex-start而非center */
-  min-height: 100vh;
+  min-height: 100%;
 
   /* 确保最小高度填满视口 */
   .header {
@@ -433,7 +422,7 @@ html {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
 
@@ -469,7 +458,7 @@ html {
     .content-bottom {
       box-sizing: border-box;
       width: 100%;
-      height: 80vh;
+      height: 80%;
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);

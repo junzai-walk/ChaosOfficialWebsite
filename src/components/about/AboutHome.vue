@@ -34,7 +34,7 @@ onMounted(() => {
 .home-hero {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -103,13 +103,4 @@ onMounted(() => {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 768px) {
-  .title {
-    font-size: 36px;
-  }
-  
-  .subtitle {
-    font-size: 18px;
-  }
-}
 </style> 

@@ -65,22 +65,11 @@
 html {
   font-size: 16px;
 
-  @media (min-width: 1920px) {
-    font-size: calc(16px * (1920 / 1920));
-  }
-
-  @media (max-width: 1440px) {
-    font-size: calc(16px * (1440 / 1920));
-  }
-
-  @media (max-width: 1280px) {
-    font-size: calc(16px * (1280 / 1920));
-  }
 }
 
 .steel-challenges {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   background-color: #f5f7fa;
   padding: 2.5rem; // 40px
   display: flex;
@@ -112,9 +101,6 @@ html {
   display: flex;
   gap: 20px;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
 }
 
 .challenge-card {
@@ -160,14 +146,4 @@ html {
   line-height: 1.6;
 }
 
-@media (max-width: 992px) {
-  .steel-challenges {
-    padding: 20px;
-  }
-
-  .challenges-container {
-    flex-direction: column;
-    align-items: center;
-  }
-}
 </style>

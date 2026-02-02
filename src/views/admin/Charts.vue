@@ -436,7 +436,7 @@ defineOptions({
 /* 主题变量应用 */
 
 .admin-charts {
-  min-height: 100vh;
+  min-height: 100%;
   background: var(--theme-bg-primary);
   background-attachment: fixed;
   padding: 0;
@@ -780,68 +780,6 @@ defineOptions({
 }
 
 /* 响应式设计 */
-@media (max-width: 1200px) {
-  .tech-tabs {
-    flex-direction: column;
-    align-items: center;
-
-    .tech-tab-btn {
-      width: 100%;
-      max-width: 300px;
-      justify-content: center;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .dashboard-header {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-
-    .header-left h1 {
-      font-size: 1.5rem;
-    }
-  }
-
-  .chart-control-panel,
-  .chart-display-area {
-    margin: 1rem;
-  }
-
-  .chart-control-panel {
-    padding: 1rem;
-  }
-
-  .chart-wrapper {
-    padding: 1rem;
-
-    .tech-chart {
-      height: 300px !important;
-    }
-  }
-
-  .tech-tabs {
-    gap: 0.5rem;
-
-    .tech-tab-btn {
-      padding: 0.8rem 1rem;
-      min-width: auto;
-
-      .tab-icon .el-icon {
-        font-size: 1.2rem;
-      }
-
-      .tab-text .tab-title {
-        font-size: 0.9rem;
-      }
-
-      .tab-text .tab-subtitle {
-        font-size: 0.7rem;
-      }
-    }
-  }
-}
 </style>
 
 <style>

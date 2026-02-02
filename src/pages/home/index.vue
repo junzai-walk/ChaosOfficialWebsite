@@ -159,8 +159,8 @@ onErrorCaptured((err) => {
 
 <style scoped>
 .home-page {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   position: relative;
   overflow: hidden;
   background-color: #fff;
@@ -173,7 +173,7 @@ onErrorCaptured((err) => {
 
 .section {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

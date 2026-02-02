@@ -50,14 +50,11 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 :root {
   font-size: 16px;
   
-  @media (max-width: 1470px) {
-    font-size: 14px;
-  }
 }
 
 .product-hero {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -117,85 +114,4 @@ const handleConsultSubmit = (formData: ConsultFormData) => {
 }
 
 /* 媒体查询 - 适配不同分辨率 */
-@media (min-width: 1920px) {
-  .title {
-    top: 19.3125rem;
-    font-size: 3.75rem;
-  }
-  
-  .experience-btn {
-    top: 30.875rem;
-    left: 53.75rem;
-    width: 12.5rem;
-    height: 3.5rem;
-    font-size: 1.25rem;
-  }
-}
-
-@media (max-width: 1470px) {
-  .title {
-    top: 16rem;
-    font-size: 3rem;
-    height: 4.5rem;
-  }
-  
-  .experience-btn {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10rem;
-    height: 3rem;
-    font-size: 1.125rem;
-    padding: 0.6rem 1.75rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .title {
-    top: 12rem;
-    font-size: 2.5rem;
-  }
-  
-  .experience-btn {
-    top: 20rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 10rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 2rem;
-    position: relative;
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    width: 90%;
-    white-space: normal;
-  }
-  
-  .experience-btn {
-    position: relative;
-    top: 40%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    max-width: 15rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .title {
-    font-size: 1.75rem;
-    top: 25%;
-  }
-  
-  .experience-btn {
-    top: 35%;
-    height: 2.75rem;
-    font-size: 1rem;
-  }
-}
 </style> 

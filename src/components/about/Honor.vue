@@ -42,7 +42,7 @@ const honorCard = [
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -98,13 +98,4 @@ const honorCard = [
   }
 }
 
-@media (max-width: 768px) {
-  .title {
-    font-size: 36px;
-  }
-
-  .subtitle {
-    font-size: 18px;
-  }
-}
 </style>

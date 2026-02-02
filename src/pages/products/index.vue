@@ -1366,8 +1366,8 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .products-page {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   position: relative;
   overflow: hidden;
   background-color: #fff;
@@ -1375,7 +1375,7 @@ onBeforeUnmount(() => {
 
 .section {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -1413,7 +1413,7 @@ onBeforeUnmount(() => {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-height: 80vh;
+  max-height: 80%;
   overflow-y: auto;
   padding-right: 10px;
 }

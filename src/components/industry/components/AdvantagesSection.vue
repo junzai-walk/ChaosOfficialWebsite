@@ -85,14 +85,11 @@ const updateActiveStep = (newStep: number) => {
 :root {
   font-size: 16px;
   
-  @media (max-width: 1366px) {
-    font-size: 14px;
-  }
 }
 
 .advantages-section {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   background-color: #f5f7fa;
   padding: 2.5rem;
   display: flex;
@@ -240,133 +237,4 @@ const updateActiveStep = (newStep: number) => {
 }
 
 /* 媒体查询 - 适配不同分辨率 */
-@media (min-width: 1920px) {
-  .advantages-container {
-    max-width: 90rem;
-    margin: 7.5rem auto;
-  }
-  
-  .advantage-card {
-    height: 18.75rem;
-    padding: 2.25rem;
-  }
-  
-  .card-icon {
-    width: 3.75rem;
-    height: 3.75rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .card-title {
-    font-size: 1.3125rem;
-    margin-bottom: 1.125rem;
-  }
-  
-  .card-desc {
-    font-size: 1.0625rem;
-  }
-}
-
-@media (max-width: 1366px) {
-  .advantages-section {
-    padding: 1.875rem;
-  }
-  
-  .advantages-container {
-    margin: 5rem auto;
-  }
-  
-  .advantage-cards {
-    gap: 1rem;
-  }
-  
-  .card-row {
-    gap: 1rem;
-  }
-  
-  .advantage-card {
-    height: 19.375rem;
-    padding: 4.5rem 2rem;
-  }
-  
-  .card-icon {
-    width: 2.8125rem;
-    height: 2.8125rem;
-    margin-bottom: 0.875rem;
-  }
-  
-  .card-title {
-    font-size: 1rem;
-    margin-bottom: 0.75rem;
-  }
-  
-  .card-desc {
-    font-size: 0.875rem;
-  }
-}
-
-@media (max-width: 1200px) {
-  .advantage-card {
-    width: 100%;
-    height: auto;
-    min-height: 15.9375rem;
-  }
-  
-  .card-row {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 992px) {
-  .advantages-section {
-    padding: 1.25rem;
-  }
-
-  .advantages-container {
-    flex-direction: column;
-    align-items: center;
-    margin: 3.75rem auto;
-  }
-
-  .side-nav-container {
-    width: 100%;
-    max-width: 18.75rem;
-    margin-bottom: 1.25rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .advantages-container {
-    margin: 2.5rem auto;
-  }
-  
-  .advantage-card {
-    padding: 1.25rem;
-    min-height: 12.5rem;
-  }
-  
-  .card-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-  
-  .card-title {
-    font-size: 0.9375rem;
-  }
-  
-  .card-desc {
-    font-size: 0.8125rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .advantages-section {
-    padding: 1rem;
-  }
-  
-  .advantage-card {
-    min-height: 11.25rem;
-    padding: 1rem;
-  }
-}
 </style> 
