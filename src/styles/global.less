@@ -175,10 +175,21 @@ body {
 }
 
 /* 首页深色样式适配 */
-.home-header .industry-submenu {
+.home-header .industry-submenu,
+.home-header .el-menu--horizontal.el-menu--popup-container.industry-submenu {
   background-color: #000 !important;
   .el-menu {
     background-color: #000 !important;
+  }
+  .el-menu-item {
+    color: #fff !important;
+    span {
+      color: #fff !important;
+    }
+    
+    &:hover, &:hover span {
+      color: #1890ff !important;
+    }
   }
 }
 
@@ -279,10 +290,24 @@ body {
 }
 
 /* 首页产品中心深色适配 */
-.home-header .products-submenu {
+.home-header .products-submenu,
+.home-header .el-menu--horizontal.el-menu--popup-container.products-submenu {
   background-color: #000 !important;
   .el-menu {
     background-color: #000 !important;
+  }
+  
+  .el-menu-item-group__title {
+    color: #fff !important;
+    border-bottom-color: rgba(255, 255, 255, 0.2) !important;
+  }
+  
+  .el-menu-item {
+    color: #fff !important;
+    
+    &:hover {
+      color: #409EFF !important;
+    }
   }
 }
 
